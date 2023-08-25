@@ -1,150 +1,120 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="en">
 <head>
-
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>A Minimal Bookdown Book</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <meta name="description" content="Everything you need (and nothing more) to start a bookdown book.">
-  <meta name="generator" content="bookdown 0.1 and GitBook 2.6.7">
-
-  <meta property="og:title" content="A Minimal Bookdown Book" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="http://seankross.com/bookdown-start/" />
-  
-  <meta property="og:description" content="Everything you need (and nothing more) to start a bookdown book." />
-  <meta name="github-repo" content="seankross/bookdown-start" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Minimal Bookdown Book" />
-  
-  <meta name="twitter:description" content="Everything you need (and nothing more) to start a bookdown book." />
-  
-
-<meta name="author" content="Sean Kross">
-
-<meta name="date" content="2016-12-09">
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  
-  
-
-<link rel="next" href="introduction.html">
-
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Micro-Econometrics</title>
+<meta name="author" content="Jean-Paul Renne">
+<meta name="description" content="This course covers various topics in micro-econometrics. Simulations and real-data-based examples are provided.">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Micro-Econometrics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="This course covers various topics in micro-econometrics. Simulations and real-data-based examples are provided.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Micro-Econometrics">
+<meta name="twitter:description" content="This course covers various topics in micro-econometrics. Simulations and real-data-based examples are provided.">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="my-style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">A Minimal Bookdown Book</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="diving-in.html"><a href="diving-in.html"><i class="fa fa-check"></i><b>2</b> Diving In</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Micro-Econometrics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Bookdown Book</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="active" href="index.html">Micro-Econometrics</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="diving-in.html"><span class="header-section-number">2</span> Diving In</a></li>
+<li><a class="" href="technical-details.html"><span class="header-section-number">3</span> Technical Details</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A Minimal Bookdown Book</h1>
-<h4 class="author"><em>Sean Kross</em></h4>
-<h4 class="date"><em>2016-12-09</em></h4>
+      </nav>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This is the very first part of the book.</p>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="intro" class="section level1 unlisted unnumbered">
+<h1>Micro-Econometrics<a class="anchor" aria-label="anchor" href="#intro"><i class="fas fa-link"></i></a>
+</h1>
+<!-- # Before starting {#intro .unlisted .unnumbered} -->
+<p>In microeconometric models, the variables of interest often feature restricted distributions—for instance with discontinuous support—, which necessitates specific models. Typical examples are discrete-choice models (binary, multinomial, ordered outcomes), sample selection models (censored or truncated outcomes), and count-data models (integer outcomes). The course describes the estimation and interpretation of these models. It also shows how the discrete-choice models can emerge from (structural) random-utility frameworks.</p>
+<p>This course has been developed by <a href="https://sites.google.com/site/jeanpaulrenne/home">Jean-Paul Renne</a>. It is illustrated by R codes using various packages that can be obtained from <a href="https://cran.r-project.org">CRAN</a>. This <code>AEC</code> package is available on GitHub. To install it, one need to employ the <code>devtools</code> library:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span> <span class="co"># in case this library has not been loaded yet</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"jrenne/AEC"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">AEC</span><span class="op">)</span></span></code></pre></div>
+<p><strong>Useful (R) links:</strong></p>
+<ul>
+<li>
+<p>Download R:</p>
+<ul>
+<li>R software: <a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a> (the basic R software)</li>
+<li>RStudio: <a href="https://www.rstudio.com" class="uri">https://www.rstudio.com</a> (a convenient R editor)</li>
+</ul>
+</li>
+<li>
+<p>Tutorials:</p>
+<ul>
+<li>Rstudio: <a href="https://dss.princeton.edu/training/RStudio101.pdf" class="uri">https://dss.princeton.edu/training/RStudio101.pdf</a> (by Oscar Torres-Reyna)</li>
+<li>R: <a href="https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf" class="uri">https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf</a> (by Emmanuel Paradis)</li>
+<li>My own tutorial: <a href="https://jrenne.shinyapps.io/Rtuto_publiShiny/" class="uri">https://jrenne.shinyapps.io/Rtuto_publiShiny/</a>
+</li>
+</ul>
+</li>
+</ul>
+<!-- <!-- To specify the corresponding covariance matrix vcov. to be used, there are three possibilities: 1. It is pre-computed and supplied in argument vcov.. 2. A function for extracting the covariance matrix from x is supplied, e.g., sandwich, vcovHC, vcovCL, or vcovHAC from package sandwich.  --><!-- ```{r shp2,warning=FALSE,message=FALSE} --><!-- library(AEC) --><!-- library(sandwich) --><!-- shp$income <- shp$i19ptotn/1000 --><!-- shp$female <- 1*(shp$sex19==2) --><!-- eq <- lm(income ~ edyear19 + age19 + I(age19^2) + female,data=shp) --><!-- #eq <- lm(income ~ edyear19 + age19 + I(age19^2) + female + I(female*ownkid19*(age19<40)),data=shp) --><!-- #lmtest::coeftest(eq,vcov. = sandwich) --><!-- #lmtest::coeftest(eq,vcov. = vcovHC) --><!-- #X <- cbind(1,shp$edyear19,shp$age19,shp$age19^2,shp$female) --><!-- #solve(t(X) %*% X) %*% t(X) %*% diag(eq$residuals^2) %*% X %*% solve(t(X) %*% X) --><!-- #vcovHC(eq,type="HC0") --><!-- #sandwich(eq) --><!-- #vcovHC(eq,type="HC1") --><!-- ``` --><!-- XXXX HC0, HC1... Davidson MacKinnon 2004 Section 5.5 XXXX --><!-- **p.d.f. version**: [here](https://www.dropbox.com/s/td4bqpbzfuvwsev/ApplEcts.pdf?dl=0). -->
+</div>
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="next"><a href="introduction.html"><span class="header-section-number">1</span> Introduction</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#intro">Micro-Econometrics</a></li></ul>
 
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
 
 </div>
-            </section>
+</div> <!-- .container -->
 
-          </div>
-        </div>
-      </div>
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Micro-Econometrics</strong>" was written by Jean-Paul Renne. It was last built on 2023-08-25.</p>
+  </div>
 
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script>
-require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"facebook": true,
-"twitter": true,
-"google": false,
-"weibo": false,
-"instapper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
 
+</div></div>
+</footer>
 </body>
-
 </html>

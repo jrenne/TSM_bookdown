@@ -1,17 +1,71 @@
 --- 
-title: "A Minimal Bookdown Book"
-author: "Sean Kross"
+title: "Micro-Econometrics"
+author: "Jean-Paul Renne"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+output: bookdown::gitbook
 documentclass: book
-bibliography: [book.bib]
+fontsize: 12pt
+bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: seankross/bookdown-start
-url: 'http\://seankross.com/bookdown-start/'
-description: "Everything you need (and nothing more) to start a bookdown book."
+github-repo: rstudio/bookdown-demo
+description: "This course covers various topics in micro-econometrics. Simulations and real-data-based examples are provided."
+css: "my-style.css"
 ---
 
-# Preface {-}
+<!-- Declare new latex code: -->
+\newcommand{\bv}[1]{\mathbf{#1}} 
 
-This is the very first part of the book.
+# Micro-Econometrics {#intro .unlisted .unnumbered}
+
+<!-- # Before starting {#intro .unlisted .unnumbered} -->
+
+In microeconometric models, the variables of interest often feature restricted distributions---for instance with discontinuous support---, which necessitates specific models. Typical examples are discrete-choice models (binary, multinomial, ordered outcomes), sample selection models (censored or truncated outcomes), and count-data models (integer outcomes). The course describes the estimation and interpretation of these models. It also shows how the discrete-choice models can emerge from (structural) random-utility frameworks.
+
+This course has been developed by [Jean-Paul Renne](https://sites.google.com/site/jeanpaulrenne/home). It is illustrated by R codes using various packages that can be obtained from [CRAN](https://cran.r-project.org). This `AEC` package is available on GitHub. To install it, one need to employ the `devtools` library:
+
+```{r installAEC, eval=FALSE}
+install.packages("devtools") # in case this library has not been loaded yet
+library(devtools)
+install_github("jrenne/AEC")
+library(AEC)
+```
+
+**Useful (R) links:**
+
+* Download R:
+
+    *	R software: https://cran.r-project.org (the basic R software)
+    *	RStudio: https://www.rstudio.com (a convenient R editor)
+
+* Tutorials:
+
+    *	Rstudio: https://dss.princeton.edu/training/RStudio101.pdf (by Oscar Torres-Reyna)
+    *	R: https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf (by Emmanuel Paradis)
+    * My own tutorial: https://jrenne.shinyapps.io/Rtuto_publiShiny/
+
+
+<!-- <!-- To specify the corresponding covariance matrix vcov. to be used, there are three possibilities: 1. It is pre-computed and supplied in argument vcov.. 2. A function for extracting the covariance matrix from x is supplied, e.g., sandwich, vcovHC, vcovCL, or vcovHAC from package sandwich.  -->
+<!-- ```{r shp2,warning=FALSE,message=FALSE} -->
+<!-- library(AEC) -->
+<!-- library(sandwich) -->
+<!-- shp$income <- shp$i19ptotn/1000 -->
+<!-- shp$female <- 1*(shp$sex19==2) -->
+<!-- eq <- lm(income ~ edyear19 + age19 + I(age19^2) + female,data=shp) -->
+<!-- #eq <- lm(income ~ edyear19 + age19 + I(age19^2) + female + I(female*ownkid19*(age19<40)),data=shp) -->
+<!-- #lmtest::coeftest(eq,vcov. = sandwich) -->
+<!-- #lmtest::coeftest(eq,vcov. = vcovHC) -->
+<!-- #X <- cbind(1,shp$edyear19,shp$age19,shp$age19^2,shp$female) -->
+<!-- #solve(t(X) %*% X) %*% t(X) %*% diag(eq$residuals^2) %*% X %*% solve(t(X) %*% X) -->
+<!-- #vcovHC(eq,type="HC0") -->
+<!-- #sandwich(eq) -->
+<!-- #vcovHC(eq,type="HC1") -->
+<!-- ``` -->
+<!-- XXXX HC0, HC1... Davidson MacKinnon 2004 Section 5.5 XXXX -->
+
+<!-- **p.d.f. version**: [here](https://www.dropbox.com/s/td4bqpbzfuvwsev/ApplEcts.pdf?dl=0). -->
+
+
+
+

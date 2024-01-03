@@ -1,737 +1,679 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 ESTIMATION OF AFFINE ASSET-PRICING MODELS | Introduction to Term Structure Models</title>
-  <meta name="description" content="This is an introduction to the modeling of dynamic term structures." />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 3 ESTIMATION OF AFFINE ASSET-PRICING MODELS | Introduction to Term Structure Models" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="This is an introduction to the modeling of dynamic term structures." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 ESTIMATION OF AFFINE ASSET-PRICING MODELS | Introduction to Term Structure Models" />
-  
-  <meta name="twitter:description" content="This is an introduction to the modeling of dynamic term structures." />
-  
-
-<meta name="author" content="Jean-Paul Renne" />
-
-
-<meta name="date" content="2023-12-17" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="pricing-and-risk-neutral-dynamics.html"/>
-<link rel="next" href="diving-in.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 Estimation of affine asset-pricing models | Introduction to Term Structure Models</title>
+<meta name="author" content="Jean-Paul Renne">
+<meta name="description" content="3.1 State-Space Model The dynamic asset-pricing models are state-space models: The dynamics of all variables, gathered in vector \(y_t\) (yields, equity returns, macroeconomic variables,...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Estimation of affine asset-pricing models | Introduction to Term Structure Models">
+<meta property="og:type" content="book">
+<meta property="og:description" content="3.1 State-Space Model The dynamic asset-pricing models are state-space models: The dynamics of all variables, gathered in vector \(y_t\) (yields, equity returns, macroeconomic variables,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 Estimation of affine asset-pricing models | Introduction to Term Structure Models">
+<meta name="twitter:description" content="3.1 State-Space Model The dynamic asset-pricing models are state-space models: The dynamics of all variables, gathered in vector \(y_t\) (yields, equity returns, macroeconomic variables,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="my-style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Term Structure Models</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#Information"><i class="fa fa-check"></i><b>1.1</b> Information in the Economy: The “Factors”</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#Dynamic"><i class="fa fa-check"></i><b>1.2</b> Dynamic Models</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#AffineLaplace"><i class="fa fa-check"></i><b>1.3</b> Some Properties of the Laplace Transform</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#AffineCar"><i class="fa fa-check"></i><b>1.4</b> Affine (or Car) Processes</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#truncated-laplace-transforms-of-affine-processes"><i class="fa fa-check"></i><b>1.5</b> Truncated Laplace Transforms of Affine Processes}</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="pricing-and-risk-neutral-dynamics.html"><a href="pricing-and-risk-neutral-dynamics.html"><i class="fa fa-check"></i><b>2</b> PRICING AND RISK NEUTRAL DYNAMICS</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="pricing-and-risk-neutral-dynamics.html"><a href="pricing-and-risk-neutral-dynamics.html#sdf-equilibrium-approach"><i class="fa fa-check"></i><b>2.1</b> SDF: Equilibrium Approach}</a></li>
-<li class="chapter" data-level="2.2" data-path="pricing-and-risk-neutral-dynamics.html"><a href="pricing-and-risk-neutral-dynamics.html#sdf-absence-of-arbitrage-approach"><i class="fa fa-check"></i><b>2.2</b> SDF: Absence of Arbitrage Approach}</a></li>
-<li class="chapter" data-level="2.3" data-path="pricing-and-risk-neutral-dynamics.html"><a href="pricing-and-risk-neutral-dynamics.html#exponential-affine-sdf"><i class="fa fa-check"></i><b>2.3</b> Exponential Affine SDF}</a></li>
-<li class="chapter" data-level="2.4" data-path="pricing-and-risk-neutral-dynamics.html"><a href="pricing-and-risk-neutral-dynamics.html#the-risk-neutral-dynamics"><i class="fa fa-check"></i><b>2.4</b> The Risk-Neutral Dynamics}</a></li>
-<li class="chapter" data-level="2.5" data-path="pricing-and-risk-neutral-dynamics.html"><a href="pricing-and-risk-neutral-dynamics.html#typology-of-econometric-asset-pricing-models"><i class="fa fa-check"></i><b>2.5</b> Typology of Econometric Asset Pricing Models}</a></li>
-<li class="chapter" data-level="2.6" data-path="pricing-and-risk-neutral-dynamics.html"><a href="pricing-and-risk-neutral-dynamics.html#the-affine-case"><i class="fa fa-check"></i><b>2.6</b> The Affine Case}</a></li>
-<li class="chapter" data-level="2.7" data-path="pricing-and-risk-neutral-dynamics.html"><a href="pricing-and-risk-neutral-dynamics.html#gaussian-affine-term-structure-model"><i class="fa fa-check"></i><b>2.7</b> Gaussian Affine Term Structure Model}</a></li>
-<li class="chapter" data-level="2.8" data-path="pricing-and-risk-neutral-dynamics.html"><a href="pricing-and-risk-neutral-dynamics.html#non-negative-affine-term-structure-model"><i class="fa fa-check"></i><b>2.8</b> Non-Negative Affine Term Structure Model}</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="estimation-of-affine-asset-pricing-models.html"><a href="estimation-of-affine-asset-pricing-models.html"><i class="fa fa-check"></i><b>3</b> ESTIMATION OF AFFINE ASSET-PRICING MODELS</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="estimation-of-affine-asset-pricing-models.html"><a href="estimation-of-affine-asset-pricing-models.html#state-space-model"><i class="fa fa-check"></i><b>3.1</b> State-Space Model}</a></li>
-<li class="chapter" data-level="3.2" data-path="estimation-of-affine-asset-pricing-models.html"><a href="estimation-of-affine-asset-pricing-models.html#pricing-illiquid-bonds"><i class="fa fa-check"></i><b>3.2</b> Pricing Illiquid Bonds}</a></li>
-<li class="chapter" data-level="3.3" data-path="estimation-of-affine-asset-pricing-models.html"><a href="estimation-of-affine-asset-pricing-models.html#top-down-approach"><i class="fa fa-check"></i><b>3.3</b> Top-Down Approach}</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="diving-in.html"><a href="diving-in.html"><i class="fa fa-check"></i><b>4</b> Diving In</a></li>
-<li class="chapter" data-level="5" data-path="technical-details.html"><a href="technical-details.html"><i class="fa fa-check"></i><b>5</b> Technical Details</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction to Term Structure Models</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Term Structure Models</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
+<li><a class="" href="affine-processes.html"><span class="header-section-number">1</span> Affine processes</a></li>
+<li><a class="" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
+<li><a class="active" href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">3</span> Estimation of affine asset-pricing models</a></li>
+<li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">4</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
+<li><a class="" href="credit-and-liquidity-risks.html"><span class="header-section-number">5</span> Credit and liquidity risks</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">6</span> References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="estimation-of-affine-asset-pricing-models" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> ESTIMATION OF AFFINE ASSET-PRICING MODELS<a href="estimation-of-affine-asset-pricing-models.html#estimation-of-affine-asset-pricing-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="state-space-model" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> State-Space Model}<a href="estimation-of-affine-asset-pricing-models.html#state-space-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>{<span class="math inline">\(\ref{subsec:Estimation:SSModel}\)</span> – STATE-SPACE MODEL}</p>
-<pre><code>* The dynamic asset-pricing models are {\bf\textcolor{blue}{state-space models}}:
-
-The dynamics of all variables, gathered in vector $y_t$ (yields, equity returns, macroeconomic variables, survey-based variables) is accounted for by state variables ($w_t$).
-* The equations defining the relationship between the other variables and the state variables are called {\bf\textcolor{blue}{measurement equations}} (Eq.\,\ref{eq:measeq}).
-* The equations defining the dynamics of the state variables are called {\bf\textcolor{blue}{transition equations}} (Eq.\,\ref{eq:transeq}).
-* If $w_t$ is an affine process, the transition equations admit a VAR(1) representation (see Proposition\,\ref{prop:affineVAR}).
-
-
-        :::{.definitionLinear State-Space Model]\label{def:LSSM}
-
-            \begin{eqnarray}
-                   \underset{(m \times 1)}{y_t}  &amp;=&amp; A + Bw_t + \eta_t  \quad \mbox{with }  \eta_t \sim i.i.d.\,\mathcal{N}(0,\Omega) \label{eq:measeq} \\
-                 \underset{(n \times 1)}{w_t} &amp; =&amp; \mu + \Phi w_{t-1} + \Sigma^{\frac{1}{2}}(w_{t-1}) \varepsilon_t,\label{eq:transeq}
-            \end{eqnarray}
-        where $\varepsilon_t$ is a martingale difference sequence satisfying  $\mathbb{V}ar_t(\varepsilon_{t+1}) = Id$. The components of $\eta_t$ are {\bf\textcolor{blue}{measurement errors}}.
-        :::
-        \begin{tiny}{\bf Note. } Eq.\,(\ref{eq:transeq}) comes from Proposition\,\ref{prop:affineVAR} (Eq.\,\ref{eq:VARw}).
-        \end{tiny}</code></pre>
-<p></p>
-<pre><code>* There are two different situations:
-
-\item[(a)] all state variables (components of $w_t$) are observed (next slide);
-\item[(b)] some of these variables are latent.</code></pre>
-<p></p>
-<pre><code>* Case (a): One can resort to standard estimation techniques (GMM, Maximum Likelihood) to estimate model parameters.
-* Take the maximum likelihood case, we have:
-\begin{eqnarray*}
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estimation-of-affine-asset-pricing-models" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Estimation of affine asset-pricing models<a class="anchor" aria-label="anchor" href="#estimation-of-affine-asset-pricing-models"><i class="fas fa-link"></i></a>
+</h1>
+<div id="EstimationSSModel" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> State-Space Model<a class="anchor" aria-label="anchor" href="#EstimationSSModel"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>The dynamic asset-pricing models are <strong>state-space models</strong>: The dynamics of all variables, gathered in vector <span class="math inline">\(y_t\)</span> (yields, equity returns, macroeconomic variables, survey-based variables) is accounted for by state variables (<span class="math inline">\(w_t\)</span>).</li>
+<li>The equations defining the relationship between the other variables and the state variables are called <em>measurement equations</em> (Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:measeq">(3.1)</a>).</li>
+<li>The equations defining the dynamics of the state variables are called <em>transition equations</em> (Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:transeq">(3.2)</a>).</li>
+<li>If <span class="math inline">\(w_t\)</span> is an affine process, the transition equations admit a VAR(1) representation (Proposition <a href="affine-processes.html#prp:affineVAR">1.2</a>).</li>
+</ul>
+<div class="definition">
+<p><span id="def:LSSM" class="definition"><strong>Definition 3.1  (Linear State-Space Model) </strong></span>A linear state-space model writes as follows:
+<span class="math display" id="eq:transeq">\[\begin{eqnarray}
+\underset{(m \times 1)}{y_t}  &amp;=&amp; A + Bw_t + \eta_t  \quad \mbox{with }  \eta_t \sim i.i.d. \mathcal{N}(0,\Omega) \tag{3.1} \\
+\underset{(n \times 1)}{w_t} &amp; =&amp; \mu + \Phi w_{t-1} + \Sigma^{\frac{1}{2}}(w_{t-1}) \varepsilon_t,\tag{3.2}
+\end{eqnarray}\]</span>
+where <span class="math inline">\(\varepsilon_t\)</span> is a martingale difference sequence satisfying <span class="math inline">\(\mathbb{V}ar_t(\varepsilon_{t+1}) = Id\)</span>. The components of <span class="math inline">\(\eta_t\)</span> are <strong>measurement errors</strong>.</p>
+</div>
+<p><strong>Note:</strong> Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:transeq">(3.2)</a> comes from Proposition <a href="affine-processes.html#prp:affineVAR">1.2</a> (Eq. <a href="affine-processes.html#eq:VARw">(1.9)</a>).</p>
+<ul>
+<li>There are two different situations:</li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li>all state variables (components of <span class="math inline">\(w_t\)</span>) are observed (next slide);</li>
+<li>some of these variables are latent.</li>
+</ol>
+<p>What do we mean by <em>model estimation</em> in case (b)?
+Three possible meanings:</p>
+<ul>
+<li><p>(b.i) We know the model parameters but we want to recover the latent factors (for instance to compute model-implied prices).</p></li>
+<li><p>(b.ii) We know neither the model parameters nor the latent variables, we want to estimate both of them.</p></li>
+<li><p>(b.iii) We know neither the model parameters nor the latent variables, we are just interested in the model parameters.</p></li>
+<li><p>Case (a): One can resort to standard estimation techniques (GMM, Maximum Likelihood) to estimate model parameters.</p></li>
+<li><p>Take the maximum likelihood case, we have:
+<span class="math display">\[\begin{eqnarray*}
 f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}) &amp;=&amp; f(y_t|\underline{y_{t-1}},\underline{w_{t}}) \times \underbrace{f(w_t|\underline{y_{t-1}},\underline{w_{t-1}})}_{= f(w_t|\underline{w_{t-1}})}\\
-&amp;=&amp; \bv{n}(y_t;A + Bw_t,\Omega) f(w_t|\underline{w_{t-1}}),
-\end{eqnarray*}
-where $\bv{n}(x;\mu,\Omega)$ denotes the evaluation, at vector $x$ of the p.d.f. of the multivariate normal distribution $\bv{n}(\mu,\Omega)$, i.e., if $x$ is a $m$-dimensional vector:</code></pre>
-<p><span class="math display">\[\begin{equation}\label{eq:varPHI}
-\mathbf{n}(x;\mu,\Omega) = \frac{1}{\sqrt{(2 \pi)^{m}|\Omega|}} \exp\left(-\frac{1}{2}\{x - \mu\}&#39;\Omega^{-1}\{x-\mu\}\right).
-\end{equation}\]</span>
-* Once this conditional p.d.f. is known, the total likelihood is given by (conditional on <span class="math inline">\(y_0\)</span> and <span class="math inline">\(w_0\)</span>):
+&amp;=&amp; \mathbf{n}(y_t;A + Bw_t,\Omega) f(w_t|\underline{w_{t-1}}),
+\end{eqnarray*}\]</span>
+where <span class="math inline">\(\mathbf{n}(x;\mu,\Omega)\)</span> denotes the evaluation, at vector <span class="math inline">\(x\)</span> of the p.d.f. of the multivariate normal distribution <span class="math inline">\(\mathbf{n}(\mu,\Omega)\)</span>, i.e., if <span class="math inline">\(x\)</span> is a <span class="math inline">\(m\)</span>-dimensional vector:
+<span class="math display" id="eq:varPHI">\[\begin{equation}
+\mathbf{n}(x;\mu,\Omega) = \frac{1}{\sqrt{(2 \pi)^{m}|\Omega|}} \exp\left(-\frac{1}{2}\{x - \mu\}'\Omega^{-1}\{x-\mu\}\right).\tag{3.3}
+\end{equation}\]</span></p></li>
+<li><p>Once this conditional p.d.f. is known, the total likelihood is given by (conditional on <span class="math inline">\(y_0\)</span> and <span class="math inline">\(w_0\)</span>):
 <span class="math display">\[
-    \prod_{t=1}^T f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}).
-    \]</span>
-* <span class="math inline">\(f(w_t|\underline{w_{t-1}})\)</span> depends on the process chosen for <span class="math inline">\(w_t\)</span>. If complicated to compute, one can employ Pseudo ML (see next slide).</p>
-<pre><code>* In case (b.iii), one can estimate the model by fitting sample moments computed using observed variables (prices, yields, returns) $\Rightarrow$ {\color{blue}Generalized Method of Moments (GMM)}.
-
-
-In the context of affine processes, conditional and unconditional moments of the state vector $w_t$ are available in closed from (see Eqs.\,\ref{eq:condmean}, \ref{eq:condvar} and \ref{eq:uncondmeanvar}).
-
-
-If the model-implied moments are not available in closed-form, one may have to to resort to the {\color{blue}Simulated Method of Moments (SMM)} [\href{https://www.econometricsociety.org/publications/econometrica/1993/07/01/simulated-moments-estimation-markov-models-asset-prices}{Duffie and Singleton (1993)} or \href{http://www.oxfordscholarship.com/view/10.1093/0198774753.001.0001/acprof-9780198774754}{Gouri\&#39;eroux and Monfort (1996)}].
-
-%* In case (a), one can also use the method of moments or one can alternatively maximize the likelihood associated with the model.
-
-* In cases (b.i) and (b.ii), one has to implement {\color{blue}filtering methods}.
-
-* We focus on the latter context in the following.</code></pre>
-<p>%
-%
-%
-%
-% * We focus on a linear state-space model as defined in Def.,<span class="math inline">\(\ref{def:LSSM}\)</span>.
-% * Indeed, in the context of affine asset-pricing models, the state vector follows a VAR [Prop.,<span class="math inline">\(\ref{prop:affineVAR}\)</span>].
-%
-%
-% :::{.definitionLinear State-Space Model]
-%
-% <span class="math display">\[\begin{eqnarray}
-%                    \underset{(n \times 1)}{X_t}  =&amp; \mu + \Phi X_{t-1} + \Sigma(X_{t-1}) \varepsilon_t &amp; \mbox{with } \varepsilon_t \sim i.i.d., \; \mathbb{V}ar(\varepsilon_t) = Id \label{eq:transeq}\\
-%                      \underset{(m \times 1)}{Y_t}  =&amp; A + BX_t + D\eta_t  &amp; \mbox{with }  \eta_t \sim i.i.d.\,\bv{n}(0,Id), \label{eq:measeq}
-%               \end{eqnarray}
-%           and processes $\eta_t$ and $\varepsilon_t$ are independent.
-%           :::
-%
-%
-%   * $\varepsilon_t$ is a martingale difference sequence.
-%   * $\eta_t$ is a vector of independent {\bf \textcolor{blue}{measurement errors}}.
-%   * When $\varepsilon_t \sim i.i.d.\,\bv{n}(0,Id)$ and when $\Sigma$ does not depend on $X_{t-1}$, then the Kalman filter (KF) provides optimal estimates of the latent factors $w_t$ (context (b.i)). Because a by-product of the KF is the likelihood function,  it is also relevant for b.ii  (parameters estimated by MLE).
-%   * When the distribution of $\varepsilon_t $ is not Gaussian, the KF may remain relevant, even though the inference is not correct any more (and the KF-based likelihood is only an approximation of the true likelihood function).
-%   * When $\Sigma$ depends on $X_{t-1}$, the usual KF has to be modified [Slide\,\ref{slide:noncstSigma}].
-%   *  Before presenting it, let&#39;s present a simple approach called {\bf{\color{blue}inversion technique}} [\href{http://www.iijournals.com/doi/abs/10.3905/jfi.1993.408090?journalCode=jfi}{Chen and Scott (1993)}].
-%
-%
-%
-%
-
-
-## Kalman-Filter-Based Approach}\label{subsec:Estimation:KF}
-
-{\ref{subsec:Estimation:KF} -- KALMAN-FILTER-BASED APPROACHES}\label{slide:kalman11}
-
-
-            * Let us start with the particular case of state-space model (Def.\,\ref{def:LSSM}) where $\varepsilon_t$ is Gaussian and where $\Sigma^{\frac{1}{2}}$ does not depend on $w_t$, i.e.with  a homoskedastic linear Gaussian state-space model.
-            * Let&#39;s denote by $\theta$ the vector of parameters that defines the model.
-            * For a given $\theta$ and a sequence of observations $\{y_1,\dots,y_T\}$.
-            * The Kalman filter computes the distribution of $w_t$ given $\{y_1,\dots,y_t\}$ (see Def.\,\ref{def:FiltvsSmooth}).
-            * This distribution is Gaussian, and obtained by a recursive algorithm.
-            * Byproduct of the Kalman filter: likelihood associated with $\theta$.
-            \item[$\Rightarrow$] makes it possible to estimate $\theta$ by maximizing the likelihood.
-            * Hence, Kalman-filter techniques can address Objective (b.ii) (Slide\,\ref{slide:whatdowemean}).
-
-
-        :::{.definitionFiltered versus smoothed estimates]\label{def:FiltvsSmooth}
-
-        \begin{equation*}
-        \begin{array}{lccllllll}
-        \mbox{Filtering:} &amp; w_{t|t} &amp; = &amp; \mathbb{E}(w_t|\underline{y_t}) &amp; \mbox{and}  &amp; P_{t|t} &amp;=&amp; \mathbb{V}ar(w_t|\underline{y_t})\\
-        \mbox{Smoothing:} &amp; w_{t|T} &amp; = &amp; \mathbb{E}(w_t|\underline{y_T}) &amp; \mbox{and} &amp; P_{t|T} &amp;=&amp; \mathbb{V}ar(w_t|\underline{y_T})
-        \end{array}
-        \end{equation*}
-        :::
-
-
-
-
-
-
-
-        \begin{prop}[Kalman filter and smoother]\label{prop:KF}
-        If $\varepsilon_t \sim \,\mathcal{N}(0,I)$ in the state-space defined in Def.\,\ref{def:LSSM}, then we have (``filtering&#39;&#39;):
-        $$
-        w_t|y_1,\dots,y_t \sim \,\mathcal{N}(w_{t|t}|P_{t|t}),
-        $$
-        where $w_{t|t}$ and $P_{t|t}$ result from the following recursive equations:
-        $$
-        \boxed{
-        \begin{array}{ccl}
-    w_{t|t} &amp;=&amp; w_{t|t-1} + K_t \lambda_t\\
-    P_{t|t} &amp;=&amp; (I - K_t B)P_{t|t-1} \\ \\
-    \mbox{where (updating step)} \\
-    \lambda_t &amp;=&amp; y_t - A - Bw_{t|t-1}  \quad \mbox{(forecast error)}\\
-    S_{t|t-1} &amp;=&amp; \mathbb{V}ar(y_t|\underline{y_{t-1}}) = B P_{t|t-1} B&#39; + \Omega\\
-    K_t &amp;=&amp; P_{t|t-1}B&#39;S_{t|t-1}^{-1} \quad \mbox{(Kalman gain)} \\ \\
-    \mbox{and where (forecasting step)} \\
-    w_{t|t-1} &amp;=&amp; \mu + \Phi w_{t-1|t-1} \\
-    P_{t|t-1} &amp;=&amp; \Sigma + \Phi P_{t-1|t-1} \Phi&#39; \quad (\Sigma = \Sigma^{\frac{1}{2}}{\Sigma^{\frac{1}{2}}}&#39;).
-        \end{array}
-        }
-        $$
-        \end{prop}
-
-
-
-
-
-
-        \addtocounter{prop}{-1}
-        \begin{prop}[Kalman filter (cont&#39;d)]
-
-        The log likelihood is (recursively) computed as follows:
-    \begin{eqnarray}\label{eq:logLikKF}
-    \log \mathcal{L}(\theta;\underline{y_T}) &amp;=&amp; \frac{mT}{2}\log\left(2\pi\right)\\
-&amp;  &amp; -\frac{1}{2}\sum_{t=1}^{T}\left(\log\left|S_{t | t-1}(\theta)\right|+\lambda&#39;_{t}(\theta)S_{t\mid t-1}^{-1}(\theta)\lambda{}_{t}(\theta)\right). \nonumber
-    \end{eqnarray}\]</span></p>
-<pre><code>    Moreover, we also have (``smoothing&#39;&#39;):
-            $$
-    w_t|y_1,\dots,y_T \sim \,\mathcal{N}(w_{t|T}|P_{t|T}),
-    $$
-    where $w_{t|T}$ and $P_{t|T}$ result from the following recursive equations:
-    $$
-    \boxed{
-    \begin{array}{ccl}</code></pre>
-w_{t|T} &amp; = &amp; w_{t|t}+F_{t}(w_{t+1|T}-w_{t+1|t})\
-P_{t|T} &amp; = &amp; P_{t|t}+F_{t}(P_{t+1|T}-P_{t+1|t})F’<em>{t}\ \
-\
-F</em>{t} &amp;=&amp; P_{t|t}’<em>{t+1}P</em>{t+1|t}^{-1}.
+\prod_{t=1}^T f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}).
+\]</span></p></li>
+<li><p><span class="math inline">\(f(w_t|\underline{w_{t-1}})\)</span> depends on the process chosen for <span class="math inline">\(w_t\)</span>. If complicated to compute, one can employ Pseudo ML.</p></li>
+<li><p>In some cases, the computation of <span class="math inline">\(f(w_t|\underline{w_{t-1}})\)</span> may be complicated.</p></li>
+<li><p>For instance, the p.d.f. may involve an infinite sum, which is the case in the ARG case of Example @ref(exm:ARG1}.</p></li>
+<li><p>When <span class="math inline">\(w_t\)</span> is affine, the Pseudo Maximum Likelihood approach consists in replacing <span class="math inline">\(f(w_t|\underline{w_{t-1}})\)</span> by:
+<span class="math display">\[
+\mathbf{n}(w_t;\mu + \Phi w_{t-1},\Sigma(w_t)).
+\]</span>
+where <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\Sigma(w_t)\)</span> are introduced in Eqs. <a href="affine-processes.html#eq:MUPHI">(1.10)</a> and <a href="affine-processes.html#eq:SigmaWt">(1.11)</a> in Proposition <a href="affine-processes.html#prp:affineVAR">1.2</a>.</p></li>
+<li><p>In case (b.iii), one can estimate the model by fitting sample moments computed using observed variables (prices, yields, returns) <span class="math inline">\(\Rightarrow\)</span> .</p></li>
+</ul>
+<p>In the context of affine processes, conditional and unconditional moments of the state vector <span class="math inline">\(w_t\)</span> are available in closed from (see Eqs. <a href="affine-processes.html#eq:condmean">(1.12)</a>, <a href="affine-processes.html#eq:condvar">(1.13)</a> and <a href="affine-processes.html#eq:uncondmeanvar">(1.14)</a>).</p>
+<p>If the model-implied moments are not available in closed-form, one may have to to resort to the <strong>Simulated Method of Moments (SMM)</strong> <a href="https://www.econometricsociety.org/publications/econometrica/1993/07/01/simulated-moments-estimation-markov-models-asset-prices">Duffie and Singleton (1993)</a> or <a href="http://www.oxfordscholarship.com/view/10.1093/0198774753.001.0001/acprof-9780198774754">Duffie and Singleton (1993)</a>.</p>
+<ul>
+<li>In cases (b.i) and (b.ii), one has to implement .</li>
+<li>We focus on the latter context in the following.</li>
+</ul>
+</div>
+<div id="Estimation:KF" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Kalman-Filter-Based Approach<a class="anchor" aria-label="anchor" href="#Estimation:KF"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Let us start with the particular case of state-space model (Def. <a href="estimation-of-affine-asset-pricing-models.html#def:LSSM">3.1</a>) where <span class="math inline">\(\varepsilon_t\)</span> is Gaussian and where <span class="math inline">\(\Sigma^{\frac{1}{2}}\)</span> does not depend on <span class="math inline">\(w_t\)</span>, i.e.with a homoskedastic linear Gaussian state-space model.</li>
+<li>Let’s denote by <span class="math inline">\(\theta\)</span> the vector of parameters that defines the model.</li>
+<li>For a given <span class="math inline">\(\theta\)</span> and a sequence of observations <span class="math inline">\(\{y_1,\dots,y_T\}\)</span>.</li>
+<li>The Kalman filter computes the distribution of <span class="math inline">\(w_t\)</span> given <span class="math inline">\(\{y_1,\dots,y_t\}\)</span> (see Def. <a href="estimation-of-affine-asset-pricing-models.html#def:FiltvsSmooth">3.2</a>).</li>
+<li>This distribution is Gaussian, and obtained by a recursive algorithm.</li>
+<li>Byproduct of the Kalman filter: likelihood associated with <span class="math inline">\(\theta\)</span>.
+<span class="math inline">\(\Rightarrow\)</span> makes it possible to estimate <span class="math inline">\(\theta\)</span> by maximizing the likelihood.</li>
+<li>Hence, Kalman-filter techniques can address Objective (b.ii).</li>
+</ul>
+<div class="definition">
+<p><span id="def:FiltvsSmooth" class="definition"><strong>Definition 3.2  (Filtered versus smoothed estimates) </strong></span><span class="math display">\[\begin{equation*}
+\begin{array}{lccllllll}
+\mbox{Filtering:} &amp; w_{t|t} &amp; = &amp; \mathbb{E}(w_t|\underline{y_t}) &amp; \mbox{and}  &amp; P_{t|t} &amp;=&amp; \mathbb{V}ar(w_t|\underline{y_t})\\
+\mbox{Smoothing:} &amp; w_{t|T} &amp; = &amp; \mathbb{E}(w_t|\underline{y_T}) &amp; \mbox{and} &amp; P_{t|T} &amp;=&amp; \mathbb{V}ar(w_t|\underline{y_T})
+\end{array}
+\end{equation*}\]</span></p>
+</div>
+<div class="proposition">
+<p><span id="prp:KF" class="proposition"><strong>Proposition 3.1  (Kalman filter and smoother) </strong></span>If <span class="math inline">\(\varepsilon_t \sim \mathcal{N}(0,I)\)</span> in the state-space defined in Def. <a href="estimation-of-affine-asset-pricing-models.html#def:LSSM">3.1</a>, then we have (<em>filtering</em>):
+<span class="math display">\[
+w_t|y_1,\dots,y_t \sim  \mathcal{N}(w_{t|t}|P_{t|t}),
+\]</span>
+where <span class="math inline">\(w_{t|t}\)</span> and <span class="math inline">\(P_{t|t}\)</span> result from the following recursive equations:
+<span class="math display">\[
+\boxed{
+\begin{array}{ccl}
+w_{t|t} &amp;=&amp; w_{t|t-1} + K_t \lambda_t\\
+P_{t|t} &amp;=&amp; (I - K_t B)P_{t|t-1} \\ \\
+\mbox{where (updating step)} \\
+\lambda_t &amp;=&amp; y_t - A - Bw_{t|t-1}  \quad \mbox{(forecast error)}\\
+S_{t|t-1} &amp;=&amp; \mathbb{V}ar(y_t|\underline{y_{t-1}}) = B P_{t|t-1} B' + \Omega\\
+K_t &amp;=&amp; P_{t|t-1}B'S_{t|t-1}^{-1} \quad \mbox{(Kalman gain)} \\ \\
+\mbox{and where (forecasting step)} \\
+w_{t|t-1} &amp;=&amp; \mu + \Phi w_{t-1|t-1} \\
+P_{t|t-1} &amp;=&amp; \Sigma + \Phi P_{t-1|t-1} \Phi' \quad (\Sigma = \Sigma^{\frac{1}{2}}{\Sigma^{\frac{1}{2}}}').
 \end{array}
 }
-$$
-\end{prop}
-% {General filtering algorithms: recursions}
-%
-%
-%
-% * Output of { iteration <span class="math inline">\(t-1\)</span>}: <span class="math inline">\(X_{t-1}|\underline{y_{t-1}}\)</span>.
-%
-% * { Iteration <span class="math inline">\(t\)</span>} involves two steps:
-%
-%
-{ Prediction step:}
-% <span class="math display">\[
-%                       f(y_t,X_t|\underline{y_{t-1}}) = f(y_t|X_t) \times f(X_t|\underline{y_{t-1}}).
-%                       \]</span>
-%
-% \begin{center}
-%
-% \end{center}
-%
-%
-{ Updating step:}
-% <span class="math display">\[
-%                       f(X_t|\underline{y_t}) = \dfrac{f(y_t,X_t|\underline{y_{t-1}})}{f(y_t|\underline{y_{t-1}})}.
-%                       \]</span>
-%
-%
-% * Output of { iteration <span class="math inline">\(t\)</span>}: <span class="math inline">\(X_{t}|\underline{y_{t}}\)</span>.
-%
-% \begin{center}
-% …
-% \end{center}
-%%
-<p>}</p>
-<p>%\end{large}
-\end{center}
-%{
-%: XXX}
-\end{figure}</p>
-<p>\end{block}</p>
-<p>% (130,70){ (0,-1){30}}</p>
-<pre><code>* This is formalized in the following proposition.</code></pre>
-<pre><code>* Again, if $r_t$ and $\tilde\lambda_t$ are affine combinations of an affine process $y_t$, then (exponential affine) bond prices are easily computed by means of recursive formulas, see on next slide.</code></pre>
-<p>%Proposition <span class="math inline">\(\ref{prop:standard_price}\)</span> considers a recovery rate and a pseudo-intensity both stochastic (non-predetermined) and it implies that the recovery payment in case of default at time <span class="math inline">\(t+i\)</span>, namely <span class="math inline">\(RR^{(e)}_{t+i}\,\widetilde{B}_e (t+i, h-i)\)</span>, can be interpreted as the fraction <span class="math inline">\(RR^{(e)}_{t+i}\)</span> of the zero-coupon bond value that would have prevailed at date <span class="math inline">\(t+i\)</span> in case of no default. This assumption is related to the Recovery of Market Value (RMV) convention of . However, in the presentation of the discrete-time motivation of their continuous-time pricing framework, the authors make two assumptions; first, <span class="math inline">\(RR^{(e)}_t (y_t, y_{t-1}) = RR^{(e)}_t (y_{t-1})\)</span>, and second <span class="math inline">\(\lambda_e \left( y_t, y_{t-1} \right) = \lambda_e \left( y_{t-1} \right)\)</span>. This means that the recovery rate at <span class="math inline">\(t\)</span> is known at <span class="math inline">\(t-1\)</span> and that there is no instantaneous causality between <span class="math inline">\(\{ y_t \}\)</span> and <span class="math inline">\(\{ d_{e, t} \}\)</span>. In this case, <span class="math inline">\(\widetilde{\lambda}_{e, t}\)</span> is also function of <span class="math inline">\(y_{t-1}\)</span> only and we get:
-%<span class="math display">\[\begin{equation}\label{eq:rmv_price1}
-%\begin{array}{lll}
-%B_e (t, h) &amp;=&amp; \left(1 - d_{e, t} \right) \,\mathbb{E}_{t}^{\mathbb{Q}} \left\{ \exp \left[ - \Sum_{i=1}^{h} \widetilde{r}_{e, t+i-1} \right]  \right\}\,,
-%\end{array}
-%\end{equation}
-%where $\widetilde{r}_{e, t} := r_t + \widetilde{\lambda}_{e, t+1} \left( y_{t} \right)$ is a default-adjusted interest rate between $t$ and $t+1$
-%(known at $t$).\vspace{0.5em}
-
-
-\begin{assum}[]\label{ass:A6}
-
-The process $\{ y_t \}$ is affine under the $\mathbb{Q}$ measure:
-\begin{equation}\label{eq:affineyP_cLT}
-\begin{array}{lll}
-\varphi^{\mathbb{Q}}_{y, t-1} (u_y) = \mathbb{E}^{\mathbb{Q}} \left[\exp( u_y &#39; y_t ) \, | \, \underline{y_{t-1}} \right]
-= \exp \left[ a^{\mathbb{Q}}_{y} (u_{y}) &#39; y_{t-1} + b^{\mathbb{Q}}_{y} (u_{y}) \right],
-\end{array}
-\end{equation}\]</span>
-and <span class="math inline">\(r_t\)</span> and <span class="math inline">\(\widetilde{\lambda}_{e, t}\)</span> are affine in <span class="math inline">\((y_t, y_{t-1})\)</span>, that is (say):</p>
-<p><span class="math display">\[\begin{eqnarray}
-r_{t} &amp;=&amp; \omega_0 + \omega_{1} &#39; y_{t} \\
-\widetilde{\lambda}_{e, t} &amp;=&amp; \kappa_{0} + \kappa_{1}&#39; y_t.
-\end{eqnarray}\]</span>
-\end{assum}</p>
-<pre><code>* What about when different entities are considered ($E = 2$)?
-* Same pricing formulas are obtained under the assumption of no-contagion (Assumption\,\ref{ass:A2}).</code></pre>
-<ul>
-<li>If Assumption,<span class="math inline">\(\ref{ass:A2}\)</span> is not satisfied, e.g. if:</li>
-</ul>
-<span class="math display">\[\begin{eqnarray*}
-p ( d_t \,|\, y_t, w_{t-1} ) &amp;=&amp; p_1 ( d_{1, t} \,|\, y_t, y_{t-1}, d_{1, t-1}) \times \\
-&amp;&amp;  p_2 ( d_{2, t} \,|\, y_t, y_{t-1}, {\color{blue}d_{1, t}}, {\color{blue}d_{1, t-1}}, d_{2, t-1}).
-\end{eqnarray*}\]</span>
-(contagion effect from e = 1 towards e = 2), then:
-Proposition,<span class="math inline">\(\ref{prop:RMVclassical}\)</span> is still valid for both entities;
-In an affine framework, the computation of <span class="math inline">\(\widetilde{B}_1 (t, h)\)</span> (and <span class="math inline">\(B_1 (t, h)\)</span>) is straightforward;
-<p>but formulas for <span class="math inline">\(\widetilde{B}_2 (t, h)\)</span> and <span class="math inline">\(B_2 (t, h)\)</span> are not explicit anymore even if <span class="math inline">\(\widetilde{\lambda}_{2, t}\)</span> is affine in <span class="math inline">\((y_t, y_{t-1}, d_{1, t}, d_{1, t-1})\)</span>.</p>
-</div>
-<div id="pricing-illiquid-bonds" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Pricing Illiquid Bonds}<a href="estimation-of-affine-asset-pricing-models.html#pricing-illiquid-bonds" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>{<span class="math inline">\(\ref{subsec:Credit:Illiq}\)</span> – PRICING ILLIQUID BONDS (OR ASSETS)}</p>
-<pre><code>* A very similar approach can be used to price illiquid assets.
-* The idea consists in replacing the Loss Given Default ($LGD = 1-RR^{(e)}$) by a Loss Given Liquidity Shock ($1-\theta_\ell^{(e)}$).
-* Structural interpretation building on \href{http://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.2006.01056.x/abstract}{Ericsson and Renault (2006)} (see Appendix\,\ref{app:IlliqLGD}).
-* Novel binary variable: $\ell_t$ = ``liquidity shocks&#39;&#39;
-
-$\ell_{t}=1$ when the bondholder is hit, $\ell_{t}=0$ otherwise.
-* Liquidity shock = cash constraint or need to rebalance portfolio.
-* {\bf \textcolor{blue}{Liquidity-shock intensity}} $\lambda_\ell(y_t)$, defined through:
-$$
-\underbrace{1- \exp[-\lambda_\ell(y_t)]}_{\approx \lambda_\ell(y_t)\mbox{ if small}} = \mathbb{P}(\ell_t = 1|\underline{w_{t-1}},y_t).
-$$
-    * $\ell_t$ is assumed not to Granger-cause $y_t$ (as in Assumption\,\ref{ass:A1}) and not to be priced (as in Assumption\,\ref{ass:A3}). Using the same reasoning as in Slide\,\ref{slide:lambdaPlambdaQ}, this implies in particular that
-    $$
-    \lambda_\ell^\mathbb{Q}(y_t) = \lambda_\ell(y_t),
-    $$
-    where
-$$
-1- \exp[-\lambda^\mathbb{Q}_\ell(y_t)] = \mathbb{Q}(\ell_t = 1|\underline{w_{t-1}},y_t).
-$$</code></pre>
-<p>%More precisely, the underlying context is the following ():
-%
-% * The bondholder is subject to .
-% * Upon the arrival of the liquidity shock (<span class="math inline">\(\ell_{t}=1\)</span>), the investor has to exit by selling her bond holdings.
-% * This liquidation has to be done in a limited period of time, between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+\varepsilon\)</span> (where <span class="math inline">\(\varepsilon&lt;&lt;1\)</span>).
-% * The expected number of offers <span class="math inline">\(\varepsilon\gamma^{(e)}\)</span> reflects the liquidity of the bonds issued by debtor <span class="math inline">\(e\)</span> (next slide):
-%
-% The more liquid the bond, the higher <span class="math inline">\(\gamma^{(e)}\)</span>, and the lower <span class="math inline">\(\theta_\ell^{(e)}\)</span>.
-%</p>
-<pre><code>* {\bf \textcolor{blue}{Pseudo-illiquidity intensity}} (mimics Eq.\,\ref{eq:pseudodefintens}):</code></pre>
-<p><span class="math display">\[\begin{eqnarray}\label{eq:pseudoilliqintensity}
-\widetilde{\lambda}_{e,\ell, t} \left( y_t, y_{t-1} \right) &amp;=&amp; - \log \left\{ \exp \Big[ -
-\lambda_{e,\ell} \left( y_t\right) \Big] \right. +\\
-&amp;&amp; \left. \Big( 1 - \exp \Big[ - \lambda_{e,\ell} \left( y_t \right) \Big]
-\Big)\,\theta_\ell^{(e)}  \right\} \nonumber
+\]</span>
+The log likelihood is (recursively) computed as follows:
+<span class="math display" id="eq:logLikKF">\[\begin{eqnarray}
+\log \mathcal{L}(\theta;\underline{y_T}) &amp;=&amp; \frac{mT}{2}\log\left(2\pi\right) \tag{3.4}\\
+&amp;  &amp; -\frac{1}{2}\sum_{t=1}^{T}\left(\log\left|S_{t | t-1}(\theta)\right|+\lambda'_{t}(\theta)S_{t\mid t-1}^{-1}(\theta)\lambda{}_{t}(\theta)\right). \nonumber
 \end{eqnarray}\]</span></p>
-<ul>
-<li>Adjusted {} for any date <span class="math inline">\(t\)</span> and maturity <span class="math inline">\(h\)</span> (with <span class="math inline">\(\widetilde{B}_e (t, 0) = 1\)</span>) (mimics Eq.,<span class="math inline">\(\ref{eq:BtildeCredit}\)</span>, replace ):
-<span class="math display">\[\begin{equation}\label{eq:pseudopriceilliq}
-\widetilde{B}_e (t, h) = \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \Sum_{i=1}^{h} \left( r_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{e,\ell, t+i} \right) \right] \right\}.
-\end{equation}\]</span>
-<ul>
-<li><p>Upon the arrival of the liquidity shock (<span class="math inline">\(\ell_{t}=1\)</span>), the investor has to exit by selling her bond holdings. She is then limited in the number of traders she can call (see Appendix,<span class="math inline">\(\ref{app:IlliqLGD}\)</span>) and, as a result, get only a fraction of the price she would get in ``normal-liquidity times’’ (<span class="math inline">\(\ell_{t}=0\)</span>).</p></li>
-<li><p>Formally, consider a zero-coupon bond whose residual maturity on date <span class="math inline">\(t\)</span> is <span class="math inline">\(h\)</span>:</p>
-<ul>
-<li>If entity <span class="math inline">\(e\)</span> defaults on date <span class="math inline">\(t\)</span>, or if a liquidity shock hits the investor on date <span class="math inline">\(t\)</span>, then the investor recovers:
+<p>Moreover, we also have (<em>smoothing</em>):
 <span class="math display">\[
-  \left(1 - (1 - RR_t^{(e)})d_t^{(e)}\right)\left(1 - (1 - \theta_\ell^{(e)})\ell_t\right)\widetilde{B}_e (t, h).
-  \]</span></li>
-<li>Otherwise (from the investor point of view):
+w_t|y_1,\dots,y_T \sim  \mathcal{N}(w_{t|T}|P_{t|T}),
+\]</span>
+where <span class="math inline">\(w_{t|T}\)</span> and <span class="math inline">\(P_{t|T}\)</span> result from the following recursive equations:
 <span class="math display">\[
-  B_e(t,h) = (1 - d_t^{(e)})(1 - \ell_t)\widetilde{B}_e (t, h).
-  \]</span></li>
-</ul></li>
-<li><p>If the pseudo-illiquidity intensity <span class="math inline">\(\widetilde{\lambda}_{\ell, t}\)</span> is an affine function of <span class="math inline">\(y_t\)</span>, Prop.,<span class="math inline">\(\ref{prop:standardCreditFormula}\)</span> can easily be extended to the pricing of defaultable and illiquid bonds.</p></li>
-</ul></li>
-</ul>
-<p>%=============================================
-%=============================================
-%=============================================
-%=============================================
-%=============================================
-%=============================================</p>
-<p>%===========================
-%Without liquidity intensity
-%===========================</p>
-%%===========================
-%%With liquidity intensity
-%%===========================
-%{Pricing illiquid bonds}
-%
-%\begin{figure}[h]
-%
-%\begin{center}
-%%\begin{large}
-%\fbox{
-%
-<p>}</p>
-<p>%\end{large}
-\end{center}
-%{
-%: XXX}
-\end{figure}
-\end{block}</p>
-<ul>
-<li><p>The domestic-currency case is a special case of the multi-currency one.</p></li>
-<li><p>Pricing a CDS amounts to determining <span class="math inline">\(\mathcal{S}_{t,t+h}^{(e)}\)</span> ({}) for <span class="math inline">\(t &lt; \tau^{(e)}\)</span>.</p></li>
-<li><p><span class="math inline">\(\mathcal{S}_{t,t+h}^{(e)}\)</span> such that the date-<span class="math inline">\(t\)</span> value of the {}’s payoffs is equal to the date-<span class="math inline">\(t\)</span> value of the {}’s payoffs.</p></li>
-<li><p>The payoffs of the assets issued by the reference entity are assumed to be expressed in the domestic currency.</p></li>
-<li><p>Notional and premium payments expressed in the currency of denomination.</p></li>
-<li><p>(logarithmic) exchange rate: <span class="math inline">\(s_t = \ln ( FX_t )\)</span>.</p></li>
-</ul>
-<p>Convention:</p>
-<p>Increase in <span class="math inline">\(s_t\)</span> = depreciation of the domestic currency.</p>
-<ul>
-<li><p>We consider a CDS whose notional is equal to one unit of the foreign currency
-(i.e. to <span class="math inline">\(\exp (s_t)\)</span> units of the domestic currency).</p></li>
-<li><p>{ {}}</p></li>
-</ul>
-<p>If entity <span class="math inline">\(e\)</span> has not defaulted at date <span class="math inline">\(t+i\)</span> (<span class="math inline">\(\le t+h\)</span>), the cash flow on this date, expressed in the domestic currency, is:
-<span class="math display">\[\begin{equation*}
-\begin{array}{lll}
-\mathcal{S}^{(e) f}_{t,t+h} \, \exp(s_{t+i}).
-\end{array}
-\end{equation*}\]</span></p>
-<p>PV of the fixed-leg payments, expressed in the domestic currency:
-<span class="math display">\[\begin{equation*}
-\begin{array}{lll}
-\mathcal{S}^{(e) f}_{t, t+h} \,\sum_{i=1}^{h} \, \mathbb{E}^{\mathbb{Q}}
-\left[\exp \left( s_{t+i} - \sum_{j = 1}^{i} r_{t + j - 1} \right) \textbf{1}_{\{ \delta^{(e) &#39;}_{t : t+i} {\bf 1} = 0 \} }
-\,\Big|\, \underline{w_t} \right],
-\end{array}
-\end{equation*}\]</span></p>
-<ul>
-<li>{ {}}</li>
-</ul>
-<p>Under the RFV convention, the protection seller will make a payment of <span class="math inline">\((1 - RR^{(e)}_{t+i})\, \exp(s_{t+i})\)</span> ({}) at date <span class="math inline">\(t+i\)</span> in case of default over the time interval <span class="math inline">\(] t + i - 1, t+i ]\)</span>.</p>
-<p>PV of the floating leg expressed in the domestic currency:
-<span class="math display">\[\begin{equation*}\label{eq:MC_CDS_PS}
-\begin{array}{lll}
-&amp;&amp; \sum_{i=1}^{h} \, \mathbb{E}^{\mathbb{Q}} \left[ \exp \left( s_{t+i} - \sum_{j = 1}^{i} r_{t + j - 1}
-\right) \, (1 - RR^{(e)}_{t+i})\right. \\ \\
-&amp;&amp; \hspace{7em} \left. \, \left( \textbf{1}_{\{ \delta^{(e) &#39;}_{t : t+i-1} {\bf 1} = 0 \} } - \textbf{1}_{\{ \delta^{(e) &#39;}_{t : t+i}
-{\bf 1} = 0 \} } \right) \,\Big|\, \underline{w_t} \, \right],
-\end{array}
-\end{equation*}\]</span></p>
-<p>We assume <span class="math inline">\(RR^{(e)}_{t} = \exp \left( - a_{e} - a_{w, e} &#39; \, w_t \right)\)</span> {} <span class="math inline">\(s_t = \chi + u_s &#39; w_t\)</span>.</p>
-</div>
-<div id="top-down-approach" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Top-Down Approach}<a href="estimation-of-affine-asset-pricing-models.html#top-down-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>{<span class="math inline">\(\ref{subsec:Credit:DD}\)</span> – TOP-DOWN APPROACH}</p>
-<pre><code>* Relaxing the assumptions underlying the classical framework can also be done in the context of ``{\bf\textcolor{blue}{top-down}}&#39;&#39; approaches.
-* ``Top-down&#39;&#39; models focus on default counting (or loss) processes [e.g. \href{https://www.sciencedirect.com/science/article/pii/S0165188911000558}{Azizpour, Giesecke, Baeho (2011)}, \href{https://stanford.box.com/s/fyk0lvl5hsku8a49ep8pj54yjf1uhwxv}{Giesecke, Goldberg, Ding (2011)}], contrary to the approach presented above (``bottom-up&#39;&#39;) that consider default processes of individual firms as the model primitives [e.g. \href{https://link.springer.com/article/10.1007/BF01531332}{Lando (1998)}, \href{https://academic.oup.com/rfs/article-abstract/12/4/687/1578719}{Duffie and Singleton (1999)}, \href{https://tandfonline.com/doi/abs/10.2469/faj.v57.n1.2418}{Duffie and G\^arleanu, 2001}].
-* The ``top-down&#39;&#39; approach has been shown to satisfactorily capture the existence of default clustering [\href{https://www.worldscientific.com/doi/10.1142/S0219024907004342}{Brigo, Pallavicini, Torresetti (2007)}, \href{https://epubs.siam.org/doi/pdf/10.1137/090771272}{Errais, Giesecke and Goldberg, 2010}].
-* Building on \href{http://www.sciencedirect.com/science/article/pii/S0304407614001080}{Gouri\&#39;eroux, Monfort and Renne (2014)}, \href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3188085}{Gouri\&#39;eroux, Monfort, Mouabbi and Renne (2018)} propose an affine ``Top-down&#39;&#39; model consistent with: the presence of systemic entities, contagion, and the pricing of default events.</code></pre>
-<p>:::{.example``Disastrous Defaults’’]</p>
-<ul>
-<li><p>Model proposed by .
-%</p></li>
-<li><p><span class="math inline">\(n^s_{t}\)</span>: Number of systemic defaults on date <span class="math inline">\(t\)</span>.</p></li>
-<li><p><span class="math inline">\(N^s_{t}\)</span>: number of systemic entities in default at date <span class="math inline">\(t\)</span> (<span class="math inline">\(N^s_{t}=n^s_{t} + N^s_{t-1}\)</span>).
-%* For any process <span class="math inline">\(k_t\)</span> (say), we use the notation <span class="math inline">\(\underline{k_{t}}=\{k_t,k_{t-1},\dots\}\)</span>.</p></li>
-<li><p>Conditional distribution of the number of systemic defaults:
-<span class="math display">\[\begin{eqnarray}\label{eq:n_distri_new}
-%n_{j,t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &amp;\sim&amp; \mathcal{P}oisson(\beta_{j}y_{t+1}+c_{j}n^s_{t}).
-n^s_{t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &amp;\sim&amp; \mathcal{P}oisson(\beta y_{t+1}+c n^s_{t}),
-\end{eqnarray}\]</span>
-where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>.</p></li>
-<li><p><span class="math inline">\((y_t,x_t)&#39;\)</span> follows a VARG dynamics (Eq.,<span class="math inline">\(\ref{eq:VARG}\)</span>). This dynamics admits the following VAR representation (using Prop.,<span class="math inline">\(\ref{prop:affineVAR}\)</span>):
-<span class="math display">\[\begin{equation}\label{eq:systemF12}
-\left\{
+\boxed{
 \begin{array}{ccl}
-y_t - x_t &amp;=&amp; \rho_y (y_{t-1} - x_{t-1}) + \sigma_{y,t}\varepsilon_{y,t}\\
-x_t - \mu_x  &amp;=&amp; \rho_x (x_{t-1} - \mu_x) + \sigma_{x,t}\varepsilon_{x,t},
+w_{t|T} &amp; = &amp; w_{t|t}+F_{t}(w_{t+1|T}-w_{t+1|t})\\
+P_{t|T} &amp; = &amp; P_{t|t}+F_{t}(P_{t+1|T}-P_{t+1|t})F'_{t}\\ \\
+\mbox{where} \\
+F_{t} &amp;=&amp; P_{t|t}\Phi'_{t+1}P_{t+1|t}^{-1}.
+\end{array}
+}
+\]</span></p>
+</div>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:illusKF"></span>
+<img src="TSM_files/figure-html/illusKF-1.png" alt="Updating in the Kalman filter." width="95%"><p class="caption">
+Figure 3.1: Updating in the Kalman filter.
+</p>
+</div>
+<div id="initialization" class="section level3" number="3.2.1">
+<h3>
+<span class="header-section-number">3.2.1</span> Initialization<a class="anchor" aria-label="anchor" href="#initialization"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>Recursive procedure: initial conditions are required (<em>Iteration 0</em>).</p></li>
+<li><p>There are different possibilities regarding the initialization of (<span class="math inline">\(w_{0|0}\)</span>, <span class="math inline">\(P_{0|0}\)</span>):
+A. include the elements of(<span class="math inline">\(w_{0|0}\)</span>, <span class="math inline">\(P_{0|0}\)</span>) among the parameters to estimate;
+B. set (<span class="math inline">\(w_{0|0}\)</span>, <span class="math inline">\(P_{0|0}\)</span>) to their unconditional values (using e.g. Eq. @ref(eq:uncondmeanvar});
+C. set <span class="math inline">\(w_{0|0}\)</span> to a prior value and take</p></li>
+<li><p>an arbitrary large value for <span class="math inline">\(P_{0\mid0}\)</span> if the prior value
+is uncertain (<span class="math inline">\(\sim\)</span> <strong>diffuse prior</strong>);</p></li>
+<li><p>a small value for <span class="math inline">\(P_{0\mid0}\)</span> if we re confident in this prior value.</p></li>
+<li><p>In many application, one does not observe all the entries of <span class="math inline">\(y_t\)</span> at every date (because e.g. different frequencies, unreliable data for some period, short historical series for some variables).</p></li>
+<li><p>Easily addressed by Kalman filtering/smoothing: One simply has to change the size of <span class="math inline">\(y_t\)</span> (and of <span class="math inline">\(\lambda_t\)</span>, <span class="math inline">\(S_{t|t-1}\)</span>, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>) on each date. %(<span class="math inline">\(m\)</span>, denoting the dimension of <span class="math inline">\(y_t\)</span>, also has to be changed accordingly in the likelihood,</p></li>
+<li><p>Of course, the greater the number of observations
+available to update the filter, the better the accuracy of the estimation.</p></li>
+<li><p>Log-likelihood computation (Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:logLikKF">(3.4)</a>) still valid (adjust for the number of observed variables at each iteration; <span class="math inline">\(m\)</span> then depends on time).</p></li>
+<li><p>Consider the following model
+<span class="math display">\[\begin{eqnarray}
+\left[\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}\right] &amp; = &amp;
+\left[\begin{array}{cc}
+\alpha_{1} &amp; 0\\
+0 &amp; \alpha_{2}
+\end{array}\right]
+\left[\begin{array}{c}
+y_{1,t-1}\\
+y_{2,t-2}
+\end{array}\right]+\left[\begin{array}{c}
+\gamma_{1}\\
+\gamma_{2}
+\end{array}\right]w_{t}+ \eta_t\label{eq_measur}\\
+w_{t} &amp; = &amp; \phi w_{t-1}+\varepsilon_{t}.\label{eq_trans}
+\end{eqnarray}\]</span></p></li>
+<li><p>We simulate a 100-period sample, we remove observations of <span class="math inline">\(y_{1,t}\)</span> (respectively of <span class="math inline">\(y_{2,t}\)</span>) between periods <span class="math inline">\(t=30\)</span> and <span class="math inline">\(t=50\)</span> (resp. between periods <span class="math inline">\(t=40\)</span> and <span class="math inline">\(t=70\)</span>), and try to recover the states <span class="math inline">\(w_t\)</span>.</p></li>
+</ul>
+<!-- \begin{center} --><!-- \includegraphics[width=.8\linewidth]{figures/Figure_Kalman3_new.pdf} --><!-- \end{center} --><!-- \begin{center} --><!-- \includegraphics[width=1\linewidth]{figures/Figure_Kalman4_new.pdf} --><!-- \end{center} -->
+</div>
+</div>
+<div id="about-non-constant-conditional-matrix-sigma" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> About non-constant conditional matrix <span class="math inline">\(\Sigma\)</span><a class="anchor" aria-label="anchor" href="#about-non-constant-conditional-matrix-sigma"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Proposition <a href="estimation-of-affine-asset-pricing-models.html#prp:KF">3.1</a> is valid when <span class="math inline">\(\varepsilon_t\)</span> is Gaussian and when <span class="math inline">\(\Sigma^{\frac{1}{2}}\)</span> does not depend on <span class="math inline">\(w_t\)</span>.</li>
+<li>How to proceed in the general case?</li>
+<li>In the general case (but when <span class="math inline">\(w_t\)</span> is an affine process), we have that <span class="math inline">\(\Sigma(w_{t-1}) \equiv \mathbb{V}ar(w_{t+1}|\underline{w_t})\)</span> is affine in <span class="math inline">\(w_t\)</span> [Prop. <a href="affine-processes.html#prp:affineVAR">1.2</a>].</li>
+<li>In order to deal with this, the Kalman filter algorithm can be modified.</li>
+<li>Specifically, in the prediction step (see Prop. <a href="estimation-of-affine-asset-pricing-models.html#prp:KF">3.1</a>), <span class="math inline">\(P_{t|t-1}\)</span> can be computed as:
+<span class="math display">\[
+P_{t|t-1} = \Sigma\color{red}{(w_{t-1|t-1})} + \Phi P_{t-1|t-1} \Phi',
+\]</span>
+i.e. we replace <span class="math inline">\(\Sigma(w_{t-1})\)</span> by <span class="math inline">\(\Sigma(w_{t-1|t-1})\)</span>.</li>
+<li>Though the approach is then not necessarily optimal, it shows good empirical properties <a href="%5Chref%7Bhttp://link.springer.com/article/10.1023%2FA%3A1008304625054">de Jong (2000)</a> or <a href="https://www.jstor.org/stable/1392263?seq=1#page_scan_tab_contents">Duan and Simonato (1999)</a>.</li>
+<li>In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations [see e.g. <a href="https://www.sciencedirect.com/science/article/pii/S0304407617301653">Monfort, Pegoraro, Renne and Roussellet (2017)</a>.</li>
+</ul>
+<div id="nonlinear" class="section level3" number="3.3.1">
+<h3>
+<span class="header-section-number">3.3.1</span> Non-linear models<a class="anchor" aria-label="anchor" href="#nonlinear"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>If <span class="math inline">\(w_t\)</span> follows an affine process, it admits the VAR dynamics presented in Prop. <a href="affine-processes.html#prp:affineVAR">1.2</a> <span class="math inline">\(\Rightarrow\)</span> linear transition equation.</li>
+<li>However, measurement equations may be non-linear (affine) functions of <span class="math inline">\(w_t\)</span>.</li>
+<li>This is in particular the case if observed variables include Swaps rates (see Remark SWAPS), CDS rates (see Subsection <a href="#subsec:Credit:CDS"><strong>??</strong></a>, in particular Eq. <a href="credit-and-liquidity-risks.html#eq:MCCDSformula1">(5.34)</a>) or prices of tranche products (see Example <a href="credit-and-liquidity-risks.html#exm:DD">5.5</a>).</li>
+<li>In this case, one can for instance resort to the Extended Kalman Filter (linearizing the measurement equations, see supplementary material) or the Quadratic Kalman Filter <a href="https://www.sciencedirect.com/science/article/pii/S0304407615000123">Monfort, Renne and Roussellet, 2015</a>, second-order expansion of the measurement equations).</li>
+</ul>
+</div>
+</div>
+<div id="EstimationInversion" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Inversion Technique<a class="anchor" aria-label="anchor" href="#EstimationInversion"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>The <strong>inversion technique</strong> has been introduced by <a href="http://www.iijournals.com/doi/abs/10.3905/jfi.1993.408090?journalCode=jfi">Chen and Scott (1993)</a>.</li>
+<li>It is used e.g. by <a href="http://web.stanford.edu/~piazzesi/AP.pdf">Ang and Piazzesi (2003)</a> and <a href="http://rady.ucsd.edu/faculty/directory/liu/pub/docs/rate-swaps.pdf">Liu, Longstaff and Mandell (2006)</a>.</li>
+<li>Contrary to Kalman-type approaches, this approach is not recursive. Hence can be faster (especially for long sample – in time dimension).</li>
+<li>Recall that <span class="math inline">\(y_t\)</span> and <span class="math inline">\(w_t\)</span> are respectively of dimension <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> (see Eqs. <a href="estimation-of-affine-asset-pricing-models.html#eq:measeq">(3.1)</a> and <a href="estimation-of-affine-asset-pricing-models.html#eq:transeq">(3.2)</a> in Def. <a href="estimation-of-affine-asset-pricing-models.html#def:LSSM">3.1</a>).</li>
+</ul>
+<div class="hypothesis">
+<p><span id="hyp:perfectlymodelled" class="hypothesis"><strong>Hypothesis 3.1  (Perfectly-modelled variables) </strong></span></p>
+<ul>
+<li>Assumption: <span class="math inline">\(n\)</span> components of the <span class="math inline">\(m\)</span>-dimensional vector <span class="math inline">\(y_t\)</span> (with <span class="math inline">\(n \le m\)</span>) are perfectly modelled (no measurement errors in associated measurement equations).</li>
+<li>Without loss of generality, these perfectly-modelled variables are the first <span class="math inline">\(n\)</span> components of <span class="math inline">\(y_t\)</span>, that is:
+<span class="math display">\[
+y_t =
+\left(\begin{array}{c}
+\underbrace{y_{1,t}}_{(n \times 1)} \\
+\underbrace{y_{2,t}}_{(m-n)\times1}
+\end{array}\right).
+\]</span>
+</li>
+</ul>
+</div>
+<ul>
+<li>Under Assumption <a href="estimation-of-affine-asset-pricing-models.html#hyp:perfectlymodelled">3.1</a>, the measurement equation (Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:measeq">(3.1)</a>) becomes:
+<span class="math display">\[
+\left[
+\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}
+\right]
+=
+\left[
+\begin{array}{c}
+A_{1}\\
+A_{2}
+\end{array}
+\right]+
+\left[
+\begin{array}{c}
+B_{1}\\
+B_{2}
+\end{array}
+\right]w_t +
+\left[
+\begin{array}{c}
+0\\
+\eta_{2,t}
+\end{array}
+\right],
+\]</span>
+where <span class="math inline">\(\eta_{2,t} \sim \mathcal{N}(0,\Omega_2)\)</span> (say). This notably implies
+<span class="math display" id="eq:wY1">\[\begin{equation}
+w_t = B_{1}^{-1}(y_{1,t} - A_1).\tag{3.5}
+\end{equation}\]</span>
+</li>
+<li>Under this assumption and if the conditional distribution of <span class="math inline">\(w_t\)</span> is available in closed form, then the (exact) likelihood of the model can then be computed.</li>
+<li>Proposition <a href="estimation-of-affine-asset-pricing-models.html#prp:logLikinversion">3.2</a> (next slide) shows that the computation of <span class="math inline">\(f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})\)</span> involves three terms:</li>
+<li>The first term (in blue in <a href="estimation-of-affine-asset-pricing-models.html#eq:inversionLogL">(3.6)</a>) stems from the conditional distribution <span class="math inline">\(w_t|\underline{w_{t-1}}\)</span>.</li>
+<li>The second term (in red in <a href="estimation-of-affine-asset-pricing-models.html#eq:inversionLogL">(3.6)</a>) is associated with the measurement errors pertaining to <span class="math inline">\(y_{2,t}\)</span>, that are the components of <span class="math inline">\(\eta_{2,t}\)</span>.</li>
+<li>The third term (in brown in <a href="estimation-of-affine-asset-pricing-models.html#eq:inversionLogL">(3.6)</a>) is the determinant of the Jacobian matrix associated with the linear transformation between <span class="math inline">\(w_t\)</span> and <span class="math inline">\(y_{1,t}\)</span> (Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:wY1">(3.5)</a>), that is <span class="math inline">\(|B_1|\)</span>.</li>
+<li>Once one knows how to compute <span class="math inline">\(f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})\)</span>, the total likelihood is easily obtained since:
+<span class="math display">\[
+f_{Y_1,\dots,Y_T}(y_1,y_2,\dots,y_T) = f_{Y_1}(y_1) \prod_{t=2}^T f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}}).
+\]</span>
+</li>
+</ul>
+<div class="proposition">
+<p><span id="prp:logLikinversion" class="proposition"><strong>Proposition 3.2  (Log-likelihood in the inversion context) </strong></span>In the context of a linear state-space model as defined in Def. <a href="estimation-of-affine-asset-pricing-models.html#def:LSSM">3.1</a>, under Assumption <a href="estimation-of-affine-asset-pricing-models.html#hyp:perfectlymodelled">3.1</a>, and if <span class="math inline">\(w_t\)</span> is a Markovian process, we have:
+<span class="math display" id="eq:inversionLogL">\[\begin{eqnarray}
+f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}}) &amp;=&amp; \color{blue}{f_{w_t|w_{t-1}}(w(y_{1,t});w(y_{t-1}))} \times \nonumber\\
+&amp;&amp; \color{red}{\mathbf{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2)} \times \color{brown}{|B_1|^{-1}}.\tag{3.6}
+\end{eqnarray}\]</span>
+where <span class="math inline">\(w(y_{1,t}) = B_{1}^{-1}(y_{1,t} - A_1)\)</span> and where <span class="math inline">\(\mathbf{n}\)</span> denotes the multivariate normal p.d.f. (Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:varPHI">(3.3)</a>).</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-21" class="proof"><em>Proof</em>. </span>Since <span class="math inline">\(w_t\)</span> is Markov, so is <span class="math inline">\(y_{1,t}\)</span> and since <span class="math inline">\(y_{2,t} = A_2 + B_2 w(y_{1,t}) + \eta_{2,t}\)</span>, with <span class="math inline">\(w(y_{1,t}) = B_{1}^{-1}(y_{1,t} - A_1)\)</span>, we have:
+<span class="math display">\[\begin{eqnarray*}
+f(y_t|y_{t-1}) &amp;=&amp; f_1(y_{1,t}|y_{1,t-1}) f_2(y_{2,t}|y_{1,t}) \\
+&amp;=&amp; |B_1|^{-1} f_w(w(y_{1,t})|w(y_{1,t-1})) \mathbf{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2),
+\end{eqnarray*}\]</span>
+where
+* <span class="math inline">\(f_1(y_{1,t}|y_{1,t-1})= |B_1|^{-1} f_w(w(y_{1,t})|w(y_{1,t-1}))\)</span> comes from the fact that, if <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are two random variables such that <span class="math inline">\(V = g(U)\)</span>, where <span class="math inline">\(g\)</span> is a bijective and differentiable function, then <span class="math inline">\(f_V(v)=\left|\frac{\partial g^{-1}(v)}{\partial v'}\right| f_U(g^{-1}(v))\)</span>,
+* and <span class="math inline">\(f_2(y_{2,t}|y_{1,t}) = \mathbf{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2)\)</span> comes from the fact that <span class="math inline">\(y_{2,t}|y_{1,t} \sim \mathbf{n}(A_2 + B_2 w(y_{1,t}),\Omega_2)\)</span>.</p>
+</div>
+<div id="EstimationRS" class="section level3" number="3.4.1">
+<h3>
+<span class="header-section-number">3.4.1</span> Dealing with Unobserved Regimes<a class="anchor" aria-label="anchor" href="#EstimationRS"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>The (adjusted) Kalman and inversion techniques are not suited to the case where some of the components of <span class="math inline">\(w_t\)</span> are valued in a discrete set. This is typically the case if <span class="math inline">\(w_t\)</span> is of the form:
+<span class="math display">\[
+w_t = \left(\begin{array}{c}
+z_t \\
+x_t
+\end{array}\right),
+\]</span>
+where <span class="math inline">\(z_t\)</span> is valued in <span class="math inline">\(\{e_1,\dots,e_J\}\)</span>, <span class="math inline">\(e_j\)</span> being the <span class="math inline">\(j^{th}\)</span> column of <span class="math inline">\(Id_J\)</span>.</li>
+<li>Let’s assume that <span class="math inline">\(z_t\)</span> is an exogenous and homogenous Markov chain whose dynamics is defined by the <span class="math inline">\(\pi(e_i,e_j)\)</span>’s that are such that:
+<span class="math display" id="eq:transitproba">\[\begin{equation}
+\pi(e_i, e_j) = \mathbb{P}(z_{t+1}=e_j | z_t=e_i).\tag{3.7}
+\end{equation}\]</span>
+</li>
+<li>We denote by <span class="math inline">\(\Pi\)</span> the matrix of transition probabilities, i.e. the <span class="math inline">\((i,j)\)</span> component of <span class="math inline">\(\Pi\)</span> is <span class="math inline">\(\pi(e_i, e_j)\)</span>.</li>
+<li>Assume further that we have:
+<span class="math display" id="eq:dynxRS">\[\begin{equation}
+x_t = m(z_t,x_{t-1}) + \varepsilon_t,\tag{3.8}
+\end{equation}\]</span>
+where <span class="math inline">\(\mathbb{E}(\varepsilon_t|\underline{z_t},\underline{x_{t-1}})=0\)</span>.</li>
+<li>The conditional distribution of <span class="math inline">\(\varepsilon_t\)</span> w.r.t. <span class="math inline">\((z_t,x_{t-1})\)</span> is denoted by <span class="math inline">\(f_{\varepsilon}(.;z_t,x_{t-1})\)</span>.</li>
+</ul>
+<div class="hypothesis">
+<p><span id="hyp:RSmeasurement" class="hypothesis"><strong>Hypothesis 3.2  (Measurement equations) </strong></span>The measurement equation is of the form:
+<span class="math display" id="eq:RSmeasur">\[\begin{equation}
+y_t = A z_t + B x_t + \eta_t,  \quad \mbox{with }  \eta_t \sim i.i.d. \mathbf{n}(0,\Omega).\tag{3.9}
+\end{equation}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:GRSVAR" class="example"><strong>Example 3.1  (Regime-Switching Gaussian VAR) </strong></span></p>
+<ul>
+<li>Building on Example <a href="affine-processes.html#exm:RSVAR">1.14</a>, we know that if
+<span class="math display" id="eq:xRSVAR">\[\begin{equation}
+x_t = \mu z_t + \Phi x_{t-1} +  \varepsilon_t,\tag{3.10}
+\end{equation}\]</span>
+where <span class="math inline">\(\varepsilon_t|\underline{x_t},z_t \sim \mathcal{N}(0,\Sigma(z_t))\)</span> and if <span class="math inline">\(z_t\)</span> is an exogenous independent Markov chain, then <span class="math inline">\(w_t = (x_t',z_t')'\)</span> is affine.</li>
+<li>This context is consistent with the situation presented XXX. In particular, using the notations of Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:dynxRS">(3.8)</a>, we have:
+<span class="math display">\[
+m(z_t,x_{t-1}) = \mu z_t + \Phi x_{t-1}.
+\]</span>
+</li>
+<li>If <span class="math inline">\(r_t\)</span> and the s.d.f. are respectively affine and exponential in <span class="math inline">\(w_t\)</span>, then, in particular, yields are also affine in <span class="math inline">\(w_t\)</span>, i.e. of the form <span class="math inline">\(R(t,h)= A_h'z_t + B_{h}'x_t\)</span> (see Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:RthAB">(2.11)</a>).</li>
+<li>Therefore, if the components of <span class="math inline">\(y_t\)</span> are yields of different maturities, the measurement equations are consistent with Assumption <a href="estimation-of-affine-asset-pricing-models.html#hyp:RSmeasurement">3.2</a>.</li>
+</ul>
+</div>
+<ul>
+<li><p>How to estimate such a model when the regimes <span class="math inline">\(z_t\)</span> are unobservable? Two distinct situations.</p></li>
+<li><p><strong>Case 1.</strong> The <span class="math inline">\(x_t\)</span> factors are observable.</p></li>
+<li><p>The probabilities of being in the different regimes on each date can be estimated by employing the Kitagawa-Hamilton filter.</p></li>
+<li><p>The Kitagawa-Hamilton filter (Appendix <a href="#app:KitagHamilton"><strong>??</strong></a>) can be employed, with <span class="math inline">\(F_t = (y_t',x_t')'\)</span> and:
+<span class="math display">\[\begin{eqnarray*}
+f(F_t|z_t=e_j,\underline{F_{t-1}}) &amp;=&amp; f(y_t|x_t,z_t=e_j,\underline{F_{t-1}})f(x_t|z_t=e_j,\underline{F_{t-1}}) \\
+&amp;=&amp; \mathbf{n}(y_t;A z_t + B x_t,\Omega) \times \\
+&amp;&amp;f_{\varepsilon}(x_t - m(z_t,x_{t-1});z_t,x_{t-1}),
+\end{eqnarray*}\]</span>
+where, as in Slide <a href="#slide:inversionXX"><strong>??</strong></a>, <span class="math inline">\(\mathbf{n}(u;\mu,\Omega)\)</span> denotes the evaluation, at vector <span class="math inline">\(u\)</span> of the p.d.f. of the multivariate normal distribution <span class="math inline">\(\mathcal{N}(\mu,\Omega)\)</span>.</p></li>
+<li><p>A by-product of the Kitagawa-Hamilton filter is the likelihood function associated with the dataset <span class="math inline">\(\Rightarrow\)</span> The model parameterization can be estimated by MLE.</p></li>
+<li><p><strong>Case 2.</strong> The <span class="math inline">\(x_t\)</span> factors are not observable. Two sub-cases:</p></li>
+<li><p>2.i The components of <span class="math inline">\(y_t\)</span> are not perfectly modelled (i.e. <span class="math inline">\(\Omega \ne 0\)</span>, where <span class="math inline">\(\Omega\)</span> defined in Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:RSmeasur">(3.9)</a>.</p></li>
+<li><p>2.ii <span class="math inline">\(n_x\)</span> components of <span class="math inline">\(y_t\)</span> are perfectly modelled (where <span class="math inline">\(n_x\)</span> is the dimension of <span class="math inline">\(x_t\)</span>).</p></li>
+<li><p>In Case (2.i), one has to resort to filters dealing with two types of uncertainty [with hidden discrete values (<span class="math inline">\(z_t\)</span>) and continuously distributed latent variables (<span class="math inline">\(x_t\)</span>)].</p></li>
+</ul>
+<p>In particular <a href="https://www.sciencedirect.com/science/article/pii/0304407694900361">Kim (1994)’s filter</a> can be employed when the state-space model is of the form <a href="estimation-of-affine-asset-pricing-models.html#eq:RSmeasur">(3.9)</a>-<a href="estimation-of-affine-asset-pricing-models.html#eq:xRSVAR">(3.10)</a> <a href="https://academic.oup.com/rof/article/18/6/2103/1661774">Monfort and Renne (2014)</a>, Example <a href="credit-and-liquidity-risks.html#exm:SovereignSpreads">5.2</a>].
+* In Case (2.ii), one can resort to an inversion technique, complemented with the Kitagawa-Hamilton filter, to estimate the model (see following box).</p>
+<div class="proposition">
+<p><span id="prp:KitagHamilton" class="proposition"><strong>Proposition 3.3  (Kitagawa-Hamilton filter) </strong></span>Consider a <span class="math inline">\(q\)</span>-dimensional vector of variables <span class="math inline">\(F_t\)</span> and an exogenous homogenous Markov chain <span class="math inline">\(z_t\)</span>. We make use of the following notations:</p>
+<ul>
+<li>
+<span class="math inline">\(\eta_t\)</span> is a <span class="math inline">\(J\)</span>-dimensional vector whose <span class="math inline">\(j^{th}\)</span> component is the p.d.f. of <span class="math inline">\(F_t\)</span> conditional on <span class="math inline">\((z_t = e_j,\underline{F_{t-1}})\)</span>, i.e. <span class="math inline">\(f(F_t|z_t=e_j,\underline{F_{t-1}})\)</span>
+</li>
+<li>
+<span class="math inline">\(\xi_{t}\)</span> is a <span class="math inline">\(J\)</span>-dimensional vector whose <span class="math inline">\(j^{th}\)</span> component is <span class="math inline">\(\mathbb{P}(z_t = e_j|\underline{F_t})\)</span>.</li>
+</ul>
+<p>The sequence <span class="math inline">\(\xi_{t}\)</span> can then be computed recursively as follows:
+<span class="math display" id="eq:KHfilter">\[\begin{equation}
+\xi_t = \frac{(\Pi' \xi_{t-1}) \odot \eta_t}{\mathbf{1}'(\Pi' \xi_{t-1} \odot \eta_t)},\tag{3.11}
+\end{equation}\]</span>
+where <span class="math inline">\(\odot\)</span> denotes the element-by-element (Hadamard) product and where <span class="math inline">\(\mathbf{1}\)</span> denotes a <span class="math inline">\(J\)</span>-dimensional vector of ones.</p>
+<p>Moreover, the previous formulas also show how to compute the likelihood of the model since:
+<span class="math display" id="eq:KHlikelihood">\[\begin{equation}
+f(F_t|\underline{F_{t-1}})=\mathbf{1}'(\Pi' \xi_{t-1} \odot \eta_t).\tag{3.12}
+\end{equation}\]</span></p>
+</div>
+<div class="proposition">
+<p><span id="prp:mixedKFinversion" class="proposition"><strong>Proposition 3.4  (Kitagawa-Hamilton and inversion techniques) </strong></span>The matrix of transition probabilities of <span class="math inline">\(\mathcal{Z}_t\)</span> is of the form <span class="math inline">\(\mathbf{1}_{n \times 1} \otimes \widetilde{\Pi}\)</span>, with
+<span class="math display">\[
+\widetilde{\Pi} =
+\left[
+\begin{array}{ccccc}
+\pi_{1,\bullet} &amp; 0_{1 \times n} \dots &amp; &amp; &amp; 0_{1 \times n} \\
+0_{1 \times n} &amp; \pi_{2,\bullet} &amp; 0_{1 \times n} &amp; \dots &amp; 0_{1 \times n} \\
+&amp;&amp; \ddots \\
+&amp; &amp;  0_{1 \times n} &amp; \pi_{n-1,\bullet} &amp; 0_{1 \times n} \\
+0_{1 \times n} &amp;\dots &amp;&amp; 0_{1 \times n} &amp; \pi_{n,\bullet}
+\end{array}
+\right],
+\]</span>
+where <span class="math inline">\(\pi_{i,\bullet}\)</span> denotes the <span class="math inline">\(i^{th}\)</span> row of <span class="math inline">\(\Pi\)</span> (<span class="math inline">\(\Pi\)</span> is defined on Slide XXX).</p>
+<p>The last term appearing in Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:conddistri4KHfilter">(3.14)</a> can be computed as follows:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp;f\left(\left[\begin{array}{c}x(y_t,z(\mathcal{Z}_t))\\y_{2,t}\end{array}\right]|\mathcal{Z}_t,\underline{y_{t-1}}\right) \\
+&amp;=&amp; f\left(y_{2,t}|x_t=x(y_t,z(\mathcal{Z}_t)),\mathcal{Z}_t,\underline{y_{t-1}}\right) \times\\
+&amp;&amp; f\left(x(y_t,z(\mathcal{Z}_t))|\mathcal{Z}_t,\underline{y_{t-1}}\right) \\
+&amp;=&amp; \mathbf{n}(y_{2,t};A_2z_t + B_2x_t,\Omega_2) \times\\
+&amp;&amp; f_\varepsilon\left(\varepsilon_t|z_t = z(\mathcal{Z}_t),x_{t-1}=x(y_{t-1},z_{-1}(y_{t-1},\mathcal{Z}_t))\right),
+\end{eqnarray*}\]</span>
+where <span class="math inline">\(\mathbf{n}\)</span> is the p.d.f. of a multivariate normal distri, (Prop. <a href="estimation-of-affine-asset-pricing-models.html#prp:logLikinversion">3.2</a>, where <span class="math inline">\(\varepsilon_t = x_t - m[z(\mathcal{Z}_t),x(y_{t-1},z_{-1}(y_{t-1},\mathcal{Z}_t))]\)</span> (<span class="math inline">\(m\)</span> defined in Eq. <a href="estimation-of-affine-asset-pricing-models.html#eq:dynxRS">(3.8)</a>).</p>
+</div>
+</div>
+<div id="mixed-use-of-kitagawa-hamilton-and-inversion-techniques" class="section level3" number="3.4.2">
+<h3>
+<span class="header-section-number">3.4.2</span> Mixed use of Kitagawa-Hamilton and inversion techniques<a class="anchor" aria-label="anchor" href="#mixed-use-of-kitagawa-hamilton-and-inversion-techniques"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Without loss of generality, assume that the <span class="math inline">\(n_x\)</span> first components of <span class="math inline">\(y_t\)</span> are observed without error, i.e. Assumption <a href="estimation-of-affine-asset-pricing-models.html#hyp:RSmeasurement">3.2</a> becomes
+<span class="math display">\[
+\left[
+\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}
+\right]
+=
+\left[
+\begin{array}{c}
+A_{1}z_t\\
+A_{2}z_t
+\end{array}
+\right]+
+\left[
+\begin{array}{c}
+B_{1}\\
+B_{2}
+\end{array}
+\right]x_t +
+\left[
+\begin{array}{c}
+0\\
+\eta_{2,t}
+\end{array}
+\right],
+\]</span>
+where <span class="math inline">\(\varepsilon_2 \sim \mathcal{N}(0,\Omega_2)\)</span>.</li>
+<li>Since <span class="math inline">\(y_{1,t} = A_1 z_t + B_1 x_t\)</span>, we then have:
+<span class="math display" id="eq:xRS">\[\begin{equation}
+x_t \equiv x(y_{t},z_t) = B_1^{-1}(y_{1,t} - A_1 z_t).\tag{3.13}
+\end{equation}\]</span>
+</li>
+<li>In order to employ the Kitagawa-Hamilton filter (Appendix <a href="#app:KitagHamilton"><strong>??</strong></a>), one need to define the extended Markov chain:
+<span class="math display">\[
+\mathcal{Z}_t = z_{t-1} \otimes z_t,
+\]</span>
+whose matrix of transition probabilities is detailed in Appendix <a href="#app:mixedKFinversion"><strong>??</strong></a>.</li>
+<li>Note that we have:
+<span class="math display">\[
+\left\{
+\begin{array}{cclll}
+z_t &amp;\equiv&amp; z(\mathcal{Z}_t) &amp;=&amp; (\mathbf{1}' \otimes Id_{n}) \mathcal{Z}_t \\
+z_{t-1} &amp;\equiv&amp; z_{-1}(\mathcal{Z}_t) &amp;=&amp; (Id_{n} \otimes \mathbf{1}') \mathcal{Z}_t.
 \end{array}
 \right.
-\end{equation}\]</span>
-with <span class="math inline">\(0&lt;\rho_y&lt;\rho_x&lt;1\)</span>.</p></li>
-<li><p>If <span class="math inline">\(c&gt;0\)</span>:
-Defaults on date <span class="math inline">\(t\)</span> increases the conditional probability of having additional defaults on the next date <span class="math inline">\(\Rightarrow\)</span> { Systemic defaults are infectious [], or contagious}.</p></li>
+\]</span>
+</li>
+<li>The Kitagawa-Hamilton filter (Appendix <a href="#app:KitagHamilton"><strong>??</strong></a>) can then be employed, with <span class="math inline">\(F_t = y_t\)</span> and:
+<span class="math display" id="eq:conddistri4KHfilter">\[\begin{eqnarray}
+f(y_t|\mathcal{Z}_t,\underline{y_{t-1}}) &amp;=&amp;|B_1^{-1}| \times \nonumber \\
+&amp;&amp; f\left(\left[\begin{array}{c}x(y_t,z(\mathcal{Z}_t))\\ y_{2,t}\end{array}\right]|\mathcal{Z}_t,\underline{y_{t-1}}\right),\tag{3.14}
+\end{eqnarray}\]</span>
+where the computation of the last term is detailed in Appendix <a href="#app:mixedKFinversion"><strong>??</strong></a>.</li>
 </ul>
-<p>:::</p>
-<p>:::{.example``Disastrous Defaults’’ (cont’d)]</p>
+<div class="example">
+<p><span id="exm:RSMP" class="example"><strong>Example 3.2  (Interest-rate model with monetary policy-related regimes) </strong></span></p>
 <ul>
-<li><p><span class="math inline">\(\Delta c_t = \log(C_t/C_{t-1})\)</span>: Log growth rate of per capita consumption:
-<span class="math display">\[\begin{equation}\label{eq:Deltac_rewritten}
-\Delta c_t = \mu_{c,0} + \mu_{c,x} x_t + \mu_{c,y} y_t + {\mu_{c,z}} z_{t}.
-\end{equation}\]</span>
-where <span class="math inline">\(z_t\)</span> depends on systemic defaults:
-<span class="math display">\[\begin{equation}\label{eq:Zdistri_new}
-z_t|  \underline{x_{t}}, \underline{y_{t}}, \underline{N^s_{t}}  \sim \gamma_0(\xi_{z}n^s_{t-1},\mu_z).
-\end{equation}\]</span></p></li>
-<li><p><span class="math inline">\(\gamma_0\)</span> is a distribution featuring a point mass at zero [see Eq.,(<span class="math inline">\(\ref{eq:ARG0}\)</span>) in Example,<span class="math inline">\(\ref{exmpl:ARG1}\)</span>].</p>
-<p>The conditional probability that <span class="math inline">\(z_t=0\)</span> is <span class="math inline">\(\exp(-\xi_{z}n^s_{t-1})\)</span>,</p>
-<p><span class="math inline">\(z_{t}=0\)</span> as long as there has been no systemic defaults in the previous period, which is rather frequent.</p></li>
-<li><p>If <span class="math inline">\(\mu_{c,z}&lt;0\)</span> and <span class="math inline">\(|\mu_{c,z}|\)</span> is large or</p></li>
+<li>
+<span class="citation">Renne (<a href="references.html#ref-Renne_2017">2017</a>)</span>: model where regimes have monetary-policy interpretations.</li>
+<li>Short-term rate = (daily) EONIA, euro-area overnight interbank rate:</li>
 </ul>
-<p>if <span class="math inline">\(\mu_{c,z}&lt;0\)</span> and <span class="math inline">\(|\mu_{c,z}|\)</span> not so large but <span class="math inline">\(c\)</span> (contamination) is large, then</p>
-<p>{ systemic defaults can give rise to ``disastrous’’ decreases in <span class="math inline">\(C_t\)</span>}.</p>
 <ul>
-<li>Agents feature {Epstein-Zin preferences}, with a unit elasticity of intertemporal substitution (EIS). An admissible s.d.f. is exponential affine [as in Eq.,(<span class="math inline">\(\ref{eq:keySDF}\)</span>)].
-<span class="math inline">\(w_t = (x_t,y_t,z_t,n^{s}_t)&#39;\)</span> is affine under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span>.</li>
+<li>Target rate <span class="math inline">\(\bar{r}_{t}\)</span> has a step-like path <span class="math inline">\(\bar{r}_{t}=\Delta'z_{r,t}\)</span>,
+where</li>
+<li>
+<span class="math inline">\(\Delta=[\begin{array}{ccccc} 0 &amp; 0.25 &amp; 0.50 &amp; \ldots &amp; \bar{r}_{max}\end{array}]'\)</span> and</li>
+<li><span class="math inline">\(z_{r,t}=[\begin{array}{ccccccc} 0 &amp; \ldots &amp; 0 &amp; 1 &amp; 0 &amp; \ldots &amp; 0\end{array}]'\)</span></li>
+<li>EONIA spread (<span class="math inline">\(x_t\)</span>) persistent and mean-reverting fluctuations (AR process).</li>
+<li>
+<span class="math inline">\(z_t = z_{r,t}\otimes z_{m,t}\)</span> where <span class="math inline">\(z_{m,t}\)</span> is the monetary-policy regime:</li>
+<li>Easing (<span class="math inline">\(z_{m,t}=[\begin{array}{ccc} 1 &amp; 0 &amp; 0\end{array}]\)</span>),</li>
+<li>Status Quo (<span class="math inline">\(z_{m,t}=[\begin{array}{ccc} 0 &amp; 1 &amp; 0\end{array}]\)</span>),</li>
+<li>Tightening (<span class="math inline">\(z_{m,t}=[\begin{array}{ccc} 0 &amp; 0 &amp; 1\end{array}]\)</span>).</li>
 </ul>
-<p>:::</p>
-<p>%=============================================
-%=============================================
-%=============================================
-%=============================================
-%=============================================
-%=============================================</p>
-[plain]
-
-<p>:::{.example``Disastrous Defaults’’ (cont’d)]</p>
+<p><a href="https://fixed-income.shinyapps.io/NLIR/">Web-interface illustrating <span class="math inline">\(\bar{r}_t\)</span>’s dynamic</a></p>
 <ul>
-<li>In this context, a wide range of credit derivatives can be priced. In particular those whose payoffs depend on the default status of the constituents of a reference portfolio: Credit Index swaps (CIS) and synthetic CDO.</li>
-<li>Typical credit indices: iTraxx (Europe) and CDX (U.S.). 125 large firms.</li>
-<li>Pricing formula based on an intensive use of the truncated Laplace transform [see Eq.,(<span class="math inline">\(\ref{eq:DPS}\)</span>), ].</li>
-<li>Estimation based (in particular) on iTraxx Europe main index; CDOs: maturities of 3, 5 and 7 years and, for each maturity, 5 tranches: 0%-3%, 3%-6%, 6%-9%, 9%-12% and 12%-22%.</li>
-<li>Fit of tranche prices shown on Figure,<span class="math inline">\(\ref{fig:fittranche}\)</span>.</li>
+<li>
+<span class="math inline">\(z_{r,t}\)</span> is observed, but not <span class="math inline">\(z_{m,t}\)</span>.</li>
+<li>In the model, according to Example <a href="estimation-of-affine-asset-pricing-models.html#exm:GRSVAR">3.1</a>, we have:
+<span class="math display">\[
+R(t,h) = A_h' z_t + B_h x_t.
+\]</span>
+</li>
+<li>Denote by <span class="math inline">\(\mathcal{A}_h\)</span> the <span class="math inline">\((3 \times n_r)\)</span> matrix such that <span class="math inline">\(A_h = vec(\mathcal{A}_h)\)</span>. We then have <span class="math inline">\(A_h' z_t = (\mathcal{A}_h z_{r,t})' z_{m,t}\)</span> and, therefore:
+<span class="math display">\[
+R(t,h) = A_{t,h}' z_t + B_h x_t, \quad \mbox{where $A_{t,h} = \mathcal{A}_h z_{r,t}$.}
+\]</span>
+</li>
+<li>The model is estimated by a mixe use of Kitagawa-Hamilton and inversion techniques, assuming that a linear combination of yields is modelled without errors (giving <span class="math inline">\(x_t = x(y_t,z_{m,t},z_{r,t})\)</span>).</li>
 </ul>
-<p>:::</p>
-<p>[plain]
-%{Synthetic Collateralised Debt Obligations (CDOs)}</p>
-<p>% </p>
-[plain]
-
-
+<!-- \begin{figure} --><!-- \caption{Estimation outputs from \href{https://www.degruyter.com/view/j/snde.2017.21.issue-1/snde-2016-0043/snde-2016-0043.xml}{Renne (2017)}} --><!-- \label{fig:fitSurveys} --><!-- \begin{center} --><!-- \includegraphics[width=.85\linewidth]{figures/Fig-SNDE.pdf} --><!-- \end{center} --><!-- \end{figure} -->
 </div>
 </div>
-            </section>
+</div>
+<div id="EstimationPersistency" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> A Typical Small-Sample Issue<a class="anchor" aria-label="anchor" href="#EstimationPersistency"><i class="fas fa-link"></i></a>
+</h2>
+<p>Interest rates are particularly persistent variables.</p>
+<p>Since affine models eventually lead to linear relationships between state variables and interest rates [Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:RthAB">(2.11)</a>], some state variables are also necessarily highly persistent.</p>
+<p>In small sample, maximum-likelihood estimates of the model parameters are likely to suffer from a downward bias, <span class="citation">Michael D. Bauer and Wu (<a href="references.html#ref-Bauer_Rudebusch_Wu_2012">2012</a>)</span> or <span class="citation">Jardet, Monfort, and Pegoraro (<a href="references.html#ref-Jardet_Monfort_Pegoraro_2013">2013</a>)</span>.</p>
+<p>This relates to a well-known econometric problem:</p>
+<!-- \begin{figure} -->
+<!--    \caption{Bias toward zero in the presence of unit root} -->
+<!--    \label{fig:unitroot} -->
+<!--    \includegraphics[width=1.05\linewidth]{figures/Figure_NonStat_Probl1.pdf} -->
+<!--    Note: 2000 random walk samples of size $T$ ($T=50$ for the left plot and $T=400$ for the right plot) have been simulated. For each sample, we run the OLS regression $y_t = c + \phi y_{t-1} + \varepsilon_t$. The plots show the distributions (kernel-based estimation) of the estimated $\phi$. The vertical bars indicate the means of the distributions. -->
+<!-- \end{figure} -->
+<ul>
+<li>This small-sample downward bias has dramatic consequences in terms of term premium estimates.</li>
+<li>For the sake of illustration, let’s consider the following process for the short-term interest rate under the physical measure (monthly frequency):
+<span class="math display">\[
+i_{t+1} = \bar{i} + \phi (i_{t}-\bar{i}) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
+\]</span>
+and the following under the risk-neutral measure:
+<span class="math display">\[
+i_{t+1} = \bar{i}^* + \phi^* (i_{t}-\bar{i}^*) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
+\]</span>
+with <span class="math inline">\(\bar{i} = 3\%/12\)</span>, <span class="math inline">\(\bar{i}^* = 6\%/12\)</span>, <span class="math inline">\(\phi = 0.97\)</span>, <span class="math inline">\(\phi^*=0.99\)</span>, <span class="math inline">\(\sigma = 0.2\%\)</span>.</li>
+<li>Assume the estimate of <span class="math inline">\(\phi\)</span> is downard biased (<span class="math inline">\(\hat\phi=0.9\)</span>). Influence on the 10-year term premium? [Figure <a href="#fig:biasedTP"><strong>??</strong></a>, next slide]</li>
+</ul>
+<!-- \begin{figure} --><!-- \caption{Biased persistency: Implications on term premiums estimates} --><!-- \label{fig:biasedTP} --><!-- \begin{center} --><!-- \includegraphics[width=1.05\linewidth]{figures/Figure_atsm_downward.pdf} --><!-- \end{center} --><!-- \end{figure} --><ul>
+<li>
+<span class="citation">D. H. Kim and Orphanides (<a href="references.html#ref-Kim_Orphanides_2005">2005</a>)</span> and <span class="citation">D. H. Kim and Orphanides (<a href="references.html#ref-Kim_Orphanides_2005">2005</a>)</span> have proposed a simple approach to deal with this problem.</li>
+<li>They add measurement equations to impose that the model-implied forecasts are –up to some measurement errors– close to survey-based ones.</li>
+<li>Kim and Orphanides use the <a href="https://lrus.wolterskluwer.com/store/products/blue-chip-financial-forecasts-prod-ss07418345/paperback-item-1-ss07418345">Blue Chip Financial Forecasts</a>.</li>
+<li>Alternative (publicly available) surveys: <a href="https://www.philadelphiafed.org/research-and-data/real-time-center/survey-of-professional-forecasters">Philly Fed Survey of Professional Forecasters</a> and <a href="https://www.ecb.europa.eu/stats/ecb_surveys/survey_of_professional_forecasters/html/index.en.html">ECB SPF</a>.</li>
+<li>Importantly, this approach is tractable because model-implied forecasts of yields are affine in the state vector. [This is the case for any affine model: see Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:condmeanRth">(2.14)</a>.]</li>
+<li>Their model is able to fit both survey-based forecasts and market yields [Figure <a href="#fig:fitSurveys"><strong>??</strong></a>].</li>
+</ul>
+<!-- \begin{figure} --><!-- \caption{Fit of surveys} --><!-- \label{fig:fitSurveys} --><!-- \begin{center} --><!-- \includegraphics[width=.9\linewidth]{figures/fig_KimO2.pdf} --><!-- {\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} --><!-- \end{center} --><!-- \end{figure} -->
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></div>
+<div class="next"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">4</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#estimation-of-affine-asset-pricing-models"><span class="header-section-number">3</span> Estimation of affine asset-pricing models</a></li>
+<li><a class="nav-link" href="#EstimationSSModel"><span class="header-section-number">3.1</span> State-Space Model</a></li>
+<li>
+<a class="nav-link" href="#Estimation:KF"><span class="header-section-number">3.2</span> Kalman-Filter-Based Approach</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#initialization"><span class="header-section-number">3.2.1</span> Initialization</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#about-non-constant-conditional-matrix-sigma"><span class="header-section-number">3.3</span> About non-constant conditional matrix \(\Sigma\)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#nonlinear"><span class="header-section-number">3.3.1</span> Non-linear models</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#EstimationInversion"><span class="header-section-number">3.4</span> Inversion Technique</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#EstimationRS"><span class="header-section-number">3.4.1</span> Dealing with Unobserved Regimes</a></li>
+<li><a class="nav-link" href="#mixed-use-of-kitagawa-hamilton-and-inversion-techniques"><span class="header-section-number">3.4.2</span> Mixed use of Kitagawa-Hamilton and inversion techniques</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#EstimationPersistency"><span class="header-section-number">3.5</span> A Typical Small-Sample Issue</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="pricing-and-risk-neutral-dynamics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="diving-in.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne. It was last built on 2023-12-29.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-Introduction.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["TSM.pdf", "TSM.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -743,7 +685,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

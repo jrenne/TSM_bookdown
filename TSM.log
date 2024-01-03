@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.17)  18 DEC 2023 14:16
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.17)  3 JAN 2024 14:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -433,7 +433,7 @@ LaTeX Warning: Label `exm:exGaussian' multiply defined.
 LaTeX Warning: Label `exm:ARGp' multiply defined.
 
 
-LaTeX Warning: Label `exm:RSVAR' multiply defined.
+LaTeX Warning: Label `eq:laplaceZ' multiply defined.
 
 )
 \openout1 = `TSM.aux'.
@@ -746,11 +746,6 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 8.3991pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.99936pt on input line 2.
-
-Underfull \hbox (badness 1383) in paragraph at lines 10--10
- [][] [][]\TU/lmr/m/n/12 AFFINE (OR Car) PROCESSES, Building Multivariate 
- []
-
 [3])
 \tf@toc=\write5
 \openout5 = `TSM.toc'.
@@ -772,169 +767,227 @@ Overfull \hbox (1.35612pt too wide) in paragraph at lines 191--192
 
 [6]
 Chapter 1.
+
+LaTeX Warning: Reference `PandQ' on page 7 undefined on input line 212.
+
+
+LaTeX Warning: Reference `Estimation' on page 7 undefined on input line 212.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [7
 
-] [8]
-Missing character: There is no 𝜑 (U+1D711) in font [lmroman12-regular]:mapping=tex-text;!
-[9] [10]
-Overfull \hbox (6.20522pt too wide) in paragraph at lines 459--461
+]
+Overfull \hbox (20.57278pt too wide) in paragraph at lines 272--272
+[]\TU/lmr/bx/n/17.28 Laplace Transform and moments/cumulants 
+ []
+
+[8] [9]
+Underfull \hbox (badness 2735) in paragraph at lines 356--356
+[]\TU/lmr/bx/n/17.28 Additional properties of the Laplace
+ []
+
+[10]
+Overfull \hbox (6.20522pt too wide) in paragraph at lines 431--433
 \TU/lmr/m/n/12 and since in the second term on the right-hand side $[][][][][][][][][] []
  []
 
 [11]
-Overfull \hbox (3.24422pt too wide) in alignment at lines 535--538
- [][][] []
+Underfull \hbox (badness 1596) in paragraph at lines 498--499
+[][]\TU/lmr/bx/n/12 Example 1.8 \TU/lmr/m/n/12 (Quadratic Gaussian process)\TU/lmr/bx/n/12 . []\TU/lmr/m/n/12 Consider vector $[][] []
  []
 
-[12] [13]
+[12]
+File: TSM_files/figure-latex/simQVAR-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/simQVAR-1.pdf>
+[13] [14]
 File: TSM_files/figure-latex/simARG0-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/simARG0-1.pdf>
-[14]
+[15]
+Underfull \hbox (badness 1721) in paragraph at lines 637--638
+[]\TU/lmr/m/n/12 One can simulate such processes by using []this web-interface[] (select
+ []
+
+
+Underfull \hbox (badness 1132) in paragraph at lines 637--638
+\TU/lmr/m/n/12 the “Compound Poisson” panel). Figure []1.3[] makes use of function
+ []
+
 File: TSM_files/figure-latex/simCPoisson-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/simCPoisson-1.pdf>
-[15]
-Overfull \hbox (70.42522pt too wide) in alignment at lines 728--734
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 673.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 673.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 673.
+
+Overfull \hbox (29.73584pt too wide) in alignment at lines 673--673
  [][][] []
  []
 
-[16]
-Overfull \hbox (9.78578pt too wide) in paragraph at lines 805--805
-[]\TU/lmr/bx/n/17.28 AFFINE (OR Car) PROCESSES, Stochas-
- []
-
-[17]
-Underfull \hbox (badness 1496) in paragraph at lines 852--856
+[16] [17] [18] [19] [20]
+Underfull \hbox (badness 1496) in paragraph at lines 819--821
 []$[]$$[]$\TU/lmr/m/n/12 , where $[][]$ and $[][]$ are independent
  []
 
-[18]
-Overfull \hbox (21.36949pt too wide) in alignment at lines 898--904
- [][][] []
+[21] [22] [23] [24] [25] [26]
+Overfull \hbox (27.55162pt too wide) detected at line 1119
+[][] [] [] [] [] [] [] [] [] []
+ []
+
+[27]
+File: TSM_files/figure-latex/CDR-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/CDR-1.pdf>
+
+Underfull \vbox (badness 2065) has occurred while \output is active []
+
+[28] [29]
+Overfull \hbox (22.67738pt too wide) in paragraph at lines 1211--1213
+\TU/lmr/m/n/12 This method is easily extended to price payoffs of the form $[][][][][][][] [][][][][][][]$,
  []
 
 
-Overfull \hbox (103.3136pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 1.8.  AFFINE (OR CAR) PROCESSES, BUILDING MULTIVARIATE AFFINE PROCESSES \TU/lmr/m/n/12 19
+Underfull \hbox (badness 3058) in paragraph at lines 1215--1215
+[]\TU/lmr/bx/n/17.28 VAR representation and conditional
  []
 
-[19]
-Overfull \hbox (7.57394pt too wide) in paragraph at lines 923--923
-[]\TU/lmr/bx/n/17.28 AFFINE (OR Car) PROCESSES, Wishart
+[30] [31] [32]
+File: TSM_files/figure-latex/truncatedRR-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/truncatedRR-1.pdf>
+
+Overfull \hbox (14.20688pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/12 1.11.  TRUNCATED LAPLACE TRANSFORMS OF AFFINE PROCESSES \TU/lmr/m/n/12 33
  []
 
-
-Overfull \hbox (13.68307pt too wide) in alignment at lines 942--944
- [][][] []
+[33] [34]
+Underfull \hbox (badness 10000) in paragraph at lines 1430--1431
+[][]\TU/lmr/bx/n/12 Proposition 1.2 \TU/lmr/m/n/12 (Quadratic Gaussian process)\TU/lmr/bx/n/12 . []\TU/lmr/m/it/12 Consider vector
  []
 
-[20]
-Underfull \hbox (badness 2229) in paragraph at lines 1013--1013
-\TU/lmr/bx/n/17.28 tivariate Stochastic Parameters Pro-
- []
-
-
-Overfull \hbox (111.53358pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 1.9.  AFFINE (OR CAR) PROCESSES, WISHART AUTOREGRESSIVE (WAR) PROCESSES \TU/lmr/m/n/12 21
- []
-
-[21] [22]
-Overfull \hbox (24.215pt too wide) detected at line 1106
+[35] [36] [37]
+Overfull \hbox (24.215pt too wide) detected at line 1569
 []
  []
 
 
-Overfull \hbox (210.9603pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 1.11.  AFFINE (OR CAR) PROCESSES, FIRST KEY PROPERTY: MULTI-HORIZON LAPLACE TRANSFORM \TU/lmr/m/n/12 23
+Underfull \hbox (badness 1688) in paragraph at lines 1582--1584
+[][]\TU/lmr/bx/n/12 Proposition 1.5 \TU/lmr/m/n/12 (Reverse-order multi-horizon Laplace transform)\TU/lmr/bx/n/12 . []\TU/lmr/m/it/12 If
  []
 
-[23]
-Underfull \hbox (badness 1688) in paragraph at lines 1121--1123
-[][]\TU/lmr/bx/n/12 Proposition 1.1 \TU/lmr/m/n/12 (Reverse-order multi-horizon Laplace transform)\TU/lmr/bx/n/12 . []\TU/lmr/m/it/12 If
- []
-
-[24]
-Overfull \hbox (210.9603pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 1.11.  AFFINE (OR CAR) PROCESSES, FIRST KEY PROPERTY: MULTI-HORIZON LAPLACE TRANSFORM \TU/lmr/m/n/12 25
- []
-
-[25] [26]
-Underfull \hbox (badness 1454) in paragraph at lines 1292--1292
-[]\TU/lmr/bx/n/17.28 Multi-horizon conditional means and
- []
-
-
-Overfull \hbox (126.1176pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 1.12.  AFFINE (OR CAR) PROCESSES, SECOND KEY PROPERTY: VAR REPRESENTATION \TU/lmr/m/n/12 27
- []
-
-[27]
-Overfull \hbox (18.00252pt too wide) detected at line 1326
+[38]
+Overfull \hbox (18.00252pt too wide) detected at line 1648
 [][][][] [] [] [][] [] []
  []
 
 
-Overfull \hbox (67.61314pt too wide) in alignment at lines 1330--1335
+Overfull \hbox (67.61314pt too wide) in alignment at lines 1652--1657
  [][][] []
  []
 
-[28] [29]
-Overfull \hbox (5.84735pt too wide) in alignment at lines 1486--1489
- [][][] []
- []
-
-[30]
-Overfull \hbox (36.39703pt too wide) in alignment at lines 1491--1497
+[39]
+Overfull \hbox (5.84735pt too wide) in alignment at lines 1677--1680
  [][][] []
  []
 
 
-Overfull \hbox (184.687pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 1.15.  TRUNCATED LAPLACE TRANSFORMS OF AFFINE PROCESSES AND TRANSFORM ANALYSIS \TU/lmr/m/n/12 31
- []
-
-[31] [32]
-Overfull \hbox (3.28928pt too wide) in alignment at lines 1616--1620
+Overfull \hbox (36.39703pt too wide) in alignment at lines 1682--1688
  [][][] []
  []
 
-
-Overfull \hbox (184.687pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 1.15.  TRUNCATED LAPLACE TRANSFORMS OF AFFINE PROCESSES AND TRANSFORM ANALYSIS \TU/lmr/m/n/12 33
- []
-
-[33]
-Overfull \hbox (28.42378pt too wide) in alignment at lines 1657--1660
- [][][] []
- []
-
-[34] [35] [36
-
-]
+[40] [41] [42]
 Chapter 2.
-[37] [38
+[43
 
-]
-Chapter 3.
-(./TSM.bbl [39] [40
+] [44] [45] [46] [47]
+Overfull \hbox (1.21489pt too wide) in paragraph at lines 1988--1989
+[]\TU/lmr/m/n/12 Hence, in that case, $[][]$ is exponential affine in $[][] [] [][] [][][] [] [][][][]$
+ []
 
-]) [41] (./TSM.aux)
+[48]
+Overfull \hbox (0.15082pt too wide) in paragraph at lines 2063--2066
+\TU/lmr/m/n/12 * Moreover the excess arithmetic return process $[][] [] [][]$ is a $[]$-martingale
+ []
+
+[49] [50] [51] [52] [53]
+
+LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <12> not available
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 2355.
+
+[54]
+File: TSM_files/figure-latex/extractECB-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/extractECB-1.pdf>
+[55]
+Overfull \hbox (6.42522pt too wide) detected at line 2400
+[][][][][] [][] [] [][] [] [] [] [][][][][][] [] [] [] [][][][]
+ []
+
+[56] [57] [58] [59] [60]
+Underfull \hbox (badness 4954) in paragraph at lines 2604--2606
+[]\TU/lmr/bx/n/12 Gaussian Affine Term Structure Model (GATSM) =
+ []
+
+[61]
+
+LaTeX Warning: Reference `exm:Gaussian' on page 62 undefined on input line 2616.
+
+
+LaTeX Warning: Reference `exm:Gaussian' on page 62 undefined on input line 2636.
+
+[62]
+
+LaTeX Warning: Reference `Estimation:KF' on page 63 undefined on input line 2647.
+
+
+LaTeX Warning: Reference `def:LSSM' on page 63 undefined on input line 2647.
+
+
+LaTeX Warning: Reference `EstimationPersistency' on page 63 undefined on input line 2647.
+
+
+LaTeX Warning: Reference `EstimationInversion' on page 63 undefined on input line 2674.
+
+[63]
+Underfull \hbox (badness 4647) in paragraph at lines 2759--2759
+[]\TU/lmr/bx/n/17.28 Non-Negative Affine Term Structure
+ []
+
+[64]
+Underfull \hbox (badness 1565) in paragraph at lines 2789--2791
+\TU/lmr/m/n/12 * If $[] [] [][][][] [] [] [][][][]$, $[] [] [][][][] [] [] [][][][]$, $[] [] [][][][] [] [] [][][][]$ and
+ []
+
+[65]
+
+LaTeX Warning: Reference `EstimationKF' on page 66 undefined on input line 2819.
+
+
+LaTeX Warning: Reference `EstimationPersistency' on page 66 undefined on input line 2823.
+
+(./TSM.bbl [66]) [67
+
+] (./TSM.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-12-11>
  ***********
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `TSM.out' has not changed.
-(rerunfilecheck)             Checksum: 748C5CFFD475F2348F4AFF867FE176A4;5642.
+(rerunfilecheck)             Checksum: D92105FA3196A3F1D2355DEA8DAE3C58;5513.
  ) 
 Here is how much of TeX's memory you used:
- 17566 strings out of 476837
- 319859 string characters out of 5804057
- 1956106 words of memory out of 5000000
- 39280 multiletter control sequences out of 15000+600000
- 564594 words of font info for 99 fonts, out of 8000000 for 9000
+ 17728 strings out of 476837
+ 323913 string characters out of 5804057
+ 1967106 words of memory out of 5000000
+ 39424 multiletter control sequences out of 15000+600000
+ 565593 words of font info for 109 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,19n,120p,540b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,120p,659b,577s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TSM.pdf (41 pages).
+Output written on TSM.pdf (67 pages).

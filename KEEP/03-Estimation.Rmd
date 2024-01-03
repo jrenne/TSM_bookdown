@@ -1,0 +1,754 @@
+# Estimation of affine asset-pricing models
+
+## State-Space Model {#EstimationSSModel}
+
+* The dynamic asset-pricing models are **state-space models**: The dynamics of all variables, gathered in vector $y_t$ (yields, equity returns, macroeconomic variables, survey-based variables) is accounted for by state variables ($w_t$).
+* The equations defining the relationship between the other variables and the state variables are called *measurement equations* (Eq. \@ref(eq:measeq)).
+* The equations defining the dynamics of the state variables are called *transition equations* (Eq. \@ref(eq:transeq)).
+* If $w_t$ is an affine process, the transition equations admit a VAR(1) representation (Proposition \@ref(prp:affineVAR)).
+
+
+:::{.definition #LSSM name="Linear State-Space Model"}
+A linear state-space model writes as follows:
+\begin{eqnarray}
+\underset{(m \times 1)}{y_t}  &=& A + Bw_t + \eta_t  \quad \mbox{with }  \eta_t \sim i.i.d. \mathcal{N}(0,\Omega) (\#eq:measeq) \\
+\underset{(n \times 1)}{w_t} & =& \mu + \Phi w_{t-1} + \Sigma^{\frac{1}{2}}(w_{t-1}) \varepsilon_t,(\#eq:transeq)
+\end{eqnarray}
+where $\varepsilon_t$ is a martingale difference sequence satisfying  $\mathbb{V}ar_t(\varepsilon_{t+1}) = Id$. The components of $\eta_t$ are **measurement errors**.
+:::
+
+**Note:** Eq. \@ref(eq:transeq) comes from Proposition \@ref(prp:affineVAR) (Eq. \@ref(eq:VARw)).
+
+
+* There are two different situations:
+a. all state variables (components of $w_t$) are observed (next slide);
+b. some of these variables are latent.
+
+
+
+What do we mean by *model estimation* in case (b)?
+Three possible meanings:
+
+* (b.i) We know the model parameters but we want to recover the latent factors (for instance to compute model-implied prices).
+* (b.ii) We know neither the model parameters nor the latent variables, we want to estimate both of them.
+* (b.iii) We know neither the model parameters nor the latent variables, we are just interested in the model parameters.
+
+* Case (a): One can resort to standard estimation techniques (GMM, Maximum Likelihood) to estimate model parameters.
+* Take the maximum likelihood case, we have:
+\begin{eqnarray*}
+f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}) &=& f(y_t|\underline{y_{t-1}},\underline{w_{t}}) \times \underbrace{f(w_t|\underline{y_{t-1}},\underline{w_{t-1}})}_{= f(w_t|\underline{w_{t-1}})}\\
+&=& \bv{n}(y_t;A + Bw_t,\Omega) f(w_t|\underline{w_{t-1}}),
+\end{eqnarray*}
+where $\bv{n}(x;\mu,\Omega)$ denotes the evaluation, at vector $x$ of the p.d.f. of the multivariate normal distribution $\bv{n}(\mu,\Omega)$, i.e., if $x$ is a $m$-dimensional vector:
+\begin{equation}
+\bv{n}(x;\mu,\Omega) = \frac{1}{\sqrt{(2 \pi)^{m}|\Omega|}} \exp\left(-\frac{1}{2}\{x - \mu\}'\Omega^{-1}\{x-\mu\}\right).(\#eq:varPHI)
+\end{equation}
+* Once this conditional p.d.f. is known, the total likelihood is given by (conditional on $y_0$ and $w_0$):
+$$
+\prod_{t=1}^T f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}).
+$$
+* $f(w_t|\underline{w_{t-1}})$ depends on the process chosen for $w_t$. If complicated to compute, one can employ Pseudo ML.
+
+
+
+* In some cases, the computation of $f(w_t|\underline{w_{t-1}})$ may be complicated.
+* For instance, the p.d.f. may involve an infinite sum, which is the case in the ARG case of Example \@ref(exm:ARG1}.
+* When $w_t$ is affine, the Pseudo Maximum Likelihood approach consists in replacing $f(w_t|\underline{w_{t-1}})$ by:
+$$
+\bv{n}(w_t;\mu + \Phi w_{t-1},\Sigma(w_t)).
+$$
+where $\mu$, $\Phi$ and $\Sigma(w_t)$ are introduced in Eqs. \@ref(eq:MUPHI) and \@ref(eq:SigmaWt) in Proposition \@ref(prp:affineVAR).
+* In case (b.iii), one can estimate the model by fitting sample moments computed using observed variables (prices, yields, returns) $\Rightarrow$ \color{blue}{Generalized Method of Moments (GMM)}.
+
+
+In the context of affine processes, conditional and unconditional moments of the state vector $w_t$ are available in closed from (see Eqs. \@ref(eq:condmean), \@ref(eq:condvar) and \@ref(eq:uncondmeanvar)).
+
+
+If the model-implied moments are not available in closed-form, one may have to to resort to the **Simulated Method of Moments (SMM)** [Duffie and Singleton (1993)](https://www.econometricsociety.org/publications/econometrica/1993/07/01/simulated-moments-estimation-markov-models-asset-prices) or [Duffie and Singleton (1993)](http://www.oxfordscholarship.com/view/10.1093/0198774753.001.0001/acprof-9780198774754).
+
+* In cases (b.i) and (b.ii), one has to implement \color{blue}{filtering methods}.
+* We focus on the latter context in the following.
+
+
+
+
+
+
+
+## Kalman-Filter-Based Approach {#Estimation:KF}
+
+
+* Let us start with the particular case of state-space model (Def. \@ref(def:LSSM)) where $\varepsilon_t$ is Gaussian and where $\Sigma^{\frac{1}{2}}$ does not depend on $w_t$, i.e.with  a homoskedastic linear Gaussian state-space model.
+* Let's denote by $\theta$ the vector of parameters that defines the model.
+* For a given $\theta$ and a sequence of observations $\{y_1,\dots,y_T\}$.
+* The Kalman filter computes the distribution of $w_t$ given $\{y_1,\dots,y_t\}$ (see Def. \@ref(def:FiltvsSmooth)).
+* This distribution is Gaussian, and obtained by a recursive algorithm.
+* Byproduct of the Kalman filter: likelihood associated with $\theta$.
+\item $\Rightarrow$ makes it possible to estimate $\theta$ by maximizing the likelihood.
+* Hence, Kalman-filter techniques can address Objective (b.ii).
+
+
+:::{.definition #FiltvsSmooth name="Filtered versus smoothed estimates"}
+
+\begin{equation*}
+\begin{array}{lccllllll}
+\mbox{Filtering:} & w_{t|t} & = & \mathbb{E}(w_t|\underline{y_t}) & \mbox{and}  & P_{t|t} &=& \mathbb{V}ar(w_t|\underline{y_t})\\
+\mbox{Smoothing:} & w_{t|T} & = & \mathbb{E}(w_t|\underline{y_T}) & \mbox{and} & P_{t|T} &=& \mathbb{V}ar(w_t|\underline{y_T})
+\end{array}
+\end{equation*}
+:::
+
+
+
+
+:::{.proposition #KF name="Kalman filter and smoother"}
+If $\varepsilon_t \sim  \mathcal{N}(0,I)$ in the state-space defined in Def. \@ref(def:LSSM), then we have (*filtering*):
+$$
+w_t|y_1,\dots,y_t \sim  \mathcal{N}(w_{t|t}|P_{t|t}),
+$$
+where $w_{t|t}$ and $P_{t|t}$ result from the following recursive equations:
+$$
+\boxed{
+\begin{array}{ccl}
+w_{t|t} &=& w_{t|t-1} + K_t \lambda_t\\
+P_{t|t} &=& (I - K_t B)P_{t|t-1} \\ \\
+\mbox{where (updating step)} \\
+\lambda_t &=& y_t - A - Bw_{t|t-1}  \quad \mbox{(forecast error)}\\
+S_{t|t-1} &=& \mathbb{V}ar(y_t|\underline{y_{t-1}}) = B P_{t|t-1} B' + \Omega\\
+K_t &=& P_{t|t-1}B'S_{t|t-1}^{-1} \quad \mbox{(Kalman gain)} \\ \\
+\mbox{and where (forecasting step)} \\
+w_{t|t-1} &=& \mu + \Phi w_{t-1|t-1} \\
+P_{t|t-1} &=& \Sigma + \Phi P_{t-1|t-1} \Phi' \quad (\Sigma = \Sigma^{\frac{1}{2}}{\Sigma^{\frac{1}{2}}}').
+\end{array}
+}
+$$
+The log likelihood is (recursively) computed as follows:
+\begin{eqnarray}
+\log \mathcal{L}(\theta;\underline{y_T}) &=& \frac{mT}{2}\log\left(2\pi\right) (\#eq:logLikKF)\\
+&  & -\frac{1}{2}\sum_{t=1}^{T}\left(\log\left|S_{t | t-1}(\theta)\right|+\lambda'_{t}(\theta)S_{t\mid t-1}^{-1}(\theta)\lambda{}_{t}(\theta)\right). \nonumber
+\end{eqnarray}
+
+
+Moreover, we also have (*smoothing*):
+$$
+w_t|y_1,\dots,y_T \sim  \mathcal{N}(w_{t|T}|P_{t|T}),
+$$
+where $w_{t|T}$ and $P_{t|T}$ result from the following recursive equations:
+$$
+\boxed{
+\begin{array}{ccl}
+w_{t|T} & = & w_{t|t}+F_{t}(w_{t+1|T}-w_{t+1|t})\\
+P_{t|T} & = & P_{t|t}+F_{t}(P_{t+1|T}-P_{t+1|t})F'_{t}\\ \\
+\mbox{where} \\
+F_{t} &=& P_{t|t}\Phi'_{t+1}P_{t+1|t}^{-1}.
+\end{array}
+}
+$$
+:::
+
+
+```{r illusKF, echo=FALSE, fig.cap="Updating in the Kalman filter.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+
+rho <- .8
+var <- .4
+xhat <- NaN
+sigma <- 2
+Sigma <- sigma*matrix(c(1,rho,rho,1),2,2)
+
+library(cluster)
+x <- 2*rnorm(1000)
+y <- rnorm(1000) + 2*x + 10
+xy <- unname(cbind(x, y))
+exy <- ellipsoidhull(xy)
+# exy # >> calling print.ellipsoid()
+# plot(xy)
+# lines(predict(exy))
+# points(rbind(exy$loc), col = "red", cex = 3, pch = 13)
+
+rho  <- .85
+coef <- .85
+exy$loc <- c(2,2)
+
+par(mfrow= c(2,1))
+layout(matrix(c(1,2)), heights=c(2, 2))
+
+par(plt=c(.15,.95,.1,.95))
+
+x <- seq(-2,6,by=.05)
+
+plot(0,0,col='white',
+     xlim=c(-2,6),
+     ylim=c(0,1.5),ylab="Density",xlab="",xaxt="n",yaxt="n")
+
+# sigmax <- sqrt(var)
+# Ex <- 1.5
+# densx <- 1/sqrt(2*pi*sigmax^2)*exp(-.5*(x-Ex)^2/sigmax^2)
+# lines(x,densx,col='forestgreen',lwd=2,lty=1)
+# 
+# arrows(-.5,.7,1,.5,length=.1,col="forestgreen")
+# text(-.5,.85,expression(paste("density ",X[t-1]/Y[t-1],",",Y[t-2],",",...,sep="")))    
+
+sigma <- 1
+Sigma <- sigma*matrix(c(1,rho,rho,1),2,2)
+sigmax <- sqrt(Sigma[1,1])
+Ex <- 2
+x <- seq(-2,6,by=.05)
+densx <- 1/sqrt(2*pi*sigmax^2)*exp(-.5*(x-Ex)^2/sigmax^2)
+lines(x,densx,col='black',lwd=2)
+abline(v=exy$loc[2],lty=2)
+
+arrows(1,1.17,1.5,.36,length=.1,col="black")
+text(.5,1.3,expression(paste("density ",X[t]/Y[t-1],",",Y[t-2],",",...,sep="")))
+
+abline(v=xhat,lty=2,col='red')
+
+sigmax <- sqrt(var)
+y <- 3.8
+Ex <- 2 + coef * (y - 2)
+x  <- seq(-2,6,by=.05)
+densx <- 1/sqrt(2*pi*sigmax^2)*exp(-.5*(x-Ex)^2/sigmax^2)
+lines(x,densx,lwd=2,col="red")
+
+arrows(5,1,4.5,.2,length=.1,col="red")
+text(5,1.1,expression(paste("density ",X[t]/Y[t],",",Y[t-1],",",...,sep="")))
+
+
+par(plt=c(.15,.95,.17,.95))
+
+x <- seq(-2,6,by=.05)
+
+sigma0 <- .5
+Sigma <- sigma*matrix(c(1,rho,rho,1),2,2)
+
+plot(0,0,col="white",xlim=c(-2,6),ylim = c(-2,7),lwd=2,xlab="",
+     ylab="",xaxt="n",yaxt="n")
+mtext(expression(X[t]),side=1,line=1)
+mtext(expression(Y[t]),side=2,line=1)
+
+sigma <- 1
+Sigma <- sigma*matrix(c(1,rho,rho,1),2,2)
+exy$cov <- Sigma
+lines(predict(exy),lwd=2)
+
+abline(h=exy$loc[1],lty=2)
+abline(v=exy$loc[2],lty=2)
+sigma <- 2
+Sigma <- sigma*matrix(c(1,rho,rho,1),2,2)
+exy$cov <- Sigma
+lines(predict(exy),type='l',lwd=2)
+sigma <- 3.5
+Sigma <- sigma*matrix(c(1,rho,rho,1),2,2)
+exy$cov <- Sigma
+lines(predict(exy),type='l',lwd=2)
+
+arrows(0,5,1.2,3,length=.1)
+text(-.7,6.7,"Contour (iso-density) of")
+text(-.7,5.7,expression(paste("(",X[t],",",Y[t],")","/",Y[t-1],",",Y[t-2],",",...,sep="")))      
+
+sigma <- 1
+Sigma <- sigma*matrix(c(1,rho,rho,1),2,2)
+coef <- Sigma[2,1]*(1/Sigma[1,1])
+var <- Sigma[2,2] - Sigma[2,1]*(1/Sigma[1,1])*Sigma[1,2]
+
+Y <- seq(-2,6,by=.05)
+
+lines(2+coef*(Y-2),Y,col="blue",lwd=2)
+arrows(5,1,5,5.5,length=.1,col="blue")
+text(5,.8,expression(paste(E(X[t]/Y[t],Y[t-1],...),sep="")),pos=1,col="blue")        
+
+y <- 3.8
+abline(h=y,col="red",lwd=2)
+text(-1,y+.5,expression(Y[t]==y),col='red')
+
+xhat <- 2+coef*(y-2)
+lines(c(xhat,xhat),c(y,7),col="red",lty=2)
+arrows(xhat,6.8,xhat,7.2,col="red",length=.05)
+
+
+
+```
+
+### Initialization
+
+* Recursive procedure: initial conditions are required (*Iteration 0*).
+* There are different possibilities regarding the initialization of ($w_{0|0}$, $P_{0|0}$):
+A. include the elements of($w_{0|0}$, $P_{0|0}$) among the parameters to estimate;
+B. set ($w_{0|0}$, $P_{0|0}$) to their unconditional values (using e.g. Eq. \@ref(eq:uncondmeanvar});
+C. set $w_{0|0}$ to a prior value and take
+
+* an arbitrary large value for $P_{0\mid0}$ if the prior value
+is uncertain ($\sim$ **diffuse prior**);
+* a small value for $P_{0\mid0}$ if we re confident in this prior value.
+
+
+* In many application, one does not observe all the entries of $y_t$ at every date (because e.g. different frequencies, unreliable data for some period, short historical series for some variables).
+* Easily addressed by Kalman filtering/smoothing: One simply has to change the size of $y_t$ (and of $\lambda_t$, $S_{t|t-1}$, $A$ and $B$) on each date. %($m$, denoting the dimension of $y_t$, also has to be changed accordingly in the likelihood,
+* Of course, the greater the number of observations
+available to update the filter, the better the accuracy of the estimation.
+* Log-likelihood computation (Eq. \@ref(eq:logLikKF)) still valid (adjust for the number of observed variables at each iteration; $m$ then depends on time).
+* Consider the following model
+\begin{eqnarray}
+\left[\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}\right] & = &
+\left[\begin{array}{cc}
+\alpha_{1} & 0\\
+0 & \alpha_{2}
+\end{array}\right]
+\left[\begin{array}{c}
+y_{1,t-1}\\
+y_{2,t-2}
+\end{array}\right]+\left[\begin{array}{c}
+\gamma_{1}\\
+\gamma_{2}
+\end{array}\right]w_{t}+ \eta_t\label{eq_measur}\\
+w_{t} & = & \phi w_{t-1}+\varepsilon_{t}.\label{eq_trans}
+\end{eqnarray}
+
+* We simulate a 100-period sample, we remove observations of $y_{1,t}$ (respectively of $y_{2,t}$) between periods $t=30$ and $t=50$ (resp. between periods $t=40$ and $t=70$), and try to recover the states $w_t$.
+
+
+<!-- \begin{center} -->
+<!-- \includegraphics[width=.8\linewidth]{figures/Figure_Kalman3_new.pdf} -->
+<!-- \end{center} -->
+
+<!-- \begin{center} -->
+<!-- \includegraphics[width=1\linewidth]{figures/Figure_Kalman4_new.pdf} -->
+<!-- \end{center} -->
+
+
+
+## About non-constant conditional matrix $\Sigma$
+
+* Proposition \@ref(prp:KF) is valid when $\varepsilon_t$ is Gaussian and when $\Sigma^{\frac{1}{2}}$ does not depend on $w_t$.
+* How to proceed in the general case?
+* In the general case (but when $w_t$ is an affine process), we have that $\Sigma(w_{t-1}) \equiv \mathbb{V}ar(w_{t+1}|\underline{w_t})$ is affine in $w_t$ [Prop. \@ref(prp:affineVAR)].
+* In order to deal with this, the Kalman filter algorithm can be modified.
+* Specifically, in the prediction step (see Prop. \@ref(prp:KF)), $P_{t|t-1}$ can be computed as:
+$$
+P_{t|t-1} = \Sigma\color{red}{(w_{t-1|t-1})} + \Phi P_{t-1|t-1} \Phi',
+$$
+i.e. we replace $\Sigma(w_{t-1})$ by $\Sigma(w_{t-1|t-1})$.
+* Though the approach is then not necessarily optimal, it shows good empirical properties [de Jong (2000)](\href{http://link.springer.com/article/10.1023\%2FA\%3A1008304625054) or [Duan and Simonato (1999)](https://www.jstor.org/stable/1392263?seq=1\#page_scan_tab_contents).
+* In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations [see e.g. [Monfort, Pegoraro, Renne and Roussellet (2017)](https://www.sciencedirect.com/science/article/pii/S0304407617301653).
+
+### Non-linear models {#nonlinear}
+
+* If $w_t$ follows an affine process, it admits the VAR dynamics presented in Prop. \@ref(prp:affineVAR) $\Rightarrow$ linear transition equation.
+* However, measurement equations may be non-linear (affine) functions of $w_t$.
+* This is in particular the case if observed variables include Swaps rates (see Remark SWAPS), CDS rates (see Subsection \@ref(subsec:Credit:CDS), in particular Eq. \@ref(eq:MCCDSformula1)) or prices of tranche products (see Example \@ref(exm:DD)).
+* In this case, one can for instance resort to the Extended Kalman Filter (linearizing the measurement equations, see supplementary material) or the Quadratic Kalman Filter [Monfort, Renne and Roussellet, 2015](https://www.sciencedirect.com/science/article/pii/S0304407615000123), second-order expansion of the measurement equations).
+
+
+
+
+
+## Inversion Technique {#EstimationInversion}
+
+
+* The **inversion technique** has been introduced by [Chen and Scott (1993)](http://www.iijournals.com/doi/abs/10.3905/jfi.1993.408090?journalCode=jfi).
+* It is used e.g. by [Ang and Piazzesi (2003)](http://web.stanford.edu/~piazzesi/AP.pdf) and [Liu, Longstaff and Mandell (2006)](http://rady.ucsd.edu/faculty/directory/liu/pub/docs/rate-swaps.pdf).
+* Contrary to Kalman-type approaches, this approach is not recursive. Hence can be faster (especially for long sample -- in time dimension).
+* Recall that $y_t$ and $w_t$ are respectively of dimension $m$ and $n$ (see Eqs. \@ref(eq:measeq) and \@ref(eq:transeq) in Def. \@ref(def:LSSM)).
+
+
+:::{.hypothesis #perfectlymodelled name="Perfectly-modelled variables"}
+
+* Assumption: $n$ components of the $m$-dimensional vector $y_t$ (with $n \le m$) are perfectly modelled (no measurement errors in associated measurement equations).
+* Without loss of generality, these perfectly-modelled variables are the first $n$ components of $y_t$, that is:
+$$
+y_t =
+\left(\begin{array}{c}
+\underbrace{y_{1,t}}_{(n \times 1)} \\
+\underbrace{y_{2,t}}_{(m-n)\times1}
+\end{array}\right).
+$$
+:::
+
+
+* Under Assumption \@ref(hyp:perfectlymodelled), the measurement equation (Eq. \@ref(eq:measeq)) becomes:
+$$
+\left[
+\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}
+\right]
+=
+\left[
+\begin{array}{c}
+A_{1}\\
+A_{2}
+\end{array}
+\right]+
+\left[
+\begin{array}{c}
+B_{1}\\
+B_{2}
+\end{array}
+\right]w_t +
+\left[
+\begin{array}{c}
+0\\
+\eta_{2,t}
+\end{array}
+\right],
+$$
+where $\eta_{2,t} \sim  \mathcal{N}(0,\Omega_2)$ (say). This notably implies
+\begin{equation}
+w_t = B_{1}^{-1}(y_{1,t} - A_1).(\#eq:wY1)
+\end{equation}
+* Under this assumption and if the conditional distribution of $w_t$ is available in closed form, then the (exact) likelihood of the model can then be computed.
+* Proposition \@ref(prp:logLikinversion) (next slide) shows that the computation of $f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})$ involves three terms:
+* The first term (in blue in \@ref(eq:inversionLogL)) stems from the conditional distribution $w_t|\underline{w_{t-1}}$.
+* The second term (in red in \@ref(eq:inversionLogL)) is associated with the measurement errors pertaining to $y_{2,t}$, that are the components of $\eta_{2,t}$.
+* The third term (in brown in \@ref(eq:inversionLogL)) is the determinant of the Jacobian matrix associated with the linear transformation between $w_t$ and $y_{1,t}$ (Eq. \@ref(eq:wY1)), that is $|B_1|$.
+* Once one knows how to compute $f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})$, the total likelihood is easily obtained since:
+$$
+f_{Y_1,\dots,Y_T}(y_1,y_2,\dots,y_T) = f_{Y_1}(y_1) \prod_{t=2}^T f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}}).
+$$
+
+
+:::{.proposition #logLikinversion name="Log-likelihood in the inversion context"}
+In the context of a linear state-space model as defined in Def. \@ref(def:LSSM), under Assumption \@ref(hyp:perfectlymodelled), and if $w_t$ is a Markovian process, we have:
+\begin{eqnarray}
+f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}}) &=& \color{blue}{f_{w_t|w_{t-1}}(w(y_{1,t});w(y_{t-1}))} \times \nonumber\\
+&& \color{red}{\bv{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2)} \times \color{brown}{|B_1|^{-1}}.(\#eq:inversionLogL)
+\end{eqnarray}
+where $w(y_{1,t}) = B_{1}^{-1}(y_{1,t} - A_1)$ and where $\bv{n}$ denotes the multivariate normal p.d.f. (Eq. \@ref(eq:varPHI)).
+:::
+:::{.proof}
+Since $w_t$ is Markov, so is $y_{1,t}$ and since $y_{2,t} = A_2 + B_2 w(y_{1,t}) + \eta_{2,t}$, with $w(y_{1,t}) = B_{1}^{-1}(y_{1,t} - A_1)$, we have:
+\begin{eqnarray*}
+f(y_t|y_{t-1}) &=& f_1(y_{1,t}|y_{1,t-1}) f_2(y_{2,t}|y_{1,t}) \\
+&=& |B_1|^{-1} f_w(w(y_{1,t})|w(y_{1,t-1})) \bv{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2),
+\end{eqnarray*}
+where
+* $f_1(y_{1,t}|y_{1,t-1})= |B_1|^{-1} f_w(w(y_{1,t})|w(y_{1,t-1}))$ comes from the fact that, if $U$ and $V$ are two random variables such that $V = g(U)$, where $g$ is a bijective and differentiable function, then $f_V(v)=\left|\frac{\partial g^{-1}(v)}{\partial v'}\right| f_U(g^{-1}(v))$,
+* and $f_2(y_{2,t}|y_{1,t}) = \bv{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2)$ comes from the fact that $y_{2,t}|y_{1,t} \sim \bv{n}(A_2 + B_2 w(y_{1,t}),\Omega_2)$.
+:::
+
+
+
+### Dealing with Unobserved Regimes {#EstimationRS}
+
+
+* The (adjusted) Kalman and inversion techniques are not suited to the case where some of the components of $w_t$ are valued in a discrete set. This is typically the case if $w_t$ is of the form:
+$$
+w_t = \left(\begin{array}{c}
+z_t \\
+x_t
+\end{array}\right),
+$$
+where $z_t$ is valued in $\{e_1,\dots,e_J\}$, $e_j$ being the $j^{th}$ column of $Id_J$.
+* Let's assume that $z_t$ is an exogenous and homogenous Markov chain whose dynamics is defined by the $\pi(e_i,e_j)$'s that are such that:
+\begin{equation}
+\pi(e_i, e_j) = \mathbb{P}(z_{t+1}=e_j | z_t=e_i).(\#eq:transitproba)
+\end{equation}
+* We denote by $\Pi$ the matrix of transition probabilities, i.e. the $(i,j)$ component of $\Pi$ is $\pi(e_i, e_j)$.
+* Assume further that we have:
+\begin{equation}
+x_t = m(z_t,x_{t-1}) + \varepsilon_t,(\#eq:dynxRS)
+\end{equation}
+where $\mathbb{E}(\varepsilon_t|\underline{z_t},\underline{x_{t-1}})=0$.
+* The conditional distribution of $\varepsilon_t$ w.r.t. $(z_t,x_{t-1})$ is denoted by $f_{\varepsilon}(.;z_t,x_{t-1})$.
+
+
+:::{.hypothesis #RSmeasurement name="Measurement equations"}
+The measurement equation is of the form:
+\begin{equation}
+y_t = A z_t + B x_t + \eta_t,  \quad \mbox{with }  \eta_t \sim i.i.d. \bv{n}(0,\Omega).(\#eq:RSmeasur)
+\end{equation}
+:::
+
+:::{.example #GRSVAR name="Regime-Switching Gaussian VAR"}
+* Building on Example \@ref(exm:RSVAR), we know that if
+\begin{equation}
+x_t = \mu z_t + \Phi x_{t-1} +  \varepsilon_t,(\#eq:xRSVAR)
+\end{equation}
+where $\varepsilon_t|\underline{x_t},z_t \sim   \mathcal{N}(0,\Sigma(z_t))$ and if $z_t$ is an exogenous independent Markov chain, then $w_t = (x_t',z_t')'$ is affine.
+* This context is consistent with the situation presented XXX. In particular, using the notations of Eq. \@ref(eq:dynxRS), we have:
+$$
+m(z_t,x_{t-1}) = \mu z_t + \Phi x_{t-1}.
+$$
+* If $r_t$ and the s.d.f. are respectively affine and exponential in $w_t$, then, in particular, yields are also affine in $w_t$, i.e. of the form $R(t,h)= A_h'z_t + B_{h}'x_t$ (see Eq. \@ref(eq:RthAB)).
+* Therefore, if the components of $y_t$ are yields of different maturities, the measurement equations are consistent with Assumption \@ref(hyp:RSmeasurement).
+:::
+
+
+* How to estimate such a model when the regimes $z_t$ are unobservable? Two distinct situations.
+
+* **Case 1.** The $x_t$ factors are observable.
+
+* The probabilities of being in the different regimes on each date can be estimated by employing the Kitagawa-Hamilton filter.
+* The Kitagawa-Hamilton filter (Appendix \@ref(app:KitagHamilton)) can be employed, with $F_t = (y_t',x_t')'$ and:
+\begin{eqnarray*}
+f(F_t|z_t=e_j,\underline{F_{t-1}}) &=& f(y_t|x_t,z_t=e_j,\underline{F_{t-1}})f(x_t|z_t=e_j,\underline{F_{t-1}}) \\
+&=& \bv{n}(y_t;A z_t + B x_t,\Omega) \times \\
+&&f_{\varepsilon}(x_t - m(z_t,x_{t-1});z_t,x_{t-1}),
+\end{eqnarray*}
+where, as in Slide \@ref(slide:inversionXX), $\bv{n}(u;\mu,\Omega)$ denotes the evaluation, at vector $u$ of the p.d.f. of the multivariate normal distribution $\mathcal{N}(\mu,\Omega)$.
+
+* A by-product of the Kitagawa-Hamilton filter is the likelihood function associated with the dataset $\Rightarrow$ The model parameterization can be estimated by MLE.
+
+* **Case 2.** The $x_t$ factors are not observable. Two sub-cases:
+* 2.i The components of $y_t$ are not perfectly modelled (i.e. $\Omega \ne 0$, where $\Omega$ defined in Eq. \@ref(eq:RSmeasur).
+* 2.ii $n_x$ components of $y_t$ are perfectly modelled (where $n_x$ is the dimension of $x_t$).
+
+* In Case (2.i), one has to resort to filters dealing with two types of uncertainty [with hidden discrete values ($z_t$) and continuously distributed latent variables ($x_t$)].
+
+
+In particular [Kim (1994)'s filter](https://www.sciencedirect.com/science/article/pii/0304407694900361) can be employed when the state-space model is of the form \@ref(eq:RSmeasur)-\@ref(eq:xRSVAR) [Monfort and Renne (2014)](https://academic.oup.com/rof/article/18/6/2103/1661774), Example \@ref(exm:SovereignSpreads)].
+* In Case (2.ii), one can resort to an inversion technique, complemented with the Kitagawa-Hamilton filter, to estimate the model (see following box).
+
+
+
+
+
+
+
+:::{.proposition #KitagHamilton name="Kitagawa-Hamilton filter"}
+Consider a $q$-dimensional vector of variables $F_t$ and an exogenous homogenous Markov chain $z_t$. We make use of the following notations:
+
+* $\eta_t$ is a $J$-dimensional vector whose $j^{th}$ component is the p.d.f. of $F_t$ conditional on $(z_t = e_j,\underline{F_{t-1}})$, i.e. $f(F_t|z_t=e_j,\underline{F_{t-1}})$
+* $\xi_{t}$ is a $J$-dimensional vector whose $j^{th}$ component is $\mathbb{P}(z_t = e_j|\underline{F_t})$.
+
+The sequence $\xi_{t}$ can then be computed recursively as follows:
+\begin{equation}
+\xi_t = \frac{(\Pi' \xi_{t-1}) \odot \eta_t}{\bv{1}'(\Pi' \xi_{t-1} \odot \eta_t)},(\#eq:KHfilter)
+\end{equation}
+where $\odot$ denotes the element-by-element (Hadamard) product and where $\bv{1}$ denotes a $J$-dimensional vector of ones.
+
+Moreover, the previous formulas also show how to compute the likelihood of the model since:
+\begin{equation}
+f(F_t|\underline{F_{t-1}})=\bv{1}'(\Pi' \xi_{t-1} \odot \eta_t).(\#eq:KHlikelihood)
+\end{equation}
+:::
+
+
+
+
+
+
+
+:::{.proposition #mixedKFinversion name="Kitagawa-Hamilton and inversion techniques"}
+
+The matrix of transition probabilities of $\mathcal{Z}_t$ is of the form $\bv{1}_{n \times 1} \otimes \widetilde{\Pi}$, with
+$$
+\widetilde{\Pi} =
+\left[
+\begin{array}{ccccc}
+\pi_{1,\bullet} & 0_{1 \times n} \dots & & & 0_{1 \times n} \\
+0_{1 \times n} & \pi_{2,\bullet} & 0_{1 \times n} & \dots & 0_{1 \times n} \\
+&& \ddots \\
+& &  0_{1 \times n} & \pi_{n-1,\bullet} & 0_{1 \times n} \\
+0_{1 \times n} &\dots && 0_{1 \times n} & \pi_{n,\bullet}
+\end{array}
+\right],
+$$
+where $\pi_{i,\bullet}$ denotes the $i^{th}$ row of $\Pi$ ($\Pi$ is defined on Slide XXX).
+
+The last term appearing in Eq. \@ref(eq:conddistri4KHfilter) can be computed as follows:
+\begin{eqnarray*}
+&&f\left(\left[\begin{array}{c}x(y_t,z(\mathcal{Z}_t))\\y_{2,t}\end{array}\right]|\mathcal{Z}_t,\underline{y_{t-1}}\right) \\
+&=& f\left(y_{2,t}|x_t=x(y_t,z(\mathcal{Z}_t)),\mathcal{Z}_t,\underline{y_{t-1}}\right) \times\\
+&& f\left(x(y_t,z(\mathcal{Z}_t))|\mathcal{Z}_t,\underline{y_{t-1}}\right) \\
+&=& \bv{n}(y_{2,t};A_2z_t + B_2x_t,\Omega_2) \times\\
+&& f_\varepsilon\left(\varepsilon_t|z_t = z(\mathcal{Z}_t),x_{t-1}=x(y_{t-1},z_{-1}(y_{t-1},\mathcal{Z}_t))\right),
+\end{eqnarray*}
+where $\bv{n}$ is the p.d.f. of a multivariate normal distri, (Prop. \@ref(prp:logLikinversion), where $\varepsilon_t = x_t - m[z(\mathcal{Z}_t),x(y_{t-1},z_{-1}(y_{t-1},\mathcal{Z}_t))]$ ($m$ defined in Eq. \@ref(eq:dynxRS)).
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+### Mixed use of Kitagawa-Hamilton and inversion techniques
+
+* Without loss of generality, assume that the $n_x$ first components of $y_t$ are observed without error, i.e. Assumption \@ref(hyp:RSmeasurement) becomes
+$$
+\left[
+\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}
+\right]
+=
+\left[
+\begin{array}{c}
+A_{1}z_t\\
+A_{2}z_t
+\end{array}
+\right]+
+\left[
+\begin{array}{c}
+B_{1}\\
+B_{2}
+\end{array}
+\right]x_t +
+\left[
+\begin{array}{c}
+0\\
+\eta_{2,t}
+\end{array}
+\right],
+$$
+where $\varepsilon_2 \sim \mathcal{N}(0,\Omega_2)$.
+* Since $y_{1,t} = A_1 z_t + B_1 x_t$, we then have:
+\begin{equation}
+x_t \equiv x(y_{t},z_t) = B_1^{-1}(y_{1,t} - A_1 z_t).(\#eq:xRS)
+\end{equation}
+* In order to employ the Kitagawa-Hamilton filter (Appendix \@ref(app:KitagHamilton)), one need to define the extended Markov chain:
+$$
+\mathcal{Z}_t = z_{t-1} \otimes z_t,
+$$
+whose matrix of transition probabilities is detailed in Appendix \@ref(app:mixedKFinversion).
+* Note that we have:
+$$
+\left\{
+\begin{array}{cclll}
+z_t &\equiv& z(\mathcal{Z}_t) &=& (\bv{1}' \otimes Id_{n}) \mathcal{Z}_t \\
+z_{t-1} &\equiv& z_{-1}(\mathcal{Z}_t) &=& (Id_{n} \otimes \bv{1}') \mathcal{Z}_t.
+\end{array}
+\right.
+$$
+* The Kitagawa-Hamilton filter (Appendix \@ref(app:KitagHamilton)) can then be employed, with $F_t = y_t$ and:
+\begin{eqnarray}
+f(y_t|\mathcal{Z}_t,\underline{y_{t-1}}) &=&|B_1^{-1}| \times \nonumber \\
+&& f\left(\left[\begin{array}{c}x(y_t,z(\mathcal{Z}_t))\\ y_{2,t}\end{array}\right]|\mathcal{Z}_t,\underline{y_{t-1}}\right),(\#eq:conddistri4KHfilter)
+\end{eqnarray}
+where the computation of the last term is detailed in Appendix \@ref(app:mixedKFinversion).
+
+
+
+
+
+
+
+:::{.example #RSMP name="Interest-rate model with monetary policy-related regimes"}
+
+* @Renne_2017: model where regimes have monetary-policy interpretations.
+* Short-term rate = (daily) EONIA, euro-area overnight interbank rate:
+
+\begin{center}
+\fbox{$r_{t}=\underset{\mbox{Target}}{\underbrace{\bar{r}_{t}}}+\underset{\mbox{EONIA spread}}{\underbrace{x_{t}}}$}
+\par\end{center}
+
+* Target rate $\bar{r}_{t}$ has a step-like path $\bar{r}_{t}=\Delta'z_{r,t}$,
+where
+* $\Delta=[\begin{array}{ccccc}
+0 & 0.25 & 0.50 & \ldots & \bar{r}_{max}\end{array}]'$ and
+* $z_{r,t}=[\begin{array}{ccccccc}
+0 & \ldots & 0 & 1 & 0 & \ldots & 0\end{array}]'$
+* EONIA spread ($x_t$) persistent and mean-reverting fluctuations (AR process).
+* $z_t = z_{r,t}\otimes z_{m,t}$ where $z_{m,t}$ is the monetary-policy regime:
+* Easing  ($z_{m,t}=[\begin{array}{ccc}
+1 & 0 & 0\end{array}]$),
+* Status Quo ($z_{m,t}=[\begin{array}{ccc}
+0 & 1 & 0\end{array}]$),
+* Tightening ($z_{m,t}=[\begin{array}{ccc}
+0 & 0 & 1\end{array}]$).
+
+[Web-interface illustrating $\bar{r}_t$'s dynamic](https://fixed-income.shinyapps.io/NLIR/)
+
+* $z_{r,t}$ is observed, but not $z_{m,t}$.
+* In the model, according to Example \@ref(exm:GRSVAR), we have:
+$$
+R(t,h) = A_h' z_t + B_h x_t.
+$$
+* Denote by $\mathcal{A}_h$ the $(3 \times n_r)$ matrix such that $A_h = vec(\mathcal{A}_h)$. We then have $A_h' z_t = (\mathcal{A}_h z_{r,t})' z_{m,t}$ and, therefore:
+$$
+R(t,h) = A_{t,h}' z_t + B_h x_t, \quad \mbox{where $A_{t,h} = \mathcal{A}_h z_{r,t}$.}
+$$
+* The model is estimated by a mixe use of Kitagawa-Hamilton and inversion techniques, assuming that a linear combination of yields is modelled without errors (giving $x_t = x(y_t,z_{m,t},z_{r,t})$).
+
+<!-- \begin{figure} -->
+<!-- \caption{Estimation outputs from \href{https://www.degruyter.com/view/j/snde.2017.21.issue-1/snde-2016-0043/snde-2016-0043.xml}{Renne (2017)}} -->
+<!-- \label{fig:fitSurveys} -->
+<!-- \begin{center} -->
+<!-- \includegraphics[width=.85\linewidth]{figures/Fig-SNDE.pdf} -->
+<!-- \end{center} -->
+<!-- \end{figure} -->
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+## A Typical Small-Sample Issue {#EstimationPersistency}
+
+Interest rates are particularly persistent variables.
+
+Since affine models eventually lead to linear relationships between state variables and interest rates [Eq. \@ref(eq:RthAB)], some state variables are also necessarily highly persistent.
+
+In small sample, maximum-likelihood estimates of the model parameters are likely to suffer from a downward bias, @Bauer_Rudebusch_Wu_2012 or @Jardet_Monfort_Pegoraro_2013.
+
+This relates to a well-known econometric problem:
+
+<!-- \begin{figure} -->
+<!-- 	\caption{Bias toward zero in the presence of unit root} -->
+<!-- 	\label{fig:unitroot} -->
+<!-- 	\includegraphics[width=1.05\linewidth]{figures/Figure_NonStat_Probl1.pdf} -->
+
+<!-- 	Note: 2000 random walk samples of size $T$ ($T=50$ for the left plot and $T=400$ for the right plot) have been simulated. For each sample, we run the OLS regression $y_t = c + \phi y_{t-1} + \varepsilon_t$. The plots show the distributions (kernel-based estimation) of the estimated $\phi$. The vertical bars indicate the means of the distributions. -->
+
+<!-- \end{figure} -->
+
+
+* This small-sample downward bias has dramatic consequences in terms of term premium estimates.
+* For the sake of illustration, let's consider the following process for the short-term interest rate under the physical measure (monthly frequency):
+$$
+i_{t+1} = \bar{i} + \phi (i_{t}-\bar{i}) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
+$$
+and the following under the risk-neutral measure:
+$$
+i_{t+1} = \bar{i}^* + \phi^* (i_{t}-\bar{i}^*) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
+$$
+with $\bar{i} = 3\%/12$, $\bar{i}^* = 6\%/12$, $\phi = 0.97$, $\phi^*=0.99$, $\sigma = 0.2\%$.
+* Assume the estimate of $\phi$ is downard biased ($\hat\phi=0.9$). Influence on the 10-year term premium? [Figure \@ref(fig:biasedTP), next slide]
+
+<!-- \begin{figure} -->
+<!-- \caption{Biased persistency: Implications on term premiums estimates} -->
+<!-- \label{fig:biasedTP} -->
+<!-- \begin{center} -->
+<!-- \includegraphics[width=1.05\linewidth]{figures/Figure_atsm_downward.pdf} -->
+<!-- \end{center} -->
+<!-- \end{figure} -->
+
+
+* @Kim_Orphanides_2005 and @Kim_Orphanides_2005 have proposed a simple approach to deal with this problem.
+* They add measurement equations to impose that the model-implied forecasts are --up to some measurement errors-- close to survey-based ones.
+* Kim and Orphanides use the [Blue Chip Financial Forecasts](https://lrus.wolterskluwer.com/store/products/blue-chip-financial-forecasts-prod-ss07418345/paperback-item-1-ss07418345).
+* Alternative (publicly available) surveys: [Philly Fed Survey of Professional Forecasters](https://www.philadelphiafed.org/research-and-data/real-time-center/survey-of-professional-forecasters) and [ECB SPF](https://www.ecb.europa.eu/stats/ecb_surveys/survey_of_professional_forecasters/html/index.en.html).
+* Importantly, this approach is tractable because model-implied forecasts of yields are affine in the state vector. [This is the case for any affine model: see Eq. \@ref(eq:condmeanRth).]
+* Their model is able to fit both survey-based forecasts and market yields [Figure \@ref(fig:fitSurveys)].
+
+
+<!-- \begin{figure} -->
+<!-- \caption{Fit of surveys} -->
+<!-- \label{fig:fitSurveys} -->
+<!-- \begin{center} -->
+<!-- \includegraphics[width=.9\linewidth]{figures/fig_KimO2.pdf} -->
+
+<!-- {\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} -->
+<!-- \end{center} -->
+<!-- \end{figure} -->
+
+

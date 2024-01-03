@@ -1,32 +1,22 @@
-# Affine processes
+# Affine processes {#ChapterAffine}
 
-## Information in the Economy: The "Factors" {#Information}
+## Information in the Economy: The "factors" {#Information}
 
-* New information at date $t=1,2,\dots,T$: $K$-dimensional *factor* $w_t$, or *state*.
-* Information available at $t$: $\underline{w_t} = (w_t,w_{t-1},\dots,w_1)$.
-* $w_t$: random vector, observable,  partially observable, or unobservable by the econometrician.
+On each date $t=1,2,\dots,T$, agents receive new information by observing *factors*, also called *states*. We denote the ($K$-dimensional) vector of factors by $w_t$. Vector $w_t$ is usually random. On date $t$, vector $w_t$ is supposed to be perfectly observed by the agents (investors), but can be only  partially observed, or unobserved by the econometrician.
 
-:::{.example #exStockOption name="Stock option pricing"}
+Naturally, $w_t$ can be decomposed into different sub-vectors of different natures. For instance, we can have $w_t = (y_t', z_t')'$ with
+* $y_t$: observable vector of (geometric) returns,
+* $z_t$: regime, unobserved by the econometrician.
 
-* Stock option pricing: $w_t = (y_t, z_t)$ with
-    1. $y_t$: observable vector of (geometric) returns,
-    2. $z_t$:  regime, unobservable by the econometrician.
+Some of the components of $w_t$ can be prices. For instance, one component could be a short-term rate, a stock return, or an exchange rate. It can also include macroeconomic variables (inflation, GDP growth), or agent-specific variables.
 
-* Term structure of interest rates:
+## Dynamic models and Laplace transform (L.T.) {#Dynamic}
 
-$w_t$: unobservable factor or observable vector of yields or spreads, macroeconomic variables.
-:::
-
-## Dynamic Models {#Dynamic}
-
-* Aim: modelling  the dynamics of $w_t$ (historical or risk-neutral, see Chapter \@ref(section:PandQ}).
-* Parametric modelling:
-		* Choice of a family of conditional probability density functions $f(w_{t+1}|\underline{w_t},\theta)$, $\theta$ unknown vector $\in \Theta$.
-		* Equivalently, choice of  a conditional *Laplace transforms*:
-$$
+The objective of a dynamic model is to describe the random changes in $w_t$. The dynamics can be historical or risk-neutral (see Chapter \@ref(PandQ)). The dynamics we consider are parametric, in the sense that the conditional distribution $w_{t+1}|\underline{w_t}$ (with $\underline{w_t}=\{w_t,w_{t-1},\dots\}$) depends on a vector of parameters $\theta$. In practice, it may be the case that $\theta$ is unknown by the econometrician (see Chapter \@ref(Estimation)). The choice (or estimation) of a conditional distribution is equivalent to the choice (or estimation) of a conditional *Laplace transforms*:
+\begin{equation}
 \varphi(u|\underline{w_t},\theta) =
-\mathbb{E}_{\theta}[\exp(u'w_{t+1})|\underline{w_t}], \quad u \in \mathbb{R}^K,
-$$
+\mathbb{E}_{\theta}[\exp(u'w_{t+1})|\underline{w_t}], \quad u \in \mathbb{R}^K,(\#eq:LT)
+\end{equation}
 or a conditional *log Laplace transforms*:
 $$
 \psi(u|\underline{w_t},\theta) =
@@ -36,20 +26,16 @@ $$
 
 
 
-
-
-
-
 :::{.example #exBenoulli name="Conditionally Bernoulli process"}
 If $w_{t+1}|\underline{w_t} \sim {\mathcal{I}} [p(\underline{w_t},\theta)]$, then:
 $$
 \varphi(u|w_t)=
 \mathbb{E}[\exp(u w_{t+1}) \mid \underline{w_t}] = p_t \exp(u) + 1-p_t
 $$
-with $p_t = p(w_t, \theta)$.
+with $p_t = p(\underline{w_t}, \theta)$.
 :::
 
-:::{.example #exBenoulli2 name="Conditionally Bernoulli process"}
+:::{.example #exBenoulli2 name="Conditionally Binomial process"}
 If $w_{t+1}|\underline{w_t} \in {\mathcal{B}}(n, p_t)$, then:
 $$
 \varphi(u|w_t)=[p_t   \exp(u) + 1-p_t]^n.
@@ -90,27 +76,30 @@ $$
 
 
 
-## Some Properties of the Laplace Transform {#AffineLaplace}
+## Laplace Transform and moments/cumulants {#AffineLaplace}
 
+Here are some properties of the Laplace transform (Eq. \@ref(eq:LT)):
 
 * $\varphi(0|\underline{w_t},\theta) = 1$ and $\psi(0|\underline{w_t},\theta)=0$.
-* Defined in a convex set $E$ (containing $0$).
+* It is defined in a convex set $E$ (containing $0$).
 * If the interior of $E$ is non empty, all the (conditional) moments exist.
-* Scalar case:
 
-* Moment of order $n$:
+As mentioned above, knowing the (conditional) Laplace transform is equivalent to knowing the (conditional) moments---if they exist. In the scalar case, we have that:
+
+* the moment of order $n$ closely relates to the $n^{th}$ derivatives of $\varphi$:
 $$
 \left[ \begin{array}{l}  \dfrac{\partial^n
 \varphi(u|\underline{w_t},\theta)}{\partial u^n}
-\end{array} \right]_{u=0} = \mathbb{E}_{\theta}[w^n_{t+1}|\underline{w_t}].
+\end{array} \right]_{u=0} = \mathbb{E}_{\theta}[w^n_{t+1}|\underline{w_t}],
 $$
-* Cumulant of order $n$:
+* the cumulant of order $n$ closely relates to the $n^{th}$ derivatives of $\psi$:
 $$
 \left[ \begin{array}{l}  \dfrac{\partial^n
 \psi(u|\underline{w_t},\theta)}{\partial u^n}
 \end{array} \right]_{u=0} = K_n(\underline{w_t},\theta).
 $$
-* In particular:
+
+In particular, what precedes implies that:
 $$
 \left\{
 \begin{array}{ccc}
@@ -120,10 +109,9 @@ K_2(\underline{w_t}, \theta) &=& \mathbb{V}ar_{\theta}[w_{t+1}|\underline{w_t}].
 \right.
 $$
 
-\varphi$ and $\psi$ are respectively called  conditional **moment** and **cumulant** generating function.
+Accordingly, $\varphi$ and $\psi$ are respectively called  conditional **moment** and **cumulant** generating function.
 
-
-* Multivariate case:
+In the multivariate case, we have:
 \begin{eqnarray*}
 \left[\begin{array}{l}  \dfrac{\partial \psi}{\partial
 u} (u|\underline{w_t},\theta)  \end{array} \right]_{u=0} &=& \mathbb{E}_{\theta}[w_{t+1}|\underline{w_t}] \\
@@ -135,12 +123,10 @@ u} (u|\underline{w_t},\theta)  \end{array} \right]_{u=0} &=& \mathbb{E}_{\theta}
 
 :::{.example #exGaussian name="Conditionally normal (or Gaussian) process"}
 
-See Example \@ref(exm:exGaussian)
-
-* Scalar case
+Consider Example \@ref(exm:exGaussian). Applying the previous formula, we have, in the scalar case:
 
 * $\psi(u|\underline{w_t},\theta)=u m(\underline{w_t},\theta) +
- \frac{1}{2}u^2\sigma^2(\underline{w_t},\theta)$.
+\frac{1}{2}u^2\sigma^2(\underline{w_t},\theta)$.
 * $\left[\begin{array}{l}  \dfrac{\partial \psi}{\partial
 u} (u|\underline{w_t},\theta)  \end{array} \right]_{u=0} =
 m(\underline{w_t},\theta)$.
@@ -148,10 +134,10 @@ m(\underline{w_t},\theta)$.
 \psi}{\partial u^2} (u|\underline{w_t},\theta)  \end{array}
 \right]_{u=0} = \sigma^2(\underline{w_t},\theta)$.
 
-* Multidimensional case
+and, in the multidimensional normal case:
 
 * $\psi(u|\underline{w_t},\theta)=u' m(\underline{w_t},\theta) +
- \frac{1}{2}u'\Sigma(\underline{w_t},\theta)u$.
+\frac{1}{2}u'\Sigma(\underline{w_t},\theta)u$.
 * $\left[\begin{array}{l}  \dfrac{\partial \psi}{\partial
 u} (u|\underline{w_t},\theta)  \end{array} \right]_{u=0} =
 m(\underline{w_t},\theta)$.
@@ -159,12 +145,14 @@ m(\underline{w_t},\theta)$.
 \psi}{\partial u\partial u'} (u|\underline{w_t},\theta)  \end{array}
 \right]_{u=0} = \Sigma(\underline{w_t},\theta)$.
 
-* In both cases, cumulants of order $>2$ equal to $0$.
+In both cases, cumulants of order $>2$ equal to $0$.
 
 :::
 
 
+## Additional properties of the Laplace transform
 
+Here are additional properties of multivariate Laplace transform:
 
 * If $w_t=(w'_{1t},w'_{2t})'$ $, u=(u'_1, u'_2)'$:
 \begin{eqnarray*}
@@ -180,27 +168,20 @@ _{2,t+1}|\underline{w_t})&=&\varphi(0,u_2|\underline{w_t},\theta)].
 \psi(u_1,0|\underline{w_t},\theta)+\psi(0,u_2|\underline{w_t},\theta).
 \end{eqnarray*}
 
-* if $w_{1t}$ and $w_{2t}$ have the same size and if
+* If $w_{1t}$ and $w_{2t}$ have the same size and if
 $$
 \varphi(u_1, u_2|\underline{w_t},\theta) = \mathbb{E}_\theta[\exp(u'_1 w_{1, t+1} + u'_2 w_{2,t+1}|\underline{w_t}],
 $$
 then the conditional Laplace transform of $w_{1, t+1} + w_{2, t+1}$ given
 $\underline{w_t}$ is $\varphi(u, u|\underline{w_t},\theta)$.
-	* If $w_{1t}$ and $w_{2t}$ are conditionally independent,
-same size, the conditional Laplace transform and Log-Laplace
+In particular, if $w_{1t}$ and $w_{2t}$ are conditionally independent and
+have the same size, the conditional Laplace transform and Log-Laplace
 transform of $w_{1,t+1}+w_{2,t+1}$ are respectively:
 $$
 \varphi(u,0|\underline{w_t},\theta)\times \varphi(0,
-u|\underline{w_t},\theta)
-$$
-and
-$$
-\psi(u,0|\underline{w_t},\theta)+ \psi(0,
+u|\underline{w_t},\theta), \quad \mbox{and}\quad \psi(u,0|\underline{w_t},\theta)+ \psi(0,
 u|\underline{w_t},\theta).
 $$
-
-
-
 
 
 
@@ -218,18 +199,10 @@ We have $\varphi_t(u) = \mathbb{P}_t(w_{t+1} = 0) + \int_{w_{t+1}> 0} \exp(u w_{
 
 
 
-
-
-
-
-
-
-
-
-
 :::{.lemma #lemPetitLemme name="Conditional zero probability for non-negative multivariate processes"}
 
 Assume that:
+
 * $w_{1,t}$ is valued in $\mathbb{R}^{d}$ ($d \geq 1$),
 * $w_{2,t}$ is valued in $\mathbb{R}^+ = [0, + \infty )$,
 * $\mathbb{E}_t \left[ \exp \left( u_1 ' w_{1,t+1} + u_2 w_{2,t+1} \right) \right]$ exists for a given $u_1$ and $u_2 \leq 0$.
@@ -239,7 +212,6 @@ Then, we have:
 \mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1})  \textbf{1}_{\{w_{2,t+1} = 0 \}} \right] =  \underset{u_2 \rightarrow -\infty}{\lim} \mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1} + u_2   w_{2,t+1} )  \right].(\#eq:petitlemme)
 \end{equation}
 :::
-
 :::{.proof}
 We have that
 \begin{eqnarray*}
@@ -247,19 +219,20 @@ We have that
 &=& \mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1})   \textbf{1}_{\{w_{2,t+1} = 0 \}} \right] +\\
 && \underset{u_2 \rightarrow -\infty}{\lim}   \mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1} + u_2   w_{2,t+1} )  \textbf{1}_{\{w_{2,t+1} > 0 \}}  \right] ,
 \end{eqnarray*}
-and since in the second term on the right-hand side $\exp(u_2   w_{2,t+1})   \textbf{1}_{\{w_{2,t+1} > 0 \}} \rightarrow 0$ when $u_2 \rightarrow -\infty$, relation \@ref(eq:petitlemme) is a consequence of the Lebesgue theorem.
+and since in the second term on the right-hand side $\exp(u_2   w_{2,t+1})   \textbf{1}_{\{w_{2,t+1} > 0 \}} \rightarrow 0$ when $u_2 \rightarrow -\infty$, Eq. \@ref(eq:petitlemme) is a consequence of the Lebesgue theorem.
 :::
 
 
 
 
 
+## Affine (or Car) processes {#AffineCar}
 
+In term structure applications, we will often consider *affine* processes (Definitions \@ref(def:Car1) and \@ref(def:Carp)). These processes are indeed such that their multi-horizon Laplace transform are simple to compute (Lemma \@ref(lem:MHLT) and Proposition \@ref(prp:reverseMLT)), which is key to compute bond prices.
 
+### Car processes of order one
 
-## Affine (or Car) Processes {#AffineCar}
-
-
+Here is the definition of a *compound auto-regressive (Car)* process of order one:
 
 :::{.definition #Car1 name="Affine process of order 1"}
 A multivariate process $w_{t+1}$ is Affine of order 1 [or $Car(1)$] if
@@ -269,10 +242,9 @@ $$
 for some functions $a(.)$ and $b(.)$. These functions are univariate if $w_{t+1}$ (and therefore $u$) is scalar.
 :::
 
-* *Car* stands for *Compound auto-regressive*.
-* $a(.)$ and b(.) may be deterministic functions of time.
+Note that $a(.)$ and $b(.)$ may be deterministic functions of time (e.g., @Chikhani_Renne_2022).
 
-
+A first key example is that of the Gaussian auto-regressive processes: 
 
 :::{.example #GAR1 name="Univariate AR(1) Gaussian process"}
 
@@ -316,37 +288,39 @@ $$
 
 
 :::{.example #QGVAR1 name="Quadratic Gaussian process"}
-
-* Consider $w_t = (x'_t,vec(x_t x_t')')'$, where $x_t$ is a $n$-dimensional vector following a Gaussian VAR(1), i.e.
+Consider vector $w_t = (x'_t,vec(x_t x_t')')'$, where $x_t$ is a $n$-dimensional vector following a Gaussian VAR(1), i.e.
 $$
 x_{t+1}|\underline{w_t} \sim \mathcal{N}(\mu+\Phi x_t, \Sigma).
 $$
-	* If $u = (v,V)$ where $v \in \mathbb{R}^n$ and $V$ a square symmetric matrix of size $n$, we have:
-        \begin{eqnarray*}
-        \varphi_t(u) &=& \mathbb{E}_t\big\{\exp\big[(v',vec(V)')\times w_{t+1}\big]\big\} \\
-        & =& \exp \left\{a_1(v,V)'x_t +vec(a_2(v,V))' vec(x_t'x_t) + b(v,V) \right\},
-        \end{eqnarray*}
-        where:
-        \begin{eqnarray*}(\#eq:laplaceZ)
-            a_2(u) & = & \Phi'V (I_n - 2\Sigma V)^{-1} \Phi \nonumber \\
-            a_1(u) & = & \Phi'\left[(I_n-2V\Sigma)^{-1}(v+2V\mu)\right] \nonumber \\
-            b(u) & = & u'(I_n - 2 \Sigma V)^{-1}\left(\mu + \frac{1}{2} \Sigma v\right) +\\
-            && \mu'V(I_n - 2 \Sigma V)^{-1}\mu - \frac{1}{2}\log\big|I_n - 2\Sigma V\big|.
-        \end{eqnarray*}
+Proposition \@ref(prp:QGVAR1) shows that if $u = (v,V)$ where $v \in \mathbb{R}^n$ and $V$ a square symmetric matrix of size $n$, we have:
+\begin{eqnarray*}
+\varphi_t(u) &=& \mathbb{E}_t\big\{\exp\big[(v',vec(V)')\times w_{t+1}\big]\big\} \\
+& =& \exp \left\{a_1(v,V)'x_t +vec(a_2(v,V))' vec(x_t'x_t) + b(v,V) \right\},
+\end{eqnarray*}
+where:
+\begin{eqnarray*}
+a_2(u) & = & \Phi'V (I_n - 2\Sigma V)^{-1} \Phi \nonumber \\
+a_1(u) & = & \Phi'\left[(I_n-2V\Sigma)^{-1}(v+2V\mu)\right] \nonumber \\
+b(u) & = & u'(I_n - 2 \Sigma V)^{-1}\left(\mu + \frac{1}{2} \Sigma v\right) +\\
+&& \mu'V(I_n - 2 \Sigma V)^{-1}\mu - \frac{1}{2}\log\big|I_n - 2\Sigma V\big|.(\#eq:laplaceZ)
+\end{eqnarray*}
+
+Quadratic processes can be used to construct positive process. Indeed, one can determine linear combinations of the components of $w_t$ ($\alpha'w_t$, say) that are such that $\alpha'w_t \ge 0$. For instance, if $x_t$ is scalar, $\alpha'w_t = x_t^2$ if $\alpha = (0,1)'$. This is illustrated by Figure \@ref(fig:simQVAR).
+
+```{r simQVAR, echo=TRUE, fig.cap="Simulation of a quadratic processes $x_t$.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+T <- 200
+phi <- .9;sigma <- 1
+x.t <- 0; x <- NULL
+for(t in 1:T){
+  x.t <- phi*x.t + sigma*rnorm(1)
+  x <- c(x,x.t)}
+par(mfrow=c(1,2),plt=c(.1,.95,.15,.85))
+plot(x,type="l",xlab="",ylab="",main="x_t")
+plot(x^2,type="l",xlab="",ylab="",main="x_t^2")
+```
 :::
 
-:::{.proof}
-We have:
-\begin{eqnarray*}
-&&\mathbb{E}_t(\exp(v' x_{t+1} + vec(V)'vec(x_{t+1} x_{t+1}'))) \\
-&=& \mathbb{E}_t[\exp(v' (\mu + \Phi x_t + \Sigma^{1/2}\varepsilon_{t+1}) + \\
-&& vec(V)'vec((\mu + \Phi x_t + \Sigma^{1/2}\varepsilon_{t+1}) (\mu + \Phi x_t + \Sigma^{1/2}\varepsilon_{t+1})'))] \\
-&=& \exp[v' (\mu + \Phi x_t) + vec(V)'vec\{(\mu + \Phi x_t)(\mu + \Phi x_t)'\}] \times \\
-&& \mathbb{E}_t[\exp(v'\Sigma^{1/2}\varepsilon_{t+1} +2\underbrace{ vec(V)' vec\{(\mu + \Phi x_t)(\varepsilon_{t+1}'{\Sigma^{1/2}}')\}}_{=(\mu + \Phi x_t)'V\Sigma^{1/2}\varepsilon_{t+1}} +\\
-&& \underbrace{vec(V)'vec\{(\Sigma^{1/2}\varepsilon_{t+1})(\Sigma^{1/2}\varepsilon_{t+1})'}_{=\varepsilon_{t+1}'{\Sigma^{1/2}}'V\Sigma^{1/2}\varepsilon_{t+1}}\}]
-\end{eqnarray*}
-Lemma \@ref(lemma:Quadr} can be used to compute the previous conditional expectation, with $\lambda = {\Sigma^{1/2}}'(v + 2 V'(\mu + \Phi x_t))$. Some algebra then leads to the result.
-:::
+Another example of nonnegative process is that of the auto-regressive Gamma process [@Gourieroux_Jasiak_2006] and its extension [@zarg_2017].
 
 :::{.example #ARG1 name="Autoregressive gamma process, ARG(1)"}
 An ARG process is defined as follows:
@@ -355,13 +329,7 @@ $$
 $$
 with $\nu$, $\mu$, $\rho > 0$. (Alternatively $z_t \sim {\mathcal{P}}(\beta w_t)$, with $\rho = \beta \mu$.)
 
-We have:
-$\varphi_t(u) = exp \left[
-\begin{array}{l}
- \dfrac{\rho u}{1-u \mu} w_t - \nu   \log(1-u
-\mu)\end{array} \right], u <  \dfrac{1}{\mu}$.
-
-That is: $\varphi_t(u) = \exp[a(u)'w_t+b(u)]$ with
+Proposition \@ref(prp:LTARG) shows that we have $\varphi_t(u) = \exp[a(u)'w_t+b(u)]$ with
 $$
 \left\{
 \begin{array}{ccc}
@@ -372,45 +340,35 @@ b(u) &=& -\nu
 \right.
 $$
 
-:::{.proof}
-Given $\underline{w_t}$, we have $z_t \sim {\mathcal P}\left( \begin{array}{l}  \frac{\rho w_t} {\mu} \end{array}\right)$. We have:
-\begin{eqnarray*}
-\mathbb{E}[\exp(u w_{t+1})|\underline{w_t}] &=& \mathbb{E}\left\{\mathbb{E}\left[\exp \left(u \mu  \frac{w_{t+1}}{\mu}\right)|\underline{w_t}, \underline{z}_t\right]\underline{w_t}\right\}\\
-&=& \mathbb{E}[(1-u\mu)^{-(\nu+z_t)}|\underline{w_t}] \\
-&=& (1-u\mu)^{-\nu}\mathbb{E}\{\exp[-z_t   \log(1-u\mu)]|\underline{w_t}\} \\
-&=& (1-u\mu)^{-\nu} \exp \left\{\frac{\rho w_t}{\mu}[\exp(-\log(1-u\mu)] -  \frac{\rho w_t}{\mu}\right\}\\
-&=& exp\left[ \begin{array}{l}  \frac{\rho u w_t}{1-u\mu} - \nu   \log(1-u\mu)  \end{array}\right],
-\end{eqnarray*}
-using the fact that the L.T. of $\gamma(\nu)$ is $(1-u)^{-\nu}$
-and that the L.T. of ${\mathcal P}(\lambda)$ is $\exp[\lambda(exp(u)-1)]$.
-:::
+One can simulate ARG processes by using [this web-interface](https://jrenne.shinyapps.io/Affine/) (select the "ARG" panel).
 
-[Web-interface illustration ("ARG" panel)](https://jrenne.shinyapps.io/Affine/)
+It can be shown that:
+$$
+\left\{
+\begin{array}{ccc}
+\mathbb{E}(w_{t+1}|\underline{w_t}) &=& \nu \mu + \rho w_t \\
+\mathbb{V}ar(w_{t+1}|\underline{w_t}) &=& \nu \mu^2 + 2 \mu \rho w_t.
+\end{array}
+\right.
+$$
+and that:
+$$
+w_{t+1}=\nu\mu+\rho w_t+\varepsilon_{t+1},
+$$
+where $\varepsilon_{t+1}$ is a martingale difference $\Rightarrow$ $w_{t+1}$ is a weak $AR(1)$.
 
-* This is a positive process.
-* We have:
-	$$
-	\left\{
-	\begin{array}{ccc}
-	\mathbb{E}(w_{t+1}|\underline{w_t}) &=& \nu \mu + \rho w_t \\
-	\mathbb{V}ar(w_{t+1}|\underline{w_t}) &=& \nu \mu^2 + 2 \mu \rho w_t.
-	\end{array}
-	\right.
-	$$
-* We have:
-	$$
-	w_{t+1}=\nu\mu+\rho w_t+\varepsilon_{t+1},
-	$$
-	where $\varepsilon_{t+1}$ is a martingale difference $\Rightarrow$ $w_{t+1}$ is a weak $AR(1)$.
-	* $ARG_0(1)$ process [@zarg_2017]: $\nu = 0$ and $\beta w_t$  replaced by $\alpha + \beta w_t$, i.e.:
-	\begin{equation}
-	\frac{w_{t+1}}{\mu} \sim \gamma(z_t),\quad z_t \sim {\mathcal{P}}(\alpha + \beta w_t)(\#eq:ARG0)
-	\end{equation}
-	$$
-	\Rightarrow \varphi_t(u) = exp \left[\frac{\beta \mu u}{1-u \mu} w_t + \frac{\alpha \mu u}{1-u \mu}
+@zarg_2017 porpose the extended ARG process and the ARG$_0$ process. The latter is such that $\nu = 0$ and $\beta w_t$ is replaced with $\alpha + \beta w_t$, i.e.:
+\begin{equation}
+\frac{w_{t+1}}{\mu} \sim \gamma(z_t),\quad z_t \sim {\mathcal{P}}(\alpha + \beta w_t).(\#eq:ARG0)
+\end{equation}
+It is easily seen that we then have:
+$$
+\varphi_t(u) = exp \left[\frac{\beta \mu u}{1-u \mu} w_t + \frac{\alpha \mu u}{1-u \mu}
 \right].
 $$
-Point mass at zero with conditional probability $exp(-\alpha - \beta w_t)$, 0 is absorbing if $\alpha = 0$.
+The ARG$_0$ process features a point mass at zero, with conditional probability $exp(-\alpha - \beta w_t)$. Note that 0 is absorbing if $\alpha = 0$.
+
+Figure \@ref(fig:simARG0) displays the simulated path of an ARG$_0$ process (since we set $\nu$ to zero). Note that function `simul.ARG` is included in the `TSModels` package.
 
 ```{r simARG0, echo=TRUE, fig.cap="Simulation of an ARG0 processes.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 library(TSModels)
@@ -420,82 +378,62 @@ plot(W,type="l")
 :::
 
 
-
-
-
-
+Certain affine processes are valued in specific sets (e.g., integers). It is the case of compound Poisson proceses:
 
 :::{.example #CompoundPoisson name="Compound Poisson process"}
 
-Consider the following process:
+A compound Poisson process is defined as follows (with $\gamma > 0$, $0 < \pi< 1$, and $\lambda > 0$):
 $$\frac{w_{t+1}}{\gamma} = z_{t+1} + \varepsilon_{t+1},
 $$
-where:
-* $z_{t+1}$ and $\varepsilon_{t+1}$ conditionally independent,
-* $z_{t+1} \sim {\mathcal B} \left(
-\begin{array}{l}
- \frac{w_t}{\gamma}, \pi
-\end{array}
-\right)$,
-* $\varepsilon_{t+1} \sim {\mathcal P}(\lambda)$,
-* $\gamma > 0$, $0 < \pi< 1$, $\lambda > 0$.
+where $z_{t+1}$ and $\varepsilon_{t+1}$ conditionally independent, and where
+$z_{t+1} \sim {\mathcal B} \left(\frac{w_t}{\gamma},\pi\right)$, with $\varepsilon_{t+1} \sim {\mathcal P}(\lambda)$.
 
 This process is valued in $\{j \gamma, j \in \mathbb{N}, \gamma \in \mathbb{R}^+\}$ and we have:
 $$
-\varphi_t(u) = exp\left\{
+\varphi_t(u) = \exp\left\{
 \begin{array}{l}
- \dfrac{w_t}{\gamma}   \log[\pi  
-exp(u\gamma)+1-\pi]-\lambda[1-exp(u \gamma)]
+\dfrac{w_t}{\gamma}   \log[\pi
+\exp(u\gamma)+1-\pi]-\lambda[1-\exp(u \gamma)]
 \end{array}
 \right\},
 $$
-with
+i.e., $\varphi_t(u) = \exp\left(a(u)w_t+b(u)\right)$ with
 $$
 \left\{
 \begin{array}{ccl}
 a(u)&=& \frac{1}{\gamma}   \log[\pi   \exp(u
 \gamma)+1-\pi],\\
-b(u) &=& -\lambda[1-exp(u \gamma)].
+b(u) &=& -\lambda[1-\exp(u \gamma)].
 \end{array}
 \right.
 $$
 
-* We have: $w_{t+1} = \pi w_t + \lambda \gamma + \eta_{t+1}$, where $\eta_{t+1}$ is a
+We also have: $w_{t+1} = \pi w_t + \lambda \gamma + \eta_{t+1}$, where $\eta_{t+1}$ is a
 martingale difference.
 
-[Web-interface illustration ("Compound Poisson" panel)](https://jrenne.shinyapps.io/Affine/)
+One can simulate such processes by using [this web-interface](https://jrenne.shinyapps.io/Affine/)  (select the "Compound Poisson" panel). Figure \@ref(fig:simCPoisson) makes use of function `simul.compound.poisson` (in package `TSModels`) to simulate a compound Poisson process.
 
-```{r simCPoisson, echo=TRUE, fig.cap="Simulation of a Compound Poisson  process.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned'}
+```{r simCPoisson, echo=TRUE, fig.cap="Simulation of a Compound Poisson process.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned'}
 library(TSModels)
 W <- simul.compound.poisson(100,Gamma=.5,Pi=0.5,lambda=.9)
 plot(W,type="l")
 ```
-
-
 :::
 
 
-## Affine (or Car) processes {#CarProcesses}
+### Car processes of order $p$ {#SubCarp}
 
+Let us now define Car processes of order $p$:
 
 :::{.definition #Carp name="Affine process of order p"}
 
-A multivariate process $w_{t+1}$ is affine of order $p$ [or $Car(p)$] if
+A multivariate process $w_{t+1}$ is affine of order $p$ [or $Car(p)$] if there exist functions $a_1(.),\dots,a_p(.)$, and $b(.)$ such that:
 $$
 \varphi_t(u)=\mathbb{E}_t[\exp(u' w_{t+1})]=\exp[a_1(u)'w_t+\dots+a_p(u)'w_{t+1-p}+b(u)].
 $$
-
 :::
 
-
-**Remarks:**
-
-* If $w_t$ is $Car(p)$, then $W_t = [w_t', w_{t-1}',\dots,w_{t-p+1}']'$ is $Car(1)$.
-
-* Without loss of generality we can assume $p = 1$.
-
-:::{.proof}
-We have:
+It can be seen that if $w_t$ is $Car(p)$, then $W_t = [w_t', w_{t-1}',\dots,w_{t-p+1}']'$ is $Car(1)$.^[We have:
 \begin{eqnarray*}
 \mathbb{E}_t[\exp(u'W_{t+1})] &=& \mathbb{E}_t[\exp(u'_1 w_{t+1}+u'_2 w_t+\dots+u'_p w_{t-p+2})] \\
 &=& \exp(u'_2 w_t+\dots+u'_p w_{t-p+2})\mathbb{E}_t[\exp(u'_1 w_{t+1})] \\
@@ -503,216 +441,92 @@ We have:
 w_t  +\dots+a'_p(u_1)w_{t+1-p}+b(u_1)) \\
 &=& \exp[A(u)'W_t+B(u)],
 \end{eqnarray*}
+with $A(u)' = [u'_2+a'_1(u_1),\dots,u'_p+a'_{p-1}(u_1), a'_p(u_1)]$ and $B(u) = b(u_1)$.] Therefore, without loss of generality we can assume $p = 1$.
 
-with $A(u)' = [u'_2+a'_1(u_1),\dots,u'_p+a'_{p-1}(u_1), a'_p(u_1)]$ and $B(u) = b(u_1)$.
-:::
+The standard Car($p$) processes are auto-regressive processes of order $p$. These processes satisfy the definition of index affine processes:
 
-
-### An important particular case
-
-:::{.definition name="Univariate Index Affine of order p"}
-Let $exp[a(u)w+b(u)]$ be the L.T. of a univariate Affine process of order 1, the process $w_{t+1}$  is an {\it Index-Affine} process of order $p$ if:
+:::{.definition name="Univariate index affine process of order p"}
+Let $\exp[a(u)w_t+b(u)]$ be the conditional Laplace transform of a univariate affine process of order 1, the process $w_{t+1}$  is an *index-affine* process of order $p$ if:
 $$
 \varphi_t(u)=\mathbb{E}_t[\exp(u w_{t+1})]=\exp[a(u)(\beta_1 w_t+\dots+\beta_p
 w_{t+1-p})+b(u)].
 $$
 :::
 
+Examples \@ref(exm:ARp) and \@ref(exm:ARGp) are two examples of index affine processes.
 
 :::{.example #ARp name="Gaussian AR(p) process"}
-
-Extends Example \@ref(exm:GAR1)
-\begin{eqnarray*}
-\varphi_t(u) &=& \exp \left[ u \rho (\beta_1 w_t+\dots+\beta_p w_{t+1-p})+u\nu + u^2  \frac{\sigma^2}{2}\right]\\
-w_{t+1} &=& \nu + \varphi_1 w_t +\dots+ \varphi_p w_{t+1-p}+\sigma \varepsilon_{t+1},\quad \varepsilon_{t+1} \sim i.i.d. \mathcal{N}(0,1),
-\end{eqnarray*}
+This example extends Example \@ref(exm:GAR1). Consider a Gaussian AR(p) process $w_t$; that is:
+$$
+w_{t+1} = \nu + \varphi_1 w_t +\dots+ \varphi_p w_{t+1-p}+\sigma \varepsilon_{t+1},\quad \varepsilon_{t+1} \sim i.i.d. \mathcal{N}(0,1).
+$$
+We have:
+$$
+\varphi_t(u) = \exp \left[ u \rho (\beta_1 w_t+\dots+\beta_p w_{t+1-p})+u\nu + u^2  \frac{\sigma^2}{2}\right]
+$$
 with $\varphi_i = \rho \beta_i$.
 :::
 
 :::{.example #ARGp name="ARG(p) process (positive)"}
 
-Extends Example \@ref(exm:ARG1)
-
-\begin{eqnarray*}
-\varphi_t(u) &=& \exp\left[\frac{\rho u}{1-u \mu} (\beta_1 w_t+\dots+\beta_p w_{t+1-p})-\nu  \log(1-u\mu)\right],\\
-w_{t+1} &=& \nu\mu + \varphi_1 w_t +\dots+ \varphi_p w_{t+1-p}+\varepsilon_{t+1},
-\end{eqnarray*}
-with $\varphi_i = \rho \beta_i$  and where $\varepsilon_{t+1}$ is a martingale difference.
+This example extends Example \@ref(exm:ARG1). 
+An ARG process of order $p$ is defined as follows:
+$$
+\frac{w_{t+1}}{\mu} \sim \gamma(\nu+z_t) \quad \mbox{where} \quad z_t \sim \mathcal{P} \left( \beta_1 w_t+\dots+\beta_p w_{t+1-p} \right),
+$$
+with $\nu$, $\mu$, $\beta_i > 0$. We have:
+$$
+\varphi_t(u) = \exp\left[\frac{\rho u}{1-u \mu} (\beta_1 w_t+\dots+\beta_p w_{t+1-p})-\nu  \log(1-u\mu)\right],
+$$
+Process $w_t$ admits the following AR($p$) representation:
+$$
+w_{t+1} = \nu\mu + \varphi_1 w_t +\dots+ \varphi_p w_{t+1-p}+\varepsilon_{t+1},
+$$
+with $\varphi_i = \beta_i\mu$ and where $\varepsilon_{t+1}$ is a martingale difference.
 :::
 
 
-## Affine (or Car) processes, Markov Chains {#Markov}
+## Markov chains {#Markov}
 
-
-* Notations
-
-* $e_j$ denotes the $j^{th}$ column of $Id_J$, $j=1,\dots,J$.
-* $\pi(e_i, e_j) = \mathbb{P}(z_{t+1}=e_j | z_t=e_i)$.
-
-* With these notations:
+In this subsection, we show that the family of affine processes includes (some) regime-switching models. We consider a time-homogeneous Markov chain $z_t$, valued in the set of columns of $Id_J$, the identity matrix of dimension $J \times J$. The transition probabilities are denoted by $\pi(e_i, e_j)$, with $\pi(e_i, e_j) = \mathbb{P}(z_{t+1}=e_j | z_t=e_i)$. With these notations:
 $$
-\mathbb{E}[\exp(v'z_{t+1})|z_t=e_i,\underline{z_{t-1}}] = \sum^J_{j=1} \exp(v'e_j)\pi (e_i, e_j),
+\mathbb{E}[\exp(v'z_{t+1})|z_t=e_i,\underline{z_{t-1}}] = \sum^J_{j=1} \exp(v'e_j)\pi (e_i, e_j).
 $$
-* That is:
+Hence, we have:
 $$
-\varphi_t(v) = exp[a_z(v)'z_t],
+\varphi_t(v) = \exp[a_z(v)'z_t],
 $$
 with
 $$
-a_z(v)= \left[ \begin{array}{l} \log \left(
-\begin{array}{l}  \sum^J_{j=1} \exp(v'e_j)  \pi(e_1,
-e_j) \end{array} \right)\\
+a_z(v)= \left[ \begin{array}{c} \log \left(\sum^J_{j=1} \exp(v'e_j)  \pi(e_1,e_j)\right)\\
 \vdots\\
-\log \left(
-\begin{array}{l}  \sum^J_{j=1} \exp(v'e_j)  \pi(e_J,
-e_j) \end{array} \right)
+\log \left(\sum^J_{j=1} \exp(v'e_j)  \pi(e_J,e_j)\right)
 \end{array}\right].
 $$
+This proves that $z_t$ is an affine process.
 
-[Web-interface illustration ("Markov-Switching" panel)](https://jrenne.shinyapps.io/Affine/)
-
-
-## AFFINE (OR Car) PROCESSES, Stochastic parameters univariate affine processes {#stoch}
-
-
-* A univariate affine dynamics based on:
-$$
-\mathbb{E}_t   \exp(u y_{t+1}) = \exp[a_0(u)y_t+b_0(u)\delta],
-$$
-where $\delta = (\delta_1,\dots,\delta_m)' \in \mathcal{D}$, can be generalized to the case of a stochastic $\delta$.
-
-* More precisely assuming:
-$$
-\mathbb{E}[\exp(u y_{t+1})|\underline{y_t}, \underline{z_{t+1}}] = \exp[a_0(u)y_t+b_0(u)'\Lambda z_{t+1}],
-$$
-where $\Lambda$ is a $(m\times k)$ matrix, with $\Lambda z_{t+1} \in \mathcal{D}$, then:
-$$
-\mathbb{E}[\exp(v' z_{t+1})|\underline{y_t}, \underline{z_{t}}] = \exp[a_1(v)'z_t+b_1(v)],
-$$
-$\Rightarrow$ $w_{t+1} = (y_{t+1}, z'_{t+1})'$ is affine.
-
-
-:::{.proof}
-We have:
-\begin{eqnarray*}
-&&\mathbb{E}[\exp(u y_{t+1}+v'z_{t+1})|\underline{y_t}, \underline{z_{t}}] \\
-&=& \mathbb{E}\{\exp(v' z_{t+1})\mathbb{E}[\exp(u y_{t+1})|\underline{y_t},
-\underline{z_{t+1}}]|\underline{y_t}, \underline{z_{t}} \} \\
-&=& \mathbb{E}\{\exp[a_0(u) y_{t}+b_0(u)'\Lambda z_{t+1}+v'z_{t+1}]|\underline{y_t},
-\underline{z_{t}} \} \\
-&=& \exp\{ a_0(u) y_{t}+a_1[\Lambda' b_0(u)+v]'z_t+b_1 [\Lambda' b_0(u)+v]\}.
-\end{eqnarray*}
-:::
+One can simulate a two-regime Markov chain by using [this web-interface](https://jrenne.shinyapps.io/Affine/) (select the "Markov-Switching" panel).
 
 
 
+## Wishart autoregressive (WAR) processes {#WAR}
 
+WAR are *matrix processes*, valued in the space of $(L \times L)$ symmetric positive
+definite matrices. 
 
-
-
-:::{.example #extendedARp name="Gaussian AR(p)"}
-
-Extends Example \@ref(exm:ARp)
-
-* Notations: $b_0(u) = \left(u, \; \frac{u^2}{2}\right)'$ and $\delta = (\nu,\sigma^2)' \in \mathcal{D}=\mathbb{R} \times \mathbb{R}^+$.
-* $\delta$ (vector of conditional mean and variance) can be replaced by ...
-
-* $\left( \begin{array}{l} z_{1,t+1}
-\\ z_{2,t+1}
-\end{array} \right)$, where $z_{1,t+1}$ and $z_{2,t+1}$ are independent AR(1) --see Example \@ref(exm:GAR1)-- and
-ARG(1) --see Example \@ref(exm:ARG1)-- processes respectively.
-
-* $\left( \begin{array}{ll} \lambda'_1 &
-0
-\\ 0 & \lambda'_2
-\end{array} \right)$$\left( \begin{array}{l} z_{1,t+1}
-\\ z_{2,t+1}
-\end{array} \right)$, where $z_{1,t+1}$ and $z_{2,t+1}$ are
-  independent Markov
-chains.
-
-* $\left( \begin{array}{l} \lambda'_1 \\
-\lambda'_2
-\end{array}\right)z_{t+1}$, where $z_{t+1}$ is a Markov chai.
-:::
-
-
-:::{.example #ARGp name="ARG(p) model"}
-* $b_0(u)= - \nu \log(1-u\mu)$, $\delta=\nu$.
-* $\nu$ ($\ge 0$) can be specified for instance as a Markov chain or an ARG.
-:::
-
-
-
-## AFFINE (OR Car) PROCESSES, Building Multivariate Affine Processes {#buildingmulti}
-
-
-* Recursive approach (bivariate case): $w_t = \left(\begin{array}{c}
-w_{1,t}\\
-w_{2,t}
-\end{array}
-\right)$.
-* Assume that:
-\begin{eqnarray*}
-&&\mathbb{E}[\exp(u_1 w_{1,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}})]\\
-&=& \exp[a_{11}(u_1)w_{1,{\color{red}{t}}}+a_{12}(u_1)w_{2,{\color{red}{t}}}+b_{1}(u_1)],
-\end{eqnarray*}
-and that:
-\begin{eqnarray*}
-&& \mathbb{E}[\exp(u_2 w_{2,t+1}|\underline{w_{1,t+1}}, \underline{w_{2,t}})]\\
-&= & \exp[a_0(u_2)w_{1,{\color{red}{t+1}}}+a_{21}(u_2)w_{1,{\color{red}{t}}}+a_{22}(u_2)w_{2,{\color{red}{t}}}+b_2(u_2)].
-\end{eqnarray*}
-
-$\Rightarrow$ Then $w_t$ is an affine process.
-
-
-
-:::{.proof}
-We have:
-\begin{eqnarray*}
-&& \mathbb{E}[\exp(u_1 w_{1,t+1}+u_2 w_{2,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}})]\\
-&= & \mathbb{E}\{\exp(u_1 w_{1,t+1}) \mathbb{E}[\exp(u_{2}w_{2,t+1})|\underline{w_{1,t+1}}, \underline{w_{2,t}})]|\underline{w_{1,t}}, \underline{w_{2,t}})\} \\
-&= & \mathbb{E}\{\exp[u_1+a_0(u_2)w_{1,t+1}+a_{21}(u_2)w_{1,t} + a_{22}(u_2)w_{2,t}+b_2(u_2)]|\underline{w_{1,t}}, \underline{w_{2,t}})\} \\
-&= & \exp\{a_{11}[u_1+a_0(u_2)]w_{1,t}+a_{12}[u_1+a_0(u_2)]w_{2,t}+b_1[u_1+a_0(u_2)] \\
-&&+  a_{21}(u_2)w_{1,t}+a_{22}(u_2)w_{2,t}+b_2(u_2)\}.
-\end{eqnarray*}
-:::
-
-
-
-* The dynamics of the two components of $w_t$ is of the form:
-\begin{eqnarray*}
-w_{1,t+1} &=& \alpha_1 \hspace{1.55cm} + \alpha_{11}w_{1,t} + \alpha_{12}w_{2,t} + \varepsilon_{1,t+1} \\
-w_{2,t+1} &=& \alpha_2 + \alpha_{0}w_{1,t+1} + \alpha_{21}w_{1,t} + \alpha _{22} w_{2,t} + \varepsilon_{2,t+1}
-\end{eqnarray*}
-* $\varepsilon_{1,t+1}$ and $\varepsilon_{2,t+1}$ are non-correlated (conditionally heteroskedastic) martingale differences.
-* Multivariate $AR$ or $VAR$ models, multivariate $ARG$ or
-$VARG$ models.
-
-
-## AFFINE (OR Car) PROCESSES, Wishart autoregressive (WAR) processes {#WAR}
-
-* WAR are valued in the space of $(L \times L)$ symmetric positive
-definite matrices.
-* Let $W_{t+1}$ be a $WAR_L(K, M, \Omega)$ process. It is defined by:
+:::{.definition #WAR name="Wishart autoregressive (WAR) processes"}
+Let $W_{t+1}$ be a $WAR_L(K, M, \Omega)$ process. It is defined by:
 \begin{eqnarray}
 &&\mathbb{E}[\exp   Tr(\Gamma W_{t+1})|\underline{W_t}] (\#eq:Trace)\\
 &=& \exp\left\{Tr[M'\Gamma(Id-2\Omega \Gamma)^{-1}M W_t]  -  \frac{K}{2}   \log [det(Id-2\Omega \Gamma)]\right\}, \nonumber
 \end{eqnarray}
-where:
-* $\Gamma$ is a symmetric matrix.
-
-Indeed, $Tr(\Gamma W_{t+1})$ is equal to:
+where $\Gamma$ is a symmetric matrix,^[Indeed, $Tr(\Gamma W_{t+1})$ is equal to:
 \begin{eqnarray*}
 \sum^L_{i=1}(\Gamma W_{t+1})_{ii} = \sum^L_{i=1}  \sum^L_{j=1} \gamma_{ij} W_{t+1,ij} = \sum^L_{i=1} \gamma_{ii} W_{t+1,ii} + \sum^L_{i<j} (\gamma_{ij}+\gamma_{ji}) W_{t+1,ij}.
- \end{eqnarray*}
+\end{eqnarray*}] $K$ is a positive scalar, $M$ is a $(L \times L)$ matrix, and $\Omega$ is a $(L \times L)$ symmetric positive definite matrix.
+:::
 
-* $K$ is a positive scalar,
-* $M$ is a $(L \times L)$ matrix,
-* $\Omega$ is a $(L \times L)$ symmetric positive definite matrix.
-
-
-* If $K$ integer, $W_{t+1}$ obtained from:
+If $K$ is an integer, Proposition \@ref(prp:WARAR) (in the appendix) shows that $W_{t+1}$ can be obtained from:
 \begin{eqnarray*}
 \left\{
 \begin{array}{ccl}
@@ -723,13 +537,724 @@ x_{k,t+1} & =& M x_{k,t} + \varepsilon_{k,t+1},\quad k \in \{1,\dots,K\},
 \right.
 \end{eqnarray*}
 where $\varepsilon_{k,t+1}  \sim   i.i.d. \mathcal{N}(0, \Omega)$ (independent across $k$'s).
-* We have:
+The proposition also shows that we have:
 $$
 \mathbb{E}(W_{t+1}|\underline{W_t}) = MW_tM'+K \Omega,
 $$
-i.e. $W_t$ follows a matrix weak AR(1).
+i.e. $W_t$ follows a matrix weak AR(1) process.
 
 
+In particular case, where $L=1$ (univariate case), we have that:
+\begin{eqnarray*}
+\mathbb{E}[\exp(u W_{t+1})|\underline{W_t}] = \exp\left[
+\frac{u m^2}{1-2\omega u}W_t -
+\frac{K}{2}   \log(1-2\omega u)\right].
+\end{eqnarray*}
+Hence, when $L=1$, the Wishart process boils down to an $ARG(1)$ process (Example \@ref(exm:ARG1)) with $\rho = m^2$, $\mu = 2\omega$, $\nu = \frac{K}{2}$.
+
+
+
+## Building affine processes {#building}
+
+### Univariate affine processes with stochastic parameters {#stoch}
+
+Some univariate affine processes can be extended if they satisfy certain conditions. Specifically, consider a univariate affine process whose conditional L.T. is of the form:
+\begin{equation}
+\mathbb{E}_t   \exp(u y_{t+1}) = \exp[a_0(u)y_t+b_0(u)\delta],(\#eq:extaffine)
+\end{equation}
+where $\delta = (\delta_1,\dots,\delta_m)' \in \mathcal{D}$. This process can be generalized by making $\delta$ stochastic (while staying in the affine family). More precisely assume that:
+$$
+\mathbb{E}[\exp(u y_{t+1})|\underline{y_t}, \underline{z_{t+1}}] = \exp[a_0(u)y_t+b_0(u)'\Lambda z_{t+1}],
+$$
+where $\Lambda$ is a $(m\times k)$ matrix, with $\Lambda z_{t+1} \in \mathcal{D}$. In this case, if:
+$$
+\mathbb{E}[\exp(v' z_{t+1})|\underline{y_t}, \underline{z_{t}}] = \exp[a_1(v)'z_t+b_1(v)],
+$$
+then $w_{t+1} = (y_{t+1}, z'_{t+1})'$ is affine.^[Indeed, we have:
+\begin{eqnarray*}
+&&\mathbb{E}[\exp(u y_{t+1}+v'z_{t+1})|\underline{y_t}, \underline{z_{t}}] \\
+&=& \mathbb{E}\{\exp(v' z_{t+1})\mathbb{E}[\exp(u y_{t+1})|\underline{y_t},
+\underline{z_{t+1}}]|\underline{y_t}, \underline{z_{t}} \} \\
+&=& \mathbb{E}\{\exp[a_0(u) y_{t}+b_0(u)'\Lambda z_{t+1}+v'z_{t+1}]|\underline{y_t},
+\underline{z_{t}} \} \\
+&=& \exp\{ a_0(u) y_{t}+a_1[\Lambda' b_0(u)+v]'z_t+b_1 [\Lambda' b_0(u)+v]\}.
+\end{eqnarray*}]
+
+
+
+:::{.example #extendedARp name="Gaussian AR(p)"}
+
+Using the notation of Example \@ref(exm:ARp), it comes that an AR(p) processes satisfies Eq. \@ref(eq:extaffine) with $b_0(u) = \left(u, \; \frac{u^2}{2}\right)'$ and $\delta = (\nu,\sigma^2)' \in \mathcal{D}=\mathbb{R} \times \mathbb{R}^+$. In that case, $\delta$ (the vector of conditional mean and variance) can be replaced by ...
+
+* $\left( \begin{array}{l} z_{1,t+1}
+\\ z_{2,t+1}
+\end{array} \right)$, where $z_{1,t+1}$ and $z_{2,t+1}$ are independent AR(1) (see Example \@ref(exm:GAR1)) and ARG(1) (see Example \@ref(exm:ARG1)) processes, respectively.
+* $\left( \begin{array}{ll} \lambda'_1 &
+0
+\\ 0 & \lambda'_2
+\end{array} \right)$$\left( \begin{array}{l} z_{1,t+1}
+\\ z_{2,t+1}
+\end{array} \right)$, where $z_{1,t+1}$ and $z_{2,t+1}$ are independent Markov chains.
+* $\left( \begin{array}{l} \lambda'_1 \\
+\lambda'_2
+\end{array}\right)z_{t+1}$, where $z_{t+1}$ is a Markov chain.
+:::
+
+
+:::{.example #ARGp name="ARG(p) model"}
+* $b_0(u)= - \nu \log(1-u\mu)$, $\delta=\nu$.
+* $\nu$ ($\ge 0$) can be specified for instance as a Markov chain or an ARG.
+:::
+
+
+
+### Multivariate affine processes {#buildingmulti}
+
+One can construct multivariate affine processes by employing the so-called recursive approach. Let us illustrate this by considering the bivariate case. (The multivariate generalization is straightforward.) Consider $w_t = \left(\begin{array}{c}
+w_{1,t}\\
+w_{2,t}
+\end{array}
+\right)$,and assume that we have:
+\begin{eqnarray*}
+&&\mathbb{E}[\exp(u_1 w_{1,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}})]\\
+&=& \exp[a_{11}(u_1)w_{1,{\color{red}{t}}}+a_{12}(u_1)w_{2,{\color{red}{t}}}+b_{1}(u_1)],
+\end{eqnarray*}
+and:
+\begin{eqnarray*}
+&& \mathbb{E}[\exp(u_2 w_{2,t+1}|\underline{w_{1,t+1}}, \underline{w_{2,t}})]\\
+&= & \exp[a_0(u_2)w_{1,{\color{red}{t+1}}}+a_{21}(u_2)w_{1,{\color{red}{t}}}+a_{22}(u_2)w_{2,{\color{red}{t}}}+b_2(u_2)].
+\end{eqnarray*}
+Then $w_t$ is an affine process.^[Indeed, we have:
+\begin{eqnarray*}
+&& \mathbb{E}[\exp(u_1 w_{1,t+1}+u_2 w_{2,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}})]\\
+&= & \mathbb{E}\{\exp(u_1 w_{1,t+1}) \mathbb{E}[\exp(u_{2}w_{2,t+1})|\underline{w_{1,t+1}}, \underline{w_{2,t}})]|\underline{w_{1,t}}, \underline{w_{2,t}})\} \\
+&= & \mathbb{E}\{\exp[u_1+a_0(u_2)w_{1,t+1}+a_{21}(u_2)w_{1,t} + a_{22}(u_2)w_{2,t}+b_2(u_2)]|\underline{w_{1,t}}, \underline{w_{2,t}})\} \\
+&= & \exp\{a_{11}[u_1+a_0(u_2)]w_{1,t}+a_{12}[u_1+a_0(u_2)]w_{2,t}+b_1[u_1+a_0(u_2)] \\
+&&+  a_{21}(u_2)w_{1,t}+a_{22}(u_2)w_{2,t}+b_2(u_2)\}.
+\end{eqnarray*}]
+The dynamics of the two components of $w_t$ are of the form:
+\begin{eqnarray*}
+w_{1,t+1} &=& \alpha_1 \hspace{1.55cm} + \alpha_{11}w_{1,t} + \alpha_{12}w_{2,t} + \varepsilon_{1,t+1} \\
+w_{2,t+1} &=& \alpha_2 + \alpha_{0}w_{1,t+1} + \alpha_{21}w_{1,t} + \alpha _{22} w_{2,t} + \varepsilon_{2,t+1}
+\end{eqnarray*}
+Note that $\varepsilon_{1,t+1}$ and $\varepsilon_{2,t+1}$ are non-correlated martingale differences. In the general case, they are conditionally heteroskedastic. What precedes is at play in $VAR$ model; @zarg_2017 employ this approach to build vector auto-regressive gamma (VARG) processes.
+
+
+### Extending multivariate stochastic processes
+
+Consider the same framework as in Section \@ref(stoch) when $y_t$ is a $n$-dimensional vector. That is, replace Eq. \@ref(eq:extaffine) with:
+\begin{equation}
+\mathbb{E}_t   \exp(u' y_{t+1}) = \exp[a_0(u)'y_t+b_0(u)\delta],(\#eq:Multiextaffine)
+\end{equation}
+and further assume that $\delta$ is stochastic and depends on $z_t$, such that:
+$$
+\mathbb{E}[\exp(u y_{t+1})|\underline{y_t}, \underline{z_{t+1}}] = \exp[a_0(u)y_t+b_0(u)'\Lambda z_{t+1}],
+$$
+where $\Lambda$ is a $(m\times k)$ matrix, with $\Lambda z_{t+1} \in \mathcal{D}$. In this case, if:
+$$
+\mathbb{E}[\exp(v' z_{t+1})|\underline{y_t}, \underline{z_{t}}] = \exp[a_1(v)'z_t+b_1(v)],
+$$
+then $w_{t+1} = (y_{t+1}, z'_{t+1})'$ is affine.
+
+
+:::{.example #RSVAR name="Stochastic parameters Gaussian VAR(1)"}
+
+This example extends Example \@ref(exm:GVAR1). Using the same notations as in the latter example \@ref(exm:GVAR1), we have
+$$
+b_0(u) = \left(u', \frac{1}{2} (u \otimes u)'\right)' \quad \mbox{and} \quad\delta = (\mu', vec(\Sigma)')' \in \mathbb{R}^n \times vec(\mathcal{S}),
+$$
+where $\mathcal{S}$ is the set of symmetric positive semi-definite matrices. Vector $\delta$ can be replaced by:
+$$
+\left( \begin{array}{l} z_{1,t+1}
+\\ z_{2,t+1}
+\end{array} \right),
+$$
+where
+
+* $z_{1,t+1}$ is, for instance, a Gaussian VAR process.
+* $z_{2,t+1}$ is
+* obtained by applying the $vec$ operator to a Wishart process,
+* replaced by $\Lambda_2 z_{2,t+1}$, where $\Lambda_2$ is a $(n^2 \times J)$ matrix whose columns are $vec(\Sigma_j)$, $j \in \{1,\dots,J\}$, the $\Sigma_j$ being $(n \times n)$ positive semi-definite,
+* a standardized $J$-dimensional VARG process (multivariate extension of Example \@ref(exm:ARG1)).
+:::
+
+:::{.example #RSVAR2 name="Regime-switching VAR(1)"}
+
+One can also use this approach to construct (affine) regime-switching VAR processes (which is another extension of Example \@ref(exm:GVAR1). For that, replace $\delta$ with
+
+* $\left( \begin{array}{ll} \Lambda_1 &
+0
+\\ 0 & \Lambda_2
+\end{array} \right)$$\left( \begin{array}{l} z_{1,t+1}
+\\ z_{2,t+1}
+\end{array} \right)$, where $\Lambda_1$ is a $(n \times J_1)$ matrix and $z_{1,t+1}$ is a Markov chain valued in the set of selection vectors of size $J_1$ (see Subsection \@ref(Markov)), $\Lambda_2$ is the same matrix as in Example \@ref(exm:RSVAR) and $z_{2,t+1}$ is a Markov chain valued in the set of selection vectors of size $J_2$.
+* or $\left( \begin{array}{l} \Lambda_1 \\
+\Lambda_2
+\end{array}\right)z_{t+1}$, where $\Lambda_1$ and$\Lambda_2$ are the same matrices as above with $J_1=J_2=J$, and  $z_{t+1}$ is a Markov chain valued in the set of selection vectors of size $J$.
+:::
+
+
+### Extended affine processes {#AffineExtended}
+
+Some processes are not affine, but may be sub-components of an affine process. This can be useful to compute their conditional moments and multi-horizon Laplace transform (as one can use the formulas presented above for that, using the enlarged---affine---vector).
+
+Let us formally define an extended affine process:
+
+:::{.definition #ExtAffine name="Extended Affine Processes"}
+A process $w_{1,t}$ is extended affine if there exists a process $w_{2,t} = g(\underline{w_{1,t}})$ such that $(w'_{1,t}, w'_{2,t})'$ is affine (of order 1).
+:::
+
+For an extended affine processes, $\varphi_{1,t}(u) = \mathbb{E}[\exp(u'w_{1,t+1})|\underline{w_{1,t}}]$ can be obtained from:
+\begin{eqnarray*}
+\varphi_t(u_1, u_2) &=& \mathbb{E}[\exp(u'_1w_{1,t+1}+u'_2 w_{2,t+1)}|\underline{w_{1,t}}, \underline{w_{2,t}}] \\
+&=& \exp[a'_1(u_1,u_2)w_{1,t} + a'_2(u_1,u_2)w_{2,t}+b(u_1,u_2)]
+\end{eqnarray*}
+by:
+$$
+\varphi_{1,t}(u) = \varphi_t(u, 0) = \exp[a'_1(u,0)w_{1,t}+a'_2(u,0)g(\underline{w_{1,t}}) + b(u, 0)].
+$$
+In particular $w_{1,t}$ may be non-Markovian.
+
+Similarly the multi-horizon Laplace transform (see Section \@ref(MHLT))
+$$
+\mathbb{E}[\exp(\gamma'_{1}w_{1,t+1}+\dots+\gamma'_{h}w_{1,t+h})|\underline{w_{1,t}}]
+$$
+can be obtained from the knowledge of the extended multi-horizon Laplace transform:
+\begin{eqnarray*}
+&&\mathbb{E}_t[\exp(\{\gamma'_{1,1}w_{1,t+1}+\gamma'_{2,1}w_{2,t+1}\}+\dots+ \{\gamma'_{1,h}w_{1,t+h}+\gamma'_{2,h}w_{2,t+h}\}] \\
+&=& \exp[A'_{1,t,h}(\gamma^h_1, \gamma^h_2)w_{1,t}+A'_{2,t,h}(\gamma^h_1, \gamma^h_2)w_{2,t}+B_{t,h}(\gamma^h_1, \gamma^h_2)],
+\end{eqnarray*}
+(with $\gamma^h_1 = (\gamma'_{1,1},\dots, \gamma'_{1,h})'$, and $\gamma^h_2 = (\gamma'_{2,1},\dots, \gamma'_{2,h})'$). We indeed have:
+\begin{eqnarray*}
+&& \mathbb{E}[\exp(\gamma'_{1}w_{1,t+1}+\dots+\gamma'_{h}w_{1,t+h})|\underline{w_{1,t}}]\\
+&=& \exp[A'_{1,t,h}(\gamma^h,0) w_{1,t} + A'_{2,t,h}(\gamma^h,0)g (\underline{w_{1,t}}) + B_{t,h}(\gamma^h,0)],
+\end{eqnarray*}
+with $\gamma^h = (\gamma_1',\dots,\gamma_h')'$.
+
+
+
+:::{.example #AffProcessOrderp name="Affine process of order p"}
+If $\{w_{1,t}\}$ is affine or order $p>1$, then $(w_{1,t},\dots,w_{1,t-p+1})$ is affine of order 1, but $\{w_{1,t}\}$ is not affine. That is, in that case, $w_{2,t} = (w'_{1,t-1}, \dots.w'_{1,t-p+1})'$.
+
+This a kind of extreme case since $w_{2,t}$ belongs to the information at $t-1$, which implies $a_2(u_1, u_2) = u_2$.
+:::
+
+:::{.example #GaussianARMA name="Gaussian ARMA process"}
+Consider an $ARMA(1,1)$ process
+$$
+w_{1,t} - \varphi w_{1,t-1} = \varepsilon_t-\theta \varepsilon_{t-1},
+$$
+with $|\varphi | < 1$, $|\theta| < 1$, and $\varepsilon_t \sim   i.i.d.  \mathcal{N}(0, \sigma^2)$.
+
+$w_{1,t}$ is not Markovian. Now, take $w_{2,t} = \varepsilon_t = (1-\theta L)^{-1}(1-\varphi L)w_{1,t}$. We have:
+$$
+\left(
+\begin{array}{l}
+w_{1,t+1} \\
+w_{2,t+1}
+\end{array}
+\right) =
+\left(
+\begin{array}{ll}
+\varphi & -\theta \\
+0 &      0
+\end{array}
+\right)
+\left(
+\begin{array}{l}
+w_{1,t} \\
+w_{2,t}
+\end{array}
+\right) +
+\left(
+\begin{array}{l}
+1 \\
+1
+\end{array}
+\right) \varepsilon_{t+1}.
+$$
+Hence $(w_{1,t}, w_{2,t})'$ is Gaussian $VAR(1)$, and, therefore, it is affine of order 1.
+
+This is easily extended to $ARMA(p,q)$ and $VARMA(p,q)$ processes.
+:::
+
+
+:::{.example #GARCH name="GARCH type process"}
+Consider process $w_{1,t}$, defined by:
+$$
+w_{1,t+1}  = \mu + \varphi w_{1,t} + \sigma_{t+1} \varepsilon_{t+1},
+$$
+where $|\varphi| < 1$ and $\varepsilon_t \sim  i.i.d.  \mathcal{N}(0,1)$, and
+$$
+\sigma^2_{t+1} = \omega + \alpha \varepsilon^2_t + \beta \sigma^2_t,
+$$
+where $0 < \beta < 1$.
+
+Consider $w_{2,t} = \sigma^2_{t+1}$ (which is a non-linear function of $\underline{w_{1,t}}$). Proposition \@ref(prp:GARCH) shows that:
+\begin{eqnarray*}
+&& \mathbb{E}\left[\exp(u_1 w_{1,t+1} + u_2 w_{2,t+1})|\underline{w_{1,t}}\right] \\
+&=& \exp\left[u_1 \mu + u_2 \omega - \frac{1}{2}   \log(1-2 u_2 \alpha) \right. \\
+&&\left. +  u_1 \varphi w_{1,t} + (u_2\beta +  \frac{u^2_1}{2(1-2u_2\alpha)}) w_{2,t}\right],
+\end{eqnarray*}
+which is exponential affine in $(w_{1,t}, w_{2,t})$.
+:::
+
+
+## Multi-horizon Laplace transform {#MHLT}
+
+### Recursive computation and direct pricing implications
+
+In this subsection, we show that multi-horizon Laplace transforms of affine processes can be calculated recursively. Various examples will show how this can be exploited to price long-dated financial instruments.
+
+Let us consider a multivariate process $w_{t}$, affine of order one. (As explained in Subsection  \@ref(SubCarp), this includes the case of the  order $p$ case.) For the sake of generality, we consider the case where functions $a(.)$, $b(.)$ are possibly deterministic functions of time, denoted in this case $a_{t+1}(.)$ and $b_{t+1}(.)$:
+$$
+\mathbb{E}_t \exp[(u'w_{t+1})] = \exp[a'_{t+1}(u)w_t+b_{t+1}(u)].
+$$
+The multi-horizon Laplace transform of associated with date $t$ and horizon $h$ is defined by:
+\begin{equation}
+\varphi_{t,h}(\gamma_1,\dots,\gamma_h) = \mathbb{E}_t[\exp(\gamma'_1w_{t+1}+\dots+\gamma'_h w_{t+h})].(\#eq:multiLT)
+\end{equation}
+
+Lemma \@ref(lem:MHLT) (in the appendix) shows that we have:
+$$
+\varphi_{t,h}(\gamma_1,\dots,\gamma_h) = \exp(A'_{t,h} w_t + B_{t,h}),
+$$
+where $A_{t,h} = A^h_{t,h}$ and $B_{t,h} = B^h_{t,h}$, the $A^h_{t,i},
+B^h_{t,i}$ $i = 1,\dots,h$, being given recursively by:
+$$
+\left\{
+\begin{array}{ccl}
+A^h_{t,i} &=& a_{t+h+1-i}(\gamma_{h+1-i} + A^h_{t,i-1}), \\
+B^h_{t,i} &=& b_{t+h+1-i}(\gamma_{h+1-i} + A^h_{t,i-1}) + B^h_{t,i-1}, \\
+A^h_{t,0} &=& 0, B^h_{t,0} = 0.
+\end{array}
+\right.
+$$
+
+
+If the functions $a_{t}$ and $b_{t}$ do not depend on $t$, these recursive formulas do not depend on $t$, and we get $\varphi_{t,h}(\gamma_1,\dots,\gamma_h)$, for any $t$, with only one recursion for each $h$.
+
+Moreover, if the functions $a_{t}$ and $b_{t}$ do not depend on $t$, and if different sequences $(\gamma^h_1,\dots,\gamma^h_h), h=1,\dots,H$ (say) satisfy $\gamma^h_{h+1-i} = u_i$, for
+$i=1,\dots,h$, and for any $h \leq H$, that is if we want to compute (*reverse-order* case):
+\begin{equation}
+\varphi_{t,h}(u_h,\dots,u_1)=\mathbb{E}_t[\exp(u'_{{\color{red}h}} w_{{\color{red}t+1}}+\dots+u'_{{\color{red}1}} w_{{\color{red}t+h}})],
+\quad h=1,\dots,H,(\#eq:LTreverse)
+\end{equation}
+then Proposition \@ref(prp:reverseMLT) (in the appendix) shows that we can compute the $\varphi_{t,h}(u_h,\dots,u_1)$ for any $t$ and any $h \leq H$ with only one recursion. That is $\varphi_{t,h}(u_h,\dots,u_1)=\exp(A'_hw_t+B_h)$ with:
+\begin{equation*}
+\left\{
+\begin{array}{ccl}
+A_{h} &=& a(u_{h} + A_{h-1}), \\
+B_{h} &=& b(u_{h} + A_{h-1}) + B_{h-1}, \\
+A_{0} &=& 0,\quad  B_{0} = 0.
+\end{array}
+\right.
+\end{equation*}
+
+As mentioned above, what precedes has useful implications to price long-dated financial instruments such as nominal and real bonds (Examples \@ref(exm:nominalBth) and \@ref(exm:realBth), respectively), or futures (Example \@ref(exm:Futures)).
+
+:::{.example #nominalBth name="Nominal interest rates"}
+Let $B(t,h)$ denote the date-$t$ price of a nominal zero-coupon bond of maturity $h$. We Have:
+\begin{equation}
+B(t,h) = \mathbb{E}^{\mathbb{Q}}_t exp (-r_{t}-\dots-r_{t+h-1}),(\#eq:stdbond)
+\end{equation}
+where $r_{t}$ is the nominal short rate between $t$ and $t+1$ (observed at $t$), and the associated (continuously-compounded) yield-to-maturity is given by:
+\begin{equation}
+R(t,h) = -  \frac{1}{h}   \log   B(t,h), \quad   h=1,\dots,H.
+\end{equation}
+If $r_t = \omega'w_t$ (say), then:
+$$
+B(t,h) = \exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp(-\omega' w_{t+1} - \dots - \omega' w_{t+h-1}).
+$$
+One can then price this bond by directly employing Eq. \@ref(eq:LTreverse), with $u_1 = 0$ and $u_i = - \omega$, $i = 2,\dots, H$.
+The price $B(t,h)$ is exponential affine in $w_t$, the associated yield-to-maturity $R(t,h)=-1/h\log B(t,h)$ is affine in $w_t$.
+:::
+
+:::{.example #CDR2009 name="No-arbitrage Nelson-Siegel model"}
+In this example, we employ the results of Example \@ref(exm:nominalBth) in the context described by @Christensen_Diebold_Rudebusch_2009. Specifically, we consider a three factor model following a Gaussian VAR (see Example \@ref(exm:GVAR1)):
+$$
+w_t = \left[\begin{array}{c}X_{1,t}\\X_{2,t}\\X_{3,t}\end{array}\right] = 
+\left[\begin{array}{ccc}
+1 & 0 & 0\\
+0&1-\lambda&\lambda\\
+0&0&1-\lambda\end{array}\right]
+\left[\begin{array}{c}X_{1,t-1}\\X_{2,t-1}\\X_{2,t-1}\end{array}\right] +
+\left[\begin{array}{ccc}
+\sigma_{11} & 0 & 0\\
+\sigma_{21}&\sigma_{22}&0\\
+\sigma_{31}&\sigma_{32}&\sigma_{33}\end{array}\right]
+\left[\begin{array}{c}\varepsilon_{1,t}\\\varepsilon_{2,t}\\\varepsilon_{3,t}\end{array}\right],
+$$
+where $\left[\begin{array}{c}\varepsilon_{1,t}\\\varepsilon_{2,t}\\\varepsilon_{3,t}\end{array}\right] \sim \,i.i.d.\, \mathcal{N}(0,Id)$.
+
+The nominal short-term rate is given by $r_t = X_{1,t}+X_{2,t}$. In that case, we can use the results of Example \@ref(exm:nominalBth) with $\omega = (-1,-1,0)'$. The following lines of code do that:
+
+```{r CDR, echo=TRUE, fig.cap="Factor loadings in the context of a no-arbitrage nelson-Siegel model (Christensen, Diebold and Rudebusch, 2009). The first factor (black solid line) is a level factor. The second and third factors (red dashed line and blue dotted line, respectively) are slope factors.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+library(TSModels)
+lambda <- .05
+Phi <- diag(c(1,1-lambda,1-lambda));Phi[2,3] <- lambda
+Sigma <- .0005 * diag(3)
+psi.parameterization=list(mu=matrix(0,3,1),Phi=Phi,Sigma=Sigma)
+u1 <- matrix(0,3,1)
+u2 <- matrix(c(-1,-1,0),ncol=1)
+H <- 20
+AB <- reverse.MHLT(psi.GaussianVAR,u1 = u1,u2 = u2,H = H,
+                   psi.parameterization = psi.parameterization)
+AB$A[1:2,,] <- AB$A[1:2,,] - 1 # add terms corresponding to exp(-r_t)
+a.yield <- - AB$A / array((1:H) %x% rep(1,3),c(3,1,H))
+b.yield <- - AB$B / array((1:H) %x% rep(1,3),c(1,1,H))
+plot(a.yield[1,,],type="l",lwd=2,ylim=c(0,1),
+     xlab="Maturity",ylab="Factor loadings")
+lines(a.yield[2,,],col="red",lwd=2,lty=2)
+lines(a.yield[3,,],col="blue",lwd=2,lty=3)
+```
+:::
+
+In the previous example, note the use of function `reverse.MHLT` (in package `TSModels`), that notably takes a L.T. as an argument (`psi`). In the previous example, we consider a Gaussian VAR, and we therefore assign `psi.GaussianVAR` to `psi`. We then need to provide function `reverse.MHLT` with the arguments of the `psi` function. These arguments are provided in the form of a list (input `psi.parameterization`).
+
+:::{.example #realBth name="Real interest rates"}
+Denote by $q_t$ the price index on date $t$ and by $\pi_{t+1} = \log
+\dfrac{q_{t+1}}{q_t}$ the inflation rate on date $t+1$. We have:
+\begin{eqnarray*}
+\bar{R}(t,h) & =& -   \frac{1}{h}   \log   \bar{B}(t,h), \quad h=1,\dots,H \\    \\
+\bar{B}(t,h) & =&  \mathbb{E}^{\mathbb{Q}}_t   \exp(-r_{t}-\dots-r_{t+h-1} + \pi_{t+1}+\dots+\pi_{t+h}),  \\      \\
+& =& \exp(-r_{t}) \times \\
+&& \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h})
+\end{eqnarray*}
+If $r_t = \omega'w_t$ and $\pi_t = \bar\omega'w_t$, then $\bar{B}(t,h)$ is given by:
+\begin{eqnarray*}
+\exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t exp[(\bar\omega-\omega)'w_{t+1}+\dots+(\bar\omega-\omega)'w_{t+h-1}+\bar\omega'
+w_{t+h}]
+\end{eqnarray*}
+One can then price this bond by directly employing Eq. \@ref(eq:LTreverse), with $u_1 = \bar\omega$ and $u_i = \bar\omega-\omega$, $i = 2,\dots, H$.
+:::
+
+:::{.example #Futures name="Futures"}
+Denote by $F(t,h)$ the date-$t$ price of a future of maturity $h$ (see Section XXX). That is $F(t,h) = \mathbb{E}^{\mathbb{Q}}_t (S_{t+h})$, $h=1,\dots,H$, where $S_t$ is the date-$t$ price of the underlying asset.
+
+* If $w_t = (\log  S_t, x'_t)'$ then $F(t,h) = \mathbb{E}^{\mathbb{Q}}_t \exp(e'_1 w_{t+h})$. This can be calculated by using Eq. \@ref(eq:LTreverse) with $u_1 = e_1$, and $u_i = 0$, for $i=2,\dots,H$.
+
+* If $w_t = (y_t, x'_t)'$ with $y_t = \log\frac{S_t}{S_{t-1}}$, then $F(t,h) = S_t \mathbb{E}^{\mathbb{Q}}_t \exp(e'_1 w_{t+1}+\dots+e'_1 w_{t+h})$. This can be calculated by using Eq. \@ref(eq:LTreverse) with $u_i = e'_1$,  $i=1,\dots,H$.
+:::
+
+### Exponential payoff {#ExponentialPayoff}
+
+Consider an asset providing the payoff $\exp(\nu' w_{t+h})$ on date $t+h$. Its price is given by:
+$$
+P(t,h;\nu) = \mathbb{E}^{\mathbb{Q}}_t[\exp(-r_{t}-\dots-r_{t+h-1}) \exp(\nu' w_{t+h})].
+$$
+If $r_t = \omega'w_t$, we have:
+$$
+P(t,h;\nu) = \exp(-r_{t})\mathbb{E}^{\mathbb{Q}}_t \left(exp[-\omega' w_{t+1}-\dots-\omega' w_{t+h-1}+ \nu' w_{t+h}]\right),
+$$
+which can be calculated by Eq. \@ref(eq:LTreverse), with $u_1 = \nu$ and $u_i = -\omega$ for $i = 2,\dots,H$.
+
+What precedes can be extended to the case where the payoff (settled on date $t+h$) is of the form:
+$$
+(\nu_1'w_{t+h}) \exp(\nu_2' w_{t+h}).
+$$
+Indeed, we have
+$$
+\left[\frac{\partial \exp[(s \nu_1+ \nu_2)'w_{t+h}]}{\partial s}\right]_{s=0} = (\nu_1'w_{t+h}) \exp(\nu_2' w_{t+h}).
+$$
+Therefore:
+\begin{eqnarray}
+&&\mathbb{E}_t^{\mathbb{Q}}[\exp(-r_t - \dots - r_{t+h-1})(\nu_1'w_{t+h}) \exp(\nu_2' w_{t+h})] \nonumber\\
+&=& \left[
+\frac{\partial P(t,h;s \nu_1 + \nu_2)}{\partial s}
+\right]_{s=0}.(\#eq:Affineexppayoff)
+\end{eqnarray}
+This method is easily extended to price payoffs of the form $(\nu_1'w_{t+h})^k \exp(\nu_2' w_{t+h})$, with $k \in \mathbb{N}$.
+
+## VAR representation and conditional moments
+
+An important property of affine processes is that their dynamics can be written as a vector-autoregressive process. This is useful to compute conditional moments of the process.
+
+:::{.proposition #affineVAR name="VAR representation of an affine process' dynamics"}
+If $w_t$ is the affine process whose Laplace transform is defined in Def. \@ref(def:Car1), then its dynamics admits the following vectorial autoregressive representation:
+\begin{equation}
+w_{t+1} = \mu + \Phi w_{t} + \Sigma^{\frac{1}{2}}(w_t) \varepsilon_{t+1},(\#eq:VARw)
+\end{equation}
+where $\varepsilon_{t+1}$ is a difference of martingale sequence whose conditional covariance matrix is the identity matrix and where $\mu$, $\Phi$ and $\Sigma(w_t) = \Sigma^{\frac{1}{2}}(w_t){\Sigma^{\frac{1}{2}}(w_t)}'$ satisfy:
+\begin{equation}
+\mu =  \left[\frac{\partial }{\partial u}b(u)\right]_{u=0}, \quad \Phi= \left[\frac{\partial }{\partial u}a(u)'\right]_{u=0}(\#eq:MUPHI)
+\end{equation}
+\begin{equation}
+\Sigma(w_t) =  \left[\frac{\partial }{\partial u\partial u'}b(u)\right]_{u=0} + \left[\frac{\partial }{\partial u\partial u'}a(u)'w_t\right]_{u=0}.(\#eq:SigmaWt)
+\end{equation}
+:::
+:::{.proof}
+When $w_t$ is affine, its (conditional) cumulant generating function is of the form $\psi(u)=a(u)'w_t+b(u)$. The result directly follows from the formulas given in Section \@ref(AffineLaplace).
+:::
+
+Proposition \@ref(prp:condvarAffine) (in the appendix) shows that the conditional means and variances of $w_t$ are given by:
+\begin{eqnarray}
+\mathbb{E}_t(w_{t+h}) &=& (I - \Phi)^{-1}(I - \Phi^h)\mu + \Phi^h w_t (\#eq:condmean)\\
+\mathbb{V}ar_t(w_{t+h}) &=& \Sigma(\mathbb{E}_t(w_{t+h-1}))+\Phi \Sigma(\mathbb{E}_t(w_{t+h-2}))\Phi' + \nonumber \\
+&& \dots + \Phi^{h-1} \Sigma(w_{t}){\Phi^{h-1}}'. (\#eq:condvar)
+\end{eqnarray}
+Eq. \@ref(eq:condvar) notably implies that  $\mathbb{V}ar_t(w_{t+h})$ is an affine function of $w_t$. Indeed $\Sigma(.)$ is an affine function, and the conditional expectations $\mathbb{E}_t(w_{t+h})$ are affine in $w_t$, as shown by Eq. \@ref(eq:condmean).
+
+The unconditional means and variances are given by:
+\begin{equation}
+\left\{
+\begin{array}{ccl}
+\mathbb{E}(w_t) &=& (I - \Phi)^{-1}\mu\\
+vec[\mathbb{V}ar(w_t)] &=& (I_{n^2} - \Phi \otimes \Phi)^{-1} vec\left(\Sigma[(I - \Phi)^{-1}\mu]\right).
+\end{array}
+\right.(\#eq:uncondmeanvar)
+\end{equation}
+
+
+
+
+
+## Truncated Laplace transforms of affine processes {#TransfAna}
+
+In this section, we show how one can employ Fourier transforms to compute truncated conditional moments of affine processes. For that, let us introduce the following notation:
+$$
+w_{t+1,T} = (w'_{t+1}, w'_{t+2},\dots, w'_T)'
+$$
+with $w_t$ affine $n$-dimensional process.
+
+We want to compute:
+$$
+\tilde{\varphi}_t(u ; v, \gamma) = \mathbb{E}_t[\exp(u'w_{t+1,T})\textbf{1}_{\{v'w_{t+1,T}<\gamma\}}].
+$$
+
+Consider the complex untruncated conditional Laplace transform:
+$$
+\varphi_t(z) = \mathbb{E}_t[\exp(z'w_{t+1,T})],\quad  z \in \mathbb{C}^{nT},
+$$
+computed using the same recursive algorithm as in the real case (see Section \@ref(MHLT)).
+
+@Duffie_Pan_Singleton_2000 have shown that we have (see also Proposition \@ref(prp:Fourier) in the appendix):
+\begin{equation}
+\tilde{\varphi}_t(u ; v, \gamma) =  \frac{\varphi_t(u)}{2} - \frac{1}{\pi}
+\int^\infty_0 \frac{Im[\varphi_t(u+ivx) \exp(-i\gamma x)]}{x} dx.(\#eq:DPS)
+\end{equation}
+where $Im$ means imaginary part.
+
+Note that the integral in Eq. \@ref(eq:DPS) is one dimensional (whatever the dimension of $w_t$). As shown in the following example, this can be exploited to price options.
+
+:::{.example #OptionPricing name="Option pricing"}
+Pricing calls and puts amounts to conditional expectations of the type (with $k > 0$):
+\begin{eqnarray*}
+&& \mathbb{E}_t\left([\exp(u'_1 w_{t+1,T})-k   \exp(u'_2 w_{t+1,T})]^+\right) \\
+&= &  \mathbb{E}_t\left([\exp(u'_1 w_{t+1,T})-k   \exp(u'_2 w_{t+1,T})]\textbf{1}_{\{[\exp(u_1-u_2)'w_{t+1,T}] > k \}}\right) \\
+&= & \tilde{\varphi}_t(u_1 ; u_2-u_1, - \log   k) - k \tilde{\varphi}_t(u_2 ; u_2-u_1, - \log   k).
+\end{eqnarray*}
+:::
+
+:::{.example #ExogSTR name="Exogenous short rate"}
+Consider an asset whose date-$t$ price is $p_t$. Denote its geometric asset return by $y_t$, i.e., $y_t = \log(p_t/p_{t-1})$. Consider an option written on this asset, with a strike equal $k p_t$.
+
+If interest rates are deterministic, the option price, for a maturity $h$, is given by:
+$$
+p_t   \exp(-r_{t}-\dots-r_{t+h-1}) \mathbb{E}^{\mathbb{Q}}_t[\exp   u'_1 w_{t+1, t+h} - k]^+
+$$
+with $u_1 = e \otimes e_1$, where $e$ is the $h$-dimensional vector with components equal to 1, and $e_1$ is the $n$-vector selecting the 1st component ($y_t$ being the 1st component of $w_t$, say).
+:::
+
+:::{.example #EndogSTR name="Endogenous short rate"}
+
+Consider the same context as in Example \@ref(exm:ExogSTR), but with a stochastic (endogenous) short-term rate. For instance, assume that $r_{t+1} = \omega_0 + \omega'_1 w_t$. The option price then is:
+\begin{eqnarray*}
+&& p_t \mathbb{E}^{\mathbb{Q}}_t  \left[ \exp(-\omega_0 - \omega'_1 w_t-\dots- \omega_0 - \omega'_1 w_{t+h-1}) [\exp(u'_1 w_{t+1,t+h})-k]^+ \right]\\
+&= & p_t   \exp(-h \omega_0 - \omega'_1 w_t)\mathbb{E}^{\mathbb{Q}}_t\left(\left[\exp(\tilde{u}'_1w_{t+1,t+h})-k   \exp(u_2 w_{t+1, t+h})\right]^+\right),
+\end{eqnarray*}
+with $\tilde{u}'_1 = u_1 + u_2$, [$u_1 = e \otimes e_1$ as before], and $u_2 = (-\omega'_1,\dots, -\omega'_1, 0)'$.
+:::
+
+
+:::{.example #truncatedR name="Numerical example: Conditional cumulated distribution function (c.d.f.)"}
+
+Let us use the model used in Example \@ref(exm:CDR2009). Suppose we want to compute the conditional distribution of the average interest rate over the next $H$ periods, i.e., $\frac{1}{H}(r_{t+1}+\dots+r_{t+H})$. Hence, we want to compute $\mathbb{E}_t[\textbf{1}_{\{v'w_{t+1,T}<\gamma\}}]$ with $v'w_{t+1,T}=\frac{1}{H}(r_{t+1}+\dots+r_{t+H})$.
+
+```{r truncatedRR, echo=TRUE, fig.cap="Conditional cumulated distribution function (c.d.f.) of $\\frac{1}{H}(r_{t+1}+\\dots+r_{t+H})$.", fig.align = 'left-aligned', message=FALSE}
+H  <- 10
+X  <- matrix(c(0.01,.02,0),3,1)
+x  <- exp(seq(-10,10,length.out=1000))
+u1 <- matrix(c(1/H,1/H,0),3,1) %*% matrix(1i*x,nrow=1);u2 <- u1
+AB <- reverse.MHLT(psi.GaussianVAR,u1 = u1,u2 = u2,H = H,
+                   psi.parameterization = psi.parameterization)
+s1 <- matrix(exp(t(X) %*% AB$A[,,H] + AB$B[,,H]),ncol=1)
+dx <- matrix(x-c(0,x[1:length(x)-1]),length(x),1)
+gamma <- seq(-.2,.3,length.out=1000)
+fx <- outer(x,gamma,function(r,c){Im(s1[,1]*exp(-1i*r*c))/r})*dx[,1]
+f  <- 1/2 - 1/pi * apply(fx,2,sum)
+plot(gamma,f,type="l",xlab="",lwd=2)
+```
+:::
+
+
+
+## Appendices
+
+:::{.lemma #integralQuadratic}
+If $\mu \in \mathbb{R}^L$ and $Q$ is a $(L \times L)$ matrix symmetric positive definite, then:
+$$
+\int_{\mathbb{R}^{L}} \exp(-u'Q u + \mu'u)du =
+\frac{\pi^{L/2}}{(det   Q)^{1/2}} exp \left(
+\begin{array}{l}  \frac{1}{4} \mu'Q^{-1}\mu \end{array} \right).
+$$
+:::
+:::{.proof}
+The integral is:
+\begin{eqnarray*}
+&& \int_{\mathbb{R}^{L}} exp \left[ \begin{array}{l} - (u -
+\frac{1}{2}  Q^{-1} \mu)'  Q (u -
+\frac{1}{2} Q^{-1} \mu)'
+\end{array}
+\right] exp\left(
+\begin{array}{l}  \frac{1}{4} \mu'Q^{-1}\mu \end{array}
+\right)du \\
+&=&  \frac{\pi^{L/2}}{(det Q)^{1/2}} exp\left(
+\begin{array}{l}  \frac{1}{4} \mu'Q^{-1}\mu \end{array}
+\right)
+\end{eqnarray*}
+[using the formula for the unit mass of $\mathcal{N}( 0.5Q^{-1}\mu,(2Q)^{-1})$].
+:::
+
+
+
+:::{.lemma #Quadr}
+If $\varepsilon_{t+1} \sim \mathcal{N}(0,Id)$, we have
+$$
+\mathbb{E}_t \left(\exp[\lambda'\varepsilon_{t+1}+\varepsilon'_{t+1} V \varepsilon_{t+1}]\right) =  \frac{1}{[\det(I-2V)]^{1/2}} \exp\left[
+\frac{1}{2} \lambda'(I-2V)^{-1}\lambda
+\right].
+$$
+:::
+:::{.proof}
+We have
+$$
+\mathbb{E}_t   \exp(\lambda'\varepsilon_{t+1}+\varepsilon'_{t+1}V\varepsilon_{t+1})
+=  \frac{1}{(2\pi)^{n/2}}  \int_{\mathbb{R}^{n}} \exp\left[
+\begin{array}{l}
+-u'\left(
+\begin{array}{l}
+\frac{1}{2} I-V
+\end{array}
+\right)u+\lambda'u
+\end{array}
+\right]du
+$$
+From Lemma \@ref(lem:integralQuadratic),  if $u\in\mathbb{R}^n$, then
+$$
+\int_{\mathbb{R}^{n}} \exp(-u' Q u+\mu'u) du =
+\frac{\pi^{n/2}}{(\det Q)^{1/2}} \exp\left(
+\begin{array}{l}
+\frac{1}{4} \mu'Q^{-1}\mu
+\end{array}
+\right).
+$$
+Therefore:
+$$
+\begin{array}{l}
+\mathbb{E}_t   \exp(\lambda'\varepsilon_{t+1}+\varepsilon'_{t+1}V\varepsilon_{t+1}) \\
+=  \frac{1}{2^{n/2}
+\left[
+\begin{array}{l}
+\det \left(
+\begin{array}{l}
+\frac{1}{2} I-V
+\end{array}
+\right)
+\end{array}
+\right]^{1/2}
+}
+\exp\left[
+\begin{array}{l}
+\frac{1}{4}  \lambda'\left(
+\begin{array}{l}
+\frac{1}{2} I-V
+\end{array}
+\right)^{-1}\lambda
+\end{array}
+\right].
+\end{array}
+$$
+:::
+
+
+:::{.proposition #QGVAR1 name="Quadratic Gaussian process"}
+Consider vector $w_t = (x'_t,vec(x_t x_t')')'$, where $x_t$ is a $n$-dimensional vector following a Gaussian VAR(1), i.e.
+$$
+x_{t+1}|\underline{w_t} \sim \mathcal{N}(\mu+\Phi x_t, \Sigma).
+$$
+If $u = (v,V)$ where $v \in \mathbb{R}^n$ and $V$ a square symmetric matrix of size $n$, we have:
+\begin{eqnarray*}
+\varphi_t(u) &=& \mathbb{E}_t\big\{\exp\big[(v',vec(V)')\times w_{t+1}\big]\big\} \\
+& =& \exp \left\{a_1(v,V)'x_t +vec(a_2(v,V))' vec(x_t'x_t) + b(v,V) \right\},
+\end{eqnarray*}
+where:
+\begin{eqnarray*}
+a_2(u) & = & \Phi'V (I_n - 2\Sigma V)^{-1} \Phi \nonumber \\
+a_1(u) & = & \Phi'\left[(I_n-2V\Sigma)^{-1}(v+2V\mu)\right] \nonumber \\
+b(u) & = & u'(I_n - 2 \Sigma V)^{-1}\left(\mu + \frac{1}{2} \Sigma v\right) +\\
+&& \mu'V(I_n - 2 \Sigma V)^{-1}\mu - \frac{1}{2}\log\big|I_n - 2\Sigma V\big|.(\#eq:laplaceZ)
+\end{eqnarray*}
+:::
+:::{.proof}
+We have:
+\begin{eqnarray*}
+&&\mathbb{E}_t(\exp(v' x_{t+1} + vec(V)'vec(x_{t+1} x_{t+1}'))) \\
+&=& \mathbb{E}_t[\exp(v' (\mu + \Phi x_t + \Sigma^{1/2}\varepsilon_{t+1}) + \\
+&& vec(V)'vec((\mu + \Phi x_t + \Sigma^{1/2}\varepsilon_{t+1}) (\mu + \Phi x_t + \Sigma^{1/2}\varepsilon_{t+1})'))] \\
+&=& \exp[v' (\mu + \Phi x_t) + vec(V)'vec\{(\mu + \Phi x_t)(\mu + \Phi x_t)'\}] \times \\
+&& \mathbb{E}_t[\exp(v'\Sigma^{1/2}\varepsilon_{t+1} +2\underbrace{ vec(V)' vec\{(\mu + \Phi x_t)(\varepsilon_{t+1}'{\Sigma^{1/2}}')\}}_{=(\mu + \Phi x_t)'V\Sigma^{1/2}\varepsilon_{t+1}} +\\
+&& \underbrace{vec(V)'vec\{(\Sigma^{1/2}\varepsilon_{t+1})(\Sigma^{1/2}\varepsilon_{t+1})'}_{=\varepsilon_{t+1}'{\Sigma^{1/2}}'V\Sigma^{1/2}\varepsilon_{t+1}}\}]
+\end{eqnarray*}
+Lemma \@ref(lem:Quadr) can be used to compute the previous conditional expectation, with $\lambda = {\Sigma^{1/2}}'(v + 2 V'(\mu + \Phi x_t))$. Some algebra then leads to the result.
+:::
+
+
+:::{.proposition #LTARG name=""}
+Consider the following auto-regressive gamma process:
+$$
+\frac{w_{t+1}}{\mu} \sim \gamma(\nu+z_t) \quad \mbox{where} \quad z_t \sim \mathcal{P} \left( \frac{\rho w_t}{\mu} \right),
+$$
+with $\nu$, $\mu$, $\rho > 0$. (Alternatively $z_t \sim {\mathcal{P}}(\beta w_t)$, with $\rho = \beta \mu$.)
+
+We have:
+$\varphi_t(u) = exp \left[
+\begin{array}{l}
+\dfrac{\rho u}{1-u \mu} w_t - \nu   \log(1-u
+\mu)\end{array} \right], \mbox{ for } u <  \dfrac{1}{\mu}$.
+:::
+:::{.proof}
+Given $\underline{w_t}$, we have $z_t \sim {\mathcal P}\left( \begin{array}{l}  \frac{\rho w_t} {\mu} \end{array}\right)$. We have:
+\begin{eqnarray*}
+\mathbb{E}[\exp(u w_{t+1})|\underline{w_t}] &=& \mathbb{E}\left\{\mathbb{E}\left[\exp \left(u \mu  \frac{w_{t+1}}{\mu}\right)|\underline{w_t}, \underline{z}_t\right]\underline{w_t}\right\}\\
+&=& \mathbb{E}[(1-u\mu)^{-(\nu+z_t)}|\underline{w_t}] \\
+&=& (1-u\mu)^{-\nu}\mathbb{E}\{\exp[-z_t   \log(1-u\mu)]|\underline{w_t}\} \\
+&=& (1-u\mu)^{-\nu} \exp \left\{\frac{\rho w_t}{\mu}[\exp(-\log(1-u\mu)] -  \frac{\rho w_t}{\mu}\right\}\\
+&=& \exp\left[ \begin{array}{l}  \frac{\rho u w_t}{1-u\mu} - \nu   \log(1-u\mu)  \end{array}\right],
+\end{eqnarray*}
+using the fact that the L.T. of $\gamma(\nu)$ is $(1-u)^{-\nu}$
+and that the L.T. of ${\mathcal P}(\lambda)$ is $\exp[\lambda(\exp(u)-1)]$.
+:::
+
+
+:::{.proposition #WARAR name="Dynamics of a WAR process"}
+If $K$ is an integer, $W_{t+1}$ can be obtained from:
+\begin{eqnarray*}
+\left\{
+\begin{array}{ccl}
+W_{t+1} & =&  \sum^K_{k=1} x_{k,t+1} x'_{k,t+1}\\
+&&\\
+x_{k,t+1} & =& M x_{k,t} + \varepsilon_{k,t+1},\quad k \in \{1,\dots,K\},
+\end{array}
+\right.
+\end{eqnarray*}
+where $\varepsilon_{k,t+1}  \sim   i.i.d. \mathcal{N}(0, \Omega)$ (independent across $k$'s).
+In particular, we have:
+$$
+\mathbb{E}(W_{t+1}|\underline{W_t}) = MW_tM'+K \Omega,
+$$
+i.e. $W_t$ follows a matrix weak AR(1) process.
+:::
 :::{.proof}
 For $K=1$, $W_{t+1}=x_{t+1} x'_{t+1}$, $x_{t+1} = M x_t + \Omega^{1/2} u_{t+1}$ and $u_{t+1} \sim i.i.d. \mathcal{N}(0,Id_L)$. We have:
 $$
@@ -747,10 +1272,10 @@ u_{t+1}+u'_{t+1}\Omega^{1/2} \Gamma \Omega^{1/2} u_{t+1})/x_t] \\
 \frac{1}{2} Id_L-\Omega^{1/2} \Gamma \Omega^{1/2}\right)u_{t+1}\right]  du_{t+1}.
 \end{eqnarray*}
 Using Lemma \@ref(lem:integralQuadratic) with $\mu' = 2 x'_t M'\Gamma \Omega^{1/2}, Q =
- \frac{1}{2} Id_L-\Omega^{1/2}\Gamma\Omega^{1/2}$ \\
+\frac{1}{2} Id_L-\Omega^{1/2}\Gamma\Omega^{1/2}$ \\
 and after some algebra, the RHS becomes:
 $$
- \frac{exp[x'_tM'\Gamma(Id_L-2\Omega\Gamma)^{-1}M
+\frac{exp[x'_tM'\Gamma(Id_L-2\Omega\Gamma)^{-1}M
 x_t]}{det[Id_L-2\Omega^{1/2}\Gamma\Omega^{1/2}]} =  \frac{exp Tr[M'\Gamma(Id_L-2\Omega^{-1}]M
 W_t]}{det[Id_L-2\Omega \Gamma]^{1/2}},
 $$
@@ -758,63 +1283,6 @@ which depends on $x_t$ through $W_t$, and gives the result for
 $K=1$; the result for any $K$ integer follows.
 :::
 
-* Particular case: $L=1$ (univariate).
-\begin{eqnarray*}
-\mathbb{E}[\exp(u W_{t+1})|\underline{W_t}] = \exp\left[
- \frac{u m^2}{1-2\omega u}W_t -
-\frac{K}{2}   \log(1-2\omega u)\right]
-\end{eqnarray*}
-$\Leftrightarrow$ $ARG(1)$ process (Example \@ref(exm:ARG1)) with $\rho = m^2$, $\mu = 2\omega$, $\nu = \frac{K}{2}$.
-
-
-## AFFINE (OR Car) PROCESSES, Multivariate Stochastic Parameters Processes
-
-Consider the same framework as in Section \@ref(stoch) when $y_t$ is a $n$-dimensional vector. The same proof shows that $w_{t+1}=(y_{t+1}',z_{t+1}')'$ is affine.
-
-
-:::{.example #RSVAR name="Stochastic parameters Gaussian VAR(1)"}
-
-Extends Example \@ref(exm:GVAR1)
-
-Using the same notations as in Example \@ref(exm:GVAR1) and in Section \@ref(stoch), we have
-$$
-b_0(u) = \left(u', \frac{1}{2} (u \otimes u)'\right)' \quad \mbox{and} \quad\delta = (\mu', vec(\Sigma)')' \in \mathbb{R}^n \times vec(\mathcal{S}),
-$$
-where $\mathcal{S}$ is the set of symmetric positive semi-definite matrices. $\delta$ can be replaced by:
-
-* $\left( \begin{array}{l} z_{1,t+1}
-\\ z_{2,t+1}
-\end{array} \right)$,
-where $z_{1,t+1}$ is, for instance, a Gaussian VAR process and $z_{2,t+1}$ is obtained by applying the $vec$ operator to a Wishart process, or is replaced by $\Lambda_2 z_{2,t+1}$, where $\Lambda_2$ is a $(n^2 \times J)$ matrix whose columns are $vec(\Sigma_j)$, $j \in \{1,\dots,J\}$, the $\Sigma_j$ being $(n \times n)$ positive semi-definite, and $z_{2,t+1}$ being, for instance, a standardized $J$-dimensional VARG process (multivariate extension of Example \@ref(exm:ARG1)).
-:::
-
-:::{.example #RSVAR name="Stochastic parameters Gaussian VAR(1)"}
-
-Extends Example \@ref(exm:GVAR1).
-
-* $\left( \begin{array}{ll} \Lambda_1 &
-0
-\\ 0 & \Lambda_2
-\end{array} \right)$$\left( \begin{array}{l} z_{1,t+1}
-\\ z_{2,t+1}
-\end{array} \right)$, where $\Lambda_1$ is a $(n \times J_1)$ matrix and $z_{1,t+1}$ is a Markov chain valued in the set of selection vectors of size $J_1$ (see Slide \@ref(slide:Markov}), $\Lambda_2$ is the same matrix as in (i) and $z_{2,t+1}$ is a Markov chain valued in the set of selection vectors of size $J_2$.
-
-* $\left( \begin{array}{l} \Lambda_1 \\
-\Lambda_2
-\end{array}\right)z_{t+1}$, where $\Lambda_1$ and$\Lambda_2$ are the same matrices as above with $J_1=J_2=J$, and  $z_{t+1}$ is a Markov chain valued in the set of selection vectors of size $J$.
-:::
-
-
-## AFFINE (OR Car) PROCESSES, First Key Property: Multi-Horizon Laplace Transform
-
-* $w_{t+1}$: multivariate affine of order 1 (contains the  order $p$ case, with functions $a(.)$, $b(.)$, possibly deterministic functions of time, denoted in this case $a_{t+1}(.)$ and $b_{t+1}(.)$:
-$$
-\mathbb{E}_t \exp[(u'w_{t+1})] = \exp[a'_{t+1}(u)w_t+b_{t+1}(u)].
-$$
-* We want to compute, for some pair $(t,h)$:
-\begin{equation}
-\varphi_{t,h}(\gamma_1,\dots,\gamma_h) = \mathbb{E}_t[\exp(\gamma'_1w_{t+1}+\dots+\gamma'_h w_{t+h})].(\#eq:multiLT)
-\end{equation}
 
 
 :::{.lemma #MHLT}
@@ -834,8 +1302,6 @@ A^h_{t,0} &=& 0, B^h_{t,0} = 0.
 \right.
 $$
 :::
-
-
 :::{.proof}
 For any $j=1,\dots,h$ we have:
 $$
@@ -871,13 +1337,6 @@ Finally note that if we put $h-j+1 = i$, formulas (ii) become (i).
 
 
 
-
-
-
-
-**Remark:** If the functions $a_{t}$ and $b_{t}$ do not depend on $t$, these recursive formulas do not depend on $t$, and we get $\varphi_{t,h}(\gamma_1,\dots,\gamma_h)$, for any $t$, with only one recursion for each $h$.
-
-
 :::{.proposition #reverseMLT name="Reverse-order multi-horizon Laplace transform"}
 If the functions $a_{t}$ and $b_{t}$ do not depend on $t$, and if different sequences $(\gamma^h_1,\dots,\gamma^h_h), h=1,\dots,H$ (say) satisfy $\gamma^h_{h+1-i} = u_i$, for
 $i=1,\dots,h$, and for any $h \leq H$, that is if we want to compute ("reverse order" case):
@@ -896,7 +1355,6 @@ A_{0} &=& 0,\quad  B_{0} = 0.
 \right.(\#eq:auxLemmareverseMLT)
 \end{equation}
 :::
-
 :::{.proof}
 According to Lemma \@ref(lem:MHLT), we have, in this case:
 $$
@@ -911,141 +1369,29 @@ $$
 The previous sequences do not dependent on $h$ and are given by Eq. \@ref(eq:auxLemmareverseMLT).
 :::
 
-
-
-:::{.example #nominalBth name="Nominal interest rates"}
-* If $B(t,h)$ denotes the date-$t$ price of a nominal zero-coupon bon of maturity $h$, then
-\begin{equation}
-B(t,h) = \mathbb{E}^{\mathbb{Q}}_t exp (-r_{t}-\dots-r_{t+h-1}),(\#eq:stdbond)
-\end{equation}
-where $r_{t}$ is the nominal short rate between $t$ and $t+1$ (observed at $t$), and the associated (continuously-compounded) yield-to-maturity is given by:
-\begin{equation}
-R(t,h) = -  \frac{1}{h}   \log   B(t,h), \quad   h=1,\dots,H.
-\end{equation}
-* If $r_t = \omega'w_t$ (say), then:
-$$
-B(t,h) = \exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp(-\omega' w_{t+1} - \dots - \omega' w_{t+h-1})
-$$
-$$
-\Rightarrow u_1 = 0,\mbox{ and } u_i = - \omega, i = 2,\dots, H.
-$$
-* $B(t,h)$ exponential affine in $w_t$, $R(t,h)$ affine in $w_t$.
-:::
-
-
-:::{.example #realBth name="Real interest rates"}
-
-* Denoting by $q_t$ the price index on date $t$ and by $\pi_{t+1} =   log
-\dfrac{q_{t+1}}{q_t}$ the inflation rate on date $t+1$, we have:
-\begin{eqnarray*}
-\bar{R}(t,h) & =& -   \frac{1}{h}   \log   \bar{B}(t,h), \quad h=1,\dots,H \\    \\
-\bar{B}(t,h) & =&  \mathbb{E}^{\mathbb{Q}}_t   \exp(-r_{t}-\dots-r_{t+h-1} + \pi_{t+1}+\dots+\pi_{t+h}),  \\      \\
-& =& \exp(-r_{t}) \times \\
-&& \mathbb{E}^{\mathbb{Q}}_t   \exp(-r_{t+1}-\dots-r_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h})
-\end{eqnarray*}
-* If $r_t = \omega'w_t$ and $\pi_t = \bar\omega'w_t$ then $\bar{B}(t,h)$ is given by:
-\begin{eqnarray*}
-\exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t exp[(\bar\omega-\omega)'w_{t+1}+\dots+(\bar\omega-\omega)'w_{t+h-1}+\bar\omega'
-w_{t+h}]
-\end{eqnarray*}
-$\Rightarrow$ $u_1 = \bar\omega$ and $u_i = \bar\omega-\omega$, $i=2,\dots,H$.
-
-:::
-
-
-
-
-
-:::{.example #Futures name="Futures"}
-
-* $F(t,h) = \mathbb{E}^{\mathbb{Q}}_t (S_{t+h})$, $h=1,\dots,H$, where $S_t$ date-$t$ price of the asset.
-* If $w_t = (\log  S_t, x'_t)'$ then
-$$
-F(t,h) = \mathbb{E}^{\mathbb{Q}}_t \exp(e'_1 w_{t+h}) \Rightarrow u_1 = e_1,  \mbox{and}  u_i = 0,   i=2,\dots,H.
-$$
-* If $w_t = (y_t, x'_t)'$ with $y_t = \log
-\frac{S_t}{S_{t-1}}$, then:
-$$
-F(t,h) = S_t \mathbb{E}^{\mathbb{Q}}_t   \exp(e'_1 w_{t+1}+\dots+e'_1 w_{t+h}) \Rightarrow u_i = e'_1,  i=1,\dots,H.
-$$
-:::
-
-:::{.example #ExponentialPayoff name="Exponential affine payoffs"}
-
-* Consider, for $h \in \{1,\dots,H\}$, the date-$t$ price of the payoff $\exp(\nu' w_{t+h}$), settled on date $h$:
-$$
-P(t,h;\nu) = \mathbb{E}^{\mathbb{Q}}_t[\exp(-r_{t}-\dots-r_{t+h-1}) \exp(\nu' w_{t+h})].
-$$
-* If $r_t = \omega'w_t$, we get:
-$$
-P(t,h;\nu) = \exp(-r_{t})\mathbb{E}^{\mathbb{Q}}_t \left(exp[-\omega' w_{t+1}-\dots-\omega' w_{t+h-1}+ \nu' w_{t+h}]\right)
-$$
-$\Rightarrow u_1 = \nu$ and $u_i = -\omega$, $i = 2,\dots,H$.
-	* What precedes can be extended to the case where the payoff (settled on date $t+h$) is of the form:
-	$$
-	(\nu_1'w_{t+h}) \exp(\nu_2' w_{t+h}).
-	$$
-	* Indeed, we have
-	$$
-	\left[\frac{\partial \exp[(s \nu_1+ \nu_2)'w_{t+h}]}{\partial s}\right]_{s=0} = (\nu_1'w_{t+h}) \exp(\nu_2' w_{t+h}).
-	$$
-	* Therefore:
-	\begin{eqnarray}
-	&&\mathbb{E}_t^{\mathbb{Q}}[\exp(-r_t - \dots - r_{t+h-1})(\nu_1'w_{t+h}) \exp(\nu_2' w_{t+h})] \nonumber\\
-	&=& \left[
-	\frac{\partial P(t,h;s \nu_1 + \nu_2)}{\partial s}
-	\right]_{s=0}.(\#eq:Affineexppayoff)
-	\end{eqnarray}
-	* This method is easily extended to price payoffs of the form $(\nu_1'w_{t+h})^k \exp(\nu_2' w_{t+h})$, $k \in \mathbb{N}$.
-:::
-
-
-## AFFINE (OR Car) PROCESSES, Second Key Property: VAR representation
-
-:::{.proposition #affineVAR name="VAR representation of an affine process' dynamics"}
-If $w_t$ is the affine process whose Laplace transform is defined in Def. \@ref(def:Car1), then its dynamics admits the following vectorial autoregressive representation:
-	\begin{equation}
-	w_{t+1} = \mu + \Phi w_{t} + \Sigma^{\frac{1}{2}}(w_t) \varepsilon_{t+1},(\#eq:VARw)
-	\end{equation}
-	where $\varepsilon_{t+1}$ is a difference of martingale sequence whose conditional covariance matrix is the identity matrix and where $\mu$, $\Phi$ and $\Sigma(w_t) = \Sigma^{\frac{1}{2}}(w_t){\Sigma^{\frac{1}{2}}(w_t)}'$ satisfy:
-	\begin{equation}
-	\mu =  \left[\frac{\partial }{\partial u}b(u)\right]_{u=0}, \quad \Phi= \left[\frac{\partial }{\partial u}a(u)'\right]_{u=0}(\#eq:MUPHI)
-	\end{equation}
-	\begin{equation}
-	\Sigma(w_t) =  \left[\frac{\partial }{\partial u\partial u'}b(u)\right]_{u=0} + \left[\frac{\partial }{\partial u\partial u'}a(u)'w_t\right]_{u=0}.(\#eq:SigmaWt)
-	\end{equation}
-:::
-:::{.proof}
-When $w_t$ is affine, its (conditional) cumulant generating function is of the form $\psi(u)=a(u)'w_t+b(u)$. The result directly follows from the formulas given in Section \@ref(AffineLaplace).
-:::
-
-
-
-
-## Multi-horizon conditional means and variances
-
-Proposition \@ref(prp:affineVAR) implies that:
+:::{.proposition #condvarAffine name="Conditional means and variances of an affine process"}
+Consider an affine process $w_t$. Using the notation of Proposition \@ref(prp:affineVAR), we have:
 \begin{eqnarray}
-\mathbb{E}_t(w_{t+h}) &=& (I - \Phi)^{-1}(I - \Phi^h)\mu + \Phi^h w_t (\#eq:condmean)\\
+\mathbb{E}_t(w_{t+h}) &=& (I - \Phi)^{-1}(I - \Phi^h)\mu + \Phi^h w_t (\#eq:condmeanAppendix)\\
 \mathbb{V}ar_t(w_{t+h}) &=& \Sigma(\mathbb{E}_t(w_{t+h-1}))+\Phi \Sigma(\mathbb{E}_t(w_{t+h-2}))\Phi' + \nonumber \\
-&& \dots + \Phi^{h-1} \Sigma(w_{t}){\Phi^{h-1}}'. (\#eq:condvar)
+&& \dots + \Phi^{h-1} \Sigma(w_{t}){\Phi^{h-1}}'. (\#eq:condvarAppendix)
 \end{eqnarray}
-Eq. \@ref(eq:condvar) notably shows that  $\mathbb{V}ar_t(w_{t+h})$ is an affine function of $w_t$ (indeed $\Sigma(.)$ is an affine function and the conditional expectations $\mathbb{E}_t(w_{t+h})$ are affine in $w_t$, as shown in Eq. \@ref(eq:condmean).
+Eq. \@ref(eq:condvarAppendix) notably shows that  $\mathbb{V}ar_t(w_{t+h})$ is an affine function of $w_t$. Indeed $\Sigma(.)$ is an affine function, and the conditional expectations $\mathbb{E}_t(w_{t+h})$ are affine in $w_t$, as shown by Eq. \@ref(eq:condmeanAppendix).
 
-We also have:
+The unconditional mean and variance of $w_t$ are given by:
 \begin{equation}
 \left\{
 \begin{array}{ccl}
 \mathbb{E}(w_t) &=& (I - \Phi)^{-1}\mu\\
 vec[\mathbb{V}ar(w_t)] &=& (I_{n^2} - \Phi \otimes \Phi)^{-1} vec\left(\Sigma[(I - \Phi)^{-1}\mu]\right).
 \end{array}
-\right.(\#eq:uncondmeanvar)
+\right.(\#eq:uncondmeanvarAppendix)
 \end{equation}
-
+:::
 :::{.proof}
-Eq. \@ref(eq:condmean) is easily deduced from Eq. \@ref(eq:VARw), using that $\mathbb{E}_t(\varepsilon_{t+k})=0$ for $k>0$.
+Eq. \@ref(eq:condmeanAppendix) is easily deduced from Eq. \@ref(eq:VARw), using that $\mathbb{E}_t(\varepsilon_{t+k})=0$ for $k>0$.
 
-As regards Eq. \@ref(eq:condvar):
+As regards Eq. \@ref(eq:condvarAppendix):
 \begin{eqnarray*}
 \mathbb{V}ar_t(w_{t+h}) &=& \mathbb{V}ar_t\left(\Sigma(w_{t+h-1})^{\frac{1}{2}}\varepsilon_{t+h}+\dots + \Phi^{h-1} \Sigma(w_{t})^{\frac{1}{2}}\varepsilon_{t+1} \right).
 \end{eqnarray*}
@@ -1070,120 +1416,6 @@ where the last equality results from the fact that he fact that $\Sigma(.)$ is a
 :::
 
 
-
-
-## Extended Affine Processes {#AffineExtended}
-
-:::{.definition #ExtAffine name="Extended Affine Processes"}
-A process $w_{1,t}$ is extended affine if there exists a process $w_{2,t} = g(\underline{w_{1,t}})$ such that $(w'_{1,t}, w'_{2,t})'$ is affine (of order 1).
-:::
-
-* For an extended affine processes, $\varphi_{1,t}(u) = \mathbb{E}[\exp(u'w_{1,t+1})|\underline{w_{1,t}}]$ can be obtained from:
-\begin{eqnarray*}
-\varphi_t(u_1, u_2) &=& \mathbb{E}[\exp(u'_1w_{1,t+1}+u'_2 w_{2,t+1)}|\underline{w_{1,t}}, \underline{w_{2,t}}] \\
-&=& \exp[a'_1(u_1,u_2)w_{1,t} + a'_2(u_1,u_2)w_{2,t}+b(u_1,u_2)]
-\end{eqnarray*}
-by:
-$$
-\varphi_{1,t}(u) = \varphi_t(u, 0) = \exp[a'_1(u,0)w_{1,t}+a'_2(u,0)g(\underline{w_{1,t}}) + b(u, 0)].
-$$
-In particular $w_{1,t}$ may be non-Markovian.
-
-
-* Similarly a multi-horizon Laplace transform
-$$
-\mathbb{E}[\exp(\gamma'_{1}w_{1,t+1}+\dots+\gamma'_{h}w_{1,t+h})|\underline{w_{1,t}}]
-$$
-can be obtained from:
-\begin{eqnarray*}
- \mathbb{E}_t[\exp(\{\gamma'_{1,1}w_{1,t+1}+\gamma'_{2,1}w_{2,t+1}\}+\dots+ \{\gamma'_{1,h}w_{1,t+h}+\gamma'_{2,h}w_{2,t+h}\}] \\
-= exp[A'_{1,t,h}(\gamma^h_1, \gamma^h_2)w_{1,t}+A'_{2,t,h}(\gamma^h_1, \gamma^h_2)w_{2,t}+B_{t,h}(\gamma^h_1, \gamma^h_2)],
-\end{eqnarray*}
-(with $\gamma^h_1 = (\gamma'_{1,1},\dots, \gamma'_{1,h})', \gamma^h_2 = (\gamma'_{2,1},\dots, \gamma'_{2,h})'$) by:
-$$
-\exp[A'_{1,t,h}(\gamma^h,0) w_{1,t} + A'_{2,t,h}(\gamma^h,0)g (\underline{w_{1,t}}) + B_{t,h}(\gamma^h,0)],
-$$
-with $\gamma^h = (\gamma_1',\dots,\gamma_h')'$.
-
-
-
-:::{.example #AffProcessOrderp name="Affine process of order p"}
-* If $\{w_{1,t}\}$ is affine or order $p$, then $(w_{1,t},\dots,w_{1,t-p+1})$ is affine of order 1.
-* Here $w_{2,t} = (w'_{1,t-1}, \dots.w'_{1,t-p+1})'$.
-* Extreme case since $w_{2,t}$ belongs to the information at $t-1$, which implies $a_2(u_1, u_2) = u_2$.
-:::
-
-
-
-:::{.example #GaussianARMA name="Gaussian ARMA process"}
-
-* Consider an $ARMA(1,1)$ process
-$$
-w_{1,t} - \varphi w_{1,t-1} = \varepsilon_t-\theta \varepsilon_{t-1}
-$$
-$$
-\mbox{$|\varphi | < 1$, $|\theta| < 1$, $\varepsilon_t \sim   i.i.d.  \mathcal{N}(0, \sigma^2)$}.
-$$
-* $w_{1,t}$ is not Markovian.
-* Take $w_{2,t} = \varepsilon_t = (1-\theta L)^{-1}(1-\varphi L)w_{1,t}$.
-
-We have:
-$$
-\left(
-\begin{array}{l}
-w_{1,t+1} \\
-w_{2,t+1}
-\end{array}
-\right) =
-\left(
-\begin{array}{ll}
-\varphi & -\theta \\
-0 &      0
-\end{array}
-\right)
-\left(
-\begin{array}{l}
-w_{1,t} \\
-w_{2,t}
-\end{array}
-\right) +
-\left(
-\begin{array}{l}
-1 \\
-1
-\end{array}
-\right) \varepsilon_{t+1}
-$$
-* Hence $(w_{1,t}, w_{2,t})'$ is Gaussian $VAR(1)$
-and, therefore, affine (of order 1).
-* Easily extended to $ARMA(p,q)$ and $VARMA(p,q).$
-:::
-
-
-:::{.example #GARCH name="GARCH type process"}
-
-* $w_{1,t}$ is defined by:
-$$
-w_{1,t+1}  = \mu + \varphi w_{1,t} + \sigma_{t+1} \varepsilon_{t+1},
-$$
-where $|\varphi| < 1$ and $\varepsilon_t \sim  i.i.d.  \mathcal{N}(0,1)$, and
-$$
-\sigma^2_{t+1} = \omega + \alpha \varepsilon^2_t + \beta \sigma^2_t,
-$$
-where $0 < \beta < 1$.
-
-* Consider $w_{2,t} = \sigma^2_{t+1}$ non-linear function of $\underline{w_{1,t}}$.
-
-* It can be shown (see below) that:
-\begin{eqnarray*}
-&& \mathbb{E}\left[\exp(u_1 w_{1,t+1} + u_2 w_{2,t+1})|\underline{w_{1,t}}\right] \\
-&=& \exp\left[u_1 \mu + u_2 \omega - \frac{1}{2}   \log(1-2 u_2 \alpha) \right. \\
-&&\left. +  u_1 \varphi w_{1,t} + (u_2\beta +  \frac{u^2_1}{2(1-2u_2\alpha)}) w_{2,t}\right],
-\end{eqnarray*}
-which is exponential affine in $(w_{1,t}, w_{2,t})$.
-:::
-
-
 :::{.proposition #GARCH name="Affine property of the GARCH-type process"}
 The process $w_t = (w_{1,t}, w_{2,t})$ defined by:
 $$
@@ -1201,12 +1433,12 @@ is affine.
 Note that $w_{2,t}$ is function of $\underline{w_{1,t}}$
 \begin{eqnarray*}
 && \mathbb{E}[\exp(u_1 w_{1, t+1} + u_2 w_{2, t+1})|\underline{w_{1,t}}] \\
- &= & \exp(u_1 \mu + u_1 \varphi w_{1,t} + u_2 \omega + u_2 \beta w_{2,t})  \mathbb{E}[\exp(u_1 \sigma_{t+1} \varepsilon_{t+1} + u_2 \alpha \varepsilon^2_{t+1})|\underline{w_{1,t}}]
+&= & \exp(u_1 \mu + u_1 \varphi w_{1,t} + u_2 \omega + u_2 \beta w_{2,t})  \mathbb{E}[\exp(u_1 \sigma_{t+1} \varepsilon_{t+1} + u_2 \alpha \varepsilon^2_{t+1})|\underline{w_{1,t}}]
 \end{eqnarray*}
 and, using Lemma \@ref(lem:Quadr):
 \begin{eqnarray*}
- &&\mathbb{E}[\exp(u_1 w_{1, t+1} + u_2 w_{2, t+1})|\underline{w_{1,t}}] \\
- &= & \exp(u_1 \mu + u_1 \varphi w_{1,t} + u_2 \omega + u_2 \beta w_{2t})  \exp \left[ -   \frac{1}{2}   \log(1-2 u_2 \alpha) +
+&&\mathbb{E}[\exp(u_1 w_{1, t+1} + u_2 w_{2, t+1})|\underline{w_{1,t}}] \\
+&= & \exp(u_1 \mu + u_1 \varphi w_{1,t} + u_2 \omega + u_2 \beta w_{2t})  \exp \left[ -   \frac{1}{2}   \log(1-2 u_2 \alpha) +
 \frac{u^2_1 w_{2,t}}{2(1-2 u_2 \alpha)} \right]\\
 &= & \exp \left[ u_1 \mu + u_2 \omega -  \frac{1}{2}   \log(1-2u_2\alpha)+  u_1 \varphi w_{1,t} + \left(u_2 \beta +  \frac{u^2_1}{2(1-2u_2\alpha)}\right)
 w_{2,t}\right],
@@ -1216,250 +1448,73 @@ which is exponential affine in $(w_{1,t}, w_{2,t})$.
 
 
 
-
-## Truncated Laplace Transforms of Affine Processes and Transform Analysis {#TransfAna}
-
-
-* Let us introduce the following notation:
-$$
-w_{t+1,T} = (w'_{t+1}, w'_{t+2},\dots, w'_T)'
-$$
-with $w_t$ affine $n$-dimensional process.
-* We want to compute:
-$$
-\tilde{\varphi}_t(u ; v, \gamma) = \mathbb{E}_t[\exp(u'w_{t+1,T})\textbf{1}_{\{v'w_{t+1,T<\gamma}\}}].
-$$
-* Consider the complex untruncated conditional Laplace transform:
-$$
-\varphi_t(z) = \mathbb{E}_t[\exp(z'w_{t+1,T})],\quad  z \in \mathbb{C}^{nT},
-$$
-computed using the same recursive algorithm as in the real case.
-
-
-
-
-* We have [@Duffie_Pan_Singleton_2000]:
+:::{.proposition #Fourier name="Computation of truncated conditional moments"}
+If $\varphi(z)=\mathbb{E}[exp(z'w)]$, we have:
 \begin{equation}
-\tilde{\varphi}_t(u ; v, \gamma) =  \frac{\varphi_t(u)}{2} - \frac{1}{\pi}
- \int^\infty_0 \frac{Im[\varphi_t(u+ivx) \exp(-i\gamma x)]}{x} dx.(\#eq:DPS)
+\mathbb{E}[\exp(u'w)\textbf{1}_{(v'w<\gamma})] = \frac{\varphi(u)}{2} -  \frac{1}{\pi} \int^\infty_o
+\frac{{\mathcal I}m[\varphi(u+ivx)\exp(-i\gamma x)]}{x}dx.(\#eq:Truncated)
 \end{equation}
-* where $Im$ means imaginary part.
-
-* Note that the integral in Eq. \@ref(eq:DPS) is one dimensional (whatever the dimension of $w_t$).
-
-* **Application**: Option pricing.
-
-The typical problem is to compute conditional expectation of the type (with $k > 0$):
-\begin{eqnarray*}
-&& \mathbb{E}_t\left([\exp(u'_1 w_{t+1,T})-k   \exp(u'_2 w_{t+1,T})]^+\right) \\
-&= &  \mathbb{E}_t\left([\exp(u'_1 w_{t+1,T})-k   \exp(u'_2 w_{t+1,T})]\textbf{1}_{\{[\exp(u_1-u_2)'w_{t+1,T}] > k \}}\right) \\
-&= & \tilde{\varphi}_t(u_1 ; u_2-u_1, - \log   k) - k \tilde{\varphi}_t(u_2 ; u_2-u_1, - \log   k).
-\end{eqnarray*}
-
-PROOFS
-
-* We want to compute:
-$$
-\tilde{\varphi}_t(u;v,\gamma) = \mathbb{E}_t[\exp(u'w)\textbf{1}_{(v'w<\gamma})]
-$$
-(noting $w=\tilde{w}_{t+1,T}$) knowing the function $\varphi_t(z)=\mathbb{E}_t[exp(z'w)],$ $z$: complex components.\\
-* We omit the index $t$ for notational simplicity.
-* Let us first note that, for given $u$ and $v$, $\tilde{\varphi}_t(u;v,\gamma)$ is a positive increasing bounded function of $\gamma$ and therefore can be seen as the c.d.f. of a positive finite measure on $\mathbb{R}$, the Fourier transform of which is:
+:::
+:::{.proof}
+We want to compute $\tilde{\varphi}_t(u;v,\gamma) = \mathbb{E}_t[\exp(u'w)\textbf{1}_{(v'w<\gamma})]$. Let us first note that, for given $u$ and $v$, $\tilde{\varphi}_t(u;v,\gamma)$ is a positive increasing bounded function of $\gamma$ and therefore can be seen as the c.d.f. of a positive finite measure on $\mathbb{R}$, the Fourier transform of which is:
 $$
 \int_{\mathbb{R}} \exp(i\gamma x)d\tilde{\varphi}(u;v,\gamma) = \mathbb{E} \int_{\mathbb{R}} \exp(i\gamma x)d\tilde{\varphi}_w(u;v,\gamma),
 $$
-where, for given $w, \tilde{\varphi}_w(u;v,\gamma)$ is the c.d.f. of the mass point $\exp(u'w)$ at $v'w$,  so we get
-the function of $x$:
+where, for given $w, \tilde{\varphi}_w(u;v,\gamma)$ is the c.d.f. of the mass point $\exp(u'w)$ at $v'w$. We then get:
 \begin{eqnarray*}
-\displaystyle \int_{\mathbb{R}} \exp(i\gamma x) d\tilde{\varphi}(u;v,\gamma) &=& \mathbb{E}[\exp(ixv'w)exp(u'w)] \\
+\int_{\mathbb{R}} \exp(i\gamma x) d\tilde{\varphi}(u;v,\gamma) &=& \mathbb{E}[\exp(ixv'w)exp(u'w)] \\
 & =& \mathbb{E}[\exp(u+ivx)'w] \\
 & =& \varphi(u+ivx).
 \end{eqnarray*}
-* Let us now compute for any real number $\lambda$:
+Let us now compute $A(x_0,\lambda)$ for any real number $\lambda$, with:
 \begin{eqnarray*}
 &&A(x_0,\lambda) \\
-&=& \displaystyle \frac{1}{2\pi} \int^{x_0}_{-x_0}
-\displaystyle \frac{\exp(i\lambda x)\varphi(u-ivx)-\exp(-i\lambda)\varphi(u+ivx)}{ix}dx \\
-&=& \displaystyle \frac{1}{2\pi} \int^{x_0}_{-x_0}\left[ \begin{array}{l} \displaystyle \int_{\mathbb{R}}
-\displaystyle \frac{\exp[-ix(\gamma-\lambda)]-\exp[ix(\gamma-\lambda)]}{ix}d\tilde{\varphi}(u;v,\gamma)
+&=&  \frac{1}{2\pi} \int^{x_0}_{-x_0}
+\frac{\exp(i\lambda x)\varphi(u-ivx)-\exp(-i\lambda)\varphi(u+ivx)}{ix}dx \\
+&=&  \frac{1}{2\pi} \int^{x_0}_{-x_0}\left[ \begin{array}{l}  \int_{\mathbb{R}}
+\frac{\exp[-ix(\gamma-\lambda)]-\exp[ix(\gamma-\lambda)]}{ix}d\tilde{\varphi}(u;v,\gamma)
 \end{array} \right]dx \\
-&=& \displaystyle \frac{1}{2\pi} \displaystyle \int_{\mathbb{R}}
-\left[ \begin{array}{l}  \displaystyle \int^{x_0}_{-x_0}  \displaystyle \frac{\exp[-ix(\gamma-\lambda)]
--\exp[ix(\gamma-\lambda)]}{ix}dx \end{array} \right]d\tilde{\varphi}(u;v,\gamma)
+&=&  \frac{1}{2\pi}  \int_{\mathbb{R}}
+\left[ \begin{array}{l}   \int^{x_0}_{-x_0}   \frac{\exp[-ix(\gamma-\lambda)]
+-\exp[ix(\gamma-\lambda)]}{ix}dx \end{array} \right]d\tilde{\varphi}(u;v,\gamma).
 \end{eqnarray*}
-* Now :
+Now :
 \begin{eqnarray*}
-\displaystyle \frac{1}{2\pi} \int^{x_o}_{-x_o}
-\displaystyle \frac{\exp[-ix(\gamma-\lambda)]
--\exp[ix(\gamma-\lambda)]}{ix}dx \\ = \displaystyle \frac{-sign(\gamma-\lambda)}{\pi}
-\int^{x_o}_{-x_o}\displaystyle \frac{sin(x\mid\gamma-\lambda\mid)}{x}dx
+\frac{1}{2\pi} \int^{x_o}_{-x_o}
+\frac{\exp[-ix(\gamma-\lambda)]
+-\exp[ix(\gamma-\lambda)]}{ix}dx \\ =  \frac{-sign(\gamma-\lambda)}{\pi}
+\int^{x_o}_{-x_o} \frac{sin(x\mid\gamma-\lambda\mid)}{x}dx
 \end{eqnarray*}
-which tends to -sign$(\gamma-\lambda)$ when $x_o\rightarrow\infty$ (where sign$(\omega)=1$ if $\omega>0$, sign$(\omega)=0$ if $\omega=0$, sign$(\omega)=-1$ if $\omega<0$).
-* Therefore:
+which tends to $-sign(\gamma-\lambda)$ when $x_0\rightarrow\infty$ (where $sign(\omega)=1$ if $\omega>0$, $sign(\omega)=0$ if $\omega=0$, $sign(\omega)=-1$ if $\omega<0$).
+Therefore:
 $$
-A(\infty,\lambda) = - \displaystyle \int_{\mathbb{R}} sign(\gamma-\lambda)d\tilde{\varphi}(u;v,\gamma) = -\mathbb{E} \displaystyle \int_{\mathbb{R}} sign(\gamma-\lambda)d\tilde{\varphi}_w(u;\theta,\gamma),
+A(\infty,\lambda) = -  \int_{\mathbb{R}} sign(\gamma-\lambda)d\tilde{\varphi}(u;v,\gamma) = -\mathbb{E}  \int_{\mathbb{R}} sign(\gamma-\lambda)d\tilde{\varphi}_w(u;\theta,\gamma),
 $$
-where $\tilde{\varphi}_w(u;v,\gamma)$ is the c.d.f. of the mass point $exp(u'w)$ at $v'w$ and
+where $\tilde{\varphi}_w(u;v,\gamma)$ is the c.d.f. of the mass point $\exp(u'w)$ at $v'w$ and
 $$
-\displaystyle \int_{\mathbb{R}} sign(\gamma-\lambda)d\tilde{\varphi}_w(u;v,\gamma)=
+\int_{\mathbb{R}} \mbox{sign}(\gamma-\lambda)d\tilde{\varphi}_w(u;v,\gamma)=
 \left\{
-\begin{array}{ccl}
- \exp(u'w) & if& \lambda<v'w \\
-       0 & if& \lambda=v'w \\
-      - exp(u'w) & if& \lambda>v'w
-      \end{array}
-      \right.
+\begin{array}{ccc}
+\exp(u'w) & \mbox{if} & \lambda < v'w \\
+0 & \mbox{if}& \lambda = v'w \\
+-\exp(u'w) & \mbox{if} & \lambda > v'w.
+\end{array}
+\right.
 $$
-so
+Therefore, we have:
 \begin{eqnarray*}
 A(\infty,\lambda) & =& - \mathbb{E}[\exp(u'w)(1-\textbf{1}_{(v'w<\lambda)})-\exp(u'w)\textbf{1}_{(v'w<\lambda)}] \\
 & =& - \varphi(u) + 2\tilde{\varphi}(u;v,\lambda)
 \end{eqnarray*}
-and therefore:
+and, further,:
 $$
-\tilde{\varphi}(u;,v,\gamma) = \displaystyle \frac{\varphi(u)}{2} + \displaystyle \frac{1}{2} A(\infty,\gamma)
+\tilde{\varphi}(u;,v,\gamma) =  \frac{\varphi(u)}{2} +  \frac{1}{2} A(\infty,\gamma),
 $$
-* where:
+where
 \begin{eqnarray*}
-\displaystyle \frac{1}{2} A(\infty,\gamma) & =& \displaystyle \frac{1}{4\pi} \int^{\infty}_{-\infty} \displaystyle \frac{\exp(i\gamma x)\varphi(u-ivx)-\exp(-i\gamma x)\varphi(u+ivx)}{ix} dx \\
-& =& \displaystyle \frac{1}{2\pi} \int^{\infty}_{o} \displaystyle \frac{\exp(i\gamma x)\varphi(u-ivx)-\exp(-i\gamma x)\varphi(u+ivx)}{ix} dx \\
-& =& - \displaystyle \frac{1}{\pi} \int^{\infty}_{o} \displaystyle \frac{{\mathcal I}m[\exp(-i\gamma x)\varphi(u+ivx)]}{x}dx
+\frac{1}{2} A(\infty,\gamma) & =&  \frac{1}{4\pi} \int^{\infty}_{-\infty}  \frac{\exp(i\gamma x)\varphi(u-ivx)-\exp(-i\gamma x)\varphi(u+ivx)}{ix} dx \\
+& =&  \frac{1}{2\pi} \int^{\infty}_{o}  \frac{\exp(i\gamma x)\varphi(u-ivx)-\exp(-i\gamma x)\varphi(u+ivx)}{ix} dx \\
+& =& -  \frac{1}{\pi} \int^{\infty}_{o}  \frac{{\mathcal I}m[\exp(-i\gamma x)\varphi(u+ivx)]}{x}dx,
 \end{eqnarray*}
-and finally
-$$
-\tilde{\varphi}(u;v,\gamma) = \displaystyle \frac{\varphi(u)}{2} - \displaystyle \frac{1}{\pi} \int^\infty_o
-\displaystyle \frac{{\mathcal I}m[\varphi(u+ivx)\exp(-i\gamma x)]}{x}dx.
-$$
-
-
-
-:::{.example #ExogSTR name="Exogenous short rate"}
-
-* Consider an asset whose date-$t$ price is $p_t$.
-* Geometric asset return: $y_t = \log(p_t/p_{t-1})$.
-* Consider an option written on this asset. Strike: $k p_t$. Deterministic (exogenous) interest rates. Residual maturity: $h$.
-*[$\Rightarrow$] Option price:
-$$
-p_t   \exp(-r_{t}-\dots-r_{t+h-1}) \mathbb{E}^{\mathbb{Q}}_t[\exp   u'_1 w_{t+1, t+h} - k]^+
-$$
-with $u_1 = e \otimes e_1$, where $e$ is the $h$-dimensional vector with components 1 and $e_1$ the $n$-vector selecting the 1st component ($y_t$ being the 1st component of $w_t$, say).
+which leads to Eq. \@ref(eq:Truncated).
 :::
-
-:::{.example #EndogSTR name="Endogenous short rate"}
-
-* Stochastic (endogenous) short-term rate: $r_{t+1} = \omega_0 + \omega'_1 w_t$.
-* The price is:
-\begin{eqnarray*}
-&& p_t \mathbb{E}^{\mathbb{Q}}_t  \left[ \exp(-\omega_0 - \omega'_1 w_t-\dots- \omega_0 - \omega'_1 w_{t+h-1}) [\exp(u'_1 w_{t+1,t+h})-k]^+ \right]\\
-&= & p_t   \exp(-h \omega_0 - \omega'_1 w_t)\mathbb{E}^{\mathbb{Q}}_t\left(\left[\exp(\tilde{u}'_1w_{t+1,t+h})-k   \exp(u_2 w_{t+1, t+h})\right]^+\right),
-\end{eqnarray*}
-with $\tilde{u}'_1 = u_1 + u_2$, [$u_1 = e \otimes e_1$ as before], and $u_2 = (-\omega'_1,\dots, -\omega'_1, 0)'$.
-:::
-
-
-
-
-## APPENDICES
-
-
-:::{.lemma #integralQuadratic}
-If $\mu \in \mathbb{R}^L$ and $Q$ is a $(L \times L)$ matrix symmetric positive definite, then:
-$$
- \int_{\mathbb{R}^{L}} \exp(-u'Q u + \mu'u)du =
- \frac{\pi^{L/2}}{(det   Q)^{1/2}} exp \left(
-\begin{array}{l}  \frac{1}{4} \mu'Q^{-1}\mu \end{array} \right).
-$$
-:::
-:::{.proof}
-The integral is:
-\begin{eqnarray*}
-&& \int_{\mathbb{R}^{L}} exp \left[ \begin{array}{l} - (u -
- \frac{1}{2}  Q^{-1} \mu)'  Q (u -
-\frac{1}{2} Q^{-1} \mu)'
-\end{array}
-\right] exp\left(
-\begin{array}{l}  \frac{1}{4} \mu'Q^{-1}\mu \end{array}
-\right)du \\
-&=&  \frac{\pi^{L/2}}{(det Q)^{1/2}} exp\left(
-\begin{array}{l}  \frac{1}{4} \mu'Q^{-1}\mu \end{array}
-\right)
-\end{eqnarray*}
-[using the formula for the unit mass of $\mathcal{N}( 0.5Q^{-1}\mu,(2Q)^{-1})$].
-:::
-
-
-
-:::{.lemma #Quadr}
-If $\varepsilon_{t+1} \sim \mathcal{N}(0,Id)$, we have
-$$
-\mathbb{E}_t \left(\exp[\lambda'\varepsilon_{t+1}+\varepsilon'_{t+1} V \varepsilon_{t+1}]\right) =  \frac{1}{[\det(I-2V)]^{1/2}} \exp\left[
- \frac{1}{2} \lambda'(I-2V)^{-1}\lambda
-\right].
-$$
-:::
-:::{.proof}
-We have
-$$
-\mathbb{E}_t   \exp(\lambda'\varepsilon_{t+1}+\varepsilon'_{t+1}V\varepsilon_{t+1})
-=  \frac{1}{(2\pi)^{n/2}}  \int_{\mathbb{R}^{n}} \exp\left[
-\begin{array}{l}
--u'\left(
-\begin{array}{l}
- \frac{1}{2} I-V
-\end{array}
-\right)u+\lambda'u
-\end{array}
-\right]du
-$$
-From Lemma \@ref(lem:integralQuadratic),  if $u\in\mathbb{R}^n$, then
-$$
-\int_{\mathbb{R}^{n}} \exp(-u' Q u+\mu'u) du =
- \frac{\pi^{n/2}}{(\det Q)^{1/2}} \exp\left(
-\begin{array}{l}
- \frac{1}{4} \mu'Q^{-1}\mu
-\end{array}
-\right).
-$$
-Therefore:
-$$
-\begin{array}{l}
-\mathbb{E}_t   \exp(\lambda'\varepsilon_{t+1}+\varepsilon'_{t+1}V\varepsilon_{t+1}) \\
-=  \frac{1}{2^{n/2}
-\left[
-\begin{array}{l}
-\det \left(
-\begin{array}{l}
- \frac{1}{2} I-V
-\end{array}
-\right)
-\end{array}
-\right]^{1/2}
-}
-\exp\left[
-\begin{array}{l}
-   \frac{1}{4}  \lambda'\left(
-\begin{array}{l}
- \frac{1}{2} I-V
-\end{array}
-\right)^{-1}\lambda
-\end{array}
-\right].
-\end{array}
-$$
-:::
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

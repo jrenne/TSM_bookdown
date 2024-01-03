@@ -1,6 +1,6 @@
 --- 
 title: "Introduction to Term Structure Models"
-author: "Jean-Paul Renne"
+author: "Jean-Paul Renne and Alain Monfort"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -10,7 +10,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: rstudio/bookdown-demo
-description: "This is an introduction to the modeling of dynamic term structures."
+description: "This is an introduction to the modelling of dynamic term structures."
 css: "my-style.css"
 ---
 
@@ -21,15 +21,14 @@ css: "my-style.css"
 
 <!-- # Before starting {#intro .unlisted .unnumbered} -->
 
-
 Modeling dynamic term structures serves as a practical and indispensable tool in the realm of finance. It enables investors, institutions, and policymakers to make informed decisions, manage risk effectively, and allocate resources wisely. By understanding how interest rates and yields evolve over time, these models offer a clear lens through which to assess market trends and price financial instruments accurately.
 
-This course has been developed by [Jean-Paul Renne](https://sites.google.com/site/jeanpaulrenne/home). It is illustrated by R codes using various packages that can be obtained from [CRAN](https://cran.r-project.org). This `AEC` package is available on GitHub. To install it, one need to employ the `devtools` library:
+This course has been developed by [Jean-Paul Renne](https://sites.google.com/site/jeanpaulrenne/home) and [Alain Monfort](https://faculty.crest.fr/amonfort/). It is illustrated by R codes using various packages that can be obtained from [CRAN](https://cran.r-project.org). This `TSModels` package is available on GitHub. To install it, one need to employ the `devtools` library:
 
 ```{r installAEC, eval=FALSE}
 install.packages("devtools") # in case this library has not been loaded yet
 library(devtools)
-install_github("jrenne/AEC")
+install_github("jrenne/TSModels")
 library(AEC)
 ```
 

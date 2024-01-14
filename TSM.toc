@@ -26,14 +26,19 @@
 \contentsline {subsection}{\numberline {2.3.1}Existence and unicity of the SDF}{45}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Exponential Affine SDF}{47}{subsection.2.3.2}%
 \contentsline {section}{\numberline {2.4}The risk-neutral (R.N.) dynamics}{48}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Typology of Econometric Asset Pricing Models}{51}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}The Direct Modelling (based on threes steps)}{52}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}The R.N. constrained direct modelling (or mixed modelling)}{53}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}The Back Modelling (based on three steps)}{54}{subsection.2.5.3}%
-\contentsline {section}{\numberline {2.6}THE TERM STRUCTURE OF RISK-FREE YIELDS}{54}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Introduction}{55}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}Risk premiums}{57}{subsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.6.3}Swap rates}{57}{subsection.2.6.3}%
-\contentsline {section}{\numberline {2.7}The Affine Case}{58}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Gaussian Affine Term Structure Model}{61}{section.2.8}%
-\contentsline {section}{\numberline {2.9}Non-Negative Affine Term Structure Model}{65}{section.2.9}%
+\contentsline {section}{\numberline {2.5}Typology of Econometric Asset Pricing Models}{50}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}The Direct Modelling}{52}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}The R.N.-constrained direct modelling (or mixed modelling)}{52}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}The Back Modelling (based on three steps)}{53}{subsection.2.5.3}%
+\contentsline {chapter}{\numberline {3}The term structure or risk-free yields}{55}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{55}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Swap rates and forward rates}{57}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Swap rates}{57}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Forward rates}{58}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}The Affine Case}{59}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Affine yields}{59}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Maximum Sharpe ratio}{61}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Gaussian Affine Term Structure Model}{61}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Non-Negative Affine Term Structure Model}{66}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}The shadow-rate approach}{66}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}The auto-regressive gamma approach}{68}{subsection.3.5.2}%

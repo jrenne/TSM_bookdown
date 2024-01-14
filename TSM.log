@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.17)  3 JAN 2024 14:27
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.14)  14 JAN 2024 10:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **TSM.tex
 (./TSM.tex
 LaTeX2e <2023-11-01>
-L3 programming layer <2023-12-11>
+L3 programming layer <2024-01-04>
 (/Users/jrenne/Library/TinyTeX/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
 (/Users/jrenne/Library/TinyTeX/texmf-dist/tex/latex/base/bk12.clo
@@ -98,9 +98,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (/Users/jrenne/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (/Users/jrenne/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/Users/jrenne/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2023-12-11 L3 programming layer (loader) 
+Package: expl3 2024-01-04 L3 programming layer (loader) 
 (/Users/jrenne/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2023-11-09 L3 backend support: XeTeX
+File: l3backend-xetex.def 2024-01-04 L3 backend support: XeTeX
 \g__graphics_track_int=\count270
 \l__pdf_internal_box=\box53
 \g__pdf_backend_object_int=\count271
@@ -901,76 +901,76 @@ Chapter 2.
 [43
 
 ] [44] [45] [46] [47]
-Overfull \hbox (1.21489pt too wide) in paragraph at lines 1988--1989
+Overfull \hbox (1.21489pt too wide) in paragraph at lines 2001--2002
 []\TU/lmr/m/n/12 Hence, in that case, $[][]$ is exponential affine in $[][] [] [][] [][][] [] [][][][]$
  []
 
-[48]
-Overfull \hbox (0.15082pt too wide) in paragraph at lines 2063--2066
-\TU/lmr/m/n/12 * Moreover the excess arithmetic return process $[][] [] [][]$ is a $[]$-martingale
+[48] [49] [50] [51]
+Overfull \hbox (52.36908pt too wide) in alignment at lines 2169--2173
+ [][][] []
  []
 
-[49] [50] [51] [52] [53]
 
-LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 2355.
-
-[54]
-File: TSM_files/figure-latex/extractECB-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/extractECB-1.pdf>
-[55]
-Overfull \hbox (6.42522pt too wide) detected at line 2400
-[][][][][] [][] [] [][] [] [] [] [][][][][][] [] [] [] [][][][]
+Underfull \hbox (badness 1067) in paragraph at lines 2181--2183
+\TU/lmr/m/n/12 (Euler equation). Or, in the case of interest rates with vari-
  []
 
-[56] [57] [58] [59] [60]
-Underfull \hbox (badness 4954) in paragraph at lines 2604--2606
-[]\TU/lmr/bx/n/12 Gaussian Affine Term Structure Model (GATSM) =
- []
+[52] [53] [54
 
-[61]
+]
+Chapter 3.
+[55] [56] [57] [58] [59] [60] [61]
 
-LaTeX Warning: Reference `exm:Gaussian' on page 62 undefined on input line 2616.
+LaTeX Warning: Reference `exm:Gaussian' on page 62 undefined on input line 2441.
 
 
-LaTeX Warning: Reference `exm:Gaussian' on page 62 undefined on input line 2636.
+LaTeX Warning: Reference `exm:Gaussian' on page 62 undefined on input line 2457.
 
+
+LaTeX Warning: Reference `Estimation:KF' on page 62 undefined on input line 2474.
+
+
+LaTeX Warning: Reference `def:LSSM' on page 62 undefined on input line 2474.
+
+
+LaTeX Warning: Reference `EstimationPersistency' on page 62 undefined on input line 2474.
+
+File: TSM_files/figure-latex/fredKW-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/fredKW-1.pdf>
 [62]
 
-LaTeX Warning: Reference `Estimation:KF' on page 63 undefined on input line 2647.
+LaTeX Warning: Reference `EstimationInversion' on page 63 undefined on input line 2501.
 
+File: figures/AngPiazzesi1.pdf Graphic file (type pdf)
+<use figures/AngPiazzesi1.pdf>
+[63] [64]
+File: figures/JPS_IRF.pdf Graphic file (type pdf)
+<use figures/JPS_IRF.pdf>
+File: figures/Ang_Boivin_loadings.png Graphic file (type bmp)
+<figures/Ang_Boivin_loadings.png>
 
-LaTeX Warning: Reference `def:LSSM' on page 63 undefined on input line 2647.
-
-
-LaTeX Warning: Reference `EstimationPersistency' on page 63 undefined on input line 2647.
-
-
-LaTeX Warning: Reference `EstimationInversion' on page 63 undefined on input line 2674.
-
-[63]
-Underfull \hbox (badness 4647) in paragraph at lines 2759--2759
+Underfull \hbox (badness 4647) in paragraph at lines 2591--2591
 []\TU/lmr/bx/n/17.28 Non-Negative Affine Term Structure
  []
 
-[64]
-Underfull \hbox (badness 1565) in paragraph at lines 2789--2791
+[65] [66] [67]
+Underfull \hbox (badness 1565) in paragraph at lines 2623--2625
 \TU/lmr/m/n/12 * If $[] [] [][][][] [] [] [][][][]$, $[] [] [][][][] [] [] [][][][]$, $[] [] [][][][] [] [] [][][][]$ and
  []
 
-[65]
+[68]
 
-LaTeX Warning: Reference `EstimationKF' on page 66 undefined on input line 2819.
+LaTeX Warning: Reference `EstimationKF' on page 69 undefined on input line 2653.
 
 
-LaTeX Warning: Reference `EstimationPersistency' on page 66 undefined on input line 2823.
+LaTeX Warning: Reference `EstimationPersistency' on page 69 undefined on input line 2657.
 
-(./TSM.bbl [66]) [67
+(./TSM.bbl [69] [70
 
-] (./TSM.aux)
+] [71]) [72] (./TSM.aux)
  ***********
 LaTeX2e <2023-11-01>
-L3 programming layer <2023-12-11>
+L3 programming layer <2024-01-04>
  ***********
 
 LaTeX Warning: There were undefined references.
@@ -979,15 +979,15 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `TSM.out' has not changed.
-(rerunfilecheck)             Checksum: D92105FA3196A3F1D2355DEA8DAE3C58;5513.
+(rerunfilecheck)             Checksum: 5AE7D52AC749E94DFCA63C8D9ADA67AD;5824.
  ) 
 Here is how much of TeX's memory you used:
- 17728 strings out of 476837
- 323913 string characters out of 5804057
- 1967106 words of memory out of 5000000
- 39424 multiletter control sequences out of 15000+600000
- 565593 words of font info for 109 fonts, out of 8000000 for 9000
+ 17824 strings out of 476828
+ 326491 string characters out of 5803878
+ 1970174 words of memory out of 5000000
+ 39526 multiletter control sequences out of 15000+600000
+ 565585 words of font info for 108 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,19n,120p,659b,577s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,120p,659b,538s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TSM.pdf (67 pages).
+Output written on TSM.pdf (72 pages).

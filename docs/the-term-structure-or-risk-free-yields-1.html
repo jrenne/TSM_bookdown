@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 The term structure or risk-free yields | Introduction to Term Structure Models</title>
+<meta name="author" content="Jean-Paul Renne and Alain Monfort">
+<meta name="description" content="3.1 Introduction Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 3 The term structure or risk-free yields | Introduction to Term Structure Models">
+<meta property="og:type" content="book">
+<meta property="og:description" content="3.1 Introduction Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 The term structure or risk-free yields | Introduction to Term Structure Models">
+<meta name="twitter:description" content="3.1 Introduction Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="my-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction to Term Structure Models</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
+<li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
+<li><a class="" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
+<li><a class="active" href="the-term-structure-or-risk-free-yields-1.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="the-term-structure-or-risk-free-yields-1" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> The term structure or risk-free yields<a class="anchor" aria-label="anchor" href="#the-term-structure-or-risk-free-yields-1"><i class="fas fa-link"></i></a>
+</h1>
+<!-- ```{r extractECB, echo=TRUE, fig.cap="Simulation of a quadratic processes $x_t$.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE} -->
+<!-- library(ecb) -->
+<!-- rates <- get_data( -->
+<!--   #"YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y", -->
+<!--   "FM.M.U2.EUR.4F.BB.R_U2_10Y.YLDA", -->
+<!--   filter=list(startPeriod="1991-12")) -->
+<!-- plot(as.Date(paste(rates$obstime,"-15",sep="")),rates$obsvalue,type="l") -->
+<!-- spf <- get_data( -->
+<!--   "SPF.Q.U2.HICP.POINT.LT.Q.AVG", -->
+<!--   filter=list(startPeriod="1991-12")) -->
+<!-- spf$obstime <- gsub("Q1", "02-15", spf$obstime) -->
+<!-- spf$obstime <- gsub("Q2", "05-15", spf$obstime) -->
+<!-- spf$obstime <- gsub("Q3", "08-15", spf$obstime) -->
+<!-- spf$obstime <- gsub("Q4", "11-15", spf$obstime) -->
+<!-- lines(as.Date(paste(spf$obstime,"-15",sep="")),spf$obsvalue,lty=3) -->
+<!-- ``` -->
+<div id="RFIntroduction" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Introduction<a class="anchor" aria-label="anchor" href="#RFIntroduction"><i class="fas fa-link"></i></a>
+</h2>
+<p>Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are usually considered to be risk-free.</p>
+<p>An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models involve macro factors in <span class="math inline">\(w_t\)</span> <span class="citation">(<a href="the-term-structure-or-risk-free-yields-1.html#ref-Ang_Piazzesi_2003">Ang and Piazzesi 2003</a>)</span>; some do not <span class="citation">(<a href="the-term-structure-or-risk-free-yields-1.html#ref-Duffie_Singleton_1997">Darrel Duffie and Singleton 1997</a>)</span>. The latter are sometimes called <em>yield-only</em> models.</p>
+<p>The basic pricing formula of a risk-free zero coupon bond is (see Eq. <a href="ChapterAffine.html#eq:stdbond">(1.10)</a> in Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>):
+<span class="math display" id="eq:stdbondRFchapter">\[\begin{eqnarray}
+B(t,h) &amp;=&amp; \exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1})\\
+R(t,h) &amp;=&amp; - \frac{1}{h} \log B(t,h). \tag{2.9}
+\end{eqnarray}\]</span></p>
+<p>Term structure models are often used to extract <strong>term premiums</strong> from observed yields-to-maturity. Term premiums are those components of yields that would not exist if investors were not risk-averse.</p>
+<p>If agents were not risk averse, i.e., under the <strong>Expectation Hypothesis (EH)</strong>, we would have <span class="math inline">\(\mathcal{M}_{t,t+1} = \exp(- r_t)\)</span>. We would then have ``<span class="math inline">\(\mathbb{P} \equiv \mathbb{Q}\)</span>’’ and <span class="math inline">\(B(t,h)\)</span> would become:
+<span class="math display" id="eq:stdbondRFchapterP">\[\begin{equation}
+\exp(-r_{t}) \mathbb{E}_t \exp(-r_{t+1}-\dots-r_{t+h-1}).\tag{2.10}.
+\end{equation}\]</span>
+And the maturity-<span class="math inline">\(h\)</span> yield-to-maturity would then be:
+<span class="math display" id="eq:REH">\[\begin{eqnarray}
+R^{EH}(t,h) &amp;=&amp; -\frac{1}{h}\log \left( \mathbb{E}_t \exp(-r_t-\dots-r_{t+h-1})\right)\nonumber\\
+&amp;\approx&amp; \frac{1}{h}\mathbb{E}_t(r_t + \dots + r_{t+h-1}).\tag{3.1}
+\end{eqnarray}\]</span></p>
+<p>The term premium is given by:
+<span class="math display" id="eq:TP">\[\begin{eqnarray}
+TP_{t,h} &amp;=&amp; \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1})}_{=R(t,h)} - \nonumber \\
+&amp;&amp; \underbrace{- \frac{1}{h}  \log  \mathbb{E}_t \exp(-r_{t+1}-\dots-r_{t+h-1}).}_{=R^{EH}(t,h)}\tag{2.11}
+\end{eqnarray}\]</span></p>
+<p>What is the economic meaning of the term premium? Under EH, investors are willing to buy a maturity-<span class="math inline">\(h\)</span> bond as long as its expected return is—up to Jensen’s inequality—equal to the average of future short-term rates. (Hence the definition of <span class="math inline">\(R^{EH}(t,h)\)</span>, see Eq. <a href="the-term-structure-or-risk-free-yields-1.html#eq:REH">(3.1)</a>.) When <span class="math inline">\(TP_{t,h}&gt;0\)</span>, investors are willing to buy the maturity-<span class="math inline">\(h\)</span> bond only if its return is, on average, higher than expected future short-term rates; this corresponds to a situation where investors consider that long-term bonds tend to lose value in <em>bad states of the world</em> (i.e., states of high marginal utility).</p>
+<blockquote>
+<p><strong><em>Risk premium:</em></strong> According to Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:Mbasicpricing">(2.3)</a>, the price of any asset <span class="math inline">\(j\)</span> satisfies:
+<span class="math display">\[
+p_{jt} = \mathbb{E}_t(\mathcal{M}_{t,t+1} p_{j,t+1}).
+\]</span>
+The previous equation rewrites:
+<span class="math display">\[
+p_{jt} =  \mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1}) + \mathbb{E}_t(\mathcal{M}_{t,t+1})\mathbb{E}_t( p_{j,t+1})
+\]</span>
+or
+<span class="math display" id="eq:CovRP">\[\begin{equation}
+p_{jt} = \underbrace{\exp(-r_t)\mathbb{E}_t( p_{j,t+1})}_{=p^{EH}_{jt}} + \underbrace{\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})}_{\mbox{Risk premium}}.\tag{2.12}
+\end{equation}\]</span>
+If investors were not risk-averse, then we would have <span class="math inline">\(p_{jt} = p^{EH}_{jt}\)</span>. The S.D.F. is high (resp. low) in bad (resp. good) states of the world (states of high marginal utility in the equilibrium approach). Hence, we have <span class="math inline">\(p_{jt}&lt; p^{EH}_{jt}\)</span> if asset <span class="math inline">\(j\)</span> tends to pay less in bad states of the world (i.e., if <span class="math inline">\(\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})&lt;0\)</span>).</p>
+</blockquote>
+</div>
+<div id="swap-rates-1" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Swap rates<a class="anchor" aria-label="anchor" href="#swap-rates-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Bonds issued by top-rated (Aaa/AAA) countries are often considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks <span class="citation">(<a href="the-term-structure-or-risk-free-yields-1.html#ref-Duffie_Stein_2015">Darrell Duffie and Stein 2015</a>)</span>.</p>
+<div class="definition">
+<p><span id="def:swap" class="definition"><strong>Definition 3.1  (Interest Rate Swap (IRS)) </strong></span>In an Interest Rate Swap (IRS), a <em>fixed-rate payer</em> agrees to provide the <em>fixed-rate receiver</em> with a sequence of cash flows that are determined at the negotiation date of the swap, and at predetermined dates. These cash flows constitute the <em>fixed leg</em> of the swap. Conversely, the fixed-rate receiver provides the fixed-rate payer with cash-flows that depend on the values of reference rate; this is the <em>floating rate</em> of the swap.</p>
+<p>The dates of payment are <span class="math inline">\(t+ \tau\)</span>, <span class="math inline">\(t + 2\tau\)</span>, …, <span class="math inline">\(t + n\tau\)</span>, where <span class="math inline">\(\tau\)</span> is a period expressed in years (typically 1/2 or 1/4) and <span class="math inline">\(n\)</span> is the number of payments. The maturity, or <em>tenor</em>, of the swap contract is <span class="math inline">\(h = n \tau\)</span>.</p>
+<p>The payoffs of the fixed leg are <span class="math inline">\(\tau S\)</span>, where <span class="math inline">\(S\)</span> is the annualized payment (or <em>swap rate</em>). On date <span class="math inline">\(t+j\tau\)</span>, the payoff of the floating leg is <span class="math inline">\(\tau L(t+(j-1)\tau,\tau)\)</span>, where <span class="math inline">\(L\)</span>, the annualized linear rate is given by:
+<span class="math display">\[
+L(t+(j-1)\tau,\tau) = \frac{1 - B(t+(j-1)\tau,\tau)}{\tau B(t+(j-1)\tau,\tau)},
+\]</span>
+where <span class="math inline">\(B(t+(j-1)\tau,\tau)\)</span> is the price, at date <span class="math inline">\(t+(j-1)\tau\)</span> of a bond of maturity <span class="math inline">\(\tau\)</span>.</p>
+<p>On the negotiation date, the values of the fixed and floating legs are identical, so that the value of the swap is zero.</p>
+</div>
+<p>At <span class="math inline">\(t\)</span>, the price of the fixed leg is:
+<span class="math display">\[
+\sum_{j=1}^n \tau S B(t,j\tau).
+\]</span>
+Let us turn to the price of the floating leg. The payoff at date <span class="math inline">\(t+j\tau\)</span>, that is <span class="math inline">\(\frac{1 - B(t+(j-1)\tau,\tau)}{B(t+(j-1)\tau,\tau)}\)</span> is known on date <span class="math inline">\(t+(j-1)\tau\)</span>, so its price at date <span class="math inline">\(t+(j-1)\tau\)</span> is <span class="math inline">\(1 - B(t+(j-1)\tau,\tau)\)</span>, and its price at <span class="math inline">\(t\)</span> therefore is <span class="math inline">\(B(t,(j-1)\tau) - B(t,j\tau)\)</span>. Summing over <span class="math inline">\(j=1,\dots,n\)</span>, the date-<span class="math inline">\(t\)</span> price of the floating leg is <span class="math inline">\(1 - B(t,n\tau)\)</span> (independent of the payment dates).</p>
+<p>Since the price of the contract is zero at date <span class="math inline">\(t\)</span> (by definition of the swap), we must have:
+<span class="math display">\[
+\sum_{j=1}^n \tau S B(t,j\tau) = 1 - B(t,n\tau) \Rightarrow S = \frac{1 - B(t,n\tau)}{ \tau \sum_{j=1}^n  B(t,j\tau)},
+\]</span>
+or
+<span class="math display">\[
+S(t,h) = \frac{1 - B(t,h)}{\tau \sum_{j=1}^{h/\tau}  B(t,j\tau)}.
+\]</span></p>
+<p>Note that all the terms appearing in the previous formula are available in closed-form in the context of an affine model (see Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>).</p>
+</div>
+<div id="RiskFreeAffine" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> The Affine Case<a class="anchor" aria-label="anchor" href="#RiskFreeAffine"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p>What do we get when <span class="math inline">\(w_t\)</span> is affine (under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span>)?</p></li>
+<li><p>If the nominal short-term rate <span class="math inline">\(r_t = \omega_0 + \omega'_1 w_t\)</span>, then:
+<span class="math display">\[\begin{eqnarray*}
+B(t,h) &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t \exp (-r_{t}-\dots-r_{t+h-1})\\
+&amp;=&amp; \exp(-h\omega_0 - \omega'_1 w_t) \color{blue}{\mathbb{E}^{\mathbb{Q}}_t \exp (- \omega'_1 w_{t+1}-\dots- \omega'_1 w_{t+h-1})}.
+\end{eqnarray*}\]</span>
+The (blue) expectation is easily computed using the recursive equations of XXX (see Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>), leading to:
+<span class="math display" id="eq:RthAB">\[\begin{equation}
+R(t,h)= -  \frac{1}{h}   \log   B(t,h) = A_h'w_t + B_h.\tag{2.13}
+\end{equation}\]</span></p></li>
+<li><p>It is easily seen that we can also get:
+<span class="math display" id="eq:RthABEH">\[\begin{equation}
+R^{EH}(t,h) = {A^{EH}_h}'w_t + B^{EH}_h.\tag{2.14}
+\end{equation}\]</span></p></li>
+<li><p>Moreover, if inflation <span class="math inline">\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)</span>, then real yields are given by:
+<span class="math display">\[\begin{eqnarray*}
+\bar{B}(t,h) &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t}-\dots-r_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h})
+\end{eqnarray*}\]</span>
+(see Example <a href="ChapterAffine.html#exm:realBth">1.20</a>) which also leads to:
+<span class="math display" id="eq:RbarthAB">\[\begin{equation}
+\bar{R}(t,h) = -  \frac{1}{h}   \log   \bar{B}(t,h) = \bar{A}_h'w_t + \bar{B}_h.\tag{2.15}
+\end{equation}\]</span></p></li>
+<li><p>Eqs. (<a href="pricing-and-risk-neutral-dynamics.html#eq:RthAB">(2.13)</a>) and (<a href="pricing-and-risk-neutral-dynamics.html#eq:RthABEH">(2.14)</a>) imply that term premiums are affine in <span class="math inline">\(w_t\)</span> (see Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:TP">(2.11)</a>). Specifically:
+<span class="math display">\[
+TP(t,h) = R(t,h) - E^{EH}(t,h) = B_h - B_h^{EH} + (A_h - A_h^{EH})'w_t.
+\]</span></p></li>
+<li><p>Expected excess returns resulting from holding zero-coupon bonds are also affine in <span class="math inline">\(w_t\)</span>.</p></li>
+<li><p>Indeed, holding a maturity-<span class="math inline">\(h\)</span> zero-coupon bond for one period provides the following expected gross return:
+<span class="math display">\[
+\mathbb{E}_t\left(\frac{B(t+1,h-1)}{B(t,h)}\right) = \mathbb{E}_t\left(\exp(B_{h-1} - B_h + A_{h-1}'w_{t+1} - A_h'w_{t})\right),
+\]</span>
+which is clearly exponential affine in <span class="math inline">\(w_t\)</span> if <span class="math inline">\(w_t\)</span> is an affine process.</p></li>
+<li><p>Therefore, the expected excess return, that is:
+<span class="math display">\[
+\log \mathbb{E}_t\left(\frac{B(t+1,h-1)}{B(t,h)}\right) - r_t
+\]</span>
+is also affine in <span class="math inline">\(w_t\)</span> in this context.</p></li>
+<li><p>The fact that excess returns are affine in this context is exploited in the estimation approach proposed by <a href="https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr340.pdf">Adrian, Crump and Moench (2013)</a>.</p></li>
+<li><p>Moreover, <em>conditional expectations of</em> future interest rates (real or nominal) and of term premiums are affine in <span class="math inline">\(w_t\)</span>. In particular:
+<span class="math display" id="eq:condmeanRth">\[\begin{equation}
+\mathbb{E}_t[R(t+k,h)] = \mathbb{E}_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{E}_t(w_{t+k}) + B_h,\tag{2.16}
+\end{equation}\]</span>
+and <span class="math inline">\(\mathbb{E}_t(w_{t+k})\)</span> is affine in <span class="math inline">\(w_t\)</span> (see Remark XXX, Eq. <a href="ChapterAffine.html#eq:condmean">(1.15)</a>).</p></li>
+</ul>
+<p><span class="math inline">\(\Rightarrow\)</span> This can notably be used at the estimation stage, if one wants to fit survey data.</p>
+<ul>
+<li>
+<strong>Conditional variances</strong> of future interest rates (real or nominal) and of term premiums are affine in <span class="math inline">\(w_t\)</span>. In particular:
+<span class="math display" id="eq:condvarRth">\[\begin{equation}
+\mathbb{V}ar_t[R(t+k,h)] = \mathbb{V}ar_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{V}ar_t(w_{t+k})A_h,\tag{2.17}
+\end{equation}\]</span>
+where the components of <span class="math inline">\(\mathbb{V}ar_t(w_{t+k})\)</span> (and therefore <span class="math inline">\(\mathbb{V}ar_t[R(t+k,h)]\)</span>) is affine in <span class="math inline">\(w_t\)</span> (see Remark XXX, Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>).
+This can notably be used at the estimation stage, if one wants to fit (proxies of) conditional variances.</li>
+</ul>
+<p><strong>Remark</strong>: Forward Rate Agreement (FRA)</p>
+<ul>
+<li>In an affine model, forward rates are also linear in the state vector <span class="math inline">\(w_t\)</span>.</li>
+<li>An <strong>interest rate forward contract</strong> is a contract in which the rate to be paid or received on a specific obligation for a set period, beginning in the future, is set at contract initiation.</li>
+<li>Denote by <span class="math inline">\(f(t,h_1,h_2)\)</span> the forward interest rate, set on date <span class="math inline">\(t\)</span>, for the period between <span class="math inline">\(t+h_1\)</span> and <span class="math inline">\(t+h_2\)</span>.</li>
+<li>Consider two strategies (decided on date <span class="math inline">\(t\)</span>):</li>
+</ul>
+<p>A. Buy a zero-coupon bond of maturity <span class="math inline">\(h_2\)</span> (price <span class="math inline">\(B(t,h_2)\)</span>) and sell zero-coupon bonds of maturity <span class="math inline">\(h_1\)</span> for the same amount (yielding a payoff of <span class="math inline">\(B(t,h_2)/B(t,h_1)\)</span> on date <span class="math inline">\(t+h_1\)</span>).
+B. Enter a forward rate agreement between dates <span class="math inline">\(t+h_1\)</span> and <span class="math inline">\(t+h_2\)</span>, whereby you receive 1 on date <span class="math inline">\(t+h_2\)</span>.
+* The two strategies deliver the same payoffs on date <span class="math inline">\(t\)</span> (the payoff is zero) and on date <span class="math inline">\(t+h_2\)</span> (the payoff is 1). By absence of arbitrage, the payoffs on date <span class="math inline">\(t+h_1\)</span> have to be the same. Therefore
+<span class="math display">\[\begin{eqnarray*}
+\exp(-(h_2 - h_1)f(t,h_1,h_2)) &amp;=&amp; B(t,h_2)/B(t,h_1) \\
+\Rightarrow f(t,h_1,h_2) &amp;=&amp; \frac{1}{h_2 - h_1}(\log[B(t,h_1)] - \log[B(t,h_2)])\\
+&amp;=&amp; \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1}.
+\end{eqnarray*}\]</span></p>
+<ul>
+<li>In an affine model, the maximum Sharpe ratio is easily computed.</li>
+<li>Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:CovRP">(2.12)</a> implies that
+<span class="math display">\[
+\mathbb{E}_t\underbrace{\left(\frac{p_{j,t+1}}{p_{j,t}} - \exp(r_t)\right)}_{=xs_{j,t+1},\mbox{ excess return}} =  - \exp(r_t) \mathbb{C}ov_t\left(\mathcal{M}_{t,t+1},\frac{p_{j,t+1}}{p_{j,t}}\right),
+\]</span>
+and, using <span class="math inline">\(|\mathbb{C}ov(X,Y)| \le \sqrt{\mathbb{V}ar(X)\mathbb{V}ar(Y)}\)</span>, we get the <a href="https://www.journals.uchicago.edu/doi/10.1086/261749">Hansen-Jagannathan (1991)</a> bound:
+<span class="math display">\[\begin{equation}
+\underbrace{\frac{\mathbb{E}_t(xs_{j,t+1})}{\sqrt{\mathbb{V}ar_t(xs_{j,t+1})}}}_{\mbox{Sharpe ratio}} \le \underbrace{\frac{\sqrt{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}}_{\mbox{Maximum Sharpe ratio}}.
+\end{equation}\]</span>
+</li>
+<li>If the S.D.F. is given by <span class="math inline">\(\mathcal{M}_{t,t+1} = \exp[-r_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)]\)</span> (Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:keySDF">(2.5)</a>), and using that <span class="math inline">\(\mathbb{E}_t(\mathcal{M}_{t,t+1}^2)=\exp(-2r_t+\psi_t(2\alpha_t)-2\psi_t(\alpha_t))\)</span> we get:
+<span class="math display">\[
+\mbox{Maximum Sharpe ratio} = \sqrt{\exp(\psi_t(2\alpha_t)-2\psi_t(\alpha_t)) - 1}.
+\]</span>
+</li>
+</ul>
+</div>
+<div id="RiskFreeGaussian" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Gaussian Affine Term Structure Model<a class="anchor" aria-label="anchor" href="#RiskFreeGaussian"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p>Gaussian Affine Term Structure Model (GATSM) = <em>Workhorse</em> model, widely used in academic and economic-policy circles.</p></li>
+<li><p><span class="math inline">\(w_t\)</span> affine under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span> (hence affine yields term premiums).</p></li>
+<li><p>Components of <span class="math inline">\(w_t\)</span> valued in <span class="math inline">\(\mathbb{R}\)</span>: easy to introduce macro-factors.</p></li>
+<li><p>The state vector <span class="math inline">\(w_t\)</span> follows a Gaussian VAR(1):
+<span class="math display" id="eq:GaussianVAR1">\[\begin{equation}
+w_{t+1} = \mu + \Phi w_{t} + \Sigma^{1/2} \varepsilon_{t+1}, \mbox{ where } \varepsilon_{t} \sim  i.i.d. \mathcal{N}(0,Id).\tag{2.18}
+\end{equation}\]</span>
+(single lag without loss of generality since a VAR(p) admits a VAR(1) representation).</p></li>
+<li><p>This implies the following Laplace transform for <span class="math inline">\(w_t\)</span> (see Example <a href="#exm:Gaussian"><strong>??</strong></a>):
+<span class="math display">\[
+\psi_t(u) = \log \mathbb{E}_t(\exp(u'w_{t+1})|\underline{w_t}) = \color{blue}{u'\mu + u'\Phi w_t + \frac{1}{2}u'\Sigma'u}.
+\]</span></p></li>
+<li><p>Using the notations of Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:keySDF">(2.5)</a>, the s.d.f. is defined as:
+<span class="math display">\[
+\mathcal{M}_{t,t+1} = \exp(- r_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t.
+\]</span></p></li>
+<li>
+<p>In that case, using Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:transfoPQ">(2.7)</a>, we get:
+<span class="math display">\[\begin{eqnarray*}
+\psi_t^{\mathbb{Q}}(u) &amp;=&amp; \psi_t(u + \alpha_t) - \psi_t(\alpha_t)\\
+&amp;=&amp; (u + \alpha_t)'\mu + (u + \alpha_t)'\Phi w_t + \frac{1}{2}(u + \alpha_t)'\Sigma(u + \alpha_t) \\
+&amp;&amp; - \left(\alpha_t'\mu + \alpha_t'\Phi w_t + \frac{1}{2}\alpha_t'\Sigma\alpha_t\right) \\
+&amp;=&amp; \color{blue}{u' \left(\mu + \Sigma \alpha_0 \right) + u'(\Phi + \Sigma \alpha_1')w_t  + \frac{1}{2}u'\Sigma'u}.
+\end{eqnarray*}\]</span></p>
+<p>The <span class="math inline">\(\mathbb{Q}\)</span>-dynamics of <span class="math inline">\(w_t\)</span> is (from Example <a href="#exm:Gaussian"><strong>??</strong></a>):
+<span class="math display">\[
+w_{t+1} = \mu + \Sigma  \alpha_0 + (\Phi + \Sigma \alpha_1')  w_{t} + \Sigma^{1/2} \varepsilon^*_{t+1}, \mbox{ where } \varepsilon^*_{t} \sim  i.i.d. \mathcal{N}^{\mathbb{Q}}(0,Id).
+\]</span></p>
+</li>
+<li><p>With affine specifications of the nominal short term rate (<span class="math inline">\(r_{t} = \omega_0 + \omega'_1 w_t\)</span>) and of the inflation rate (<span class="math inline">\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)</span>), we obtain affine formulas for nominal and real yields of any maturity (Eqs. <a href="pricing-and-risk-neutral-dynamics.html#eq:RthAB">(2.13)</a> and <a href="pricing-and-risk-neutral-dynamics.html#eq:RbarthAB">(2.15)</a>).</p></li>
+</ul>
+<div class="example">
+<p><span id="exm:KimWright" class="example"><strong>Example 2.3  (Kim and Wright (2005)) </strong></span>This model is a three-factor <em>yield-only model</em> (no macro variables, except inflation in one variant of the model), where the short-term rate reads <span class="math inline">\(r_t = \omega_0 + \omega_{1,1} w_{1,t} +\omega_{1,2} w_{2,t} +\omega_{1,3} w_{3,t}\)</span>.</p>
+<p>The model estimated by Kalman filter (see Subsection,<a href="#Estimation:KF"><strong>??</strong></a>; the state-space model (Def. <a href="#def:LSSM"><strong>??</strong></a>) includes survey-based variables (see Subsection <a href="#EstimationPersistency"><strong>??</strong></a>).</p>
+<p>Outputs are <a href="https://www.federalreserve.gov/pubs/feds/2005/200533/200533abs.html">regularly updated by the Federal Reserve Board</a>.</p>
+<p>Monthly data on the 6-month and 12-month-ahead forecasts of the three-month T-Bill yield from Blue Chip Financial Forecasts and semiannual data on the average expected three-month T-Bill yield from 6 to 11 years.</p>
+</div>
+<div class="example">
+<p><span id="exm:AngPiazzesi" class="example"><strong>Example 2.4  (Ang and Piazzesi (2003)) </strong></span></p>
+<ul>
+<li>
+<a href="http://web.stanford.edu/~piazzesi/AP.pdf">Ang and Piazzesi (2003)</a>: one of the first paper mixing latent and macrovariables.</li>
+<li>The set up is also of the form Eq. (<a href="pricing-and-risk-neutral-dynamics.html#eq:GaussianVAR1">(2.18)</a>) except that the VAR features several lags.</li>
+<li>
+<span class="math inline">\(w_t = [f^{o}_{1,t},f^{o}_{2,t},f^{u}_{1,t},f^{u}_{2,t},f^{u}_{3,t}]'\)</span> where:</li>
+<li>
+<span class="math inline">\(f^{o}_{1,t}\)</span> is the first Principal Component of a set of 3 price indexes (growth rates)</li>
+<li>
+<span class="math inline">\(f^{o}_{2,t}\)</span> is the first Principal Component of a set of 4 real activity proxies (HELP, EMPLOY, IP, UE).</li>
+<li>
+<span class="math inline">\(f^{u}_{i,t}\)</span> are unobserved, or latent, factors.</li>
+<li>Nominal short-term rate follows a Taylor rule.</li>
+<li>Latent factors are estimated via <em>inversion techniques</em> (Subsection <a href="#EstimationInversion"><strong>??</strong></a>).</li>
+</ul>
+</div>
+<div class="example">
+<p><span id="exm:JPS" class="example"><strong>Example 2.5  (Joslin, Priebsch and Singleton (2014)) </strong></span></p>
+<ul>
+<li>Models stating that <span class="math inline">\(r_t\)</span> affine in macro-factors imply that macro-factors are <strong>spanned</strong> by the yield curve: macro-factors should be perfectly explained by yields of different maturities. Not the case in the data.</li>
+<li>
+<a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12131">Joslin Priebsch and Singleton (2014)</a>: <strong>unspanned macro risks</strong>.</li>
+<li>
+<span class="math inline">\(w_t = [\mathcal{P}_t',\mathcal{M}_t']'\)</span>, where <span class="math inline">\(\mathcal{P}_t\)</span> are yield factors and <span class="math inline">\(\mathcal{M}_t\)</span> are macro factors.</li>
+<li>Model:
+<span class="math display">\[\begin{eqnarray*}
+r_t &amp;=&amp; \omega_{0} + \omega_{\mathcal{P}}'\mathcal{P}_t \\
+\left[\begin{array}{c}\mathcal{P}_t \\ \mathcal{M}_t \end{array}\right]
+&amp;=&amp;
+\left[\begin{array}{cc}\Phi_{\mathcal{P}\mathcal{P}}&amp;\Phi_{\mathcal{P}\mathcal{M}} \\
+\Phi_{\mathcal{M}\mathcal{P}}&amp;\Phi_{\mathcal{M}\mathcal{M}} \end{array}\right]
+\left[\begin{array}{c}\mathcal{P}_{t-1} \\ \mathcal{M}_{t-1} \end{array}\right] + \Sigma \varepsilon_t \\
+\left[\begin{array}{c}\mathcal{P}_t \\ \mathcal{M}_t \end{array}\right] &amp;=&amp; \mu +
+\left[\begin{array}{cc}\Phi^{\mathbb{Q}}_{\mathcal{P}\mathcal{P}}&amp;{\color{red}0} \\
+\Phi^{\mathbb{Q}}_{\mathcal{M}\mathcal{P}}&amp;\Phi^{\mathbb{Q}}_{\mathcal{M}\mathcal{M}} \end{array}\right]
+\left[\begin{array}{c}\mathcal{P}_{t-1} \\ \mathcal{M}_{t-1} \end{array}\right] + \Sigma \varepsilon^{\mathbb{Q}}_t,
+\end{eqnarray*}\]</span>
+where <span class="math inline">\(\varepsilon_t\)</span> and <span class="math inline">\(\varepsilon^{\mathbb{Q}}_t\)</span> are <span class="math inline">\(\mathcal{N}(0,Id)\)</span> under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span>, respectively.</li>
+<li>
+<span class="math inline">\(\mathcal{M}_t\)</span> does Granger-cause <span class="math inline">\(\mathcal{P}_t\)</span> under <span class="math inline">\(\mathbb{Q}\)</span> and <span class="math inline">\(r_t\)</span> is affine in <span class="math inline">\(\mathcal{P}_t\)</span> (only)</li>
+</ul>
+<p><span class="math inline">\(\Rightarrow\)</span> yields <span class="math inline">\(R(t,h)\)</span> are affine in <span class="math inline">\(\mathcal{P}_t\)</span> (only).
+* However <span class="math inline">\(\mathcal{M}_t\)</span> does not Granger-cause <span class="math inline">\(\mathcal{P}_t\)</span> under <span class="math inline">\(\mathbb{P}\)</span></p>
+<p><span class="math inline">\(\Rightarrow\)</span> macro-shocks affect the yield curve.</p>
+</div>
+<div class="example">
+<p><span id="exm:Angetal2011" class="example"><strong>Example 2.6  (Ang, Boivin, Dong and Loo-Kung (2011)) </strong></span></p>
+<ul>
+<li>
+<span class="citation">Ang et al. (<a href="the-term-structure-or-risk-free-yields-1.html#ref-Ang_Boivin_Dong_LooKung_2011">2011</a>)</span>: macro-finance model based on a quadratic framework.</li>
+<li>Taylor rule with time-varying parameters:
+<span class="math display">\[
+r_t = \omega_0 + a_t g_t + b_t \pi_t,
+\]</span>
+where <span class="math inline">\(x_t=(g_t,\pi_t,a_t,b_t)'\)</span> follows a Gaussian VAR.</li>
+<li>This is the context described in Example <a href="ChapterAffine.html#exm:QGVAR1">1.7</a>.</li>
+<li>
+<span class="math inline">\(r_t\)</span> is linear in <span class="math inline">\(w_t = (x_t,vec(x_t x_t')')'\)</span>. Specifically:
+<span class="math display">\[
+r_t = \omega_0 + \omega_1'w_t,
+\]</span>
+with <span class="math inline">\(\omega_1 = [v,vec(V)]'\)</span>, where
+<span class="math display">\[
+v = \left[
+\begin{array}{c}
+0\\
+0\\
+0\\
+0
+\end{array}
+\right] \quad \mbox{and} \quad V = \left[
+\begin{array}{cccc}
+0 &amp; 0&amp; 1/2&amp;0\\
+0&amp; 0&amp; 0&amp;1/2\\
+1/2&amp; 0&amp; 0&amp;0\\
+0&amp;1/2 &amp;0 &amp;0
+\end{array}
+\right].
+\]</span>
+</li>
+</ul>
+</div>
+</div>
+<div id="RiskFreeNonNegative" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> Non-Negative Affine Term Structure Model<a class="anchor" aria-label="anchor" href="#RiskFreeNonNegative"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>In the presence of physical currency, absence of arbitrage opportunity and of storing cost of cash, nominal interest rates should be <span class="math inline">\(\ge 0\)</span>.</li>
+<li>Many standard models (e.g. Gaussian ATSM) are non consistent with non-negative nominal yields.</li>
+<li>
+<strong>Shadow-rate approach</strong> <a href="https://www.jstor.org/stable/2329320?seq=1#metadata_info_tab_contents">Black (1995)</a>: The short term rate is given by:
+<span class="math display">\[
+r_t = \max(s_t,0),
+\]</span>
+where <span class="math inline">\(s_t\)</span> is the shadow short-term interest rate. Pricing formula not available in closed-form. Approximation formula available [e.g. <a href="https://www.rbnz.govt.nz/research-and-publications/discussion-papers/2013/dp2013-02">Krippner (2013)</a>, <a href="https://www.federalreserve.gov/pubs/feds/2013/201363/201363pap.pdf">Priebsch (2013)</a>, <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jmcb.12300">Wu and Xia (2016)</a>.</li>
+<li>
+<a href="https://www.sciencedirect.com/science/article/pii/S0304407617301653">Monfort, Pegoraro, Renne and Roussellet (2017)</a> introduce an affine framework where the short-term rate can stay at zero for a prolonged period of time and with a stochastic lift-off probability.</li>
+</ul>
+<div class="example">
+<p><span id="exm:ZARG" class="example"><strong>Example 2.7  (Monfort, Pegoraro, Renne and Roussellet (2017)) </strong></span></p>
+<ul>
+<li>
+<strong>Vectorial Auto-Regressive Gamma (VARG)</strong>: Multivariate extension of Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>.</li>
+</ul>
+<p>Conditionally on <span class="math inline">\(\underline{w_t}\)</span>, the <span class="math inline">\(n\)</span> components of <span class="math inline">\(w_{t+1}\)</span> are independent and distributed as follows:
+<span class="math display" id="eq:VARG">\[\begin{equation}
+\frac{w_{i,t+1}}{\mu_i} \sim \gamma(\nu_i+z_{i,t}) \quad \mbox{where} \quad z_{i,t} \sim {\mathcal P} \left( \alpha_i + \beta_i' w_t \right).\tag{2.19}
+\end{equation}\]</span>
+* If <span class="math inline">\(\mu = (\mu_1,\dots,\mu_n)'\)</span>, <span class="math inline">\(\alpha = (\alpha_1,\dots,\alpha_n)'\)</span>, <span class="math inline">\(\nu = (\nu_1,\dots,\nu_n)'\)</span> and <span class="math inline">\(\beta = (\beta_1,\dots,\beta_n)\)</span>, then
+<span class="math display">\[\begin{eqnarray*}
+\varphi_t(u) &amp;=&amp; \exp\left[\left(\frac{u \odot \mu}{1 - u \odot \mu}\right)'\beta' w_t \right.\\
+&amp;&amp; \left. + \alpha'\left(\frac{u \odot \mu}{1 - u \odot \mu}\right) - \nu'\log(1 - u \odot \mu)\right],
+\end{eqnarray*}\]</span>
+where <span class="math inline">\(\odot\)</span> denotes the element-by-element multiplication and, where, with abuse of notation, the division and log operators work element-by-element when applied to vectors.
+* Four factors. <span class="math inline">\(\nu_1 = \nu_2 = 0 \Rightarrow\)</span> <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span> can stay at zero.
+* The short-term rate <span class="math inline">\(r_t\)</span> is an affine combination of <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span> only, hence can stay at zero. Specification: <span class="math inline">\(r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t}\)</span>.
+* <span class="math inline">\(w_{3,t}\)</span> and <span class="math inline">\(w_{4,t}\)</span> Granger-cause <span class="math inline">\(r_t\)</span> (they cause <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span>) <span class="math inline">\(\Rightarrow\)</span> for <span class="math inline">\(h \ge 2\)</span> <span class="math inline">\(R(t,h)\)</span> is a non-zero combination of the four components of <span class="math inline">\(w_t\)</span>.
+* (when <span class="math inline">\(r_t=0\)</span>) the lift-off probability depends on <span class="math inline">\(w_{3,t}\)</span> and <span class="math inline">\(w_{4,t}\)</span>.
+* Closed-form solutions for lift-off probabilities. Based on Lemma @ref(lemma:mass}:
+<span class="math display">\[
+\mathbb{P}_t(\alpha'w_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\alpha),
+\]</span>
+where <span class="math inline">\(\varphi_{t,h}\)</span> is the multi-horizon Laplace transform defined in Eq. <a href="ChapterAffine.html#eq:multiLT">(1.8)</a>, which can be computed as explained in Remark XXX. We have:
+<span class="math display">\[\begin{equation}
+\left\{
+\begin{array}{l}
+\mathbb{P}_t(r_{t+h}&gt;0) = 1 - \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\omega) \\ \\
+\mathbb{P}_t(r_{t+1}=0,\dots,r_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(u\omega,\dots,u\omega,u\omega) \equiv p_{h}\\ \\
+\mathbb{P}_t(r_{t+1}=0,\dots,r_{t+h-1}=0,r_{t+h}&gt;0) = p_{h-1} - p_h.
+\end{array}
+\right.
+\end{equation}\]</span>
+* Other lift-off probabilities, of the type <span class="math inline">\(\mathbb{P}_t[R(t+h,k)&gt;threshold]\)</span>, can be derived from Eq. <a href="ChapterAffine.html#eq:DPS">(1.18)</a>.</p>
+<ul>
+<li>Model estimated by Kalman filtering techniques (see Subsection <a href="#EstimationKF"><strong>??</strong></a>).</li>
+<li>Measurement equations: (levels of) yields, but also measurement equations involving:</li>
+<li>survey-based forecasts of yields (see Subsection <a href="#EstimationPersistency"><strong>??</strong></a> and</li>
+<li>(e-GARCH-based) proxies of conditional variances (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>).</li>
+</ul>
+<!-- \begin{figure} --><!-- \caption{Fit of surveys and cond. variance proxies} --><!-- \label{fig:fitZARG} --><!-- \begin{center} --><!-- \includegraphics[width=.8\linewidth]{figures/Figure_fit_ZARG.pdf} --><!-- %{\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} --><!-- \end{center} --><!-- \end{figure} --><!-- \begin{figure} --><!-- \caption{Lift-off probabilities} --><!-- \label{fig:LiftOff} --><!-- \begin{center} --><!-- \includegraphics[width=1\linewidth]{figures/Figure_LiftOff.pdf} --><!-- %{\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} --><!-- \end{center} --><!-- \end{figure} -->
+</div>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Ang_Boivin_Dong_LooKung_2011" class="csl-entry">
+Ang, Andrew, Jean Boivin, Sen Dong, and Rudy Loo-Kung. 2011. <span>“<span class="nocase">Monetary Policy Shifts and the Term Structure</span>.”</span> <em>Review of Economic Studies</em> 78 (2): 429–57. <a href="https://doi.org/10.1093/restud/rdq006">https://doi.org/10.1093/restud/rdq006</a>.
+</div>
+<div id="ref-Ang_Piazzesi_2003" class="csl-entry">
+Ang, Andrew, and Monika Piazzesi. 2003. <span>“<span class="nocase">A No-Arbitrage Vector Autoregression of Term Structure Dynamics with Macroeconomic and Latent Variables</span>.”</span> <em>Journal of Monetary Economics</em> 50 (4): 745–87. <a href="https://doi.org/10.1016/S0304-3932(03)00032-1">https://doi.org/10.1016/S0304-3932(03)00032-1</a>.
+</div>
+<div id="ref-Chikhani_Renne_2022" class="csl-entry">
+Chikhani, Pauline, and Jean-Paul Renne. 2023. <span>“<span class="nocase">An Analytical Framework to Price Long-Dated Climate-Exposed Assets</span>.”</span> University of Lausanne working paper. University of Lausanne. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3881262">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3881262</a>.
+</div>
+<div id="ref-Christensen_Diebold_Rudebusch_2009" class="csl-entry">
+Christensen, Jens H. E., Francis X. Diebold, and Glenn D. Rudebusch. 2009. <span>“<span class="nocase">An Arbitrage-free Generalized Nelson–Siegel Term Structure Model</span>.”</span> <em>The Econometrics Journal</em> 12 (3): C33–64. <a href="https://doi.org/10.1111/j.1368-423X.2008.00267.x">https://doi.org/10.1111/j.1368-423X.2008.00267.x</a>.
+</div>
+<div id="ref-Duffie_Pan_Singleton_2000" class="csl-entry">
+Duffie, Darrell, Jun Pan, and Kenneth Singleton. 2000. <span>“<span class="nocase">Transform Analysis and Asset Pricing for Affine Jump-Diffusions</span>.”</span> <em>Econometrica</em> 68 (6): 1343–76. <a href="https://doi.org/10.1111/1468-0262.00164">https://doi.org/10.1111/1468-0262.00164</a>.
+</div>
+<div id="ref-Duffie_Stein_2015" class="csl-entry">
+Duffie, Darrell, and Jeremy C. Stein. 2015. <span>“<span class="nocase">Reforming LIBOR and Other Financial Market Benchmarks</span>.”</span> <em>Journal of Economic Perspectives</em> 29 (2): 191–212. <a href="https://www.aeaweb.org/articles?id=10.1257/jep.29.2.191">https://www.aeaweb.org/articles?id=10.1257/jep.29.2.191</a>.
+</div>
+<div id="ref-Duffie_Singleton_1997" class="csl-entry">
+Duffie, Darrel, and Kenneth J. Singleton. 1997. <span>“<span class="nocase">An Econometric Model of the Term Structure of Interest-Rate Swap Yields</span>.”</span> <em>The Journal of Finance</em> 52 (4): 1287–1321. <a href="https://doi.org/10.1111/j.1540-6261.1997.tb01111.x">https://doi.org/10.1111/j.1540-6261.1997.tb01111.x</a>.
+</div>
+<div id="ref-Gourieroux_Jasiak_2006" class="csl-entry">
+Gourieroux, Christian, and Joann Jasiak. 2006. <span>“<span>Autoregressive Gamma Processes</span>.”</span> <em>Journal of Forecasting</em> 25 (2): 129–52. <a href="https://doi.org/10.1002/for.978">https://doi.org/10.1002/for.978</a>.
+</div>
+<div id="ref-zarg_2017" class="csl-entry">
+Monfort, Alain, Fulvio Pegoraro, Jean-Paul Renne, and Guillaume Roussellet. 2017. <span>“<span class="nocase">Staying at Zero with Affine Processes: An Application to Term Structure Modelling</span>.”</span> <em>Journal of Econometrics</em> 201 (2): 348–66. <a href="https://doi.org/10.1016/j.jeconom.2017.08.013">https://doi.org/10.1016/j.jeconom.2017.08.013</a>.
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#the-term-structure-or-risk-free-yields-1"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
+<li><a class="nav-link" href="#RFIntroduction"><span class="header-section-number">3.1</span> Introduction</a></li>
+<li><a class="nav-link" href="#swap-rates-1"><span class="header-section-number">3.2</span> Swap rates</a></li>
+<li><a class="nav-link" href="#RiskFreeAffine"><span class="header-section-number">3.3</span> The Affine Case</a></li>
+<li><a class="nav-link" href="#RiskFreeGaussian"><span class="header-section-number">3.4</span> Gaussian Affine Term Structure Model</a></li>
+<li><a class="nav-link" href="#RiskFreeNonNegative"><span class="header-section-number">3.5</span> Non-Negative Affine Term Structure Model</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

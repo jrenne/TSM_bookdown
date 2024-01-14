@@ -68,6 +68,7 @@
 <li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
 <li><a class="active" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
+<li><a class="" href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
 </ul>
 
         <div class="book-extra">
@@ -301,7 +302,7 @@ and since in the second term on the right-hand side <span class="math inline">\(
 \]</span>
 for some functions <span class="math inline">\(a(.)\)</span> and <span class="math inline">\(b(.)\)</span>. These functions are univariate if <span class="math inline">\(w_{t+1}\)</span> (and therefore <span class="math inline">\(u\)</span>) is scalar.</p>
 </div>
-<p>Note that <span class="math inline">\(a(.)\)</span> and <span class="math inline">\(b(.)\)</span> may be deterministic functions of time (e.g., <span class="citation">Chikhani and Renne (<a href="pricing-and-risk-neutral-dynamics.html#ref-Chikhani_Renne_2022">2023</a>)</span>).</p>
+<p>Note that <span class="math inline">\(a(.)\)</span> and <span class="math inline">\(b(.)\)</span> may be deterministic functions of time (e.g., <span class="citation">Chikhani and Renne (<a href="the-term-structure-or-risk-free-yields.html#ref-Chikhani_Renne_2022">2023</a>)</span>).</p>
 <p>A first key example is that of the Gaussian auto-regressive processes:</p>
 <div class="example">
 <p><span id="exm:GAR1" class="example"><strong>Example 1.5  (Univariate AR(1) Gaussian process) </strong></span>If <span class="math inline">\(w_{t+1}|\underline{w_t} \sim \mathcal{N}(\nu+\rho w_t, \sigma^2)\)</span>, then:
@@ -374,7 +375,7 @@ Figure 1.1: Simulation of a quadratic processes <span class="math inline">\(x_t\
 </p>
 </div>
 </div>
-<p>Another example of nonnegative process is that of the auto-regressive Gamma process <span class="citation">(<a href="pricing-and-risk-neutral-dynamics.html#ref-Gourieroux_Jasiak_2006">Gourieroux and Jasiak 2006</a>)</span> and its extension <span class="citation">(<a href="pricing-and-risk-neutral-dynamics.html#ref-zarg_2017">Monfort et al. 2017</a>)</span>.</p>
+<p>Another example of nonnegative process is that of the auto-regressive Gamma process <span class="citation">(<a href="the-term-structure-or-risk-free-yields.html#ref-Gourieroux_Jasiak_2006">Gourieroux and Jasiak 2006</a>)</span> and its extension <span class="citation">(<a href="the-term-structure-or-risk-free-yields.html#ref-zarg_2017">Monfort et al. 2017</a>)</span>.</p>
 <div class="example">
 <p><span id="exm:ARG1" class="example"><strong>Example 1.8  (Autoregressive gamma process, ARG(1)) </strong></span>An ARG process is defined as follows:
 <span class="math display">\[
@@ -406,7 +407,7 @@ and that:
 w_{t+1}=\nu\mu+\rho w_t+\varepsilon_{t+1},
 \]</span>
 where <span class="math inline">\(\varepsilon_{t+1}\)</span> is a martingale difference <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(w_{t+1}\)</span> is a weak <span class="math inline">\(AR(1)\)</span>.</p>
-<p><span class="citation">Monfort et al. (<a href="pricing-and-risk-neutral-dynamics.html#ref-zarg_2017">2017</a>)</span> porpose the extended ARG process and the ARG<span class="math inline">\(_0\)</span> process. The latter is such that <span class="math inline">\(\nu = 0\)</span> and <span class="math inline">\(\beta w_t\)</span> is replaced with <span class="math inline">\(\alpha + \beta w_t\)</span>, i.e.:
+<p><span class="citation">Monfort et al. (<a href="the-term-structure-or-risk-free-yields.html#ref-zarg_2017">2017</a>)</span> porpose the extended ARG process and the ARG<span class="math inline">\(_0\)</span> process. The latter is such that <span class="math inline">\(\nu = 0\)</span> and <span class="math inline">\(\beta w_t\)</span> is replaced with <span class="math inline">\(\alpha + \beta w_t\)</span>, i.e.:
 <span class="math display" id="eq:ARG0">\[\begin{equation}
 \frac{w_{t+1}}{\mu} \sim \gamma(z_t),\quad z_t \sim {\mathcal{P}}(\alpha + \beta w_t).\tag{1.4}
 \end{equation}\]</span>
@@ -667,7 +668,7 @@ The dynamics of the two components of <span class="math inline">\(w_t\)</span> a
 w_{1,t+1} &amp;=&amp; \alpha_1 \hspace{1.55cm} + \alpha_{11}w_{1,t} + \alpha_{12}w_{2,t} + \varepsilon_{1,t+1} \\
 w_{2,t+1} &amp;=&amp; \alpha_2 + \alpha_{0}w_{1,t+1} + \alpha_{21}w_{1,t} + \alpha _{22} w_{2,t} + \varepsilon_{2,t+1}
 \end{eqnarray*}\]</span>
-Note that <span class="math inline">\(\varepsilon_{1,t+1}\)</span> and <span class="math inline">\(\varepsilon_{2,t+1}\)</span> are non-correlated martingale differences. In the general case, they are conditionally heteroskedastic. What precedes is at play in <span class="math inline">\(VAR\)</span> model; <span class="citation">Monfort et al. (<a href="pricing-and-risk-neutral-dynamics.html#ref-zarg_2017">2017</a>)</span> employ this approach to build vector auto-regressive gamma (VARG) processes.</p>
+Note that <span class="math inline">\(\varepsilon_{1,t+1}\)</span> and <span class="math inline">\(\varepsilon_{2,t+1}\)</span> are non-correlated martingale differences. In the general case, they are conditionally heteroskedastic. What precedes is at play in <span class="math inline">\(VAR\)</span> model; <span class="citation">Monfort et al. (<a href="the-term-structure-or-risk-free-yields.html#ref-zarg_2017">2017</a>)</span> employ this approach to build vector auto-regressive gamma (VARG) processes.</p>
 </div>
 <div id="extending-multivariate-stochastic-processes" class="section level3" number="1.8.3">
 <h3>
@@ -877,7 +878,7 @@ One can then price this bond by directly employing Eq. <a href="ChapterAffine.ht
 The price <span class="math inline">\(B(t,h)\)</span> is exponential affine in <span class="math inline">\(w_t\)</span>, the associated yield-to-maturity <span class="math inline">\(R(t,h)=-1/h\log B(t,h)\)</span> is affine in <span class="math inline">\(w_t\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:CDR2009" class="example"><strong>Example 1.19  (No-arbitrage Nelson-Siegel model) </strong></span>In this example, we employ the results of Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a> in the context described by <span class="citation">Christensen, Diebold, and Rudebusch (<a href="pricing-and-risk-neutral-dynamics.html#ref-Christensen_Diebold_Rudebusch_2009">2009</a>)</span>. Specifically, we consider a three factor model following a Gaussian VAR (see Example <a href="ChapterAffine.html#exm:GVAR1">1.6</a>):
+<p><span id="exm:CDR2009" class="example"><strong>Example 1.19  (No-arbitrage Nelson-Siegel model) </strong></span>In this example, we employ the results of Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a> in the context described by <span class="citation">Christensen, Diebold, and Rudebusch (<a href="the-term-structure-or-risk-free-yields.html#ref-Christensen_Diebold_Rudebusch_2009">2009</a>)</span>. Specifically, we consider a three factor model following a Gaussian VAR (see Example <a href="ChapterAffine.html#exm:GVAR1">1.6</a>):
 <span class="math display">\[
 w_t = \left[\begin{array}{c}X_{1,t}\\X_{2,t}\\X_{3,t}\end{array}\right] =
 \left[\begin{array}{ccc}
@@ -1029,7 +1030,7 @@ with <span class="math inline">\(w_t\)</span> affine <span class="math inline">\
 \varphi_t(z) = \mathbb{E}_t[\exp(z'w_{t+1,T})],\quad  z \in \mathbb{C}^{nT},
 \]</span>
 computed using the same recursive algorithm as in the real case (see Section <a href="ChapterAffine.html#MHLT">1.9</a>).</p>
-<p><span class="citation">Duffie, Pan, and Singleton (<a href="pricing-and-risk-neutral-dynamics.html#ref-Duffie_Pan_Singleton_2000">2000</a>)</span> have shown that we have (see also Proposition <a href="ChapterAffine.html#prp:Fourier">1.8</a> in the appendix):
+<p><span class="citation">Darrell Duffie, Pan, and Singleton (<a href="the-term-structure-or-risk-free-yields.html#ref-Duffie_Pan_Singleton_2000">2000</a>)</span> have shown that we have (see also Proposition <a href="ChapterAffine.html#prp:Fourier">1.8</a> in the appendix):
 <span class="math display" id="eq:DPS">\[\begin{equation}
 \tilde{\varphi}_t(u ; v, \gamma) =  \frac{\varphi_t(u)}{2} - \frac{1}{\pi}
 \int^\infty_0 \frac{Im[\varphi_t(u+ivx) \exp(-i\gamma x)]}{x} dx.\tag{1.18}
@@ -1538,7 +1539,7 @@ which leads to Eq. <a href="ChapterAffine.html#eq:Truncated">(1.23)</a>.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-03.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-14.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

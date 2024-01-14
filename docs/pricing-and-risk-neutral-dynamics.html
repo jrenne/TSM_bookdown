@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 2 Pricing and risk-neutral dynamics | Introduction to Term Structure Models</title>
 <meta name="author" content="Jean-Paul Renne and Alain Monfort">
-<meta name="description" content="2.1 Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF) Consider an economy featuring a single good, whose date-\(t\) price is \(q_t\). There is a...">
+<meta name="description" content="In brief: bla bla bla bla.  2.1 Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF) Consider an economy featuring a single good, whose date-\(t\) price is...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Pricing and risk-neutral dynamics | Introduction to Term Structure Models">
 <meta property="og:type" content="book">
-<meta property="og:description" content="2.1 Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF) Consider an economy featuring a single good, whose date-\(t\) price is \(q_t\). There is a...">
+<meta property="og:description" content="In brief: bla bla bla bla.  2.1 Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF) Consider an economy featuring a single good, whose date-\(t\) price is...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 2 Pricing and risk-neutral dynamics | Introduction to Term Structure Models">
-<meta name="twitter:description" content="2.1 Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF) Consider an economy featuring a single good, whose date-\(t\) price is \(q_t\). There is a...">
+<meta name="twitter:description" content="In brief: bla bla bla bla.  2.1 Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF) Consider an economy featuring a single good, whose date-\(t\) price is...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -68,6 +68,7 @@
 <li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
 <li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="active" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
+<li><a class="" href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
 </ul>
 
         <div class="book-extra">
@@ -79,6 +80,9 @@
 <h1>
 <span class="header-section-number">2</span> Pricing and risk-neutral dynamics<a class="anchor" aria-label="anchor" href="#pricing-and-risk-neutral-dynamics"><i class="fas fa-link"></i></a>
 </h1>
+<blockquote>
+<p><strong><em>In brief:</em></strong> bla bla bla bla.</p>
+</blockquote>
 <div id="PricingEquilibrium" class="section level2" number="2.1">
 <h2>
 <span class="header-section-number">2.1</span> Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF)<a class="anchor" aria-label="anchor" href="#PricingEquilibrium"><i class="fas fa-link"></i></a>
@@ -216,9 +220,12 @@ In particular the price at <span class="math inline">\(t\)</span> of a zero coup
 <span class="math inline">\(\mathbb{P}[\textbf{1}_{\{\mathcal{M}_{t,s} \le 0\}}=1|\underline{w_t}] &gt; 0\)</span> and <span class="math inline">\(p_t[\textbf{1}_{\{\mathcal{M}_{t,s} \le 0\}}] = \mathbb{E}_t[\mathcal{M}_{t,s}\textbf{1}_{\{\mathcal{M}_{t,s} \le 0\}}] \le 0\)</span>.</p>
 </div>
 <div class="proposition">
-<p><span id="prp:timeconsist" class="proposition"><strong>Proposition 2.2  (Time consistency) </strong></span>For all <span class="math inline">\(t &lt; r &lt; s\)</span>, we have <span class="math inline">\(\mathcal{M}_{t,s} = \mathcal{M}_{t,r} \mathcal{M}_{r,s}\)</span>, which implies:
-* <span class="math inline">\(\mathcal{M}_{t,s} = \mathcal{M}_{t,t+1} \mathcal{M}_{t+1,t+2}\dots\mathcal{M}_{s-1,s}\)</span>
-* <span class="math inline">\(\mathcal{M}_{0,t} = \Pi^{t-1}_{j=0} \mathcal{M}_{j,j+1}\)</span> (<span class="math inline">\(\mathcal{M}_{0,t}\)</span> is called <strong>pricing kernel</strong>).</p>
+<p><span id="prp:timeconsist" class="proposition"><strong>Proposition 2.2  (Time consistency) </strong></span>For all <span class="math inline">\(t &lt; r &lt; s\)</span>, we have <span class="math inline">\(\mathcal{M}_{t,s} = \mathcal{M}_{t,r} \mathcal{M}_{r,s}\)</span>, which implies:</p>
+<ul>
+<li><span class="math inline">\(\mathcal{M}_{t,s} = \mathcal{M}_{t,t+1} \mathcal{M}_{t+1,t+2}\dots\mathcal{M}_{s-1,s}\)</span></li>
+<li>
+<span class="math inline">\(\mathcal{M}_{0,t} = \Pi^{t-1}_{j=0} \mathcal{M}_{j,j+1}\)</span> (<span class="math inline">\(\mathcal{M}_{0,t}\)</span> is called <strong>pricing kernel</strong>).</li>
+</ul>
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-16" class="proof"><em>Proof</em>. </span>Using Lemma <a href="pricing-and-risk-neutral-dynamics.html#lem:sdf">2.1</a> we have:
@@ -261,7 +268,7 @@ r_{t}=-\log \mathbb{E}_t [\mathcal{M}_{t,t+1}].
 <span class="math display">\[
 \mathcal{M}_{t,t+1}(\underline{w_{t+1}}) = \exp[\alpha_t(\underline{w_t})'w_{t+1}+\beta_t(\underline{w_t})]
 \]</span>
-where <span class="math inline">\(\alpha_t\)</span> defines the <em>factor loadings</em> or <em>sensitivity</em> vector. Using <span class="math inline">\(\mathbb{E}_t[\mathcal{M}_{t,t+1}]=\exp(-r_{t})=\exp[\psi_t(\alpha_t)+\beta_t]\)</span>, we get:
+where <span class="math inline">\(\alpha_t\)</span> defines the <em>prices of risk</em> or <em>sensitivity</em> vector. Using <span class="math inline">\(\mathbb{E}_t[\mathcal{M}_{t,t+1}]=\exp(-r_{t})=\exp[\psi_t(\alpha_t)+\beta_t]\)</span>, we get:
 <span class="math display" id="eq:keySDF">\[\begin{equation}
 \mathcal{M}_{t,t+1} = \exp[-r_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)].\tag{2.5}
 \end{equation}\]</span></p>
@@ -282,7 +289,8 @@ where <span class="math inline">\(q_t\)</span> is the price of the consumption g
 <p>The historical Dynamics is characterized by <span class="math inline">\(f(\underline{w_{T^*}})\)</span>, or by the
 sequence of conditional p.d.f. <span class="math inline">\(f_{t+1}(w_{t+1}|\underline{w_t})\)</span>, or
 <span class="math inline">\(f_{t+1}(w_{t+1})\)</span>, with respect to (w.r.t.) some measure <span class="math inline">\(\mu\)</span>.</p>
-<p>We define the conditional risk-neutral p.d.f. w.r.t. the conditional historical probability. For that, we employ the Radon-Nikodym derivative <span class="math inline">\(d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t})\)</span>:
+<p>We define the conditional risk-neutral p.d.f. w.r.t. the conditional historical probability. For that, we employ the Radon-Nikodym derivative <span class="math inline">\(d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t})\)</span>:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Of course, the conditional historical p.d.f. with respect to the conditional risk-neutral (R.N.) p.d.f. is:
+&lt;span class="math inline"&gt;\(d_{t+1}(w_{t+1}) = \frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})}\)&lt;/span&gt; or &lt;span class="math inline"&gt;\(d_{t+1}(w_{t+1}) = \frac{\exp(-r_{t})}{\mathcal{M}_{t,t+1}}\)&lt;/span&gt;.&lt;/p&gt;'><sup>5</sup></a>
 <span class="math display">\[
 d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t}) =
 \frac{\mathcal{M}_{t,t+1}(\underline{w_{t+1}})}{\mathbb{E}[\mathcal{M}_{t,t+1}(\underline{w_{t+1}})|\underline{w_t}]},
@@ -292,107 +300,68 @@ or
 d^{\mathbb{Q}}_{t+1}(w_{t+1})=
 \frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}=\exp(r_{t}) \mathcal{M}_{t,t+1}.
 \]</span>
-The risk neutral conditional p.d.f. is:
+In this context, the risk neutral conditional p.d.f. is:
 <span class="math display" id="eq:fQfP">\[\begin{eqnarray}
 f^{\mathbb{Q}}_{t+1}(w_{t+1}) &amp;=&amp; f_{t+1}(w_{t+1})d^{\mathbb{Q}}_{t+1}(w_{t+1}) \nonumber \\
 &amp;=&amp;f_{t+1} (w_{t+1}) \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) \exp [r_{t} (\underline{w_t})].\tag{2.6}
-\end{eqnarray}\]</span>
-Of course, the conditional historical p.d.f. with respect to the conditional risk-neutral (R.N.) p.d.f. is:
-<span class="math display">\[
-d_{t+1}(w_{t+1}) =
-\frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})} \quad \mbox{or}\quad d_{t+1}(w_{t+1}) =
-\frac{\exp(-r_{t})}{\mathcal{M}_{t,t+1}}.
-\]</span></p>
+\end{eqnarray}\]</span></p>
 <p>The p.d.f. of <span class="math inline">\(\mathbb{Q}\)</span> w.r.t. the historical dynamics <span class="math inline">\(\mathbb{P}\)</span> is:
 <span class="math display">\[
 \xi_{T^*} =  \frac{d\mathbb{Q}}{d\mathbb{P}} =
 \Pi^{T^{*}-1}_{t=0} d^{\mathbb{Q}}_{t+1}(w_{t+1}) =
-\Pi^{T^{*}-1}_{t=0} \exp(r_{t}) \mathcal{M}_{t,t+1}.
+\Pi^{T^{*}-1}_{t=0} \exp(r_{t}) \mathcal{M}_{t,t+1},
 \]</span>
-Note that the p.d.f. of the R.N. distribution of <span class="math inline">\(\underline{w_t}\)</span>, w.r.t. the corresponding historical distribution is:
+and the p.d.f. of the R.N. distribution of <span class="math inline">\(\underline{w_t}\)</span>, w.r.t. the corresponding historical distribution is:
 <span class="math display">\[
 \xi_t= \Pi^{t-1}_{\tau=1}
-d^{\mathbb{Q}}_{\tau+1}(w_{\tau+1})=\mathbb{E}_t\left( \begin{array}{l}
-\frac{d\mathbb{Q}}{d\mathbb{P}}
-\end{array} \right) = \mathbb{E}_t\xi_{T^*}
+d^{\mathbb{Q}}_{\tau+1}(w_{\tau+1})=\mathbb{E}_t\left(\frac{d\mathbb{Q}}{d\mathbb{P}}\right) = \mathbb{E}_t\xi_{T^*}.
 \]</span>
-(and <span class="math inline">\(\xi_t\)</span> therefore is a <span class="math inline">\(\mathbb{P}\)</span>-martingale) since:
-<span class="math display">\[
+Therefore, <span class="math inline">\(\xi_t\)</span> is a <span class="math inline">\(\mathbb{P}\)</span>-martingale.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Indeed:
+&lt;span class="math display"&gt;\[
 \mathbb{E}_t \left( \frac{d\mathbb{Q}}{d\mathbb{P}}\right) = \Pi^{t-1}_{\tau = 1} d^{\mathbb{Q}}_{\tau + 1} (w_{\tau+1}) \mathbb{E}_t \left( d^{\mathbb{Q}}_{t+1} (w_{t+1}) \ldots d^{\mathbb{Q}}_{T^*} (w_{T^*})\right).
-\]</span>
-* Equivalent form of the pricing formula (that is Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:basic">(2.4)</a>):</p>
-<p>Price at <span class="math inline">\(t\)</span> of a payoff <span class="math inline">\(g(\underline{w_s})\)</span> at time <span class="math inline">\(s&gt;t\)</span>:
-<span class="math display">\[\begin{eqnarray}
-p_t[g(\underline{w_s})] &amp;=&amp; \mathbb{E}_t[\mathcal{M}_{t,t+1}...\mathcal{M}_{s-1,s}g(\underline{w_s})] \\
-&amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t[exp(-r_{t}-...-r_{s-1})g(\underline{w_s})]\quad \mbox{(key
-formula).}\nonumber
-\end{eqnarray}\]</span>
-* Or, with simpler notations:
+\]&lt;/span&gt;&lt;/p&gt;'><sup>6</sup></a></p>
+<p>Consider the date-<span class="math inline">\(t\)</span> price of a payoff <span class="math inline">\(g(\underline{w_s})\)</span> at time <span class="math inline">\(s&gt;t\)</span>. An equivalent form of the pricing formula <a href="pricing-and-risk-neutral-dynamics.html#eq:basic">(2.4)</a> is:
 <span class="math display">\[\begin{eqnarray*}
-p_t &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t[exp(-r_{t}-...-r_{s-1})p_s] \\
-&amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t\left(\frac{R_t}{R_s} p_s\right) \quad (R_t:\mbox{bank account})
+p_t[g(\underline{w_s})] &amp;=&amp; \mathbb{E}_t[\mathcal{M}_{t,t+1}...\mathcal{M}_{s-1,s}g(\underline{w_s})] \\
+&amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t[\exp(-r_{t}-...-r_{s-1})g(\underline{w_s})],
 \end{eqnarray*}\]</span>
-<span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\dfrac{p_t}{R_t} = \mathbb{E}^{\mathbb{Q}}_t\left( \dfrac{p_s}{R_s}\right)\)</span>, that is, <span class="math inline">\(\dfrac{p_t}{R_t}\)</span> is a
-<span class="math inline">\(\mathbb{Q}\)</span>-martingale.
-* In particular:
+or, with simpler notations:
 <span class="math display">\[
-p_t = \exp(-r_{t})\mathbb{E}^{\mathbb{Q}}_t(p_{t+1})
+p_t = \mathbb{E}^{\mathbb{Q}}_t[\exp(-r_{t}-...-r_{s-1})p_s] = \mathbb{E}^{\mathbb{Q}}_t\left(\frac{R_t}{R_s} p_s\right),
 \]</span>
-or, using the arithmetic return of any payoff
+where <span class="math inline">\(R_t\)</span> is the <em>bank account</em>.</p>
+<p>We also have <span class="math inline">\(p_t/R_t = \mathbb{E}^{\mathbb{Q}}_t\left( p_s/R_s\right)\)</span>, that is, <span class="math inline">\(p_t/R_t\)</span> is a <span class="math inline">\(\mathbb{Q}\)</span>-martingale. In particular <span class="math inline">\(p_t = \exp(-r_{t})\mathbb{E}^{\mathbb{Q}}_t(p_{t+1})\)</span>, or, using the arithmetic return of any payoff <span class="math inline">\((p_{t+1}-p_t)/p_t\)</span>, and the arithmetic return of the riskless asset <span class="math inline">\(r_{A,t+1}=\exp(r_{t})-1\)</span>, we get:
 <span class="math display">\[
-\rho_{A,t+1}= \frac{p_{t+1}-p_t}{p_t}
+\mathbb{E}^{\mathbb{Q}}_t\left(\frac{p_{t+1}-p_t}{p_t}\right)=r_{A,t}.
 \]</span>
-and the arithmetic return of the riskless asset <span class="math inline">\(r_{A,t+1}=exp(r_{t})-1\)</span>, we get (<strong>key result</strong>):
+Moreover the excess arithmetic return process <span class="math inline">\((p_{t+1}-p_t)/p_t-r_{A,t}\)</span> is a <span class="math inline">\(\mathbb{Q}\)</span>-martingale difference and, therefore, <span class="math inline">\(\mathbb{Q}\)</span>-serially uncorrelated.</p>
+<p>Let us consider the case of an exponential affine SDF <span class="math inline">\(\mathcal{M}_{t,t+1}=\exp(\alpha'_t w_{t+1}+\beta_t)\)</span>:
 <span class="math display">\[
-\mathbb{E}^{\mathbb{Q}}_t(\rho_{A,t+1})=r_{A,t}.
+d^{\mathbb{Q}}_{t+1}(w_{t+1}) = \frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})} = \frac{\exp(\alpha'_t
+w_{t+1}+\beta_t)}{\exp[\psi_t(\alpha_t)+\beta_t]} = \exp[\alpha'_t w_{t+1}-\psi_t(\alpha_t)]
 \]</span>
-* Moreover the excess arithmetic return process <span class="math inline">\(\rho_{A,t+1}-r_{A,t}\)</span> is a <span class="math inline">\(\mathbb{Q}\)</span>-martingale difference and, therefore, <span class="math inline">\(\mathbb{Q}\)</span>-serially uncorrelated.
-* Case of an exponential affine SDF:
-<span class="math display">\[
-\begin{array}{ll}
-d^{\mathbb{Q}}_{t+1}(w_{t+1}) &amp; =
-\frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})} =
-\frac{\exp(\alpha'_t
-w_{t+1}+\beta_t)}{\exp[\psi_t(\alpha_t)+\beta_t]} =
-\frac{\exp(\alpha'_t w_{t+1})}{\varphi_t(\alpha_t)} \\
-&amp; = \exp[\alpha'_t w_{t+1}-\psi_t(\alpha_t)]
-\end{array}
-\]</span>
-<span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(d^{\mathbb{Q}}_{t+1}(w_{t+1})\)</span> is also exponential affine.
-* We have:
+We then have that <span class="math inline">\(d^{\mathbb{Q}}_{t+1}(w_{t+1})\)</span> is also exponential affine. Moreover:
 <span class="math display">\[
 f^{\mathbb{Q}}_{t+1} (w_{t+1}) = \frac{f_{t+1} (w_{t+1}) \exp (\alpha'_t w_{t+1})}{\varphi_t (\alpha_t)}.
-\]</span></p>
-<p><span class="math inline">\(f^{\mathbb{Q}}_{t+1}\)</span> Esscher transform of <span class="math inline">\(f_{t+1}\)</span>, corresponding to <span class="math inline">\(\alpha_t\)</span>.</p>
-<ul>
-<li>Laplace transform of the conditional R.N. probability:</li>
-</ul>
-<p><span class="math inline">\(\varphi^{\mathbb{Q}}_t(u|\underline{w_t})\)</span>, also denoted by <span class="math inline">\(\varphi^{\mathbb{Q}}_t(u)\)</span>:
+\]</span>
+The previous equation shows that <span class="math inline">\(f^{\mathbb{Q}}_{t+1}\)</span> is the Esscher transform of <span class="math inline">\(f_{t+1}\)</span> evaluated at <span class="math inline">\(\alpha_t\)</span>.</p>
+<p>Let us know consider the Laplace transform of the conditional R.N. probability, <span class="math inline">\(\varphi^{\mathbb{Q}}_t(u|\underline{w_t})\)</span>, also denoted by <span class="math inline">\(\varphi^{\mathbb{Q}}_t(u)\)</span>. We have:
 <span class="math display">\[\begin{eqnarray*}
 \varphi^{\mathbb{Q}}_t(u) &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t \exp(u' w_{t+1}) \\
 &amp;=&amp; \mathbb{E}_t \exp[(u+\alpha_t)'w_{t+1}-\psi_t(\alpha_t)] \\
 &amp;=&amp; \exp[\psi_t(u+\alpha_t)-\psi_t(\alpha_t)] =
-\frac{\varphi_t(u+\alpha_t)}{\varphi_t(\alpha_t)}
-\end{eqnarray*}\]</span></p>
-<p><span class="math inline">\(\Rightarrow\)</span> (<strong>key result</strong>)
+\frac{\varphi_t(u+\alpha_t)}{\varphi_t(\alpha_t)}.
+\end{eqnarray*}\]</span>
+Hence:
 <span class="math display" id="eq:transfoPQ">\[\begin{equation}
-\psi^{\mathbb{Q}}_t(u) = \psi_t(u+\alpha_t)-\psi_t(\alpha_t).\tag{2.7}
+\boxed{\psi^{\mathbb{Q}}_t(u) = \psi_t(u+\alpha_t)-\psi_t(\alpha_t).}\tag{2.7}
 \end{equation}\]</span>
-* We check that, if <span class="math inline">\(\alpha_t=0\)</span>, <span class="math inline">\(\psi^{\mathbb{Q}}_t=\psi_t\)</span> (since <span class="math inline">\(\psi_t(0)=0)\)</span>.
-* Back to the historical conditional probability:
+We check that, if <span class="math inline">\(\alpha_t=0\)</span>, <span class="math inline">\(\psi^{\mathbb{Q}}_t=\psi_t\)</span> (since <span class="math inline">\(\psi_t(0)=0)\)</span>.</p>
+<p>Moreover, putting <span class="math inline">\(u=-\alpha_t\)</span> in the expression of
+<span class="math inline">\(\psi^{\mathbb{Q}}_t(u)\)</span> we get <span class="math inline">\(\psi^{\mathbb{Q}}_t(-\alpha_t)=-\psi_t(\alpha_t)\)</span>,
+and, replacing <span class="math inline">\(u\)</span> by <span class="math inline">\(u-\alpha_t\)</span>, we get:
 <span class="math display">\[
-d_{t+1}(w_{t+1}) =
-\frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})} = \exp[-\alpha'_t
-w_{t+1}+\psi_t(\alpha_t)],
-\]</span>
-* Putting <span class="math inline">\(u=-\alpha_t\)</span> in the expression of
-<span class="math inline">\(\psi^{\mathbb{Q}}_t(u)\)</span> we get
-<span class="math display">\[
-\psi^{\mathbb{Q}}_t(-\alpha_t)=-\psi_t(\alpha_t),
-\]</span>
-and, replacing <span class="math inline">\(u\)</span> by <span class="math inline">\(u-\alpha_t\)</span>, we get (<strong>key result</strong>):
-<span class="math display">\[
-\psi_t(u) = \psi^{\mathbb{Q}}_t(u-\alpha_t)-\psi^{\mathbb{Q}}_t(-\alpha_t)
+\boxed{\psi_t(u) = \psi^{\mathbb{Q}}_t(u-\alpha_t)-\psi^{\mathbb{Q}}_t(-\alpha_t).}
 \]</span>
 Also:
 <span class="math display">\[\begin{equation*}
@@ -403,6 +372,12 @@ d^{\mathbb{Q}}_{t+1}(w_{t+1}) &amp;=&amp; \exp[\alpha'_t(w_{t+1})+\psi^{\mathbb{
 \end{array}
 \right.
 \end{equation*}\]</span></p>
+<!-- XXX* Back to the historical conditional probability: -->
+<!-- $$ -->
+<!-- d_{t+1}(w_{t+1}) = -->
+<!-- \frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})} = \exp[-\alpha'_t -->
+<!-- w_{t+1}+\psi_t(\alpha_t)], -->
+<!-- $$ -->
 </div>
 <div id="PricingTypology" class="section level2" number="2.5">
 <h2>
@@ -410,630 +385,126 @@ d^{\mathbb{Q}}_{t+1}(w_{t+1}) &amp;=&amp; \exp[\alpha'_t(w_{t+1})+\psi^{\mathbb{
 </h2>
 <div class="definition">
 <p><span id="def:typo" class="definition"><strong>Definition 2.2  (Econometric Asset Pricing Model (EAPM)) </strong></span>An Econometric Asset Pricing Model (EAPM) is defined by the following functions:</p>
-<p><em><span class="math inline">\(r_{t}(\underline{w_t})\)</span>,
-</em> <span class="math inline">\(f(w_{t+1}|\underline{w_t}))\)</span> [or <span class="math inline">\(\psi_t(u)\)</span>],
-* <span class="math inline">\(\mathcal{M}_{t,t+1}(\underline{w_{t+1}})\)</span>,
-* <span class="math inline">\(f^{\mathbb{Q}}(w_{t+1}|\underline{w_t})\)</span> [or <span class="math inline">\(\psi^{\mathbb{Q}}_t(u)\)</span>].</p>
-</div>
 <ul>
-<li><p>The previous functions have to to be specified and parameterized.</p></li>
-<li><p>They are linked by:
+<li>
+<span class="math inline">\(r_{t}(\underline{w_t})\)</span>,</li>
+<li>
+<span class="math inline">\(f(w_{t+1}|\underline{w_t}))\)</span> [or <span class="math inline">\(\psi_t(u)\)</span>],</li>
+<li>
+<span class="math inline">\(\mathcal{M}_{t,t+1}(\underline{w_{t+1}})\)</span>,</li>
+<li>
+<span class="math inline">\(f^{\mathbb{Q}}(w_{t+1}|\underline{w_t})\)</span> [or <span class="math inline">\(\psi^{\mathbb{Q}}_t(u)\)</span>].</li>
+</ul>
+</div>
+<p>The previous functions have to to be specified and parameterized. They are linked by:
 <span class="math display">\[
 f^{\mathbb{Q}}(w_{t+1}|\underline{w_t}) = f(w_{t+1}|\underline{w_t}) \mathcal{M}_{t,t+1}(\underline{w_{t+1}}) \exp[r_{t}(\underline{w_t}))].
-\]</span></p></li>
-<li><p>We are going to present three ways of specifying an EAPM:</p></li>
-</ul>
+\]</span></p>
+<p>In the following, we present three ways of specifying an EAPM:</p>
 <ol style="list-style-type: decimal">
-<li>the Direct Modelling,</li>
-<li>the R.N. Constrained Direct Modelling (or Mixed Modelling),</li>
-<li>the Back Modelling.</li>
+<li>the direct modelling,</li>
+<li>the R.N.-constrained direct modelling (or mixed modelling),</li>
+<li>the back modelling.</li>
 </ol>
-<ul>
-<li>If <span class="math inline">\(\mathcal{M}_{t,t+1}\)</span> is exponential affine:
+<p>We focus on the case where <span class="math inline">\(\mathcal{M}_{t,t+1}\)</span> is exponential affine, as in Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:keySDF">(2.5)</a>:
 <span class="math display">\[
-\mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp \{ -r_{t} (\underline{w_t}) + \alpha'_t (\underline{w_t}) )
-w_{t+1} - \psi_t [\alpha_t (w_t)]\}.
+\mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -r_{t} (\underline{w_t}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)]\right\}.
 \]</span>
-</li>
-<li>Once <span class="math inline">\(r_{t} (\underline{w_t})\)</span> is specified we have to specify <span class="math inline">\(\psi_t, \alpha_t, \psi^{\mathbb{Q}}_t\)</span> linked by
+Once the short-term rate function <span class="math inline">\(r_{t}(\underline{w_t})\)</span> is specified, we have to specify <span class="math inline">\(\psi_t\)</span>, <span class="math inline">\(\alpha_t\)</span>, and <span class="math inline">\(\psi^{\mathbb{Q}}_t\)</span>, that are linked by Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:transfoPQ">(2.7)</a>.</p>
+<p>In all approaches, we have to specify the status of the short rate. The short rate <span class="math inline">\(r_{t}\)</span> is a function of <span class="math inline">\(\underline{w_t}\)</span>, this function may be known or unknown by the econometrician. It is known in two cases: (a) <span class="math inline">\(r_{t}\)</span> is exogenous (<span class="math inline">\(r_{t}(\underline{w_t})\)</span> does not depend on <span class="math inline">\(\underline{w_t}\)</span>) or (b) <span class="math inline">\(r_{t}\)</span> is a component of <span class="math inline">\(w_t\)</span>. By contrast, if the function <span class="math inline">\(r_{t} (\underline{w_t})\)</span> is unknown, it has to be specified parametrically:
 <span class="math display">\[
-\psi^{\mathbb{Q}}_t (u) = \psi_t (u+\alpha_t) - \psi_t (\alpha_t).
-\]</span>
-</li>
-<li>In all approaches, we have to specify the status of the short rate <span class="math inline">\(r_{t}\)</span> (developed in next slide).</li>
-</ul>
-<p><strong>Remark</strong>: The status of the short rate</p>
-<p>The short rate <span class="math inline">\(r_{t}\)</span> is a function of <span class="math inline">\(\underline{w_t}\)</span>, this function may be known or unknown by the econometrician:</p>
-<ol style="list-style-type: lower-roman">
-<li>It is known in two cases:</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>
-<span class="math inline">\(r_{t}\)</span> is exogenous <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(r_{t}(\underline{w_t})\)</span> does not depend on <span class="math inline">\(\underline{w_t}\)</span>,</li>
-<li>
-<span class="math inline">\(r_{t}\)</span> is an endogenous factor <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(r_{t}\)</span> is a component of <span class="math inline">\(w_t\)</span>.</li>
-</ol>
-<ol start="2" style="list-style-type: lower-roman">
-<li>If the function <span class="math inline">\(r_{t} (\underline{w_t})\)</span> is unknown, it has to be specified
-parametrically:
-<span class="math display">\[\begin{equation*}
 \left\{ r_{t} (\underline{w_t}, \tilde{\theta}), \tilde{\theta}\in \tilde{\Theta} \right\},
-\end{equation*}\]</span>
-where <span class="math inline">\(r_{t} (.,.)\)</span> is a known function.</li>
-</ol>
-<div id="the-direct-modelling-based-on-threes-steps" class="section level3" number="2.5.1">
+\]</span>
+where <span class="math inline">\(r_{t}(\bullet,\bullet)\)</span> is a known function.</p>
+<p>Let us now detail the three steps on which each of the three ways of defining an EAPM is based.</p>
+<div id="the-direct-modelling" class="section level3" number="2.5.1">
 <h3>
-<span class="header-section-number">2.5.1</span> The Direct Modelling (based on threes steps)<a class="anchor" aria-label="anchor" href="#the-direct-modelling-based-on-threes-steps"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.1</span> The Direct Modelling<a class="anchor" aria-label="anchor" href="#the-direct-modelling"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
-<strong>Step 1</strong>: Specification of the historical dynamics</li>
-</ul>
-<p>We choose a parametric family for the conditional historical Log-Laplace transform <span class="math inline">\(\psi_t (u | \underline{w_t})\)</span>:
-<span class="math display">\[\begin{equation*}
-\left\{ \psi_t (u  |  \underline{w_t} ; \theta_1), \theta_1 \in \Theta_1 \right\} .
-\end{equation*}\]</span>
-* {}
-<span class="math display">\[\begin{equation*}
-\begin{array}{lll} \mathcal{M}_{t,t+1} &amp;=&amp; \exp \left[ -
-r_{t} (\underline{w_t}) + \alpha'_t (\underline{w_t}) w_{t+1} -
-\psi_t (\alpha_t | \underline{w_t}) \right];
-\end{array}
-\end{equation*}\]</span></p>
-<p>Once <span class="math inline">\(r_{t}\)</span> has been specified (<span class="math inline">\(r_{t}(\underline{w_t}, \tilde{\theta})\)</span>), <span class="math inline">\(\alpha_t(\underline{w_t})\)</span> remains to be specified. We assume
-that <span class="math inline">\(\alpha_t (\underline{w_t})\)</span> belongs to a parametric family:
-<span class="math display">\[\begin{equation*}
-\left\{ \alpha_t (\underline{w_t} ; \theta_2),
-\theta_2 \in \Theta_2 \right\}
-\end{equation*}\]</span>
-<span class="math display">\[\begin{eqnarray*}
-\Rightarrow \mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) &amp;=&amp; \exp \left\{ - r_{t}
-(\underline{w_t}, \tilde{\theta}) + \alpha'_t (\underline{w_t},\theta_2) w_{t+1} \right.\\
-&amp;&amp; \left. - \psi_{t} \left[ \alpha_t (\underline{w_t},
-\theta_2) | \underline{w_t} ; \theta_1 \right] \right\}
-\end{eqnarray*}\]</span>
-where <span class="math inline">\(\theta = (\tilde{\theta}', \theta'_1, \theta'_2)' \in \tilde{\Theta}\times \Theta_1 \times \Theta_2 = \Theta\)</span>;</p>
-<p><span class="math inline">\(\tilde{\Theta}\)</span> may be reduced to one point (Case i of Remark <strong>ST</strong>).</p>
-<ul>
+<strong>Step 1 – Specification of the historical dynamics</strong>. We choose a parametric family for the conditional historical Log-Laplace transform <span class="math inline">\(\psi_t(u|\underline{w_t})\)</span>: <span class="math inline">\(\left\{ \psi_t (u|\underline{w_t} ; \theta_1), \theta_1 \in \Theta_1 \right\}\)</span>.</li>
 <li>
-<strong>Step 3</strong>: Internal consistency conditions (ICC)</li>
-</ul>
-<p>For any payoff <span class="math inline">\(g(\underline{w_s})\)</span> delivered at <span class="math inline">\(s&gt;t\)</span>, with price <span class="math inline">\(p(\underline{w_t})\)</span> at <span class="math inline">\(t\)</span> which is a known function of
-<span class="math inline">\(\underline{w_t}\)</span>, we must have:
-<span class="math display">\[\begin{equation*}\label{ICCgen}
-p(\underline{w_t}) = \mathbb{E} \left\{\mathcal{M}_{t,t+1} (\theta)
-... \mathcal{M}_{s-1,s} (\theta) g(\underline{w_s})  |  \underline{w_t},
-\theta_1 \right\}    \forall \; \underline{w_t}, \theta .
-\end{equation*}\]</span></p>
-<p>These ICC pricing conditions may imply strong constraints on <span class="math inline">\(\theta\)</span>, for instance:</p>
-<ul>
-<li>When components of <span class="math inline">\(w_t\)</span> are returns of some assets:
+<strong>Step 2 – Specification of the SDF</strong>. Considering the affine specification of as Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:keySDF">(2.5)</a>, that is:
 <span class="math display">\[
-\mbox{If }w_{1,t} = \log \dfrac{p_{1,t}}{p_{1,t-1}}, \mbox{ then }\mathbb{E}_t \mathcal{M}_{t,t+1} \exp (e'_1 w_{t+1}) = 1.
+\mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -r_{t}(\underline{w_t}, \tilde{\theta}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)|\underline{w_t} ; \theta_1]\right\},
 \]</span>
-or interest rates with various maturities:
+we need to specifiy functions <span class="math inline">\(r_{t}(\underline{w_t}, \tilde{\theta})\)</span> and <span class="math inline">\(\alpha_t(\underline{w_t})\)</span>. Assume that <span class="math inline">\(\alpha_t(\underline{w_t})\)</span> belongs to a parametric family: <span class="math inline">\(\left\{ \alpha_t (\underline{w_t} ; \theta_2),\theta_2 \in \Theta_2 \right\}\)</span>.
+We then have:
 <span class="math display">\[\begin{eqnarray*}
-&amp;&amp;\mbox{If }w_{1,t} = -\frac{1}{h}\log B(t,h), \\
-&amp;&amp; \mbox{ then } e'_1 w_{t} = - \frac{1}{h} \log \mathbb{E}_t (\mathcal{M}_{t,t+1}\times \dots \times \mathcal{M}_{t+h-1,t+h}).
+\mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) &amp;=&amp; \exp \left\{ - r_{t}
+(\underline{w_t}, \tilde{\theta}) + \alpha'_t (\underline{w_t},\theta_2) w_{t+1} - \psi_{t} \left[ \alpha_t (\underline{w_t},
+\theta_2) | \underline{w_t} ; \theta_1 \right] \right\},
 \end{eqnarray*}\]</span>
-</li>
-<li>The previous three steps imply the specification of the R.N. dynamics:
+where <span class="math inline">\(\theta = (\tilde{\theta}', \theta'_1,\theta'_2)' \in \tilde{\Theta}\times \Theta_1 \times \Theta_2 = \Theta\)</span>.</li>
+<li>
+<strong>Step 3 – Internal consistency conditions (ICC)</strong>. For any payoff <span class="math inline">\(g(\underline{w_s})\)</span> settled at <span class="math inline">\(s&gt;t\)</span>, with price <span class="math inline">\(p(\underline{w_t})\)</span> at <span class="math inline">\(t\)</span> which is a known function of
+<span class="math inline">\(\underline{w_t}\)</span>, we must have:
+<span class="math display" id="eq:ICCgen">\[\begin{equation*}
+p(\underline{w_t}) = \mathbb{E} \left\{\mathcal{M}_{t,t+1} (\theta) \dots \mathcal{M}_{s-1,s} (\theta) g(\underline{w_s})  |  \underline{w_t},
+\theta_1 \right\}    \forall \; \underline{w_t}, \theta.\tag{2.8}
+\end{equation*}\]</span>
+These ICC pricing conditions may imply strong constraints on <span class="math inline">\(\theta\)</span>. For instance, when components of <span class="math inline">\(w_t\)</span> are returns of some assets: if <span class="math inline">\(w_{1,t} = \log(p_{1,t}/p_{1,t-1})\)</span>, then we must have <span class="math inline">\(\mathbb{E}_t [\mathcal{M}_{t,t+1} \exp (e'_1 w_{t+1})]= 1\)</span> (Euler equation). Or, in the case of interest rates with various maturities: if <span class="math inline">\(w_{1,t} = -1/h\log B(t,h)\)</span>, then we must have <span class="math inline">\(e'_1 w_{t} = - 1/h \log \mathbb{E}_t (\mathcal{M}_{t,t+1}\times \dots \times \mathcal{M}_{t+h-1,t+h})\)</span>.</li>
+</ul>
+<p>The previous three steps imply the specification of the R.N. dynamics (according to Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:transfoPQ">(2.7)</a>):
 <span class="math display">\[\begin{equation*}
 \psi^{\mathbb{Q}} (u | \underline{w_t}, \theta_1, \theta_2) =
 \psi_t \left[ u + \alpha_t (\underline{w_t}, \theta_2) |
 \underline{w_t}, \theta_1 \right] - \psi_t \left[ \alpha_t
 (\underline{w_t}, \theta_2) | \underline{w_t}, \theta_1
 \right].
-\end{equation*}\]</span>
-</li>
-</ul>
+\end{equation*}\]</span></p>
 </div>
 <div id="the-r.n.-constrained-direct-modelling-or-mixed-modelling" class="section level3" number="2.5.2">
 <h3>
-<span class="header-section-number">2.5.2</span> The R.N. constrained direct modelling (or mixed modelling)<a class="anchor" aria-label="anchor" href="#the-r.n.-constrained-direct-modelling-or-mixed-modelling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.2</span> The R.N.-constrained direct modelling (or mixed modelling)<a class="anchor" aria-label="anchor" href="#the-r.n.-constrained-direct-modelling-or-mixed-modelling"><i class="fas fa-link"></i></a>
 </h3>
-<p><strong>Step 1</strong>: Specification of <span class="math inline">\(\mathbb{P}\)</span>-dynamics</p>
-<p>We select a family <span class="math inline">\(\{ \psi_t (u | \underline{w_t},\theta_1), \theta_1 \in \Theta_1 \}\)</span>:</p>
-<p>[to explain, for instance, some stylized fact about <span class="math inline">\(w_t\)</span>].</p>
-<p><strong>Step 2</strong>: Specification of <span class="math inline">\(\mathbb{Q}\)</span>-dynamics</p>
-<p>We select a family <span class="math inline">\(\{\psi^{\mathbb{Q}}_t (u | \underline{w_t}, \theta^*),\theta^* \in \Theta^* \}\)</span> and possibly <span class="math inline">\(\{r_{t}(\underline{w_t},\tilde{\theta}),\tilde{\theta}\in\tilde{\Theta}\}\)</span></p>
-<p>[to have explicit or quasi explicit pricing formula].</p>
-<p><strong>Step 3</strong>: Internal Consistency Conditions (ICC)</p>
-<p>Once the parameterization <span class="math inline">\((\tilde{\theta}, \theta_1, \theta^*) \in \tilde{\Theta} \times \Theta^*_1\)</span> is
-defined, ICCs may be imposed:
-<span class="math display">\[\begin{eqnarray*}
-&amp;&amp;\mbox{If }w_{1,t} = \log \frac{p_{1,t}}{p_{1,t-1}}, \mbox{ then } \exp(-r_t)\mathbb{E}^{\mathbb{Q}}_t \exp (e_{1}' w_{t+1}) = 1\\
-&amp;&amp;\mbox{If }w_{1,t} = B(t,h), \mbox{ then } e_{1}' w_{t} = \mathbb{E}_t^{\mathbb{Q}} \exp(-r_t - \dots - r_{t+h-1}).
-\end{eqnarray*}\]</span></p>
 <ul>
-<li>The SDF is a by-product and, if we want an exponential affine SDF, for any pair <span class="math inline">\((\psi^{\mathbb{Q}}_t, \psi_t)\)</span> belonging to these families, there must exist a unique function <span class="math inline">\(\alpha_t (\underline{w_t})\)</span> denoted by <span class="math inline">\(\alpha_t (w_t ; \theta_1, \theta^*)\)</span>, and satisfying:
+<li>
+<strong>Step 1 – Specification of the physical dynamics</strong>. We select a family <span class="math inline">\(\{ \psi_t (u | \underline{w_t},\theta_1), \theta_1 \in \Theta_1 \}\)</span>.</li>
+<li>
+<strong>Step 2 – Specification of the risk-neutral dynamics</strong>. We select a family <span class="math inline">\(\{\psi^{\mathbb{Q}}_t (u | \underline{w_t}, \theta^*),\theta^* \in \Theta^* \}\)</span> and, possibly, <span class="math inline">\(\{r_{t}(\underline{w_t},\tilde{\theta}),\tilde{\theta}\in\tilde{\Theta}\}\)</span>.</li>
+<li>
+<strong>Step 3 – Internal Consistency Conditions (ICC)</strong>. Once the parameterization <span class="math inline">\((\tilde{\theta}, \theta_1, \theta^*) \in \tilde{\Theta} \times \Theta^*_1\)</span> is defined, ICCs may be imposed. For instance, if <span class="math inline">\(w_{1,t} = \log(p_{1,t}/p_{1,t-1})\)</span>, then we must have <span class="math inline">\(\exp(-r_t)\mathbb{E}^{\mathbb{Q}}_t \exp (e_{1}' w_{t+1}) = 1\)</span>. Or if <span class="math inline">\(w_{1,t} = B(t,h)\)</span>, then <span class="math inline">\(e_{1}' w_{t} = \mathbb{E}_t^{\mathbb{Q}} \exp(-r_t - \dots - r_{t+h-1})\)</span>.</li>
+</ul>
+<p>The SDF is a by-product. If we want an exponential affine SDF, for any pair <span class="math inline">\((\psi^{\mathbb{Q}}_t, \psi_t)\)</span> belonging to these families, there must exist a unique function <span class="math inline">\(\alpha_t (\underline{w_t})\)</span> denoted by <span class="math inline">\(\alpha_t (w_t ; \theta_1, \theta^*)\)</span>, and satisfying:
 <span class="math display">\[\begin{equation*}
 \psi^{\mathbb{Q}}_t (u | \underline{w_t}) = \psi_t \left[ u +
 \alpha_t (w_t) | \underline{w_t} \right] - \psi_t \left[
 \alpha_t (\underline{w_t}) | \underline{w_t} \right].
-\end{equation*}\]</span>
-</li>
-</ul>
+\end{equation*}\]</span></p>
 </div>
 <div id="the-back-modelling-based-on-three-steps" class="section level3" number="2.5.3">
 <h3>
 <span class="header-section-number">2.5.3</span> The Back Modelling (based on three steps)<a class="anchor" aria-label="anchor" href="#the-back-modelling-based-on-three-steps"><i class="fas fa-link"></i></a>
 </h3>
-<p><strong>Step 1</strong>: Specification of the R.N. dynamics} [and possibly of <span class="math inline">\(r_{t}(\underline{w_t})\)</span>]: <span class="math inline">\(\psi^{\mathbb{Q}}_t (u | \underline{w_t}; \theta^*_1)\)</span>.</p>
-<p><strong>Step 2</strong>: Internal consistency conditions (ICC) } –if relevant– are taken into account:
+<ul>
+<li>
+<strong>Step 1 – Specification of the R.N. dynamics</strong>, and possibly of <span class="math inline">\(r_{t}(\underline{w_t})\)</span>]: <span class="math inline">\(\psi^{\mathbb{Q}}_t (u | \underline{w_t}; \theta^*_1)\)</span>.</li>
+<li>
+<strong>Step 2 – Internal consistency conditions (ICC)</strong>, if relevant, are taken into account:
 <span class="math display">\[\begin{equation*}
 \begin{array}{lll}
-&amp;&amp; p(\underline{w_t}) = \mathbb{E}^{\mathbb{Q}}_t \left[ \exp (-r_{t} (\underline{w_t}, \tilde{\theta})
-- \ldots - r_{s-1} (\underline{w_s}, \tilde{\theta}))g (\underline{w_s}) | \underline{w_t} , \theta^*_1
-\right] ,\\
+&amp;&amp; p(\underline{w_t}) = \mathbb{E}^{\mathbb{Q}}_t \left[ \exp (-r_{t} (\underline{w_t},\tilde{\theta}) - \dots - r_{s-1} (\underline{w_s}, \tilde{\theta}))g(\underline{w_s}) | \underline{w_t} , \theta^*_1\right] ,\\
 &amp;&amp; \forall    \underline{w_t} , \tilde{\theta} , \theta^*_1.
 \end{array}
 \end{equation*}\]</span>
-<strong>Step 3</strong>: Choice of the specification of <span class="math inline">\(\alpha_t(\underline{w_t})\)</span>} (without any constraint), providing the family <span class="math inline">\(\{ \alpha_t (\underline{w_t}, \theta^*_2),\theta^*_2\in \Theta^*_2 \}\)</span>.
-* The historical dynamics is a by-product:
+</li>
+<li>
+<strong>Step 3 – Choice of the specification of the prices of risk</strong>. One chooses function <span class="math inline">\(\alpha_t(\underline{w_t})\)</span> without any constraint; this amounts to defining the family <span class="math inline">\(\{ \alpha_t (\underline{w_t}, \theta^*_2), \theta^*_2\in \Theta^*_2 \}\)</span>.</li>
+</ul>
+<p>The historical dynamics is obtained as a by-product. Indeed:
 <span class="math display">\[\begin{equation*}
-\psi_t(u | \underline{w_t} ; \theta^*_1, \theta^*_2) = \psi^{\mathbb{Q}}_t
-\left[ u - \alpha_t (\underline{w_t}, \theta^*_2) |
-\underline{w_t} ; \theta^*_1 \right] - \psi^{\mathbb{Q}}_t \left[
-- \alpha_t (\underline{w_t}, \theta^{
-*}_2) | \underline{w_t}, \theta^*_1 \right].
+\psi_t(u | \underline{w_t} ; \theta^*_1, \theta^*_2) = \psi_t^{\mathbb{Q}}\left[ u -\alpha_t (\underline{w_t}, \theta^*_2)|\underline{w_t} ; \theta^*_1 \right] -\psi^{\mathbb{Q}}_t \left[- \alpha_t (\underline{w_t}, \theta^*_2) | \underline{w_t},\theta^*_1 \right].
 \end{equation*}\]</span></p>
-</div>
-</div>
-<div id="the-term-structure-of-risk-free-yields" class="section level2" number="2.6">
-<h2>
-<span class="header-section-number">2.6</span> THE TERM STRUCTURE OF RISK-FREE YIELDS<a class="anchor" aria-label="anchor" href="#the-term-structure-of-risk-free-yields"><i class="fas fa-link"></i></a>
-</h2>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sdw.ecb.europa.eu/">ecb</a></span><span class="op">)</span></span>
-<span><span class="va">rates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ecb/man/get_data.html">get_data</a></span><span class="op">(</span></span>
-<span>  <span class="co">#"YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y",</span></span>
-<span>  <span class="st">"FM.M.U2.EUR.4F.BB.R_U2_10Y.YLDA"</span>,</span>
-<span>  filter<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>startPeriod<span class="op">=</span><span class="st">"1991-12"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">rates</span><span class="op">$</span><span class="va">obstime</span>,<span class="st">"-15"</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span><span class="op">)</span>,<span class="va">rates</span><span class="op">$</span><span class="va">obsvalue</span>,type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span>
-<span><span class="va">spf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ecb/man/get_data.html">get_data</a></span><span class="op">(</span></span>
-<span>  <span class="st">"SPF.Q.U2.HICP.POINT.LT.Q.AVG"</span>,</span>
-<span>  filter<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>startPeriod<span class="op">=</span><span class="st">"1991-12"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">spf</span><span class="op">$</span><span class="va">obstime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"Q1"</span>, <span class="st">"02-15"</span>, <span class="va">spf</span><span class="op">$</span><span class="va">obstime</span><span class="op">)</span></span>
-<span><span class="va">spf</span><span class="op">$</span><span class="va">obstime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"Q2"</span>, <span class="st">"05-15"</span>, <span class="va">spf</span><span class="op">$</span><span class="va">obstime</span><span class="op">)</span></span>
-<span><span class="va">spf</span><span class="op">$</span><span class="va">obstime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"Q3"</span>, <span class="st">"08-15"</span>, <span class="va">spf</span><span class="op">$</span><span class="va">obstime</span><span class="op">)</span></span>
-<span><span class="va">spf</span><span class="op">$</span><span class="va">obstime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"Q4"</span>, <span class="st">"11-15"</span>, <span class="va">spf</span><span class="op">$</span><span class="va">obstime</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">spf</span><span class="op">$</span><span class="va">obstime</span>,<span class="st">"-15"</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span><span class="op">)</span>,<span class="va">spf</span><span class="op">$</span><span class="va">obsvalue</span>,lty<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<div class="figure" style="text-align: left-aligned">
-<span style="display:block;" id="fig:extractECB"></span>
-<img src="TSM_files/figure-html/extractECB-1.png" alt="Simulation of a quadratic processes $x_t$." width="95%"><p class="caption">
-Figure 2.1: Simulation of a quadratic processes <span class="math inline">\(x_t\)</span>.
-</p>
-</div>
-<div id="RFIntroduction" class="section level3" number="2.6.1">
-<h3>
-<span class="header-section-number">2.6.1</span> Introduction<a class="anchor" aria-label="anchor" href="#RFIntroduction"><i class="fas fa-link"></i></a>
-</h3>
-<ul>
-<li><p><strong>Risk-free</strong> = with no default (and/or liquidity) risks.</p></li>
-<li><p>An important share of the term-structure literature pertains to the modelling of risk-free yields.</p></li>
-<li><p>Some models involve macro factors (in <span class="math inline">\(w_t\)</span>). Some do not (<em>yield-only</em> models).</p></li>
-<li><p>Basic formula (see Eq. <a href="ChapterAffine.html#eq:stdbond">(1.10)</a> in Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>):
-<span class="math display" id="eq:stdbondRFchapter">\[\begin{eqnarray}
-B(t,h) &amp;=&amp; \exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1})\\
-R(t,h) &amp;=&amp; - \frac{1}{h} \log B(t,h). \tag{2.8}
-\end{eqnarray}\]</span></p></li>
-<li><p>Models used to forecast yields, or to compute <strong>term premiums</strong> = components of yields that would not exist if investors were not risk-averse.</p></li>
-<li><p>If this was the case (<strong>Expectation Hypothesis, EH</strong>), then <span class="math inline">\(\mathcal{M}_{t,t+1} = \exp(- r_t) \Rightarrow\)</span> ``<span class="math inline">\(\mathbb{P} \equiv \mathbb{Q}\)</span>’’ and <span class="math inline">\(B(t,h)\)</span> would become:
-<span class="math display" id="eq:stdbondRFchapterP">\[\begin{equation}
-\exp(-r_{t}) \mathbb{E}_t \exp(-r_{t+1}-\dots-r_{t+h-1}).\tag{2.9}
-\end{equation}\]</span>
-implying that the maturity-<span class="math inline">\(h\)</span> yield-to-maturity would be:
-<span class="math display">\[
-R^{EH}(t,h) = -\frac{1}{h}\log \left( \mathbb{E}_t \exp(-r_t-\dots-r_{t+h-1})\right) \approx \frac{1}{h}\mathbb{E}_t(r_t + \dots + r_{t+h-1}).
-\]</span></p></li>
-</ul>
-<p><span class="math inline">\(\Rightarrow\)</span> Term premium given by:
-<span class="math display" id="eq:TP">\[\begin{eqnarray}
-TP_{t,h} &amp;=&amp; \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1})}_{=R(t,h)} - \nonumber \\
-&amp;&amp; \underbrace{- \frac{1}{h}  \log  \mathbb{E}_t \exp(-r_{t+1}-\dots-r_{t+h-1}).}_{=R^{EH}(t,h)}\tag{2.10}
-\end{eqnarray}\]</span>
-* Interpretation of <span class="math inline">\(TP_{t,h}\)</span>?
-* Under EH, investors are willing to buy a maturity-<span class="math inline">\(h\)</span> bond as long as its expected return is – up to Jensen’s inequality – equal to the average of future short-term rates (Hence the definition of <span class="math inline">\(R^{EH}(t,h)\)</span>).
-* <span class="math inline">\(TP_{t,h}&gt;0\)</span> means that, due to risk aversion, investors are willing to buy the maturity-<span class="math inline">\(h\)</span> bond only if its return is, on average, higher than expected future short-term rates.</p>
-<p><span class="math inline">\(\Rightarrow\)</span> Reflects the fact that investors consider that long-term bonds tend to lose value in <strong>bad states of the world</strong>.</p>
-</div>
-<div id="RP" class="section level3" number="2.6.2">
-<h3>
-<span class="header-section-number">2.6.2</span> Risk premiums<a class="anchor" aria-label="anchor" href="#RP"><i class="fas fa-link"></i></a>
-</h3>
-<ul>
-<li>Recall Eq. (<a href="pricing-and-risk-neutral-dynamics.html#eq:Mbasicpricing">(2.3)</a>), satisfied by any asset <span class="math inline">\(j\)</span>:
-<span class="math display">\[
-p_{jt} = \mathbb{E}_t(\mathcal{M}_{t,t+1} p_{j,t+1}).
-\]</span>
-</li>
-<li>Can be rewritten:
-<span class="math display">\[
-p_{jt} =  \mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1}) + \mathbb{E}_t(\mathcal{M}_{t,t+1})\mathbb{E}_t( p_{j,t+1})
-\]</span>
-or
-<span class="math display" id="eq:CovRP">\[\begin{equation}
-p_{jt} = \underbrace{\exp(-r_t)\mathbb{E}_t( p_{j,t+1})}_{=p^{EH}_{jt}} + \underbrace{\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})}_{\mbox{Risk premium}}.\tag{2.11}
-\end{equation}\]</span>
-</li>
-<li>If investors were not risk-averse, then we would have <span class="math inline">\(p_{jt} = p^{EH}_{jt}\)</span>.</li>
-<li>S.D.F. is high (resp. low) in <em>bad (resp. good) states of the world</em> (states of high marginal utility in the equilibrium approach).</li>
-</ul>
-<p><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(p_{jt}&lt; p^{EH}_{jt}\)</span> if asset <span class="math inline">\(j\)</span> tends to pay less in bad states of the world (i.e. if <span class="math inline">\(\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})&lt;0\)</span>).</p>
-</div>
-<div id="swap-rates" class="section level3" number="2.6.3">
-<h3>
-<span class="header-section-number">2.6.3</span> Swap rates<a class="anchor" aria-label="anchor" href="#swap-rates"><i class="fas fa-link"></i></a>
-</h3>
-<ul>
-<li>Bonds issued by top-rated (Aaa/AAA) countries are often considered to be risk-free.</li>
-<li>Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks <a href="https://www.aeaweb.org/articles?id=10.1257/jep.29.2.191">Duffie and Stein (2015)</a>.</li>
-<li>
-<strong>Interest Rate Swap (IRS)</strong>: Contract at <span class="math inline">\(t\)</span> between a <em>receiver</em> (of fixed rate) and a <em>payer</em> (of fixed rate); the receiver pays a floating rate to the payer.</li>
-<li>The dates of payment are <span class="math inline">\(t+ \tau\)</span>, <span class="math inline">\(t + 2\tau\)</span>, …, <span class="math inline">\(t + n\tau\)</span>, where <span class="math inline">\(\tau\)</span> is a period expressed in years (typically 1/2 or 1/4) and <span class="math inline">\(n\)</span> is the number of payments.</li>
-<li>
-<span class="math inline">\(h = n \tau\)</span> is the maturity, or <em>tenor</em> of the swap contract.</li>
-<li>The payoffs of the fixed leg are <span class="math inline">\(\tau S\)</span>, where <span class="math inline">\(S\)</span> is the annualized payment (or <em>swap rate</em>). On date <span class="math inline">\(t+j\tau\)</span>, the payoff of the floating leg is <span class="math inline">\(\tau L(t+(j-1)\tau,\tau)\)</span>, where <span class="math inline">\(L\)</span>, the annualized linear rate is given by:
-<span class="math display">\[
-L(t+(j-1)\tau,\tau) = \frac{1 - B(t+(j-1)\tau,\tau)}{\tau B(t+(j-1)\tau,\tau)}.
-\]</span>
-</li>
-<li>Price at <span class="math inline">\(t\)</span> of the fixed leg:
-<span class="math display">\[
-\sum_{j=1}^n \tau S B(t,j\tau).
-\]</span>
-</li>
-<li>Price at <span class="math inline">\(t\)</span> of the floating leg: The payoff at date <span class="math inline">\(t+j\tau\)</span>, that is <span class="math inline">\(\frac{1 - B(t+(j-1)\tau,\tau)}{B(t+(j-1)\tau,\tau)}\)</span> is know on date <span class="math inline">\(t+(j-1)\tau\)</span>, so its price at date <span class="math inline">\(t+(j-1)\tau\)</span> is <span class="math inline">\(1 - B(t+(j-1)\tau,\tau)\)</span>, and its price at <span class="math inline">\(t\)</span> therefore is <span class="math inline">\(B(t,(j-1)\tau) - B(t,j\tau)\)</span>. Summing over <span class="math inline">\(j=1,\dots,n\)</span>, the date-<span class="math inline">\(t\)</span> price of the floating leg is <span class="math inline">\(1 - B(t,n\tau)\)</span> (independent of the payment dates).</li>
-<li>Since the price of the contract is zero at date <span class="math inline">\(t\)</span>, we have:
-<span class="math display">\[
-\sum_{j=1}^n \tau S B(t,j\tau) = 1 - B(t,n\tau) \Rightarrow S = \frac{1 - B(t,n\tau)}{ \tau \sum_{j=1}^n  B(t,j\tau)},
-\]</span>
-or
-<span class="math display">\[
-S(t,h) = \frac{1 - B(t,h)}{\tau \sum_{j=1}^{h/\tau}  B(t,j\tau)}.
-\]</span>
-</li>
-<li>Note: In the context of an affine model, all the terms appearing in the previous formula are available in closed-form (see Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>).</li>
-</ul>
-</div>
-</div>
-<div id="RiskFreeAffine" class="section level2" number="2.7">
-<h2>
-<span class="header-section-number">2.7</span> The Affine Case<a class="anchor" aria-label="anchor" href="#RiskFreeAffine"><i class="fas fa-link"></i></a>
-</h2>
-<ul>
-<li><p>What do we get when <span class="math inline">\(w_t\)</span> is affine (under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span>)?</p></li>
-<li><p>If the nominal short-term rate <span class="math inline">\(r_t = \omega_0 + \omega'_1 w_t\)</span>, then:
-<span class="math display">\[\begin{eqnarray*}
-B(t,h) &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t \exp (-r_{t}-\dots-r_{t+h-1})\\
-&amp;=&amp; \exp(-h\omega_0 - \omega'_1 w_t) \color{blue}{\mathbb{E}^{\mathbb{Q}}_t \exp (- \omega'_1 w_{t+1}-\dots- \omega'_1 w_{t+h-1})}.
-\end{eqnarray*}\]</span>
-The (blue) expectation is easily computed using the recursive equations of XXX (see Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>), leading to:
-<span class="math display" id="eq:RthAB">\[\begin{equation}
-R(t,h)= -  \frac{1}{h}   \log   B(t,h) = A_h'w_t + B_h.\tag{2.12}
-\end{equation}\]</span></p></li>
-<li><p>It is easily seen that we can also get:
-<span class="math display" id="eq:RthABEH">\[\begin{equation}
-R^{EH}(t,h) = {A^{EH}_h}'w_t + B^{EH}_h.\tag{2.13}
-\end{equation}\]</span></p></li>
-<li><p>Moreover, if inflation <span class="math inline">\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)</span>, then real yields are given by:
-<span class="math display">\[\begin{eqnarray*}
-\bar{B}(t,h) &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t}-\dots-r_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h})
-\end{eqnarray*}\]</span>
-(see Example <a href="ChapterAffine.html#exm:realBth">1.20</a>) which also leads to:
-<span class="math display" id="eq:RbarthAB">\[\begin{equation}
-\bar{R}(t,h) = -  \frac{1}{h}   \log   \bar{B}(t,h) = \bar{A}_h'w_t + \bar{B}_h.\tag{2.14}
-\end{equation}\]</span></p></li>
-<li><p>Eqs. (<a href="pricing-and-risk-neutral-dynamics.html#eq:RthAB">(2.12)</a>) and (<a href="pricing-and-risk-neutral-dynamics.html#eq:RthABEH">(2.13)</a>) imply that term premiums are affine in <span class="math inline">\(w_t\)</span> (see Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:TP">(2.10)</a>). Specifically:
-<span class="math display">\[
-TP(t,h) = R(t,h) - E^{EH}(t,h) = B_h - B_h^{EH} + (A_h - A_h^{EH})'w_t.
-\]</span></p></li>
-<li><p>Expected excess returns resulting from holding zero-coupon bonds are also affine in <span class="math inline">\(w_t\)</span>.</p></li>
-<li><p>Indeed, holding a maturity-<span class="math inline">\(h\)</span> zero-coupon bond for one period provides the following expected gross return:
-<span class="math display">\[
-\mathbb{E}_t\left(\frac{B(t+1,h-1)}{B(t,h)}\right) = \mathbb{E}_t\left(\exp(B_{h-1} - B_h + A_{h-1}'w_{t+1} - A_h'w_{t})\right),
-\]</span>
-which is clearly exponential affine in <span class="math inline">\(w_t\)</span> if <span class="math inline">\(w_t\)</span> is an affine process.</p></li>
-<li><p>Therefore, the expected excess return, that is:
-<span class="math display">\[
-\log \mathbb{E}_t\left(\frac{B(t+1,h-1)}{B(t,h)}\right) - r_t
-\]</span>
-is also affine in <span class="math inline">\(w_t\)</span> in this context.</p></li>
-<li><p>The fact that excess returns are affine in this context is exploited in the estimation approach proposed by <a href="https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr340.pdf">Adrian, Crump and Moench (2013)</a>.</p></li>
-<li><p>Moreover, <em>conditional expectations of</em> future interest rates (real or nominal) and of term premiums are affine in <span class="math inline">\(w_t\)</span>. In particular:
-<span class="math display" id="eq:condmeanRth">\[\begin{equation}
-\mathbb{E}_t[R(t+k,h)] = \mathbb{E}_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{E}_t(w_{t+k}) + B_h,\tag{2.15}
-\end{equation}\]</span>
-and <span class="math inline">\(\mathbb{E}_t(w_{t+k})\)</span> is affine in <span class="math inline">\(w_t\)</span> (see Remark XXX, Eq. <a href="ChapterAffine.html#eq:condmean">(1.15)</a>).</p></li>
-</ul>
-<p><span class="math inline">\(\Rightarrow\)</span> This can notably be used at the estimation stage, if one wants to fit survey data.</p>
-<ul>
-<li>
-<strong>Conditional variances</strong> of future interest rates (real or nominal) and of term premiums are affine in <span class="math inline">\(w_t\)</span>. In particular:
-<span class="math display" id="eq:condvarRth">\[\begin{equation}
-\mathbb{V}ar_t[R(t+k,h)] = \mathbb{V}ar_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{V}ar_t(w_{t+k})A_h,\tag{2.16}
-\end{equation}\]</span>
-where the components of <span class="math inline">\(\mathbb{V}ar_t(w_{t+k})\)</span> (and therefore <span class="math inline">\(\mathbb{V}ar_t[R(t+k,h)]\)</span>) is affine in <span class="math inline">\(w_t\)</span> (see Remark XXX, Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>).
-This can notably be used at the estimation stage, if one wants to fit (proxies of) conditional variances.</li>
-</ul>
-<p><strong>Remark</strong>: Forward Rate Agreement (FRA)</p>
-<ul>
-<li>In an affine model, forward rates are also linear in the state vector <span class="math inline">\(w_t\)</span>.</li>
-<li>An <strong>interest rate forward contract</strong> is a contract in which the rate to be paid or received on a specific obligation for a set period, beginning in the future, is set at contract initiation.</li>
-<li>Denote by <span class="math inline">\(f(t,h_1,h_2)\)</span> the forward interest rate, set on date <span class="math inline">\(t\)</span>, for the period between <span class="math inline">\(t+h_1\)</span> and <span class="math inline">\(t+h_2\)</span>.</li>
-<li>Consider two strategies (decided on date <span class="math inline">\(t\)</span>):</li>
-</ul>
-<p>A. Buy a zero-coupon bond of maturity <span class="math inline">\(h_2\)</span> (price <span class="math inline">\(B(t,h_2)\)</span>) and sell zero-coupon bonds of maturity <span class="math inline">\(h_1\)</span> for the same amount (yielding a payoff of <span class="math inline">\(B(t,h_2)/B(t,h_1)\)</span> on date <span class="math inline">\(t+h_1\)</span>).
-B. Enter a forward rate agreement between dates <span class="math inline">\(t+h_1\)</span> and <span class="math inline">\(t+h_2\)</span>, whereby you receive 1 on date <span class="math inline">\(t+h_2\)</span>.
-* The two strategies deliver the same payoffs on date <span class="math inline">\(t\)</span> (the payoff is zero) and on date <span class="math inline">\(t+h_2\)</span> (the payoff is 1). By absence of arbitrage, the payoffs on date <span class="math inline">\(t+h_1\)</span> have to be the same. Therefore
-<span class="math display">\[\begin{eqnarray*}
-\exp(-(h_2 - h_1)f(t,h_1,h_2)) &amp;=&amp; B(t,h_2)/B(t,h_1) \\
-\Rightarrow f(t,h_1,h_2) &amp;=&amp; \frac{1}{h_2 - h_1}(\log[B(t,h_1)] - \log[B(t,h_2)])\\
-&amp;=&amp; \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1}.
-\end{eqnarray*}\]</span></p>
-<ul>
-<li>In an affine model, the maximum Sharpe ratio is easily computed.</li>
-<li>Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:CovRP">(2.11)</a> implies that
-<span class="math display">\[
-\mathbb{E}_t\underbrace{\left(\frac{p_{j,t+1}}{p_{j,t}} - \exp(r_t)\right)}_{=xs_{j,t+1},\mbox{ excess return}} =  - \exp(r_t) \mathbb{C}ov_t\left(\mathcal{M}_{t,t+1},\frac{p_{j,t+1}}{p_{j,t}}\right),
-\]</span>
-and, using <span class="math inline">\(|\mathbb{C}ov(X,Y)| \le \sqrt{\mathbb{V}ar(X)\mathbb{V}ar(Y)}\)</span>, we get the <a href="https://www.journals.uchicago.edu/doi/10.1086/261749">Hansen-Jagannathan (1991)</a> bound:
-<span class="math display">\[\begin{equation}
-\underbrace{\frac{\mathbb{E}_t(xs_{j,t+1})}{\sqrt{\mathbb{V}ar_t(xs_{j,t+1})}}}_{\mbox{Sharpe ratio}} \le \underbrace{\frac{\sqrt{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}}_{\mbox{Maximum Sharpe ratio}}.
-\end{equation}\]</span>
-</li>
-<li>If the s.d.f. is given by <span class="math inline">\(\mathcal{M}_{t,t+1} = \exp[-r_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)]\)</span> (Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:keySDF">(2.5)</a>), and using that <span class="math inline">\(\mathbb{E}_t(\mathcal{M}_{t,t+1}^2)=\exp(-2r_t+\psi_t(2\alpha_t)-2\psi_t(\alpha_t))\)</span> we get:
-<span class="math display">\[
-\mbox{Maximum Sharpe ratio} = \sqrt{\exp(\psi_t(2\alpha_t)-2\psi_t(\alpha_t)) - 1}.
-\]</span>
-</li>
-</ul>
-</div>
-<div id="RiskFreeGaussian" class="section level2" number="2.8">
-<h2>
-<span class="header-section-number">2.8</span> Gaussian Affine Term Structure Model<a class="anchor" aria-label="anchor" href="#RiskFreeGaussian"><i class="fas fa-link"></i></a>
-</h2>
-<ul>
-<li><p>Gaussian Affine Term Structure Model (GATSM) = <em>Workhorse</em> model, widely used in academic and economic-policy circles.</p></li>
-<li><p><span class="math inline">\(w_t\)</span> affine under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span> (hence affine yields term premiums).</p></li>
-<li><p>Components of <span class="math inline">\(w_t\)</span> valued in <span class="math inline">\(\mathbb{R}\)</span>: easy to introduce macro-factors.</p></li>
-<li><p>The state vector <span class="math inline">\(w_t\)</span> follows a Gaussian VAR(1):
-<span class="math display" id="eq:GaussianVAR1">\[\begin{equation}
-w_{t+1} = \mu + \Phi w_{t} + \Sigma^{1/2} \varepsilon_{t+1}, \mbox{ where } \varepsilon_{t} \sim  i.i.d. \mathcal{N}(0,Id).\tag{2.17}
-\end{equation}\]</span>
-(single lag without loss of generality since a VAR(p) admits a VAR(1) representation).</p></li>
-<li><p>This implies the following Laplace transform for <span class="math inline">\(w_t\)</span> (see Example <a href="#exm:Gaussian"><strong>??</strong></a>):
-<span class="math display">\[
-\psi_t(u) = \log \mathbb{E}_t(\exp(u'w_{t+1})|\underline{w_t}) = \color{blue}{u'\mu + u'\Phi w_t + \frac{1}{2}u'\Sigma'u}.
-\]</span></p></li>
-<li><p>Using the notations of Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:keySDF">(2.5)</a>, the s.d.f. is defined as:
-<span class="math display">\[
-\mathcal{M}_{t,t+1} = \exp(- r_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t.
-\]</span></p></li>
-<li>
-<p>In that case, using Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:transfoPQ">(2.7)</a>, we get:
-<span class="math display">\[\begin{eqnarray*}
-\psi_t^{\mathbb{Q}}(u) &amp;=&amp; \psi_t(u + \alpha_t) - \psi_t(\alpha_t)\\
-&amp;=&amp; (u + \alpha_t)'\mu + (u + \alpha_t)'\Phi w_t + \frac{1}{2}(u + \alpha_t)'\Sigma(u + \alpha_t) \\
-&amp;&amp; - \left(\alpha_t'\mu + \alpha_t'\Phi w_t + \frac{1}{2}\alpha_t'\Sigma\alpha_t\right) \\
-&amp;=&amp; \color{blue}{u' \left(\mu + \Sigma \alpha_0 \right) + u'(\Phi + \Sigma \alpha_1')w_t  + \frac{1}{2}u'\Sigma'u}.
-\end{eqnarray*}\]</span></p>
-<p>The <span class="math inline">\(\mathbb{Q}\)</span>-dynamics of <span class="math inline">\(w_t\)</span> is (from Example <a href="#exm:Gaussian"><strong>??</strong></a>):
-<span class="math display">\[
-w_{t+1} = \mu + \Sigma  \alpha_0 + (\Phi + \Sigma \alpha_1')  w_{t} + \Sigma^{1/2} \varepsilon^*_{t+1}, \mbox{ where } \varepsilon^*_{t} \sim  i.i.d. \mathcal{N}^{\mathbb{Q}}(0,Id).
-\]</span></p>
-</li>
-<li><p>With affine specifications of the nominal short term rate (<span class="math inline">\(r_{t} = \omega_0 + \omega'_1 w_t\)</span>) and of the inflation rate (<span class="math inline">\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)</span>), we obtain affine formulas for nominal and real yields of any maturity (Eqs. <a href="pricing-and-risk-neutral-dynamics.html#eq:RthAB">(2.12)</a> and <a href="pricing-and-risk-neutral-dynamics.html#eq:RbarthAB">(2.14)</a>).</p></li>
-</ul>
-<div class="example">
-<p><span id="exm:KimWright" class="example"><strong>Example 2.3  (Kim and Wright (2005)) </strong></span>This model is a three-factor <em>yield-only model</em> (no macro variables, except inflation in one variant of the model), where the short-term rate reads <span class="math inline">\(r_t = \omega_0 + \omega_{1,1} w_{1,t} +\omega_{1,2} w_{2,t} +\omega_{1,3} w_{3,t}\)</span>.</p>
-<p>The model estimated by Kalman filter (see Subsection,<a href="#Estimation:KF"><strong>??</strong></a>; the state-space model (Def. <a href="#def:LSSM"><strong>??</strong></a>) includes survey-based variables (see Subsection <a href="#EstimationPersistency"><strong>??</strong></a>).</p>
-<p>Outputs are <a href="https://www.federalreserve.gov/pubs/feds/2005/200533/200533abs.html">regularly updated by the Federal Reserve Board</a>.</p>
-<p>Monthly data on the 6-month and 12-month-ahead forecasts of the three-month T-Bill yield from Blue Chip Financial Forecasts and semiannual data on the average expected three-month T-Bill yield from 6 to 11 years.</p>
-</div>
-<div class="example">
-<p><span id="exm:AngPiazzesi" class="example"><strong>Example 2.4  (Ang and Piazzesi (2003)) </strong></span></p>
-<ul>
-<li>
-<a href="http://web.stanford.edu/~piazzesi/AP.pdf">Ang and Piazzesi (2003)</a>: one of the first paper mixing latent and macrovariables.</li>
-<li>The set up is also of the form Eq. (<a href="pricing-and-risk-neutral-dynamics.html#eq:GaussianVAR1">(2.17)</a>) except that the VAR features several lags.</li>
-<li>
-<span class="math inline">\(w_t = [f^{o}_{1,t},f^{o}_{2,t},f^{u}_{1,t},f^{u}_{2,t},f^{u}_{3,t}]'\)</span> where:</li>
-<li>
-<span class="math inline">\(f^{o}_{1,t}\)</span> is the first Principal Component of a set of 3 price indexes (growth rates)</li>
-<li>
-<span class="math inline">\(f^{o}_{2,t}\)</span> is the first Principal Component of a set of 4 real activity proxies (HELP, EMPLOY, IP, UE).</li>
-<li>
-<span class="math inline">\(f^{u}_{i,t}\)</span> are unobserved, or latent, factors.</li>
-<li>Nominal short-term rate follows a Taylor rule.</li>
-<li>Latent factors are estimated via <em>inversion techniques</em> (Subsection <a href="#EstimationInversion"><strong>??</strong></a>).</li>
-</ul>
-</div>
-<div class="example">
-<p><span id="exm:JPS" class="example"><strong>Example 2.5  (Joslin, Priebsch and Singleton (2014)) </strong></span></p>
-<ul>
-<li>Models stating that <span class="math inline">\(r_t\)</span> affine in macro-factors imply that macro-factors are <strong>spanned</strong> by the yield curve: macro-factors should be perfectly explained by yields of different maturities. Not the case in the data.</li>
-<li>
-<a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12131">Joslin Priebsch and Singleton (2014)</a>: <strong>unspanned macro risks</strong>.</li>
-<li>
-<span class="math inline">\(w_t = [\mathcal{P}_t',\mathcal{M}_t']'\)</span>, where <span class="math inline">\(\mathcal{P}_t\)</span> are yield factors and <span class="math inline">\(\mathcal{M}_t\)</span> are macro factors.</li>
-<li>Model:
-<span class="math display">\[\begin{eqnarray*}
-r_t &amp;=&amp; \omega_{0} + \omega_{\mathcal{P}}'\mathcal{P}_t \\
-\left[\begin{array}{c}\mathcal{P}_t \\ \mathcal{M}_t \end{array}\right]
-&amp;=&amp;
-\left[\begin{array}{cc}\Phi_{\mathcal{P}\mathcal{P}}&amp;\Phi_{\mathcal{P}\mathcal{M}} \\
-\Phi_{\mathcal{M}\mathcal{P}}&amp;\Phi_{\mathcal{M}\mathcal{M}} \end{array}\right]
-\left[\begin{array}{c}\mathcal{P}_{t-1} \\ \mathcal{M}_{t-1} \end{array}\right] + \Sigma \varepsilon_t \\
-\left[\begin{array}{c}\mathcal{P}_t \\ \mathcal{M}_t \end{array}\right] &amp;=&amp; \mu +
-\left[\begin{array}{cc}\Phi^{\mathbb{Q}}_{\mathcal{P}\mathcal{P}}&amp;{\color{red}0} \\
-\Phi^{\mathbb{Q}}_{\mathcal{M}\mathcal{P}}&amp;\Phi^{\mathbb{Q}}_{\mathcal{M}\mathcal{M}} \end{array}\right]
-\left[\begin{array}{c}\mathcal{P}_{t-1} \\ \mathcal{M}_{t-1} \end{array}\right] + \Sigma \varepsilon^{\mathbb{Q}}_t,
-\end{eqnarray*}\]</span>
-where <span class="math inline">\(\varepsilon_t\)</span> and <span class="math inline">\(\varepsilon^{\mathbb{Q}}_t\)</span> are <span class="math inline">\(\mathcal{N}(0,Id)\)</span> under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span>, respectively.</li>
-<li>
-<span class="math inline">\(\mathcal{M}_t\)</span> does Granger-cause <span class="math inline">\(\mathcal{P}_t\)</span> under <span class="math inline">\(\mathbb{Q}\)</span> and <span class="math inline">\(r_t\)</span> is affine in <span class="math inline">\(\mathcal{P}_t\)</span> (only)</li>
-</ul>
-<p><span class="math inline">\(\Rightarrow\)</span> yields <span class="math inline">\(R(t,h)\)</span> are affine in <span class="math inline">\(\mathcal{P}_t\)</span> (only).
-* However <span class="math inline">\(\mathcal{M}_t\)</span> does not Granger-cause <span class="math inline">\(\mathcal{P}_t\)</span> under <span class="math inline">\(\mathbb{P}\)</span></p>
-<p><span class="math inline">\(\Rightarrow\)</span> macro-shocks affect the yield curve.</p>
-</div>
-<div class="example">
-<p><span id="exm:Angetal2011" class="example"><strong>Example 2.6  (Ang, Boivin, Dong and Loo-Kung (2011)) </strong></span></p>
-<ul>
-<li>
-<a href="https://academic.oup.com/restud/article-abstract/78/2/429/1581557?redirectedFrom=fulltext">Ang, Boivin, Dong and Loo-Kung (2011)</a>: macro-finance model based on a quadratic framework.</li>
-<li>Taylor rule with time-varying parameters:
-<span class="math display">\[
-r_t = \omega_0 + a_t g_t + b_t \pi_t,
-\]</span>
-where <span class="math inline">\(x_t=(g_t,\pi_t,a_t,b_t)'\)</span> follows a Gaussian VAR.</li>
-<li>This is the context described in Example <a href="ChapterAffine.html#exm:QGVAR1">1.7</a>.</li>
-<li>
-<span class="math inline">\(r_t\)</span> is linear in <span class="math inline">\(w_t = (x_t,vec(x_t x_t')')'\)</span>. Specifically:
-<span class="math display">\[
-r_t = \omega_0 + \omega_1'w_t,
-\]</span>
-with <span class="math inline">\(\omega_1 = [v,vec(V)]'\)</span>, where
-<span class="math display">\[
-v = \left[
-\begin{array}{c}
-0\\
-0\\
-0\\
-0
-\end{array}
-\right] \quad \mbox{and} \quad V = \left[
-\begin{array}{cccc}
-0 &amp; 0&amp; 1/2&amp;0\\
-0&amp; 0&amp; 0&amp;1/2\\
-1/2&amp; 0&amp; 0&amp;0\\
-0&amp;1/2 &amp;0 &amp;0
-\end{array}
-\right].
-\]</span>
-</li>
-</ul>
-</div>
-</div>
-<div id="RiskFreeNonNegative" class="section level2" number="2.9">
-<h2>
-<span class="header-section-number">2.9</span> Non-Negative Affine Term Structure Model<a class="anchor" aria-label="anchor" href="#RiskFreeNonNegative"><i class="fas fa-link"></i></a>
-</h2>
-<ul>
-<li>In the presence of physical currency, absence of arbitrage opportunity and of storing cost of cash, nominal interest rates should be <span class="math inline">\(\ge 0\)</span>.</li>
-<li>Many standard models (e.g. Gaussian ATSM) are non consistent with non-negative nominal yields.</li>
-<li>
-<strong>Shadow-rate approach</strong> <a href="https://www.jstor.org/stable/2329320?seq=1#metadata_info_tab_contents">Black (1995)</a>: The short term rate is given by:
-<span class="math display">\[
-r_t = \max(s_t,0),
-\]</span>
-where <span class="math inline">\(s_t\)</span> is the shadow short-term interest rate. Pricing formula not available in closed-form. Approximation formula available [e.g. <a href="https://www.rbnz.govt.nz/research-and-publications/discussion-papers/2013/dp2013-02">Krippner (2013)</a>, <a href="https://www.federalreserve.gov/pubs/feds/2013/201363/201363pap.pdf">Priebsch (2013)</a>, <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jmcb.12300">Wu and Xia (2016)</a>.</li>
-<li>
-<a href="https://www.sciencedirect.com/science/article/pii/S0304407617301653">Monfort, Pegoraro, Renne and Roussellet (2017)</a> introduce an affine framework where the short-term rate can stay at zero for a prolonged period of time and with a stochastic lift-off probability.</li>
-</ul>
-<div class="example">
-<p><span id="exm:ZARG" class="example"><strong>Example 2.7  (Monfort, Pegoraro, Renne and Roussellet (2017)) </strong></span></p>
-<ul>
-<li>
-<strong>Vectorial Auto-Regressive Gamma (VARG)</strong>: Multivariate extension of Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>.</li>
-</ul>
-<p>Conditionally on <span class="math inline">\(\underline{w_t}\)</span>, the <span class="math inline">\(n\)</span> components of <span class="math inline">\(w_{t+1}\)</span> are independent and distributed as follows:
-<span class="math display" id="eq:VARG">\[\begin{equation}
-\frac{w_{i,t+1}}{\mu_i} \sim \gamma(\nu_i+z_{i,t}) \quad \mbox{where} \quad z_{i,t} \sim {\mathcal P} \left( \alpha_i + \beta_i' w_t \right).\tag{2.18}
-\end{equation}\]</span>
-* If <span class="math inline">\(\mu = (\mu_1,\dots,\mu_n)'\)</span>, <span class="math inline">\(\alpha = (\alpha_1,\dots,\alpha_n)'\)</span>, <span class="math inline">\(\nu = (\nu_1,\dots,\nu_n)'\)</span> and <span class="math inline">\(\beta = (\beta_1,\dots,\beta_n)\)</span>, then
-<span class="math display">\[\begin{eqnarray*}
-\varphi_t(u) &amp;=&amp; \exp\left[\left(\frac{u \odot \mu}{1 - u \odot \mu}\right)'\beta' w_t \right.\\
-&amp;&amp; \left. + \alpha'\left(\frac{u \odot \mu}{1 - u \odot \mu}\right) - \nu'\log(1 - u \odot \mu)\right],
-\end{eqnarray*}\]</span>
-where <span class="math inline">\(\odot\)</span> denotes the element-by-element multiplication and, where, with abuse of notation, the division and log operators work element-by-element when applied to vectors.
-* Four factors. <span class="math inline">\(\nu_1 = \nu_2 = 0 \Rightarrow\)</span> <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span> can stay at zero.
-* The short-term rate <span class="math inline">\(r_t\)</span> is an affine combination of <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span> only, hence can stay at zero. Specification: <span class="math inline">\(r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t}\)</span>.
-* <span class="math inline">\(w_{3,t}\)</span> and <span class="math inline">\(w_{4,t}\)</span> Granger-cause <span class="math inline">\(r_t\)</span> (they cause <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span>) <span class="math inline">\(\Rightarrow\)</span> for <span class="math inline">\(h \ge 2\)</span> <span class="math inline">\(R(t,h)\)</span> is a non-zero combination of the four components of <span class="math inline">\(w_t\)</span>.
-* (when <span class="math inline">\(r_t=0\)</span>) the lift-off probability depends on <span class="math inline">\(w_{3,t}\)</span> and <span class="math inline">\(w_{4,t}\)</span>.
-* Closed-form solutions for lift-off probabilities. Based on Lemma @ref(lemma:mass}:
-<span class="math display">\[
-\mathbb{P}_t(\alpha'w_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\alpha),
-\]</span>
-where <span class="math inline">\(\varphi_{t,h}\)</span> is the multi-horizon Laplace transform defined in Eq. <a href="ChapterAffine.html#eq:multiLT">(1.8)</a>, which can be computed as explained in Remark XXX. We have:
-<span class="math display">\[\begin{equation}
-\left\{
-\begin{array}{l}
-\mathbb{P}_t(r_{t+h}&gt;0) = 1 - \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\omega) \\ \\
-\mathbb{P}_t(r_{t+1}=0,\dots,r_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(u\omega,\dots,u\omega,u\omega) \equiv p_{h}\\ \\
-\mathbb{P}_t(r_{t+1}=0,\dots,r_{t+h-1}=0,r_{t+h}&gt;0) = p_{h-1} - p_h.
-\end{array}
-\right.
-\end{equation}\]</span>
-* Other lift-off probabilities, of the type <span class="math inline">\(\mathbb{P}_t[R(t+h,k)&gt;threshold]\)</span>, can be derived from Eq. <a href="ChapterAffine.html#eq:DPS">(1.18)</a>.</p>
-<ul>
-<li>Model estimated by Kalman filtering techniques (see Subsection <a href="#EstimationKF"><strong>??</strong></a>).</li>
-<li>Measurement equations: (levels of) yields, but also measurement equations involving:</li>
-<li>survey-based forecasts of yields (see Subsection <a href="#EstimationPersistency"><strong>??</strong></a> and</li>
-<li>(e-GARCH-based) proxies of conditional variances (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>).</li>
-</ul>
-<!-- \begin{figure} --><!-- \caption{Fit of surveys and cond. variance proxies} --><!-- \label{fig:fitZARG} --><!-- \begin{center} --><!-- \includegraphics[width=.8\linewidth]{figures/Figure_fit_ZARG.pdf} --><!-- %{\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} --><!-- \end{center} --><!-- \end{figure} --><!-- \begin{figure} --><!-- \caption{Lift-off probabilities} --><!-- \label{fig:LiftOff} --><!-- \begin{center} --><!-- \includegraphics[width=1\linewidth]{figures/Figure_LiftOff.pdf} --><!-- %{\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} --><!-- \end{center} --><!-- \end{figure} -->
-</div>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Chikhani_Renne_2022" class="csl-entry">
-Chikhani, Pauline, and Jean-Paul Renne. 2023. <span>“<span class="nocase">An Analytical Framework to Price Long-Dated Climate-Exposed Assets</span>.”</span> University of Lausanne working paper. University of Lausanne. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3881262">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3881262</a>.
-</div>
-<div id="ref-Christensen_Diebold_Rudebusch_2009" class="csl-entry">
-Christensen, Jens H. E., Francis X. Diebold, and Glenn D. Rudebusch. 2009. <span>“<span class="nocase">An Arbitrage-free Generalized Nelson–Siegel Term Structure Model</span>.”</span> <em>The Econometrics Journal</em> 12 (3): C33–64. <a href="https://doi.org/10.1111/j.1368-423X.2008.00267.x">https://doi.org/10.1111/j.1368-423X.2008.00267.x</a>.
-</div>
-<div id="ref-Duffie_Pan_Singleton_2000" class="csl-entry">
-Duffie, Darrell, Jun Pan, and Kenneth Singleton. 2000. <span>“<span class="nocase">Transform Analysis and Asset Pricing for Affine Jump-Diffusions</span>.”</span> <em>Econometrica</em> 68 (6): 1343–76. <a href="https://doi.org/10.1111/1468-0262.00164">https://doi.org/10.1111/1468-0262.00164</a>.
-</div>
-<div id="ref-Gourieroux_Jasiak_2006" class="csl-entry">
-Gourieroux, Christian, and Joann Jasiak. 2006. <span>“<span>Autoregressive Gamma Processes</span>.”</span> <em>Journal of Forecasting</em> 25 (2): 129–52. <a href="https://doi.org/10.1002/for.978">https://doi.org/10.1002/for.978</a>.
-</div>
-<div id="ref-zarg_2017" class="csl-entry">
-Monfort, Alain, Fulvio Pegoraro, Jean-Paul Renne, and Guillaume Roussellet. 2017. <span>“<span class="nocase">Staying at Zero with Affine Processes: An Application to Term Structure Modelling</span>.”</span> <em>Journal of Econometrics</em> 201 (2): 348–66. <a href="https://doi.org/10.1016/j.jeconom.2017.08.013">https://doi.org/10.1016/j.jeconom.2017.08.013</a>.
 </div>
 </div>
 </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <div class="chapter-nav">
 <div class="prev"><a href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></div>
-<div class="empty"></div>
+<div class="next"><a href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -1049,21 +520,11 @@ Monfort, Alain, Fulvio Pegoraro, Jean-Paul Renne, and Guillaume Roussellet. 2017
 <li><a class="nav-link" href="#PricingRN"><span class="header-section-number">2.4</span> The risk-neutral (R.N.) dynamics</a></li>
 <li>
 <a class="nav-link" href="#PricingTypology"><span class="header-section-number">2.5</span> Typology of Econometric Asset Pricing Models</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#the-direct-modelling-based-on-threes-steps"><span class="header-section-number">2.5.1</span> The Direct Modelling (based on threes steps)</a></li>
-<li><a class="nav-link" href="#the-r.n.-constrained-direct-modelling-or-mixed-modelling"><span class="header-section-number">2.5.2</span> The R.N. constrained direct modelling (or mixed modelling)</a></li>
+<li><a class="nav-link" href="#the-direct-modelling"><span class="header-section-number">2.5.1</span> The Direct Modelling</a></li>
+<li><a class="nav-link" href="#the-r.n.-constrained-direct-modelling-or-mixed-modelling"><span class="header-section-number">2.5.2</span> The R.N.-constrained direct modelling (or mixed modelling)</a></li>
 <li><a class="nav-link" href="#the-back-modelling-based-on-three-steps"><span class="header-section-number">2.5.3</span> The Back Modelling (based on three steps)</a></li>
 </ul>
 </li>
-<li>
-<a class="nav-link" href="#the-term-structure-of-risk-free-yields"><span class="header-section-number">2.6</span> THE TERM STRUCTURE OF RISK-FREE YIELDS</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#RFIntroduction"><span class="header-section-number">2.6.1</span> Introduction</a></li>
-<li><a class="nav-link" href="#RP"><span class="header-section-number">2.6.2</span> Risk premiums</a></li>
-<li><a class="nav-link" href="#swap-rates"><span class="header-section-number">2.6.3</span> Swap rates</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#RiskFreeAffine"><span class="header-section-number">2.7</span> The Affine Case</a></li>
-<li><a class="nav-link" href="#RiskFreeGaussian"><span class="header-section-number">2.8</span> Gaussian Affine Term Structure Model</a></li>
-<li><a class="nav-link" href="#RiskFreeNonNegative"><span class="header-section-number">2.9</span> Non-Negative Affine Term Structure Model</a></li>
 </ul>
 
       <div class="book-extra">
@@ -1080,7 +541,7 @@ Monfort, Alain, Fulvio Pegoraro, Jean-Paul Renne, and Guillaume Roussellet. 2017
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-03.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-14.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

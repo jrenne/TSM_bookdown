@@ -121,7 +121,7 @@
 
 \title{Introduction to Term Structure Models}
 \author{Jean-Paul Renne and Alain Monfort}
-\date{2024-01-14}
+\date{2024-01-21}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2326,8 +2326,8 @@ or
 
 Note that all the terms appearing in the previous formula are available in closed-form in the context of an affine model (see Example \ref{exm:nominalBth}).
 
-\hypertarget{forward-rates}{%
-\subsection{Forward rates}\label{forward-rates}}
+\hypertarget{FWD}{%
+\subsection{Forward rates}\label{FWD}}
 
 \begin{definition}[Forward Rate Agreement (FRA)]
 \protect\hypertarget{def:FWD}{}\label{def:FWD}An interest rate forward contract is a contract in which the rate to be paid or received on a specific obligation for a set period, beginning in the future, is set at contract initiation.
@@ -2350,9 +2350,9 @@ These two strategies deliver the same payoffs on date \(t\) (the payoff is zero)
 \Rightarrow f(t,h_1,h_2) &=& \frac{1}{h_2 - h_1}(\log[B(t,h_1)] - \log[B(t,h_2)]),
 \end{eqnarray*}
 which gives:
-\[
-\boxed{f(t,h_1,h_2) = \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1}.}
-\]
+\begin{equation}
+\boxed{f(t,h_1,h_2) = \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1}.}\label{eq:forward}
+\end{equation}
 In an affine model (where \(R(t,h)\) is an affine function of the state vector \(w_t\)), forward rates are linear in the state vector \(w_t\).
 
 \hypertarget{RiskFreeAffine}{%
@@ -2597,45 +2597,137 @@ In the presence of physical currency, absence of arbitrage opportunity and of st
 
 The shadow-rate model is originally due to \citet{Black_1995}. In this model, the short term rate is given by:
 \begin{equation}
-r_t = \max(s_t,0),\label{eq:SRSTR}
+r_t = \max(s_t,\underline{r}),\label{eq:SRSTR}
 \end{equation}
-where \(s_t\) is the shadow short-term interest rate. While the latter can be real-valued, the short term rate is nonnegative under \eqref{eq:SRSTR}. In shadow-rate models, the shadow rate \(s_t\) is usually a linear combination of a vector \(x_t\) that follows a Gaussian auto-regressive model. While \(s_t\) is a linear combination of components of an affine process, this is not the case for \(r_t\). As a result, pricing formula are not available in closed-form. Approximation formula have been proposed by, e.g., \citet{Krippner_2013}, \citet{Priebsch_2013}, \citet{Wu_Xia_2016}.
+where \(s_t\) is the shadow short-term interest rate and \(\underline{r}\) is the effective lower bound (\(\le 0\)). While \(s_t\) can be real-valued, the short term rate is nonnegative under \eqref{eq:SRSTR}. In shadow-rate models, the shadow rate \(s_t\) is usually a linear combination of a vector \(w_t\) that follows a Gaussian auto-regressive model. While \(s_t\) is a linear combination of components of an affine process, this is not the case for \(r_t\). As a result, pricing formula are not available in closed-form. Approximation formula have been proposed by, e.g., \citet{Krippner_2013}, \citet{Priebsch_2013}, \citet{Wu_Xia_2016}.
 
-Let us consider the XXX.
+Let us describe the latter approach \citep{Wu_Xia_2016}. As in Subsection \ref{RiskFreeGaussian}, the S.D.F. is defined as:
+\[
+\mathcal{M}_{t,t+1} = \exp(- r_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t,
+\]
+(this is Eq. \eqref{eq:keySDF}), but the short-term rate \(r_t\) is given by \(r_t = \max(s_t,0)\), with
+\[
+s_t = \delta_0 + \delta_1' w_t.
+\]
+
+The approximation approach proposed by \citet{Wu_Xia_2016} is based on an approximation to the conditional expectations of forward rates. Using the results of Subsection \ref{FWD}, we have (Eq. \eqref{eq:forward}):
+\[
+f_{n-1,n,t} = n R_{t,n} - (n-1) R_{t,n-1}.,
+\]
+for \(n>0\) (and using \(R_{t,0}=0\)). This implies that:
+\[
+R_{t,h} =  \frac{1}{h}(f_{t,0,1}+f_{t,1,2}+\dots+f_{t,h-1,h}).
+\]
+
+The approximation of \citet{Wu_Xia_2016} consists in finding approximations of the forward rates \(f_{t,n-1,n}\) (denoted by \(\tilde{f}_{t,n-1,n}\), say) and to use them in the previous equation to get:
+\begin{equation}
+\boxed{R_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).}\label{eq:RapproxSR}
+\end{equation}
+
+Using that, for any random variable \(Z\), we have \(\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]\) (based on a second order Taylor expansion), \citet{Wu_Xia_2016} further show that:
+\begin{eqnarray}
+f_{t,n,n+1} &=& -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n r_{t+j}}\right)\right) + \log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^{n-1} r_{t+j}}\right)\right)\\
+&\approx& \mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] - \frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right).
+\end{eqnarray}
+
+The expectation can be computed analytically:
+\[
+\mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] = \underline{r} + \sigma_n^{\mathbb{Q}}g\left(\frac{\bar{a}_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right),
+\]
+where \(g(x)= x\Phi(x)-\phi(x)\), \(\Phi\) and \(\phi\) being the c.d.f. and p.d.f. of the standard normal distribution, respectively, and where
+\begin{eqnarray*}
+\bar{a}_n &=& \delta_0 + \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\mu^{\mathbb{Q}}\\
+b_n' &=& \delta_1'\left(\Phi^{\mathbb{Q}}\right)^n.
+\end{eqnarray*}
+They also show that
+\[
+\frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right) \approx \Phi\left(\frac{\bar{a}_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right)\times(\bar{a}_n - a_n),
+\]
+where
+\[
+a_n = \bar{a}_n - \frac{1}{2}\sigma_n^{\mathbb{Q}},
+\]
+with
+\[
+\sigma_n^{\mathbb{Q}} := \mathbb{V}ar^{\mathbb{Q}}_t\left(s_{t+n}\right)= \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\Sigma \Sigma' \left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)'\delta_1.
+\]
+They finally obtain:
+\[
+\boxed{f_{t,n,n+1} \approx \tilde{f}_{t,n,n+1} = \underline{r} + \sigma_n^{\mathbb{Q}}g\left(\frac{a_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right),}
+\]
+which is used in \eqref{eq:RapproxSR} to obtain an approximation to \(R_{t,h}\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(TSModels)}
+\CommentTok{\# Specify model:}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{2} \CommentTok{\# number of factors}
+\NormalTok{rho }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,n,n)}
+\FunctionTok{diag}\NormalTok{(rho) }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{97}
+\NormalTok{mu }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,n,}\DecValTok{1}\NormalTok{)}
+\NormalTok{Sigma }\OtherTok{\textless{}{-}} \FunctionTok{diag}\NormalTok{(n)}
+\NormalTok{delta}\FloatTok{.0} \OtherTok{\textless{}{-}} \DecValTok{0}\NormalTok{;delta}\FloatTok{.1} \OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(.}\DecValTok{01}\NormalTok{,n)}
+\NormalTok{r.bar }\OtherTok{\textless{}{-}} \DecValTok{0} \CommentTok{\# r = max(s,r.bar) [i.e., r.bar=0 in standard model]}
+\NormalTok{Model }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{rho =}\NormalTok{ rho,}\AttributeTok{mu =}\NormalTok{ mu,}\AttributeTok{Sigma =}\NormalTok{ Sigma,}
+  \AttributeTok{delta.0 =}\NormalTok{ delta}\FloatTok{.0}\NormalTok{,}\AttributeTok{delta.1 =}\NormalTok{ delta}\FloatTok{.1}\NormalTok{,}\AttributeTok{r.bar =}\NormalTok{ r.bar)}
+\CommentTok{\# Simulate model and compute shadow rate:}
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{simul.var}\NormalTok{(Model,}\AttributeTok{nb.sim =} \DecValTok{200}\NormalTok{) }\CommentTok{\# simulated path}
+\NormalTok{s }\OtherTok{\textless{}{-}}\NormalTok{ delta}\FloatTok{.0} \SpecialCharTok{+}\NormalTok{ X }\SpecialCharTok{\%*\%}\NormalTok{ delta}\FloatTok{.1}
+\CommentTok{\# Compute yields:}
+\NormalTok{res }\OtherTok{\textless{}{-}} \FunctionTok{compute.price.WX}\NormalTok{(Model,X,}\AttributeTok{max.H=}\DecValTok{100}\NormalTok{)}
+\CommentTok{\# Prepare plots:}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{plt=}\FunctionTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{95}\NormalTok{,.}\DecValTok{2}\NormalTok{,.}\DecValTok{75}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(s,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"time"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{main=}\StringTok{"(a) Shadow rate"}\NormalTok{)}
+\NormalTok{t }\OtherTok{\textless{}{-}} \DecValTok{50} \CommentTok{\#t \textless{}{-} which(s==min(s))}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\NormalTok{t,}\AttributeTok{col=}\StringTok{"dark grey"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{lty=}\DecValTok{3}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(res}\SpecialCharTok{$}\NormalTok{vec.f[t,],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"maturity"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{,}
+     \AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{main=}\StringTok{"(b) yields and forward rates"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(res}\SpecialCharTok{$}\NormalTok{vec.y[t,],}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }
+       \FunctionTok{c}\NormalTok{(}\StringTok{"forward rates"}\NormalTok{,}\StringTok{"yields to maturity"}\NormalTok{),}\AttributeTok{lwd=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{),}\AttributeTok{lty=}\DecValTok{1}\NormalTok{,}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{,}\StringTok{"red"}\NormalTok{),}\AttributeTok{bg =} \StringTok{"white"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/WuXia-1} 
+
+}
+
+\caption{bla bla bla.}\label{fig:WuXia}
+\end{figure}
 
 \hypertarget{the-auto-regressive-gamma-approach}{%
 \subsection{The auto-regressive gamma approach}\label{the-auto-regressive-gamma-approach}}
 
 \citet{zarg_2017} introduce an affine framework where the short-term rate can stay at zero for a prolonged period of time and with a stochastic lift-off probability.
 
-\begin{example}[Monfort, Pegoraro, Renne and Roussellet (2017)]
-\protect\hypertarget{exm:ZARG}{}\label{exm:ZARG}\leavevmode
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Vectorial Auto-Regressive Gamma (VARG)}: Multivariate extension of Example \ref{exm:ARG1}.
-\end{itemize}
-
-Conditionally on \(\underline{w_t}\), the \(n\) components of \(w_{t+1}\) are independent and distributed as follows:
+Under \(\mathbb{P}\) and \(\mathbb{Q}\), the state vector \(w_t\) follows a multi-variate auto-regressive gamma (VARG) process---a multivariate extension of Example \ref{exm:ARG1}. Conditionally on \(\underline{w_t}\), the \(n\) components of \(w_{t+1}\) are independent and distributed as follows:
 \begin{equation}
 \frac{w_{i,t+1}}{\mu_i} \sim \gamma(\nu_i+z_{i,t}) \quad \mbox{where} \quad z_{i,t} \sim {\mathcal P} \left( \alpha_i + \beta_i' w_t \right).\label{eq:VARG}
 \end{equation}
-* If \(\mu = (\mu_1,\dots,\mu_n)'\), \(\alpha = (\alpha_1,\dots,\alpha_n)'\), \(\nu = (\nu_1,\dots,\nu_n)'\) and \(\beta = (\beta_1,\dots,\beta_n)\), then
+If \(\mu = (\mu_1,\dots,\mu_n)'\), \(\alpha = (\alpha_1,\dots,\alpha_n)'\), \(\nu = (\nu_1,\dots,\nu_n)'\) and \(\beta = (\beta_1,\dots,\beta_n)\), then
 \begin{eqnarray*}
 \varphi_t(u) &=& \exp\left[\left(\frac{u \odot \mu}{1 - u \odot \mu}\right)'\beta' w_t \right.\\
 && \left. + \alpha'\left(\frac{u \odot \mu}{1 - u \odot \mu}\right) - \nu'\log(1 - u \odot \mu)\right],
 \end{eqnarray*}
 where \(\odot\) denotes the element-by-element multiplication and, where, with abuse of notation, the division and log operators work element-by-element when applied to vectors.
-* Four factors. \(\nu_1 = \nu_2 = 0 \Rightarrow\) \(w_{1,t}\) and \(w_{2,t}\) can stay at zero.
-* The short-term rate \(r_t\) is an affine combination of \(w_{1,t}\) and \(w_{2,t}\) only, hence can stay at zero. Specification: \(r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t}\).
-* \(w_{3,t}\) and \(w_{4,t}\) Granger-cause \(r_t\) (they cause \(w_{1,t}\) and \(w_{2,t}\)) \(\Rightarrow\) for \(h \ge 2\) \(R(t,h)\) is a non-zero combination of the four components of \(w_t\).
-* (when \(r_t=0\)) the lift-off probability depends on \(w_{3,t}\) and \(w_{4,t}\).
-* Closed-form solutions for lift-off probabilities. Based on Lemma @ref(lemma:mass\}:
+
+In their baseline model, \citet{zarg_2017} use four factors. They set \(\nu_1 = \nu_2 = 0\), implying that \(w_{1,t}\) and \(w_{2,t}\) can stay at zero (see Example \ref{exm:ARG1}). The short-term rate \(r_t\) is posited to be an affine combination of \(w_{1,t}\) and \(w_{2,t}\), that is:
+\[
+r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t},
+\]
+hence, it can stay at zero.
+
+Factors \(w_{3,t}\) and \(w_{4,t}\) Granger-cause \(w_{1,t}\) and \(w_{2,t}\), thereby causing \(r_t\). As a result, for \(h \ge 2\), \(R(t,h)\) is a non-zero combination of the four components of \(w_t\).
+
+For the same reason, when \(r_t=0\), the lift-off probability depends on \(w_{3,t}\) and \(w_{4,t}\). The framework offers closed-form solutions for lift-off probabilities. Indeed, using Lemma \ref{lemma:mass}:
 \[
 \mathbb{P}_t(\alpha'w_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\alpha),
 \]
-where \(\varphi_{t,h}\) is the multi-horizon Laplace transform defined in Eq. \eqref{eq:multiLT}, which can be computed as explained in Remark XXX. We have:
+where \(\varphi_{t,h}\) is the multi-horizon Laplace transform defined in Eq. \eqref{eq:multiLT}, which can be computed using Proposition \ref{prp:reverseMLT}. We have:
 \begin{equation}
 \left\{
 \begin{array}{l}
@@ -2645,21 +2737,1308 @@ where \(\varphi_{t,h}\) is the multi-horizon Laplace transform defined in Eq. \e
 \end{array}
 \right.
 \end{equation}
-* Other lift-off probabilities, of the type \(\mathbb{P}_t[R(t+h,k)>threshold]\), can be derived from Eq. \eqref{eq:DPS}.
+Other lift-off probabilities, of the type \(\mathbb{P}_t[R(t+h,k)>threshold]\), can be derived from Eq. \eqref{eq:DPS}.
+
+\citet{zarg_2017} esitmate this model by means of Kalman filtering techniques (see Subsection \ref{EstimationKF}). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection \ref{EstimationPersistency} and (e-GARCH-based) proxies of conditional variances (see Eq. \eqref{eq:condvar}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/Figure_fit_ZARG} 
+
+}
+
+\caption{Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters.}\label{fig:fitZarg}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/Figure_LiftOff} 
+
+}
+
+\caption{Source: Monfort et al. (2017). Lift-off probabilities.}\label{fig:liftOff}
+\end{figure}
+
+\hypertarget{estimation-of-affine-asset-pricing-models}{%
+\chapter{Estimation of affine asset-pricing models}\label{estimation-of-affine-asset-pricing-models}}
+
+\hypertarget{EstimationSSModel}{%
+\section{State-Space Model}\label{EstimationSSModel}}
+
+By nature, dynamic asset-pricing models are \emph{state-space models}: The dynamics of all variables, gathered in vector \(y_t\) (yields, equity returns, macroeconomic variables, survey-based variables) are accounted for by state variables (\(w_t\)). The equations defining the relationship between the other variables and the state variables are called \emph{measurement equations} (Eq. \eqref{eq:measeq}). The equations defining the dynamics of the state variables are called \emph{transition equations} (Eq. \eqref{eq:transeq}).
+
+In the case where \(w_t\) is an affine process (see Definition \ref{def:Car1}), the transition equations admit a VAR(1) representation (Proposition \ref{prp:affineVAR}). In that case, the state-space model is said to be linear, as formalized by the following definition. This defintion introduces, in particular, the notion of \emph{measurement errors}.
+
+\begin{definition}[Linear State-Space Model]
+\protect\hypertarget{def:LSSM}{}\label{def:LSSM}A linear state-space model writes as follows:
+\begin{eqnarray}
+\underset{(m \times 1)}{y_t}  &=& A + Bw_t + \eta_t  \quad \mbox{with }  \eta_t \sim i.i.d. \mathcal{N}(0,\Omega) \label{eq:measeq} \\
+\underset{(n \times 1)}{w_t} & =& \mu + \Phi w_{t-1} + \Sigma^{\frac{1}{2}}(w_{t-1}) \varepsilon_t,\label{eq:transeq}
+\end{eqnarray}
+where \(\varepsilon_t\) is a martingale difference sequence satisfying \(\mathbb{V}ar_t(\varepsilon_{t+1}) = Id\). The components of \(\eta_t\) are measurement errors.
+\end{definition}
+
+\begin{quote}
+\textbf{Note:} Eq. \eqref{eq:transeq} derives from Proposition \ref{prp:affineVAR} (Eq. \eqref{eq:VARw}).
+\end{quote}
+
+In practice, one can distinguish two situations: (a) all state variables (components of \(w_t\)) are observed and (b) some of these variables are latent. What do we mean by \emph{model estimation} in case (b)? There are different situations:
 
 \begin{itemize}
 \tightlist
 \item
-  Model estimated by Kalman filtering techniques (see Subsection \ref{EstimationKF}).
+  (b.i) We know the model parameters but we want to recover the latent factors---for instance to compute model-implied prices.
 \item
-  Measurement equations: (levels of) yields, but also measurement equations involving:
+  (b.ii) We know neither the model parameters nor the latent variables, we want to estimate both of them.
 \item
-  survey-based forecasts of yields (see Subsection \ref{EstimationPersistency} and
+  (b.iii) We know neither the model parameters nor the latent variables, we are just interested in the model parameters.
+\end{itemize}
+
+In case (a): One can resort to standard estimation techniques (GMM, Maximum Likelihood) to estimate model parameters. Take for instance the maximum-likelihood case, we have:
+\begin{eqnarray*}
+f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}) &=& f(y_t|\underline{y_{t-1}},\underline{w_{t}}) \times \underbrace{f(w_t|\underline{y_{t-1}},\underline{w_{t-1}})}_{= f(w_t|\underline{w_{t-1}})}\\
+&=& \mathbf{n}(y_t;A + Bw_t,\Omega) f(w_t|\underline{w_{t-1}}),
+\end{eqnarray*}
+where \(\mathbf{n}(x;\mu,\Omega)\) denotes the evaluation, at vector \(x\), of the p.d.f. of the multivariate normal distribution \(\mathcal{N}(\mu,\Omega)\). That is, if \(x\) is a \(m\)-dimensional vector:
+\begin{equation}
+\mathbf{n}(x;\mu,\Omega) = \frac{1}{\sqrt{(2 \pi)^{m}|\Omega|}} \exp\left(-\frac{1}{2}\{x - \mu\}'\Omega^{-1}\{x-\mu\}\right).\label{eq:varPHI}
+\end{equation}
+Once this conditional p.d.f. is known, the total likelihood is given by (conditional on \(y_0\) and \(w_0\)):
+\[
+\prod_{t=1}^T f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}).
+\]
+Of course, \(f(w_t|\underline{w_{t-1}})\) depends on the process chosen for \(w_t\). If it is complicated to compute, one can employ Pseudo Maximum Likelihood \citep{Gourieroux_Monfort_Trognon_1984}. The p.d.f. may involve, for instance, an infinite sum, which is the case in the ARG case of Example \ref{exm:ARG1}. When \(w_t\) is affine, the Pseudo Maximum Likelihood approach consists in replacing \(f(w_t|\underline{w_{t-1}})\) by:
+\[
+\mathbf{n}(w_t;\mu + \Phi w_{t-1},\Sigma(w_t)),
+\]
+where \(\mu\), \(\Phi\) and \(\Sigma(w_t)\) are introduced in Eqs. \eqref{eq:MUPHI} and \eqref{eq:SigmaWt} in Proposition \ref{prp:affineVAR}.
+
+In case (b.iii), one can estimate the model by Generalized Method of Moments (GMM), fitting sample moments computed using observed variables (prices, yields, returns). In the context of affine processes, conditional and unconditional moments of the state vector \(w_t\) are available in closed from, as shown by Eqs. \eqref{eq:condmean}, \eqref{eq:condvar} and \eqref{eq:uncondmeanvar}. If the model-implied moments are not available in closed-form, one may have to to resort to the \emph{Simulated Method of Moments (SMM)} (see, e.g., \citet{GourMonf96} or \citet{Duffie_Singleton_1993}).
+
+In cases (b.i) and (b.ii), one has to implement \emph{filtering methods}, on which we focus on in the following.
+
+\hypertarget{Estimation:KF}{%
+\section{Kalman-Filter-Based Approach}\label{Estimation:KF}}
+
+\hypertarget{the-gaussian-linear-state-space-case}{%
+\subsection{The Gaussian linear state-space case}\label{the-gaussian-linear-state-space-case}}
+
+Let us start with a particular case of state-space model (Def. \ref{def:LSSM}) where \(\varepsilon_t\) is Gaussian and where \(\Sigma^{\frac{1}{2}}\) does not depend on \(w_t\), i.e.with a homoskedastic linear Gaussian state-space model.
+
+Let's denote by \(\theta\) the vector of parameters that defines the model. For a given \(\theta\) and a sequence of observations \(\{y_1,\dots,y_T\}\), the Kalman filter computes the distribution of \(w_t\) given \(\{y_1,\dots,y_t\}\) (see Def. \ref{def:FiltvsSmooth}). This distribution is Gaussian, and obtained by a recursive algorithm. A byproduct of this algorithm is the likelihood function associated with \(\theta\) and \(\{y_1,\dots,y_T\}\). This opens the door to the estimation of \(\theta\) by MLE, maximizing this function. In this sense, Kalman-filter techniques can address Objective (b.ii).
+
+Let us first introduce the notion of \emph{filtered} and \emph{smoothed} estimates of a latent variable (or vector of variables) \(w_t\):
+
+\begin{definition}[Filtered versus smoothed estimates]
+\protect\hypertarget{def:FiltvsSmooth}{}\label{def:FiltvsSmooth}The filtering and smoothing problems consist in computing the following conditional moments:
+\begin{equation*}
+\begin{array}{lccllllll}
+\mbox{Filtering:} & w_{t|t} & = & \mathbb{E}(w_t|\underline{y_t}) & \mbox{and}  & P_{t|t} &=& \mathbb{V}ar(w_t|\underline{y_t})\\
+\mbox{Smoothing:} & w_{t|T} & = & \mathbb{E}(w_t|\underline{y_T}) & \mbox{and} & P_{t|T} &=& \mathbb{V}ar(w_t|\underline{y_T}).
+\end{array}
+\end{equation*}
+\end{definition}
+
+The following proposition outlines the Kalman algorithm (see, e.g. \citet{Kim_Nelson_1999}).
+
+\begin{proposition}[Kalman filter and smoother]
+\protect\hypertarget{prp:KF}{}\label{prp:KF}If \(\varepsilon_t \sim \mathcal{N}(0,I)\) in the state-space defined in Def. \ref{def:LSSM}, then we have (\emph{filtering}):
+\[
+w_t|y_1,\dots,y_t \sim  \mathcal{N}(w_{t|t}|P_{t|t}),
+\]
+where \(w_{t|t}\) and \(P_{t|t}\) result from the following recursive equations:
+\[
+\boxed{
+\begin{array}{ccl}
+w_{t|t} &=& w_{t|t-1} + K_t \lambda_t\\
+P_{t|t} &=& (I - K_t B)P_{t|t-1} \\ \\
+\mbox{where (updating step)} \\
+\lambda_t &=& y_t - A - Bw_{t|t-1}  \quad \mbox{(forecast error)}\\
+S_{t|t-1} &=& \mathbb{V}ar(y_t|\underline{y_{t-1}}) = B P_{t|t-1} B' + \Omega\\
+K_t &=& P_{t|t-1}B'S_{t|t-1}^{-1} \quad \mbox{(Kalman gain)} \\ \\
+\mbox{and where (forecasting step)} \\
+w_{t|t-1} &=& \mu + \Phi w_{t-1|t-1} \\
+P_{t|t-1} &=& \Sigma + \Phi P_{t-1|t-1} \Phi' \quad (\Sigma = \Sigma^{\frac{1}{2}}{\Sigma^{\frac{1}{2}}}').
+\end{array}
+}
+\]
+The log likelihood is (recursively) computed as follows:
+\begin{eqnarray}
+\log \mathcal{L}(\theta;\underline{y_T}) &=& \frac{mT}{2}\log\left(2\pi\right) \label{eq:logLikKF}\\
+&  & -\frac{1}{2}\sum_{t=1}^{T}\left(\log\left|S_{t | t-1}(\theta)\right|+\lambda'_{t}(\theta)S_{t\mid t-1}^{-1}(\theta)\lambda{}_{t}(\theta)\right). \nonumber
+\end{eqnarray}
+
+Moreover, we have (\emph{smoothing}):
+\[
+w_t|y_1,\dots,y_T \sim  \mathcal{N}(w_{t|T}|P_{t|T}),
+\]
+where \(w_{t|T}\) and \(P_{t|T}\) result from the following recursive equations:
+\[
+\boxed{
+\begin{array}{ccl}
+w_{t|T} & = & w_{t|t}+F_{t}(w_{t+1|T}-w_{t+1|t})\\
+P_{t|T} & = & P_{t|t}+F_{t}(P_{t+1|T}-P_{t+1|t})F'_{t}\\ \\
+\mbox{where} \\
+F_{t} &=& P_{t|t}\Phi'_{t+1}P_{t+1|t}^{-1}.
+\end{array}
+}
+\]
+\end{proposition}
+
+The following figure illustrates the updating step of the Kalman algorithm:
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/illusKF-1} \caption{Updating in the Kalman filter.}\label{fig:illusKF}
+\end{figure}
+
+The recursive equations of the Kalman filter need to be initialized. That is, one needs to provide initial values for \(w_{0|0}\), \(P_{0|0}\). Different possibilities have been proposed. One can for instance:
+
+\begin{itemize}
+\tightlist
 \item
-  (e-GARCH-based) proxies of conditional variances (see Eq. \eqref{eq:condvar}).
+  Include the elements of(\(w_{0|0}\), \(P_{0|0}\)) among the parameters to estimate;
+\item
+  Set \(w_{0|0}\) and \(P_{0|0}\) to their unconditional values (using, e.g., Eq. \eqref{eq:uncondmeanvar});
+\item
+  Set \(w_{0|0}\) to a prior value and take either an arbitrary large value for \(P_{0\mid0}\) if the prior value is uncertain (which depicts a situation of \emph{diffuse prior}) or a small value for \(P_{0\mid0}\) if we are confident in this prior value \(w_{0|0}\).
+\end{itemize}
+
+\hypertarget{missing-observations}{%
+\subsection{Missing observations}\label{missing-observations}}
+
+In many application, one does not observe all the entries of \(y_t\) at every date. This arises for instance in situations where (i) measurement variables feature different frequencies, (ii) we have unreliable data for some period (that we prefer not to include among observations), (iii) some of the measurement variables are observed over a shorter time span.
+
+These situations are easily addressed by Kalman filtering/smoothing (e.g., \citet{Chow_Lin_1971} or \citet{Harvey_Pierse_1984}). To accommodate missing observations in some of the \(y_t\)'s, one simply has to change the size of this vector (and of \(\lambda_t\), \(S_{t|t-1}\), \(A\) and \(B\)) for the relevant dates. Of course, the accuracy of \(w_{t|t}\) will tend to be lower during periods where one or several (or all) the entries of \(y_t\) are unobserved. (This will be apparent in the resulting covariance matrix of \(w_{t|t}\), namely \(P_{t|t}\).) The log-likelihood computation (Eq. \eqref{eq:logLikKF}) is still valid in this case; one simply has to adjust the number of observed variables at each iteration; that is, \(m\) then depends on time.
+
+To illustrate, consider the following model:
+\begin{eqnarray}
+\left[\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}\right] & = &
+\left[\begin{array}{cc}
+\alpha_{1} & 0\\
+0 & \alpha_{2}
+\end{array}\right]
+\left[\begin{array}{c}
+y_{1,t-1}\\
+y_{2,t-2}
+\end{array}\right]+\left[\begin{array}{c}
+\gamma_{1}\\
+\gamma_{2}
+\end{array}\right]w_{t}+ D\eta_t\label{eq_measur}\\
+w_{t} & = & \phi w_{t-1}+\varepsilon_{t},\label{eq_trans}
+\end{eqnarray}
+where \(\eta_t \sim \mathcal{N}(0,Id)\).
+
+We simulate a 100-period sample, we remove observations of \(y_{1,t}\) (respectively of \(y_{2,t}\)) between periods \(t=30\) and \(t=50\) (resp. between periods \(t=40\) and \(t=70\)), and try to recover the states \(w_t\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(TSModels) }\CommentTok{\# Kalman filter procedure in there.}
+\CommentTok{\# Set model specifications:}
+\NormalTok{alpha1 }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{5}\NormalTok{;alpha2 }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{95}\NormalTok{;Alpha }\OtherTok{\textless{}{-}} \FunctionTok{diag}\NormalTok{(}\FunctionTok{c}\NormalTok{(alpha1,alpha2))}
+\NormalTok{d\_11 }\OtherTok{\textless{}{-}} \DecValTok{1}\NormalTok{;d\_12 }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{5}\NormalTok{;d\_21 }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{5}\NormalTok{;d\_22 }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{D }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(d\_11,d\_21,d\_12,d\_22),}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\NormalTok{gamma1 }\OtherTok{\textless{}{-}} \DecValTok{1}\NormalTok{;gamma2 }\OtherTok{\textless{}{-}} \DecValTok{2}\NormalTok{;Gamma }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(gamma1,gamma2),}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{phi }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{8}
+\CommentTok{\# Simulate model:}
+\NormalTok{T }\OtherTok{\textless{}{-}} \DecValTok{100}
+\NormalTok{Y }\OtherTok{\textless{}{-}} \ConstantTok{NULL}\NormalTok{;X }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{Alpha.Y\_1 }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{);x }\OtherTok{\textless{}{-}} \DecValTok{0}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{T)\{}
+\NormalTok{  Alpha.Y\_1 }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(Alpha.Y\_1,}\FunctionTok{c}\NormalTok{(Alpha }\SpecialCharTok{\%*\%}\NormalTok{ y))}
+\NormalTok{  y }\OtherTok{\textless{}{-}}\NormalTok{ Alpha }\SpecialCharTok{\%*\%}\NormalTok{ y }\SpecialCharTok{+}\NormalTok{ Gamma }\SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ D }\SpecialCharTok{\%*\%} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{  x }\OtherTok{\textless{}{-}}\NormalTok{ phi }\SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{  Y }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(Y,}\FunctionTok{t}\NormalTok{(y));X }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(X,x)\}}
+\CommentTok{\# Define matrices needed in the Kalman\_filter procedures:}
+\NormalTok{nu\_t }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,T,}\DecValTok{1}\NormalTok{)}
+\NormalTok{H }\OtherTok{\textless{}{-}}\NormalTok{ phi;G }\OtherTok{\textless{}{-}}\NormalTok{ Gamma}
+\NormalTok{mu\_t }\OtherTok{\textless{}{-}}\NormalTok{ Alpha.Y\_1}
+\NormalTok{N }\OtherTok{\textless{}{-}} \DecValTok{1}\NormalTok{;M }\OtherTok{\textless{}{-}}\NormalTok{ D}
+\NormalTok{Sigma\_0 }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{phi}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\CommentTok{\# unconditional variance of w}
+\NormalTok{rho\_0 }\OtherTok{\textless{}{-}} \DecValTok{0} \CommentTok{\# unconditional mean of w}
+\NormalTok{filter.res   }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_filter}\NormalTok{(Y,nu\_t,H,N,mu\_t,G,M,Sigma\_0,rho\_0,}\AttributeTok{indic\_pos=}\DecValTok{0}\NormalTok{)}
+\NormalTok{smoother.res }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_smoother}\NormalTok{(Y,nu\_t,H,N,mu\_t,G,M,Sigma\_0,rho\_0,}\AttributeTok{indic\_pos=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/Kalman10-1} \caption{XXXX.}\label{fig:Kalman10}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{plt=}\FunctionTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{95}\NormalTok{,.}\DecValTok{15}\NormalTok{,.}\DecValTok{8}\NormalTok{))}
+
+\FunctionTok{plot}\NormalTok{(X,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(X[t]),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(filter.res}\SpecialCharTok{$}\NormalTok{r,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(smoother.res}\SpecialCharTok{$}\NormalTok{r,}\AttributeTok{col=}\StringTok{"blue"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{lty=}\DecValTok{1}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}
+       \FunctionTok{c}\NormalTok{(}\FunctionTok{expression}\NormalTok{(X[t]),}
+         \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Filtered values of "}\NormalTok{,X[t],}\AttributeTok{sep=}\StringTok{""}\NormalTok{)),}
+         \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Smoothed values of "}\NormalTok{,X[t],}\AttributeTok{sep=}\StringTok{""}\NormalTok{))),}
+       \AttributeTok{lwd=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{), }\CommentTok{\# line width}
+       \AttributeTok{lty=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{,}\StringTok{"red"}\NormalTok{,}\StringTok{"blue"}\NormalTok{),}
+       \AttributeTok{seg.len =} \DecValTok{4}\NormalTok{,}
+       \AttributeTok{bg =} \StringTok{"white"}
+\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(filter.res}\SpecialCharTok{$}\NormalTok{Sigma\_tt),}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(X[t]),}
+     \AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\FunctionTok{min}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(smoother.res}\SpecialCharTok{$}\NormalTok{S\_smooth)),}
+                                            \FunctionTok{max}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(filter.res}\SpecialCharTok{$}\NormalTok{Sigma\_tt))))}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(smoother.res}\SpecialCharTok{$}\NormalTok{S\_smooth),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{col=}\StringTok{"blue"}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}
+       \FunctionTok{c}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Filtering standard error "}\NormalTok{,}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{Var}\NormalTok{(X[t}\SpecialCharTok{*}\StringTok{"|"}\SpecialCharTok{*}\NormalTok{t])),}\AttributeTok{sep=}\StringTok{""}\NormalTok{)),}
+         \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Smoothing standard error "}\NormalTok{,}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{Var}\NormalTok{(X[t}\SpecialCharTok{*}\StringTok{"|"}\SpecialCharTok{*}\NormalTok{T])),}\AttributeTok{sep=}\StringTok{""}\NormalTok{))),}
+       \AttributeTok{lwd=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{), }\CommentTok{\# line width}
+       \AttributeTok{lty=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{,}\StringTok{"red"}\NormalTok{,}\StringTok{"red"}\NormalTok{),}
+       \AttributeTok{seg.len =} \DecValTok{4}\NormalTok{,}
+       \AttributeTok{bg =} \StringTok{"white"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/Kalman2-1} \caption{XXXX.}\label{fig:Kalman2}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Missing data issue: remove observations.}
+
+\NormalTok{Y.modif }\OtherTok{\textless{}{-}}\NormalTok{ Y}
+\NormalTok{Y.modif[}\DecValTok{30}\SpecialCharTok{:}\DecValTok{50}\NormalTok{,}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NaN}
+\NormalTok{Y.modif[}\DecValTok{40}\SpecialCharTok{:}\DecValTok{70}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NaN}
+
+\NormalTok{filter.res }\OtherTok{\textless{}{-}}     \FunctionTok{Kalman\_filter}\NormalTok{(Y.modif,nu\_t,H,N,mu\_t,G,M,Sigma\_0,rho\_0,}\AttributeTok{indic\_pos=}\DecValTok{0}\NormalTok{)}
+\NormalTok{smoother.res }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_smoother}\NormalTok{(Y.modif,nu\_t,H,N,mu\_t,G,M,Sigma\_0,rho\_0,}\AttributeTok{indic\_pos=}\DecValTok{0}\NormalTok{)}
+
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{plt=}\FunctionTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{95}\NormalTok{,.}\DecValTok{15}\NormalTok{,.}\DecValTok{85}\NormalTok{))}
+
+\FunctionTok{plot}\NormalTok{(Y.modif[,}\DecValTok{1}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(Y[}\DecValTok{1}\SpecialCharTok{*}\StringTok{","}\SpecialCharTok{*}\NormalTok{t]),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(Y.modif[,}\DecValTok{2}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(Y[}\DecValTok{2}\SpecialCharTok{*}\StringTok{","}\SpecialCharTok{*}\NormalTok{t]),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(X,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(X[t]),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/Kalman4-1} \caption{XXXX.}\label{fig:Kalman4}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{plt=}\FunctionTok{c}\NormalTok{(.}\DecValTok{15}\NormalTok{,.}\DecValTok{95}\NormalTok{,.}\DecValTok{3}\NormalTok{,.}\DecValTok{95}\NormalTok{))}
+
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(Y.modif[,}\DecValTok{1}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(y[}\DecValTok{1}\SpecialCharTok{*}\StringTok{","}\SpecialCharTok{*}\NormalTok{t]),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\FunctionTok{expression}\NormalTok{(y[}\DecValTok{1}\SpecialCharTok{*}\StringTok{","}\SpecialCharTok{*}\NormalTok{t]))}
+\FunctionTok{plot}\NormalTok{(Y.modif[,}\DecValTok{2}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(y[}\DecValTok{2}\SpecialCharTok{*}\StringTok{","}\SpecialCharTok{*}\NormalTok{t]),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\FunctionTok{expression}\NormalTok{(y[}\DecValTok{2}\SpecialCharTok{*}\StringTok{","}\SpecialCharTok{*}\NormalTok{t]))}
+\FunctionTok{plot}\NormalTok{(X,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(w[t]),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\FunctionTok{expression}\NormalTok{(w[t]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/Kalman5-1} \caption{XXXX.}\label{fig:Kalman5}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{plt=}\FunctionTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{95}\NormalTok{,.}\DecValTok{15}\NormalTok{,.}\DecValTok{8}\NormalTok{))}
+
+\FunctionTok{plot}\NormalTok{(X,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(X[t]),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(filter.res}\SpecialCharTok{$}\NormalTok{r,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(smoother.res}\SpecialCharTok{$}\NormalTok{r,}\AttributeTok{col=}\StringTok{"blue"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{lty=}\DecValTok{1}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }
+       \FunctionTok{c}\NormalTok{(}\FunctionTok{expression}\NormalTok{(X[t]),}
+         \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Filtered values of "}\NormalTok{,X[t],}\AttributeTok{sep=}\StringTok{""}\NormalTok{)),}
+         \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Smoothed values of "}\NormalTok{,X[t],}\AttributeTok{sep=}\StringTok{""}\NormalTok{))),}
+       \AttributeTok{lwd=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{), }\CommentTok{\# line width}
+       \AttributeTok{lty=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{,}\StringTok{"red"}\NormalTok{,}\StringTok{"blue"}\NormalTok{),}
+       \AttributeTok{seg.len =} \DecValTok{4}\NormalTok{,}
+       \AttributeTok{bg =} \StringTok{"white"}
+\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(filter.res}\SpecialCharTok{$}\NormalTok{Sigma\_tt),}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(X[t]),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}
+     \AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\FunctionTok{min}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(smoother.res}\SpecialCharTok{$}\NormalTok{S\_smooth)),}\FunctionTok{max}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(filter.res}\SpecialCharTok{$}\NormalTok{Sigma\_tt))))}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(smoother.res}\SpecialCharTok{$}\NormalTok{S\_smooth),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{col=}\StringTok{"blue"}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }
+       \FunctionTok{c}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Filtering standard error "}\NormalTok{,}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{Var}\NormalTok{(X[t}\SpecialCharTok{*}\StringTok{"|"}\SpecialCharTok{*}\NormalTok{t])),}\AttributeTok{sep=}\StringTok{""}\NormalTok{)),}
+         \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Smoothing standard error "}\NormalTok{,}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{Var}\NormalTok{(X[t}\SpecialCharTok{*}\StringTok{"|"}\SpecialCharTok{*}\NormalTok{T])),}\AttributeTok{sep=}\StringTok{""}\NormalTok{))),}
+       \AttributeTok{lwd=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{), }\CommentTok{\# line width}
+       \AttributeTok{lty=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{,}\StringTok{"red"}\NormalTok{,}\StringTok{"red"}\NormalTok{),}
+       \AttributeTok{seg.len =} \DecValTok{4}\NormalTok{,}
+       \AttributeTok{bg =} \StringTok{"white"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/Kalman6-1} \caption{XXXX.}\label{fig:Kalman6}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{plt=}\FunctionTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{95}\NormalTok{,.}\DecValTok{15}\NormalTok{,.}\DecValTok{8}\NormalTok{))}
+
+\FunctionTok{plot}\NormalTok{(X,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{main=}\FunctionTok{expression}\NormalTok{(w[t]),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(filter.res}\SpecialCharTok{$}\NormalTok{r,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(smoother.res}\SpecialCharTok{$}\NormalTok{r,}\AttributeTok{col=}\StringTok{"blue"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{lty=}\DecValTok{1}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }
+       \FunctionTok{c}\NormalTok{(}\FunctionTok{expression}\NormalTok{(w[t]),}
+         \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Filtered values of "}\NormalTok{,w[t],}\AttributeTok{sep=}\StringTok{""}\NormalTok{)),}
+         \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Smoothed values of "}\NormalTok{,w[t],}\AttributeTok{sep=}\StringTok{""}\NormalTok{))),}
+       \AttributeTok{lwd=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{), }\CommentTok{\# line width}
+       \AttributeTok{lty=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{,}\StringTok{"red"}\NormalTok{,}\StringTok{"blue"}\NormalTok{), }\CommentTok{\# gives the legend lines the correct color and width}
+       \AttributeTok{seg.len =} \DecValTok{4}\NormalTok{,}
+       \AttributeTok{bg =} \StringTok{"white"}
+\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(filter.res}\SpecialCharTok{$}\NormalTok{Sigma\_tt),}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Conditional standard deviation of filtered/smoothed estimates"}\NormalTok{,}
+     \AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}
+     \AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\FunctionTok{min}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(smoother.res}\SpecialCharTok{$}\NormalTok{S\_smooth)),}\FloatTok{1.4}\SpecialCharTok{*}\FunctionTok{max}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(filter.res}\SpecialCharTok{$}\NormalTok{Sigma\_tt))))}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(smoother.res}\SpecialCharTok{$}\NormalTok{S\_smooth),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{col=}\StringTok{"blue"}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topleft"}\NormalTok{, }
+       \FunctionTok{c}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Filtering standard error "}\NormalTok{,}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{Var}\NormalTok{(w[t}\SpecialCharTok{*}\StringTok{"|"}\SpecialCharTok{*}\NormalTok{t])),}\AttributeTok{sep=}\StringTok{""}\NormalTok{)),}
+         \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Smoothing standard error "}\NormalTok{,}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{Var}\NormalTok{(w[t}\SpecialCharTok{*}\StringTok{"|"}\SpecialCharTok{*}\NormalTok{T])),}\AttributeTok{sep=}\StringTok{""}\NormalTok{))),}
+       \AttributeTok{lwd=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{), }\CommentTok{\# line width}
+       \AttributeTok{lty=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{,}\StringTok{"blue"}\NormalTok{),}
+       \AttributeTok{seg.len =} \DecValTok{4}\NormalTok{,}
+       \AttributeTok{bg =} \StringTok{"white"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/Kalman8-1} \caption{XXXX.}\label{fig:Kalman8}
+\end{figure}
+
+\hypertarget{about-non-constant-conditional-matrix-sigma}{%
+\section{\texorpdfstring{About non-constant conditional matrix \(\Sigma\)}{About non-constant conditional matrix \textbackslash Sigma}}\label{about-non-constant-conditional-matrix-sigma}}
+
+\begin{itemize}
+\tightlist
+\item
+  Proposition \ref{prp:KF} is valid when \(\varepsilon_t\) is Gaussian and when \(\Sigma^{\frac{1}{2}}\) does not depend on \(w_t\).
+\item
+  How to proceed in the general case?
+\item
+  In the general case (but when \(w_t\) is an affine process), we have that \(\Sigma(w_{t-1}) \equiv \mathbb{V}ar(w_{t+1}|\underline{w_t})\) is affine in \(w_t\) {[}Prop. \ref{prp:affineVAR}{]}.
+\item
+  In order to deal with this, the Kalman filter algorithm can be modified.
+\item
+  Specifically, in the prediction step (see Prop. \ref{prp:KF}), \(P_{t|t-1}\) can be computed as:
+  \[
+  P_{t|t-1} = \Sigma\color{red}{(w_{t-1|t-1})} + \Phi P_{t-1|t-1} \Phi',
+  \]
+  i.e.~we replace \(\Sigma(w_{t-1})\) by \(\Sigma(w_{t-1|t-1})\).
+\item
+  Though the approach is then not necessarily optimal, it shows good empirical properties \href{/href\%7Bhttp://link.springer.com/article/10.1023\%2FA\%3A1008304625054}{de Jong (2000)} or \href{https://www.jstor.org/stable/1392263?seq=1\#page_scan_tab_contents}{Duan and Simonato (1999)}.
+\item
+  In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations {[}see e.g.~\href{https://www.sciencedirect.com/science/article/pii/S0304407617301653}{Monfort, Pegoraro, Renne and Roussellet (2017)}.
+\end{itemize}
+
+\hypertarget{nonlinear}{%
+\subsection{Non-linear models}\label{nonlinear}}
+
+\begin{itemize}
+\tightlist
+\item
+  If \(w_t\) follows an affine process, it admits the VAR dynamics presented in Prop. \ref{prp:affineVAR} \(\Rightarrow\) linear transition equation.
+\item
+  However, measurement equations may be non-linear (affine) functions of \(w_t\).
+\item
+  This is in particular the case if observed variables include Swaps rates (see Remark SWAPS), CDS rates (see Subsection \ref{subsec:Credit:CDS}, in particular Eq. \eqref{eq:MCCDSformula1}) or prices of tranche products (see Example \ref{exm:DD}).
+\item
+  In this case, one can for instance resort to the Extended Kalman Filter (linearizing the measurement equations, see supplementary material) or the Quadratic Kalman Filter \href{https://www.sciencedirect.com/science/article/pii/S0304407615000123}{Monfort, Renne and Roussellet, 2015}, second-order expansion of the measurement equations).
+\end{itemize}
+
+\hypertarget{EstimationInversion}{%
+\section{Inversion Technique}\label{EstimationInversion}}
+
+\begin{itemize}
+\tightlist
+\item
+  The \textbf{inversion technique} has been introduced by \href{http://www.iijournals.com/doi/abs/10.3905/jfi.1993.408090?journalCode=jfi}{Chen and Scott (1993)}.
+\item
+  It is used e.g.~by \href{http://web.stanford.edu/~piazzesi/AP.pdf}{Ang and Piazzesi (2003)} and \href{http://rady.ucsd.edu/faculty/directory/liu/pub/docs/rate-swaps.pdf}{Liu, Longstaff and Mandell (2006)}.
+\item
+  Contrary to Kalman-type approaches, this approach is not recursive. Hence can be faster (especially for long sample -- in time dimension).
+\item
+  Recall that \(y_t\) and \(w_t\) are respectively of dimension \(m\) and \(n\) (see Eqs. \eqref{eq:measeq} and \eqref{eq:transeq} in Def. \ref{def:LSSM}).
+\end{itemize}
+
+\begin{hypothesis}[Perfectly-modelled variables]
+\protect\hypertarget{hyp:perfectlymodelled}{}\label{hyp:perfectlymodelled}\leavevmode
+
+\begin{itemize}
+\tightlist
+\item
+  Assumption: \(n\) components of the \(m\)-dimensional vector \(y_t\) (with \(n \le m\)) are perfectly modelled (no measurement errors in associated measurement equations).
+\item
+  Without loss of generality, these perfectly-modelled variables are the first \(n\) components of \(y_t\), that is:
+  \[
+  y_t =
+  \left(\begin{array}{c}
+  \underbrace{y_{1,t}}_{(n \times 1)} \\
+  \underbrace{y_{2,t}}_{(m-n)\times1}
+  \end{array}\right).
+  \]
+\end{itemize}
+
+\end{hypothesis}
+
+\begin{itemize}
+\tightlist
+\item
+  Under Assumption \ref{hyp:perfectlymodelled}, the measurement equation (Eq. \eqref{eq:measeq}) becomes:
+  \[
+  \left[
+  \begin{array}{c}
+  y_{1,t}\\
+  y_{2,t}
+  \end{array}
+  \right]
+  =
+  \left[
+  \begin{array}{c}
+  A_{1}\\
+  A_{2}
+  \end{array}
+  \right]+
+  \left[
+  \begin{array}{c}
+  B_{1}\\
+  B_{2}
+  \end{array}
+  \right]w_t +
+  \left[
+  \begin{array}{c}
+  0\\
+  \eta_{2,t}
+  \end{array}
+  \right],
+  \]
+  where \(\eta_{2,t} \sim \mathcal{N}(0,\Omega_2)\) (say). This notably implies
+  \begin{equation}
+  w_t = B_{1}^{-1}(y_{1,t} - A_1).\label{eq:wY1}
+  \end{equation}
+\item
+  Under this assumption and if the conditional distribution of \(w_t\) is available in closed form, then the (exact) likelihood of the model can then be computed.
+\item
+  Proposition \ref{prp:logLikinversion} (next slide) shows that the computation of \(f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})\) involves three terms:
+\item
+  The first term (in blue in \eqref{eq:inversionLogL}) stems from the conditional distribution \(w_t|\underline{w_{t-1}}\).
+\item
+  The second term (in red in \eqref{eq:inversionLogL}) is associated with the measurement errors pertaining to \(y_{2,t}\), that are the components of \(\eta_{2,t}\).
+\item
+  The third term (in brown in \eqref{eq:inversionLogL}) is the determinant of the Jacobian matrix associated with the linear transformation between \(w_t\) and \(y_{1,t}\) (Eq. \eqref{eq:wY1}), that is \(|B_1|\).
+\item
+  Once one knows how to compute \(f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})\), the total likelihood is easily obtained since:
+  \[
+  f_{Y_1,\dots,Y_T}(y_1,y_2,\dots,y_T) = f_{Y_1}(y_1) \prod_{t=2}^T f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}}).
+  \]
+\end{itemize}
+
+\begin{proposition}[Log-likelihood in the inversion context]
+\protect\hypertarget{prp:logLikinversion}{}\label{prp:logLikinversion}In the context of a linear state-space model as defined in Def. \ref{def:LSSM}, under Assumption \ref{hyp:perfectlymodelled}, and if \(w_t\) is a Markovian process, we have:
+\begin{eqnarray}
+f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}}) &=& \color{blue}{f_{w_t|w_{t-1}}(w(y_{1,t});w(y_{t-1}))} \times \nonumber\\
+&& \color{red}{\mathbf{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2)} \times \color{brown}{|B_1|^{-1}}.\label{eq:inversionLogL}
+\end{eqnarray}
+where \(w(y_{1,t}) = B_{1}^{-1}(y_{1,t} - A_1)\) and where \(\mathbf{n}\) denotes the multivariate normal p.d.f. (Eq. \eqref{eq:varPHI}).
+\end{proposition}
+
+\begin{proof}
+Since \(w_t\) is Markov, so is \(y_{1,t}\) and since \(y_{2,t} = A_2 + B_2 w(y_{1,t}) + \eta_{2,t}\), with \(w(y_{1,t}) = B_{1}^{-1}(y_{1,t} - A_1)\), we have:
+\begin{eqnarray*}
+f(y_t|y_{t-1}) &=& f_1(y_{1,t}|y_{1,t-1}) f_2(y_{2,t}|y_{1,t}) \\
+&=& |B_1|^{-1} f_w(w(y_{1,t})|w(y_{1,t-1})) \mathbf{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2),
+\end{eqnarray*}
+where
+* \(f_1(y_{1,t}|y_{1,t-1})= |B_1|^{-1} f_w(w(y_{1,t})|w(y_{1,t-1}))\) comes from the fact that, if \(U\) and \(V\) are two random variables such that \(V = g(U)\), where \(g\) is a bijective and differentiable function, then \(f_V(v)=\left|\frac{\partial g^{-1}(v)}{\partial v'}\right| f_U(g^{-1}(v))\),
+* and \(f_2(y_{2,t}|y_{1,t}) = \mathbf{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2)\) comes from the fact that \(y_{2,t}|y_{1,t} \sim \mathbf{n}(A_2 + B_2 w(y_{1,t}),\Omega_2)\).
+\end{proof}
+
+\hypertarget{EstimationRS}{%
+\subsection{Dealing with Unobserved Regimes}\label{EstimationRS}}
+
+\begin{itemize}
+\tightlist
+\item
+  The (adjusted) Kalman and inversion techniques are not suited to the case where some of the components of \(w_t\) are valued in a discrete set. This is typically the case if \(w_t\) is of the form:
+  \[
+  w_t = \left(\begin{array}{c}
+  z_t \\
+  x_t
+  \end{array}\right),
+  \]
+  where \(z_t\) is valued in \(\{e_1,\dots,e_J\}\), \(e_j\) being the \(j^{th}\) column of \(Id_J\).
+\item
+  Let's assume that \(z_t\) is an exogenous and homogenous Markov chain whose dynamics is defined by the \(\pi(e_i,e_j)\)'s that are such that:
+  \begin{equation}
+  \pi(e_i, e_j) = \mathbb{P}(z_{t+1}=e_j | z_t=e_i).\label{eq:transitproba}
+  \end{equation}
+\item
+  We denote by \(\Pi\) the matrix of transition probabilities, i.e.~the \((i,j)\) component of \(\Pi\) is \(\pi(e_i, e_j)\).
+\item
+  Assume further that we have:
+  \begin{equation}
+  x_t = m(z_t,x_{t-1}) + \varepsilon_t,\label{eq:dynxRS}
+  \end{equation}
+  where \(\mathbb{E}(\varepsilon_t|\underline{z_t},\underline{x_{t-1}})=0\).
+\item
+  The conditional distribution of \(\varepsilon_t\) w.r.t. \((z_t,x_{t-1})\) is denoted by \(f_{\varepsilon}(.;z_t,x_{t-1})\).
+\end{itemize}
+
+\begin{hypothesis}[Measurement equations]
+\protect\hypertarget{hyp:RSmeasurement}{}\label{hyp:RSmeasurement}The measurement equation is of the form:
+\begin{equation}
+y_t = A z_t + B x_t + \eta_t,  \quad \mbox{with }  \eta_t \sim i.i.d. \mathbf{n}(0,\Omega).\label{eq:RSmeasur}
+\end{equation}
+\end{hypothesis}
+
+\begin{example}[Regime-Switching Gaussian VAR]
+\protect\hypertarget{exm:GRSVAR}{}\label{exm:GRSVAR}\leavevmode
+
+\begin{itemize}
+\tightlist
+\item
+  Building on Example \ref{exm:RSVAR}, we know that if
+  \begin{equation}
+  x_t = \mu z_t + \Phi x_{t-1} +  \varepsilon_t,\label{eq:xRSVAR}
+  \end{equation}
+  where \(\varepsilon_t|\underline{x_t},z_t \sim \mathcal{N}(0,\Sigma(z_t))\) and if \(z_t\) is an exogenous independent Markov chain, then \(w_t = (x_t',z_t')'\) is affine.
+\item
+  This context is consistent with the situation presented XXX. In particular, using the notations of Eq. \eqref{eq:dynxRS}, we have:
+  \[
+  m(z_t,x_{t-1}) = \mu z_t + \Phi x_{t-1}.
+  \]
+\item
+  If \(r_t\) and the s.d.f. are respectively affine and exponential in \(w_t\), then, in particular, yields are also affine in \(w_t\), i.e.~of the form \(R(t,h)= A_h'z_t + B_{h}'x_t\) (see Eq. \eqref{eq:RthAB}).
+\item
+  Therefore, if the components of \(y_t\) are yields of different maturities, the measurement equations are consistent with Assumption \ref{hyp:RSmeasurement}.
 \end{itemize}
 
 \end{example}
+
+\begin{itemize}
+\item
+  How to estimate such a model when the regimes \(z_t\) are unobservable? Two distinct situations.
+\item
+  \textbf{Case 1.} The \(x_t\) factors are observable.
+\item
+  The probabilities of being in the different regimes on each date can be estimated by employing the Kitagawa-Hamilton filter.
+\item
+  The Kitagawa-Hamilton filter (Appendix \ref{app:KitagHamilton}) can be employed, with \(F_t = (y_t',x_t')'\) and:
+  \begin{eqnarray*}
+  f(F_t|z_t=e_j,\underline{F_{t-1}}) &=& f(y_t|x_t,z_t=e_j,\underline{F_{t-1}})f(x_t|z_t=e_j,\underline{F_{t-1}}) \\
+  &=& \mathbf{n}(y_t;A z_t + B x_t,\Omega) \times \\
+  &&f_{\varepsilon}(x_t - m(z_t,x_{t-1});z_t,x_{t-1}),
+  \end{eqnarray*}
+  where, as in Slide \ref{slide:inversionXX}, \(\mathbf{n}(u;\mu,\Omega)\) denotes the evaluation, at vector \(u\) of the p.d.f. of the multivariate normal distribution \(\mathcal{N}(\mu,\Omega)\).
+\item
+  A by-product of the Kitagawa-Hamilton filter is the likelihood function associated with the dataset \(\Rightarrow\) The model parameterization can be estimated by MLE.
+\item
+  \textbf{Case 2.} The \(x_t\) factors are not observable. Two sub-cases:
+\item
+  2.i The components of \(y_t\) are not perfectly modelled (i.e.~\(\Omega \ne 0\), where \(\Omega\) defined in Eq. \eqref{eq:RSmeasur}.
+\item
+  2.ii \(n_x\) components of \(y_t\) are perfectly modelled (where \(n_x\) is the dimension of \(x_t\)).
+\item
+  In Case (2.i), one has to resort to filters dealing with two types of uncertainty {[}with hidden discrete values (\(z_t\)) and continuously distributed latent variables (\(x_t\)){]}.
+\end{itemize}
+
+In particular \href{https://www.sciencedirect.com/science/article/pii/0304407694900361}{Kim (1994)'s filter} can be employed when the state-space model is of the form \eqref{eq:RSmeasur}-\eqref{eq:xRSVAR} \href{https://academic.oup.com/rof/article/18/6/2103/1661774}{Monfort and Renne (2014)}, Example \ref{exm:SovereignSpreads}{]}.
+* In Case (2.ii), one can resort to an inversion technique, complemented with the Kitagawa-Hamilton filter, to estimate the model (see following box).
+
+\begin{proposition}[Kitagawa-Hamilton filter]
+\protect\hypertarget{prp:KitagHamilton}{}\label{prp:KitagHamilton}Consider a \(q\)-dimensional vector of variables \(F_t\) and an exogenous homogenous Markov chain \(z_t\). We make use of the following notations:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\eta_t\) is a \(J\)-dimensional vector whose \(j^{th}\) component is the p.d.f. of \(F_t\) conditional on \((z_t = e_j,\underline{F_{t-1}})\), i.e.~\(f(F_t|z_t=e_j,\underline{F_{t-1}})\)
+\item
+  \(\xi_{t}\) is a \(J\)-dimensional vector whose \(j^{th}\) component is \(\mathbb{P}(z_t = e_j|\underline{F_t})\).
+\end{itemize}
+
+The sequence \(\xi_{t}\) can then be computed recursively as follows:
+\begin{equation}
+\xi_t = \frac{(\Pi' \xi_{t-1}) \odot \eta_t}{\mathbf{1}'(\Pi' \xi_{t-1} \odot \eta_t)},\label{eq:KHfilter}
+\end{equation}
+where \(\odot\) denotes the element-by-element (Hadamard) product and where \(\mathbf{1}\) denotes a \(J\)-dimensional vector of ones.
+
+Moreover, the previous formulas also show how to compute the likelihood of the model since:
+\begin{equation}
+f(F_t|\underline{F_{t-1}})=\mathbf{1}'(\Pi' \xi_{t-1} \odot \eta_t).\label{eq:KHlikelihood}
+\end{equation}
+\end{proposition}
+
+\begin{proposition}[Kitagawa-Hamilton and inversion techniques]
+\protect\hypertarget{prp:mixedKFinversion}{}\label{prp:mixedKFinversion}The matrix of transition probabilities of \(\mathcal{Z}_t\) is of the form \(\mathbf{1}_{n \times 1} \otimes \widetilde{\Pi}\), with
+\[
+\widetilde{\Pi} =
+\left[
+\begin{array}{ccccc}
+\pi_{1,\bullet} & 0_{1 \times n} \dots & & & 0_{1 \times n} \\
+0_{1 \times n} & \pi_{2,\bullet} & 0_{1 \times n} & \dots & 0_{1 \times n} \\
+&& \ddots \\
+& &  0_{1 \times n} & \pi_{n-1,\bullet} & 0_{1 \times n} \\
+0_{1 \times n} &\dots && 0_{1 \times n} & \pi_{n,\bullet}
+\end{array}
+\right],
+\]
+where \(\pi_{i,\bullet}\) denotes the \(i^{th}\) row of \(\Pi\) (\(\Pi\) is defined on Slide XXX).
+
+The last term appearing in Eq. \eqref{eq:conddistri4KHfilter} can be computed as follows:
+\begin{eqnarray*}
+&&f\left(\left[\begin{array}{c}x(y_t,z(\mathcal{Z}_t))\\y_{2,t}\end{array}\right]|\mathcal{Z}_t,\underline{y_{t-1}}\right) \\
+&=& f\left(y_{2,t}|x_t=x(y_t,z(\mathcal{Z}_t)),\mathcal{Z}_t,\underline{y_{t-1}}\right) \times\\
+&& f\left(x(y_t,z(\mathcal{Z}_t))|\mathcal{Z}_t,\underline{y_{t-1}}\right) \\
+&=& \mathbf{n}(y_{2,t};A_2z_t + B_2x_t,\Omega_2) \times\\
+&& f_\varepsilon\left(\varepsilon_t|z_t = z(\mathcal{Z}_t),x_{t-1}=x(y_{t-1},z_{-1}(y_{t-1},\mathcal{Z}_t))\right),
+\end{eqnarray*}
+where \(\mathbf{n}\) is the p.d.f. of a multivariate normal distri, (Prop. \ref{prp:logLikinversion}, where \(\varepsilon_t = x_t - m[z(\mathcal{Z}_t),x(y_{t-1},z_{-1}(y_{t-1},\mathcal{Z}_t))]\) (\(m\) defined in Eq. \eqref{eq:dynxRS}).
+\end{proposition}
+
+\hypertarget{mixed-use-of-kitagawa-hamilton-and-inversion-techniques}{%
+\subsection{Mixed use of Kitagawa-Hamilton and inversion techniques}\label{mixed-use-of-kitagawa-hamilton-and-inversion-techniques}}
+
+\begin{itemize}
+\tightlist
+\item
+  Without loss of generality, assume that the \(n_x\) first components of \(y_t\) are observed without error, i.e.~Assumption \ref{hyp:RSmeasurement} becomes
+  \[
+  \left[
+  \begin{array}{c}
+  y_{1,t}\\
+  y_{2,t}
+  \end{array}
+  \right]
+  =
+  \left[
+  \begin{array}{c}
+  A_{1}z_t\\
+  A_{2}z_t
+  \end{array}
+  \right]+
+  \left[
+  \begin{array}{c}
+  B_{1}\\
+  B_{2}
+  \end{array}
+  \right]x_t +
+  \left[
+  \begin{array}{c}
+  0\\
+  \eta_{2,t}
+  \end{array}
+  \right],
+  \]
+  where \(\varepsilon_2 \sim \mathcal{N}(0,\Omega_2)\).
+\item
+  Since \(y_{1,t} = A_1 z_t + B_1 x_t\), we then have:
+  \begin{equation}
+  x_t \equiv x(y_{t},z_t) = B_1^{-1}(y_{1,t} - A_1 z_t).\label{eq:xRS}
+  \end{equation}
+\item
+  In order to employ the Kitagawa-Hamilton filter (Appendix \ref{app:KitagHamilton}), one need to define the extended Markov chain:
+  \[
+  \mathcal{Z}_t = z_{t-1} \otimes z_t,
+  \]
+  whose matrix of transition probabilities is detailed in Appendix \ref{app:mixedKFinversion}.
+\item
+  Note that we have:
+  \[
+  \left\{
+  \begin{array}{cclll}
+  z_t &\equiv& z(\mathcal{Z}_t) &=& (\mathbf{1}' \otimes Id_{n}) \mathcal{Z}_t \\
+  z_{t-1} &\equiv& z_{-1}(\mathcal{Z}_t) &=& (Id_{n} \otimes \mathbf{1}') \mathcal{Z}_t.
+  \end{array}
+  \right.
+  \]
+\item
+  The Kitagawa-Hamilton filter (Appendix \ref{app:KitagHamilton}) can then be employed, with \(F_t = y_t\) and:
+  \begin{eqnarray}
+  f(y_t|\mathcal{Z}_t,\underline{y_{t-1}}) &=&|B_1^{-1}| \times \nonumber \\
+  && f\left(\left[\begin{array}{c}x(y_t,z(\mathcal{Z}_t))\\ y_{2,t}\end{array}\right]|\mathcal{Z}_t,\underline{y_{t-1}}\right),\label{eq:conddistri4KHfilter}
+  \end{eqnarray}
+  where the computation of the last term is detailed in Appendix \ref{app:mixedKFinversion}.
+\end{itemize}
+
+\begin{example}[Interest-rate model with monetary policy-related regimes]
+\protect\hypertarget{exm:RSMP}{}\label{exm:RSMP}\leavevmode
+
+\begin{itemize}
+\tightlist
+\item
+  \citet{Renne_2017}: model where regimes have monetary-policy interpretations.
+\item
+  Short-term rate = (daily) EONIA, euro-area overnight interbank rate:
+\end{itemize}
+
+\begin{center}
+\fbox{$r_{t}=\underset{\mbox{Target}}{\underbrace{\bar{r}_{t}}}+\underset{\mbox{EONIA spread}}{\underbrace{x_{t}}}$}
+\par\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  Target rate \(\bar{r}_{t}\) has a step-like path \(\bar{r}_{t}=\Delta'z_{r,t}\),
+  where
+\item
+  \(\Delta=[\begin{array}{ccccc} 0 & 0.25 & 0.50 & \ldots & \bar{r}_{max}\end{array}]'\) and
+\item
+  \(z_{r,t}=[\begin{array}{ccccccc} 0 & \ldots & 0 & 1 & 0 & \ldots & 0\end{array}]'\)
+\item
+  EONIA spread (\(x_t\)) persistent and mean-reverting fluctuations (AR process).
+\item
+  \(z_t = z_{r,t}\otimes z_{m,t}\) where \(z_{m,t}\) is the monetary-policy regime:
+\item
+  Easing (\(z_{m,t}=[\begin{array}{ccc} 1 & 0 & 0\end{array}]\)),
+\item
+  Status Quo (\(z_{m,t}=[\begin{array}{ccc} 0 & 1 & 0\end{array}]\)),
+\item
+  Tightening (\(z_{m,t}=[\begin{array}{ccc} 0 & 0 & 1\end{array}]\)).
+\end{itemize}
+
+\href{https://fixed-income.shinyapps.io/NLIR/}{Web-interface illustrating \(\bar{r}_t\)'s dynamic}
+
+\begin{itemize}
+\tightlist
+\item
+  \(z_{r,t}\) is observed, but not \(z_{m,t}\).
+\item
+  In the model, according to Example \ref{exm:GRSVAR}, we have:
+  \[
+  R(t,h) = A_h' z_t + B_h x_t.
+  \]
+\item
+  Denote by \(\mathcal{A}_h\) the \((3 \times n_r)\) matrix such that \(A_h = vec(\mathcal{A}_h)\). We then have \(A_h' z_t = (\mathcal{A}_h z_{r,t})' z_{m,t}\) and, therefore:
+  \[
+  R(t,h) = A_{t,h}' z_t + B_h x_t, \quad \mbox{where $A_{t,h} = \mathcal{A}_h z_{r,t}$.}
+  \]
+\item
+  The model is estimated by a mixe use of Kitagawa-Hamilton and inversion techniques, assuming that a linear combination of yields is modelled without errors (giving \(x_t = x(y_t,z_{m,t},z_{r,t})\)).
+\end{itemize}
+
+\end{example}
+
+\hypertarget{EstimationPersistency}{%
+\section{A Typical Small-Sample Issue}\label{EstimationPersistency}}
+
+Interest rates are particularly persistent variables.
+
+Since affine models eventually lead to linear relationships between state variables and interest rates {[}Eq. \eqref{eq:RthAB}{]}, some state variables are also necessarily highly persistent.
+
+In small sample, maximum-likelihood estimates of the model parameters are likely to suffer from a downward bias, \citet{Bauer_Rudebusch_Wu_2012} or \citet{Jardet_Monfort_Pegoraro_2013}.
+
+This relates to a well-known econometric problem:
+
+\begin{itemize}
+\tightlist
+\item
+  This small-sample downward bias has dramatic consequences in terms of term premium estimates.
+\item
+  For the sake of illustration, let's consider the following process for the short-term interest rate under the physical measure (monthly frequency):
+  \[
+  i_{t+1} = \bar{i} + \phi (i_{t}-\bar{i}) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
+  \]
+  and the following under the risk-neutral measure:
+  \[
+  i_{t+1} = \bar{i}^* + \phi^* (i_{t}-\bar{i}^*) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
+  \]
+  with \(\bar{i} = 3\%/12\), \(\bar{i}^* = 6\%/12\), \(\phi = 0.97\), \(\phi^*=0.99\), \(\sigma = 0.2\%\).
+\item
+  Assume the estimate of \(\phi\) is downard biased (\(\hat\phi=0.9\)). Influence on the 10-year term premium? {[}Figure \ref{fig:biasedTP}, next slide{]}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  \citet{Kim_Orphanides_2005} and \citet{Kim_Orphanides_2005} have proposed a simple approach to deal with this problem.
+\item
+  They add measurement equations to impose that the model-implied forecasts are --up to some measurement errors-- close to survey-based ones.
+\item
+  Kim and Orphanides use the \href{https://lrus.wolterskluwer.com/store/products/blue-chip-financial-forecasts-prod-ss07418345/paperback-item-1-ss07418345}{Blue Chip Financial Forecasts}.
+\item
+  Alternative (publicly available) surveys: \href{https://www.philadelphiafed.org/research-and-data/real-time-center/survey-of-professional-forecasters}{Philly Fed Survey of Professional Forecasters} and \href{https://www.ecb.europa.eu/stats/ecb_surveys/survey_of_professional_forecasters/html/index.en.html}{ECB SPF}.
+\item
+  Importantly, this approach is tractable because model-implied forecasts of yields are affine in the state vector. {[}This is the case for any affine model: see Eq. \eqref{eq:condmeanRth}.{]}
+\item
+  Their model is able to fit both survey-based forecasts and market yields {[}Figure \ref{fig:fitSurveys}{]}.
+\end{itemize}
+
+\hypertarget{forward-futures-dividends-commodity-pricing-and-convenience-yields}{%
+\chapter{Forward, futures, dividends, commodity pricing, and convenience yields}\label{forward-futures-dividends-commodity-pricing-and-convenience-yields}}
+
+\hypertarget{FCFPForwards}{%
+\section{Forward Contracts}\label{FCFPForwards}}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\underline{w_{t}}\) : information at \(t\)
+\item
+  Forward contract : Agreement signed at \(t\) (to-day) to buy/sell an asset (a commodity) at a given delivery date \(T>t\) at a price \(\Phi_{t,T}\) (\emph{delivery price} or \emph{forward price}) decided at \(t\).
+\item
+  \(S_T :\) value of the asset (commodity) at \(T\), (function of \(\underline{w_{T}}\)).
+\item
+  \(S_T - \Phi_{t,T}\): payoff of the contract at \(T\).
+\item
+  \(r_t :\) interest rate between \(t\) and \(t+1\) (known at \(t\)), (function of \(\underline{w_{t}}\)).
+\item
+  \(B(t_1,t_2-t_1)\): date-\(t_1\) price of a zero-coupon bond whose value is 1 on \(t_2\).
+\end{itemize}
+
+\begin{proposition}[Forward price]
+\protect\hypertarget{prp:fwd}{}\label{prp:fwd}We have:
+\begin{eqnarray*}
+\Phi_{t,T} & = & \frac{\mathbb{E}_t (M_{t,t+1}, \ldots, M_{T-1,T} S_T)}{B(t,T-t)}\\
+& = & \frac{\mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1}) S_T]}{B(t,T-t)}.
+\end{eqnarray*}
+\end{proposition}
+
+:::\{.proof\} The price at \(t\) of \(S_T - \Phi_{t,T}\) is
+zero. Therefore:
+\(\mathbb{E}_t (M_{t,t+1}, \ldots, M_{T-1,T} S_T) - \Phi_{t,T} \mathbb{E}_t (M_{t,t+1} \ldots M_{T-1,T}) = 0\). The result follows.
+:::
+
+\begin{itemize}
+\item
+  If the processes \((r_t)\) and \((S_t)\) are \(\mathbb{Q}\)-independent, then
+  \[
+  \Phi_{t,T} = \mathbb{E}^{\mathbb{Q}}_t (S_T)
+  \]
+  and \(\Phi_{t,T}\) is a \(\mathbb{Q}\)-martingale.
+\item
+  If the asset does not generate any payoff before \(T\) (no dividends), then
+  \[
+  \Phi_{t,T} = \frac{S_t}{B(t,T-t)}.
+  \]
+\item
+  The price at \(s\), with \(t<s<T\), of a forward contract signed at \(t\) is:
+  \[
+  (\Phi_{s,T} - \Phi_{t,T}) B (s,T-s),
+  \]
+  since the payoff \(S_T - \Phi_{t,T}\) at \(T\) has this price at \(s\).
+\item
+  Notations associated with \textbf{dividends}:
+\item
+  \(\tilde{S}_t\): ex-dividend price at \(t\),
+\item
+  \(S_t\): cum-dividend price at \(t\),
+\item
+  \(S_t = \tilde{S}_t \exp (\delta_t)\), \(\delta_t :\) dividend yield (or rate) known at \(t\).
+\item
+  We get:
+  \begin{eqnarray*}
+  \tilde{S}_{T-1} & = & \mathbb{E}_{T-1} (M_{T-1,T} S_T) \\
+  \mbox{or } \\
+  S_{T-1} & = & \mathbb{E}_{T-1} [M_{T-1,T} \exp (\delta_{T-1})
+  S_T],
+  \end{eqnarray*}
+  and, recursively:
+  \begin{eqnarray*}
+  S_t & = & \mathbb{E}_t [M_{t,t+1} \ldots M_{T-1,T} \exp (\delta_t + \ldots + \delta_{T-1}) S_T] \\
+  &=& \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t \ldots - r_{T-1} + \delta_t + \ldots + \delta_{T-1}) S_T].
+  \end{eqnarray*}
+\end{itemize}
+
+\(\Rightarrow\) \(r_t\) replaced by \(r_t - \delta_t\).
+
+\begin{itemize}
+\tightlist
+\item
+  Replacing \(S_t\) by \(\tilde{S} \exp(\delta_t)\) and \(S_T\) by \(\tilde{S}_T \exp (\delta_T)\), we get
+  \[
+  \tilde{S}_t = \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t -\ldots-r_{T-1} + \delta_{t+1} + \ldots + \delta_T) \tilde{S}_T.
+  \]
+\item
+  If deterministic \(\delta_t\):
+  \[
+  \Phi_{t,T} = \frac{S_t \exp (-\delta_t - \ldots - \delta_{T-1})}{B(t,T-t)}.
+  \]
+  If \(r_t\) deterministic too:
+  \[
+  \Phi_{t,T} = S_t \exp   (r_t + \ldots + r_{T-1} - \delta_t - \ldots - \delta_{T-1}).
+  \]
+\end{itemize}
+
+\hypertarget{FCFPFutures}{%
+\section{Futures Contracts, Futures Prices}\label{FCFPFutures}}
+
+\begin{itemize}
+\tightlist
+\item
+  Futures contract: agreement signed at \(t\) to buy/sell an asset (a commodity) at given delivery date \(T>t\) at a price \(F_{t,T}\) (futures price) decided at \(t\).
+\item
+  Difference with forward contract: both counterparties are required to deposit into a \textbf{margin account} at every trading day \(s>t\) the resettlement payment (\textbf{margin call}). The latter is equal to:
+  \[
+  \Delta_{s,T} = F_{s,T} - F_{s-1,T} \quad \mbox{(for the buyer)}.
+  \]
+\end{itemize}
+
+\(\Rightarrow\) A Futures contract is actually closed out after every
+day, starts afresh the next day and therefore is valued zero.
+
+\begin{proposition}[Pricing futures]
+\protect\hypertarget{prp:future}{}\label{prp:future}We have:
+\[
+F_{t,T} = \mathbb{E}^{\mathbb{Q}}_t (S_T),
+\]
+that is \(F_{t,T}\) is a \(\mathbb{Q}\)-martingale, or \(\Delta_{t,T}\) is a \(\mathbb{Q}\)-martingale difference.
+\end{proposition}
+
+\begin{proof}
+At each date \(s\ge t\), after the deposit of the resettlement payment, there is a new contract valued zero and paying \(F_{s+1,T} - F_{s,T}\) at \(s+1\) (and providing another zero valued contract at \(s+1\)). Therefore \(0 = \mathbb{E}^{\mathbb{Q}}_s [\exp (-r_s) (F_{s+1,T} - F_{s,T})]\), and \(0 = \mathbb{E}^{\mathbb{Q}}_s (F_{s+1,T} - F_{s,T})\) since \(\exp (-r_s)\) is known at \(s\). Hence \(F_{s,T} = \mathbb{E}^{\mathbb{Q}}_s (F_{s+1,T})\), and the results follows from \(F_{T,T} = S_T\).
+\end{proof}
+
+\begin{proposition}[XXXX]
+\protect\hypertarget{prp:XXX}{}\label{prp:XXX}\[
+\Phi_{t,T} - F_{t,T} = \frac{cov^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s), S_T\right]}{B(t,T-t)}.
+\]
+\end{proposition}
+
+\begin{proof}
+We have:
+\begin{eqnarray*}
+\Phi_{t,T} - F_{t,T} & = & \mathbb{E}^{\mathbb{Q}}_t \left[\frac{\prod^{T-1}_{s=t} \exp (-r_s) S_T }{B(t,T-t)}- S_T\right] \\
+&=& \frac{\mathbb{E}^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s) S_T\right] - \mathbb{E}^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s)\right] \mathbb{E}^{\mathbb{Q}}_t (S_T)}{B(t,T-t)} \\
+&=&\frac{cov^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s), S_T)\right]}{B(t,T-t)}. \end{eqnarray*}
+\end{proof}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\Phi_{t,T} = F_{t,T}\), if, and only if, \(\prod^{T-1}_{s=t} \exp (-r_s)\) and \(S_T\) are conditionally uncorrelated under \(\mathbb{Q}\). In particular it is true in the case of deterministic short rates.
+\end{itemize}
+
+\hypertarget{FCFPConvenience}{%
+\section{Convenience Yields}\label{FCFPConvenience}}
+
+:::\{.definition \#convYield name=``Convenience yield''{]}
+A convenience yield\} is a net benefit associated with holding a physical asset (rather than a forward or futures contract). It is \emph{net} in the sense that it is equal to the positive gain of holding minus the cost of storage.
+:::
+
+\begin{itemize}
+\tightlist
+\item
+  The notion of convenience yield is valid only for storable commodities (not, e.g., for electricity).
+\item
+  Can be positive or negative.
+\item
+  Notion of convenience yield mathematically similar to a dividend yield (but can be \(<0\), and latent).
+\end{itemize}
+
+the following, we denote the convenience yield by \(c_t\).
+* The price is here the \emph{cum} convenience yield price.
+
+\textbf{Basic pricing approach}
+
+\begin{itemize}
+\tightlist
+\item
+  \(r_t\) and \(c_t\) deterministic. We have:
+  \[
+  \Phi_{t,T} = F_{t,T} = S_t \exp (r_t + \ldots + r_{T-1} - c_t - \ldots - c_{T-1}).
+  \]
+\item
+  Moreover, if \(r_t\) and \(c_t\) time independent:
+  \[
+  \Phi_{t,T} = F_{t,T} = S_t \exp [(T-t)(r-c)].
+  \]
+\item
+  If \(r>c\) forward curve function \(\uparrow\) of \(T\): situation of \textbf{contango};
+\item
+  If \(r<c\) forward curve function \(\downarrow\) of \(T\): \textbf{backwardated} forward curve.
+\end{itemize}
+
+\textbf{Advanced approach}: \(c_t\) is stochastic.
+
+\begin{itemize}
+\tightlist
+\item
+  We have:
+  \begin{eqnarray}
+  \Phi_{t,T} &=& \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1}) S_T]/B(t,T-t) \label{eq:convenience}\\
+  F_{t,T} &=& \mathbb{E}^{\mathbb{Q}}_t (S_T) \label{eq:convenience2}\\
+  S_t &=& \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1} + c_t + \ldots + c_{T-1}) S_T] \label{eq:convenience3}.
+  \end{eqnarray}
+\item
+  necessitates a joint modelling (at least under \(\mathbb{Q}\)) of: \(S_t\) (or \(s_t = \log S_t\)), \(c_t\) (convenience yield), \(r_t\) (short rate),
+\item
+  and, in general, other factors (observable or latent).
+\end{itemize}
+
+Direct or backward approach (see XXX).
+
+\begin{itemize}
+\item
+  Case of a \textbf{nonstorable commodity}. No convenience yield; if, moreover \(r_t\) deterministic, \(\Phi_{t,T} = F_{t,T} = \mathbb{E}^{\mathbb{Q}}_t (S_T)\), but since Eq. (@ref(eq:convenience3\}) is not valid we do not have \(S_t = B(t,T) \mathbb{E}^{\mathbb{Q}}_t (S_T)\) and therefore we do not have \(\Phi_{t,T} = S_t / B(t,T)\).
+  \textbackslash end\{remark\}
+\item
+  Case of a \textbf{storable commodity}
+  The price ex-convenience yield at \(t\), i.e.~\(S_t \exp (-c_t)\), is the price at \(t\) of \(S_{t+1}\):
+  \begin{eqnarray}
+  S_t \exp (-c_t) &=& \exp (-r_t) \mathbb{E}^{\mathbb{Q}}_t (S_{t+1}) \nonumber\\
+  \mathbb{E}^{\mathbb{Q}}_t (S_{t+1}) & = & S_t \exp (r_t - c_t) \label{eq:convenience4} \\
+  \mathbb{E}^{\mathbb{Q}}_t \exp (s_{t+1}) &=& \exp(s_t+r_t-c_t). \nonumber
+  \end{eqnarray}
+  Or if \(y_{t+1} = \log \frac{S_{t+1}}{S_t}\) denotes the (geometric) return, then:
+  \[
+  \mathbb{E}^{\mathbb{Q}}_t \exp (y_{t+1}) = \exp (r_t - c_t).
+  \]
+\item
+  Eq. \eqref{eq:convenience3} is automatically satisfied (using Eq. \eqref{eq:convenience4} recursively).
+\end{itemize}
+
+\hypertarget{FCFPPricingRN}{%
+\section{Pricing with Affine Models}\label{FCFPPricingRN}}
+
+\begin{itemize}
+\tightlist
+\item
+  If storable commodity:
+  \[
+  w_t = (s_t, c_t, r_t, x'_t)',
+  \]
+  where \(s_t = \log S_t\) and \(x_t\) is a vector of additional factors.
+\item
+  \(w_t\) \(\mathbb{Q}\)-affine:
+  \[
+  \mathbb{E}^{\mathbb{Q}}_t \exp (u' w_{t+1}) = \exp [a' (u) w_t + b(u)].
+  \]
+\item
+  If \(S_{t+1} = \exp (e_1' w_{t+1})\), ICCs give:
+  \begin{eqnarray*}
+  \mathbb{E}^{\mathbb{Q}}_t \exp (s_{t+1}) &=& \exp (s_t-c_t+r_t)\\
+  \Leftrightarrow \mathbb{E}^{\mathbb{Q}}_t \exp (e_1' w_{t+1}) &=& \exp [(e_1 - e_2 + e_3)' w_t]\\
+  \Leftrightarrow && \left\{\begin{array}{lcl}
+  a(e_1) &=& e_1 - e_2 + e_3 \\
+  b(e_1) & =&0
+  \end{array} \right.
+  \end{eqnarray*}
+  (if non storable, no \(c_t\), no ICCs).
+\item
+  Since (Eqs. \eqref{eq:convenience1} and \eqref{eq:convenience2}):
+  \begin{eqnarray*}
+  \Phi_{t,T} & = & \frac{\mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{t-1} + s_T)]}{\mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1})]} \\
+  F_{t,T} & = & \mathbb{E}^{\mathbb{Q}}_t [\exp (s_T)],
+  \end{eqnarray*}
+  \(\Rightarrow\) quasi explicit formulas using multihorizon Laplace transforms,
+  exponential affine in \(w_t = (s_t, c_t, r_t, x^{'}_t)'\).
+\end{itemize}
+
+\hypertarget{historical-dynamics}{%
+\section{Historical dynamics}\label{historical-dynamics}}
+
+\begin{itemize}
+\item
+  We have:
+  \[
+  M_{t,t+1} (\underline{w_{t+1}}) = \exp [-r_t + \alpha'_t w_{t+1} + \psi^{\mathbb{Q}}_t (-\alpha_t)],
+  \]
+  and
+  \[
+  \mathbb{E}^{\mathbb{Q}}_t (M_{t,t+1}^{-1}) = \exp (r_t).
+  \]
+\item
+  Historical dynamics defined through:
+  \[
+  \psi_t (u) = \psi^{\mathbb{Q}}_t (u-\alpha_t) - \psi^{\mathbb{Q}}_t(-\alpha_t).
+  \]
+\item
+  Note: no constraint on \(\alpha_t\), possibility to introduce seasonality.
+\end{itemize}
+
+\hypertarget{FCFPGaussian}{%
+\section{A Gaussian VAR Model}\label{FCFPGaussian}}
+
+\begin{itemize}
+\item
+  State vector: \(w_t = (s_t, c_t, r_t)'\).
+\item
+  \textbf{R.N. dynamics}:
+  \[
+  w_{t+1} = A_0 + A_1 w_t + \varepsilon_{t+1}, \quad \varepsilon_{t+1} \sim  i.i.d. \mathcal{N}(0,\Sigma) \mbox{ under }\mathbb{Q}.
+  \]
+\item
+  We have (see Example \ref{exm:GAR1}):
+  \begin{eqnarray*}
+  \mathbb{E}_t \exp (u' w_{t+1}) &=& \exp \left[u' (A_0 + A_1 w_t) + \frac{1}{2} u' \Sigma u\right] \\
+  \Rightarrow &&
+  \left\{
+  \begin{array}{ccl}
+  a(u) &=&A^{'}_1 u \\
+  b(u) & =& A'_0 u + \frac{1}{2} u' \Sigma u. \end{array} \right.
+  \end{eqnarray*}
+\item
+  Let us decompose \(A_0\) and \(A_1\) as follows:
+  \begin{eqnarray*}
+  A_0 &=& \left(
+  \begin{array}{c} A_{01} \\ \tilde{A}_0
+  \end{array}
+  \right), \quad A_1 = \left(
+  \begin{array}{c} A_{11} \\
+  \tilde{A}_1
+  \end{array}
+  \right).
+  \end{eqnarray*}
+\item
+  ICCs (if storable, otherwise no constraint):
+  \[
+  \left\{
+  \begin{array}{ccl}
+  a (e_1) & = & e_1 - e_2 + e_3 \\
+  b (e_1) &=& 0. \end{array}
+  \right.
+  \]
+\end{itemize}
+
+\(\Leftrightarrow\) The first row of \(A_1\) is \(A_{11} = e_1'- e_2' + e_3'\), the first element of \(A_0\) is \(A_{01} = -\frac{1}{2}\sigma^2_1\) (\(\sigma^2_1\) conditional variance of \(s_{t+1})\).
+
+\begin{itemize}
+\item
+  In other words the \(\mathbb{Q}\)-VAR is:
+
+  \centerline{$\left\{\begin{array}{cclcc} s_{t+1} & = & -\frac{1}{2}
+  \sigma^2_1 + s_t - c_t + r_t &+& \varepsilon_{1,t+1} \\
+  \left(\begin{array}{c} c_{t+1} \\ r_{t+1} \end{array} \right) & = &
+  \tilde{A}_0 + \tilde{A}_1 w_t &+& \left(\begin{array}{c} \varepsilon_{2,t+1} \\
+  \varepsilon_{3,t+1} \end{array} \right),
+  \end{array} \right.$}
+
+  (where \(\tilde{A}_0\) and \(\tilde{A}_1\) are not constrained).
+\item
+  Noting \(y_{t+1} = \log (S_{t+1}/S_t) = s_{t+1} - s_t\), this implies:
+  \[
+  \mathbb{E}^{\mathbb{Q}}_t y_{t+1} = r_t - c_t - \frac{1}{2} \sigma^2_1,
+  \]
+
+  \item[$\Rightarrow$]
+
+  \(y_{t+1} - r_t + c_t + \frac{1}{2} \sigma^2_1\) is a \(\mathbb{Q}\)-martingale difference.
+\item
+  \textbf{Historical dynamics}:
+  \[
+  \begin{array}{lcl}
+  \psi_t (u) & = & \psi^{\mathbb{Q}}_t (u-\alpha_t) - \psi^{\mathbb{Q}}_t (- \alpha_t) \\
+  &=& u' (A_0 + A_1 w_t) + \frac{1}{2} (u-\alpha_t)' \Sigma (u-\alpha_t)- \frac{1}{2} \alpha'_t
+  \Sigma \alpha_t \\
+  &=&u' (A_0 + A_1 w_t) - u' \Sigma \alpha_t + \frac{1}{2} u' \Sigma u.
+  \end{array}
+  \]
+\item
+  If we take \(\alpha_t = \alpha_0 + \alpha_1 w_t\), we get:
+  \begin{eqnarray*}
+  \psi_t (u) &=& u' [A_0 - \Sigma \alpha_0 + (A_1 - \Sigma \alpha_1) w_t] + \frac{1}{2} u' \Sigma u \\
+  \Rightarrow  w_{t+1} &=& A_0 - \Sigma \alpha_0 + (A_1 - \Sigma \alpha_1) w_t + \xi_t,\\
+  && \xi_t \sim  i.i.d.   \mathcal{N}(0,\Sigma)\; \mbox{under}\;\mathbb{P}.
+  \end{eqnarray*}
+\item
+  any VAR(1), with same \(\Sigma\), can be reached.
+\item
+  We can also take: \(\alpha_t = \alpha_{0t} + \alpha_1 w_t\). We then get the historical dynamics:
+  \[
+  w_{t+1} = A_{0} - \Sigma \alpha_{0t} + (A_1 - \Sigma \alpha_1) w_t + \xi_{t+1}
+  \]
+\item
+  We can choose \(\alpha_{0t}\) such that: \(A_{0} - \Sigma \alpha_{0t} = \left( \begin{array}{c} \mu_{1t} \\ \mu_2 \\ \mu_3 \end{array}\right)\)
+\end{itemize}
+
+(\(\mu_{1t}, \mu_2, \mu_3\) given).
+* In particular:
+\begin{eqnarray*}
+s_{t+1} & = & \mu_{1t} + (A_{11} - \Sigma_1 \alpha_1) w_t + \xi_{1,t+1} \\
+& = & \mu_{1t} + \bar{A}_{11} w_t + \xi_{1,t+1}\; \mbox{(say)}, \;
+\end{eqnarray*}
+\(\bar{A}_{11}\) not constrained, or:
+\[
+s_{t+1} - \nu_{t+1} = \mu_1 + \bar{A}_{11,1} (s_t - \nu_t) + \bar{A}_{11,2} c_t + \bar{A}_{11,3} r_t + \xi_{1,t+1}
+\]
+with
+\[
+\mu_{1t} = \mu_1 + \nu_{t+1} - \bar{A}_{11,1} \nu_t.
+\]
+* In other words any historical seasonal function \(\nu_t\) can be reached by choosing \(\mu_{1t}\), i.e.~\(\alpha_{0t}\).
+
+\hypertarget{FCFPApplications}{%
+\section{Applications}\label{FCFPApplications}}
+
+\begin{itemize}
+\tightlist
+\item
+  Source: \citet{Schwartz_1997}.
+\item
+  Three models whose discrete-time versions are:
+\item
+  \textbf{Model 1}:
+  \begin{eqnarray*}
+  \mathbb{P}&:& s_{t+1} = a_0 + a_1 s_t + \sigma \varepsilon_{t+1}, \; \; \; \varepsilon_t \stackrel{\mathbb{P}}{\sim}  i.i.d. \mathcal{N}(0,1) \\
+  \mathbb{Q} &:& s_{t+1} = a^*_0 + a_1 s_t + \sigma \xi_{t+1}, \; \; \; \xi_{t} \stackrel{\mathbb{Q}}{\sim}  i.i.d. \mathcal{N}(0,1),
+  \end{eqnarray*}
+  and \(\log F_{t,T}\) affine functions of \(s_t\).
+\item
+  \textbf{Model 2}:
+  \begin{eqnarray*}
+  \mathbb{P}&:& s_{t+1} = a_{10} + s_t - c_t + \sigma_1 \varepsilon_{1,t+1}\\
+  && c_{t+1} = a_{20} + a_{21} c_t + \sigma_2 \varepsilon_{2,t+1}\hspace{1cm} corr (\varepsilon_{1t}, \varepsilon_{2,t}) = \rho \\
+  \mathbb{Q}&:& s_{t+1} = r - \frac{\sigma^2_1}{2} + s_t - c_t + \sigma_1  \xi_{1,t+1} \\
+  && c_{t+1} = a^*_{20} + a_{21} c_t + \sigma_2 \xi_{2,t+1} \hspace{1cm} corr (\xi_{1t}, \xi_{2t}) = \rho.
+  \end{eqnarray*}
+\item
+  \textbf{Model 3}:
+  \begin{eqnarray*}
+  \mathbb{P}&:& s_{t+1} = a_{10} + s_t - c_t + r_t + \sigma_1 \varepsilon_{1,t+1} \\
+  && c_{t+1}= a_{20} + a_{21} c_t + \sigma_2 \varepsilon_{2,t+1} \\
+  && r_{r+1} = a_{30} + a_{31} r_t + \sigma_3 \varepsilon_{3,t+1} \\
+  \mathbb{Q}&:& s_{t+1} = -\frac{\sigma^2_1}{2} + s_t - c_t + r_t + \sigma_1 \xi_{1,t+1}\\
+  &&c_{t+1} = a^*_{20} + a_{21} c_t + \sigma_2 \xi_{2,t+1} \\
+  &&r_{t+1} = a_{30} + a_{31} r_t + \sigma_3 \xi_{3,t+1},
+  \end{eqnarray*}
+\end{itemize}
+
+\(corr (\varepsilon_{1t}, \varepsilon_{2t}) = \rho_1\), \(corr(\varepsilon_{2t}, \varepsilon_{3t}) = \rho_2\), \(corr(\varepsilon_{1t}, \varepsilon_{3t}) = \rho_3\), idem for the \(\xi_{it}\)'s.
+
+\(\log F_{t,T}\) affine functions of \(s_t, c_t, r_t\).
+
+\begin{itemize}
+\tightlist
+\item
+  In these models \(s_t, c_t\) are latent, the parameters are estimated by the ML method. The likelihood functions are computed by the Kalman filter.
+\item
+  The measurement equations are of the form:
+  \(\log F_{t,T} =\) affine functions of the state variables + error for various values of \(t\) and \(T\).
+\item
+  State variables: \(s_t\) or \((s_t, c_t)\), (the \(\mathbb{P}\) and \(\mathbb{Q}\) dynamics of \(r_t\) is estimated separately).
+\end{itemize}
+
+(Constraints between the \(\mathbb{P}\) and \(\mathbb{Q}\) parameters \(\Rightarrow\) helps identification)
+
+Out of sample means for maturities not used at the estimation stage. F1 contract : the closest to maturity F2 : the second contract to maturity and so one. Source: \citet{Schwartz_1997}.
+
+\hypertarget{references}{%
+\chapter{References}\label{references}}
 
   \bibliography{book.bib,packages.bib}
 

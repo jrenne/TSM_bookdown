@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: TSM.aux
+The style file: apalike.bst
+Database file #1: book.bib
+Database file #2: packages.bib
+Warning--empty publisher in Kim_Nelson_1999
+You've used 30 entries,
+            1935 wiz_defined-function locations,
+            692 strings with 9177 characters,
+and the built_in function-call counts, 11400 in all, are:
+= -- 1119
+> -- 414
+< -- 25
++ -- 132
+- -- 132
+* -- 1013
+:= -- 2001
+add.period$ -- 90
+call.type$ -- 30
+change.case$ -- 216
+chr.to.int$ -- 30
+cite$ -- 31
+duplicate$ -- 409
+empty$ -- 829
+format.name$ -- 192
+if$ -- 2229
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 27
+newline$ -- 153
+num.names$ -- 90
+pop$ -- 150
+preamble$ -- 1
+purify$ -- 216
+quote$ -- 0
+skip$ -- 310
+stack$ -- 0
+substring$ -- 872
+swap$ -- 29
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 176
+warning$ -- 1
+while$ -- 88
+width$ -- 0
+write$ -- 390
+(There was 1 warning)

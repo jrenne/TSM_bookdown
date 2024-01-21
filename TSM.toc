@@ -41,4 +41,24 @@
 \contentsline {section}{\numberline {3.4}Gaussian Affine Term Structure Model}{61}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Non-Negative Affine Term Structure Model}{66}{section.3.5}%
 \contentsline {subsection}{\numberline {3.5.1}The shadow-rate approach}{66}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}The auto-regressive gamma approach}{68}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.2}The auto-regressive gamma approach}{70}{subsection.3.5.2}%
+\contentsline {chapter}{\numberline {4}Estimation of affine asset-pricing models}{75}{chapter.4}%
+\contentsline {section}{\numberline {4.1}State-Space Model}{75}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Kalman-Filter-Based Approach}{77}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}The Gaussian linear state-space case}{77}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Missing observations}{80}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}About non-constant conditional matrix \(\mitSigma \)}{88}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Non-linear models}{89}{subsection.4.3.1}%
+\contentsline {section}{\numberline {4.4}Inversion Technique}{89}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Dealing with Unobserved Regimes}{91}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Mixed use of Kitagawa-Hamilton and inversion techniques}{94}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}A Typical Small-Sample Issue}{96}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Forward, futures, dividends, commodity pricing, and convenience yields}{99}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Forward Contracts}{99}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Futures Contracts, Futures Prices}{101}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Convenience Yields}{102}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Pricing with Affine Models}{104}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Historical dynamics}{104}{section.5.5}%
+\contentsline {section}{\numberline {5.6}A Gaussian VAR Model}{105}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Applications}{107}{section.5.7}%
+\contentsline {chapter}{\numberline {6}References}{109}{chapter.6}%

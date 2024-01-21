@@ -69,6 +69,9 @@
 <li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
 <li><a class="active" href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
+<li><a class="" href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">4</span> Estimation of affine asset-pricing models</a></li>
+<li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">5</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">6</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -101,7 +104,7 @@
 <span class="header-section-number">3.1</span> Introduction<a class="anchor" aria-label="anchor" href="#RFIntroduction"><i class="fas fa-link"></i></a>
 </h2>
 <p>Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are usually considered to be risk-free.</p>
-<p>An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models involve macro factors in <span class="math inline">\(w_t\)</span> <span class="citation">(<a href="the-term-structure-or-risk-free-yields.html#ref-Ang_Piazzesi_2003">Ang and Piazzesi 2003</a>)</span>; some do not <span class="citation">(<a href="the-term-structure-or-risk-free-yields.html#ref-Duffie_Singleton_1997">Darrel Duffie and Singleton 1997</a>)</span>. The latter are sometimes called <em>yield-only</em> models.</p>
+<p>An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models involve macro factors in <span class="math inline">\(w_t\)</span> <span class="citation">(<a href="references.html#ref-Ang_Piazzesi_2003">Ang and Piazzesi 2003</a>)</span>; some do not <span class="citation">(<a href="references.html#ref-Duffie_Singleton_1997">Darrel Duffie and Singleton 1997</a>)</span>. The latter are sometimes called <em>yield-only</em> models.</p>
 <p>The basic pricing formula of a risk-free zero coupon bond is (see Eq. <a href="ChapterAffine.html#eq:stdbond">(1.10)</a> in Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>):
 <span class="math display" id="eq:stdbondRFchapter">\[\begin{eqnarray}
 B(t,h) &amp;=&amp; \exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1})\\
@@ -147,7 +150,7 @@ If investors were not risk-averse, then we would have <span class="math inline">
 <h3>
 <span class="header-section-number">3.2.1</span> Swap rates<a class="anchor" aria-label="anchor" href="#swap-rates"><i class="fas fa-link"></i></a>
 </h3>
-<p>Bonds issued by top-rated (Aaa/AAA) countries are often considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks <span class="citation">(<a href="the-term-structure-or-risk-free-yields.html#ref-Duffie_Stein_2015">Darrell Duffie and Stein 2015</a>)</span>.</p>
+<p>Bonds issued by top-rated (Aaa/AAA) countries are often considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks <span class="citation">(<a href="references.html#ref-Duffie_Stein_2015">Darrell Duffie and Stein 2015</a>)</span>.</p>
 <div class="definition">
 <p><span id="def:swap" class="definition"><strong>Definition 3.1  (Interest Rate Swap (IRS)) </strong></span>In an Interest Rate Swap (IRS), a <em>fixed-rate payer</em> agrees to provide the <em>fixed-rate receiver</em> with a sequence of cash flows that are determined at the negotiation date of the swap, and at predetermined dates. These cash flows constitute the <em>fixed leg</em> of the swap. Conversely, the fixed-rate receiver provides the fixed-rate payer with cash-flows that depend on future values of a reference rate; this is the <em>floating rate</em> of the swap.</p>
 <p>More precisely, the dates of payment are of the form <span class="math inline">\(t+ \tau\)</span>, <span class="math inline">\(t + 2\tau\)</span>, , <span class="math inline">\(t + n\tau\)</span>, where <span class="math inline">\(\tau\)</span> is a period expressed in years (typically 1/2 or 1/4) and <span class="math inline">\(n\)</span> is the number of payments. The maturity, or <em>tenor</em>, of the swap contract is <span class="math inline">\(h = n \tau\)</span>.</p>
@@ -173,9 +176,9 @@ or
 \]</span></p>
 <p>Note that all the terms appearing in the previous formula are available in closed-form in the context of an affine model (see Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>).</p>
 </div>
-<div id="forward-rates" class="section level3" number="3.2.2">
+<div id="FWD" class="section level3" number="3.2.2">
 <h3>
-<span class="header-section-number">3.2.2</span> Forward rates<a class="anchor" aria-label="anchor" href="#forward-rates"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.2</span> Forward rates<a class="anchor" aria-label="anchor" href="#FWD"><i class="fas fa-link"></i></a>
 </h3>
 <div class="definition">
 <p><span id="def:FWD" class="definition"><strong>Definition 3.2  (Forward Rate Agreement (FRA)) </strong></span>An interest rate forward contract is a contract in which the rate to be paid or received on a specific obligation for a set period, beginning in the future, is set at contract initiation.</p>
@@ -191,9 +194,9 @@ or
 \Rightarrow f(t,h_1,h_2) &amp;=&amp; \frac{1}{h_2 - h_1}(\log[B(t,h_1)] - \log[B(t,h_2)]),
 \end{eqnarray*}\]</span>
 which gives:
-<span class="math display">\[
-\boxed{f(t,h_1,h_2) = \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1}.}
-\]</span>
+<span class="math display" id="eq:forward">\[\begin{equation}
+\boxed{f(t,h_1,h_2) = \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1}.}\tag{3.6}
+\end{equation}\]</span>
 In an affine model (where <span class="math inline">\(R(t,h)\)</span> is an affine function of the state vector <span class="math inline">\(w_t\)</span>), forward rates are linear in the state vector <span class="math inline">\(w_t\)</span>.</p>
 </div>
 </div>
@@ -212,11 +215,11 @@ B(t,h) &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t \exp (-r_{t}-\dots-r_{t+h-1})\\
 \end{eqnarray*}\]</span>
 The (blue) expectation is easily computed using the recursive equations of Lemma <a href="ChapterAffine.html#lem:MHLT">1.5</a> (see Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>), leading to:
 <span class="math display" id="eq:RthAB">\[\begin{equation}
-R(t,h)= -  \frac{1}{h}   \log   B(t,h) = A_h'w_t + B_h.\tag{3.6}
+R(t,h)= -  \frac{1}{h}   \log   B(t,h) = A_h'w_t + B_h.\tag{3.7}
 \end{equation}\]</span>
 It is easily seen that we can also get:
 <span class="math display" id="eq:RthABEH">\[\begin{equation}
-R^{EH}(t,h) = {A^{EH}_h}'w_t + B^{EH}_h.\tag{3.7}
+R^{EH}(t,h) = {A^{EH}_h}'w_t + B^{EH}_h.\tag{3.8}
 \end{equation}\]</span>
 Moreover, if inflation is also affine in <span class="math inline">\(w_t\)</span>, i.e., if <span class="math inline">\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)</span>, then real yields are given by:
 <span class="math display">\[\begin{eqnarray*}
@@ -224,9 +227,9 @@ Moreover, if inflation is also affine in <span class="math inline">\(w_t\)</span
 \end{eqnarray*}\]</span>
 (see Example <a href="ChapterAffine.html#exm:realBth">1.20</a>) which also leads to:
 <span class="math display" id="eq:RbarthAB">\[\begin{equation}
-\bar{R}(t,h) = -  \frac{1}{h}   \log   \bar{B}(t,h) = \bar{A}_h'w_t + \bar{B}_h.\tag{3.8}
+\bar{R}(t,h) = -  \frac{1}{h}   \log   \bar{B}(t,h) = \bar{A}_h'w_t + \bar{B}_h.\tag{3.9}
 \end{equation}\]</span>
-Eqs. <a href="the-term-structure-or-risk-free-yields.html#eq:RthAB">(3.6)</a> and <a href="the-term-structure-or-risk-free-yields.html#eq:RthABEH">(3.7)</a> imply that term premiums are affine in <span class="math inline">\(w_t\)</span> (see Eq. <a href="the-term-structure-or-risk-free-yields.html#eq:TP">(3.4)</a>). Specifically:
+Eqs. <a href="the-term-structure-or-risk-free-yields.html#eq:RthAB">(3.7)</a> and <a href="the-term-structure-or-risk-free-yields.html#eq:RthABEH">(3.8)</a> imply that term premiums are affine in <span class="math inline">\(w_t\)</span> (see Eq. <a href="the-term-structure-or-risk-free-yields.html#eq:TP">(3.4)</a>). Specifically:
 <span class="math display">\[
 TP(t,h) = R(t,h) - E^{EH}(t,h) = B_h - B_h^{EH} + (A_h - A_h^{EH})'w_t.
 \]</span>
@@ -238,28 +241,28 @@ which is clearly exponential affine in <span class="math inline">\(w_t\)</span> 
 <span class="math display">\[
 \log \mathbb{E}_t\left(\frac{B(t+1,h-1)}{B(t,h)}\right) - r_t
 \]</span>
-is also affine in <span class="math inline">\(w_t\)</span> in this context. The fact that excess returns are affine in this context is exploited in the estimation approach proposed by <span class="citation">Adrian, Crump, and Moench (<a href="the-term-structure-or-risk-free-yields.html#ref-Adrian_Crump_Moench_2013">2013</a>)</span>.</p>
+is also affine in <span class="math inline">\(w_t\)</span> in this context. The fact that excess returns are affine in this context is exploited in the estimation approach proposed by <span class="citation">Adrian, Crump, and Moench (<a href="references.html#ref-Adrian_Crump_Moench_2013">2013</a>)</span>.</p>
 <p>Moreover, <em>conditional expectations</em> of future interest rates (real or nominal) and of term premiums are also affine in <span class="math inline">\(w_t\)</span>. In particular:
 <span class="math display" id="eq:condmeanRth">\[\begin{equation}
-\mathbb{E}_t[R(t+k,h)] = \mathbb{E}_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{E}_t(w_{t+k}) + B_h,\tag{3.9}
+\mathbb{E}_t[R(t+k,h)] = \mathbb{E}_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{E}_t(w_{t+k}) + B_h,\tag{3.10}
 \end{equation}\]</span>
 and <span class="math inline">\(\mathbb{E}_t(w_{t+k})\)</span> is affine in <span class="math inline">\(w_t\)</span> (see Eq. <a href="ChapterAffine.html#eq:condmean">(1.15)</a>). This can notably be used at the estimation stage, if one wants to fit survey data (see Section XXX).</p>
 <p>Similarly, <em>conditional variances</em> of future interest rates (real or nominal) and of term premiums are affine in <span class="math inline">\(w_t\)</span>. In particular:
 <span class="math display" id="eq:condvarRth">\[\begin{equation}
-\mathbb{V}ar_t[R(t+k,h)] = \mathbb{V}ar_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{V}ar_t(w_{t+k})A_h,\tag{3.10}
+\mathbb{V}ar_t[R(t+k,h)] = \mathbb{V}ar_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{V}ar_t(w_{t+k})A_h,\tag{3.11}
 \end{equation}\]</span>
-where the components of <span class="math inline">\(\mathbb{V}ar_t(w_{t+k})\)</span> (and therefore <span class="math inline">\(\mathbb{V}ar_t[R(t+k,h)]\)</span>) is affine in <span class="math inline">\(w_t\)</span> (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>). This can also be used at the estimation stage, if one wants to fit (proxies of) conditional variances <span class="citation">(<a href="the-term-structure-or-risk-free-yields.html#ref-zarg_2017">Monfort et al. 2017</a>)</span>.</p>
+where the components of <span class="math inline">\(\mathbb{V}ar_t(w_{t+k})\)</span> (and therefore <span class="math inline">\(\mathbb{V}ar_t[R(t+k,h)]\)</span>) is affine in <span class="math inline">\(w_t\)</span> (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>). This can also be used at the estimation stage, if one wants to fit (proxies of) conditional variances <span class="citation">(<a href="references.html#ref-zarg_2017">Monfort et al. 2017</a>)</span>.</p>
 </div>
 <div id="maximum-sharpe-ratio" class="section level3" number="3.3.2">
 <h3>
 <span class="header-section-number">3.3.2</span> Maximum Sharpe ratio<a class="anchor" aria-label="anchor" href="#maximum-sharpe-ratio"><i class="fas fa-link"></i></a>
 </h3>
-<p>In an affine model, the maximum Sharpe ratio is easily computed. This has been noted early by <span class="citation">Duffee (<a href="the-term-structure-or-risk-free-yields.html#ref-Duffee_2010">2010</a>)</span> for the Gaussian model; <span class="citation">Gourieroux et al. (<a href="the-term-structure-or-risk-free-yields.html#ref-Gourieroux_Monfort_Mouabbi_Renne_2021">2021</a>)</span> and <span class="citation">Pallara and Renne (<a href="the-term-structure-or-risk-free-yields.html#ref-Pallara_Renne_2023">2023</a>)</span> use it in more sophisticated affine models.</p>
+<p>In an affine model, the maximum Sharpe ratio is easily computed. This has been noted early by <span class="citation">Duffee (<a href="references.html#ref-Duffee_2010">2010</a>)</span> for the Gaussian model; <span class="citation">Christian Gourieroux et al. (<a href="references.html#ref-Gourieroux_Monfort_Mouabbi_Renne_2021">2021</a>)</span> and <span class="citation">Pallara and Renne (<a href="references.html#ref-Pallara_Renne_2023">2023</a>)</span> use it in more sophisticated affine models.</p>
 <p>Let us derive the maximum Sharpe ratio in the context of a genral affine framework. Eq. <a href="the-term-structure-or-risk-free-yields.html#eq:CovRP">(3.5)</a> implies that
 <span class="math display">\[
 \mathbb{E}_t\underbrace{\left(\frac{p_{j,t+1}}{p_{j,t}} - \exp(r_t)\right)}_{=xs_{j,t+1},\mbox{ excess return}} =  - \exp(r_t) \mathbb{C}ov_t\left(\mathcal{M}_{t,t+1},\frac{p_{j,t+1}}{p_{j,t}}\right),
 \]</span>
-and, using <span class="math inline">\(|\mathbb{C}ov(X,Y)| \le \sqrt{\mathbb{V}ar(X)\mathbb{V}ar(Y)}\)</span>, we get the <span class="citation">Hansen and Jagannathan (<a href="the-term-structure-or-risk-free-yields.html#ref-Hansen_Jagannathan_1991">1991</a>)</span> bound:
+and, using <span class="math inline">\(|\mathbb{C}ov(X,Y)| \le \sqrt{\mathbb{V}ar(X)\mathbb{V}ar(Y)}\)</span>, we get the <span class="citation">Hansen and Jagannathan (<a href="references.html#ref-Hansen_Jagannathan_1991">1991</a>)</span> bound:
 <span class="math display">\[\begin{equation}
 \underbrace{\frac{\mathbb{E}_t(xs_{j,t+1})}{\sqrt{\mathbb{V}ar_t(xs_{j,t+1})}}}_{\mbox{Sharpe ratio}} \le \underbrace{\frac{\sqrt{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}}_{\mbox{Maximum Sharpe ratio}}.
 \end{equation}\]</span></p>
@@ -276,7 +279,7 @@ and, using <span class="math inline">\(|\mathbb{C}ov(X,Y)| \le \sqrt{\mathbb{V}a
 <p>The Gaussian Affine Term Structure Model (GATSM) is a <em>Workhorse</em> model, widely used in academic and economic-policy circles. In a GATSM, <span class="math inline">\(w_t\)</span> follows a Gaussian vector autoregressive model, and is therefore affine under <span class="math inline">\(\mathbb{P}\)</span>. The S.D.F. is exponential affine in <span class="math inline">\(w_t\)</span>, which implies that it is also affine under <span class="math inline">\(\mathbb{Q}\)</span> (see Subsection XXX). Since the components of <span class="math inline">\(w_t\)</span> are valued in <span class="math inline">\(\mathbb{R}\)</span>, one can easily introduce macro-factors among the state variables.</p>
 <p>Let us be more specific. The state vector <span class="math inline">\(w_t\)</span> follows:
 <span class="math display" id="eq:GaussianVAR1">\[\begin{equation}
-w_{t+1} = \mu + \Phi w_{t} + \Sigma^{1/2} \varepsilon_{t+1}, \mbox{ where } \varepsilon_{t} \sim  i.i.d. \mathcal{N}(0,Id).\tag{3.11}
+w_{t+1} = \mu + \Phi w_{t} + \Sigma^{1/2} \varepsilon_{t+1}, \mbox{ where } \varepsilon_{t} \sim  i.i.d. \mathcal{N}(0,Id).\tag{3.12}
 \end{equation}\]</span>
 (The fact that we consider a VAR(1) process is without loss of generality since a VAR(p) admits a VAR(1) companion representation.)</p>
 <p>This implies the following Laplace transform for <span class="math inline">\(w_t\)</span> (see Example <a href="#exm:Gaussian"><strong>??</strong></a>):
@@ -303,10 +306,10 @@ Hence, <span class="math inline">\(w_t\)</span> also follows a VAR process under
 w_{t+1} = \mu^{\mathbb{Q}} + \Phi^{\mathbb{Q}} w_{t} + \Sigma^{1/2} \varepsilon^*_{t+1},
 \]</span>
 where <span class="math inline">\(\mu^{\mathbb{Q}} = \mu + \Sigma \alpha_0\)</span> and <span class="math inline">\(\Phi^{\mathbb{Q}}=\Phi + \Sigma \alpha_1'\)</span>.</p>
-<p>With affine specifications of the nominal short term rate (<span class="math inline">\(r_{t} = \omega_0 + \omega'_1 w_t\)</span>) and of the inflation rate (<span class="math inline">\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)</span>), we obtain affine formulas for nominal and real yields of any maturity (Eqs. <a href="the-term-structure-or-risk-free-yields.html#eq:RthAB">(3.6)</a> and <a href="the-term-structure-or-risk-free-yields.html#eq:RbarthAB">(3.8)</a>).</p>
+<p>With affine specifications of the nominal short term rate (<span class="math inline">\(r_{t} = \omega_0 + \omega'_1 w_t\)</span>) and of the inflation rate (<span class="math inline">\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)</span>), we obtain affine formulas for nominal and real yields of any maturity (Eqs. <a href="the-term-structure-or-risk-free-yields.html#eq:RthAB">(3.7)</a> and <a href="the-term-structure-or-risk-free-yields.html#eq:RbarthAB">(3.9)</a>).</p>
 <div class="example">
 <p><span id="exm:KimWright" class="example"><strong>Example 3.1  (Kim and Wright (2005)) </strong></span>This model is a three-factor <em>yield-only model</em> (no macro variables, except inflation in one variant of the model), where the short-term rate reads <span class="math inline">\(r_t = \omega_0 + \omega_{1,1} w_{1,t} +\omega_{1,2} w_{2,t} +\omega_{1,3} w_{3,t}\)</span>.</p>
-<p>The model estimated by Kalman filter (see Subsection,<a href="#Estimation:KF"><strong>??</strong></a>; the state-space model (Def. <a href="#def:LSSM"><strong>??</strong></a>) includes survey-based variables (see Subsection <a href="#EstimationPersistency"><strong>??</strong></a>).</p>
+<p>The model estimated by Kalman filter (see Subsection,<a href="estimation-of-affine-asset-pricing-models.html#Estimation:KF">4.2</a>; the state-space model (Def. <a href="estimation-of-affine-asset-pricing-models.html#def:LSSM">4.1</a>) includes survey-based variables (see Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationPersistency">4.5</a>).</p>
 <p>Outputs are <a href="https://www.federalreserve.gov/pubs/feds/2005/200533/200533abs.html">regularly updated by the Federal Reserve Board</a>.</p>
 <p>Monthly data on the 6-month and 12-month-ahead forecasts of the three-month T-Bill yield from Blue Chip Financial Forecasts and semiannual data on the average expected three-month T-Bill yield from 6 to 11 years.</p>
 <div class="figure" style="text-align: left-aligned">
@@ -317,7 +320,7 @@ Figure 3.1: Kim and Wright (2005) outputs.
 </div>
 </div>
 <div class="example">
-<p><span id="exm:AngPiazzesi" class="example"><strong>Example 3.2  (Ang and Piazzesi (2003)) </strong></span><span class="citation">Ang and Piazzesi (<a href="the-term-structure-or-risk-free-yields.html#ref-Ang_Piazzesi_2003">2003</a>)</span> propose one of the first paper mixing latent and macrovariables. The set up is also of the form Eq. <a href="the-term-structure-or-risk-free-yields.html#eq:GaussianVAR1">(3.11)</a>, except that the VAR features several lags.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that a VAR with &lt;span class="math inline"&gt;\(p\)&lt;/span&gt; lags (i.e., a VAR(&lt;span class="math inline"&gt;\(p\)&lt;/span&gt;)) admits a VAR(1) companion form.&lt;/p&gt;'><sup>7</sup></a> In their model, <span class="math inline">\(w_t = [f^{o}_{1,t},f^{o}_{2,t},f^{u}_{1,t},f^{u}_{2,t},f^{u}_{3,t}]'\)</span> where:</p>
+<p><span id="exm:AngPiazzesi" class="example"><strong>Example 3.2  (Ang and Piazzesi (2003)) </strong></span><span class="citation">Ang and Piazzesi (<a href="references.html#ref-Ang_Piazzesi_2003">2003</a>)</span> propose one of the first paper mixing latent and macrovariables. The set up is also of the form Eq. <a href="the-term-structure-or-risk-free-yields.html#eq:GaussianVAR1">(3.12)</a>, except that the VAR features several lags.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that a VAR with &lt;span class="math inline"&gt;\(p\)&lt;/span&gt; lags (i.e., a VAR(&lt;span class="math inline"&gt;\(p\)&lt;/span&gt;)) admits a VAR(1) companion form.&lt;/p&gt;'><sup>7</sup></a> In their model, <span class="math inline">\(w_t = [f^{o}_{1,t},f^{o}_{2,t},f^{u}_{1,t},f^{u}_{2,t},f^{u}_{3,t}]'\)</span> where:</p>
 <ul>
 <li>
 <span class="math inline">\(f^{o}_{1,t}\)</span> is the first Principal Component of a set of 3 price indexes (growth rates)</li>
@@ -326,7 +329,7 @@ Figure 3.1: Kim and Wright (2005) outputs.
 <li>
 <span class="math inline">\(f^{u}_{i,t}\)</span> are unobserved, or latent, factors.</li>
 </ul>
-<p>The nominal short-term rate follows a Taylor rule. And latent factors are estimated via <em>inversion techniques</em> (Subsection <a href="#EstimationInversion"><strong>??</strong></a>).</p>
+<p>The nominal short-term rate follows a Taylor rule. And latent factors are estimated via <em>inversion techniques</em> (Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationInversion">4.4</a>).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:figAngPiazzesi"></span>
 <img src="figures/AngPiazzesi1.png" alt="Source: Ang and Piazzesi (1998). Impulse response functions." width="95%"><p class="caption">
@@ -335,7 +338,7 @@ Figure 3.2: Source: Ang and Piazzesi (1998). Impulse response functions.
 </div>
 </div>
 <div class="example">
-<p><span id="exm:JPS" class="example"><strong>Example 3.3  (Joslin, Priebsch and Singleton (2014)) </strong></span><span class="citation">Joslin, Priebsch, and Singleton (<a href="the-term-structure-or-risk-free-yields.html#ref-Joslin_Priebsch_Singleton_2014">2014</a>)</span> first note that affine models stating that the short term rate is affine in macro factors imply that macro-factors are <em>spanned</em> by the yield curve: macro-factors should be perfectly explained by yields of different maturities. Further, they show that this is not the case in the data. (That is, regressing macro factors on yields provides <span class="math inline">\(R^2\)</span> that are far from one.)</p>
+<p><span id="exm:JPS" class="example"><strong>Example 3.3  (Joslin, Priebsch and Singleton (2014)) </strong></span><span class="citation">Joslin, Priebsch, and Singleton (<a href="references.html#ref-Joslin_Priebsch_Singleton_2014">2014</a>)</span> first note that affine models stating that the short term rate is affine in macro factors imply that macro-factors are <em>spanned</em> by the yield curve: macro-factors should be perfectly explained by yields of different maturities. Further, they show that this is not the case in the data. (That is, regressing macro factors on yields provides <span class="math inline">\(R^2\)</span> that are far from one.)</p>
 <p>They propose a model where macro factors are unspanned by the yield curve, but can still help predict yields. In their model, <span class="math inline">\(w_t = [\mathcal{P}_t',M_t']'\)</span>, where <span class="math inline">\(\mathcal{P}_t\)</span> are yield factors (<span class="math inline">\(\approx\)</span> principal components) and <span class="math inline">\(M_t\)</span> are macro factors. The model is as follows:
 <span class="math display">\[\begin{eqnarray*}
 r_t &amp;=&amp; \omega_{0} + \omega_{\mathcal{P}}'\mathcal{P}_t \\
@@ -360,7 +363,7 @@ Figure 3.3: Source: Joslin, Priebsch, and Singleton (2014). Impulse response fun
 </div>
 </div>
 <div class="example">
-<p><span id="exm:Angetal2011" class="example"><strong>Example 3.4  (Ang, Boivin, Dong and Loo-Kung (2011)) </strong></span><span class="citation">Ang et al. (<a href="the-term-structure-or-risk-free-yields.html#ref-Ang_Boivin_Dong_LooKung_2011">2011</a>)</span> propose a macro-finance model based on a quadratic framework. The short-term rate follows a Taylor rule with time-varying parameters:
+<p><span id="exm:Angetal2011" class="example"><strong>Example 3.4  (Ang, Boivin, Dong and Loo-Kung (2011)) </strong></span><span class="citation">Ang et al. (<a href="references.html#ref-Ang_Boivin_Dong_LooKung_2011">2011</a>)</span> propose a macro-finance model based on a quadratic framework. The short-term rate follows a Taylor rule with time-varying parameters:
 <span class="math display">\[
 r_t = \omega_0 + a_t g_t + b_t \pi_t,
 \]</span>
@@ -403,43 +406,124 @@ Figure 3.4: Source: Ang, Boivin, Dong, Loo-Kung (2011). Estimated factor loading
 <h3>
 <span class="header-section-number">3.5.1</span> The shadow-rate approach<a class="anchor" aria-label="anchor" href="#the-shadow-rate-approach"><i class="fas fa-link"></i></a>
 </h3>
-<p>The shadow-rate model is originally due to <span class="citation">Black (<a href="the-term-structure-or-risk-free-yields.html#ref-Black_1995">1995</a>)</span>. In this model, the short term rate is given by:
+<p>The shadow-rate model is originally due to <span class="citation">Black (<a href="references.html#ref-Black_1995">1995</a>)</span>. In this model, the short term rate is given by:
 <span class="math display" id="eq:SRSTR">\[\begin{equation}
-r_t = \max(s_t,0),\tag{3.12}
+r_t = \max(s_t,\underline{r}),\tag{3.13}
 \end{equation}\]</span>
-where <span class="math inline">\(s_t\)</span> is the shadow short-term interest rate. While the latter can be real-valued, the short term rate is nonnegative under <a href="the-term-structure-or-risk-free-yields.html#eq:SRSTR">(3.12)</a>. In shadow-rate models, the shadow rate <span class="math inline">\(s_t\)</span> is usually a linear combination of a vector <span class="math inline">\(x_t\)</span> that follows a Gaussian auto-regressive model. While <span class="math inline">\(s_t\)</span> is a linear combination of components of an affine process, this is not the case for <span class="math inline">\(r_t\)</span>. As a result, pricing formula are not available in closed-form. Approximation formula have been proposed by, e.g., <span class="citation">Krippner (<a href="the-term-structure-or-risk-free-yields.html#ref-Krippner_2013">2013</a>)</span>, <span class="citation">Priebsch (<a href="the-term-structure-or-risk-free-yields.html#ref-Priebsch_2013">2013</a>)</span>, <span class="citation">Wu and Xia (<a href="the-term-structure-or-risk-free-yields.html#ref-Wu_Xia_2016">2016</a>)</span>.</p>
-<p>Let us consider the XXX.</p>
+where <span class="math inline">\(s_t\)</span> is the shadow short-term interest rate and <span class="math inline">\(\underline{r}\)</span> is the effective lower bound (<span class="math inline">\(\le 0\)</span>). While <span class="math inline">\(s_t\)</span> can be real-valued, the short term rate is nonnegative under <a href="the-term-structure-or-risk-free-yields.html#eq:SRSTR">(3.13)</a>. In shadow-rate models, the shadow rate <span class="math inline">\(s_t\)</span> is usually a linear combination of a vector <span class="math inline">\(w_t\)</span> that follows a Gaussian auto-regressive model. While <span class="math inline">\(s_t\)</span> is a linear combination of components of an affine process, this is not the case for <span class="math inline">\(r_t\)</span>. As a result, pricing formula are not available in closed-form. Approximation formula have been proposed by, e.g., <span class="citation">Krippner (<a href="references.html#ref-Krippner_2013">2013</a>)</span>, <span class="citation">Priebsch (<a href="references.html#ref-Priebsch_2013">2013</a>)</span>, <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span>.</p>
+<p>Let us describe the latter approach <span class="citation">(<a href="references.html#ref-Wu_Xia_2016">Wu and Xia 2016</a>)</span>. As in Subsection <a href="the-term-structure-or-risk-free-yields.html#RiskFreeGaussian">3.4</a>, the S.D.F. is defined as:
+<span class="math display">\[
+\mathcal{M}_{t,t+1} = \exp(- r_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t,
+\]</span>
+(this is Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:keySDF">(2.5)</a>), but the short-term rate <span class="math inline">\(r_t\)</span> is given by <span class="math inline">\(r_t = \max(s_t,0)\)</span>, with
+<span class="math display">\[
+s_t = \delta_0 + \delta_1' w_t.
+\]</span></p>
+<p>The approximation approach proposed by <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> is based on an approximation to the conditional expectations of forward rates. Using the results of Subsection <a href="the-term-structure-or-risk-free-yields.html#FWD">3.2.2</a>, we have (Eq. <a href="the-term-structure-or-risk-free-yields.html#eq:forward">(3.6)</a>):
+<span class="math display">\[
+f_{n-1,n,t} = n R_{t,n} - (n-1) R_{t,n-1}.,
+\]</span>
+for <span class="math inline">\(n&gt;0\)</span> (and using <span class="math inline">\(R_{t,0}=0\)</span>). This implies that:
+<span class="math display">\[
+R_{t,h} =  \frac{1}{h}(f_{t,0,1}+f_{t,1,2}+\dots+f_{t,h-1,h}).
+\]</span></p>
+<p>The approximation of <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> consists in finding approximations of the forward rates <span class="math inline">\(f_{t,n-1,n}\)</span> (denoted by <span class="math inline">\(\tilde{f}_{t,n-1,n}\)</span>, say) and to use them in the previous equation to get:
+<span class="math display" id="eq:RapproxSR">\[\begin{equation}
+\boxed{R_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).}\tag{3.14}
+\end{equation}\]</span></p>
+<p>Using that, for any random variable <span class="math inline">\(Z\)</span>, we have <span class="math inline">\(\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]\)</span> (based on a second order Taylor expansion), <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> further show that:
+<span class="math display">\[\begin{eqnarray}
+f_{t,n,n+1} &amp;=&amp; -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n r_{t+j}}\right)\right) + \log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^{n-1} r_{t+j}}\right)\right)\\
+&amp;\approx&amp; \mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] - \frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right).
+\end{eqnarray}\]</span></p>
+<p>The expectation can be computed analytically:
+<span class="math display">\[
+\mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] = \underline{r} + \sigma_n^{\mathbb{Q}}g\left(\frac{\bar{a}_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right),
+\]</span>
+where <span class="math inline">\(g(x)= x\Phi(x)-\phi(x)\)</span>, <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\phi\)</span> being the c.d.f. and p.d.f. of the standard normal distribution, respectively, and where
+<span class="math display">\[\begin{eqnarray*}
+\bar{a}_n &amp;=&amp; \delta_0 + \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\mu^{\mathbb{Q}}\\
+b_n' &amp;=&amp; \delta_1'\left(\Phi^{\mathbb{Q}}\right)^n.
+\end{eqnarray*}\]</span>
+They also show that
+<span class="math display">\[
+\frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right) \approx \Phi\left(\frac{\bar{a}_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right)\times(\bar{a}_n - a_n),
+\]</span>
+where
+<span class="math display">\[
+a_n = \bar{a}_n - \frac{1}{2}\sigma_n^{\mathbb{Q}},
+\]</span>
+with
+<span class="math display">\[
+\sigma_n^{\mathbb{Q}} := \mathbb{V}ar^{\mathbb{Q}}_t\left(s_{t+n}\right)= \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\Sigma \Sigma' \left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)'\delta_1.
+\]</span>
+They finally obtain:
+<span class="math display">\[
+\boxed{f_{t,n,n+1} \approx \tilde{f}_{t,n,n+1} = \underline{r} + \sigma_n^{\mathbb{Q}}g\left(\frac{a_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right),}
+\]</span>
+which is used in <a href="the-term-structure-or-risk-free-yields.html#eq:RapproxSR">(3.14)</a> to obtain an approximation to <span class="math inline">\(R_{t,h}\)</span>.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">TSModels</span><span class="op">)</span></span>
+<span><span class="co"># Specify model:</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="co"># number of factors</span></span>
+<span><span class="va">rho</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">n</span>,<span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">rho</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">.97</span></span>
+<span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">n</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">Sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="va">delta.0</span> <span class="op">&lt;-</span> <span class="fl">0</span>;<span class="va">delta.1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">.01</span>,<span class="va">n</span><span class="op">)</span></span>
+<span><span class="va">r.bar</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># r = max(s,r.bar) [i.e., r.bar=0 in standard model]</span></span>
+<span><span class="va">Model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>rho <span class="op">=</span> <span class="va">rho</span>,mu <span class="op">=</span> <span class="va">mu</span>,Sigma <span class="op">=</span> <span class="va">Sigma</span>,</span>
+<span>  delta.0 <span class="op">=</span> <span class="va">delta.0</span>,delta.1 <span class="op">=</span> <span class="va">delta.1</span>,r.bar <span class="op">=</span> <span class="va">r.bar</span><span class="op">)</span></span>
+<span><span class="co"># Simulate model and compute shadow rate:</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">simul.var</span><span class="op">(</span><span class="va">Model</span>,nb.sim <span class="op">=</span> <span class="fl">200</span><span class="op">)</span> <span class="co"># simulated path</span></span>
+<span><span class="va">s</span> <span class="op">&lt;-</span> <span class="va">delta.0</span> <span class="op">+</span> <span class="va">X</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">delta.1</span></span>
+<span><span class="co"># Compute yields:</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">compute.price.WX</span><span class="op">(</span><span class="va">Model</span>,<span class="va">X</span>,max.H<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="co"># Prepare plots:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>plt<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.1</span>,<span class="fl">.95</span>,<span class="fl">.2</span>,<span class="fl">.75</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">s</span>,type<span class="op">=</span><span class="st">"l"</span>,xlab<span class="op">=</span><span class="st">"time"</span>,ylab<span class="op">=</span><span class="st">""</span>,lwd<span class="op">=</span><span class="fl">2</span>,main<span class="op">=</span><span class="st">"(a) Shadow rate"</span><span class="op">)</span></span>
+<span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fl">50</span> <span class="co">#t &lt;- which(s==min(s))</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="va">t</span>,col<span class="op">=</span><span class="st">"dark grey"</span>,lwd<span class="op">=</span><span class="fl">2</span>,lty<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">vec.f</span><span class="op">[</span><span class="va">t</span>,<span class="op">]</span>,type<span class="op">=</span><span class="st">"l"</span>,xlab<span class="op">=</span><span class="st">"maturity"</span>,ylab<span class="op">=</span><span class="st">""</span>,</span>
+<span>     lwd<span class="op">=</span><span class="fl">2</span>,main<span class="op">=</span><span class="st">"(b) yields and forward rates"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">vec.y</span><span class="op">[</span><span class="va">t</span>,<span class="op">]</span>,col<span class="op">=</span><span class="st">"red"</span>,lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, </span>
+<span>       <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"forward rates"</span>,<span class="st">"yields to maturity"</span><span class="op">)</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,lty<span class="op">=</span><span class="fl">1</span>,</span>
+<span>       col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"black"</span>,<span class="st">"red"</span><span class="op">)</span>,bg <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:WuXia"></span>
+<img src="TSM_files/figure-html/WuXia-1.png" alt="bla bla bla." width="95%"><p class="caption">
+Figure 3.5: bla bla bla.
+</p>
+</div>
 </div>
 <div id="the-auto-regressive-gamma-approach" class="section level3" number="3.5.2">
 <h3>
 <span class="header-section-number">3.5.2</span> The auto-regressive gamma approach<a class="anchor" aria-label="anchor" href="#the-auto-regressive-gamma-approach"><i class="fas fa-link"></i></a>
 </h3>
-<p><span class="citation">Monfort et al. (<a href="the-term-structure-or-risk-free-yields.html#ref-zarg_2017">2017</a>)</span> introduce an affine framework where the short-term rate can stay at zero for a prolonged period of time and with a stochastic lift-off probability.</p>
-<div class="example">
-<p><span id="exm:ZARG" class="example"><strong>Example 3.5  (Monfort, Pegoraro, Renne and Roussellet (2017)) </strong></span></p>
-<ul>
-<li>
-<strong>Vectorial Auto-Regressive Gamma (VARG)</strong>: Multivariate extension of Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>.</li>
-</ul>
-<p>Conditionally on <span class="math inline">\(\underline{w_t}\)</span>, the <span class="math inline">\(n\)</span> components of <span class="math inline">\(w_{t+1}\)</span> are independent and distributed as follows:
+<p><span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> introduce an affine framework where the short-term rate can stay at zero for a prolonged period of time and with a stochastic lift-off probability.</p>
+<p>Under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span>, the state vector <span class="math inline">\(w_t\)</span> follows a multi-variate auto-regressive gamma (VARG) process—a multivariate extension of Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>. Conditionally on <span class="math inline">\(\underline{w_t}\)</span>, the <span class="math inline">\(n\)</span> components of <span class="math inline">\(w_{t+1}\)</span> are independent and distributed as follows:
 <span class="math display" id="eq:VARG">\[\begin{equation}
-\frac{w_{i,t+1}}{\mu_i} \sim \gamma(\nu_i+z_{i,t}) \quad \mbox{where} \quad z_{i,t} \sim {\mathcal P} \left( \alpha_i + \beta_i' w_t \right).\tag{3.13}
+\frac{w_{i,t+1}}{\mu_i} \sim \gamma(\nu_i+z_{i,t}) \quad \mbox{where} \quad z_{i,t} \sim {\mathcal P} \left( \alpha_i + \beta_i' w_t \right).\tag{3.15}
 \end{equation}\]</span>
-* If <span class="math inline">\(\mu = (\mu_1,\dots,\mu_n)'\)</span>, <span class="math inline">\(\alpha = (\alpha_1,\dots,\alpha_n)'\)</span>, <span class="math inline">\(\nu = (\nu_1,\dots,\nu_n)'\)</span> and <span class="math inline">\(\beta = (\beta_1,\dots,\beta_n)\)</span>, then
+If <span class="math inline">\(\mu = (\mu_1,\dots,\mu_n)'\)</span>, <span class="math inline">\(\alpha = (\alpha_1,\dots,\alpha_n)'\)</span>, <span class="math inline">\(\nu = (\nu_1,\dots,\nu_n)'\)</span> and <span class="math inline">\(\beta = (\beta_1,\dots,\beta_n)\)</span>, then
 <span class="math display">\[\begin{eqnarray*}
 \varphi_t(u) &amp;=&amp; \exp\left[\left(\frac{u \odot \mu}{1 - u \odot \mu}\right)'\beta' w_t \right.\\
 &amp;&amp; \left. + \alpha'\left(\frac{u \odot \mu}{1 - u \odot \mu}\right) - \nu'\log(1 - u \odot \mu)\right],
 \end{eqnarray*}\]</span>
-where <span class="math inline">\(\odot\)</span> denotes the element-by-element multiplication and, where, with abuse of notation, the division and log operators work element-by-element when applied to vectors.
-* Four factors. <span class="math inline">\(\nu_1 = \nu_2 = 0 \Rightarrow\)</span> <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span> can stay at zero.
-* The short-term rate <span class="math inline">\(r_t\)</span> is an affine combination of <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span> only, hence can stay at zero. Specification: <span class="math inline">\(r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t}\)</span>.
-* <span class="math inline">\(w_{3,t}\)</span> and <span class="math inline">\(w_{4,t}\)</span> Granger-cause <span class="math inline">\(r_t\)</span> (they cause <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span>) <span class="math inline">\(\Rightarrow\)</span> for <span class="math inline">\(h \ge 2\)</span> <span class="math inline">\(R(t,h)\)</span> is a non-zero combination of the four components of <span class="math inline">\(w_t\)</span>.
-* (when <span class="math inline">\(r_t=0\)</span>) the lift-off probability depends on <span class="math inline">\(w_{3,t}\)</span> and <span class="math inline">\(w_{4,t}\)</span>.
-* Closed-form solutions for lift-off probabilities. Based on Lemma @ref(lemma:mass}:
+where <span class="math inline">\(\odot\)</span> denotes the element-by-element multiplication and, where, with abuse of notation, the division and log operators work element-by-element when applied to vectors.</p>
+<p>In their baseline model, <span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> use four factors. They set <span class="math inline">\(\nu_1 = \nu_2 = 0\)</span>, implying that <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span> can stay at zero (see Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>). The short-term rate <span class="math inline">\(r_t\)</span> is posited to be an affine combination of <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span>, that is:
+<span class="math display">\[
+r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t},
+\]</span>
+hence, it can stay at zero.</p>
+<p>Factors <span class="math inline">\(w_{3,t}\)</span> and <span class="math inline">\(w_{4,t}\)</span> Granger-cause <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span>, thereby causing <span class="math inline">\(r_t\)</span>. As a result, for <span class="math inline">\(h \ge 2\)</span>, <span class="math inline">\(R(t,h)\)</span> is a non-zero combination of the four components of <span class="math inline">\(w_t\)</span>.</p>
+<p>For the same reason, when <span class="math inline">\(r_t=0\)</span>, the lift-off probability depends on <span class="math inline">\(w_{3,t}\)</span> and <span class="math inline">\(w_{4,t}\)</span>. The framework offers closed-form solutions for lift-off probabilities. Indeed, using Lemma <a href="#lemma:mass"><strong>??</strong></a>:
 <span class="math display">\[
 \mathbb{P}_t(\alpha'w_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\alpha),
 \]</span>
-where <span class="math inline">\(\varphi_{t,h}\)</span> is the multi-horizon Laplace transform defined in Eq. <a href="ChapterAffine.html#eq:multiLT">(1.8)</a>, which can be computed as explained in Remark XXX. We have:
+where <span class="math inline">\(\varphi_{t,h}\)</span> is the multi-horizon Laplace transform defined in Eq. <a href="ChapterAffine.html#eq:multiLT">(1.8)</a>, which can be computed using Proposition <a href="ChapterAffine.html#prp:reverseMLT">1.5</a>. We have:
 <span class="math display">\[\begin{equation}
 \left\{
 \begin{array}{l}
@@ -449,124 +533,28 @@ where <span class="math inline">\(\varphi_{t,h}\)</span> is the multi-horizon La
 \end{array}
 \right.
 \end{equation}\]</span>
-* Other lift-off probabilities, of the type <span class="math inline">\(\mathbb{P}_t[R(t+h,k)&gt;threshold]\)</span>, can be derived from Eq. <a href="ChapterAffine.html#eq:DPS">(1.18)</a>.</p>
-<ul>
-<li>Model estimated by Kalman filtering techniques (see Subsection <a href="#EstimationKF"><strong>??</strong></a>).</li>
-<li>Measurement equations: (levels of) yields, but also measurement equations involving:</li>
-<li>survey-based forecasts of yields (see Subsection <a href="#EstimationPersistency"><strong>??</strong></a> and</li>
-<li>(e-GARCH-based) proxies of conditional variances (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>).</li>
-</ul>
-<!-- \begin{figure} --><!-- \caption{Fit of surveys and cond. variance proxies} --><!-- \label{fig:fitZARG} --><!-- \begin{center} --><!-- \includegraphics[width=.8\linewidth]{figures/Figure_fit_ZARG.pdf} --><!-- %{\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} --><!-- \end{center} --><!-- \end{figure} --><!-- \begin{figure} --><!-- \caption{Lift-off probabilities} --><!-- \label{fig:LiftOff} --><!-- \begin{center} --><!-- \includegraphics[width=1\linewidth]{figures/Figure_LiftOff.pdf} --><!-- %{\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} --><!-- \end{center} --><!-- \end{figure} -->
+Other lift-off probabilities, of the type <span class="math inline">\(\mathbb{P}_t[R(t+h,k)&gt;threshold]\)</span>, can be derived from Eq. <a href="ChapterAffine.html#eq:DPS">(1.18)</a>.</p>
+<p><span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> esitmate this model by means of Kalman filtering techniques (see Subsection <a href="#EstimationKF"><strong>??</strong></a>). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationPersistency">4.5</a> and (e-GARCH-based) proxies of conditional variances (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:fitZarg"></span>
+<img src="figures/Figure_fit_ZARG.png" alt="Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters." width="95%"><p class="caption">
+Figure 3.6: Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:liftOff"></span>
+<img src="figures/Figure_LiftOff.png" alt="Source: Monfort et al. (2017). Lift-off probabilities." width="95%"><p class="caption">
+Figure 3.7: Source: Monfort et al. (2017). Lift-off probabilities.
+</p>
 </div>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Adrian_Crump_Moench_2013" class="csl-entry">
-Adrian, Tobias, Richard K. Crump, and Emanuel Moench. 2013. <span>“<span class="nocase">Pricing the Term Structure with Linear Regressions</span>.”</span> <em>Journal of Financial Economics</em> 110 (1): 110–38. <a href="https://doi.org/10.1016/j.jfineco.2013.04.009">https://doi.org/10.1016/j.jfineco.2013.04.009</a>.
-</div>
-<div id="ref-Ang_Boivin_Dong_LooKung_2011" class="csl-entry">
-Ang, Andrew, Jean Boivin, Sen Dong, and Rudy Loo-Kung. 2011. <span>“<span class="nocase">Monetary Policy Shifts and the Term Structure</span>.”</span> <em>Review of Economic Studies</em> 78 (2): 429–57. <a href="https://doi.org/10.1093/restud/rdq006">https://doi.org/10.1093/restud/rdq006</a>.
-</div>
-<div id="ref-Ang_Piazzesi_2003" class="csl-entry">
-Ang, Andrew, and Monika Piazzesi. 2003. <span>“<span class="nocase">A No-Arbitrage Vector Autoregression of Term Structure Dynamics with Macroeconomic and Latent Variables</span>.”</span> <em>Journal of Monetary Economics</em> 50 (4): 745–87. <a href="https://doi.org/10.1016/S0304-3932(03)00032-1">https://doi.org/10.1016/S0304-3932(03)00032-1</a>.
-</div>
-<div id="ref-Black_1995" class="csl-entry">
-Black, Fischer. 1995. <span>“<span class="nocase">Interest Rates as Options</span>.”</span> <em>The Journal of Finance</em> 50 (5): 1371–76. <a href="https://doi.org/10.2307/2329320">https://doi.org/10.2307/2329320</a>.
-</div>
-<div id="ref-Chikhani_Renne_2022" class="csl-entry">
-Chikhani, Pauline, and Jean-Paul Renne. 2023. <span>“<span class="nocase">An Analytical Framework to Price Long-Dated Climate-Exposed Assets</span>.”</span> University of Lausanne working paper. University of Lausanne. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3881262">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3881262</a>.
-</div>
-<div id="ref-Christensen_Diebold_Rudebusch_2009" class="csl-entry">
-Christensen, Jens H. E., Francis X. Diebold, and Glenn D. Rudebusch. 2009. <span>“<span class="nocase">An Arbitrage-free Generalized Nelson–Siegel Term Structure Model</span>.”</span> <em>The Econometrics Journal</em> 12 (3): C33–64. <a href="https://doi.org/10.1111/j.1368-423X.2008.00267.x">https://doi.org/10.1111/j.1368-423X.2008.00267.x</a>.
-</div>
-<div id="ref-Duffee_2010" class="csl-entry">
-Duffee, Greg. 2010. <span>“<span class="nocase">Sharpe Ratios in Term Structure Models</span>.”</span> Economics Working Paper Archive 575. The Johns Hopkins University,Department of Economics. <a href="http://www.econ2.jhu.edu/REPEC/papers/wp575.pdf">http://www.econ2.jhu.edu/REPEC/papers/wp575.pdf</a>.
-</div>
-<div id="ref-Duffie_Pan_Singleton_2000" class="csl-entry">
-Duffie, Darrell, Jun Pan, and Kenneth Singleton. 2000. <span>“<span class="nocase">Transform Analysis and Asset Pricing for Affine Jump-Diffusions</span>.”</span> <em>Econometrica</em> 68 (6): 1343–76. <a href="https://doi.org/10.1111/1468-0262.00164">https://doi.org/10.1111/1468-0262.00164</a>.
-</div>
-<div id="ref-Duffie_Stein_2015" class="csl-entry">
-Duffie, Darrell, and Jeremy C. Stein. 2015. <span>“<span class="nocase">Reforming LIBOR and Other Financial Market Benchmarks</span>.”</span> <em>Journal of Economic Perspectives</em> 29 (2): 191–212. <a href="https://www.aeaweb.org/articles?id=10.1257/jep.29.2.191">https://www.aeaweb.org/articles?id=10.1257/jep.29.2.191</a>.
-</div>
-<div id="ref-Duffie_Singleton_1997" class="csl-entry">
-Duffie, Darrel, and Kenneth J. Singleton. 1997. <span>“<span class="nocase">An Econometric Model of the Term Structure of Interest-Rate Swap Yields</span>.”</span> <em>The Journal of Finance</em> 52 (4): 1287–1321. <a href="https://doi.org/10.1111/j.1540-6261.1997.tb01111.x">https://doi.org/10.1111/j.1540-6261.1997.tb01111.x</a>.
-</div>
-<div id="ref-Gourieroux_Jasiak_2006" class="csl-entry">
-Gourieroux, Christian, and Joann Jasiak. 2006. <span>“<span>Autoregressive Gamma Processes</span>.”</span> <em>Journal of Forecasting</em> 25 (2): 129–52. <a href="https://doi.org/10.1002/for.978">https://doi.org/10.1002/for.978</a>.
-</div>
-<div id="ref-Gourieroux_Monfort_Mouabbi_Renne_2021" class="csl-entry">
-Gourieroux, Christian, Alain Monfort, Sarah Mouabbi, and Jean-Paul Renne. 2021. <span>“<span>Disastrous Defaults</span>.”</span> <em>Review of Finance</em> 25 (6): 1727–72. <a href="https://doi.org/10.1093/rof/rfaa042">https://doi.org/10.1093/rof/rfaa042</a>.
-</div>
-<div id="ref-Hansen_Jagannathan_1991" class="csl-entry">
-Hansen, Lars Peter, and Ravi Jagannathan. 1991. <span>“<span class="nocase">Implications of Security Market Data for Models of Dynamic Economies</span>.”</span> <em>Journal of Political Economy</em> 99 (2): 225–62. <a href="https://doi.org/10.1086/261749">https://doi.org/10.1086/261749</a>.
-</div>
-<div id="ref-Joslin_Priebsch_Singleton_2014" class="csl-entry">
-Joslin, Scott, Marcel Priebsch, and Kenneth J. Singleton. 2014. <span>“<span class="nocase">Risk Premiums in Dynamic Term Structure Models with Unspanned Macro Risks</span>.”</span> <em>The Journal of Finance</em> 69 (3): 1197–1233. <a href="https://doi.org/10.1111/jofi.12131">https://doi.org/10.1111/jofi.12131</a>.
-</div>
-<div id="ref-Krippner_2013" class="csl-entry">
-Krippner, Leo. 2013. <span>“<span class="nocase">A Tractable Framework for Zero Lower Bound Gaussian Term Structure Models</span>.”</span> Reserve Bank of New Zealand Discussion Paper Series DP2013/02. Reserve Bank of New Zealand. <a href="https://ideas.repec.org/p/nzb/nzbdps/2013-02.html">https://ideas.repec.org/p/nzb/nzbdps/2013-02.html</a>.
-</div>
-<div id="ref-zarg_2017" class="csl-entry">
-Monfort, Alain, Fulvio Pegoraro, Jean-Paul Renne, and Guillaume Roussellet. 2017. <span>“<span class="nocase">Staying at Zero with Affine Processes: An Application to Term Structure Modelling</span>.”</span> <em>Journal of Econometrics</em> 201 (2): 348–66. <a href="https://doi.org/10.1016/j.jeconom.2017.08.013">https://doi.org/10.1016/j.jeconom.2017.08.013</a>.
-</div>
-<div id="ref-Pallara_Renne_2023" class="csl-entry">
-Pallara, Kevin, and Jean-Paul Renne. 2023. <span>“<span class="nocase">Fiscal Limits and the Pricing of Eurobonds</span>.”</span> <em>Management Science</em> 0 (0): null. <a href="https://doi.org/10.1287/mnsc.2023.4740">https://doi.org/10.1287/mnsc.2023.4740</a>.
-</div>
-<div id="ref-Priebsch_2013" class="csl-entry">
-Priebsch, Marcel A. 2013. <span>“<span class="nocase">Computing Arbitrage-Free Yields in Multi-Factor Gaussian Shadow-Rate Term Structure Models</span>.”</span> Finance and Economics Discussion Series 2013-63. Board of Governors of the Federal Reserve System (U.S.). <a href="https://www.federalreserve.gov/pubs/feds/2013/201363/201363pap.pdf">https://www.federalreserve.gov/pubs/feds/2013/201363/201363pap.pdf</a>.
-</div>
-<div id="ref-Wu_Xia_2016" class="csl-entry">
-Wu, Jing Cynthia, and Fan Dora Xia. 2016. <span>“<span class="nocase">Measuring the Macroeconomic Impact of Monetary Policy at the Zero Lower Bound</span>.”</span> <em>Journal of Money, Credit and Banking</em> 48 (2-3): 253–91. <a href="https://doi.org/10.1111/jmcb.12300">https://doi.org/10.1111/jmcb.12300</a>.
 </div>
 </div>
 </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <div class="chapter-nav">
 <div class="prev"><a href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></div>
-<div class="empty"></div>
+<div class="next"><a href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">4</span> Estimation of affine asset-pricing models</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -575,7 +563,7 @@ Wu, Jing Cynthia, and Fan Dora Xia. 2016. <span>“<span class="nocase">Measurin
 <li>
 <a class="nav-link" href="#swap-rates-and-forward-rates"><span class="header-section-number">3.2</span> Swap rates and forward rates</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#swap-rates"><span class="header-section-number">3.2.1</span> Swap rates</a></li>
-<li><a class="nav-link" href="#forward-rates"><span class="header-section-number">3.2.2</span> Forward rates</a></li>
+<li><a class="nav-link" href="#FWD"><span class="header-section-number">3.2.2</span> Forward rates</a></li>
 </ul>
 </li>
 <li>
@@ -607,7 +595,7 @@ Wu, Jing Cynthia, and Fan Dora Xia. 2016. <span>“<span class="nocase">Measurin
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-14.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

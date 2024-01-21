@@ -105,7 +105,7 @@ $$
 
 Note that all the terms appearing in the previous formula are available in closed-form in the context of an affine model (see Example \@ref(exm:nominalBth)).
 
-### Forward rates
+### Forward rates {#FWD}
 
 :::{.definition #FWD name="Forward Rate Agreement (FRA)"}
 An interest rate forward contract is a contract in which the rate to be paid or received on a specific obligation for a set period, beginning in the future, is set at contract initiation.
@@ -122,9 +122,9 @@ These two strategies deliver the same payoffs on date $t$ (the payoff is zero) a
 \Rightarrow f(t,h_1,h_2) &=& \frac{1}{h_2 - h_1}(\log[B(t,h_1)] - \log[B(t,h_2)]),
 \end{eqnarray*}
 which gives:
-$$
-\boxed{f(t,h_1,h_2) = \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1}.}
-$$
+\begin{equation}
+\boxed{f(t,h_1,h_2) = \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1}.}(\#eq:forward)
+\end{equation}
 In an affine model (where $R(t,h)$ is an affine function of the state vector $w_t$), forward rates are linear in the state vector $w_t$.
 
 
@@ -379,9 +379,9 @@ In the presence of physical currency, absence of arbitrage opportunity and of st
 
 The shadow-rate model is originally due to @Black_1995. In this model, the short term rate is given by:
 \begin{equation}
-r_t = \max(s_t,0),(\#eq:SRSTR)
+r_t = \max(s_t,\underline{r}),(\#eq:SRSTR)
 \end{equation}
-where $s_t$ is the shadow short-term interest rate. While the latter can be real-valued, the short term rate is nonnegative under \@ref(eq:SRSTR). In shadow-rate models, the shadow rate $s_t$ is usually a linear combination of a vector $w_t$ that follows a Gaussian auto-regressive model. While $s_t$ is a linear combination of components of an affine process, this is not the case for $r_t$. As a result, pricing formula are not available in closed-form. Approximation formula have been proposed by, e.g., @Krippner_2013, @Priebsch_2013, @Wu_Xia_2016.
+where $s_t$ is the shadow short-term interest rate and $\underline{r}$ is the effective lower bound ($\le 0$). While $s_t$ can be real-valued, the short term rate is nonnegative under \@ref(eq:SRSTR). In shadow-rate models, the shadow rate $s_t$ is usually a linear combination of a vector $w_t$ that follows a Gaussian auto-regressive model. While $s_t$ is a linear combination of components of an affine process, this is not the case for $r_t$. As a result, pricing formula are not available in closed-form. Approximation formula have been proposed by, e.g., @Krippner_2013, @Priebsch_2013, @Wu_Xia_2016.
 
 Let us describe the latter approach [@Wu_Xia_2016]. As in Subsection \@ref(RiskFreeGaussian), the S.D.F. is defined as:
 $$
@@ -392,45 +392,115 @@ $$
 s_t = \delta_0 + \delta_1' w_t.
 $$
 
-The approximation approach proposed by @Wu_Xia_2016 is based on an approximation to the conditional expectations of forward rates. Consider the forward rate 
+The approximation approach proposed by @Wu_Xia_2016 is based on an approximation to the conditional expectations of forward rates. Using the results of Subsection \@ref(FWD), we have (Eq. \@ref(eq:forward)):
 $$
-f_{n,n+1,t} = (n+1)R_{t,n+1} - n R_{t,n}
+f_{n-1,n,t} = n R_{t,n} - (n-1) R_{t,n-1}.,
 $$
-It is such that:
+for $n>0$ (and using $R_{t,0}=0$). This implies that:
 $$
-B(t,h) = \exp(-f_{t,0,1}-f_{t,1,2}-\dots-f_{t,h-1,h}).
+R_{t,h} =  \frac{1}{h}(f_{t,0,1}+f_{t,1,2}+\dots+f_{t,h-1,h}).
 $$
+
+The approximation of @Wu_Xia_2016 consists in finding approximations of the forward rates $f_{t,n-1,n}$ (denoted by $\tilde{f}_{t,n-1,n}$, say) and to use them in the previous equation to get:
+\begin{equation}
+\boxed{R_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).}(\#eq:RapproxSR)
+\end{equation}
+
+Using that, for any random variable $Z$, we have $\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]$ (based on a second order Taylor expansion), @Wu_Xia_2016 further show that:
+\begin{eqnarray}
+f_{t,n,n+1} &=& -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n r_{t+j}}\right)\right) + \log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^{n-1} r_{t+j}}\right)\right)\\
+&\approx& \mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] - \frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right).
+\end{eqnarray}
+
+The expectation can be computed analytically:
+$$
+\mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] = \underline{r} + \sigma_n^{\mathbb{Q}}g\left(\frac{\bar{a}_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right),
+$$
+where $g(x)= x\Phi(x)-\phi(x)$, $\Phi$ and $\phi$ being the c.d.f. and p.d.f. of the standard normal distribution, respectively, and where
+\begin{eqnarray*}
+\bar{a}_n &=& \delta_0 + \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\mu^{\mathbb{Q}}\\
+b_n' &=& \delta_1'\left(\Phi^{\mathbb{Q}}\right)^n.
+\end{eqnarray*}
+They also show that
+$$
+\frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right) \approx \Phi\left(\frac{\bar{a}_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right)\times(\bar{a}_n - a_n),
+$$
+where
+$$
+a_n = \bar{a}_n - \frac{1}{2}\sigma_n^{\mathbb{Q}},
+$$
+with
+$$
+\sigma_n^{\mathbb{Q}} := \mathbb{V}ar^{\mathbb{Q}}_t\left(s_{t+n}\right)= \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\Sigma \Sigma' \left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)'\delta_1.
+$$
+They finally obtain:
+$$
+\boxed{f_{t,n,n+1} \approx \tilde{f}_{t,n,n+1} = \underline{r} + \sigma_n^{\mathbb{Q}}g\left(\frac{a_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right),}
+$$
+which is used in \@ref(eq:RapproxSR) to obtain an approximation to $R_{t,h}$.
+
+
+```{r WuXia, fig.align = 'center', out.width = "95%", fig.cap = "bla bla bla.",echo=TRUE}
+library(TSModels)
+# Specify model:
+n <- 2 # number of factors
+rho <- matrix(0,n,n)
+diag(rho) <- .97
+mu <- matrix(0,n,1)
+Sigma <- diag(n)
+delta.0 <- 0;delta.1 <- rep(.01,n)
+r.bar <- 0 # r = max(s,r.bar) [i.e., r.bar=0 in standard model]
+Model <- list(rho = rho,mu = mu,Sigma = Sigma,
+  delta.0 = delta.0,delta.1 = delta.1,r.bar = r.bar)
+# Simulate model and compute shadow rate:
+X <- simul.var(Model,nb.sim = 200) # simulated path
+s <- delta.0 + X %*% delta.1
+# Compute yields:
+res <- compute.price.WX(Model,X,max.H=100)
+# Prepare plots:
+par(plt=c(.1,.95,.2,.75))
+par(mfrow=c(2,1))
+plot(s,type="l",xlab="time",ylab="",lwd=2,main="(a) Shadow rate")
+t <- 50 #t <- which(s==min(s))
+abline(v=t,col="dark grey",lwd=2,lty=3)
+plot(res$vec.f[t,],type="l",xlab="maturity",ylab="",
+     lwd=2,main="(b) yields and forward rates")
+lines(res$vec.y[t,],col="red",lwd=2)
+legend("topright", 
+       c("forward rates","yields to maturity"),lwd=c(2),lty=1,
+       col=c("black","red"),bg = "white")
+```
+
 
 
 ### The auto-regressive gamma approach
 
 @zarg_2017 introduce an affine framework where the short-term rate can stay at zero for a prolonged period of time and with a stochastic lift-off probability.
 
-
-
-:::{.example #ZARG name="Monfort, Pegoraro, Renne and Roussellet (2017)"}
-
-* **Vectorial Auto-Regressive Gamma (VARG)**: Multivariate extension of Example \@ref(exm:ARG1).
-
-Conditionally on $\underline{w_t}$, the $n$ components of $w_{t+1}$ are independent and distributed as follows:
+Under $\mathbb{P}$ and $\mathbb{Q}$, the state vector $w_t$ follows a multi-variate auto-regressive gamma (VARG) process---a multivariate extension of Example \@ref(exm:ARG1). Conditionally on $\underline{w_t}$, the $n$ components of $w_{t+1}$ are independent and distributed as follows:
 \begin{equation}
 \frac{w_{i,t+1}}{\mu_i} \sim \gamma(\nu_i+z_{i,t}) \quad \mbox{where} \quad z_{i,t} \sim {\mathcal P} \left( \alpha_i + \beta_i' w_t \right).(\#eq:VARG)
 \end{equation}
-* If $\mu = (\mu_1,\dots,\mu_n)'$, $\alpha = (\alpha_1,\dots,\alpha_n)'$, $\nu = (\nu_1,\dots,\nu_n)'$ and $\beta = (\beta_1,\dots,\beta_n)$, then
+If $\mu = (\mu_1,\dots,\mu_n)'$, $\alpha = (\alpha_1,\dots,\alpha_n)'$, $\nu = (\nu_1,\dots,\nu_n)'$ and $\beta = (\beta_1,\dots,\beta_n)$, then
 \begin{eqnarray*}
 \varphi_t(u) &=& \exp\left[\left(\frac{u \odot \mu}{1 - u \odot \mu}\right)'\beta' w_t \right.\\
 && \left. + \alpha'\left(\frac{u \odot \mu}{1 - u \odot \mu}\right) - \nu'\log(1 - u \odot \mu)\right],
 \end{eqnarray*}
 where $\odot$ denotes the element-by-element multiplication and, where, with abuse of notation, the division and log operators work element-by-element when applied to vectors.
-* Four factors. $\nu_1 = \nu_2 = 0 \Rightarrow$ $w_{1,t}$ and $w_{2,t}$ can stay at zero.
-* The short-term rate $r_t$ is an affine combination of $w_{1,t}$ and $w_{2,t}$ only, hence can stay at zero. Specification: $r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t}$.
-* $w_{3,t}$ and $w_{4,t}$ Granger-cause $r_t$ (they cause $w_{1,t}$ and $w_{2,t}$) $\Rightarrow$ for $h \ge 2$ $R(t,h)$ is a non-zero combination of the four components of $w_t$.
-* (when $r_t=0$) the lift-off probability depends on $w_{3,t}$ and $w_{4,t}$.
-* Closed-form solutions for lift-off probabilities. Based on Lemma \@ref(lemma:mass}:
+
+In their baseline model, @zarg_2017 use four factors. They set $\nu_1 = \nu_2 = 0$, implying that $w_{1,t}$ and $w_{2,t}$ can stay at zero (see Example \@ref(exm:ARG1)). The short-term rate $r_t$ is posited to be an affine combination of $w_{1,t}$ and $w_{2,t}$, that is:
+$$
+r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t},
+$$
+hence, it can stay at zero.
+
+Factors $w_{3,t}$ and $w_{4,t}$ Granger-cause $w_{1,t}$ and $w_{2,t}$, thereby causing $r_t$. As a result, for $h \ge 2$, $R(t,h)$ is a non-zero combination of the four components of $w_t$.
+
+For the same reason, when $r_t=0$, the lift-off probability depends on $w_{3,t}$ and $w_{4,t}$. The framework offers closed-form solutions for lift-off probabilities. Indeed, using Lemma \@ref(lemma:mass):
 $$
 \mathbb{P}_t(\alpha'w_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\alpha),
 $$
-where $\varphi_{t,h}$ is the multi-horizon Laplace transform defined in Eq. \@ref(eq:multiLT), which can be computed as explained in Remark XXX. We have:
+where $\varphi_{t,h}$ is the multi-horizon Laplace transform defined in Eq. \@ref(eq:multiLT), which can be computed using Proposition \@ref(prp:reverseMLT). We have:
 \begin{equation}
 \left\{
 \begin{array}{l}
@@ -440,38 +510,16 @@ where $\varphi_{t,h}$ is the multi-horizon Laplace transform defined in Eq. \@re
 \end{array}
 \right.
 \end{equation}
-* Other lift-off probabilities, of the type $\mathbb{P}_t[R(t+h,k)>threshold]$, can be derived from Eq. \@ref(eq:DPS).
+Other lift-off probabilities, of the type $\mathbb{P}_t[R(t+h,k)>threshold]$, can be derived from Eq. \@ref(eq:DPS).
 
-* Model estimated by Kalman filtering techniques (see Subsection \@ref(EstimationKF)).
-* Measurement equations: (levels of) yields, but also measurement equations involving:
-* survey-based forecasts of yields (see Subsection \@ref(EstimationPersistency) and
-* (e-GARCH-based) proxies of conditional variances (see Eq. \@ref(eq:condvar)).
+@zarg_2017 esitmate this model by means of Kalman filtering techniques (see Subsection \@ref(EstimationKF)). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection \@ref(EstimationPersistency) and (e-GARCH-based) proxies of conditional variances (see Eq. \@ref(eq:condvar)).
 
 
+```{r fitZarg, fig.align = 'center', out.width = "95%", fig.cap = "Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters.", echo=FALSE}
+knitr::include_graphics("figures/Figure_fit_ZARG.png")
+```
 
-<!-- \begin{figure} -->
-<!-- \caption{Fit of surveys and cond. variance proxies} -->
-<!-- \label{fig:fitZARG} -->
-<!-- \begin{center} -->
-<!-- \includegraphics[width=.8\linewidth]{figures/Figure_fit_ZARG.pdf} -->
-
-<!-- %{\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} -->
-<!-- \end{center} -->
-<!-- \end{figure} -->
-
-<!-- \begin{figure} -->
-<!-- \caption{Lift-off probabilities} -->
-<!-- \label{fig:LiftOff} -->
-<!-- \begin{center} -->
-<!-- \includegraphics[width=1\linewidth]{figures/Figure_LiftOff.pdf} -->
-
-<!-- %{\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} -->
-<!-- \end{center} -->
-<!-- \end{figure} -->
-:::
-
-
-
-
-
+```{r liftOff, fig.align = 'center', out.width = "95%", fig.cap = "Source: Monfort et al. (2017). Lift-off probabilities.", echo=FALSE}
+knitr::include_graphics("figures/Figure_LiftOff.png")
+```
 

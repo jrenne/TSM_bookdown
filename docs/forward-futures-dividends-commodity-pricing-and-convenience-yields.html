@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 4 Forward, futures, dividends, commodity pricing, and convenience yields | Introduction to Term Structure Models</title>
-<meta name="author" content="Jean-Paul Renne">
-<meta name="description" content="4.1 Forward Contracts  \(\underline{w_{t}}\) : information at \(t\) Forward contract : Agreement signed at \(t\) (to-day) to buy/sell an asset (a commodity) at a given delivery date \(T&gt;t\) at a...">
+<title>Chapter 5 Forward, futures, dividends, commodity pricing, and convenience yields | Introduction to Term Structure Models</title>
+<meta name="author" content="Jean-Paul Renne and Alain Monfort">
+<meta name="description" content="5.1 Forward Contracts  \(\underline{w_{t}}\) : information at \(t\) Forward contract : Agreement signed at \(t\) (to-day) to buy/sell an asset (a commodity) at a given delivery date \(T&gt;t\) at a...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 4 Forward, futures, dividends, commodity pricing, and convenience yields | Introduction to Term Structure Models">
+<meta property="og:title" content="Chapter 5 Forward, futures, dividends, commodity pricing, and convenience yields | Introduction to Term Structure Models">
 <meta property="og:type" content="book">
-<meta property="og:description" content="4.1 Forward Contracts  \(\underline{w_{t}}\) : information at \(t\) Forward contract : Agreement signed at \(t\) (to-day) to buy/sell an asset (a commodity) at a given delivery date \(T&gt;t\) at a...">
+<meta property="og:description" content="5.1 Forward Contracts  \(\underline{w_{t}}\) : information at \(t\) Forward contract : Agreement signed at \(t\) (to-day) to buy/sell an asset (a commodity) at a given delivery date \(T&gt;t\) at a...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 4 Forward, futures, dividends, commodity pricing, and convenience yields | Introduction to Term Structure Models">
-<meta name="twitter:description" content="4.1 Forward Contracts  \(\underline{w_{t}}\) : information at \(t\) Forward contract : Agreement signed at \(t\) (to-day) to buy/sell an asset (a commodity) at a given delivery date \(T&gt;t\) at a...">
+<meta name="twitter:title" content="Chapter 5 Forward, futures, dividends, commodity pricing, and convenience yields | Introduction to Term Structure Models">
+<meta name="twitter:description" content="5.1 Forward Contracts  \(\underline{w_{t}}\) : information at \(t\) Forward contract : Agreement signed at \(t\) (to-day) to buy/sell an asset (a commodity) at a given delivery date \(T&gt;t\) at a...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -66,11 +66,11 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
-<li><a class="" href="affine-processes.html"><span class="header-section-number">1</span> Affine processes</a></li>
+<li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
-<li><a class="" href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">3</span> Estimation of affine asset-pricing models</a></li>
-<li><a class="active" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">4</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
-<li><a class="" href="credit-and-liquidity-risks.html"><span class="header-section-number">5</span> Credit and liquidity risks</a></li>
+<li><a class="" href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
+<li><a class="" href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">4</span> Estimation of affine asset-pricing models</a></li>
+<li><a class="active" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">5</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
 <li><a class="" href="references.html"><span class="header-section-number">6</span> References</a></li>
 </ul>
 
@@ -79,13 +79,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="forward-futures-dividends-commodity-pricing-and-convenience-yields" class="section level1" number="4">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="forward-futures-dividends-commodity-pricing-and-convenience-yields" class="section level1" number="5">
 <h1>
-<span class="header-section-number">4</span> Forward, futures, dividends, commodity pricing, and convenience yields<a class="anchor" aria-label="anchor" href="#forward-futures-dividends-commodity-pricing-and-convenience-yields"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5</span> Forward, futures, dividends, commodity pricing, and convenience yields<a class="anchor" aria-label="anchor" href="#forward-futures-dividends-commodity-pricing-and-convenience-yields"><i class="fas fa-link"></i></a>
 </h1>
-<div id="FCFPForwards" class="section level2" number="4.1">
+<div id="FCFPForwards" class="section level2" number="5.1">
 <h2>
-<span class="header-section-number">4.1</span> Forward Contracts<a class="anchor" aria-label="anchor" href="#FCFPForwards"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1</span> Forward Contracts<a class="anchor" aria-label="anchor" href="#FCFPForwards"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -102,7 +102,7 @@
 <span class="math inline">\(B(t_1,t_2-t_1)\)</span>: date-<span class="math inline">\(t_1\)</span> price of a zero-coupon bond whose value is 1 on <span class="math inline">\(t_2\)</span>.</li>
 </ul>
 <div class="proposition">
-<p><span id="prp:fwd" class="proposition"><strong>Proposition 4.1  (Forward price) </strong></span>We have:
+<p><span id="prp:fwd" class="proposition"><strong>Proposition 5.1  (Forward price) </strong></span>We have:
 <span class="math display">\[\begin{eqnarray*}
 \Phi_{t,T} &amp; = &amp; \frac{\mathbb{E}_t (M_{t,t+1}, \ldots, M_{T-1,T} S_T)}{B(t,T-t)}\\
 &amp; = &amp; \frac{\mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1}) S_T]}{B(t,T-t)}.
@@ -162,9 +162,9 @@ If <span class="math inline">\(r_t\)</span> deterministic too:
 </li>
 </ul>
 </div>
-<div id="FCFPFutures" class="section level2" number="4.2">
+<div id="FCFPFutures" class="section level2" number="5.2">
 <h2>
-<span class="header-section-number">4.2</span> Futures Contracts, Futures Prices<a class="anchor" aria-label="anchor" href="#FCFPFutures"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2</span> Futures Contracts, Futures Prices<a class="anchor" aria-label="anchor" href="#FCFPFutures"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Futures contract: agreement signed at <span class="math inline">\(t\)</span> to buy/sell an asset (a commodity) at given delivery date <span class="math inline">\(T&gt;t\)</span> at a price <span class="math inline">\(F_{t,T}\)</span> (futures price) decided at <span class="math inline">\(t\)</span>.</li>
@@ -177,22 +177,22 @@ If <span class="math inline">\(r_t\)</span> deterministic too:
 <p><span class="math inline">\(\Rightarrow\)</span> A Futures contract is actually closed out after every
 day, starts afresh the next day and therefore is valued zero.</p>
 <div class="proposition">
-<p><span id="prp:future" class="proposition"><strong>Proposition 4.2  (Pricing futures) </strong></span>We have:
+<p><span id="prp:future" class="proposition"><strong>Proposition 5.2  (Pricing futures) </strong></span>We have:
 <span class="math display">\[
 F_{t,T} = \mathbb{E}^{\mathbb{Q}}_t (S_T),
 \]</span>
 that is <span class="math inline">\(F_{t,T}\)</span> is a <span class="math inline">\(\mathbb{Q}\)</span>-martingale, or <span class="math inline">\(\Delta_{t,T}\)</span> is a <span class="math inline">\(\mathbb{Q}\)</span>-martingale difference.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-22" class="proof"><em>Proof</em>. </span>At each date <span class="math inline">\(s\ge t\)</span>, after the deposit of the resettlement payment, there is a new contract valued zero and paying <span class="math inline">\(F_{s+1,T} - F_{s,T}\)</span> at <span class="math inline">\(s+1\)</span> (and providing another zero valued contract at <span class="math inline">\(s+1\)</span>). Therefore <span class="math inline">\(0 = \mathbb{E}^{\mathbb{Q}}_s [\exp (-r_s) (F_{s+1,T} - F_{s,T})]\)</span>, and <span class="math inline">\(0 = \mathbb{E}^{\mathbb{Q}}_s (F_{s+1,T} - F_{s,T})\)</span> since <span class="math inline">\(\exp (-r_s)\)</span> is known at <span class="math inline">\(s\)</span>. Hence <span class="math inline">\(F_{s,T} = \mathbb{E}^{\mathbb{Q}}_s (F_{s+1,T})\)</span>, and the results follows from <span class="math inline">\(F_{T,T} = S_T\)</span>.</p>
+<p><span id="unlabeled-div-20" class="proof"><em>Proof</em>. </span>At each date <span class="math inline">\(s\ge t\)</span>, after the deposit of the resettlement payment, there is a new contract valued zero and paying <span class="math inline">\(F_{s+1,T} - F_{s,T}\)</span> at <span class="math inline">\(s+1\)</span> (and providing another zero valued contract at <span class="math inline">\(s+1\)</span>). Therefore <span class="math inline">\(0 = \mathbb{E}^{\mathbb{Q}}_s [\exp (-r_s) (F_{s+1,T} - F_{s,T})]\)</span>, and <span class="math inline">\(0 = \mathbb{E}^{\mathbb{Q}}_s (F_{s+1,T} - F_{s,T})\)</span> since <span class="math inline">\(\exp (-r_s)\)</span> is known at <span class="math inline">\(s\)</span>. Hence <span class="math inline">\(F_{s,T} = \mathbb{E}^{\mathbb{Q}}_s (F_{s+1,T})\)</span>, and the results follows from <span class="math inline">\(F_{T,T} = S_T\)</span>.</p>
 </div>
 <div class="proposition">
-<p><span id="prp:XXX" class="proposition"><strong>Proposition 4.3  (XXXX) </strong></span><span class="math display">\[
+<p><span id="prp:XXX" class="proposition"><strong>Proposition 5.3  (XXXX) </strong></span><span class="math display">\[
 \Phi_{t,T} - F_{t,T} = \frac{cov^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s), S_T\right]}{B(t,T-t)}.
 \]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-23" class="proof"><em>Proof</em>. </span>We have:
+<p><span id="unlabeled-div-21" class="proof"><em>Proof</em>. </span>We have:
 <span class="math display">\[\begin{eqnarray*}
 \Phi_{t,T} - F_{t,T} &amp; = &amp; \mathbb{E}^{\mathbb{Q}}_t \left[\frac{\prod^{T-1}_{s=t} \exp (-r_s) S_T }{B(t,T-t)}- S_T\right] \\
 &amp;=&amp; \frac{\mathbb{E}^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s) S_T\right] - \mathbb{E}^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s)\right] \mathbb{E}^{\mathbb{Q}}_t (S_T)}{B(t,T-t)} \\
@@ -203,9 +203,9 @@ that is <span class="math inline">\(F_{t,T}\)</span> is a <span class="math inli
 <span class="math inline">\(\Phi_{t,T} = F_{t,T}\)</span>, if, and only if, <span class="math inline">\(\prod^{T-1}_{s=t} \exp (-r_s)\)</span> and <span class="math inline">\(S_T\)</span> are conditionally uncorrelated under <span class="math inline">\(\mathbb{Q}\)</span>. In particular it is true in the case of deterministic short rates.</li>
 </ul>
 </div>
-<div id="FCFPConvenience" class="section level2" number="4.3">
+<div id="FCFPConvenience" class="section level2" number="5.3">
 <h2>
-<span class="header-section-number">4.3</span> Convenience Yields<a class="anchor" aria-label="anchor" href="#FCFPConvenience"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3</span> Convenience Yields<a class="anchor" aria-label="anchor" href="#FCFPConvenience"><i class="fas fa-link"></i></a>
 </h2>
 <p>:::{.definition #convYield name=“Convenience yield”]
 A convenience yield} is a net benefit associated with holding a physical asset (rather than a forward or futures contract). It is <em>net</em> in the sense that it is equal to the positive gain of holding minus the cost of storage.
@@ -237,9 +237,9 @@ A convenience yield} is a net benefit associated with holding a physical asset (
 <ul>
 <li>We have:
 <span class="math display" id="eq:convenience3">\[\begin{eqnarray}
-\Phi_{t,T} &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1}) S_T]/B(t,T-t) \tag{4.1}\\
-F_{t,T} &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t (S_T) \tag{4.2}\\
-S_t &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1} + c_t + \ldots + c_{T-1}) S_T] \tag{4.3}.
+\Phi_{t,T} &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1}) S_T]/B(t,T-t) \tag{5.1}\\
+F_{t,T} &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t (S_T) \tag{5.2}\\
+S_t &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1} + c_t + \ldots + c_{T-1}) S_T] \tag{5.3}.
 \end{eqnarray}\]</span>
 </li>
 <li>necessitates a joint modelling (at least under <span class="math inline">\(\mathbb{Q}\)</span>) of: <span class="math inline">\(S_t\)</span> (or <span class="math inline">\(s_t = \log S_t\)</span>), <span class="math inline">\(c_t\)</span> (convenience yield), <span class="math inline">\(r_t\)</span> (short rate),</li>
@@ -253,19 +253,19 @@ S_t &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1} + c_t +
 The price ex-convenience yield at <span class="math inline">\(t\)</span>, i.e. <span class="math inline">\(S_t \exp (-c_t)\)</span>, is the price at <span class="math inline">\(t\)</span> of <span class="math inline">\(S_{t+1}\)</span>:
 <span class="math display" id="eq:convenience4">\[\begin{eqnarray}
 S_t \exp (-c_t) &amp;=&amp; \exp (-r_t) \mathbb{E}^{\mathbb{Q}}_t (S_{t+1}) \nonumber\\
-\mathbb{E}^{\mathbb{Q}}_t (S_{t+1}) &amp; = &amp; S_t \exp (r_t - c_t) \tag{4.4} \\
+\mathbb{E}^{\mathbb{Q}}_t (S_{t+1}) &amp; = &amp; S_t \exp (r_t - c_t) \tag{5.4} \\
 \mathbb{E}^{\mathbb{Q}}_t \exp (s_{t+1}) &amp;=&amp; \exp(s_t+r_t-c_t). \nonumber
 \end{eqnarray}\]</span>
 Or if <span class="math inline">\(y_{t+1} = \log \frac{S_{t+1}}{S_t}\)</span> denotes the (geometric) return, then:
 <span class="math display">\[
 \mathbb{E}^{\mathbb{Q}}_t \exp (y_{t+1}) = \exp (r_t - c_t).
 \]</span></p></li>
-<li><p>Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience3">(4.3)</a> is automatically satisfied (using Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience4">(4.4)</a> recursively).</p></li>
+<li><p>Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience3">(5.3)</a> is automatically satisfied (using Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience4">(5.4)</a> recursively).</p></li>
 </ul>
 </div>
-<div id="FCFPPricingRN" class="section level2" number="4.4">
+<div id="FCFPPricingRN" class="section level2" number="5.4">
 <h2>
-<span class="header-section-number">4.4</span> Pricing with Affine Models<a class="anchor" aria-label="anchor" href="#FCFPPricingRN"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.4</span> Pricing with Affine Models<a class="anchor" aria-label="anchor" href="#FCFPPricingRN"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>If storable commodity:
@@ -289,7 +289,7 @@ b(e_1) &amp; =&amp;0
 \end{array} \right.
 \end{eqnarray*}\]</span>
 (if non storable, no <span class="math inline">\(c_t\)</span>, no ICCs).</li>
-<li>Since (Eqs. <a href="#eq:convenience1">(<strong>??</strong>)</a> and <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience2">(4.2)</a>):
+<li>Since (Eqs. <a href="#eq:convenience1">(<strong>??</strong>)</a> and <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience2">(5.2)</a>):
 <span class="math display">\[\begin{eqnarray*}
 \Phi_{t,T} &amp; = &amp; \frac{\mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{t-1} + s_T)]}{\mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1})]} \\
 F_{t,T} &amp; = &amp; \mathbb{E}^{\mathbb{Q}}_t [\exp (s_T)],
@@ -298,9 +298,9 @@ F_{t,T} &amp; = &amp; \mathbb{E}^{\mathbb{Q}}_t [\exp (s_T)],
 exponential affine in <span class="math inline">\(w_t = (s_t, c_t, r_t, x^{'}_t)'\)</span>.</li>
 </ul>
 </div>
-<div id="historical-dynamics" class="section level2" number="4.5">
+<div id="historical-dynamics" class="section level2" number="5.5">
 <h2>
-<span class="header-section-number">4.5</span> Historical dynamics<a class="anchor" aria-label="anchor" href="#historical-dynamics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.5</span> Historical dynamics<a class="anchor" aria-label="anchor" href="#historical-dynamics"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p>We have:
@@ -318,9 +318,9 @@ and
 <li><p>Note: no constraint on <span class="math inline">\(\alpha_t\)</span>, possibility to introduce seasonality.</p></li>
 </ul>
 </div>
-<div id="FCFPGaussian" class="section level2" number="4.6">
+<div id="FCFPGaussian" class="section level2" number="5.6">
 <h2>
-<span class="header-section-number">4.6</span> A Gaussian VAR Model<a class="anchor" aria-label="anchor" href="#FCFPGaussian"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.6</span> A Gaussian VAR Model<a class="anchor" aria-label="anchor" href="#FCFPGaussian"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p>State vector: <span class="math inline">\(w_t = (s_t, c_t, r_t)'\)</span>.</p></li>
@@ -328,7 +328,7 @@ and
 <span class="math display">\[
 w_{t+1} = A_0 + A_1 w_t + \varepsilon_{t+1}, \quad \varepsilon_{t+1} \sim  i.i.d. \mathcal{N}(0,\Sigma) \mbox{ under }\mathbb{Q}.
 \]</span></p></li>
-<li><p>We have (see Example <a href="affine-processes.html#exm:GAR1">1.6</a>):
+<li><p>We have (see Example <a href="ChapterAffine.html#exm:GAR1">1.5</a>):
 <span class="math display">\[\begin{eqnarray*}
 \mathbb{E}_t \exp (u' w_{t+1}) &amp;=&amp; \exp \left[u' (A_0 + A_1 w_t) + \frac{1}{2} u' \Sigma u\right] \\
 \Rightarrow &amp;&amp;
@@ -408,9 +408,9 @@ with
 \]</span>
 * In other words any historical seasonal function <span class="math inline">\(\nu_t\)</span> can be reached by choosing <span class="math inline">\(\mu_{1t}\)</span>, i.e. <span class="math inline">\(\alpha_{0t}\)</span>.</p>
 </div>
-<div id="FCFPApplications" class="section level2" number="4.7">
+<div id="FCFPApplications" class="section level2" number="5.7">
 <h2>
-<span class="header-section-number">4.7</span> Applications<a class="anchor" aria-label="anchor" href="#FCFPApplications"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.7</span> Applications<a class="anchor" aria-label="anchor" href="#FCFPApplications"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Source: <span class="citation">Schwartz (<a href="references.html#ref-Schwartz_1997">1997</a>)</span>.</li>
@@ -464,19 +464,19 @@ and <span class="math inline">\(\log F_{t,T}\)</span> affine functions of <span 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">3</span> Estimation of affine asset-pricing models</a></div>
-<div class="next"><a href="credit-and-liquidity-risks.html"><span class="header-section-number">5</span> Credit and liquidity risks</a></div>
+<div class="prev"><a href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">4</span> Estimation of affine asset-pricing models</a></div>
+<div class="next"><a href="references.html"><span class="header-section-number">6</span> References</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#forward-futures-dividends-commodity-pricing-and-convenience-yields"><span class="header-section-number">4</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
-<li><a class="nav-link" href="#FCFPForwards"><span class="header-section-number">4.1</span> Forward Contracts</a></li>
-<li><a class="nav-link" href="#FCFPFutures"><span class="header-section-number">4.2</span> Futures Contracts, Futures Prices</a></li>
-<li><a class="nav-link" href="#FCFPConvenience"><span class="header-section-number">4.3</span> Convenience Yields</a></li>
-<li><a class="nav-link" href="#FCFPPricingRN"><span class="header-section-number">4.4</span> Pricing with Affine Models</a></li>
-<li><a class="nav-link" href="#historical-dynamics"><span class="header-section-number">4.5</span> Historical dynamics</a></li>
-<li><a class="nav-link" href="#FCFPGaussian"><span class="header-section-number">4.6</span> A Gaussian VAR Model</a></li>
-<li><a class="nav-link" href="#FCFPApplications"><span class="header-section-number">4.7</span> Applications</a></li>
+<li><a class="nav-link" href="#forward-futures-dividends-commodity-pricing-and-convenience-yields"><span class="header-section-number">5</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
+<li><a class="nav-link" href="#FCFPForwards"><span class="header-section-number">5.1</span> Forward Contracts</a></li>
+<li><a class="nav-link" href="#FCFPFutures"><span class="header-section-number">5.2</span> Futures Contracts, Futures Prices</a></li>
+<li><a class="nav-link" href="#FCFPConvenience"><span class="header-section-number">5.3</span> Convenience Yields</a></li>
+<li><a class="nav-link" href="#FCFPPricingRN"><span class="header-section-number">5.4</span> Pricing with Affine Models</a></li>
+<li><a class="nav-link" href="#historical-dynamics"><span class="header-section-number">5.5</span> Historical dynamics</a></li>
+<li><a class="nav-link" href="#FCFPGaussian"><span class="header-section-number">5.6</span> A Gaussian VAR Model</a></li>
+<li><a class="nav-link" href="#FCFPApplications"><span class="header-section-number">5.7</span> Applications</a></li>
 </ul>
 
       <div class="book-extra">
@@ -493,7 +493,7 @@ and <span class="math inline">\(\log F_{t,T}\)</span> affine functions of <span 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne. It was last built on 2023-12-29.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

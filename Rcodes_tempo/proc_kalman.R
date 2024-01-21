@@ -1,23 +1,15 @@
-# ******************************************************************************
-# KALMAN FILTER
-# Jean-Paul Renne - jean-paul.renne@m4x.org
-# ******************************************************************************
-
-library(MASS)
-
-# Kalman filter:
-# Measurement:
-# y_t   = mu_t+G*rho_t+M*eps_t
-# Transition:
-# rho_t = nu_t + H*rho_t-1 +N*xi_t
-# Y_t is a T*ny-dimensional vector
-# nu_t and mu_t depend on past only (predetermined at date t)
-
-# renvoie 
-# .$r   filtered variables (rho_t|t) size T*nr
-# .$S  SIGMA t|t T*(nr*nr)
-
-Kalman_filter <- function(Y_t,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0){
+Kalman_filter <- function(Y_t,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0,
+                          Rfunction=Rf, Qfunction=Qf){
+  # Measurement equations:
+  #    y_t   = mu_t + G * rho_t + M * eps_t
+  # Transition equations:
+  #    rho_t = nu_t + H * rho_t-1 + N * xi_t
+  # Y_t is a T*ny-dimensional vector
+  # nu_t and mu_t depend on past only (predetermined at date t)
+  #
+  # The function returns: 
+  # .$r   filtered variables (rho_t|t) size T*nr
+  # .$S  SIGMA t|t T*(nr*nr)
   
   # Number of observed variables: 
   ny = NCOL(Y_t)
@@ -49,9 +41,9 @@ Kalman_filter <- function(Y_t,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0){
     
     # print(t)
     
-    # =========================================
+    # ==========================================================================
     # Forecasting step (between t-1 and t):
-    # =========================================
+    # ==========================================================================
     if(t==1){
       rho_tp1_t[1,] = nu_t[1,] + t(H %*% rho_0)
       R = Rfunction(M,rho_0) #Rfunction defined below (measurement eq.)
@@ -77,9 +69,9 @@ Kalman_filter <- function(Y_t,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0){
     Omega_tp1_t[t,] = matrix(omega,1,ny*ny)
     
     
-    # =========================================
+    # ==========================================================================
     # Updating step
-    # =========================================
+    # ==========================================================================
     
     # Detect observed variables:
     vec.obs.indices <- which(!is.na(Y_t[t,])) # indices of observed variables
@@ -144,18 +136,18 @@ Kalman_filter <- function(Y_t,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0){
   return(output)
 }
 
+Rf <- function(M,RHO,t=0){
+  return(M %*% t(M))
+}
+Qf <- function(N,RHO,t=0){
+  return(N %*% t(N))
+}
 
-#Rfunction <- function(M,RHO){
-#  return(M %*% t(M))
-#}
-#Qfunction <- function(N,RHO){
-#  return(N %*% t(N))
-#}
-
-
-Kalman_smoother <- function(Y_t,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0){
+Kalman_smoother <- function(Y_t,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0,
+                            Rfunction=Rf, Qfunction=Qf){
   
-  output_filter <- Kalman_filter(Y_t,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos)
+  output_filter <- Kalman_filter(Y_t,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos,
+                                 Rfunction,Qfunction)
   rho_tt        <- output_filter$r
   Sigma_tt      <- output_filter$Sigma_tt
   Sigma_tp1_t   <- output_filter$S_tp1_t

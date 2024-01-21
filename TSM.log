@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.14)  14 JAN 2024 10:13
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.14)  21 JAN 2024 21:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -926,21 +926,9 @@ LaTeX Warning: Reference `exm:Gaussian' on page 62 undefined on input line 2441.
 
 LaTeX Warning: Reference `exm:Gaussian' on page 62 undefined on input line 2457.
 
-
-LaTeX Warning: Reference `Estimation:KF' on page 62 undefined on input line 2474.
-
-
-LaTeX Warning: Reference `def:LSSM' on page 62 undefined on input line 2474.
-
-
-LaTeX Warning: Reference `EstimationPersistency' on page 62 undefined on input line 2474.
-
 File: TSM_files/figure-latex/fredKW-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/fredKW-1.pdf>
 [62]
-
-LaTeX Warning: Reference `EstimationInversion' on page 63 undefined on input line 2501.
-
 File: figures/AngPiazzesi1.pdf Graphic file (type pdf)
 <use figures/AngPiazzesi1.pdf>
 [63] [64]
@@ -953,21 +941,167 @@ Underfull \hbox (badness 4647) in paragraph at lines 2591--2591
 []\TU/lmr/bx/n/17.28 Non-Negative Affine Term Structure
  []
 
-[65] [66] [67]
-Underfull \hbox (badness 1565) in paragraph at lines 2623--2625
-\TU/lmr/m/n/12 * If $[] [] [][][][] [] [] [][][][]$, $[] [] [][][][] [] [] [][][][]$, $[] [] [][][][] [] [] [][][][]$ and
+[65] [66] [67] [68]
+Overfull \hbox (8.4277pt too wide) detected at line 2645
+[] [] [] [] [] [] [][] [] [][][][]
  []
 
-[68]
+[69]
+File: TSM_files/figure-latex/WuXia-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/WuXia-1.pdf>
+[70] [71]
 
-LaTeX Warning: Reference `EstimationKF' on page 69 undefined on input line 2653.
+LaTeX Warning: Reference `lemma:mass' on page 72 undefined on input line 2726.
 
 
-LaTeX Warning: Reference `EstimationPersistency' on page 69 undefined on input line 2657.
+LaTeX Warning: Reference `EstimationKF' on page 72 undefined on input line 2742.
 
-(./TSM.bbl [69] [70
+File: figures/Figure_fit_ZARG.pdf Graphic file (type pdf)
+<use figures/Figure_fit_ZARG.pdf>
+[72]
+File: figures/Figure_LiftOff.pdf Graphic file (type pdf)
+<use figures/Figure_LiftOff.pdf>
+[73] [74]
+Chapter 4.
+[75
 
-] [71]) [72] (./TSM.aux)
+] [76] [77] [78]
+File: TSM_files/figure-latex/illusKF-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/illusKF-1.pdf>
+[79] [80]
+File: TSM_files/figure-latex/Kalman10-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/Kalman10-1.pdf>
+[81] [82]
+File: TSM_files/figure-latex/Kalman2-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/Kalman2-1.pdf>
+File: TSM_files/figure-latex/Kalman4-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/Kalman4-1.pdf>
+[83] [84]
+File: TSM_files/figure-latex/Kalman5-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/Kalman5-1.pdf>
+[85]
+File: TSM_files/figure-latex/Kalman6-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/Kalman6-1.pdf>
+[86]
+Underfull \vbox (badness 10000) detected at line 3128
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3128
+ []
+
+[87]
+File: TSM_files/figure-latex/Kalman8-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/Kalman8-1.pdf>
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 17.28pt on input line 3135.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 17.28157pt on input line 3135.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 17.27815pt on input line 3135.
+[88]
+
+LaTeX Warning: Reference `subsec:Credit:CDS' on page 89 undefined on input line 3169.
+
+
+LaTeX Warning: Reference `eq:MCCDSformula1' on page 89 undefined on input line 3169.
+
+
+LaTeX Warning: Reference `exm:DD' on page 89 undefined on input line 3169.
+
+[89]
+Underfull \hbox (badness 5077) in paragraph at lines 3247--3249
+[]\TU/lmr/m/n/12 Proposition []4.2[] (next slide) shows that the computation of
+ []
+
+[90] [91]
+
+LaTeX Warning: Reference `app:KitagHamilton' on page 92 undefined on input line 3351.
+
+
+LaTeX Warning: Reference `slide:inversionXX' on page 92 undefined on input line 3357.
+
+[92]
+
+LaTeX Warning: Reference `exm:SovereignSpreads' on page 93 undefined on input line 3370.
+
+[93]
+
+LaTeX Warning: Reference `app:KitagHamilton' on page 94 undefined on input line 3464.
+
+
+LaTeX Warning: Reference `app:mixedKFinversion' on page 94 undefined on input line 3468.
+
+[94]
+
+LaTeX Warning: Reference `app:KitagHamilton' on page 95 undefined on input line 3480.
+
+
+LaTeX Warning: Reference `app:mixedKFinversion' on page 95 undefined on input line 3485.
+
+[95]
+
+LaTeX Warning: Reference `fig:biasedTP' on page 96 undefined on input line 3572.
+
+[96]
+
+LaTeX Warning: Reference `fig:fitSurveys' on page 97 undefined on input line 3588.
+
+[97] [98
+
+]
+Chapter 5.
+
+Overfull \hbox (33.68143pt too wide) in paragraph at lines 3621--3625
+[]\TU/lmr/m/n/12 :::{.proof} The price at $[]$ of $[][] [] [][]$ is zero. Therefore: $[][][][][][] [] [] [][][][][] []
+ []
+
+[99]
+Overfull \hbox (213.27747pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 100 \TU/lmr/m/sl/12 CHAPTER 5.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
+ []
+
+[100] [101]
+Overfull \hbox (213.27747pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 102 \TU/lmr/m/sl/12 CHAPTER 5.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
+ []
+
+[102]
+Underfull \hbox (badness 2285) in paragraph at lines 3797--3800
+[]\TU/lmr/m/n/12 Case of a \TU/lmr/bx/n/12 nonstorable commodity\TU/lmr/m/n/12 . No convenience yield;
+ []
+
+
+Underfull \hbox (badness 2277) in paragraph at lines 3797--3800
+\TU/lmr/m/n/12 if, moreover $[][]$ deterministic, $[][] [] [][] [] [][][][][][]$, but
+ []
+
+[103]
+
+LaTeX Warning: Reference `eq:convenience1' on page 104 undefined on input line 3843.
+
+
+Overfull \hbox (213.27747pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 104 \TU/lmr/m/sl/12 CHAPTER 5.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
+ []
+
+[104] [105]
+Overfull \hbox (213.27747pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 106 \TU/lmr/m/sl/12 CHAPTER 5.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
+ []
+
+[106] [107]
+Overfull \hbox (213.27747pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 108 \TU/lmr/m/sl/12 CHAPTER 5.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
+ []
+
+[108]
+Chapter 6.
+(./TSM.bbl [109
+
+] [110
+
+] [111] [112]) [113] (./TSM.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2024-01-04>
@@ -979,15 +1113,15 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `TSM.out' has not changed.
-(rerunfilecheck)             Checksum: 5AE7D52AC749E94DFCA63C8D9ADA67AD;5824.
+(rerunfilecheck)             Checksum: 9F95A5C7D4BA258C7E99E9F7D5F9C502;8728.
  ) 
 Here is how much of TeX's memory you used:
- 17824 strings out of 476828
- 326491 string characters out of 5803878
- 1970174 words of memory out of 5000000
- 39526 multiletter control sequences out of 15000+600000
- 565585 words of font info for 108 fonts, out of 8000000 for 9000
+ 18052 strings out of 476828
+ 333213 string characters out of 5803878
+ 1982174 words of memory out of 5000000
+ 39739 multiletter control sequences out of 15000+600000
+ 566554 words of font info for 115 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,19n,120p,659b,538s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,120p,789b,566s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TSM.pdf (72 pages).
+Output written on TSM.pdf (113 pages).

@@ -33,14 +33,6 @@ for(i in 1:T){
   X <- rbind(X,x)
 }
 
-Rfunction <- function(M,RHO,t=0){
- return(M %*% t(M))
-}
-Qfunction <- function(N,RHO,t=0){
- return(N %*% t(N))
-}
-
-
 nu_t <- matrix(0,T,1)
 H <- phi
 N <- 1

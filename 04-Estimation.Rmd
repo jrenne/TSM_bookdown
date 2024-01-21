@@ -2,10 +2,9 @@
 
 ## State-Space Model {#EstimationSSModel}
 
-* The dynamic asset-pricing models are **state-space models**: The dynamics of all variables, gathered in vector $y_t$ (yields, equity returns, macroeconomic variables, survey-based variables) is accounted for by state variables ($w_t$).
-* The equations defining the relationship between the other variables and the state variables are called *measurement equations* (Eq. \@ref(eq:measeq)).
-* The equations defining the dynamics of the state variables are called *transition equations* (Eq. \@ref(eq:transeq)).
-* If $w_t$ is an affine process, the transition equations admit a VAR(1) representation (Proposition \@ref(prp:affineVAR)).
+By nature, dynamic asset-pricing models are *state-space models*: The dynamics of all variables, gathered in vector $y_t$ (yields, equity returns, macroeconomic variables, survey-based variables) are accounted for by state variables ($w_t$). The equations defining the relationship between the other variables and the state variables are called *measurement equations* (Eq. \@ref(eq:measeq)). The equations defining the dynamics of the state variables are called *transition equations* (Eq. \@ref(eq:transeq)).
+
+In the case where $w_t$ is an affine process (see Definition \@ref(def:Car1)), the transition equations admit a VAR(1) representation (Proposition \@ref(prp:affineVAR)). In that case, the state-space model is said to be linear, as formalized by the following definition. This defintion introduces, in particular, the notion of *measurement errors*.
 
 
 :::{.definition #LSSM name="Linear State-Space Model"}
@@ -14,92 +13,65 @@ A linear state-space model writes as follows:
 \underset{(m \times 1)}{y_t}  &=& A + Bw_t + \eta_t  \quad \mbox{with }  \eta_t \sim i.i.d. \mathcal{N}(0,\Omega) (\#eq:measeq) \\
 \underset{(n \times 1)}{w_t} & =& \mu + \Phi w_{t-1} + \Sigma^{\frac{1}{2}}(w_{t-1}) \varepsilon_t,(\#eq:transeq)
 \end{eqnarray}
-where $\varepsilon_t$ is a martingale difference sequence satisfying  $\mathbb{V}ar_t(\varepsilon_{t+1}) = Id$. The components of $\eta_t$ are **measurement errors**.
+where $\varepsilon_t$ is a martingale difference sequence satisfying  $\mathbb{V}ar_t(\varepsilon_{t+1}) = Id$. The components of $\eta_t$ are measurement errors.
 :::
 
-**Note:** Eq. \@ref(eq:transeq) comes from Proposition \@ref(prp:affineVAR) (Eq. \@ref(eq:VARw)).
+> **Note:** Eq. \@ref(eq:transeq) derives from Proposition \@ref(prp:affineVAR) (Eq. \@ref(eq:VARw)).
 
 
-* There are two different situations:
-a. all state variables (components of $w_t$) are observed (next slide);
-b. some of these variables are latent.
+In practice, one can distinguish two situations: (a) all state variables (components of $w_t$) are observed and (b) some of these variables are latent. What do we mean by *model estimation* in case (b)? There are different situations:
 
-
-
-What do we mean by *model estimation* in case (b)?
-Three possible meanings:
-
-* (b.i) We know the model parameters but we want to recover the latent factors (for instance to compute model-implied prices).
+* (b.i) We know the model parameters but we want to recover the latent factors---for instance to compute model-implied prices.
 * (b.ii) We know neither the model parameters nor the latent variables, we want to estimate both of them.
 * (b.iii) We know neither the model parameters nor the latent variables, we are just interested in the model parameters.
 
-* Case (a): One can resort to standard estimation techniques (GMM, Maximum Likelihood) to estimate model parameters.
-* Take the maximum likelihood case, we have:
+In case (a): One can resort to standard estimation techniques (GMM, Maximum Likelihood) to estimate model parameters. Take for instance the maximum-likelihood case, we have:
 \begin{eqnarray*}
 f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}) &=& f(y_t|\underline{y_{t-1}},\underline{w_{t}}) \times \underbrace{f(w_t|\underline{y_{t-1}},\underline{w_{t-1}})}_{= f(w_t|\underline{w_{t-1}})}\\
 &=& \bv{n}(y_t;A + Bw_t,\Omega) f(w_t|\underline{w_{t-1}}),
 \end{eqnarray*}
-where $\bv{n}(x;\mu,\Omega)$ denotes the evaluation, at vector $x$ of the p.d.f. of the multivariate normal distribution $\bv{n}(\mu,\Omega)$, i.e., if $x$ is a $m$-dimensional vector:
+where $\bv{n}(x;\mu,\Omega)$ denotes the evaluation, at vector $x$, of the p.d.f. of the multivariate normal distribution $\mathcal{N}(\mu,\Omega)$. That is, if $x$ is a $m$-dimensional vector:
 \begin{equation}
 \bv{n}(x;\mu,\Omega) = \frac{1}{\sqrt{(2 \pi)^{m}|\Omega|}} \exp\left(-\frac{1}{2}\{x - \mu\}'\Omega^{-1}\{x-\mu\}\right).(\#eq:varPHI)
 \end{equation}
-* Once this conditional p.d.f. is known, the total likelihood is given by (conditional on $y_0$ and $w_0$):
+Once this conditional p.d.f. is known, the total likelihood is given by (conditional on $y_0$ and $w_0$):
 $$
 \prod_{t=1}^T f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}).
 $$
-* $f(w_t|\underline{w_{t-1}})$ depends on the process chosen for $w_t$. If complicated to compute, one can employ Pseudo ML.
-
-
-
-* In some cases, the computation of $f(w_t|\underline{w_{t-1}})$ may be complicated.
-* For instance, the p.d.f. may involve an infinite sum, which is the case in the ARG case of Example \@ref(exm:ARG1}.
-* When $w_t$ is affine, the Pseudo Maximum Likelihood approach consists in replacing $f(w_t|\underline{w_{t-1}})$ by:
+Of course, $f(w_t|\underline{w_{t-1}})$ depends on the process chosen for $w_t$. If it is  complicated to compute, one can employ Pseudo Maximum Likelihood [@Gourieroux_Monfort_Trognon_1984]. The p.d.f. may involve, for instance, an infinite sum, which is the case in the ARG case of Example \@ref(exm:ARG1). When $w_t$ is affine, the Pseudo Maximum Likelihood approach consists in replacing $f(w_t|\underline{w_{t-1}})$ by:
 $$
-\bv{n}(w_t;\mu + \Phi w_{t-1},\Sigma(w_t)).
+\bv{n}(w_t;\mu + \Phi w_{t-1},\Sigma(w_t)),
 $$
 where $\mu$, $\Phi$ and $\Sigma(w_t)$ are introduced in Eqs. \@ref(eq:MUPHI) and \@ref(eq:SigmaWt) in Proposition \@ref(prp:affineVAR).
-* In case (b.iii), one can estimate the model by fitting sample moments computed using observed variables (prices, yields, returns) $\Rightarrow$ \color{blue}{Generalized Method of Moments (GMM)}.
 
+In case (b.iii), one can estimate the model by Generalized Method of Moments (GMM), fitting sample moments computed using observed variables (prices, yields, returns). In the context of affine processes, conditional and unconditional moments of the state vector $w_t$ are available in closed from, as shown by Eqs. \@ref(eq:condmean), \@ref(eq:condvar) and \@ref(eq:uncondmeanvar). If the model-implied moments are not available in closed-form, one may have to to resort to the *Simulated Method of Moments (SMM)* (see, e.g., @GourMonf96 or @Duffie_Singleton_1993).
 
-In the context of affine processes, conditional and unconditional moments of the state vector $w_t$ are available in closed from (see Eqs. \@ref(eq:condmean), \@ref(eq:condvar) and \@ref(eq:uncondmeanvar)).
-
-
-If the model-implied moments are not available in closed-form, one may have to to resort to the **Simulated Method of Moments (SMM)** [Duffie and Singleton (1993)](https://www.econometricsociety.org/publications/econometrica/1993/07/01/simulated-moments-estimation-markov-models-asset-prices) or [Duffie and Singleton (1993)](http://www.oxfordscholarship.com/view/10.1093/0198774753.001.0001/acprof-9780198774754).
-
-* In cases (b.i) and (b.ii), one has to implement \color{blue}{filtering methods}.
-* We focus on the latter context in the following.
-
-
-
-
+In cases (b.i) and (b.ii), one has to implement *filtering methods*, on which we focus on  in the following.
 
 
 
 ## Kalman-Filter-Based Approach {#Estimation:KF}
 
+### The Gaussian linear state-space case
 
-* Let us start with the particular case of state-space model (Def. \@ref(def:LSSM)) where $\varepsilon_t$ is Gaussian and where $\Sigma^{\frac{1}{2}}$ does not depend on $w_t$, i.e.with  a homoskedastic linear Gaussian state-space model.
-* Let's denote by $\theta$ the vector of parameters that defines the model.
-* For a given $\theta$ and a sequence of observations $\{y_1,\dots,y_T\}$.
-* The Kalman filter computes the distribution of $w_t$ given $\{y_1,\dots,y_t\}$ (see Def. \@ref(def:FiltvsSmooth)).
-* This distribution is Gaussian, and obtained by a recursive algorithm.
-* Byproduct of the Kalman filter: likelihood associated with $\theta$.
-\item $\Rightarrow$ makes it possible to estimate $\theta$ by maximizing the likelihood.
-* Hence, Kalman-filter techniques can address Objective (b.ii).
+Let us start with a particular case of state-space model (Def. \@ref(def:LSSM)) where $\varepsilon_t$ is Gaussian and where $\Sigma^{\frac{1}{2}}$ does not depend on $w_t$, i.e.with  a homoskedastic linear Gaussian state-space model.
 
+Let's denote by $\theta$ the vector of parameters that defines the model. For a given $\theta$ and a sequence of observations $\{y_1,\dots,y_T\}$, the Kalman filter computes the distribution of $w_t$ given $\{y_1,\dots,y_t\}$ (see Def. \@ref(def:FiltvsSmooth)). This distribution is Gaussian, and obtained by a recursive algorithm. A byproduct of this algorithm is the likelihood function associated with $\theta$ and $\{y_1,\dots,y_T\}$. This opens the door to the estimation of $\theta$ by MLE, maximizing this function. In this sense, Kalman-filter techniques can address Objective (b.ii).
+
+Let us first introduce the notion of *filtered* and *smoothed* estimates of a latent variable (or vector of variables) $w_t$:
 
 :::{.definition #FiltvsSmooth name="Filtered versus smoothed estimates"}
 
+The filtering and smoothing problems consist in computing the following conditional moments:
 \begin{equation*}
 \begin{array}{lccllllll}
 \mbox{Filtering:} & w_{t|t} & = & \mathbb{E}(w_t|\underline{y_t}) & \mbox{and}  & P_{t|t} &=& \mathbb{V}ar(w_t|\underline{y_t})\\
-\mbox{Smoothing:} & w_{t|T} & = & \mathbb{E}(w_t|\underline{y_T}) & \mbox{and} & P_{t|T} &=& \mathbb{V}ar(w_t|\underline{y_T})
+\mbox{Smoothing:} & w_{t|T} & = & \mathbb{E}(w_t|\underline{y_T}) & \mbox{and} & P_{t|T} &=& \mathbb{V}ar(w_t|\underline{y_T}).
 \end{array}
 \end{equation*}
 :::
 
-
-
+The following proposition outlines the Kalman algorithm (see, e.g. @Kim_Nelson_1999).
 
 :::{.proposition #KF name="Kalman filter and smoother"}
 If $\varepsilon_t \sim  \mathcal{N}(0,I)$ in the state-space defined in Def. \@ref(def:LSSM), then we have (*filtering*):
@@ -128,8 +100,7 @@ The log likelihood is (recursively) computed as follows:
 &  & -\frac{1}{2}\sum_{t=1}^{T}\left(\log\left|S_{t | t-1}(\theta)\right|+\lambda'_{t}(\theta)S_{t\mid t-1}^{-1}(\theta)\lambda{}_{t}(\theta)\right). \nonumber
 \end{eqnarray}
 
-
-Moreover, we also have (*smoothing*):
+Moreover, we have (*smoothing*):
 $$
 w_t|y_1,\dots,y_T \sim  \mathcal{N}(w_{t|T}|P_{t|T}),
 $$
@@ -146,6 +117,7 @@ F_{t} &=& P_{t|t}\Phi'_{t+1}P_{t+1|t}^{-1}.
 $$
 :::
 
+The following figure illustrates the updating step of the Kalman algorithm:
 
 ```{r illusKF, echo=FALSE, fig.cap="Updating in the Kalman filter.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 
@@ -268,25 +240,20 @@ arrows(xhat,6.8,xhat,7.2,col="red",length=.05)
 
 ```
 
-### Initialization
 
-* Recursive procedure: initial conditions are required (*Iteration 0*).
-* There are different possibilities regarding the initialization of ($w_{0|0}$, $P_{0|0}$):
-A. include the elements of($w_{0|0}$, $P_{0|0}$) among the parameters to estimate;
-B. set ($w_{0|0}$, $P_{0|0}$) to their unconditional values (using e.g. Eq. \@ref(eq:uncondmeanvar});
-C. set $w_{0|0}$ to a prior value and take
+The recursive equations of the Kalman filter need to be initialized. That is, one needs to provide initial values for $w_{0|0}$, $P_{0|0}$. Different possibilities have been proposed. One can for instance:
 
-* an arbitrary large value for $P_{0\mid0}$ if the prior value
-is uncertain ($\sim$ **diffuse prior**);
-* a small value for $P_{0\mid0}$ if we re confident in this prior value.
+* Include the elements of($w_{0|0}$, $P_{0|0}$) among the parameters to estimate;
+* Set $w_{0|0}$ and $P_{0|0}$ to their unconditional values (using, e.g., Eq. \@ref(eq:uncondmeanvar));
+* Set $w_{0|0}$ to a prior value and take either an arbitrary large value for $P_{0\mid0}$ if the prior value is uncertain (which depicts a situation of  *diffuse prior*) or a small value for $P_{0\mid0}$ if we are confident in this prior value $w_{0|0}$.
 
+### Missing observations
 
-* In many application, one does not observe all the entries of $y_t$ at every date (because e.g. different frequencies, unreliable data for some period, short historical series for some variables).
-* Easily addressed by Kalman filtering/smoothing: One simply has to change the size of $y_t$ (and of $\lambda_t$, $S_{t|t-1}$, $A$ and $B$) on each date. %($m$, denoting the dimension of $y_t$, also has to be changed accordingly in the likelihood,
-* Of course, the greater the number of observations
-available to update the filter, the better the accuracy of the estimation.
-* Log-likelihood computation (Eq. \@ref(eq:logLikKF)) still valid (adjust for the number of observed variables at each iteration; $m$ then depends on time).
-* Consider the following model
+In many application, one does not observe all the entries of $y_t$ at every date. This arises for instance in situations where (i) measurement variables feature different frequencies, (ii) we have unreliable data for some period (that we prefer not to include among observations), (iii) some of the measurement variables are observed over a shorter time span.
+
+These situations are easily addressed by Kalman filtering/smoothing (e.g., @Chow_Lin_1971 or @Harvey_Pierse_1984). To accommodate missing observations in some of the $y_t$'s, one simply has to change the size of this vector (and of $\lambda_t$, $S_{t|t-1}$, $A$ and $B$) for the relevant dates. Of course, the accuracy of $w_{t|t}$ will tend to be lower during periods where one or several (or all) the entries of $y_t$ are unobserved. (This will be apparent in the resulting covariance matrix of $w_{t|t}$, namely $P_{t|t}$.) The log-likelihood computation (Eq. \@ref(eq:logLikKF)) is still valid in this case; one simply has to adjust the number of observed variables at each iteration; that is, $m$ then depends on time.
+
+To illustrate, consider the following model:
 \begin{eqnarray}
 \left[\begin{array}{c}
 y_{1,t}\\
@@ -302,11 +269,215 @@ y_{2,t-2}
 \end{array}\right]+\left[\begin{array}{c}
 \gamma_{1}\\
 \gamma_{2}
-\end{array}\right]w_{t}+ \eta_t\label{eq_measur}\\
-w_{t} & = & \phi w_{t-1}+\varepsilon_{t}.\label{eq_trans}
+\end{array}\right]w_{t}+ D\eta_t\label{eq_measur}\\
+w_{t} & = & \phi w_{t-1}+\varepsilon_{t},\label{eq_trans}
 \end{eqnarray}
+where $\eta_t \sim \mathcal{N}(0,Id)$.
 
-* We simulate a 100-period sample, we remove observations of $y_{1,t}$ (respectively of $y_{2,t}$) between periods $t=30$ and $t=50$ (resp. between periods $t=40$ and $t=70$), and try to recover the states $w_t$.
+We simulate a 100-period sample, we remove observations of $y_{1,t}$ (respectively of $y_{2,t}$) between periods $t=30$ and $t=50$ (resp. between periods $t=40$ and $t=70$), and try to recover the states $w_t$.
+
+
+
+
+```{r Kalman1, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+library(TSModels) # Kalman filter procedure in there.
+# Set model specifications:
+alpha1 <- .5;alpha2 <- .95;Alpha <- diag(c(alpha1,alpha2))
+d_11 <- 1;d_12 <- .5;d_21 <- .5;d_22 <- 2
+D <- matrix(c(d_11,d_21,d_12,d_22),2,2)
+gamma1 <- 1;gamma2 <- 2;Gamma <- matrix(c(gamma1,gamma2),2,1)
+phi <- .8
+# Simulate model:
+T <- 100
+Y <- NULL;X <- NULL
+Alpha.Y_1 <- NULL
+y <- c(0,0);x <- 0
+for(i in 1:T){
+  Alpha.Y_1 <- rbind(Alpha.Y_1,c(Alpha %*% y))
+  y <- Alpha %*% y + Gamma * x + D %*% rnorm(2)
+  x <- phi * x + rnorm(1)
+  Y <- rbind(Y,t(y));X <- rbind(X,x)}
+# Define matrices needed in the Kalman_filter procedures:
+nu_t <- matrix(0,T,1)
+H <- phi;G <- Gamma
+mu_t <- Alpha.Y_1
+N <- 1;M <- D
+Sigma_0 <- 1/(1-phi^2) # unconditional variance of w
+rho_0 <- 0 # unconditional mean of w
+filter.res   <- Kalman_filter(Y,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
+smoother.res <- Kalman_smoother(Y,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
+```
+
+
+```{r Kalman10, echo=FALSE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+
+par(mfrow=c(3,1))
+par(plt=c(.1,.95,.2,.75))
+
+par(mfrow=c(3,1))
+plot(Y[,1],type="l",main=expression(Y[1*","*t]),lwd=2,xlab="",ylab="")
+plot(Y[,2],type="l",main=expression(Y[2*","*t]),lwd=2,xlab="",ylab="")
+plot(X,type="l",main=expression(X[t]),lwd=2,xlab="",ylab="")
+```
+
+```{r Kalman2, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+
+par(mfrow=c(2,1))
+par(plt=c(.1,.95,.15,.8))
+
+plot(X,type="l",main=expression(X[t]),lwd=2,xlab="",ylab="")
+lines(filter.res$r,col="red",lwd=2)
+lines(smoother.res$r,col="blue",lwd=2,lty=1)
+
+legend("topright",
+       c(expression(X[t]),
+         expression(paste("Filtered values of ",X[t],sep="")),
+         expression(paste("Smoothed values of ",X[t],sep=""))),
+       lwd=c(2), # line width
+       lty=c(1,1,1),
+       col=c("black","red","blue"),
+       seg.len = 4,
+       bg = "white"
+)
+
+plot(sqrt(filter.res$Sigma_tt),type="l",main=expression(X[t]),
+     lwd=2,xlab="",ylab="",col="red",ylim=c(min(sqrt(smoother.res$S_smooth)),
+                                            max(sqrt(filter.res$Sigma_tt))))
+lines(sqrt(smoother.res$S_smooth),lwd=2,col="blue")
+
+legend("topright",
+       c(expression(paste("Filtering standard error ",sqrt(Var(X[t*"|"*t])),sep="")),
+         expression(paste("Smoothing standard error ",sqrt(Var(X[t*"|"*T])),sep=""))),
+       lwd=c(2), # line width
+       lty=c(1,1,3),
+       col=c("black","red","red"),
+       seg.len = 4,
+       bg = "white"
+)
+```
+
+
+```{r Kalman4, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+
+# Missing data issue: remove observations.
+
+Y.modif <- Y
+Y.modif[30:50,1] <- NaN
+Y.modif[40:70,2] <- NaN
+
+filter.res <-     Kalman_filter(Y.modif,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
+smoother.res <- Kalman_smoother(Y.modif,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
+
+par(mfrow=c(3,1))
+par(plt=c(.1,.95,.15,.85))
+
+plot(Y.modif[,1],type="l",main=expression(Y[1*","*t]),lwd=2,xlab="",ylab="")
+plot(Y.modif[,2],type="l",main=expression(Y[2*","*t]),lwd=2,xlab="",ylab="")
+plot(X,type="l",main=expression(X[t]),lwd=2,xlab="",ylab="")
+```
+
+```{r Kalman5, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+
+par(mfrow=c(3,1))
+par(plt=c(.15,.95,.3,.95))
+
+par(mfrow=c(3,1))
+plot(Y.modif[,1],type="l",main=expression(y[1*","*t]),lwd=2,xlab="",ylab=expression(y[1*","*t]))
+plot(Y.modif[,2],type="l",main=expression(y[2*","*t]),lwd=2,xlab="",ylab=expression(y[2*","*t]))
+plot(X,type="l",main=expression(w[t]),lwd=2,xlab="",ylab=expression(w[t]))
+```
+
+
+```{r Kalman6, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+par(mfrow=c(2,1))
+par(plt=c(.1,.95,.15,.8))
+
+plot(X,type="l",main=expression(X[t]),lwd=2,xlab="",ylab="")
+lines(filter.res$r,col="red",lwd=2)
+lines(smoother.res$r,col="blue",lwd=2,lty=1)
+
+legend("topright", 
+       c(expression(X[t]),
+         expression(paste("Filtered values of ",X[t],sep="")),
+         expression(paste("Smoothed values of ",X[t],sep=""))),
+       lwd=c(2), # line width
+       lty=c(1,1,1),
+       col=c("black","red","blue"),
+       seg.len = 4,
+       bg = "white"
+)
+
+plot(sqrt(filter.res$Sigma_tt),type="l",main=expression(X[t]),lwd=2,xlab="",ylab="",col="red",
+     ylim=c(min(sqrt(smoother.res$S_smooth)),max(sqrt(filter.res$Sigma_tt))))
+lines(sqrt(smoother.res$S_smooth),lwd=2,col="blue")
+
+legend("topright", 
+       c(expression(paste("Filtering standard error ",sqrt(Var(X[t*"|"*t])),sep="")),
+         expression(paste("Smoothing standard error ",sqrt(Var(X[t*"|"*T])),sep=""))),
+       lwd=c(2), # line width
+       lty=c(1,1,3),
+       col=c("black","red","red"),
+       seg.len = 4,
+       bg = "white"
+)
+```
+
+
+```{r Kalman8, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+
+par(mfrow=c(2,1))
+par(plt=c(.1,.95,.15,.8))
+
+plot(X,type="l",main=expression(w[t]),lwd=2,xlab="",ylab="")
+lines(filter.res$r,col="red",lwd=2)
+lines(smoother.res$r,col="blue",lwd=2,lty=1)
+
+legend("topright", 
+       c(expression(w[t]),
+         expression(paste("Filtered values of ",w[t],sep="")),
+         expression(paste("Smoothed values of ",w[t],sep=""))),
+       lwd=c(2), # line width
+       lty=c(1,1,1),
+       col=c("black","red","blue"), # gives the legend lines the correct color and width
+       seg.len = 4,
+       bg = "white"
+)
+
+plot(sqrt(filter.res$Sigma_tt),type="l",
+     main = "Conditional standard deviation of filtered/smoothed estimates",
+     lwd=2,xlab="",ylab="",col="red",
+     ylim=c(min(sqrt(smoother.res$S_smooth)),1.4*max(sqrt(filter.res$Sigma_tt))))
+lines(sqrt(smoother.res$S_smooth),lwd=2,col="blue")
+
+legend("topleft", 
+       c(expression(paste("Filtering standard error ",sqrt(Var(w[t*"|"*t])),sep="")),
+         expression(paste("Smoothing standard error ",sqrt(Var(w[t*"|"*T])),sep=""))),
+       lwd=c(2), # line width
+       lty=c(1,1,3),
+       col=c("red","blue"),
+       seg.len = 4,
+       bg = "white"
+)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- \begin{center} -->

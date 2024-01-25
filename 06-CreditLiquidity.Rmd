@@ -984,6 +984,7 @@ In this context, a wide range of credit derivatives can be priced. In particular
 * CIS: protection payoff $>0$, when one entity of the underlying portfolio defaults.
 * CDO: protection payoff $>0$, when one entity of the underlying portfolio defaults, given that losses are in a given interval $[a,b]$ (e.g. $[a,b]=[3\%,6\%]$). See Figure \@ref(fig:CDO).
 
+
 Typical credit indices are the iTraxx (Europe) and CDX (U.S.); these indices track the default status of 125 large firms.
 
 The pricing CDO formula make an intensive use of the truncated Laplace transform (see Eq. \@ref(eq:DPS), @Duffie_Pan_Singleton_2000). The model estimation would be infeasible without the tractability provided by affine processes.

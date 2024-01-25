@@ -934,24 +934,20 @@ To price a standard CDS (with payments in domestic currency), one simply has to 
 
 The top-down approach has been shown to satisfactorily capture the existence of default clustering (e.g., @Brigo_et_al_2007, @Errais_Giesecke_Goldberg_2010).
 
-Building on @Gourieroux_Monfort_Renne_2014, @Gourieroux_Monfort_Mouabbi_Renne_2021 propose an affine top-down model consistent with: the presence of systemic entities, contagion, and the pricing of default events.
+Building on @Gourieroux_Monfort_Renne_2014, @Gourieroux_Monfort_Mouabbi_Renne_2021 propose an affine top-down model consistent with: the presence of systemic entities, contagion, and the pricing of default events (see Example \@ref(exm:DD)).
 
 
 :::{.example #DD name="Disastrous Defaults"}
 
-* Model proposed by @Gourieroux_Monfort_Mouabbi_Renne_2021.
-* $n^s_{t}$: Number of systemic defaults on date $t$.
-* $N^s_{t}$: number of systemic entities in default at date $t$ ($N^s_{t}=n^s_{t} + N^s_{t-1}$).
+@Gourieroux_Monfort_Mouabbi_Renne_2021 porpose an equilibrium model where different credit derivatives, including CDSs and tranch products (iTraxx), can be priced. In their framework, the default of large firms (those included in the iTraxx index) can have systemic consequences in the sense that: (a) they result in decrease in consumption and (b) they increase the probability of default of the other systemic firms.
 
-$\underline{k_{t}}=\{k_t,k_{t-1},\dots\}$.
+Let $n^s_{t}$ denote the number of systemic defaults on date $t$, and let $N^s_{t}$ denote number of systemic entities in default at date $t$ ($N^s_{t}=n^s_{t} + N^s_{t-1}$).
 
-* Conditional distribution of the number of systemic defaults:
+The conditional distribution of the number of systemic defaults is given by:
 \begin{eqnarray}
 n^s_{t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &\sim& \mathcal{P}oisson(\beta y_{t+1}+c n^s_{t}),(\#eq:ndistrinew)
 \end{eqnarray}
-where $y_t$ is a nonnegative factor fluctuating around a low-frequency component $x_t$.
-
-* $(y_t,x_t)'$ follows a VARG dynamics (Eq. \@ref(eq:VARG)). This dynamics admits the following VAR representation (using Prop. \@ref(prp:affineVAR)):
+where $y_t$ is a nonnegative factor fluctuating around a low-frequency component $x_t$. Vector $(y_t,x_t)'$ follows a VARG dynamics (Eq. \@ref(eq:VARG)) that admits the following VAR representation (using Prop. \@ref(prp:affineVAR)):
 \begin{equation}
 \left\{
 \begin{array}{ccl}
@@ -961,148 +957,39 @@ x_t - \mu_x  &=& \rho_x (x_{t-1} - \mu_x) + \sigma_{x,t}\varepsilon_{x,t},
 \right.(\#eq:systemF12)
 \end{equation}
 with $0<\rho_y<\rho_x<1$.
-* If $c>0$:
-Defaults on date $t$ increases the conditional probability of having additional defaults on the next date $\Rightarrow$ Systemic defaults are infectious [@Davis_Lo_2001}], or contagious.
-* $\Delta c_t = \log(C_t/C_{t-1})$: Log growth rate of per capita consumption:
+
+If $c>0$, defaults on date $t$ increases the conditional probability of having additional defaults on the next date $\Rightarrow$ Systemic defaults are infectious [@Davis_Lo_2001}], or contagious. 
+
+The log growth rate of per capita consumption ($\Delta c_t = \log(C_t/C_{t-1})$) is given by:
 \begin{equation}
-\Delta c_t = \mu_{c,0} + \mu_{c,x} x_t + \mu_{c,y} y_t + {\mu_{c,z}} z_{t}.(\#eq:Deltacrewritten)
+\Delta c_t = \mu_{c,0} + \mu_{c,x} x_t + \mu_{c,y} y_t + {\mu_{c,z}} z_{t},(\#eq:Deltacrewritten)
 \end{equation}
 where  $z_t$ depends on systemic defaults:
 \begin{equation}
 z_t|  \underline{x_{t}}, \underline{y_{t}}, \underline{N^s_{t}}  \sim \gamma_0(\xi_{z}n^s_{t-1},\mu_z).(\#eq:Zdistrinew)
 \end{equation}
-* $\gamma_0$ is a distribution featuring a point mass at zero [see Eq. (\@ref(eq:ARG0) in Example \@ref(exm:ARG1)].
+$\gamma_0$ being a distribution featuring a point mass at zero (see Eq. \@ref(eq:ARG0) in Example \@ref(exm:ARG1)). In that context, the conditional probability that $z_t=0$ is $\exp(-\xi_{z}n^s_{t-1})$. $z_{t}=0$ as long as there has been no systemic defaults in the previous period, which is rather frequent.
 
-$\Rightarrow$ The conditional probability that $z_t=0$ is $\exp(-\xi_{z}n^s_{t-1})$,
+If $\mu_{c,z}<0$ and $|\mu_{c,z}|$ is large or if $c$ (contamination) is large, then systemic defaults can give rise to disastrous decreases in $C_t$.
 
-$z_{t}=0$ as long as there has been no systemic defaults in the previous period, which is rather frequent.
+@Gourieroux_Monfort_Mouabbi_Renne_2021 consider agents featuring Epstein-Zin preferences, with a unit elasticity of intertemporal substitution (EIS). In that context, the SDF is exponential affine (as in Eq. \@ref(eq:keySDF)), and $w_t = (x_t,y_t,z_t,n^{s}_t)'$ is affine under $\mathbb{P}$ and $\mathbb{Q}$.
 
-* If $\mu_{c,z}<0$ and $|\mu_{c,z}|$ is large or if $\mu_{c,z}<0$ and $|\mu_{c,z}|$ not so large but $c$ (contamination) is large, then **systemic defaults can give rise to disastrous decreases in $C_t$**.
-* Agents feature Epstein-Zin preferences, with a unit elasticity of intertemporal substitution (EIS). An admissible s.d.f. is exponential affine [as in Eq. \@ref(eq:keySDF)].
+```{r SchemaDD, fig.align = 'center', out.width = "90%", fig.cap = "Causality scheme in Gourieroux et al. (2021).", echo=FALSE}
+knitr::include_graphics("figures/schemaDD.png")
+```
 
-$\Rightarrow$ $w_t = (x_t,y_t,z_t,n^{s}_t)'$ is affine under $\mathbb{P}$ and $\mathbb{Q}$.
-
-
-
-<!-- [plain] -->
-<!-- \advance\textwidth2cm -->
-<!-- \hsize\textwidth -->
-<!-- \columnwidth\textwidth -->
-
-<!-- \begin{figure} -->
-<!-- \caption{Causality schemes} -->
-<!-- \fbox{ -->
-<!-- 	\begin{picture}(460,230) \label{fig:tltros} -->
-<!-- 		\linethickness{.3 mm} -->
-
-<!-- 		\put(110,218){{\bf{Panel (a)}}} -->
-<!-- 		\put(100,205){\underline{Present model}} -->
-
-<!-- 		\put(93,163){Systemic entities} -->
-<!-- 		\put(130,110){\oval[3](75,100)} -->
-
-<!-- 		\put(50,110){\circle{20}} -->
-<!-- 		\put(46,108){$y_t$} -->
-<!-- 		\put(10,110){\circle{20}} -->
-<!-- 		\put(6,108){$x_t$} -->
-<!-- 		\put(20,110){\vector(1,0){20}} -->
-
-<!-- 		\put(60,110){\vector(1,0.17){60}} -->
-<!-- 		\put(60,110){\vector(1,-0.17){60}} -->
-
-<!-- 		\put(130,130){\circle{20}} -->
-<!-- 		\put(124,128){$n_{1,t}$} -->
-<!-- 		\put(110,142){iTraxx} -->
-<!-- 		%\cbezier(174,135)(160,145)(160,116)(178,128) -->
-<!-- 		%\put(180,134){\vector(1,-0.3){0}} -->
-
-<!-- 		\put(130,90){\circle{20}} -->
-<!-- 		\put(124,88){$n_{2,t}$} -->
-<!-- 		%\put(165,70){Non iTraxx} -->
-<!-- 		%\cbezier(174,95)(160,105)(160,76)(178,88) -->
-<!-- 		%\put(180,94){\vector(1,-0.3){0}} -->
-
-<!-- 		\put(125,101){\vector(0,1){20}} -->
-<!-- 		\put(135,119){\vector(0,-1){20}} -->
-
-<!-- 		\put(200,50){\circle{20}} -->
-<!-- 		\put(194,48){$n_{3,t}$} -->
-<!-- 		\put(169,30){Non systemic} -->
-<!-- 		\put(183,17){entities} -->
-
-<!-- 		\put(145,90){\vector(1,0.4){45}} -->
-<!-- 		\put(145,130){\vector(1,-0.4){45}} -->
-
-<!-- 		\put(202,110){\circle{20}} -->
-<!-- 		\put(196,108){$z_t$} -->
-
-<!-- 		\put(212,110){\vector(1,0){38}} -->
-
-<!-- 		\put(260,110){\circle{20}} -->
-<!-- 		\put(253,108){$\Delta c_{t}$} -->
-<!-- 		\put(240,90){Consumption} -->
-<!-- 		\put(240,78){growth} -->
-
-<!-- 		\cbezier(10,120)(10,210)(260,210)(260,123) -->
-<!-- 		\put(260,120){\vector(0,-1){0}} -->
-<!-- 		\cbezier(50,120)(50,210)(260,210)(260,123) -->
-<!-- 		%\put(320,120){\vector(0,-1){0}} -->
-
-<!-- 		\color{lightgray} -->
-<!-- 		\put(138,85){\vector(1,-0.65){52}} -->
-<!-- 		\put(138,125){\vector(1,-1.2){56}} -->
-<!-- 		\put(54,101){\vector(1,-0.41){137}} -->
-<!-- 		%\multiput(208,85)(4,-2.6){13}{\line(1,-0.65){2}} -->
-
-<!-- 		\color{black} -->
-
-<!-- 		\put(343,218){{\bf{Panel (b)}}} -->
-<!-- 		\put(310,205){\underline{Standard disaster-risk model}} -->
-
-<!-- 		%\put(400,150){\circle{20}} -->
-<!-- 		%\put(396,148){$y_t$} -->
-<!-- 		%\put(360,150){\circle{20}} -->
-<!-- 		\put(335,151){$x_t$, $y_t$} -->
-<!-- 		%\put(370,150){\vector(1,0){20}} -->
-<!-- 		\put(375,153){\oval(130,26)} -->
-<!-- 		\put(345,153){\oval(50,18)} -->
-<!-- 		\put(370,153){\vector(1,0){15}} -->
-<!-- 		%\put(395,153){\circle{20}} -->
-<!-- 		\put(410,153){\oval(50,18)} -->
-<!-- 		\put(389,151){$z_t$ (jump)} -->
-
-<!-- 		\put(335,140){\vector(0,-1){30}} -->
-<!-- 		\put(335,100){\circle{20}} -->
-<!-- 		\put(329,98){$n_{1,t}$} -->
-
-<!-- 		\put(360,140){\vector(0,-1){30}} -->
-<!-- 		\put(360,100){\circle{20}} -->
-<!-- 		\put(354,98){$n_{2,t}$} -->
-
-<!-- 		\put(385,140){\vector(0,-1){30}} -->
-<!-- 		\put(385,100){\circle{20}} -->
-<!-- 		\put(379,98){$n_{3,t}$} -->
-
-<!-- 		\put(415,140){\vector(0,-1){30}} -->
-<!-- 		\put(415,100){\circle{20}} -->
-<!-- 		\put(409,98){$\Delta c_t$} -->
-
-<!-- 	\end{picture} -->
-<!-- 	} -->
-<!-- \end{figure} -->
-
-
-
-* In this context, a wide range of credit derivatives can be priced. In particular those whose payoffs depend on the default status of the constituents of a reference portfolio: Credit Index swaps (CIS) and synthetic CDO.
+In this context, a wide range of credit derivatives can be priced. In particular those whose payoffs depend on the default status of the constituents of a reference portfolio: Credit Index swaps (CIS) and synthetic CDO.
 
 * CDS: protection payoff $>0$, when the entity on which the CDS is written defaults.
 * CIS: protection payoff $>0$, when one entity of the underlying portfolio defaults.
 * CDO: protection payoff $>0$, when one entity of the underlying portfolio defaults, given that losses are in a given interval $[a,b]$ (e.g. $[a,b]=[3\%,6\%]$). See Figure \@ref(fig:CDO).
 
-* Typical credit indices: iTraxx (Europe) and CDX (U.S.). 125 large firms.
-* Pricing formula based on an intensive use of the truncated Laplace transform [see Eq. \@ref(eq:DPS), @Duffie_Pan_Singleton_2000].
-* Estimation based (in particular) on iTraxx Europe main index; CDOs: maturities of 3, 5 and 7 years and, for each maturity, 5 tranches: 0\%-3\%, 3\%-6\%, 6\%-9\%, 9\%-12\% and 12\%-22\%.
-* Fit of tranche prices shown on Figure \@ref(fig:fittranche).
+Typical credit indices are the iTraxx (Europe) and CDX (U.S.); these indices track the default status of 125 large firms.
+
+The pricing CDO formula make an intensive use of the truncated Laplace transform (see Eq. \@ref(eq:DPS), @Duffie_Pan_Singleton_2000). The model estimation would be infeasible without the tractability provided by affine processes.
+
+<!-- * Estimation based (in particular) on iTraxx Europe main index; CDOs: maturities of 3, 5 and 7 years and, for each maturity, 5 tranches: 0\%-3\%, 3\%-6\%, 6\%-9\%, 9\%-12\% and 12\%-22\%. -->
+<!-- * Fit of tranche prices shown on Figure \@ref(fig:fittranche). -->
 
 :::
 

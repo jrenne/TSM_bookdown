@@ -70,7 +70,9 @@
 <li><a class="" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
 <li><a class="active" href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
 <li><a class="" href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">4</span> Estimation of affine asset-pricing models</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">5</span> References</a></li>
+<li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">5</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
+<li><a class="" href="credit-and-liquidity-risks.html"><span class="header-section-number">6</span> Credit and liquidity risks</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">7</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -145,9 +147,9 @@ If investors were not risk-averse, then we would have <span class="math inline">
 <h2>
 <span class="header-section-number">3.2</span> Swap rates and forward rates<a class="anchor" aria-label="anchor" href="#swap-rates-and-forward-rates"><i class="fas fa-link"></i></a>
 </h2>
-<div id="swap-rates" class="section level3" number="3.2.1">
+<div id="Swaps" class="section level3" number="3.2.1">
 <h3>
-<span class="header-section-number">3.2.1</span> Swap rates<a class="anchor" aria-label="anchor" href="#swap-rates"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.1</span> Swap rates<a class="anchor" aria-label="anchor" href="#Swaps"><i class="fas fa-link"></i></a>
 </h3>
 <p>Bonds issued by top-rated (Aaa/AAA) countries are often considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks <span class="citation">(<a href="references.html#ref-Duffie_Stein_2015">Darrell Duffie and Stein 2015</a>)</span>.</p>
 <div class="definition">
@@ -250,7 +252,7 @@ and <span class="math inline">\(\mathbb{E}_t(w_{t+k})\)</span> is affine in <spa
 <span class="math display" id="eq:condvarRth">\[\begin{equation}
 \mathbb{V}ar_t[R(t+k,h)] = \mathbb{V}ar_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{V}ar_t(w_{t+k})A_h,\tag{3.11}
 \end{equation}\]</span>
-where the components of <span class="math inline">\(\mathbb{V}ar_t(w_{t+k})\)</span> (and therefore <span class="math inline">\(\mathbb{V}ar_t[R(t+k,h)]\)</span>) is affine in <span class="math inline">\(w_t\)</span> (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>). This can also be used at the estimation stage, if one wants to fit (proxies of) conditional variances <span class="citation">(<a href="references.html#ref-zarg_2017">Monfort et al. 2017</a>)</span>.</p>
+where the components of <span class="math inline">\(\mathbb{V}ar_t(w_{t+k})\)</span> (and therefore <span class="math inline">\(\mathbb{V}ar_t[R(t+k,h)]\)</span>) is affine in <span class="math inline">\(w_t\)</span> (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>). This can also be used at the estimation stage, if one wants to fit (proxies of) conditional variances <span class="citation">(<a href="references.html#ref-zarg_2017">Alain Monfort et al. 2017</a>)</span>.</p>
 </div>
 <div id="maximum-sharpe-ratio" class="section level3" number="3.3.2">
 <h3>
@@ -501,7 +503,7 @@ Figure 3.5: bla bla bla.
 <h3>
 <span class="header-section-number">3.5.2</span> The auto-regressive gamma approach<a class="anchor" aria-label="anchor" href="#the-auto-regressive-gamma-approach"><i class="fas fa-link"></i></a>
 </h3>
-<p><span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> introduce an affine framework where the short-term rate can stay at zero for a prolonged period of time and with a stochastic lift-off probability.</p>
+<p><span class="citation">Alain Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> introduce an affine framework where the short-term rate can stay at zero for a prolonged period of time and with a stochastic lift-off probability.</p>
 <p>Under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span>, the state vector <span class="math inline">\(w_t\)</span> follows a multi-variate auto-regressive gamma (VARG) process—a multivariate extension of Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>. Conditionally on <span class="math inline">\(\underline{w_t}\)</span>, the <span class="math inline">\(n\)</span> components of <span class="math inline">\(w_{t+1}\)</span> are independent and distributed as follows:
 <span class="math display" id="eq:VARG">\[\begin{equation}
 \frac{w_{i,t+1}}{\mu_i} \sim \gamma(\nu_i+z_{i,t}) \quad \mbox{where} \quad z_{i,t} \sim {\mathcal P} \left( \alpha_i + \beta_i' w_t \right).\tag{3.15}
@@ -512,7 +514,7 @@ If <span class="math inline">\(\mu = (\mu_1,\dots,\mu_n)'\)</span>, <span class=
 &amp;&amp; \left. + \alpha'\left(\frac{u \odot \mu}{1 - u \odot \mu}\right) - \nu'\log(1 - u \odot \mu)\right],
 \end{eqnarray*}\]</span>
 where <span class="math inline">\(\odot\)</span> denotes the element-by-element multiplication and, where, with abuse of notation, the division and log operators work element-by-element when applied to vectors.</p>
-<p>In their baseline model, <span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> use four factors. They set <span class="math inline">\(\nu_1 = \nu_2 = 0\)</span>, implying that <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span> can stay at zero (see Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>). The short-term rate <span class="math inline">\(r_t\)</span> is posited to be an affine combination of <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span>, that is:
+<p>In their baseline model, <span class="citation">Alain Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> use four factors. They set <span class="math inline">\(\nu_1 = \nu_2 = 0\)</span>, implying that <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span> can stay at zero (see Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>). The short-term rate <span class="math inline">\(r_t\)</span> is posited to be an affine combination of <span class="math inline">\(w_{1,t}\)</span> and <span class="math inline">\(w_{2,t}\)</span>, that is:
 <span class="math display">\[
 r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t},
 \]</span>
@@ -533,7 +535,7 @@ where <span class="math inline">\(\varphi_{t,h}\)</span> is the multi-horizon La
 \right.
 \end{equation}\]</span>
 Other lift-off probabilities, of the type <span class="math inline">\(\mathbb{P}_t[R(t+h,k)&gt;threshold]\)</span>, can be derived from Eq. <a href="ChapterAffine.html#eq:DPS">(1.18)</a>.</p>
-<p><span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> esitmate this model by means of Kalman filtering techniques (see Subsection <a href="#EstimationKF"><strong>??</strong></a>). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationPersistency">4.6</a> and (e-GARCH-based) proxies of conditional variances (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>).</p>
+<p><span class="citation">Alain Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> esitmate this model by means of Kalman filtering techniques (see Subsection <a href="#EstimationKF"><strong>??</strong></a>). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationPersistency">4.6</a> and (e-GARCH-based) proxies of conditional variances (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:fitZarg"></span>
 <img src="figures/Figure_fit_ZARG.png" alt="Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters." width="95%"><p class="caption">
@@ -561,7 +563,7 @@ Figure 3.7: Source: Monfort et al. (2017). Lift-off probabilities.
 <li><a class="nav-link" href="#RFIntroduction"><span class="header-section-number">3.1</span> Introduction</a></li>
 <li>
 <a class="nav-link" href="#swap-rates-and-forward-rates"><span class="header-section-number">3.2</span> Swap rates and forward rates</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#swap-rates"><span class="header-section-number">3.2.1</span> Swap rates</a></li>
+<li><a class="nav-link" href="#Swaps"><span class="header-section-number">3.2.1</span> Swap rates</a></li>
 <li><a class="nav-link" href="#FWD"><span class="header-section-number">3.2.2</span> Forward rates</a></li>
 </ul>
 </li>
@@ -594,7 +596,7 @@ Figure 3.7: Source: Monfort et al. (2017). Lift-off probabilities.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-22.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

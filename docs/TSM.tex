@@ -2235,6 +2235,530 @@ The historical dynamics is obtained as a by-product. Indeed:
 \psi_t(u | \underline{w_t} ; \theta^*_1, \theta^*_2) = \psi_t^{\mathbb{Q}}\left[ u -\alpha_t (\underline{w_t}, \theta^*_2)|\underline{w_t} ; \theta^*_1 \right] -\psi^{\mathbb{Q}}_t \left[- \alpha_t (\underline{w_t}, \theta^*_2) | \underline{w_t},\theta^*_1 \right].
 \end{equation*}
 
+\hypertarget{the-term-structure-or-risk-free-yields}{%
+\chapter{The term structure or risk-free yields}\label{the-term-structure-or-risk-free-yields}}
+
+\hypertarget{RFIntroduction}{%
+\section{Introduction}\label{RFIntroduction}}
+
+Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are usually considered to be risk-free.
+
+An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models involve macro factors in \(w_t\) \citep{Ang_Piazzesi_2003}; some do not \citep{Duffie_Singleton_1997}. The latter are sometimes called \emph{yield-only} models.
+
+The basic pricing formula of a risk-free zero coupon bond is (see Eq. \eqref{eq:stdbond} in Example \ref{exm:nominalBth}):
+\begin{eqnarray}
+B(t,h) &=& \exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1})\\
+R(t,h) &=& - \frac{1}{h} \log B(t,h). \label{eq:stdbondRFchapter}
+\end{eqnarray}
+
+Term structure models are often used to extract \textbf{term premiums} from observed yields-to-maturity. Term premiums are those components of yields that would not exist if investors were not risk-averse.
+
+If agents were not risk averse, i.e., under the \textbf{Expectation Hypothesis (EH)}, we would have \(\mathcal{M}_{t,t+1} = \exp(- r_t)\). We would then have ``\(\mathbb{P} \equiv \mathbb{Q}\)'\,' and \(B(t,h)\) would become:
+\begin{equation}
+\exp(-r_{t}) \mathbb{E}_t \exp(-r_{t+1}-\dots-r_{t+h-1}).\label{eq:stdbondRFchapterP}.
+\end{equation}
+And the maturity-\(h\) yield-to-maturity would then be:
+\begin{eqnarray}
+R^{EH}(t,h) &=& -\frac{1}{h}\log \left( \mathbb{E}_t \exp(-r_t-\dots-r_{t+h-1})\right)\nonumber\\
+&\approx& \frac{1}{h}\mathbb{E}_t(r_t + \dots + r_{t+h-1}).\label{eq:REH}
+\end{eqnarray}
+
+The term premium is given by:
+\begin{eqnarray}
+TP_{t,h} &=& \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1})}_{=R(t,h)} - \nonumber \\
+&& \underbrace{- \frac{1}{h}  \log  \mathbb{E}_t \exp(-r_{t+1}-\dots-r_{t+h-1}).}_{=R^{EH}(t,h)}\label{eq:TP}
+\end{eqnarray}
+
+What is the economic meaning of the term premium? Under EH, investors are willing to buy a maturity-\(h\) bond as long as its expected return is---up to Jensen's inequality---equal to the average of future short-term rates. (Hence the definition of \(R^{EH}(t,h)\), see Eq. \eqref{eq:REH}.) When \(TP_{t,h}>0\), investors are willing to buy the maturity-\(h\) bond only if its return is, on average, higher than expected future short-term rates; this corresponds to a situation where investors consider that long-term bonds tend to lose value in \emph{bad states of the world} (i.e., states of high marginal utility).
+
+\begin{quote}
+\textbf{\emph{Risk premium:}} According to Eq. \eqref{eq:Mbasicpricing}, the price of any asset \(j\) satisfies:
+\[
+p_{jt} = \mathbb{E}_t(\mathcal{M}_{t,t+1} p_{j,t+1}).
+\]
+The previous equation rewrites:
+\[
+p_{jt} =  \mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1}) + \mathbb{E}_t(\mathcal{M}_{t,t+1})\mathbb{E}_t( p_{j,t+1})
+\]
+or
+\begin{equation}
+p_{jt} = \underbrace{\exp(-r_t)\mathbb{E}_t( p_{j,t+1})}_{=p^{EH}_{jt}} + \underbrace{\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})}_{\mbox{Risk premium}}.\label{eq:CovRP}
+\end{equation}
+If investors were not risk-averse, then we would have \(p_{jt} = p^{EH}_{jt}\). The S.D.F. is high (resp. low) in bad (resp. good) states of the world (states of high marginal utility in the equilibrium approach). Hence, we have \(p_{jt}< p^{EH}_{jt}\) if asset \(j\) tends to pay less in bad states of the world (i.e., if \(\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})<0\)).
+\end{quote}
+
+\hypertarget{swap-rates-and-forward-rates}{%
+\section{Swap rates and forward rates}\label{swap-rates-and-forward-rates}}
+
+\hypertarget{Swaps}{%
+\subsection{Swap rates}\label{Swaps}}
+
+Bonds issued by top-rated (Aaa/AAA) countries are often considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks \citep{Duffie_Stein_2015}.
+
+\begin{definition}[Interest Rate Swap (IRS)]
+\protect\hypertarget{def:swap}{}\label{def:swap}In an Interest Rate Swap (IRS), a \emph{fixed-rate payer} agrees to provide the \emph{fixed-rate receiver} with a sequence of cash flows that are determined at the negotiation date of the swap, and at predetermined dates. These cash flows constitute the \emph{fixed leg} of the swap. Conversely, the fixed-rate receiver provides the fixed-rate payer with cash-flows that depend on future values of a reference rate; this is the \emph{floating rate} of the swap.
+
+More precisely, the dates of payment are of the form \(t+ \tau\), \(t + 2\tau\), \dots, \(t + n\tau\), where \(\tau\) is a period expressed in years (typically 1/2 or 1/4) and \(n\) is the number of payments. The maturity, or \emph{tenor}, of the swap contract is \(h = n \tau\).
+
+The payoffs of the fixed leg are \(\tau S\), where \(S\) is the annualized payment (or \emph{swap rate}). On date \(t+j\tau\), the payoff of the floating leg is \(\tau L(t+(j-1)\tau,\tau)\), where \(L\), the annualized linear rate is given by:
+\[
+L(t+(j-1)\tau,\tau) = \frac{1 - B(t+(j-1)\tau,\tau)}{\tau B(t+(j-1)\tau,\tau)},
+\]
+where \(B(t+(j-1)\tau,\tau)\) is the price, at date \(t+(j-1)\tau\) of a bond of maturity \(\tau\).
+
+On the negotiation date, the values of the fixed and floating legs are identical, so that the value of the swap is zero.
+\end{definition}
+
+At \(t\), the price of the fixed leg is:
+\[
+\sum_{j=1}^n \tau S B(t,j\tau).
+\]
+Let us turn to the price of the floating leg. The payoff at date \(t+j\tau\), that is \(\frac{1 - B(t+(j-1)\tau,\tau)}{B(t+(j-1)\tau,\tau)}\) is known on date \(t+(j-1)\tau\), so its price at date \(t+(j-1)\tau\) is \(1 - B(t+(j-1)\tau,\tau)\), and its price at \(t\) therefore is \(B(t,(j-1)\tau) - B(t,j\tau)\). Summing over \(j=1,\dots,n\), the date-\(t\) price of the floating leg is \(1 - B(t,n\tau)\) (independent of the payment dates).
+
+Since the price of the contract is zero at date \(t\) (by definition of the swap), we must have:
+\[
+\sum_{j=1}^n \tau S B(t,j\tau) = 1 - B(t,n\tau) \Rightarrow S = \frac{1 - B(t,n\tau)}{ \tau \sum_{j=1}^n  B(t,j\tau)},
+\]
+or
+\[
+\boxed{S(t,h) = \frac{1 - B(t,h)}{\tau \sum_{j=1}^{h/\tau}  B(t,j\tau)}.}
+\]
+
+Note that all the terms appearing in the previous formula are available in closed-form in the context of an affine model (see Example \ref{exm:nominalBth}).
+
+\hypertarget{FWD}{%
+\subsection{Forward rates}\label{FWD}}
+
+\begin{definition}[Forward Rate Agreement (FRA)]
+\protect\hypertarget{def:FWD}{}\label{def:FWD}An interest rate forward contract is a contract in which the rate to be paid or received on a specific obligation for a set period, beginning in the future, is set at contract initiation.
+\end{definition}
+
+Denote by \(f(t,h_1,h_2)\) the forward interest rate, set on date \(t\), for the period between \(t+h_1\) and \(t+h_2\). Let us relate \(f(t,h_1,h_2)\) to bond rates. For that, consider two strategies (decided on date \(t\)):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Buy a zero-coupon bond of maturity \(h_2\) (price \(B(t,h_2)\)) and sell zero-coupon bonds of maturity \(h_1\) for the same amount (yielding a payoff of \(B(t,h_2)/B(t,h_1)\) on date \(t+h_1\)).
+\item
+  Enter a forward rate agreement between dates \(t+h_1\) and \(t+h_2\), whereby you receive 1 on date \(t+h_2\).
+\end{enumerate}
+
+These two strategies deliver the same payoffs on date \(t\) (the payoff is zero) and on date \(t+h_2\) (the payoff is 1). By absence of arbitrage, the payoffs on date \(t+h_1\) have to be the same. Therefore
+\begin{eqnarray*}
+\exp(-(h_2 - h_1)f(t,h_1,h_2)) &=& B(t,h_2)/B(t,h_1) \\
+\Rightarrow f(t,h_1,h_2) &=& \frac{1}{h_2 - h_1}(\log[B(t,h_1)] - \log[B(t,h_2)]),
+\end{eqnarray*}
+which gives:
+\begin{equation}
+\boxed{f(t,h_1,h_2) = \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1}.}\label{eq:forward}
+\end{equation}
+In an affine model (where \(R(t,h)\) is an affine function of the state vector \(w_t\)), forward rates are linear in the state vector \(w_t\).
+
+\hypertarget{RiskFreeAffine}{%
+\section{The Affine Case}\label{RiskFreeAffine}}
+
+\hypertarget{affine-yields}{%
+\subsection{Affine yields}\label{affine-yields}}
+
+In this subsection, we consider the case where the state vector \(w_t\) is affine under both \(\mathbb{P}\) and \(\mathbb{Q}\). If the nominal short-term rate is affine in \(w_t\), i.e., if \(r_t = \omega_0 + \omega'_1 w_t\), then:
+\begin{eqnarray*}
+B(t,h) &=& \mathbb{E}^{\mathbb{Q}}_t \exp (-r_{t}-\dots-r_{t+h-1})\\
+&=& \exp(-h\omega_0 - \omega'_1 w_t) \color{blue}{\mathbb{E}^{\mathbb{Q}}_t \exp (- \omega'_1 w_{t+1}-\dots- \omega'_1 w_{t+h-1})}.
+\end{eqnarray*}
+The (blue) expectation is easily computed using the recursive equations of Lemma \ref{lem:MHLT} (see Example \ref{exm:nominalBth}), leading to:
+\begin{equation}
+R(t,h)= -  \frac{1}{h}   \log   B(t,h) = A_h'w_t + B_h.\label{eq:RthAB}
+\end{equation}
+It is easily seen that we can also get:
+\begin{equation}
+R^{EH}(t,h) = {A^{EH}_h}'w_t + B^{EH}_h.\label{eq:RthABEH}
+\end{equation}
+Moreover, if inflation is also affine in \(w_t\), i.e., if \(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\), then real yields are given by:
+\begin{eqnarray*}
+\bar{B}(t,h) &=& \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t}-\dots-r_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h})
+\end{eqnarray*}
+(see Example \ref{exm:realBth}) which also leads to:
+\begin{equation}
+\bar{R}(t,h) = -  \frac{1}{h}   \log   \bar{B}(t,h) = \bar{A}_h'w_t + \bar{B}_h.\label{eq:RbarthAB}
+\end{equation}
+Eqs. \eqref{eq:RthAB} and \eqref{eq:RthABEH} imply that term premiums are affine in \(w_t\) (see Eq. \eqref{eq:TP}). Specifically:
+\[
+TP(t,h) = R(t,h) - E^{EH}(t,h) = B_h - B_h^{EH} + (A_h - A_h^{EH})'w_t.
+\]
+Expected excess returns resulting from holding zero-coupon bonds are also affine in \(w_t\). Indeed, holding a maturity-\(h\) zero-coupon bond for one period provides the following expected gross return:
+\[
+\mathbb{E}_t\left(\frac{B(t+1,h-1)}{B(t,h)}\right) = \mathbb{E}_t\left(\exp(B_{h-1} - B_h + A_{h-1}'w_{t+1} - A_h'w_{t})\right),
+\]
+which is clearly exponential affine in \(w_t\) if \(w_t\) is an affine process. Therefore, the expected excess return, that is:
+\[
+\log \mathbb{E}_t\left(\frac{B(t+1,h-1)}{B(t,h)}\right) - r_t
+\]
+is also affine in \(w_t\) in this context. The fact that excess returns are affine in this context is exploited in the estimation approach proposed by \citet{Adrian_Crump_Moench_2013}.
+
+Moreover, \emph{conditional expectations} of future interest rates (real or nominal) and of term premiums are also affine in \(w_t\). In particular:
+\begin{equation}
+\mathbb{E}_t[R(t+k,h)] = \mathbb{E}_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{E}_t(w_{t+k}) + B_h,\label{eq:condmeanRth}
+\end{equation}
+and \(\mathbb{E}_t(w_{t+k})\) is affine in \(w_t\) (see Eq. \eqref{eq:condmean}). This can notably be used at the estimation stage, if one wants to fit survey data (see Section XXX).
+
+Similarly, \emph{conditional variances} of future interest rates (real or nominal) and of term premiums are affine in \(w_t\). In particular:
+\begin{equation}
+\mathbb{V}ar_t[R(t+k,h)] = \mathbb{V}ar_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{V}ar_t(w_{t+k})A_h,\label{eq:condvarRth}
+\end{equation}
+where the components of \(\mathbb{V}ar_t(w_{t+k})\) (and therefore \(\mathbb{V}ar_t[R(t+k,h)]\)) is affine in \(w_t\) (see Eq. \eqref{eq:condvar}). This can also be used at the estimation stage, if one wants to fit (proxies of) conditional variances \citep{zarg_2017}.
+
+\hypertarget{maximum-sharpe-ratio}{%
+\subsection{Maximum Sharpe ratio}\label{maximum-sharpe-ratio}}
+
+In an affine model, the maximum Sharpe ratio is easily computed. This has been noted early by \citet{Duffee_2010} for the Gaussian model; \citet{Gourieroux_Monfort_Mouabbi_Renne_2021} and \citet{Pallara_Renne_2023} use it in more sophisticated affine models.
+
+Let us derive the maximum Sharpe ratio in the context of a genral affine framework. Eq. \eqref{eq:CovRP} implies that
+\[
+\mathbb{E}_t\underbrace{\left(\frac{p_{j,t+1}}{p_{j,t}} - \exp(r_t)\right)}_{=xs_{j,t+1},\mbox{ excess return}} =  - \exp(r_t) \mathbb{C}ov_t\left(\mathcal{M}_{t,t+1},\frac{p_{j,t+1}}{p_{j,t}}\right),
+\]
+and, using \(|\mathbb{C}ov(X,Y)| \le \sqrt{\mathbb{V}ar(X)\mathbb{V}ar(Y)}\), we get the \citet{Hansen_Jagannathan_1991} bound:
+\begin{equation}
+\underbrace{\frac{\mathbb{E}_t(xs_{j,t+1})}{\sqrt{\mathbb{V}ar_t(xs_{j,t+1})}}}_{\mbox{Sharpe ratio}} \le \underbrace{\frac{\sqrt{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}}_{\mbox{Maximum Sharpe ratio}}.
+\end{equation}
+
+If the S.D.F. is given by \(\mathcal{M}_{t,t+1} = \exp[-r_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)]\) (Eq. \eqref{eq:keySDF}), and using that \(\mathbb{E}_t(\mathcal{M}_{t,t+1}^2)=\exp(-2r_t+\psi_t(2\alpha_t)-2\psi_t(\alpha_t))\) we get:
+\[
+\mbox{Maximum Sharpe ratio} = \sqrt{\exp(\psi_t(2\alpha_t)-2\psi_t(\alpha_t)) - 1}.
+\]
+
+\hypertarget{RiskFreeGaussian}{%
+\section{Gaussian Affine Term Structure Model}\label{RiskFreeGaussian}}
+
+The Gaussian Affine Term Structure Model (GATSM) is a \emph{Workhorse} model, widely used in academic and economic-policy circles. In a GATSM, \(w_t\) follows a Gaussian vector autoregressive model, and is therefore affine under \(\mathbb{P}\). The S.D.F. is exponential affine in \(w_t\), which implies that it is also affine under \(\mathbb{Q}\) (see Subsection XXX). Since the components of \(w_t\) are valued in \(\mathbb{R}\), one can easily introduce macro-factors among the state variables.
+
+Let us be more specific. The state vector \(w_t\) follows:
+\begin{equation}
+w_{t+1} = \mu + \Phi w_{t} + \Sigma^{1/2} \varepsilon_{t+1}, \mbox{ where } \varepsilon_{t} \sim  i.i.d. \mathcal{N}(0,Id).\label{eq:GaussianVAR1}
+\end{equation}
+(The fact that we consider a VAR(1) process is without loss of generality since a VAR(p) admits a VAR(1) companion representation.)
+
+This implies the following Laplace transform for \(w_t\) (see Example \ref{exm:Gaussian}):
+\[
+\psi_t(u) = \log \mathbb{E}_t(\exp(u'w_{t+1})|\underline{w_t}) = \color{blue}{u'\mu + u'\Phi w_t + \frac{1}{2}u'\Sigma'u}.
+\]
+Using the notations of Eq. \eqref{eq:keySDF}, the s.d.f. is defined as:
+\[
+\mathcal{M}_{t,t+1} = \exp(- r_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t.
+\]
+
+In that case, using Eq. \eqref{eq:transfoPQ}, we get:
+\begin{eqnarray*}
+\psi_t^{\mathbb{Q}}(u) &=& \psi_t(u + \alpha_t) - \psi_t(\alpha_t)\\
+&=& (u + \alpha_t)'\mu + (u + \alpha_t)'\Phi w_t + \frac{1}{2}(u + \alpha_t)'\Sigma(u + \alpha_t) \\
+&& - \left(\alpha_t'\mu + \alpha_t'\Phi w_t + \frac{1}{2}\alpha_t'\Sigma\alpha_t\right) \\
+&=& \color{blue}{u' \left(\mu + \Sigma \alpha_0 \right) + u'(\Phi + \Sigma \alpha_1')w_t  + \frac{1}{2}u'\Sigma'u}.
+\end{eqnarray*}
+The \(\mathbb{Q}\)-dynamics of \(w_t\) is (from Example \ref{exm:Gaussian}):
+\[
+w_{t+1} = \mu + \Sigma  \alpha_0 + (\Phi + \Sigma \alpha_1')  w_{t} + \Sigma^{1/2} \varepsilon^*_{t+1}, \mbox{ where } \varepsilon^*_{t} \sim  i.i.d. \mathcal{N}^{\mathbb{Q}}(0,Id).
+\]
+Hence, \(w_t\) also follows a VAR process under \(\mathbb{Q}\) since the previous equation rewrites:
+\[
+w_{t+1} = \mu^{\mathbb{Q}} + \Phi^{\mathbb{Q}} w_{t} + \Sigma^{1/2} \varepsilon^*_{t+1},
+\]
+where \(\mu^{\mathbb{Q}} = \mu + \Sigma \alpha_0\) and \(\Phi^{\mathbb{Q}}=\Phi + \Sigma \alpha_1'\).
+
+With affine specifications of the nominal short term rate (\(r_{t} = \omega_0 + \omega'_1 w_t\)) and of the inflation rate (\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)), we obtain affine formulas for nominal and real yields of any maturity (Eqs. \eqref{eq:RthAB} and \eqref{eq:RbarthAB}).
+
+\begin{example}[Kim and Wright (2005)]
+\protect\hypertarget{exm:KimWright}{}\label{exm:KimWright}
+
+This model is a three-factor \emph{yield-only model} (no macro variables, except inflation in one variant of the model), where the short-term rate reads \(r_t = \omega_0 + \omega_{1,1} w_{1,t} +\omega_{1,2} w_{2,t} +\omega_{1,3} w_{3,t}\).
+
+The model estimated by Kalman filter (see Subsection,\ref{Estimation:KF}; the state-space model (Def. \ref{def:LSSM}) includes survey-based variables (see Subsection \ref{EstimationPersistency}).
+
+Outputs are \href{https://www.federalreserve.gov/pubs/feds/2005/200533/200533abs.html}{regularly updated by the Federal Reserve Board}.
+
+Monthly data on the 6-month and 12-month-ahead forecasts of the three-month T-Bill yield from Blue Chip Financial Forecasts and semiannual data on the average expected three-month T-Bill yield from 6 to 11 years.
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/fredKW-1} \caption{Kim and Wright (2005) outputs.}\label{fig:fredKW}
+\end{figure}
+
+\end{example}
+
+\begin{example}[Ang and Piazzesi (2003)]
+\protect\hypertarget{exm:AngPiazzesi}{}\label{exm:AngPiazzesi}
+
+\citet{Ang_Piazzesi_2003} propose one of the first paper mixing latent and macrovariables. The set up is also of the form Eq. \eqref{eq:GaussianVAR1}, except that the VAR features several lags.\footnote{Note that a VAR with \(p\) lags (i.e., a VAR(\(p\))) admits a VAR(1) companion form.} In their model, \(w_t = [f^{o}_{1,t},f^{o}_{2,t},f^{u}_{1,t},f^{u}_{2,t},f^{u}_{3,t}]'\) where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(f^{o}_{1,t}\) is the first Principal Component of a set of 3 price indexes (growth rates)
+\item
+  \(f^{o}_{2,t}\) is the first Principal Component of a set of 4 real activity proxies (HELP, EMPLOY, IP, UE).
+\item
+  \(f^{u}_{i,t}\) are unobserved, or latent, factors.
+\end{itemize}
+
+The nominal short-term rate follows a Taylor rule. And latent factors are estimated via \emph{inversion techniques} (Subsection \ref{EstimationInversion}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/AngPiazzesi1} 
+
+}
+
+\caption{Source: Ang and Piazzesi (1998). Impulse response functions.}\label{fig:figAngPiazzesi}
+\end{figure}
+
+\end{example}
+
+\begin{example}[Joslin, Priebsch and Singleton (2014)]
+\protect\hypertarget{exm:JPS}{}\label{exm:JPS}
+
+\citet{Joslin_Priebsch_Singleton_2014} first note that affine models stating that the short term rate is affine in macro factors imply that macro-factors are \emph{spanned} by the yield curve: macro-factors should be perfectly explained by yields of different maturities. Further, they show that this is not the case in the data. (That is, regressing macro factors on yields provides \(R^2\) that are far from one.)
+
+They propose a model where macro factors are unspanned by the yield curve, but can still help predict yields. In their model, \(w_t = [\mathcal{P}_t',M_t']'\), where \(\mathcal{P}_t\) are yield factors (\(\approx\) principal components) and \(M_t\) are macro factors. The model is as follows:
+\begin{eqnarray*}
+r_t &=& \omega_{0} + \omega_{\mathcal{P}}'\mathcal{P}_t \\
+\left[\begin{array}{c}\mathcal{P}_t \\ M_t \end{array}\right]
+&=&
+\left[\begin{array}{cc}\Phi_{\mathcal{P}\mathcal{P}}&\Phi_{\mathcal{P}M} \\
+\Phi_{M\mathcal{P}}&\Phi_{MM} \end{array}\right]
+\left[\begin{array}{c}\mathcal{P}_{t-1} \\ M_{t-1} \end{array}\right] + \Sigma \varepsilon_t \\
+\left[\begin{array}{c}\mathcal{P}_t \\ M_t \end{array}\right] &=& \mu +
+\left[\begin{array}{cc}\Phi^{\mathbb{Q}}_{\mathcal{P}\mathcal{P}}&{\color{red}0} \\
+\Phi^{\mathbb{Q}}_{M\mathcal{P}}&\Phi^{\mathbb{Q}}_{MM} \end{array}\right]
+\left[\begin{array}{c}\mathcal{P}_{t-1} \\ M_{t-1} \end{array}\right] + \Sigma \varepsilon^{\mathbb{Q}}_t,
+\end{eqnarray*}
+where \(\varepsilon_t\) and \(\varepsilon^{\mathbb{Q}}_t\) are \(\mathcal{N}(0,Id)\) under \(\mathbb{P}\) and \(\mathbb{Q}\), respectively.
+
+\(M_t\) does Granger-cause \(\mathcal{P}_t\) under \(\mathbb{Q}\) and \(r_t\) is affine in \(\mathcal{P}_t\) (only).
+
+In this context, yields \(R(t,h)\) are affine in \(\mathcal{P}_t\) (only). However \(M_t\) does Granger-cause \(\mathcal{P}_t\) under \(\mathbb{P}\), that is, macro-shocks affect the yield curve.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/JPS_IRF} 
+
+}
+
+\caption{Source: Joslin, Priebsch, and Singleton (2014). Impulse response functions.}\label{fig:JPSIRF}
+\end{figure}
+
+\end{example}
+
+\begin{example}[Ang, Boivin, Dong and Loo-Kung (2011)]
+\protect\hypertarget{exm:Angetal2011}{}\label{exm:Angetal2011}
+
+\citet{Ang_Boivin_Dong_LooKung_2011} propose a macro-finance model based on a quadratic framework. The short-term rate follows a Taylor rule with time-varying parameters:
+\[
+r_t = \omega_0 + a_t g_t + b_t \pi_t,
+\]
+where \(x_t=(g_t,\pi_t,a_t,b_t)'\) follows a Gaussian VAR. This is the context described in Example \ref{exm:QGVAR1}. The previous equation shows that \(r_t\) is linear in \(w_t = (x_t,vec(x_t x_t')')'\). Specifically:
+\[
+r_t = \omega_0 + \omega_1'w_t,
+\]
+with \(\omega_1 = [v,vec(V)]'\), where
+\[
+v = \left[
+\begin{array}{c}
+0\\
+0\\
+0\\
+0
+\end{array}
+\right] \quad \mbox{and} \quad V = \left[
+\begin{array}{cccc}
+0 & 0& 1/2&0\\
+0& 0& 0&1/2\\
+1/2& 0& 0&0\\
+0&1/2 &0 &0
+\end{array}
+\right].
+\]
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{figures/Ang_Boivin_loadings} 
+
+}
+
+\caption{Source: Ang, Boivin, Dong, Loo-Kung (2011). Estimated factor loadings ($a_t$ and $b_t$).}\label{fig:AngBoivin}
+\end{figure}
+
+\end{example}
+
+\hypertarget{RiskFreeNonNegative}{%
+\section{Non-Negative Affine Term Structure Model}\label{RiskFreeNonNegative}}
+
+In the presence of physical currency, absence of arbitrage opportunity and of storing cost of cash, nominal interest rates should be nonnegative. Many standard models (e.g.~Gaussian ATSM) are non consistent with non-negative nominal yields. The period of extremely low interest rates challenged these models. Against this backdrop, approaches have been developed to accommodate zero (or effective) lower bounds. We provide two examples; only the second is an affine model.
+
+\hypertarget{the-shadow-rate-approach}{%
+\subsection{The shadow-rate approach}\label{the-shadow-rate-approach}}
+
+The shadow-rate model is originally due to \citet{Black_1995}. In this model, the short term rate is given by:
+\begin{equation}
+r_t = \max(s_t,\underline{r}),\label{eq:SRSTR}
+\end{equation}
+where \(s_t\) is the shadow short-term interest rate and \(\underline{r}\) is the effective lower bound (\(\le 0\)). While \(s_t\) can be real-valued, the short term rate is nonnegative under \eqref{eq:SRSTR}. In shadow-rate models, the shadow rate \(s_t\) is usually a linear combination of a vector \(w_t\) that follows a Gaussian auto-regressive model. While \(s_t\) is a linear combination of components of an affine process, this is not the case for \(r_t\). As a result, pricing formula are not available in closed-form. Approximation formula have been proposed by, e.g., \citet{Krippner_2013}, \citet{Priebsch_2013}, \citet{Wu_Xia_2016}.
+
+Let us describe the latter approach \citep{Wu_Xia_2016}. As in Subsection \ref{RiskFreeGaussian}, the S.D.F. is defined as:
+\[
+\mathcal{M}_{t,t+1} = \exp(- r_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t,
+\]
+(this is Eq. \eqref{eq:keySDF}), but the short-term rate \(r_t\) is given by \(r_t = \max(s_t,0)\), with
+\[
+s_t = \delta_0 + \delta_1' w_t.
+\]
+
+The approximation approach proposed by \citet{Wu_Xia_2016} is based on an approximation to the conditional expectations of forward rates. Using the results of Subsection \ref{FWD}, we have (Eq. \eqref{eq:forward}):
+\[
+f_{n-1,n,t} = n R_{t,n} - (n-1) R_{t,n-1}.,
+\]
+for \(n>0\) (and using \(R_{t,0}=0\)). This implies that:
+\[
+R_{t,h} =  \frac{1}{h}(f_{t,0,1}+f_{t,1,2}+\dots+f_{t,h-1,h}).
+\]
+
+The approximation of \citet{Wu_Xia_2016} consists in finding approximations of the forward rates \(f_{t,n-1,n}\) (denoted by \(\tilde{f}_{t,n-1,n}\), say) and to use them in the previous equation to get:
+\begin{equation}
+\boxed{R_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).}\label{eq:RapproxSR}
+\end{equation}
+
+Using that, for any random variable \(Z\), we have \(\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]\) (based on a second order Taylor expansion), \citet{Wu_Xia_2016} further show that:
+\begin{eqnarray}
+f_{t,n,n+1} &=& -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n r_{t+j}}\right)\right) + \log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^{n-1} r_{t+j}}\right)\right)\\
+&\approx& \mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] - \frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right).
+\end{eqnarray}
+
+The expectation can be computed analytically:
+\[
+\mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] = \underline{r} + \sigma_n^{\mathbb{Q}}g\left(\frac{\bar{a}_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right),
+\]
+where \(g(x)= x\Phi(x)-\phi(x)\), \(\Phi\) and \(\phi\) being the c.d.f. and p.d.f. of the standard normal distribution, respectively, and where
+\begin{eqnarray*}
+\bar{a}_n &=& \delta_0 + \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\mu^{\mathbb{Q}}\\
+b_n' &=& \delta_1'\left(\Phi^{\mathbb{Q}}\right)^n.
+\end{eqnarray*}
+They also show that
+\[
+\frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right) \approx \Phi\left(\frac{\bar{a}_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right)\times(\bar{a}_n - a_n),
+\]
+where
+\[
+a_n = \bar{a}_n - \frac{1}{2}\sigma_n^{\mathbb{Q}},
+\]
+with
+\[
+\sigma_n^{\mathbb{Q}} := \mathbb{V}ar^{\mathbb{Q}}_t\left(s_{t+n}\right)= \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\Sigma \Sigma' \left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)'\delta_1.
+\]
+They finally obtain:
+\[
+\boxed{f_{t,n,n+1} \approx \tilde{f}_{t,n,n+1} = \underline{r} + \sigma_n^{\mathbb{Q}}g\left(\frac{a_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right),}
+\]
+which is used in \eqref{eq:RapproxSR} to obtain an approximation to \(R_{t,h}\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(TSModels)}
+\CommentTok{\# Specify model:}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{2} \CommentTok{\# number of factors}
+\NormalTok{rho }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,n,n)}
+\FunctionTok{diag}\NormalTok{(rho) }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{97}
+\NormalTok{mu }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,n,}\DecValTok{1}\NormalTok{)}
+\NormalTok{Sigma }\OtherTok{\textless{}{-}} \FunctionTok{diag}\NormalTok{(n)}
+\NormalTok{delta}\FloatTok{.0} \OtherTok{\textless{}{-}} \DecValTok{0}\NormalTok{;delta}\FloatTok{.1} \OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(.}\DecValTok{01}\NormalTok{,n)}
+\NormalTok{r.bar }\OtherTok{\textless{}{-}} \DecValTok{0} \CommentTok{\# r = max(s,r.bar) [i.e., r.bar=0 in standard model]}
+\NormalTok{Model }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{rho =}\NormalTok{ rho,}\AttributeTok{mu =}\NormalTok{ mu,}\AttributeTok{Sigma =}\NormalTok{ Sigma,}
+  \AttributeTok{delta.0 =}\NormalTok{ delta}\FloatTok{.0}\NormalTok{,}\AttributeTok{delta.1 =}\NormalTok{ delta}\FloatTok{.1}\NormalTok{,}\AttributeTok{r.bar =}\NormalTok{ r.bar)}
+\CommentTok{\# Simulate model and compute shadow rate:}
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{simul.var}\NormalTok{(Model,}\AttributeTok{nb.sim =} \DecValTok{200}\NormalTok{) }\CommentTok{\# simulated path}
+\NormalTok{s }\OtherTok{\textless{}{-}}\NormalTok{ delta}\FloatTok{.0} \SpecialCharTok{+}\NormalTok{ X }\SpecialCharTok{\%*\%}\NormalTok{ delta}\FloatTok{.1}
+\CommentTok{\# Compute yields:}
+\NormalTok{res }\OtherTok{\textless{}{-}} \FunctionTok{compute.price.WX}\NormalTok{(Model,X,}\AttributeTok{max.H=}\DecValTok{100}\NormalTok{)}
+\CommentTok{\# Prepare plots:}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{plt=}\FunctionTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{95}\NormalTok{,.}\DecValTok{2}\NormalTok{,.}\DecValTok{75}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(s,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"time"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{main=}\StringTok{"(a) Shadow rate"}\NormalTok{)}
+\NormalTok{t }\OtherTok{\textless{}{-}} \DecValTok{50} \CommentTok{\#t \textless{}{-} which(s==min(s))}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\NormalTok{t,}\AttributeTok{col=}\StringTok{"dark grey"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{lty=}\DecValTok{3}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(res}\SpecialCharTok{$}\NormalTok{vec.f[t,],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"maturity"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{,}
+     \AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{main=}\StringTok{"(b) yields and forward rates"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(res}\SpecialCharTok{$}\NormalTok{vec.y[t,],}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }
+       \FunctionTok{c}\NormalTok{(}\StringTok{"forward rates"}\NormalTok{,}\StringTok{"yields to maturity"}\NormalTok{),}\AttributeTok{lwd=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{),}\AttributeTok{lty=}\DecValTok{1}\NormalTok{,}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{,}\StringTok{"red"}\NormalTok{),}\AttributeTok{bg =} \StringTok{"white"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/WuXia-1} 
+
+}
+
+\caption{bla bla bla.}\label{fig:WuXia}
+\end{figure}
+
+\hypertarget{the-auto-regressive-gamma-approach}{%
+\subsection{The auto-regressive gamma approach}\label{the-auto-regressive-gamma-approach}}
+
+\citet{zarg_2017} introduce an affine framework where the short-term rate can stay at zero for a prolonged period of time and with a stochastic lift-off probability.
+
+Under \(\mathbb{P}\) and \(\mathbb{Q}\), the state vector \(w_t\) follows a multi-variate auto-regressive gamma (VARG) process---a multivariate extension of Example \ref{exm:ARG1}. Conditionally on \(\underline{w_t}\), the \(n\) components of \(w_{t+1}\) are independent and distributed as follows:
+\begin{equation}
+\frac{w_{i,t+1}}{\mu_i} \sim \gamma(\nu_i+z_{i,t}) \quad \mbox{where} \quad z_{i,t} \sim {\mathcal P} \left( \alpha_i + \beta_i' w_t \right).\label{eq:VARG}
+\end{equation}
+If \(\mu = (\mu_1,\dots,\mu_n)'\), \(\alpha = (\alpha_1,\dots,\alpha_n)'\), \(\nu = (\nu_1,\dots,\nu_n)'\) and \(\beta = (\beta_1,\dots,\beta_n)\), then
+\begin{eqnarray*}
+\varphi_t(u) &=& \exp\left[\left(\frac{u \odot \mu}{1 - u \odot \mu}\right)'\beta' w_t \right.\\
+&& \left. + \alpha'\left(\frac{u \odot \mu}{1 - u \odot \mu}\right) - \nu'\log(1 - u \odot \mu)\right],
+\end{eqnarray*}
+where \(\odot\) denotes the element-by-element multiplication and, where, with abuse of notation, the division and log operators work element-by-element when applied to vectors.
+
+In their baseline model, \citet{zarg_2017} use four factors. They set \(\nu_1 = \nu_2 = 0\), implying that \(w_{1,t}\) and \(w_{2,t}\) can stay at zero (see Example \ref{exm:ARG1}). The short-term rate \(r_t\) is posited to be an affine combination of \(w_{1,t}\) and \(w_{2,t}\), that is:
+\[
+r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t},
+\]
+hence, it can stay at zero.
+
+Factors \(w_{3,t}\) and \(w_{4,t}\) Granger-cause \(w_{1,t}\) and \(w_{2,t}\), thereby causing \(r_t\). As a result, for \(h \ge 2\), \(R(t,h)\) is a non-zero combination of the four components of \(w_t\).
+
+For the same reason, when \(r_t=0\), the lift-off probability depends on \(w_{3,t}\) and \(w_{4,t}\). The framework offers closed-form solutions for lift-off probabilities. Indeed, using Lemma \ref{lemma:mass}:
+\[
+\mathbb{P}_t(\alpha'w_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\alpha),
+\]
+where \(\varphi_{t,h}\) is the multi-horizon Laplace transform defined in Eq. \eqref{eq:multiLT}, which can be computed using Proposition \ref{prp:reverseMLT}. We have:
+\begin{equation}
+\left\{
+\begin{array}{l}
+\mathbb{P}_t(r_{t+h}>0) = 1 - \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\omega) \\ \\
+\mathbb{P}_t(r_{t+1}=0,\dots,r_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(u\omega,\dots,u\omega,u\omega) \equiv p_{h}\\ \\
+\mathbb{P}_t(r_{t+1}=0,\dots,r_{t+h-1}=0,r_{t+h}>0) = p_{h-1} - p_h.
+\end{array}
+\right.
+\end{equation}
+Other lift-off probabilities, of the type \(\mathbb{P}_t[R(t+h,k)>threshold]\), can be derived from Eq. \eqref{eq:DPS}.
+
+\citet{zarg_2017} esitmate this model by means of Kalman filtering techniques (see Subsection \ref{EstimationKF}). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection \ref{EstimationPersistency} and (e-GARCH-based) proxies of conditional variances (see Eq. \eqref{eq:condvar}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/Figure_fit_ZARG} 
+
+}
+
+\caption{Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters.}\label{fig:fitZarg}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/Figure_LiftOff} 
+
+}
+
+\caption{Source: Monfort et al. (2017). Lift-off probabilities.}\label{fig:liftOff}
+\end{figure}
+
 \hypertarget{estimation-of-affine-asset-pricing-models}{%
 \chapter{Estimation of affine asset-pricing models}\label{estimation-of-affine-asset-pricing-models}}
 
@@ -2858,6 +3382,356 @@ Assume the estimate of \(\phi\) is downward biased (\(\hat\phi=0.9\)). The influ
 
 \caption{Source: Kim and Orphanides (2005).}\label{fig:figKimOrph}
 \end{figure}
+
+\hypertarget{forward-futures-dividends-commodity-pricing-and-convenience-yields}{%
+\chapter{Forward, futures, dividends, commodity pricing, and convenience yields}\label{forward-futures-dividends-commodity-pricing-and-convenience-yields}}
+
+\hypertarget{FCFPForwards}{%
+\section{Forward contracts}\label{FCFPForwards}}
+
+Let us denote by \(\underline{w_{t}}\) the information available at \(t\), i.e., \(\underline{w_{t}}= \{w_t,w_{t-1},\dots\}\).
+
+A Forward contract is defined as an agreement, signed at \(t\), to buy/sell an asset (a commodity) at a given delivery date \(T>t\) at a price \(\Phi_{t,T}\), called \emph{delivery price} or \emph{forward price}, decided at \(t\). We denote by \(S_T\) the value of the asset (commodity) at \(T\); this is a function of \(\underline{w_{T}}\). For the buyer, the payoff of the contract at \(T\) is \(S_T - \Phi_{t,T}\).
+
+In this chapter, we denote by \(r_t\) the interest rate between \(t\) and \(t+1\) (known at \(t\)), it is assumed to be a function of \(\underline{w_{t}}\). We also denote by \(B(t_1,t_2-t_1)\) the date-\(t_1\) price of a zero-coupon bond whose value is 1 on \(t_2\).
+
+The following proposition provides an expression for the forward price \(\Phi_{t,T}\):
+
+\begin{proposition}[Forward price]
+\protect\hypertarget{prp:fwd}{}\label{prp:fwd}We have:
+\begin{eqnarray*}
+\Phi_{t,T} & = & \frac{\mathbb{E}_t (\mathcal{M}_{t,t+1}, \ldots, \mathcal{M}_{t-1,T} S_T)}{B(t,T-t)}\\
+& = & \frac{\mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1}) S_T]}{B(t,T-t)}.
+\end{eqnarray*}
+\end{proposition}
+
+\begin{proof}
+The price at \(t\) of \(S_T - \Phi_{t,T}\) is zero. Therefore:
+\(\mathbb{E}_t (\mathcal{M}_{t,t+1}, \ldots, \mathcal{M}_{t-1,T} S_T) - \Phi_{t,T} \mathbb{E}_t (\mathcal{M}_{t,t+1} \ldots \mathcal{M}_{t-1,T}) = 0\), which gives the result.
+\end{proof}
+
+If processes \((r_t)\) and \((S_t)\) are \(\mathbb{Q}\)-independent, then we have
+\[
+\Phi_{t,T} = \mathbb{E}^{\mathbb{Q}}_t (S_T),
+\]
+and \(\Phi_{t,T}\) therefore is a \(\mathbb{Q}\)-martingale.
+
+If the asset does not generate any payoff before \(T\) (in the case of shares, there is no dividends), then
+\[
+\Phi_{t,T} = \frac{S_t}{B(t,T-t)}.
+\]
+The price at \(s\), with \(t<s<T\), of a forward contract signed at \(t\) is:
+\[
+(\Phi_{s,T} - \Phi_{t,T}) B (s,T-s),
+\]
+since the payoff \(S_T - \Phi_{t,T}\) at \(T\) has this price at \(s\).
+
+How are these formulas affected by the presence of dividends? To investigate that, let us introduce additional notations. Denote by \(\tilde{S}_t\) the ex-dividend price at \(t\), and by \(S_t\): the cum-dividend price at \(t\). We have \(S_t = \tilde{S}_t \exp (\delta_t)\), where \(\delta_t\) is the dividend yield (or rate), observed on date \(t\). We get:
+\begin{eqnarray*}
+\tilde{S}_{T-1} & = & \mathbb{E}_{T-1} (\mathcal{M}_{t-1,T} S_T) \\
+\mbox{or } \\
+S_{T-1} & = & \mathbb{E}_{T-1} [\mathcal{M}_{t-1,T} \exp (\delta_{T-1})
+S_T],
+\end{eqnarray*}
+and, recursively:
+\begin{eqnarray*}
+S_t & = & \mathbb{E}_t [\mathcal{M}_{t,t+1} \ldots \mathcal{M}_{t-1,T} \exp (\delta_t + \ldots + \delta_{T-1}) S_T] \\
+&=& \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t \ldots - r_{T-1} + \delta_t + \ldots + \delta_{T-1}) S_T].
+\end{eqnarray*}
+This shows that the formulas are as in the non-dividend case, except that \(r_t\) is replaced by \(r_t - \delta_t\).
+
+Replacing \(S_t\) by \(\tilde{S} \exp(\delta_t)\) and \(S_T\) by \(\tilde{S}_T \exp (\delta_T)\), we get
+\[
+\tilde{S}_t = \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t -\ldots-r_{T-1} + \delta_{t+1} + \ldots + \delta_T) \tilde{S}_T.
+\]
+When the dividend rate \(\delta_t\) is deterministic, we have:
+\[
+\Phi_{t,T} = \frac{S_t \exp (-\delta_t - \ldots - \delta_{T-1})}{B(t,T-t)}.
+\]
+And if \(r_t\) is deterministic too, we have:
+\[
+\Phi_{t,T} = S_t \exp   (r_t + \ldots + r_{T-1} - \delta_t - \ldots - \delta_{T-1}).
+\]
+
+\hypertarget{FCFPFutures}{%
+\section{Futures contracts, futures prices}\label{FCFPFutures}}
+
+A futures contract is an agreement, signed at \(t\), to buy/sell an asset (a commodity) at given delivery date \(T>t\) at a price \(F_{t,T}\), called \emph{futures price}, decided at \(t\). The difference with forward contract is that both counterparties are required to deposit into a \emph{margin account}, at every trading day \(s>t\), the resettlement payment (\emph{margin call}). The latter is equal to:
+\[
+\Delta_{s,T} = F_{s,T} - F_{s-1,T} \quad \mbox{(for the buyer)}.
+\]
+
+Hence, a futures contract is actually closed out after every day, starts afresh the next day. Its value therefore is zero.
+
+The following proposition values a futures contract.
+
+\begin{proposition}[Pricing futures]
+\protect\hypertarget{prp:future}{}\label{prp:future}We have:
+\[
+F_{t,T} = \mathbb{E}^{\mathbb{Q}}_t (S_T),
+\]
+that is \(F_{t,T}\) is a \(\mathbb{Q}\)-martingale, and \(\Delta_{t,T}\) is a \(\mathbb{Q}\)-martingale difference.
+\end{proposition}
+
+\begin{proof}
+At each date \(s\ge t\), after the deposit of the resettlement payment, there is a new contract valued zero and paying \(F_{s+1,T} - F_{s,T}\) at \(s+1\) (and providing another zero valued contract at \(s+1\)). Therefore \(0 = \mathbb{E}^{\mathbb{Q}}_s [\exp (-r_s) (F_{s+1,T} - F_{s,T})]\), and \(0 = \mathbb{E}^{\mathbb{Q}}_s (F_{s+1,T} - F_{s,T})\) since \(\exp (-r_s)\) is known at \(s\). Hence \(F_{s,T} = \mathbb{E}^{\mathbb{Q}}_s (F_{s+1,T})\), and the results follows from \(F_{T,T} = S_T\).
+\end{proof}
+
+\begin{proposition}[Forward-Futures deviation]
+\protect\hypertarget{prp:FFdeviation}{}\label{prp:FFdeviation}We have:
+\[
+\Phi_{t,T} - F_{t,T} = \frac{\mathbb{C}ov^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s), S_T\right]}{B(t,T-t)}.
+\]
+\end{proposition}
+
+\begin{proof}
+We have:
+\begin{eqnarray*}
+\Phi_{t,T} - F_{t,T} & = & \mathbb{E}^{\mathbb{Q}}_t \left[\frac{\prod^{T-1}_{s=t} \exp (-r_s) S_T }{B(t,T-t)}- S_T\right] \\
+&=& \frac{\mathbb{E}^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s) S_T\right] - \mathbb{E}^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s)\right] \mathbb{E}^{\mathbb{Q}}_t (S_T)}{B(t,T-t)} \\
+&=&\frac{cov^{\mathbb{Q}}_t \left[\prod^{T-1}_{s=t} \exp (-r_s), S_T)\right]}{B(t,T-t)}. \end{eqnarray*}
+\end{proof}
+
+Hence, \(\Phi_{t,T} = F_{t,T}\) if, and only if, \(\prod^{T-1}_{s=t} \exp (-r_s)\) and \(S_T\) are conditionally uncorrelated under \(\mathbb{Q}\). It is true, in particular, in the case of deterministic short rates.
+
+\hypertarget{FCFPConvenience}{%
+\section{Convenience yields}\label{FCFPConvenience}}
+
+A convenience yield is defined as the net benefit associated with holding a physical asset (rather than a forward or futures contract). It is \emph{net} in the sense that it is equal to the positive gain of holding minus potential storage costs.
+
+The notion of convenience yield is relevant only for storable commodities (not, e.g., for electricity). It can be positive or negative. The notion of convenience yield is mathematically similar to that of a dividend yield (but can be \(<0\), and is often latent).
+
+In the following, we denote the convenience yield by \(c_t\). The price is here the cum-convenience yield price.
+
+Let us first consider the case where \(r_t\) and \(c_t\) are deterministic. We have:
+\[
+\Phi_{t,T} = F_{t,T} = S_t \exp (r_t + \ldots + r_{T-1} - c_t - \ldots - c_{T-1}).
+\]
+Moreover, if \(r_t\) and \(c_t\) are time independent, we get:
+\[
+\Phi_{t,T} = F_{t,T} = S_t \exp [(T-t)(r-c)].
+\]
+If \(r>c\), the forward curve is an increasing function of matuerity \(T\); this is known as a situation of \emph{contango}. If \(r<c\), the forward curve is a decreasing function of maturity \(T\), know as a situation of \emph{backwardation}.
+
+Let us turn to the situation where \(c_t\) is stochastic. We have:
+\begin{eqnarray}
+\Phi_{t,T} &=& \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1}) S_T]/B(t,T-t) \label{eq:convenience1}\\
+F_{t,T} &=& \mathbb{E}^{\mathbb{Q}}_t (S_T) \label{eq:convenience2}\\
+S_t &=& \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1} + c_t + \ldots + c_{T-1}) S_T] \label{eq:convenience3}.
+\end{eqnarray}
+Going further necessitates a joint modelling---at least under \(\mathbb{Q}\)---of \(S_t\) (or \(s_t = \log S_t\)), \(c_t\) (convenience yield), and \(r_t\) (short rate).
+
+\begin{quote}
+In the case of a \textbf{nonstorable commodity}, there is no convenience yield. If, moreover \(r_t\) deterministic, \(\Phi_{t,T} = F_{t,T} = \mathbb{E}^{\mathbb{Q}}_t (S_T)\), but since Eq. \eqref{eq:convenience3} is not valid we do not have \(S_t = B(t,T) \mathbb{E}^{\mathbb{Q}}_t (S_T)\) and therefore we do not have \(\Phi_{t,T} = S_t / B(t,T)\).
+\end{quote}
+
+\begin{quote}
+In the case of a \textbf{storable commodity}, the price ex-convenience yield at \(t\), i.e.~\(S_t \exp (-c_t)\), is the price at \(t\) of \(S_{t+1}\):
+\begin{eqnarray}
+S_t \exp (-c_t) &=& \exp (-r_t) \mathbb{E}^{\mathbb{Q}}_t (S_{t+1}) \nonumber\\
+\mathbb{E}^{\mathbb{Q}}_t (S_{t+1}) & = & S_t \exp (r_t - c_t) \label{eq:convenience4} \\
+\mathbb{E}^{\mathbb{Q}}_t \exp (s_{t+1}) &=& \exp(s_t+r_t-c_t). \nonumber
+\end{eqnarray}
+Or if \(y_{t+1} = \log \frac{S_{t+1}}{S_t}\) denotes the (geometric) return, then:
+\[
+\mathbb{E}^{\mathbb{Q}}_t \exp (y_{t+1}) = \exp (r_t - c_t).
+\]
+Eq. \eqref{eq:convenience3} is automatically satisfied (using Eq. \eqref{eq:convenience4} recursively).
+\end{quote}
+
+\hypertarget{FCFPPricingRN}{%
+\section{Pricing with affine models}\label{FCFPPricingRN}}
+
+In this section, we consider a storable commodity. The state vector is as follows:
+\[
+w_t = (s_t, c_t, r_t, x'_t)',
+\]
+where \(s_t = \log S_t\), and where \(x_t\) is a vector of additional factors. We further assume that \(w_t\) is a \(\mathbb{Q}\)-affine process, that is:
+\[
+\mathbb{E}^{\mathbb{Q}}_t \exp (u' w_{t+1}) = \exp [a' (u) w_t + b(u)].
+\]
+Since \(S_{t+1} = \exp (e_1' w_{t+1})\), Internal Consistency Constraints (ICCs) apply (see Subsection \ref{DirectModeling}), and we have:
+\begin{eqnarray*}
+&&\mathbb{E}^{\mathbb{Q}}_t \exp (s_{t+1}) = \exp (s_t-c_t+r_t)\\
+&\Leftrightarrow& \mathbb{E}^{\mathbb{Q}}_t \exp (e_1' w_{t+1}) = \exp [(e_1 - e_2 + e_3)' w_t]\\
+&\Leftrightarrow& \left\{\begin{array}{lcl}
+a(e_1) &=& e_1 - e_2 + e_3 \\
+b(e_1) &=&0.
+\end{array} \right.
+\end{eqnarray*}
+
+\begin{quote}
+If the commodity is non-storable, there are no \(c_t\), and no ICCs.
+\end{quote}
+
+Eqs. \eqref{eq:convenience1} and \eqref{eq:convenience2} give:
+\begin{eqnarray*}
+\Phi_{t,T} & = & \frac{\mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{t-1} + s_T)]}{\mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1})]} \\
+F_{t,T} & = & \mathbb{E}^{\mathbb{Q}}_t [\exp (s_T)].
+\end{eqnarray*}
+Using the multi-horizon Laplace transforms of \(w_t = (s_t, c_t, r_t, x^{'}_t)'\), we get quasi explicit formulas for these prices (as they are exponential affine in future values of \(w_t\), which is an affine process).
+
+\hypertarget{historical-dynamics}{%
+\section{Historical dynamics}\label{historical-dynamics}}
+
+Using the notation of Subsection \ref{PricingAffine}, assume the s.d.f. is of the form:
+\[
+\mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp \left[-r_t + \alpha'_t w_{t+1} + \psi^{\mathbb{Q}}_t (-\alpha_t)\right],
+\]
+such that
+\[
+\mathbb{E}^{\mathbb{Q}}_t (\mathcal{M}_{t,t+1}^{-1}) = \exp (r_t).
+\]
+
+The historical dynamics of \(w_t\) is defined through:
+\[
+\psi_t (u) = \psi^{\mathbb{Q}}_t (u-\alpha_t) - \psi^{\mathbb{Q}}_t(-\alpha_t).
+\]
+
+\begin{quote}
+There is no constraint on \(\alpha_t\), which can be used, e.g., to specify some forms of seasonality (see Example \ref{exm:FCFPGaussian}).
+\end{quote}
+
+\begin{example}[A Gaussian VAR model]
+\protect\hypertarget{exm:FCFPGaussian}{}\label{exm:FCFPGaussian}Consider the state vector \(w_t = (s_t, c_t, r_t)'\), whose R.N. dynamics reads:
+\[
+w_{t+1} = A_0 + A_1 w_t + \varepsilon_{t+1}, \quad \varepsilon_{t+1} \sim  i.i.d. \mathcal{N}(0,\Sigma) \mbox{ under }\mathbb{Q}.
+\]
+We then have (see Example \ref{exm:GAR1}):
+\begin{eqnarray*}
+\mathbb{E}_t \exp (u' w_{t+1}) &=& \exp \left[u' (A_0 + A_1 w_t) + \frac{1}{2} u' \Sigma u\right] \\
+\Rightarrow &&
+\left\{
+\begin{array}{ccl}
+a(u) &=&A^{'}_1 u \\
+b(u) & =& A'_0 u + \frac{1}{2} u' \Sigma u. \end{array} \right.
+\end{eqnarray*}
+Decompose \(A_0\) and \(A_1\) as follows:
+\begin{eqnarray*}
+A_0 &=& \left(
+\begin{array}{c} A_{01} \\ \tilde{A}_0
+\end{array}
+\right), \quad A_1 = \left(
+\begin{array}{c} A_{11} \\
+\tilde{A}_1
+\end{array}
+\right).
+\end{eqnarray*}
+If the considered commodity is storable, we have the following ICCs (no constraint otherwise):
+\[
+\left\{
+\begin{array}{ccl}
+a (e_1) & = & e_1 - e_2 + e_3 \\
+b (e_1) &=& 0. \end{array}
+\right.
+\]
+Therefore, the first row of \(A_1\) is \(A_{11} = e_1'- e_2' + e_3'\), the first element of \(A_0\) is \(A_{01} = -\frac{1}{2}\sigma^2_1\) (\(\sigma^2_1\) being the conditional variance of \(s_{t+1}\)).
+
+In other words the \(\mathbb{Q}\)-VAR is:
+\[
+\left\{\begin{array}{cclcc} s_{t+1} & = & -\frac{1}{2}
+\sigma^2_1 + s_t - c_t + r_t &+& \varepsilon_{1,t+1} \\
+\left(\begin{array}{c} c_{t+1} \\ r_{t+1} \end{array} \right) & = &
+\tilde{A}_0 + \tilde{A}_1 w_t &+& \left(\begin{array}{c} \varepsilon_{2,t+1} \\
+\varepsilon_{3,t+1} \end{array} \right),
+\end{array} \right.
+\]
+where \(\tilde{A}_0\) and \(\tilde{A}_1\) are not constrained.
+
+Noting \(y_{t+1} = \log (S_{t+1}/S_t) = s_{t+1} - s_t\), this implies that
+\[
+\mathbb{E}^{\mathbb{Q}}_t y_{t+1} = r_t - c_t - \frac{1}{2} \sigma^2_1.
+\]
+Hence, \(y_{t+1} - r_t + c_t + \frac{1}{2} \sigma^2_1\) is a \(\mathbb{Q}\)-martingale difference.
+
+The historical dynamics of the state vector is as follows:
+\[
+\begin{array}{lcl}
+\psi_t (u) & = & \psi^{\mathbb{Q}}_t (u-\alpha_t) - \psi^{\mathbb{Q}}_t (- \alpha_t) \\
+&=& u' (A_0 + A_1 w_t) + \frac{1}{2} (u-\alpha_t)' \Sigma (u-\alpha_t)- \frac{1}{2} \alpha'_t
+\Sigma \alpha_t \\
+&=&u' (A_0 + A_1 w_t) - u' \Sigma \alpha_t + \frac{1}{2} u' \Sigma u.
+\end{array}
+\]
+If we take \(\alpha_t = \alpha_0 + \alpha_1 w_t\), we get:
+\begin{eqnarray*}
+\psi_t (u) &=& u' [A_0 - \Sigma \alpha_0 + (A_1 - \Sigma \alpha_1) w_t] + \frac{1}{2} u' \Sigma u \\
+\Rightarrow  w_{t+1} &=& A_0 - \Sigma \alpha_0 + (A_1 - \Sigma \alpha_1) w_t + \xi_t,\\
+&& \xi_t \sim  i.i.d.   \mathcal{N}(0,\Sigma)\; \mbox{under}\;\mathbb{P}.
+\end{eqnarray*}
+Hence, any VAR(1), with same \(\Sigma\), can be reached.
+
+We can also take a time-varying specification for \(\alpha_t\), of the form \(\alpha_t = \alpha_{0t} + \alpha_1 w_t\). We then get the historical dynamics:
+\[
+w_{t+1} = A_{0} - \Sigma \alpha_{0t} + (A_1 - \Sigma \alpha_1) w_t + \xi_{t+1}
+\]
+We can for instance choose \(\alpha_{0t}\) such that: \(A_{0} - \Sigma \alpha_{0t} = \left( \begin{array}{c} \mu_{1t} \\ \mu_2 \\ \mu_3 \end{array}\right)\), where \(\mu_{1t}\), \(\mu_2\), and \(\mu_3\) are given.
+In particular:
+\begin{eqnarray*}
+s_{t+1} & = & \mu_{1t} + (A_{11} - \Sigma_1 \alpha_1) w_t + \xi_{1,t+1} \\
+& = & \mu_{1t} + \bar{A}_{11} w_t + \xi_{1,t+1}\; \mbox{(say)}, \;
+\end{eqnarray*}
+where \(\bar{A}_{11}\) is not constrained, or:
+\[
+s_{t+1} - \nu_{t+1} = \mu_1 + \bar{A}_{11,1} (s_t - \nu_t) + \bar{A}_{11,2} c_t + \bar{A}_{11,3} r_t + \xi_{1,t+1}
+\]
+with
+\[
+\mu_{1t} = \mu_1 + \nu_{t+1} - \bar{A}_{11,1} \nu_t.
+\]
+In other words any historical seasonal function \(\nu_t\) can be reached by choosing \(\mu_{1t}\), i.e., \(\alpha_{0t}\).
+\end{example}
+
+\begin{example}[Schwartz (1997)]
+\protect\hypertarget{exm:Schwartz1997}{}\label{exm:Schwartz1997}
+
+\citet{Schwartz_1997} proposes three models whose discrete-time versions are:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Model 1}:
+  \begin{eqnarray*}
+  \mathbb{P}&:& s_{t+1} = a_0 + a_1 s_t + \sigma \varepsilon_{t+1}, \; \; \; \varepsilon_t \stackrel{\mathbb{P}}{\sim}  i.i.d. \mathcal{N}(0,1) \\
+  \mathbb{Q} &:& s_{t+1} = a^*_0 + a_1 s_t + \sigma \xi_{t+1}, \; \; \; \xi_{t} \stackrel{\mathbb{Q}}{\sim}  i.i.d. \mathcal{N}(0,1).
+  \end{eqnarray*}
+\item
+  \textbf{Model 2}:
+  \begin{eqnarray*}
+  \mathbb{P}&:& s_{t+1} = a_{10} + s_t - c_t + \sigma_1 \varepsilon_{1,t+1}\\
+  && c_{t+1} = a_{20} + a_{21} c_t + \sigma_2 \varepsilon_{2,t+1}\hspace{1cm} corr (\varepsilon_{1t}, \varepsilon_{2,t}) = \rho \\
+  \mathbb{Q}&:& s_{t+1} = r - \frac{\sigma^2_1}{2} + s_t - c_t + \sigma_1  \xi_{1,t+1} \\
+  && c_{t+1} = a^*_{20} + a_{21} c_t + \sigma_2 \xi_{2,t+1} \hspace{1cm} corr (\xi_{1t}, \xi_{2t}) = \rho.
+  \end{eqnarray*}
+\item
+  \textbf{Model 3}:
+  \begin{eqnarray*}
+  \mathbb{P}&:& s_{t+1} = a_{10} + s_t - c_t + r_t + \sigma_1 \varepsilon_{1,t+1} \\
+  && c_{t+1}= a_{20} + a_{21} c_t + \sigma_2 \varepsilon_{2,t+1} \\
+  && r_{r+1} = a_{30} + a_{31} r_t + \sigma_3 \varepsilon_{3,t+1} \\
+  \mathbb{Q}&:& s_{t+1} = -\frac{\sigma^2_1}{2} + s_t - c_t + r_t + \sigma_1 \xi_{1,t+1}\\
+  &&c_{t+1} = a^*_{20} + a_{21} c_t + \sigma_2 \xi_{2,t+1} \\
+  &&r_{t+1} = a_{30} + a_{31} r_t + \sigma_3 \xi_{3,t+1},
+  \end{eqnarray*}
+  with \(\mathbb{C}orr(\varepsilon_{1t}, \varepsilon_{2t}) = \rho_1\), \(\mathbb{C}orr(\varepsilon_{2t}, \varepsilon_{3t}) = \rho_2\), \(\mathbb{C}orr(\varepsilon_{1t}, \varepsilon_{3t}) = \rho_3\), and idem for the \(\xi_{it}\)'s. (All shocks are \(\mathcal{N}(0,1)\).)
+\end{itemize}
+
+In these models, \(\log F_{t,T}\) is an affine function of \(\{s_t, c_t, r_t\}\).
+
+From an estimation point of view, \(s_t\) and \(c_t\) are latent. The parameters are estimated by the ML method, the likelihood functions being computed by the Kalman filter (see Subsection \ref{Estimation:KF}). The state variable is \(s_t\) in Model 1, and \(\{s_t, c_t\}\) in Models 2 and 3. (The \(\mathbb{P}\) and \(\mathbb{Q}\) dynamics of \(r_t\) are estimated separately.)
+
+As can be seen in the previous equations, constraints are imposed between the \(\mathbb{P}\) and \(\mathbb{Q}\) parameters; this is to help the identification of the model parameters.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/Tab2_Schwartz} 
+
+}
+
+\caption{Out of sample means for maturities not used at the  estimation stage. F1 contract : the closest to maturity F2 : the second contract to maturity and so one. Source: Schwartz (1997).}\label{fig:Schwartz2}
+\end{figure}
+
+\end{example}
 
 \hypertarget{credit-and-liquidity-risks}{%
 \chapter{Credit and liquidity risks}\label{credit-and-liquidity-risks}}
@@ -3637,89 +4511,70 @@ To price a standard CDS (with payments in domestic currency), one simply has to 
 
 The top-down approach has been shown to satisfactorily capture the existence of default clustering (e.g., \citet{Brigo_et_al_2007}, \citet{Errais_Giesecke_Goldberg_2010}).
 
-Building on \citet{Gourieroux_Monfort_Renne_2014}, \citet{Gourieroux_Monfort_Mouabbi_Renne_2021} propose an affine top-down model consistent with: the presence of systemic entities, contagion, and the pricing of default events.
+Building on \citet{Gourieroux_Monfort_Renne_2014}, \citet{Gourieroux_Monfort_Mouabbi_Renne_2021} propose an affine top-down model consistent with: the presence of systemic entities, contagion, and the pricing of default events (see Example \ref{exm:DD}).
 
 \begin{example}[Disastrous Defaults]
-\protect\hypertarget{exm:DD}{}\label{exm:DD}\leavevmode
+\protect\hypertarget{exm:DD}{}\label{exm:DD}
+
+\citet{Gourieroux_Monfort_Mouabbi_Renne_2021} porpose an equilibrium model where different credit derivatives, including CDSs and tranch products (iTraxx), can be priced. In their framework, the default of large firms (those included in the iTraxx index) can have systemic consequences in the sense that: (a) they result in decrease in consumption and (b) they increase the probability of default of the other systemic firms.
+
+Let \(n^s_{t}\) denote the number of systemic defaults on date \(t\), and let \(N^s_{t}\) denote number of systemic entities in default at date \(t\) (\(N^s_{t}=n^s_{t} + N^s_{t-1}\)).
+
+The conditional distribution of the number of systemic defaults is given by:
+\begin{eqnarray}
+n^s_{t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &\sim& \mathcal{P}oisson(\beta y_{t+1}+c n^s_{t}),\label{eq:ndistrinew}
+\end{eqnarray}
+where \(y_t\) is a nonnegative factor fluctuating around a low-frequency component \(x_t\). Vector \((y_t,x_t)'\) follows a VARG dynamics (Eq. \eqref{eq:VARG}) that admits the following VAR representation (using Prop. \ref{prp:affineVAR}):
+\begin{equation}
+\left\{
+\begin{array}{ccl}
+y_t - x_t &=& \rho_y (y_{t-1} - x_{t-1}) + \sigma_{y,t}\varepsilon_{y,t}\\
+x_t - \mu_x  &=& \rho_x (x_{t-1} - \mu_x) + \sigma_{x,t}\varepsilon_{x,t},
+\end{array}
+\right.\label{eq:systemF12}
+\end{equation}
+with \(0<\rho_y<\rho_x<1\).
+
+If \(c>0\), defaults on date \(t\) increases the conditional probability of having additional defaults on the next date \(\Rightarrow\) Systemic defaults are infectious \citep{Davis_Lo_2001}, or contagious.
+
+The log growth rate of per capita consumption (\(\Delta c_t = \log(C_t/C_{t-1})\)) is given by:
+\begin{equation}
+\Delta c_t = \mu_{c,0} + \mu_{c,x} x_t + \mu_{c,y} y_t + {\mu_{c,z}} z_{t},\label{eq:Deltacrewritten}
+\end{equation}
+where \(z_t\) depends on systemic defaults:
+\begin{equation}
+z_t|  \underline{x_{t}}, \underline{y_{t}}, \underline{N^s_{t}}  \sim \gamma_0(\xi_{z}n^s_{t-1},\mu_z).\label{eq:Zdistrinew}
+\end{equation}
+\(\gamma_0\) being a distribution featuring a point mass at zero (see Eq. \eqref{eq:ARG0} in Example \ref{exm:ARG1}). In that context, the conditional probability that \(z_t=0\) is \(\exp(-\xi_{z}n^s_{t-1})\). \(z_{t}=0\) as long as there has been no systemic defaults in the previous period, which is rather frequent.
+
+If \(\mu_{c,z}<0\) and \(|\mu_{c,z}|\) is large or if \(c\) (contamination) is large, then systemic defaults can give rise to disastrous decreases in \(C_t\).
+
+\citet{Gourieroux_Monfort_Mouabbi_Renne_2021} consider agents featuring Epstein-Zin preferences, with a unit elasticity of intertemporal substitution (EIS). In that context, the SDF is exponential affine (as in Eq. \eqref{eq:keySDF}), and \(w_t = (x_t,y_t,z_t,n^{s}_t)'\) is affine under \(\mathbb{P}\) and \(\mathbb{Q}\).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{figures/schemaDD} 
+
+}
+
+\caption{Causality scheme in Gourieroux et al. (2021).}\label{fig:SchemaDD}
+\end{figure}
+
+In this context, a wide range of credit derivatives can be priced. In particular those whose payoffs depend on the default status of the constituents of a reference portfolio: Credit Index swaps (CIS) and synthetic CDO.
 
 \begin{itemize}
 \tightlist
-\item
-  Model proposed by \citet{Gourieroux_Monfort_Mouabbi_Renne_2021}.
-\item
-  \(n^s_{t}\): Number of systemic defaults on date \(t\).
-\item
-  \(N^s_{t}\): number of systemic entities in default at date \(t\) (\(N^s_{t}=n^s_{t} + N^s_{t-1}\)).
-\end{itemize}
-
-\(\underline{k_{t}}=\{k_t,k_{t-1},\dots\}\).
-
-\begin{itemize}
-\item
-  Conditional distribution of the number of systemic defaults:
-  \begin{eqnarray}
-  n^s_{t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &\sim& \mathcal{P}oisson(\beta y_{t+1}+c n^s_{t}),\label{eq:ndistrinew}
-  \end{eqnarray}
-  where \(y_t\) is a nonnegative factor fluctuating around a low-frequency component \(x_t\).
-\item
-  \((y_t,x_t)'\) follows a VARG dynamics (Eq. \eqref{eq:VARG}). This dynamics admits the following VAR representation (using Prop. \ref{prp:affineVAR}):
-  \begin{equation}
-  \left\{
-  \begin{array}{ccl}
-  y_t - x_t &=& \rho_y (y_{t-1} - x_{t-1}) + \sigma_{y,t}\varepsilon_{y,t}\\
-  x_t - \mu_x  &=& \rho_x (x_{t-1} - \mu_x) + \sigma_{x,t}\varepsilon_{x,t},
-  \end{array}
-  \right.\label{eq:systemF12}
-  \end{equation}
-  with \(0<\rho_y<\rho_x<1\).
-\item
-  If \(c>0\):
-  Defaults on date \(t\) increases the conditional probability of having additional defaults on the next date \(\Rightarrow\) Systemic defaults are infectious \citep{Davis_Lo_2001}, or contagious.
-\item
-  \(\Delta c_t = \log(C_t/C_{t-1})\): Log growth rate of per capita consumption:
-  \begin{equation}
-  \Delta c_t = \mu_{c,0} + \mu_{c,x} x_t + \mu_{c,y} y_t + {\mu_{c,z}} z_{t}.\label{eq:Deltacrewritten}
-  \end{equation}
-  where \(z_t\) depends on systemic defaults:
-  \begin{equation}
-  z_t|  \underline{x_{t}}, \underline{y_{t}}, \underline{N^s_{t}}  \sim \gamma_0(\xi_{z}n^s_{t-1},\mu_z).\label{eq:Zdistrinew}
-  \end{equation}
-\item
-  \(\gamma_0\) is a distribution featuring a point mass at zero {[}see Eq. (\eqref{eq:ARG0} in Example \ref{exm:ARG1}{]}.
-\end{itemize}
-
-\(\Rightarrow\) The conditional probability that \(z_t=0\) is \(\exp(-\xi_{z}n^s_{t-1})\),
-
-\(z_{t}=0\) as long as there has been no systemic defaults in the previous period, which is rather frequent.
-
-\begin{itemize}
-\tightlist
-\item
-  If \(\mu_{c,z}<0\) and \(|\mu_{c,z}|\) is large or if \(\mu_{c,z}<0\) and \(|\mu_{c,z}|\) not so large but \(c\) (contamination) is large, then \textbf{systemic defaults can give rise to disastrous decreases in \(C_t\)}.
-\item
-  Agents feature Epstein-Zin preferences, with a unit elasticity of intertemporal substitution (EIS). An admissible s.d.f. is exponential affine {[}as in Eq. \eqref{eq:keySDF}{]}.
-\end{itemize}
-
-\(\Rightarrow\) \(w_t = (x_t,y_t,z_t,n^{s}_t)'\) is affine under \(\mathbb{P}\) and \(\mathbb{Q}\).
-
-\begin{itemize}
-\item
-  In this context, a wide range of credit derivatives can be priced. In particular those whose payoffs depend on the default status of the constituents of a reference portfolio: Credit Index swaps (CIS) and synthetic CDO.
 \item
   CDS: protection payoff \(>0\), when the entity on which the CDS is written defaults.
 \item
   CIS: protection payoff \(>0\), when one entity of the underlying portfolio defaults.
 \item
   CDO: protection payoff \(>0\), when one entity of the underlying portfolio defaults, given that losses are in a given interval \([a,b]\) (e.g.~\([a,b]=[3\%,6\%]\)). See Figure \ref{fig:CDO}.
-\item
-  Typical credit indices: iTraxx (Europe) and CDX (U.S.). 125 large firms.
-\item
-  Pricing formula based on an intensive use of the truncated Laplace transform \citep[see Eq. \eqref{eq:DPS},][]{Duffie_Pan_Singleton_2000}.
-\item
-  Estimation based (in particular) on iTraxx Europe main index; CDOs: maturities of 3, 5 and 7 years and, for each maturity, 5 tranches: 0\%-3\%, 3\%-6\%, 6\%-9\%, 9\%-12\% and 12\%-22\%.
-\item
-  Fit of tranche prices shown on Figure \ref{fig:fittranche}.
 \end{itemize}
+
+Typical credit indices are the iTraxx (Europe) and CDX (U.S.); these indices track the default status of 125 large firms.
+
+The pricing CDO formula make an intensive use of the truncated Laplace transform (see Eq. \eqref{eq:DPS}, \citet{Duffie_Pan_Singleton_2000}). The model estimation would be infeasible without the tractability provided by affine processes.
 
 \end{example}
 

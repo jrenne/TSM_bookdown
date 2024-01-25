@@ -1,6 +1,6 @@
 # Estimation of affine asset-pricing models
 
-## State-Space Model {#EstimationSSModel}
+## State-space model {#EstimationSSModel}
 
 By nature, dynamic asset-pricing models are *state-space models*: The dynamics of all variables, gathered in vector $y_t$ (yields, equity returns, macroeconomic variables, survey-based variables) are accounted for by state variables ($w_t$). The equations defining the relationship between the other variables and the state variables are called *measurement equations* (Eq. \@ref(eq:measeq)). The equations defining the dynamics of the state variables are called *transition equations* (Eq. \@ref(eq:transeq)).
 
@@ -50,7 +50,7 @@ In cases (b.i) and (b.ii), one has to implement *filtering methods*, on which we
 
 
 
-## Kalman-Filter-Based Approach {#Estimation:KF}
+## Kalman-filter-based approach {#Estimation:KF}
 
 ### The Gaussian linear state-space case
 
@@ -247,11 +247,8 @@ The recursive equations of the Kalman filter need to be initialized. That is, on
 * Set $w_{0|0}$ and $P_{0|0}$ to their unconditional values (using, e.g., Eq. \@ref(eq:uncondmeanvar));
 * Set $w_{0|0}$ to a prior value and take either an arbitrary large value for $P_{0\mid0}$ if the prior value is uncertain (which depicts a situation of  *diffuse prior*) or a small value for $P_{0\mid0}$ if we are confident in this prior value $w_{0|0}$.
 
-### Missing observations
 
-In many application, one does not observe all the entries of $y_t$ at every date. This arises for instance in situations where (i) measurement variables feature different frequencies, (ii) we have unreliable data for some period (that we prefer not to include among observations), (iii) some of the measurement variables are observed over a shorter time span.
-
-These situations are easily addressed by Kalman filtering/smoothing (e.g., @Chow_Lin_1971 or @Harvey_Pierse_1984). To accommodate missing observations in some of the $y_t$'s, one simply has to change the size of this vector (and of $\lambda_t$, $S_{t|t-1}$, $A$ and $B$) for the relevant dates. Of course, the accuracy of $w_{t|t}$ will tend to be lower during periods where one or several (or all) the entries of $y_t$ are unobserved. (This will be apparent in the resulting covariance matrix of $w_{t|t}$, namely $P_{t|t}$.) The log-likelihood computation (Eq. \@ref(eq:logLikKF)) is still valid in this case; one simply has to adjust the number of observed variables at each iteration; that is, $m$ then depends on time.
+:::{.example #RKalman name="Kalman filtering and smoothing"}
 
 To illustrate, consider the following model:
 \begin{eqnarray}
@@ -274,10 +271,7 @@ w_{t} & = & \phi w_{t-1}+\varepsilon_{t},\label{eq_trans}
 \end{eqnarray}
 where $\eta_t \sim \mathcal{N}(0,Id)$.
 
-We simulate a 100-period sample, we remove observations of $y_{1,t}$ (respectively of $y_{2,t}$) between periods $t=30$ and $t=50$ (resp. between periods $t=40$ and $t=70$), and try to recover the states $w_t$.
-
-
-
+In the following lines, we specify one version of the previous model. We simulate trajectories of $y_{1,t}$, $y_{2,t}$ and $w_t$ over 100 periods (Figure \@ref(fig:Kalmansimul)) and we further call `Kalman_filter` and `Kalman_filter` (from the `TSModels` package) to compute the filtered and smoothed estimates of $w_t$ (Figure \@ref(fig:Kalman2)).
 
 ```{r Kalman1, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 library(TSModels) # Kalman filter procedure in there.
@@ -308,8 +302,7 @@ filter.res   <- Kalman_filter(Y,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
 smoother.res <- Kalman_smoother(Y,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
 ```
 
-
-```{r Kalman10, echo=FALSE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+```{r Kalmansimul, echo=FALSE, fig.cap="Simulated trajectories of $y_{1,t}$, $y_{2,t}$, and $w_t$.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 
 par(mfrow=c(3,1))
 par(plt=c(.1,.95,.2,.75))
@@ -320,12 +313,12 @@ plot(Y[,2],type="l",main=expression(Y[2*","*t]),lwd=2,xlab="",ylab="")
 plot(X,type="l",main=expression(X[t]),lwd=2,xlab="",ylab="")
 ```
 
-```{r Kalman2, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+```{r Kalman2, echo=FALSE, fig.cap="Filtered and smoothed estimates of $w_t$.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 
 par(mfrow=c(2,1))
-par(plt=c(.1,.95,.15,.8))
+par(plt=c(.1,.95,.15,.99))
 
-plot(X,type="l",main=expression(X[t]),lwd=2,xlab="",ylab="")
+plot(X,type="l",lwd=2,xlab="",ylab="")
 lines(filter.res$r,col="red",lwd=2)
 lines(smoother.res$r,col="blue",lwd=2,lty=1)
 
@@ -340,7 +333,7 @@ legend("topright",
        bg = "white"
 )
 
-plot(sqrt(filter.res$Sigma_tt),type="l",main=expression(X[t]),
+plot(sqrt(filter.res$Sigma_tt),type="l",main="",
      lwd=2,xlab="",ylab="",col="red",ylim=c(min(sqrt(smoother.res$S_smooth)),
                                             max(sqrt(filter.res$Sigma_tt))))
 lines(sqrt(smoother.res$S_smooth),lwd=2,col="blue")
@@ -356,79 +349,43 @@ legend("topright",
 )
 ```
 
+:::
+
+### Missing observations
+
+In many application, one does not observe all the entries of $y_t$ at every date. This arises for instance in situations where (i) measurement variables feature different frequencies, (ii) we have unreliable data for some period (that we prefer not to include among observations), (iii) some of the measurement variables are observed over a shorter time span.
+
+These situations are easily addressed by Kalman filtering/smoothing (e.g., @Chow_Lin_1971 or @Harvey_Pierse_1984). To accommodate missing observations in some of the $y_t$'s, one simply has to change the size of this vector (and of $\lambda_t$, $S_{t|t-1}$, $A$ and $B$) for the relevant dates. Of course, the accuracy of $w_{t|t}$ will tend to be lower during periods where one or several (or all) the entries of $y_t$ are unobserved. (This will be apparent in the resulting covariance matrix of $w_{t|t}$, namely $P_{t|t}$.) The log-likelihood computation (Eq. \@ref(eq:logLikKF)) is still valid in this case; one simply has to adjust the number of observed variables at each iteration; that is, $m$ then depends on time.
+
+:::{.example #RKalmanMissing name="Kalman filtering and smoothing"}
+
+This example extends Example \@ref(exm:RKalmanMissing). We take the simulated path of the obeerved variables $y_{1,t}$ and $y_{2,t}$ and remove observations of $y_{1,t}$ (respectively of $y_{2,t}$) between periods $t=30$ and $t=50$ (resp. between periods $t=40$ and $t=70$), and then use the Kalman filter and smother to recover the states $w_t$ in this situation with  missing observations.
 
 ```{r Kalman4, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
-
-# Missing data issue: remove observations.
-
 Y.modif <- Y
 Y.modif[30:50,1] <- NaN
 Y.modif[40:70,2] <- NaN
-
-filter.res <-     Kalman_filter(Y.modif,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
+# Call of Kalman filter and smoother:
+filter.res   <- Kalman_filter(Y.modif,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
 smoother.res <- Kalman_smoother(Y.modif,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
-
-par(mfrow=c(3,1))
-par(plt=c(.1,.95,.15,.85))
-
-plot(Y.modif[,1],type="l",main=expression(Y[1*","*t]),lwd=2,xlab="",ylab="")
-plot(Y.modif[,2],type="l",main=expression(Y[2*","*t]),lwd=2,xlab="",ylab="")
-plot(X,type="l",main=expression(X[t]),lwd=2,xlab="",ylab="")
 ```
 
-```{r Kalman5, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
-
+```{r Kalman5, echo=FALSE, fig.cap="Situation of missing observations.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 par(mfrow=c(3,1))
 par(plt=c(.15,.95,.3,.95))
 
-par(mfrow=c(3,1))
+par(mfrow=c(2,1))
 plot(Y.modif[,1],type="l",main=expression(y[1*","*t]),lwd=2,xlab="",ylab=expression(y[1*","*t]))
 plot(Y.modif[,2],type="l",main=expression(y[2*","*t]),lwd=2,xlab="",ylab=expression(y[2*","*t]))
-plot(X,type="l",main=expression(w[t]),lwd=2,xlab="",ylab=expression(w[t]))
 ```
 
 
-```{r Kalman6, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
-par(mfrow=c(2,1))
-par(plt=c(.1,.95,.15,.8))
-
-plot(X,type="l",main=expression(X[t]),lwd=2,xlab="",ylab="")
-lines(filter.res$r,col="red",lwd=2)
-lines(smoother.res$r,col="blue",lwd=2,lty=1)
-
-legend("topright", 
-       c(expression(X[t]),
-         expression(paste("Filtered values of ",X[t],sep="")),
-         expression(paste("Smoothed values of ",X[t],sep=""))),
-       lwd=c(2), # line width
-       lty=c(1,1,1),
-       col=c("black","red","blue"),
-       seg.len = 4,
-       bg = "white"
-)
-
-plot(sqrt(filter.res$Sigma_tt),type="l",main=expression(X[t]),lwd=2,xlab="",ylab="",col="red",
-     ylim=c(min(sqrt(smoother.res$S_smooth)),max(sqrt(filter.res$Sigma_tt))))
-lines(sqrt(smoother.res$S_smooth),lwd=2,col="blue")
-
-legend("topright", 
-       c(expression(paste("Filtering standard error ",sqrt(Var(X[t*"|"*t])),sep="")),
-         expression(paste("Smoothing standard error ",sqrt(Var(X[t*"|"*T])),sep=""))),
-       lwd=c(2), # line width
-       lty=c(1,1,3),
-       col=c("black","red","red"),
-       seg.len = 4,
-       bg = "white"
-)
-```
-
-
-```{r Kalman8, echo=TRUE, fig.cap="XXXX.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+```{r Kalman6, echo=FALSE, fig.cap="Filtered and smoothed estimates of $w_t$ in a situation of missing observations. The lower plot shows the standard errors associated with filtered and smoothed estimates. As expected, undertainty is larger for those dates where observations are missing.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 
 par(mfrow=c(2,1))
-par(plt=c(.1,.95,.15,.8))
+par(plt=c(.1,.95,.2,.99))
 
-plot(X,type="l",main=expression(w[t]),lwd=2,xlab="",ylab="")
+plot(X,type="l",lwd=2,xlab="",ylab="",main="")
 lines(filter.res$r,col="red",lwd=2)
 lines(smoother.res$r,col="blue",lwd=2,lty=1)
 
@@ -444,8 +401,7 @@ legend("topright",
 )
 
 plot(sqrt(filter.res$Sigma_tt),type="l",
-     main = "Conditional standard deviation of filtered/smoothed estimates",
-     lwd=2,xlab="",ylab="",col="red",
+     lwd=2,xlab="",ylab="",col="red",main="",
      ylim=c(min(sqrt(smoother.res$S_smooth)),1.4*max(sqrt(filter.res$Sigma_tt))))
 lines(sqrt(smoother.res$S_smooth),lwd=2,col="blue")
 
@@ -461,6 +417,11 @@ legend("topleft",
 
 
 ```
+
+
+
+:::
+
 
 
 
@@ -492,42 +453,34 @@ legend("topleft",
 
 ## About non-constant conditional matrix $\Sigma$
 
-* Proposition \@ref(prp:KF) is valid when $\varepsilon_t$ is Gaussian and when $\Sigma^{\frac{1}{2}}$ does not depend on $w_t$.
-* How to proceed in the general case?
-* In the general case (but when $w_t$ is an affine process), we have that $\Sigma(w_{t-1}) \equiv \mathbb{V}ar(w_{t+1}|\underline{w_t})$ is affine in $w_t$ [Prop. \@ref(prp:affineVAR)].
-* In order to deal with this, the Kalman filter algorithm can be modified.
-* Specifically, in the prediction step (see Prop. \@ref(prp:KF)), $P_{t|t-1}$ can be computed as:
+Proposition \@ref(prp:KF) is valid when $\varepsilon_t$ is Gaussian and when $\Sigma^{\frac{1}{2}}$ does not depend on $w_t$. However, in the general case (but when $w_t$ is an affine process), we have that $\Sigma(w_{t-1}) \equiv \mathbb{V}ar(w_{t+1}|\underline{w_t})$ is affine in $w_t$ (see Prop. \@ref(prp:affineVAR)). In order to deal with this, the Kalman filter algorithm can be modified. Specifically, in the prediction step (see Prop. \@ref(prp:KF)), $P_{t|t-1}$ can be approximated by:
 $$
 P_{t|t-1} = \Sigma\color{red}{(w_{t-1|t-1})} + \Phi P_{t-1|t-1} \Phi',
 $$
 i.e. we replace $\Sigma(w_{t-1})$ by $\Sigma(w_{t-1|t-1})$.
-* Though the approach is then not necessarily optimal, it shows good empirical properties [de Jong (2000)](\href{http://link.springer.com/article/10.1023\%2FA\%3A1008304625054) or [Duan and Simonato (1999)](https://www.jstor.org/stable/1392263?seq=1\#page_scan_tab_contents).
-* In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations [see e.g. [Monfort, Pegoraro, Renne and Roussellet (2017)](https://www.sciencedirect.com/science/article/pii/S0304407617301653).
 
-### Non-linear models {#nonlinear}
+Though the approach is then not necessarily optimal, it shows good empirical properties (@deJong_2000 or @Duan_Simonato_1999). In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations [@zarg_2017].
 
-* If $w_t$ follows an affine process, it admits the VAR dynamics presented in Prop. \@ref(prp:affineVAR) $\Rightarrow$ linear transition equation.
-* However, measurement equations may be non-linear (affine) functions of $w_t$.
-* This is in particular the case if observed variables include Swaps rates (see Remark SWAPS), CDS rates (see Subsection \@ref(subsec:Credit:CDS), in particular Eq. \@ref(eq:MCCDSformula1)) or prices of tranche products (see Example \@ref(exm:DD)).
-* In this case, one can for instance resort to the Extended Kalman Filter (linearizing the measurement equations, see supplementary material) or the Quadratic Kalman Filter [Monfort, Renne and Roussellet, 2015](https://www.sciencedirect.com/science/article/pii/S0304407615000123), second-order expansion of the measurement equations).
+## Non-linear models {#nonlinear}
 
+As soon as $w_t$ follows an affine process, it admits the VAR dynamics presented in Prop. \@ref(prp:affineVAR), i.e., it features a linear transition equation. However, measurement equations may be non-linear (affine) functions of $w_t$. This is in particular the case if observed variables include Swaps rates (see Remark SWAPS XXXX), CDS rates (see Subsection \@ref(subsec:Credit:CDS), in particular Eq. \@ref(eq:MCCDSformula1)) or prices of tranche products (see Example \@ref(exm:DD)).
+
+In a context of non-linear measurement equations, one can for instance resort to the Extended Kalman Filter (linearizing the measurement equations) or, to higher-order Taylor. @Monfort_Renne_Roussellet_2015 develop a Quadratic Kalman Filter (QKF), where measurement equations are quadratic functions of the state vector.
 
 
 
+## The inversion technique {#EstimationInversion}
 
-## Inversion Technique {#EstimationInversion}
+The inversion technique has been introduced by @Chen_Scott_1993. It is used, e.g., by @Ang_Piazzesi_2003 and @Liu_longstaff_Mandell_2006. Contrary to Kalman-type approaches, this approach is not recursive. it can therefore be faster, especially for long sample.
 
-
-* The **inversion technique** has been introduced by [Chen and Scott (1993)](http://www.iijournals.com/doi/abs/10.3905/jfi.1993.408090?journalCode=jfi).
-* It is used e.g. by [Ang and Piazzesi (2003)](http://web.stanford.edu/~piazzesi/AP.pdf) and [Liu, Longstaff and Mandell (2006)](http://rady.ucsd.edu/faculty/directory/liu/pub/docs/rate-swaps.pdf).
-* Contrary to Kalman-type approaches, this approach is not recursive. Hence can be faster (especially for long sample -- in time dimension).
-* Recall that $y_t$ and $w_t$ are respectively of dimension $m$ and $n$ (see Eqs. \@ref(eq:measeq) and \@ref(eq:transeq) in Def. \@ref(def:LSSM)).
+This approach works under the assumption that some of the observed variables are *perfectly priced* (or modelled).(Recall that $y_t$ and $w_t$ are respectively of dimension $m$ and $n$, see Eqs. \@ref(eq:measeq) and \@ref(eq:transeq) in Def. \@ref(def:LSSM).) Formally:
 
 
 :::{.hypothesis #perfectlymodelled name="Perfectly-modelled variables"}
 
-* Assumption: $n$ components of the $m$-dimensional vector $y_t$ (with $n \le m$) are perfectly modelled (no measurement errors in associated measurement equations).
-* Without loss of generality, these perfectly-modelled variables are the first $n$ components of $y_t$, that is:
+$n$ components of the $m$-dimensional vector $y_t$ (with $n \le m$) are perfectly modelled. That is, there is no measurement errors in associated measurement equations.
+
+Without loss of generality, these perfectly-modelled variables are the first $n$ components of $y_t$, that is:
 $$
 y_t =
 \left(\begin{array}{c}
@@ -538,7 +491,7 @@ $$
 :::
 
 
-* Under Assumption \@ref(hyp:perfectlymodelled), the measurement equation (Eq. \@ref(eq:measeq)) becomes:
+Under Assumption \@ref(hyp:perfectlymodelled), the measurement equation (Eq. \@ref(eq:measeq)) becomes:
 $$
 \left[
 \begin{array}{c}
@@ -566,20 +519,21 @@ B_{2}
 \end{array}
 \right],
 $$
-where $\eta_{2,t} \sim  \mathcal{N}(0,\Omega_2)$ (say). This notably implies
+where $\eta_{2,t} \sim  \mathcal{N}(0,\Omega_2)$ (say). This notably implies that
 \begin{equation}
 w_t = B_{1}^{-1}(y_{1,t} - A_1).(\#eq:wY1)
 \end{equation}
-* Under this assumption and if the conditional distribution of $w_t$ is available in closed form, then the (exact) likelihood of the model can then be computed.
-* Proposition \@ref(prp:logLikinversion) (next slide) shows that the computation of $f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})$ involves three terms:
+
+Under this assumption, and if the conditional distribution of $w_t$ is available in closed form, then Proposition \@ref(prp:logLikinversion) shows that the (exact) likelihood of the model can then be computed. This proposition shows in particular that the conditional p.d.f.  $f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})$ involves three terms:
+
 * The first term (in blue in \@ref(eq:inversionLogL)) stems from the conditional distribution $w_t|\underline{w_{t-1}}$.
 * The second term (in red in \@ref(eq:inversionLogL)) is associated with the measurement errors pertaining to $y_{2,t}$, that are the components of $\eta_{2,t}$.
 * The third term (in brown in \@ref(eq:inversionLogL)) is the determinant of the Jacobian matrix associated with the linear transformation between $w_t$ and $y_{1,t}$ (Eq. \@ref(eq:wY1)), that is $|B_1|$.
-* Once one knows how to compute $f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})$, the total likelihood is easily obtained since:
+
+Once one knows how to compute $f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})$, the total likelihood is easily obtained since:
 $$
 f_{Y_1,\dots,Y_T}(y_1,y_2,\dots,y_T) = f_{Y_1}(y_1) \prod_{t=2}^T f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}}).
 $$
-
 
 :::{.proposition #logLikinversion name="Log-likelihood in the inversion context"}
 In the context of a linear state-space model as defined in Def. \@ref(def:LSSM), under Assumption \@ref(hyp:perfectlymodelled), and if $w_t$ is a Markovian process, we have:
@@ -596,85 +550,72 @@ f(y_t|y_{t-1}) &=& f_1(y_{1,t}|y_{1,t-1}) f_2(y_{2,t}|y_{1,t}) \\
 &=& |B_1|^{-1} f_w(w(y_{1,t})|w(y_{1,t-1})) \bv{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2),
 \end{eqnarray*}
 where
+
 * $f_1(y_{1,t}|y_{1,t-1})= |B_1|^{-1} f_w(w(y_{1,t})|w(y_{1,t-1}))$ comes from the fact that, if $U$ and $V$ are two random variables such that $V = g(U)$, where $g$ is a bijective and differentiable function, then $f_V(v)=\left|\frac{\partial g^{-1}(v)}{\partial v'}\right| f_U(g^{-1}(v))$,
-* and $f_2(y_{2,t}|y_{1,t}) = \bv{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2)$ comes from the fact that $y_{2,t}|y_{1,t} \sim \bv{n}(A_2 + B_2 w(y_{1,t}),\Omega_2)$.
+* and $f_2(y_{2,t}|y_{1,t}) = \bv{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2)$ comes from the fact that $y_{2,t}|y_{1,t} \sim \mathcal{N}(A_2 + B_2 w(y_{1,t}),\Omega_2)$.
 :::
 
 
 
-### Dealing with Unobserved Regimes {#EstimationRS}
+### Dealing with unobserved regimes {#EstimationRS}
 
-
-* The (adjusted) Kalman and inversion techniques are not suited to the case where some of the components of $w_t$ are valued in a discrete set. This is typically the case if $w_t$ is of the form:
+Kalman and inversion techniques are not suited to the case where some of the components of $w_t$ are valued in a discrete set. This is typically the case if $w_t$ is of the form:
 $$
 w_t = \left(\begin{array}{c}
 z_t \\
 x_t
 \end{array}\right),
 $$
-where $z_t$ is valued in $\{e_1,\dots,e_J\}$, $e_j$ being the $j^{th}$ column of $Id_J$.
-* Let's assume that $z_t$ is an exogenous and homogenous Markov chain whose dynamics is defined by the $\pi(e_i,e_j)$'s that are such that:
+where $z_t$ is valued in $\{e_1,\dots,e_J\}$, $e_j$ being the $j^{th}$ column of $Id_J$, which is the case in the prsence of regime switching features (see Subsection \@ref(Markov)).
+
+Assume that $z_t$ is an exogenous and homogenous Markov chain whose dynamics is defined by the $\pi(e_i,e_j)$'s that are such that:
 \begin{equation}
 \pi(e_i, e_j) = \mathbb{P}(z_{t+1}=e_j | z_t=e_i).(\#eq:transitproba)
 \end{equation}
-* We denote by $\Pi$ the matrix of transition probabilities, i.e. the $(i,j)$ component of $\Pi$ is $\pi(e_i, e_j)$.
-* Assume further that we have:
+Denote by $\Pi$ the matrix of transition probabilities, i.e., the $(i,j)$ component of $\Pi$ is $\pi(e_i, e_j)$. Assume further that we have:
 \begin{equation}
 x_t = m(z_t,x_{t-1}) + \varepsilon_t,(\#eq:dynxRS)
 \end{equation}
 where $\mathbb{E}(\varepsilon_t|\underline{z_t},\underline{x_{t-1}})=0$.
-* The conditional distribution of $\varepsilon_t$ w.r.t. $(z_t,x_{t-1})$ is denoted by $f_{\varepsilon}(.;z_t,x_{t-1})$.
+
+We denote the conditional distribution of $\varepsilon_t$ w.r.t. $(z_t,x_{t-1})$ by $f_{\varepsilon}(.;z_t,x_{t-1})$.
 
 
 :::{.hypothesis #RSmeasurement name="Measurement equations"}
 The measurement equation is of the form:
 \begin{equation}
-y_t = A z_t + B x_t + \eta_t,  \quad \mbox{with }  \eta_t \sim i.i.d. \bv{n}(0,\Omega).(\#eq:RSmeasur)
+y_t = A z_t + B x_t + \eta_t,  \quad \mbox{with }  \eta_t \sim i.i.d. \mathcal{N}(0,\Omega).(\#eq:RSmeasur)
 \end{equation}
 :::
 
 :::{.example #GRSVAR name="Regime-Switching Gaussian VAR"}
-* Building on Example \@ref(exm:RSVAR), we know that if
+
+Building on Example \@ref(exm:RSVAR), we know that if
 \begin{equation}
 x_t = \mu z_t + \Phi x_{t-1} +  \varepsilon_t,(\#eq:xRSVAR)
 \end{equation}
-where $\varepsilon_t|\underline{x_t},z_t \sim   \mathcal{N}(0,\Sigma(z_t))$ and if $z_t$ is an exogenous independent Markov chain, then $w_t = (x_t',z_t')'$ is affine.
-* This context is consistent with the situation presented XXX. In particular, using the notations of Eq. \@ref(eq:dynxRS), we have:
+where $\varepsilon_t|\underline{x_t},z_t \sim   \mathcal{N}(0,\Sigma(z_t))$ and if $z_t$ is an exogenous independent Markov chain, then $w_t = (x_t',z_t')'$ is affine. Using the notations of Eq. \@ref(eq:dynxRS), we have:
 $$
 m(z_t,x_{t-1}) = \mu z_t + \Phi x_{t-1}.
 $$
-* If $r_t$ and the s.d.f. are respectively affine and exponential in $w_t$, then, in particular, yields are also affine in $w_t$, i.e. of the form $R(t,h)= A_h'z_t + B_{h}'x_t$ (see Eq. \@ref(eq:RthAB)).
-* Therefore, if the components of $y_t$ are yields of different maturities, the measurement equations are consistent with Assumption \@ref(hyp:RSmeasurement).
+If $r_t$ and the s.d.f. are respectively affine and exponential in $w_t$, then, in particular, yields are also affine in $w_t$, i.e. of the form $R(t,h)= A_h'z_t + B_{h}'x_t$ (see Eq. \@ref(eq:RthAB)). Therefore, if the components of $y_t$ are yields of different maturities, the measurement equations are consistent with Assumption \@ref(hyp:RSmeasurement).
 :::
 
 
-* How to estimate such a model when the regimes $z_t$ are unobservable? Two distinct situations.
+How to estimate such a model when the regimes $z_t$ are unobservable? We distinguish two distinct situations:
 
-* **Case 1.** The $x_t$ factors are observable.
-
-* The probabilities of being in the different regimes on each date can be estimated by employing the Kitagawa-Hamilton filter.
-* The Kitagawa-Hamilton filter (Appendix \@ref(app:KitagHamilton)) can be employed, with $F_t = (y_t',x_t')'$ and:
+**Case 1. The $x_t$ factors are observable.** The probabilities of being in the different regimes on each date can be estimated by employing the Kitagawa-Hamilton filter, with (using the notations of Proposition \@ref(app:KitagHamilton)): $F_t = (y_t',x_t')'$ and
 \begin{eqnarray*}
 f(F_t|z_t=e_j,\underline{F_{t-1}}) &=& f(y_t|x_t,z_t=e_j,\underline{F_{t-1}})f(x_t|z_t=e_j,\underline{F_{t-1}}) \\
 &=& \bv{n}(y_t;A z_t + B x_t,\Omega) \times \\
 &&f_{\varepsilon}(x_t - m(z_t,x_{t-1});z_t,x_{t-1}),
 \end{eqnarray*}
-where, as in Slide \@ref(slide:inversionXX), $\bv{n}(u;\mu,\Omega)$ denotes the evaluation, at vector $u$ of the p.d.f. of the multivariate normal distribution $\mathcal{N}(\mu,\Omega)$.
+where $\bv{n}(u;\mu,\Omega)$ denotes the evaluation, at vector $u$ of the p.d.f. of the multivariate normal distribution $\mathcal{N}(\mu,\Omega)$ (see eq. \@ref(eq:varPHI)). A by-product of the Kitagawa-Hamilton filter is the likelihood function associated with the dataset. As a result, the model parameterization can be estimated by maximum llikelihood approach.
 
-* A by-product of the Kitagawa-Hamilton filter is the likelihood function associated with the dataset $\Rightarrow$ The model parameterization can be estimated by MLE.
+**Case 2. The $x_t$ factors are not observable.** There are two sub-cases:
 
-* **Case 2.** The $x_t$ factors are not observable. Two sub-cases:
-* 2.i The components of $y_t$ are not perfectly modelled (i.e. $\Omega \ne 0$, where $\Omega$ defined in Eq. \@ref(eq:RSmeasur).
-* 2.ii $n_x$ components of $y_t$ are perfectly modelled (where $n_x$ is the dimension of $x_t$).
-
-* In Case (2.i), one has to resort to filters dealing with two types of uncertainty [with hidden discrete values ($z_t$) and continuously distributed latent variables ($x_t$)].
-
-
-In particular [Kim (1994)'s filter](https://www.sciencedirect.com/science/article/pii/0304407694900361) can be employed when the state-space model is of the form \@ref(eq:RSmeasur)-\@ref(eq:xRSVAR) [Monfort and Renne (2014)](https://academic.oup.com/rof/article/18/6/2103/1661774), Example \@ref(exm:SovereignSpreads)].
-* In Case (2.ii), one can resort to an inversion technique, complemented with the Kitagawa-Hamilton filter, to estimate the model (see following box).
-
-
-
+* (2.i) the components of $y_t$ are not perfectly modelled (i.e. $\Omega \ne 0$, where $\Omega$ defined in Eq. \@ref(eq:RSmeasur). One has then to resort to filters dealing with two types of uncertainty: hidden discrete values ($z_t$) and continuously distributed latent variables ($x_t$). @Kim_1994's filter can be employed when the state-space model is of the form \@ref(eq:RSmeasur)-\@ref(eq:xRSVAR) (see, e.g., @Monfort_Renne_2014), detailed in Example \@ref(exm:SovereignSpreads)).
+ * (2.ii) $n_x$ components of $y_t$ are perfectly modelled (where $n_x$ is the dimension of $x_t$). One can then resort to an inversion technique, complemented with the Kitagawa-Hamilton filter, to estimate the model (see @Monfort_Renne_2013 and @Renne_2017 for applications).
 
 
 
@@ -701,6 +642,50 @@ f(F_t|\underline{F_{t-1}})=\bv{1}'(\Pi' \xi_{t-1} \odot \eta_t).(\#eq:KHlikeliho
 
 
 
+
+### Mixed use of Kitagawa-Hamilton and inversion techniques {#MixedKitagawaHamilton}
+
+Without loss of generality, assume that the $n_x$ first components of $y_t$ are observed without error, i.e. Assumption \@ref(hyp:RSmeasurement) becomes
+$$
+\left[
+\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}
+\right]
+=
+\left[
+\begin{array}{c}
+A_{1}z_t\\
+A_{2}z_t
+\end{array}
+\right]+
+\left[
+\begin{array}{c}
+B_{1}\\
+B_{2}
+\end{array}
+\right]x_t +
+\left[
+\begin{array}{c}
+0\\
+\eta_{2,t}
+\end{array}
+\right],
+$$
+where $\varepsilon_2 \sim \mathcal{N}(0,\Omega_2)$.
+
+
+Since $y_{1,t} = A_1 z_t + B_1 x_t$, we then have:
+\begin{equation}
+x_t \equiv x(y_{t},z_t) = B_1^{-1}(y_{1,t} - A_1 z_t).(\#eq:xRS)
+\end{equation}
+
+In order to employ the Kitagawa-Hamilton filter (Proposition \@ref(prp:KitagHamilton)), one need to define the extended Markov chain:
+$$
+\mathcal{Z}_t = z_{t-1} \otimes z_t,
+$$
+whose matrix of transition probabilities is detailed in Proposition \@ref(prp:mixedKFinversion).
 
 
 :::{.proposition #mixedKFinversion name="Kitagawa-Hamilton and inversion techniques"}
@@ -733,57 +718,7 @@ where $\bv{n}$ is the p.d.f. of a multivariate normal distri, (Prop. \@ref(prp:l
 :::
 
 
-
-
-
-
-
-
-
-
-
-
-### Mixed use of Kitagawa-Hamilton and inversion techniques
-
-* Without loss of generality, assume that the $n_x$ first components of $y_t$ are observed without error, i.e. Assumption \@ref(hyp:RSmeasurement) becomes
-$$
-\left[
-\begin{array}{c}
-y_{1,t}\\
-y_{2,t}
-\end{array}
-\right]
-=
-\left[
-\begin{array}{c}
-A_{1}z_t\\
-A_{2}z_t
-\end{array}
-\right]+
-\left[
-\begin{array}{c}
-B_{1}\\
-B_{2}
-\end{array}
-\right]x_t +
-\left[
-\begin{array}{c}
-0\\
-\eta_{2,t}
-\end{array}
-\right],
-$$
-where $\varepsilon_2 \sim \mathcal{N}(0,\Omega_2)$.
-* Since $y_{1,t} = A_1 z_t + B_1 x_t$, we then have:
-\begin{equation}
-x_t \equiv x(y_{t},z_t) = B_1^{-1}(y_{1,t} - A_1 z_t).(\#eq:xRS)
-\end{equation}
-* In order to employ the Kitagawa-Hamilton filter (Appendix \@ref(app:KitagHamilton)), one need to define the extended Markov chain:
-$$
-\mathcal{Z}_t = z_{t-1} \otimes z_t,
-$$
-whose matrix of transition probabilities is detailed in Appendix \@ref(app:mixedKFinversion).
-* Note that we have:
+Note that we have:
 $$
 \left\{
 \begin{array}{cclll}
@@ -792,30 +727,26 @@ z_{t-1} &\equiv& z_{-1}(\mathcal{Z}_t) &=& (Id_{n} \otimes \bv{1}') \mathcal{Z}_
 \end{array}
 \right.
 $$
-* The Kitagawa-Hamilton filter (Appendix \@ref(app:KitagHamilton)) can then be employed, with $F_t = y_t$ and:
+
+The Kitagawa-Hamilton filter (Proposition \@ref(prp:KitagHamilton)) can then be employed, with $F_t = y_t$ and:
 \begin{eqnarray}
 f(y_t|\mathcal{Z}_t,\underline{y_{t-1}}) &=&|B_1^{-1}| \times \nonumber \\
 && f\left(\left[\begin{array}{c}x(y_t,z(\mathcal{Z}_t))\\ y_{2,t}\end{array}\right]|\mathcal{Z}_t,\underline{y_{t-1}}\right),(\#eq:conddistri4KHfilter)
 \end{eqnarray}
-where the computation of the last term is detailed in Appendix \@ref(app:mixedKFinversion).
-
-
-
+where the computation of the last term is detailed in Proposition \@ref(prp:mixedKFinversion).
 
 
 
 
 :::{.example #RSMP name="Interest-rate model with monetary policy-related regimes"}
 
-* @Renne_2017: model where regimes have monetary-policy interpretations.
-* Short-term rate = (daily) EONIA, euro-area overnight interbank rate:
-
-\begin{center}
-\fbox{$r_{t}=\underset{\mbox{Target}}{\underbrace{\bar{r}_{t}}}+\underset{\mbox{EONIA spread}}{\underbrace{x_{t}}}$}
-\par\end{center}
-
-* Target rate $\bar{r}_{t}$ has a step-like path $\bar{r}_{t}=\Delta'z_{r,t}$,
+@Renne_2017 porposes a model where regimes have monetary-policy interpretations. The model is estimated on daily data. The short-term rate is the euro-area overnight interbank rate (EONIA). It is modeled as follows:
+\begin{equation}
+\boxed{r_{t}=\underset{\mbox{Target}}{\underbrace{\bar{r}_{t}}}+\underset{\mbox{EONIA spread}}{\underbrace{x_{t}}}.}
+\end{equation}
+The target rate $\bar{r}_{t}$ has a step-like path $\bar{r}_{t}=\Delta'z_{r,t}$,
 where
+
 * $\Delta=[\begin{array}{ccccc}
 0 & 0.25 & 0.50 & \ldots & \bar{r}_{max}\end{array}]'$ and
 * $z_{r,t}=[\begin{array}{ccccccc}
@@ -829,27 +760,23 @@ where
 * Tightening ($z_{m,t}=[\begin{array}{ccc}
 0 & 0 & 1\end{array}]$).
 
-[Web-interface illustrating $\bar{r}_t$'s dynamic](https://fixed-income.shinyapps.io/NLIR/)
+One can simulate this model by using this [web-interface](https://fixed-income.shinyapps.io/NLIR/).
 
-* $z_{r,t}$ is observed, but not $z_{m,t}$.
-* In the model, according to Example \@ref(exm:GRSVAR), we have:
+In terms of observability, $z_{r,t}$ is observed (since the policy rate is osberved), but not $z_{m,t}$. Hence, a filtering procedure is needed. @Renne_2017 adapts the approach presented in Subsection \@ref(MixedKitagawaHamilton) to the case where $z_{t}$ is partially observed.
+
+In this model, the results of Example \@ref(exm:GRSVAR) imply that we have:
 $$
 R(t,h) = A_h' z_t + B_h x_t.
 $$
-* Denote by $\mathcal{A}_h$ the $(3 \times n_r)$ matrix such that $A_h = vec(\mathcal{A}_h)$. We then have $A_h' z_t = (\mathcal{A}_h z_{r,t})' z_{m,t}$ and, therefore:
+Denote by $\mathcal{A}_h$ the $(3 \times n_r)$ matrix such that $A_h = vec(\mathcal{A}_h)$. We then have $A_h' z_t = (\mathcal{A}_h z_{r,t})' z_{m,t}$ and, therefore:
 $$
 R(t,h) = A_{t,h}' z_t + B_h x_t, \quad \mbox{where $A_{t,h} = \mathcal{A}_h z_{r,t}$.}
 $$
-* The model is estimated by a mixe use of Kitagawa-Hamilton and inversion techniques, assuming that a linear combination of yields is modelled without errors (giving $x_t = x(y_t,z_{m,t},z_{r,t})$).
+The model is estimated by a combination of Kitagawa-Hamilton and inversion techniques, assuming that a linear combination of yields is modeled without errors (which gives $x_t = x(y_t,z_{m,t},z_{r,t})$).
 
-<!-- \begin{figure} -->
-<!-- \caption{Estimation outputs from \href{https://www.degruyter.com/view/j/snde.2017.21.issue-1/snde-2016-0043/snde-2016-0043.xml}{Renne (2017)}} -->
-<!-- \label{fig:fitSurveys} -->
-<!-- \begin{center} -->
-<!-- \includegraphics[width=.85\linewidth]{figures/Fig-SNDE.pdf} -->
-<!-- \end{center} -->
-<!-- \end{figure} -->
-
+```{r figRenne2017, fig.align = 'center', out.width = "95%", fig.cap = "Source: Renne (2017).", echo=FALSE}
+knitr::include_graphics("figures/Fig-SNDE.png")
+```
 :::
 
 
@@ -863,28 +790,44 @@ $$
 
 
 
-## A Typical Small-Sample Issue {#EstimationPersistency}
+## A typical small-sample issue {#EstimationPersistency}
 
-Interest rates are particularly persistent variables.
+Interest rates are particularly persistent variables. Since affine models eventually lead to linear relationships between state variables and interest rates (see Eq. \@ref(eq:RthAB)), some state variables are also necessarily highly persistent. Accordingly, in small sample, maximum-likelihood estimates of the model parameters are likely to suffer from a downward bias (see, e.g., @Bauer_Rudebusch_Wu_2012 or @Jardet_Monfort_Pegoraro_2013). This relates to a well-known econometric problem  illustrated by Figure \@ref(fig:persist1).
 
-Since affine models eventually lead to linear relationships between state variables and interest rates [Eq. \@ref(eq:RthAB)], some state variables are also necessarily highly persistent.
+```{r persist1, echo=FALSE, fig.cap="1000 random walk samples of size $T$ ($T=50$ for the left plot and $T=400$ for the right plot) have been simulated. For each sample, we run the OLS regression $y_t = \\phi y_{t-1} + \\varepsilon_t$ to estimate $\\phi$ (whose true value is 1). The plots show the distributions (kernel-based estimation) of the estimated $\\phi$. The vertical red bar indicate the means of the distributions; the vertical blue line shows the usual bias approximation ($1-5.3/T$).", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 
-In small sample, maximum-likelihood estimates of the model parameters are likely to suffer from a downward bias, @Bauer_Rudebusch_Wu_2012 or @Jardet_Monfort_Pegoraro_2013.
+library(AEC)
+y.0 <- c(0)
+c <- 0
+nb.sim <- 2000
+theta <- c(1)
+phi <- c(1)
+sigma <- 1
 
-This relates to a well-known econometric problem:
+vec.T <- c(50,400)
 
-<!-- \begin{figure} -->
-<!-- 	\caption{Bias toward zero in the presence of unit root} -->
-<!-- 	\label{fig:unitroot} -->
-<!-- 	\includegraphics[width=1.05\linewidth]{figures/Figure_NonStat_Probl1.pdf} -->
+par(mfrow=c(1,2))
+par(plt=c(.2,.9,.2,.85))
 
-<!-- 	Note: 2000 random walk samples of size $T$ ($T=50$ for the left plot and $T=400$ for the right plot) have been simulated. For each sample, we run the OLS regression $y_t = c + \phi y_{t-1} + \varepsilon_t$. The plots show the distributions (kernel-based estimation) of the estimated $\phi$. The vertical bars indicate the means of the distributions. -->
+for(T in vec.T){
+  y.sim <- sim.arma(c,phi,theta,sigma,T,y.0,nb.sim)
+  Y   = y.sim[2:T,]
+  Y_1 = y.sim[1:(T-1),]
+  vec.rho.hat = apply(Y*Y_1,2,sum) / apply(Y_1^2,2,sum)
+  dens <- density(vec.rho.hat)
 
-<!-- \end{figure} -->
+  main.t <- paste("T =",toString(T))
+
+  mean.rho.hat <- sum(dens$x*dens$y)/sum(dens$y)
+  plot(dens,xlab=expression(paste("OLS-estimated ",phi,sep="")),ylab="",
+       main=main.t)
+  abline(v=mean.rho.hat,col="red")
+  abline(v=1-5.3/T,lty=3,lwd=2,col="blue")
+}
+```
 
 
-* This small-sample downward bias has dramatic consequences in terms of term premium estimates.
-* For the sake of illustration, let's consider the following process for the short-term interest rate under the physical measure (monthly frequency):
+This small-sample downward bias has dramatic consequences in terms of term premium estimates. For the sake of illustration, consider the following process for the short-term interest rate under the physical measure (monthly frequency):
 $$
 i_{t+1} = \bar{i} + \phi (i_{t}-\bar{i}) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
 $$
@@ -892,34 +835,131 @@ and the following under the risk-neutral measure:
 $$
 i_{t+1} = \bar{i}^* + \phi^* (i_{t}-\bar{i}^*) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
 $$
-with $\bar{i} = 3\%/12$, $\bar{i}^* = 6\%/12$, $\phi = 0.97$, $\phi^*=0.99$, $\sigma = 0.2\%$.
-* Assume the estimate of $\phi$ is downard biased ($\hat\phi=0.9$). Influence on the 10-year term premium? [Figure \@ref(fig:biasedTP), next slide]
-
-<!-- \begin{figure} -->
-<!-- \caption{Biased persistency: Implications on term premiums estimates} -->
-<!-- \label{fig:biasedTP} -->
-<!-- \begin{center} -->
-<!-- \includegraphics[width=1.05\linewidth]{figures/Figure_atsm_downward.pdf} -->
-<!-- \end{center} -->
-<!-- \end{figure} -->
+with $\bar{i} = 3\%/12$, $\bar{i}^* = 5\%/12$, $\phi = 0.98$, $\phi^*=0.99$, $\sigma = 0.2\%$.
+Assume the estimate of $\phi$ is downward biased ($\hat\phi=0.9$). The influence of that bias on the 10-year term premium is illustrated by Figure \@ref(fig:persist2).
 
 
-* @Kim_Orphanides_2005 and @Kim_Orphanides_2005 have proposed a simple approach to deal with this problem.
-* They add measurement equations to impose that the model-implied forecasts are --up to some measurement errors-- close to survey-based ones.
-* Kim and Orphanides use the [Blue Chip Financial Forecasts](https://lrus.wolterskluwer.com/store/products/blue-chip-financial-forecasts-prod-ss07418345/paperback-item-1-ss07418345).
-* Alternative (publicly available) surveys: [Philly Fed Survey of Professional Forecasters](https://www.philadelphiafed.org/research-and-data/real-time-center/survey-of-professional-forecasters) and [ECB SPF](https://www.ecb.europa.eu/stats/ecb_surveys/survey_of_professional_forecasters/html/index.en.html).
-* Importantly, this approach is tractable because model-implied forecasts of yields are affine in the state vector. [This is the case for any affine model: see Eq. \@ref(eq:condmeanRth).]
-* Their model is able to fit both survey-based forecasts and market yields [Figure \@ref(fig:fitSurveys)].
+```{r persist2, echo=FALSE, fig.cap="This figure illustrates the influence of the downward bias on on estimated term premiums, see the text for more details.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+
+compute.ab <- function(Model,h){
+  phi <- Model$phi
+  mu <- Model$mu
+  Sigma <- Model$Sigma
+  delta.0 <- Model$delta.0
+  delta.1 <- Model$delta.1
+
+  A.n.bar <- - delta.0
+  B.n.bar <- - delta.1
+  all.A <- - A.n.bar
+  all.B <- - B.n.bar
+  for(n in 2:h){
+    A.n.bar <- -delta.0 + A.n.bar + t(B.n.bar) %*% mu +
+      .5 * t(B.n.bar) %*% Sigma %*% t(Sigma) %*% B.n.bar
+    B.n.bar <- t(- t(delta.1) + t(B.n.bar) %*% phi)
+    all.A <- c(all.A,- A.n.bar/n)
+    all.B <- cbind(all.B,- B.n.bar/n)
+  }
+  return(list(
+    all.A = all.A,
+    all.B = all.B
+  ))
+}
+
+r.bar <- .03
+sigma.bar <- .012
+
+phi <- .98
+mu <- r.bar * (1-phi)
+sigma2 <- sigma.bar^2 * (1 - phi^2)
+
+X.bar <- mu/(1-phi) # unconditionla mean of the interest rate
+
+Model         <- list()
+Model$phi     <- phi
+Model$mu      <- mu
+Model$Sigma   <- sqrt(sigma2)/12
+Model$delta.0 <- 0
+Model$delta.1 <- 1/12
+
+h <- 120
+loadings <- compute.ab(Model,h)
+all.A.H <- loadings$all.A
+all.B.H <- loadings$all.B
+
+# Risk-neutral model:
+Model.star     <- Model
+Model.star$phi <- .99
+Model.star$mu  <- .05 * (1 - Model.star$phi)
+loadings <- compute.ab(Model.star,h)
+all.A <- loadings$all.A
+all.B <- loadings$all.B
+
+# Biased Model:
+Model.biased <- Model
+Model.biased$phi <- .9
+Model.biased$mu <- X.bar * (1 - Model.biased$phi)
+loadings <- compute.ab(Model.biased,h)
+all.A.biased <- loadings$all.A
+all.B.biased <- loadings$all.B
+
+T <- 200
+nb.sim <- 1
+x.sim <- sim.arma(mu,phi,theta=c(1),sqrt(sigma2),T,X.bar,nb.sim)
+i.t <- 12*(Model$delta.0 + Model$delta.1 * x.sim)
+
+matur <- 120
+i.h <- 12*( all.A[matur]+all.B[matur]*x.sim)
+i.h.H <- 12*(all.A.H[matur]+all.B.H[matur]*x.sim)
+i.h.H.biased <- 12*(all.A.biased[matur]+all.B.biased[matur]*x.sim)
+
+par(mfrow=c(2,1))
+par(plt=c(.15,.95,.2,.98))
+
+plot(i.t,type="l",lwd=2,
+     ylim=c(min(i.t,i.h,i.h.H),max(i.t,i.h,i.h.H)+.02),
+     xlab="",ylab="",las=1)
+lines(i.h, col="red",lwd=2)
+lines(i.h.H, col="blue",lwd=2)
+lines(i.h.H.biased, col="dark grey",lwd=2,lty=2)
+abline(h=X.bar,col="grey")
+
+legend("topright",
+       c("Short-term rate",
+         "10-year rate",
+         "10-year rate under EH",
+         "10-year rate under EH, biased"),
+       lwd=c(2), # line width
+       lty=c(1,1,1,2),
+       #pch=c(19,19,19),
+       col=c("black","red","blue","dark grey"),
+       seg.len = 4,
+       bg = "white",
+       cex=.8)
 
 
-<!-- \begin{figure} -->
-<!-- \caption{Fit of surveys} -->
-<!-- \label{fig:fitSurveys} -->
-<!-- \begin{center} -->
-<!-- \includegraphics[width=.9\linewidth]{figures/fig_KimO2.pdf} -->
+plot(i.h - i.h.H,col="blue",type="l",
+     ylim=c(min(i.h - i.h.H,i.h - i.h.H.biased),max(i.h - i.h.H,i.h - i.h.H.biased)),lwd=2,
+     xlab="",ylab="",las=1)
+lines(i.h - i.h.H.biased,col="dark grey",lwd=2,lty=2)
 
-<!-- {\tiny {\bf Source}: \href{https://www.federalreserve.gov/pubs/feds/2005/200548/200548pap.pdf}{Kim and Orphanides (2005)}.} -->
-<!-- \end{center} -->
-<!-- \end{figure} -->
+legend("topright",
+       c("10-year term-premium ('True')",
+         "10-year term-premium, biased"),
+       lwd=c(2), # line width
+       lty=c(1,2),
+       col=c("blue","dark grey"), # gives the legend lines the correct color and width
+       seg.len = 4,
+       bg = "white",
+       cex=.8)
+```
+
+
+@Kim_Orphanides_2005 have proposed a simple approach to deal with this problem. Their approach consists in adding measurement equations to impose that the model-implied forecasts are---up to some measurement errors---equal to survey-based ones. In their empirical exercise, they use the [Blue Chip Financial Forecasts](https://lrus.wolterskluwer.com/store/products/blue-chip-financial-forecasts-prod-ss07418345/paperback-item-1-ss07418345). Alternative (publicly available) surveys are: [the Philly Fed Survey of Professional Forecasters](https://www.philadelphiafed.org/research-and-data/real-time-center/survey-of-professional-forecasters) and [the ECB SPF](https://www.ecb.europa.eu/stats/ecb_surveys/survey_of_professional_forecasters/html/index.en.html).
+
+@Kim_Orphanides_2005 exploit the fact that, in the context of affine models, model-implied forecasts of yields are affine in the state vector (see  see Eq. \@ref(eq:condmeanRth)); this implies that their mesurement equations are affine in the state vector, which facilitates the estimation of the latent factors. As shown by Figure \@ref(fig:figKimOrph), their model is able to satisfyingly fit both survey-based forecasts and market yields.
+
+```{r figKimOrph, fig.align = 'center', out.width = "95%", fig.cap = "Source: Kim and Orphanides (2005).", echo=FALSE}
+knitr::include_graphics("figures/Fig-SNDE.png")
+```
 
 

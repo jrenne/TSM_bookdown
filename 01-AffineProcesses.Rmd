@@ -508,7 +508,6 @@ This proves that $z_t$ is an affine process.
 One can simulate a two-regime Markov chain by using [this web-interface](https://jrenne.shinyapps.io/Affine/) (select the "Markov-Switching" panel).
 
 
-
 ## Wishart autoregressive (WAR) processes {#WAR}
 
 WAR are *matrix processes*, valued in the space of $(L \times L)$ symmetric positive
@@ -680,7 +679,7 @@ where
 
 :::{.example #RSVAR2 name="Regime-switching VAR(1)"}
 
-One can also use this approach to construct (affine) regime-switching VAR processes (which is another extension of Example \@ref(exm:GVAR1). For that, replace $\delta$ with
+One can also use this approach to construct (affine) regime-switching VAR processes (which is another extension of Example \@ref(exm:GVAR1) (see, e.g., @Gourieroux_Monfort_Pegoraro_Renne_2014). For that, replace $\delta$ with
 
 * $\left( \begin{array}{ll} \Lambda_1 &
 0
@@ -691,6 +690,7 @@ One can also use this approach to construct (affine) regime-switching VAR proces
 * or $\left( \begin{array}{l} \Lambda_1 \\
 \Lambda_2
 \end{array}\right)z_{t+1}$, where $\Lambda_1$ and$\Lambda_2$ are the same matrices as above with $J_1=J_2=J$, and  $z_{t+1}$ is a Markov chain valued in the set of selection vectors of size $J$.
+
 :::
 
 

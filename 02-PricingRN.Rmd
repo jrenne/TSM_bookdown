@@ -188,7 +188,7 @@ $R_t$ is the price of an investment initiated on date 0, when it was worth one d
 
 For any price process $p_t$, we have $p_t = \mathbb{E}_t(\mathcal{M}_{t,s} p_s)$ (with $s>t$), or $\mathcal{M}_{0,t} p_t = \mathbb{E}_t(\mathcal{M}_{0,s}p_s)$. That is, $\mathcal{M}_{0,t} p_t$ is a martingale. In particular $\mathcal{M}_{0,t} R_t$ is a martingale.
 
-### Exponential Affine SDF {#PricingAffine}
+### Exponential affine SDF {#PricingAffine}
 
 A specific (tractable) case is that of exponential affine SDF. Assume that
 $$
@@ -319,7 +319,7 @@ d^{\mathbb{Q}}_{t+1}(w_{t+1}) &=& \exp[\alpha'_t(w_{t+1})+\psi^{\mathbb{Q}}_t(-\
 
 
 
-## Typology of Econometric Asset Pricing Models {#PricingTypology}
+## Typology of econometric asset-pricing models {#PricingTypology}
 
 
 :::{.definition #typo name="Econometric Asset Pricing Model (EAPM)"}
@@ -356,7 +356,7 @@ where $r_{t}(\bullet,\bullet)$ is a known function.
 
 Let us now detail the three steps on which each of the three ways of defining an EAPM is based.
 
-### The Direct Modelling
+### The direct modelling {#DirectModeling}
 
 * **Step 1 -- Specification of the historical dynamics**. We choose a parametric family for the conditional historical Log-Laplace transform $\psi_t(u|\underline{w_t})$: $\left\{ \psi_t (u|\underline{w_t} ; \theta_1), \theta_1 \in \Theta_1 \right\}$.
 * **Step 2 -- Specification of the SDF**. Considering the affine specification of as Eq. \@ref(eq:keySDF), that is:
@@ -404,7 +404,7 @@ The SDF is a by-product. If we want an exponential affine SDF, for any pair $(\p
 \alpha_t (\underline{w_t}) | \underline{w_t} \right].
 \end{equation*}
 
-### The Back Modelling (based on three steps)
+### Back modelling (based on three steps)
 
 * **Step 1 -- Specification of the R.N. dynamics**, and possibly of $r_{t}(\underline{w_t})$]: $\psi^{\mathbb{Q}}_t (u | \underline{w_t}; \theta^*_1)$.
 * **Step 2 -- Internal consistency conditions (ICC)**, if relevant, are taken into account:

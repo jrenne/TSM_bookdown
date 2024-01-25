@@ -70,8 +70,7 @@
 <li><a class="" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
 <li><a class="active" href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
 <li><a class="" href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">4</span> Estimation of affine asset-pricing models</a></li>
-<li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">5</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">6</span> References</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">5</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -309,7 +308,7 @@ where <span class="math inline">\(\mu^{\mathbb{Q}} = \mu + \Sigma \alpha_0\)</sp
 <p>With affine specifications of the nominal short term rate (<span class="math inline">\(r_{t} = \omega_0 + \omega'_1 w_t\)</span>) and of the inflation rate (<span class="math inline">\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)</span>), we obtain affine formulas for nominal and real yields of any maturity (Eqs. <a href="the-term-structure-or-risk-free-yields.html#eq:RthAB">(3.7)</a> and <a href="the-term-structure-or-risk-free-yields.html#eq:RbarthAB">(3.9)</a>).</p>
 <div class="example">
 <p><span id="exm:KimWright" class="example"><strong>Example 3.1  (Kim and Wright (2005)) </strong></span>This model is a three-factor <em>yield-only model</em> (no macro variables, except inflation in one variant of the model), where the short-term rate reads <span class="math inline">\(r_t = \omega_0 + \omega_{1,1} w_{1,t} +\omega_{1,2} w_{2,t} +\omega_{1,3} w_{3,t}\)</span>.</p>
-<p>The model estimated by Kalman filter (see Subsection,<a href="estimation-of-affine-asset-pricing-models.html#Estimation:KF">4.2</a>; the state-space model (Def. <a href="estimation-of-affine-asset-pricing-models.html#def:LSSM">4.1</a>) includes survey-based variables (see Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationPersistency">4.5</a>).</p>
+<p>The model estimated by Kalman filter (see Subsection,<a href="estimation-of-affine-asset-pricing-models.html#Estimation:KF">4.2</a>; the state-space model (Def. <a href="estimation-of-affine-asset-pricing-models.html#def:LSSM">4.1</a>) includes survey-based variables (see Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationPersistency">4.6</a>).</p>
 <p>Outputs are <a href="https://www.federalreserve.gov/pubs/feds/2005/200533/200533abs.html">regularly updated by the Federal Reserve Board</a>.</p>
 <p>Monthly data on the 6-month and 12-month-ahead forecasts of the three-month T-Bill yield from Blue Chip Financial Forecasts and semiannual data on the average expected three-month T-Bill yield from 6 to 11 years.</p>
 <div class="figure" style="text-align: left-aligned">
@@ -329,7 +328,7 @@ Figure 3.1: Kim and Wright (2005) outputs.
 <li>
 <span class="math inline">\(f^{u}_{i,t}\)</span> are unobserved, or latent, factors.</li>
 </ul>
-<p>The nominal short-term rate follows a Taylor rule. And latent factors are estimated via <em>inversion techniques</em> (Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationInversion">4.4</a>).</p>
+<p>The nominal short-term rate follows a Taylor rule. And latent factors are estimated via <em>inversion techniques</em> (Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationInversion">4.5</a>).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:figAngPiazzesi"></span>
 <img src="figures/AngPiazzesi1.png" alt="Source: Ang and Piazzesi (1998). Impulse response functions." width="95%"><p class="caption">
@@ -534,7 +533,7 @@ where <span class="math inline">\(\varphi_{t,h}\)</span> is the multi-horizon La
 \right.
 \end{equation}\]</span>
 Other lift-off probabilities, of the type <span class="math inline">\(\mathbb{P}_t[R(t+h,k)&gt;threshold]\)</span>, can be derived from Eq. <a href="ChapterAffine.html#eq:DPS">(1.18)</a>.</p>
-<p><span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> esitmate this model by means of Kalman filtering techniques (see Subsection <a href="#EstimationKF"><strong>??</strong></a>). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationPersistency">4.5</a> and (e-GARCH-based) proxies of conditional variances (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>).</p>
+<p><span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> esitmate this model by means of Kalman filtering techniques (see Subsection <a href="#EstimationKF"><strong>??</strong></a>). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection <a href="estimation-of-affine-asset-pricing-models.html#EstimationPersistency">4.6</a> and (e-GARCH-based) proxies of conditional variances (see Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a>).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:fitZarg"></span>
 <img src="figures/Figure_fit_ZARG.png" alt="Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters." width="95%"><p class="caption">
@@ -595,7 +594,7 @@ Figure 3.7: Source: Monfort et al. (2017). Lift-off probabilities.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-21.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

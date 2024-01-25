@@ -68,10 +68,9 @@
 <li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
 <li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="active" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
-<li><a class="" href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
-<li><a class="" href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">4</span> Estimation of affine asset-pricing models</a></li>
-<li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">5</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">6</span> References</a></li>
+<li><a class="" href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">3</span> Estimation of affine asset-pricing models</a></li>
+<li><a class="" href="credit-and-liquidity-risks.html"><span class="header-section-number">4</span> Credit and liquidity risks</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">5</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -265,7 +264,7 @@ r_{t}=-\log \mathbb{E}_t [\mathcal{M}_{t,t+1}].
 </div>
 <div id="PricingAffine" class="section level3" number="2.3.2">
 <h3>
-<span class="header-section-number">2.3.2</span> Exponential Affine SDF<a class="anchor" aria-label="anchor" href="#PricingAffine"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3.2</span> Exponential affine SDF<a class="anchor" aria-label="anchor" href="#PricingAffine"><i class="fas fa-link"></i></a>
 </h3>
 <p>A specific (tractable) case is that of exponential affine SDF. Assume that
 <span class="math display">\[
@@ -384,7 +383,7 @@ d^{\mathbb{Q}}_{t+1}(w_{t+1}) &amp;=&amp; \exp[\alpha'_t(w_{t+1})+\psi^{\mathbb{
 </div>
 <div id="PricingTypology" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">2.5</span> Typology of Econometric Asset Pricing Models<a class="anchor" aria-label="anchor" href="#PricingTypology"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Typology of econometric asset-pricing models<a class="anchor" aria-label="anchor" href="#PricingTypology"><i class="fas fa-link"></i></a>
 </h2>
 <div class="definition">
 <p><span id="def:typo" class="definition"><strong>Definition 2.2  (Econometric Asset Pricing Model (EAPM)) </strong></span>An Econometric Asset Pricing Model (EAPM) is defined by the following functions:</p>
@@ -420,9 +419,9 @@ Once the short-term rate function <span class="math inline">\(r_{t}(\underline{w
 \]</span>
 where <span class="math inline">\(r_{t}(\bullet,\bullet)\)</span> is a known function.</p>
 <p>Let us now detail the three steps on which each of the three ways of defining an EAPM is based.</p>
-<div id="the-direct-modelling" class="section level3" number="2.5.1">
+<div id="DirectModeling" class="section level3" number="2.5.1">
 <h3>
-<span class="header-section-number">2.5.1</span> The Direct Modelling<a class="anchor" aria-label="anchor" href="#the-direct-modelling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.1</span> The direct modelling<a class="anchor" aria-label="anchor" href="#DirectModeling"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
@@ -477,9 +476,9 @@ These ICC pricing conditions may imply strong constraints on <span class="math i
 \alpha_t (\underline{w_t}) | \underline{w_t} \right].
 \end{equation*}\]</span></p>
 </div>
-<div id="the-back-modelling-based-on-three-steps" class="section level3" number="2.5.3">
+<div id="back-modelling-based-on-three-steps" class="section level3" number="2.5.3">
 <h3>
-<span class="header-section-number">2.5.3</span> The Back Modelling (based on three steps)<a class="anchor" aria-label="anchor" href="#the-back-modelling-based-on-three-steps"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.3</span> Back modelling (based on three steps)<a class="anchor" aria-label="anchor" href="#back-modelling-based-on-three-steps"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
@@ -507,7 +506,7 @@ These ICC pricing conditions may imply strong constraints on <span class="math i
 
   <div class="chapter-nav">
 <div class="prev"><a href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></div>
-<div class="next"><a href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></div>
+<div class="next"><a href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">3</span> Estimation of affine asset-pricing models</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -517,15 +516,15 @@ These ICC pricing conditions may imply strong constraints on <span class="math i
 <li>
 <a class="nav-link" href="#PricingAAO"><span class="header-section-number">2.3</span> SDF: Absence of Arbitrage Approach</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#existence-and-unicity-of-the-sdf"><span class="header-section-number">2.3.1</span> Existence and unicity of the SDF</a></li>
-<li><a class="nav-link" href="#PricingAffine"><span class="header-section-number">2.3.2</span> Exponential Affine SDF</a></li>
+<li><a class="nav-link" href="#PricingAffine"><span class="header-section-number">2.3.2</span> Exponential affine SDF</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#PricingRN"><span class="header-section-number">2.4</span> The risk-neutral (R.N.) dynamics</a></li>
 <li>
-<a class="nav-link" href="#PricingTypology"><span class="header-section-number">2.5</span> Typology of Econometric Asset Pricing Models</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#the-direct-modelling"><span class="header-section-number">2.5.1</span> The Direct Modelling</a></li>
+<a class="nav-link" href="#PricingTypology"><span class="header-section-number">2.5</span> Typology of econometric asset-pricing models</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#DirectModeling"><span class="header-section-number">2.5.1</span> The direct modelling</a></li>
 <li><a class="nav-link" href="#the-r.n.-constrained-direct-modelling-or-mixed-modelling"><span class="header-section-number">2.5.2</span> The R.N.-constrained direct modelling (or mixed modelling)</a></li>
-<li><a class="nav-link" href="#the-back-modelling-based-on-three-steps"><span class="header-section-number">2.5.3</span> The Back Modelling (based on three steps)</a></li>
+<li><a class="nav-link" href="#back-modelling-based-on-three-steps"><span class="header-section-number">2.5.3</span> Back modelling (based on three steps)</a></li>
 </ul>
 </li>
 </ul>
@@ -544,7 +543,7 @@ These ICC pricing conditions may imply strong constraints on <span class="math i
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-21.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

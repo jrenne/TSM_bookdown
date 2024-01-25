@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.14)  21 JAN 2024 21:53
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.14)  25 JAN 2024 15:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -905,7 +905,12 @@ Overfull \hbox (1.21489pt too wide) in paragraph at lines 2001--2002
 []\TU/lmr/m/n/12 Hence, in that case, $[][]$ is exponential affine in $[][] [] [][] [][][] [] [][][][]$
  []
 
-[48] [49] [50] [51]
+[48] [49]
+Underfull \hbox (badness 1590) in paragraph at lines 2102--2102
+[]\TU/lmr/bx/n/17.28 Typology of econometric asset-pricing
+ []
+
+[50] [51]
 Overfull \hbox (52.36908pt too wide) in alignment at lines 2169--2173
  [][][] []
  []
@@ -919,189 +924,130 @@ Underfull \hbox (badness 1067) in paragraph at lines 2181--2183
 
 ]
 Chapter 3.
-[55] [56] [57] [58] [59] [60] [61]
-
-LaTeX Warning: Reference `exm:Gaussian' on page 62 undefined on input line 2441.
-
-
-LaTeX Warning: Reference `exm:Gaussian' on page 62 undefined on input line 2457.
-
-File: TSM_files/figure-latex/fredKW-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/fredKW-1.pdf>
-[62]
-File: figures/AngPiazzesi1.pdf Graphic file (type pdf)
-<use figures/AngPiazzesi1.pdf>
-[63] [64]
-File: figures/JPS_IRF.pdf Graphic file (type pdf)
-<use figures/JPS_IRF.pdf>
-File: figures/Ang_Boivin_loadings.png Graphic file (type bmp)
-<figures/Ang_Boivin_loadings.png>
-
-Underfull \hbox (badness 4647) in paragraph at lines 2591--2591
-[]\TU/lmr/bx/n/17.28 Non-Negative Affine Term Structure
- []
-
-[65] [66] [67] [68]
-Overfull \hbox (8.4277pt too wide) detected at line 2645
-[] [] [] [] [] [] [][] [] [][][][]
- []
-
-[69]
-File: TSM_files/figure-latex/WuXia-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/WuXia-1.pdf>
-[70] [71]
-
-LaTeX Warning: Reference `lemma:mass' on page 72 undefined on input line 2726.
-
-
-LaTeX Warning: Reference `EstimationKF' on page 72 undefined on input line 2742.
-
-File: figures/Figure_fit_ZARG.pdf Graphic file (type pdf)
-<use figures/Figure_fit_ZARG.pdf>
-[72]
-File: figures/Figure_LiftOff.pdf Graphic file (type pdf)
-<use figures/Figure_LiftOff.pdf>
-[73] [74]
-Chapter 4.
-[75
-
-] [76] [77] [78]
+[55] [56] [57] [58]
 File: TSM_files/figure-latex/illusKF-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/illusKF-1.pdf>
-[79] [80]
-File: TSM_files/figure-latex/Kalman10-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/Kalman10-1.pdf>
-[81] [82]
+[59] [60]
+File: TSM_files/figure-latex/Kalmansimul-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/Kalmansimul-1.pdf>
 File: TSM_files/figure-latex/Kalman2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman2-1.pdf>
-File: TSM_files/figure-latex/Kalman4-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/Kalman4-1.pdf>
-[83] [84]
+[61] [62]
 File: TSM_files/figure-latex/Kalman5-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman5-1.pdf>
-[85]
 File: TSM_files/figure-latex/Kalman6-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman6-1.pdf>
-[86]
-Underfull \vbox (badness 10000) detected at line 3128
- []
-
-
-Underfull \vbox (badness 10000) detected at line 3128
- []
-
-[87]
-File: TSM_files/figure-latex/Kalman8-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/Kalman8-1.pdf>
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 17.28pt on input line 3135.
+(Font)              scaled to size 17.28pt on input line 2483.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 17.28157pt on input line 3135.
+(Font)              scaled to size 17.28157pt on input line 2483.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 17.27815pt on input line 3135.
-[88]
+(Font)              scaled to size 17.27815pt on input line 2483.
+[63] [64]
 
-LaTeX Warning: Reference `subsec:Credit:CDS' on page 89 undefined on input line 3169.
+LaTeX Warning: Reference `subsec:Credit:CDS' on page 65 undefined on input line 2496.
 
+[65] [66] [67]
 
-LaTeX Warning: Reference `eq:MCCDSformula1' on page 89 undefined on input line 3169.
-
-
-LaTeX Warning: Reference `exm:DD' on page 89 undefined on input line 3169.
-
-[89]
-Underfull \hbox (badness 5077) in paragraph at lines 3247--3249
-[]\TU/lmr/m/n/12 Proposition []4.2[] (next slide) shows that the computation of
- []
-
-[90] [91]
-
-LaTeX Warning: Reference `app:KitagHamilton' on page 92 undefined on input line 3351.
+LaTeX Warning: Reference `eq:RthAB' on page 68 undefined on input line 2638.
 
 
-LaTeX Warning: Reference `slide:inversionXX' on page 92 undefined on input line 3357.
+LaTeX Warning: Reference `app:KitagHamilton' on page 68 undefined on input line 2643.
 
-[92]
+[68] [69] [70] [71]
+File: figures/Fig-SNDE.pdf Graphic file (type pdf)
+<use figures/Fig-SNDE.pdf>
 
-LaTeX Warning: Reference `exm:SovereignSpreads' on page 93 undefined on input line 3370.
+LaTeX Warning: Reference `eq:RthAB' on page 72 undefined on input line 2828.
 
-[93]
+File: TSM_files/figure-latex/persist1-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/persist1-1.pdf>
+File: TSM_files/figure-latex/persist2-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/persist2-1.pdf>
+[72] [73] [74] [75]
 
-LaTeX Warning: Reference `app:KitagHamilton' on page 94 undefined on input line 3464.
+LaTeX Warning: Reference `eq:condmeanRth' on page 76 undefined on input line 2851.
 
-
-LaTeX Warning: Reference `app:mixedKFinversion' on page 94 undefined on input line 3468.
-
-[94]
-
-LaTeX Warning: Reference `app:KitagHamilton' on page 95 undefined on input line 3480.
-
-
-LaTeX Warning: Reference `app:mixedKFinversion' on page 95 undefined on input line 3485.
-
-[95]
-
-LaTeX Warning: Reference `fig:biasedTP' on page 96 undefined on input line 3572.
-
-[96]
-
-LaTeX Warning: Reference `fig:fitSurveys' on page 97 undefined on input line 3588.
-
-[97] [98
+File: figures/Fig-SNDE.pdf Graphic file (type pdf)
+<use figures/Fig-SNDE.pdf>
+[76]
+Chapter 4.
+[77
 
 ]
-Chapter 5.
-
-Overfull \hbox (33.68143pt too wide) in paragraph at lines 3621--3625
-[]\TU/lmr/m/n/12 :::{.proof} The price at $[]$ of $[][] [] [][]$ is zero. Therefore: $[][][][][][] [] [] [][][][][] []
+Underfull \hbox (badness 4899) in paragraph at lines 2921--2922
+[]\TU/lmr/m/n/12 Hypothesis []4.3[] also implies that the short-term risk-free rate $[][]$
  []
 
-[99]
-Overfull \hbox (213.27747pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 100 \TU/lmr/m/sl/12 CHAPTER 5.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
+File: figures/Schema0.pdf Graphic file (type pdf)
+<use figures/Schema0.pdf>
+[78] [79] [80] [81]
+Overfull \hbox (42.76819pt too wide) in alignment at lines 3051--3054
+ [][][] []
  []
 
-[100] [101]
-Overfull \hbox (213.27747pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 102 \TU/lmr/m/sl/12 CHAPTER 5.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
+[82]
+Overfull \hbox (38.3721pt too wide) detected at line 3068
+[]
  []
+
+[83] [84]
+Overfull \hbox (43.24458pt too wide) in paragraph at lines 3159--3160
+[]\TU/lmr/m/n/12 The $[]$ conditional density of $[][]$ given $[][]$, namely $[][][][][][][][][][][][][][][][][][] [][][]$,
+ []
+
+
+Overfull \hbox (17.59521pt too wide) in paragraph at lines 3159--3160
+\TU/lmr/m/n/12 tional to $[][][][][][] [][][][][][][][][][][][][][][][][][][][] [][][] [][][][][][][][][][][][] [][][] [][][]$.
+ []
+
+[85] [86] [87]
+File: TSM_files/figure-latex/MRintensity-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/MRintensity-1.pdf>
+
+LaTeX Warning: Reference `Swap' on page 88 undefined on input line 3280.
+
+[88] [89] [90]
+File: figures/IBOROIS.pdf Graphic file (type pdf)
+<use figures/IBOROIS.pdf>
+[91] [92]
+File: figures/Schema2.pdf Graphic file (type pdf)
+<use figures/Schema2.pdf>
+[93]
+File: figures/schema_VARG.pdf Graphic file (type pdf)
+<use figures/schema_VARG.pdf>
+[94] [95] [96]
+File: figures/FigureCDS.pdf Graphic file (type pdf)
+<use figures/FigureCDS.pdf>
+File: figures/FigureCDSFX.pdf Graphic file (type pdf)
+<use figures/FigureCDSFX.pdf>
+[97] [98]
+
+LaTeX Warning: Reference `lemma:petitlemme' on page 99 undefined on input line 3622.
+
+[99] [100]
+
+LaTeX Warning: Reference `eq:VARG' on page 101 undefined on input line 3665.
+
+[101]
+
+LaTeX Warning: Reference `fig:CDO' on page 102 undefined on input line 3713.
+
+
+LaTeX Warning: Reference `fig:fittranche' on page 102 undefined on input line 3721.
 
 [102]
-Underfull \hbox (badness 2285) in paragraph at lines 3797--3800
-[]\TU/lmr/m/n/12 Case of a \TU/lmr/bx/n/12 nonstorable commodity\TU/lmr/m/n/12 . No convenience yield;
+Chapter 5.
+(./TSM.bbl [103
+
+] [104
+
+] [105]
+Underfull \hbox (badness 2027) in paragraph at lines 65--68
+[]\TU/lmr/m/n/12 Duan, J.-C. and Simonato, J.-G. (1999).  Estimating and Testing
  []
 
-
-Underfull \hbox (badness 2277) in paragraph at lines 3797--3800
-\TU/lmr/m/n/12 if, moreover $[][]$ deterministic, $[][] [] [][] [] [][][][][][]$, but
- []
-
-[103]
-
-LaTeX Warning: Reference `eq:convenience1' on page 104 undefined on input line 3843.
-
-
-Overfull \hbox (213.27747pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 104 \TU/lmr/m/sl/12 CHAPTER 5.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
- []
-
-[104] [105]
-Overfull \hbox (213.27747pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 106 \TU/lmr/m/sl/12 CHAPTER 5.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
- []
-
-[106] [107]
-Overfull \hbox (213.27747pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 108 \TU/lmr/m/sl/12 CHAPTER 5.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
- []
-
-[108]
-Chapter 6.
-(./TSM.bbl [109
-
-] [110
-
-] [111] [112]) [113] (./TSM.aux)
+[106] [107] [108]) [109] (./TSM.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2024-01-04>
@@ -1113,15 +1059,15 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `TSM.out' has not changed.
-(rerunfilecheck)             Checksum: 9F95A5C7D4BA258C7E99E9F7D5F9C502;8728.
+(rerunfilecheck)             Checksum: 536B152CABDA123AD1925816421339F9;7227.
  ) 
 Here is how much of TeX's memory you used:
- 18052 strings out of 476828
- 333213 string characters out of 5803878
- 1982174 words of memory out of 5000000
- 39739 multiletter control sequences out of 15000+600000
- 566554 words of font info for 115 fonts, out of 8000000 for 9000
+ 18125 strings out of 476828
+ 334797 string characters out of 5803878
+ 1983174 words of memory out of 5000000
+ 39808 multiletter control sequences out of 15000+600000
+ 566570 words of font info for 117 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,19n,120p,789b,566s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,120p,813b,538s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TSM.pdf (113 pages).
+Output written on TSM.pdf (109 pages).

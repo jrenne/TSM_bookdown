@@ -68,10 +68,9 @@
 <li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
 <li><a class="active" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
-<li><a class="" href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
-<li><a class="" href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">4</span> Estimation of affine asset-pricing models</a></li>
-<li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">5</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">6</span> References</a></li>
+<li><a class="" href="estimation-of-affine-asset-pricing-models.html"><span class="header-section-number">3</span> Estimation of affine asset-pricing models</a></li>
+<li><a class="" href="credit-and-liquidity-risks.html"><span class="header-section-number">4</span> Credit and liquidity risks</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">5</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -378,7 +377,7 @@ Figure 1.1: Simulation of a quadratic processes <span class="math inline">\(x_t\
 </p>
 </div>
 </div>
-<p>Another example of nonnegative process is that of the auto-regressive Gamma process <span class="citation">(<a href="references.html#ref-Gourieroux_Jasiak_2006">Christian Gourieroux and Jasiak 2006</a>)</span> and its extension <span class="citation">(<a href="references.html#ref-zarg_2017">Monfort et al. 2017</a>)</span>.</p>
+<p>Another example of nonnegative process is that of the auto-regressive Gamma process <span class="citation">(<a href="references.html#ref-Gourieroux_Jasiak_2006">Christian Gourieroux and Jasiak 2006</a>)</span> and its extension <span class="citation">(<a href="references.html#ref-zarg_2017">Alain Monfort et al. 2017</a>)</span>.</p>
 <div class="example">
 <p><span id="exm:ARG1" class="example"><strong>Example 1.8  (Autoregressive gamma process, ARG(1)) </strong></span>An ARG process is defined as follows:
 <span class="math display">\[
@@ -410,7 +409,7 @@ and that:
 w_{t+1}=\nu\mu+\rho w_t+\varepsilon_{t+1},
 \]</span>
 where <span class="math inline">\(\varepsilon_{t+1}\)</span> is a martingale difference <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(w_{t+1}\)</span> is a weak <span class="math inline">\(AR(1)\)</span>.</p>
-<p><span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> porpose the extended ARG process and the ARG<span class="math inline">\(_0\)</span> process. The latter is such that <span class="math inline">\(\nu = 0\)</span> and <span class="math inline">\(\beta w_t\)</span> is replaced with <span class="math inline">\(\alpha + \beta w_t\)</span>, i.e.:
+<p><span class="citation">Alain Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> porpose the extended ARG process and the ARG<span class="math inline">\(_0\)</span> process. The latter is such that <span class="math inline">\(\nu = 0\)</span> and <span class="math inline">\(\beta w_t\)</span> is replaced with <span class="math inline">\(\alpha + \beta w_t\)</span>, i.e.:
 <span class="math display" id="eq:ARG0">\[\begin{equation}
 \frac{w_{t+1}}{\mu} \sim \gamma(z_t),\quad z_t \sim {\mathcal{P}}(\alpha + \beta w_t).\tag{1.4}
 \end{equation}\]</span>
@@ -671,7 +670,7 @@ The dynamics of the two components of <span class="math inline">\(w_t\)</span> a
 w_{1,t+1} &amp;=&amp; \alpha_1 \hspace{1.55cm} + \alpha_{11}w_{1,t} + \alpha_{12}w_{2,t} + \varepsilon_{1,t+1} \\
 w_{2,t+1} &amp;=&amp; \alpha_2 + \alpha_{0}w_{1,t+1} + \alpha_{21}w_{1,t} + \alpha _{22} w_{2,t} + \varepsilon_{2,t+1}
 \end{eqnarray*}\]</span>
-Note that <span class="math inline">\(\varepsilon_{1,t+1}\)</span> and <span class="math inline">\(\varepsilon_{2,t+1}\)</span> are non-correlated martingale differences. In the general case, they are conditionally heteroskedastic. What precedes is at play in <span class="math inline">\(VAR\)</span> model; <span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> employ this approach to build vector auto-regressive gamma (VARG) processes.</p>
+Note that <span class="math inline">\(\varepsilon_{1,t+1}\)</span> and <span class="math inline">\(\varepsilon_{2,t+1}\)</span> are non-correlated martingale differences. In the general case, they are conditionally heteroskedastic. What precedes is at play in <span class="math inline">\(VAR\)</span> model; <span class="citation">Alain Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> employ this approach to build vector auto-regressive gamma (VARG) processes.</p>
 </div>
 <div id="extending-multivariate-stochastic-processes" class="section level3" number="1.8.3">
 <h3>
@@ -713,7 +712,7 @@ where</p>
 </ul>
 </div>
 <div class="example">
-<p><span id="exm:RSVAR2" class="example"><strong>Example 1.14  (Regime-switching VAR(1)) </strong></span>One can also use this approach to construct (affine) regime-switching VAR processes (which is another extension of Example <a href="ChapterAffine.html#exm:GVAR1">1.6</a>. For that, replace <span class="math inline">\(\delta\)</span> with</p>
+<p><span id="exm:RSVAR2" class="example"><strong>Example 1.14  (Regime-switching VAR(1)) </strong></span>One can also use this approach to construct (affine) regime-switching VAR processes (which is another extension of Example <a href="ChapterAffine.html#exm:GVAR1">1.6</a> (see, e.g., <span class="citation">Christian Gourieroux et al. (<a href="references.html#ref-Gourieroux_Monfort_Pegoraro_Renne_2014">2014</a>)</span>). For that, replace <span class="math inline">\(\delta\)</span> with</p>
 <ul>
 <li>
 <span class="math inline">\(\left( \begin{array}{ll} \Lambda_1 &amp; 0 \\ 0 &amp; \Lambda_2 \end{array} \right)\)</span><span class="math inline">\(\left( \begin{array}{l} z_{1,t+1} \\ z_{2,t+1} \end{array} \right)\)</span>, where <span class="math inline">\(\Lambda_1\)</span> is a <span class="math inline">\((n \times J_1)\)</span> matrix and <span class="math inline">\(z_{1,t+1}\)</span> is a Markov chain valued in the set of selection vectors of size <span class="math inline">\(J_1\)</span> (see Subsection <a href="ChapterAffine.html#Markov">1.6</a>), <span class="math inline">\(\Lambda_2\)</span> is the same matrix as in Example <a href="ChapterAffine.html#exm:RSVAR">1.13</a> and <span class="math inline">\(z_{2,t+1}\)</span> is a Markov chain valued in the set of selection vectors of size <span class="math inline">\(J_2\)</span>.</li>
@@ -1542,7 +1541,7 @@ which leads to Eq. <a href="ChapterAffine.html#eq:Truncated">(1.23)</a>.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-21.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

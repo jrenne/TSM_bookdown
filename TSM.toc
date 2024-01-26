@@ -1,0 +1,15 @@
+\contentsline {chapter}{\numberline {1}A detour through structural approaches}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Basics of Structural Approaches: C-CAPM}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Recursive Utilities and Epstein-Zin Preferences}{18}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Limitations of the Habit Models for Long-Horizons}{21}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Epstein-Zin Preferences and Risk Aversion}{22}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Epstein-Zin Preferences and IES}{23}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Epstein-Zin Preferences and the Time Composition of Risk}{24}{subsection.1.2.4}%
+\contentsline {subsection}{\numberline {1.2.5}Epstein-Zin Preferences and Early Resolution Uncertainty}{26}{subsection.1.2.5}%
+\contentsline {subsection}{\numberline {1.2.6}The SDF with Epstein-Zin preferences}{26}{subsection.1.2.6}%
+\contentsline {subsection}{\numberline {1.2.7}Pricing Information on Future Consumption Path}{28}{subsection.1.2.7}%
+\contentsline {subsection}{\numberline {1.2.8}Rewriting the SDF with Epstein-Zin Preferences}{29}{subsection.1.2.8}%
+\contentsline {subsection}{\numberline {1.2.9}Long Run Risk Model}{35}{subsection.1.2.9}%
+\contentsline {section}{\numberline {1.3}Appendix}{44}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}SDF in the CES Epstein-Zin Context}{44}{subsection.1.3.1}%
+\contentsline {chapter}{\numberline {2}References}{47}{chapter.2}%

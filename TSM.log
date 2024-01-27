@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  26 JAN 2024 11:51
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  27 JAN 2024 18:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -757,112 +757,148 @@ Overfull \hbox (1.35612pt too wide) in paragraph at lines 191--192
 [6]
 Chapter 1.
 
-Underfull \hbox (badness 1466) in paragraph at lines 199--199
-[]\TU/lmr/bx/n/17.28 Basics of Structural Approaches: C-
- []
+Underfull \vbox (badness 3108) has occurred while \output is active []
 
 [7
 
-]
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 213.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 213.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 213.
-[8]
+] [8]
+Overfull \hbox (294.3604pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/12 1.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 9
+ []
+
+[9] [10]
+Overfull \hbox (300.24039pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/12 1.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 11
+ []
+
+[11]
 File: TSM_files/figure-latex/RRAIESCCAPM-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/RRAIESCCAPM-1.pdf>
-[9] [10]
+[12]
+Overfull \hbox (300.24039pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/12 1.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 13
+ []
+
+[13]
 File: figures/table_campbell1999_eqpuzzle.png Graphic file (type bmp)
 <figures/table_campbell1999_eqpuzzle.png>
-[11]
+[14]
 
-LaTeX Warning: Reference `exm:IESsmooth' on page 12 undefined on input line 343.
+LaTeX Warning: Reference `exm:IESsmooth' on page 15 undefined on input line 457.
 
 File: TSM_files/figure-latex/IESsmooth-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/IESsmooth-1.pdf>
-[12] [13] [14]
+
+Overfull \hbox (300.24039pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/12 1.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 15
+ []
+
+[15] [16]
+
+LaTeX Warning: Reference `eq:pricingcapm' on page 17 undefined on input line 493.
+
+
+Overfull \hbox (300.24039pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/12 1.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 17
+ []
+
+[17]
 File: figures/tableHansenSingleton82A.png Graphic file (type bmp)
 <figures/tableHansenSingleton82A.png>
-[15]
+[18]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 538.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 538.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 538.
 File: TSM_files/figure-latex/fredCorrel-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/fredCorrel-1.pdf>
-[16] [17]
-Overfull \hbox (8.30891pt too wide) detected at line 498
-[][][][][] [] [] [][][][][][] [] [][][] [][][][][] [][] [] [][][] [] [][][][][][][][] [] [][][][][][][][][][][][][][][]
+
+Overfull \hbox (300.24039pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/12 1.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 19
  []
-
-[18]
-Overfull \hbox (99.92271pt too wide) in alignment at lines 508--512
- [][][] []
- []
-
-
-LaTeX Warning: Reference `def:power' on page 19 undefined on input line 516.
 
 [19]
-File: TSM_files/figure-latex/Habits1-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/Habits1-1.pdf>
-
-Underfull \hbox (badness 1708) in paragraph at lines 551--551
-[]\TU/lmr/bx/n/14.4 Limitations of the Habit Models for Long-
+Overfull \hbox (8.30891pt too wide) detected at line 566
+[][][][][] [] [] [][][][][][] [] [][][] [][][][][] [][] [] [][][] [] [][][][][][][][] [] [][][][][][][][][][][][][][][]
  []
 
 [20]
 
-LaTeX Warning: Reference `def:CE' on page 21 undefined on input line 574.
-
-[21] [22] [23] [24] [25]
-File: TSM_files/figure-latex/EZresolution-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/EZresolution-1.pdf>
-[26]
-
-LaTeX Warning: Reference `def:sdf' on page 27 undefined on input line 786.
+LaTeX Warning: Reference `def:power' on page 21 undefined on input line 575.
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 797--797
-[]\TU/lmr/bx/n/14.4 Pricing Information on Future Consumption
- []
-
-[27]
-Overfull \hbox (19.25484pt too wide) in alignment at lines 812--815
+Overfull \hbox (61.75157pt too wide) in alignment at lines 581--581
  [][][] []
  []
 
+[21]
+File: TSM_files/figure-latex/Habits1-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/Habits1-1.pdf>
+
+Underfull \hbox (badness 1708) in paragraph at lines 613--613
+[]\TU/lmr/bx/n/14.4 Limitations of the Habit Models for Long-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[22]
+
+LaTeX Warning: Reference `def:CE' on page 23 undefined on input line 636.
+
+[23] [24] [25] [26] [27]
+File: TSM_files/figure-latex/EZresolution-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/EZresolution-1.pdf>
 [28]
+
+LaTeX Warning: Reference `def:sdf' on page 29 undefined on input line 849.
+
+
+Underfull \hbox (badness 1515) in paragraph at lines 860--860
+[]\TU/lmr/bx/n/14.4 Pricing Information on Future Consumption
+ []
+
+[29]
+Overfull \hbox (19.25484pt too wide) in alignment at lines 875--878
+ [][][] []
+ []
+
+[30]
 File: TSM_files/figure-latex/EZresolution2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/EZresolution2-1.pdf>
-[29] [30] [31] [32]
-Underfull \hbox (badness 1147) in paragraph at lines 992--993
+[31] [32] [33] [34]
+Underfull \hbox (badness 1147) in paragraph at lines 1055--1056
 []\TU/lmr/m/n/12 Several studies provide evidence of the superiority of sur-
  []
 
 
-Underfull \hbox (badness 3872) in paragraph at lines 992--993
+Underfull \hbox (badness 3872) in paragraph at lines 1055--1056
 \TU/lmr/m/n/12 vey over other—statistical or market-data-based—methods
  []
 
-File: figures/Figure_Stock_chge_expect.png Graphic file (type bmp)
-<figures/Figure_Stock_chge_expect.png>
-[33] [34] [35] [36]
+File: TSM_files/figure-latex/SPF10yrStock-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/SPF10yrStock-1.pdf>
+[35] [36] [37]
 Missing character: There is no 𝜆 (U+1D706) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no 𝜂 (U+1D702) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no 𝛽 (U+1D6FD) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no 𝜎 (U+1D70E) in font [lmroman12-regular]:mapping=tex-text;!
-[37]
+[38]
 Missing character: There is no 𝜆 (U+1D706) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no 𝜃 (U+1D703) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no 𝜅 (U+1D705) in font [lmroman12-regular]:mapping=tex-text;!
+[39]
 
-LaTeX Warning: Reference `eq:dp2' on page 38 undefined on input line 1160.
+LaTeX Warning: Reference `eq:dp2' on page 40 undefined on input line 1218.
 
-[38]
-Overfull \hbox (15.67912pt too wide) detected at line 1187
+
+Overfull \hbox (15.67912pt too wide) detected at line 1245
 [][][][][] [] [][] [][][][] [] [][] [] [] [][][][][] [] []
  []
 
-[39]
+[40]
 File: figures/table_BY1.png Graphic file (type bmp)
 <figures/table_BY1.png>
 File: figures/table_BY2.png Graphic file (type bmp)
@@ -871,31 +907,58 @@ File: figures/table_BY4.png Graphic file (type bmp)
 <figures/table_BY4.png>
 File: figures/table_BY6.png Graphic file (type bmp)
 <figures/table_BY6.png>
-[40] [41] [42] [43]
+[41] [42] [43] [44] [45]
 File: figures/table_BKY1.png Graphic file (type bmp)
 <figures/table_BKY1.png>
 File: figures/table_BKY2.png Graphic file (type bmp)
 <figures/table_BKY2.png>
 
-Overfull \hbox (53.7646pt too wide) detected at line 1302
+Overfull \hbox (53.7646pt too wide) detected at line 1360
 [][][][][] [][][][][][][][] [][][][][][][][][] [] [][][][][][][] [][][][][][][] [] [][][] [][][][][][][][][][]
  []
 
-[44] [45]
-Overfull \hbox (83.59726pt too wide) detected at line 1314
+[46] [47]
+Overfull \hbox (83.59726pt too wide) detected at line 1372
 [][] [][] [] [][][][][][] [] [][][][][][][][][][] [] []
  []
 
 
-LaTeX Warning: Reference `eq:SS' on page 46 undefined on input line 1320.
+LaTeX Warning: Reference `eq:SS' on page 48 undefined on input line 1378.
 
-[46]
+[48]
 Chapter 2.
-(./TSM.bbl [47
 
-] [48
+LaTeX Warning: Reference `ChapterAffine' on page 49 undefined on input line 1386.
 
-] [49] [50]) [51] (./TSM.aux)
+[49
+
+] [50] [51]
+Overfull \hbox (1.21489pt too wide) in paragraph at lines 1520--1521
+[]\TU/lmr/m/n/12 Hence, in that case, $[][]$ is exponential affine in $[][] [] [][] [][][] [] [][][][]$
+ []
+
+[52] [53]
+Underfull \hbox (badness 1590) in paragraph at lines 1621--1621
+[]\TU/lmr/bx/n/17.28 Typology of econometric asset-pricing
+ []
+
+[54] [55]
+Overfull \hbox (52.36908pt too wide) in alignment at lines 1688--1692
+ [][][] []
+ []
+
+
+Underfull \hbox (badness 1067) in paragraph at lines 1700--1702
+\TU/lmr/m/n/12 (Euler equation). Or, in the case of interest rates with vari-
+ []
+
+[56] [57] [58
+
+]
+Chapter 3.
+(./TSM.bbl [59] [60
+
+] [61] [62]) [63] (./TSM.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -904,15 +967,15 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `TSM.out' has not changed.
-(rerunfilecheck)             Checksum: 393D0B66857DE94774DF3E5F0D7C7FE1;994.
+(rerunfilecheck)             Checksum: B92E1964014833E192AE96C9910E9D71;2247.
  ) 
 Here is how much of TeX's memory you used:
- 17808 strings out of 476884
- 327760 string characters out of 5804569
- 1944627 words of memory out of 5000000
- 39462 multiletter control sequences out of 15000+600000
- 565537 words of font info for 102 fonts, out of 8000000 for 9000
+ 17863 strings out of 476884
+ 328935 string characters out of 5804569
+ 1954627 words of memory out of 5000000
+ 39511 multiletter control sequences out of 15000+600000
+ 565561 words of font info for 105 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,11n,120p,652b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,11n,120p,833b,542s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TSM.pdf (51 pages).
+Output written on TSM.pdf (63 pages).

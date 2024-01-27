@@ -1,43 +1,165 @@
 # A detour through structural approaches {#Structural}
 
-## Basics of Structural Approaches: C-CAPM
+In this chapter, we introduce structural approaches that have been used to investigate asset pricing. *Structural models* aim to link the stochastic discount factor (SDF) to investor risk preferences. Investors make portfolio decisions to obtain a desired time and risk profile of consumption. Loosely speaking, in structural asset-pricing models, the SDF $\mathcal{M}_{t,t+1}$ captures the aspects of utility that matter for valuing the assets.
 
-*Structural models* link the stochastic discount factor (SDF) to investor behavior through assumptions about preferences. Investors make portfolio decisions to obtain a desired time and risk profile of consumption. Loosely speaking, the SDF $\mathcal{M}_{t,t+1}$ captures the aspects of utility that matter for valuing the assets. A seminal example is that of the consumption capital asset pricing model, or CCAPM (see, e.g., @Merton_1973 and @BREEDEN1979265). The CCAPM extends the CAPM framework by providing a consumption-based theory of the determinants of the valuation of the market portfolio.
+## Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF) {#PricingEquilibrium}
 
-In the basic CCAPM version, a representative investor with time-additive preferences operates in a complete market. It has been extended in several directions to account for more complex investor preferences (e.g., Epstein-Zin see XXX), investor heterogeneity, incomplete markets, borrowing restrictions.
+A seminal example of structural asset-pricing model is that of the consumption capital asset pricing model, or CCAPM (see, e.g., @Merton_1973 and @BREEDEN1979265). The CCAPM extends the CAPM framework by providing a consumption-based theory of the determinants of the valuation of the market portfolio.
 
-Consider a representative agent maximizing her expected utility:
-$$
-U_t = \mathbb{E}_t \left[ \sum_{j=0}^\infty \delta^j u(C_{t+j}) \right],
-$$
-where $u$ is a utility function of consumption and $\delta$ is the subjective time discount factor ($\ne$ SDF). The budget constraint of the agent is
-$$
-C_t + \sum_i w_{i,t} P_{i,t} \le \sum_i w_{i,t-1}\underbrace{(P_{i,t}+D_{i,t})}_{x_{i,t}} + Y_t,
-$$
-where $Y_t$ is her labor income at date $t$. The first-order condition (FOC) for intertemporal utility optimization yields, for asset $i$:^[This FOC states that the agent indifferent between investing an additional infinitesimal amount of asset $i$ or not.]
+
+### The SDF when agents feature expected-utility time-separable preferences
+
+Consider an economy featuring a single good, whose date-$t$ price is $q_t$. There is a representative agent with an external income $Y_t$ at $t$, and a portfolio of assets, with an allocation vector $\alpha_{t-1}$ (decided at $t-1$). The vector of date-$t$ prices is $p_t$. At any date $t+j$, $j=0,1,\dots$, the agent will face the budget constraint:
 \begin{equation}
-P_{i,t} = \mathbb{E}_t \left[ \delta \frac{u'(C_{t+1})}{u'(C_{t})} x_{i,t+1} \right] = \mathbb{E}_t \left[ \mathcal{M}_{t,t+1} x_{i,t+1} \right],(\#eq:pricingcapm)
+q_{t+j}C_{t+j}+\alpha'_{t+j}p_{t+j} = Y_{t+j} +
+\alpha'_{t+j-1}p_{t+j},(\#eq:BConstr)
 \end{equation}
-where $\mathcal{M}_{t,t+1}$ is the stochastic discount factor:
+where $C_{t+j}$is her consumption on date $t+j$.
+
+In the standard CCAPM, agents maximize their intertemporal utility that is of the Expected-Utility Time-Separable type (see Def. \@ref(def:EUTSpref)).
+
+:::{.definition #EUTSpref name="Expected-utility time-separable preferences"}
+In the context of *expected-utility time-separable preferences*, the intertemporal utility $U_t$ is defined as:
 $$
-\boxed{\mathcal{M}_{t,t+1}=\delta \dfrac{u'(C_{t+1})}{u'(C_{t})}.}
+U_t = \mathbb{E}_t\left(\sum_{i=0}^{\infty} \delta^{i}u(C_{t+i})\right),
 $$
-Since $u'$ is a decreasing function, the lower $C_{t+1}$, the higher the SDF. Formula \@ref(eq:pricingcapm} implies that those assets whose payoffs are high during recessions (low $C_{t+1}$) are more expensive. As @Cochrane_2005 puts it, the SDF can be seen as a measure of hunger: "Good" assets pay off well in bad times, when investors are hungry. Investors all want them, which drive up their price, and thereby lower their average returns.
-
-The CCAPM is a simple model; it is easy to test once a form for $u$ has been posited. It turns out it is difficult to reconcile with the data. In particular:
-
-* Fitting average excess return implies implausible risk aversions (*equity puzzle*).
-* The resulting risk-free short-term rate is too large unless risk aversion is small (*interest-rate puzzle*).
-* It suggests maximum Sharpe ratios that are far too low [@Hansen_Jagannathan_1991].
-
-
-:::{.example #powerU name="Power utility function"}
-
-A power utility function is defined as follows:
+or, equivalently, as:
 $$
-u(C_t) = \frac{C_t^{1-\gamma}}{1 - \gamma}.
+U_t = u(C_t) + \delta \mathbb{E}_t\left(U_{t+1}\right).
 $$
-In that case $\gamma$ has two interpretations:
+$U$ is the utility function and $\delta$ is the pure preference for present, or subjective discount factor.
+:::
+
+> Importantly, the pure preference for present ($\delta$) is different from the stochastic discount factor (SDF).
+
+The representative agent maximizes her expected utility time-separable preferences (see Definition \@ref(def:EUTSpref)) subject to the budget constraints at $t+j$, $j \ge 0$, see Eq. \@ref(eq:BConstr).
+
+Replacing $C_{t+j}$ with $[Y_{t+j}-(\alpha'_{t+j}-\alpha'_{t+j-1})p_{t+j}]/q_{t+j}$, the objective function becomes:
+$$
+\mathbb{E}_t  \sum^\infty_{j=0} \delta^j U
+[Y_{t+j}/q_{t+j}-(\alpha'_{t+j}-\alpha'_{t+j-1})p_{t+j}/q_{t+j}].
+$$
+The vector of allocation $\alpha_t$ appears in the first two terms only:
+$$
+U[Y_t/q_t-(\alpha'_t-\alpha'_{t-1})p_t/q_t] + \delta \mathbb{E}_t
+U[Y_{t+1}/q_{t+1}-(\alpha'_{t+1}-\alpha'_t)p_{t+1}/q_{t+1}].
+$$
+As a result, the first order condition associated with vector $\alpha_t$ reads
+$$
+\frac{p_t}{q_t}  \frac{d U(C_t)}{dC} = \delta \mathbb{E}_t \left[
+\frac{p_{t+1}}{q_{t+1}}  \frac{dU(C_{t+1})}{dC}
+\right],
+$$
+or
+\begin{equation}
+p_t = \mathbb{E}_t(p_{t+1} \mathcal{M}_{t,t+1}),(\#eq:SDF100)
+\end{equation}
+where $\mathcal{M}_{t,t+1}$ is a strictly positive scalar called *stochastic discount factor (SDF)* between dates $t$ and $t+1$. We have:
+\begin{equation}
+\mathcal{M}_{t,t+1} \equiv \delta  \frac{q_t}{q_{t+1}}
+\frac{  \frac{dU(C_{t+1})}{dC}} {
+\frac{dU(C_t)}{dC}}.(\#eq:SDFCCAPM)
+\end{equation}
+
+According to Eq. \@ref(eq:SDF100), for any asset $j$:
+\begin{equation}
+p_{j,t} = \mathbb{E}_t(\mathcal{M}_{t,t+1} p_{j,t+1}).(\#eq:Mbasicpricing)
+\end{equation}
+Using that $p_{j,t+1} = \mathbb{E}_t(\mathcal{M}_{t+1,t+2} p_{j,t+2})$, we get:
+\begin{eqnarray*}
+p_{j,t} &=& \mathbb{E}_t[\mathbb{E}_{t+1}(p_{j,t+2}\mathcal{M}_{t+1,t+2})\mathcal{M}_{t,t+1}] \\
+&=& \mathbb{E}_t(\mathcal{M}_{t,t+1} \mathcal{M}_{t+1,t+2}p_{j,t+2}).
+\end{eqnarray*}
+This can be generalized as follows, for $h \ge 1$:
+$$
+p_{j,t} = \mathbb{E}_t[\mathcal{M}_{t,t+1} \dots \mathcal{M}_{t+h-1,t+h}p_{j,t+h}] = \mathbb{E}_t[\mathcal{M}_{t,t+h}p_{j,t+h}].
+$$
+
+Since $u'$ is a decreasing function, \@ref(eq:SDFCCAPM) implies that, the lower $C_{t+1}$, the higher the SDF. Moreover, \@ref(eq:Mbasicpricing) shows that those assets whose payoffs are high during recessions (low $C_{t+1}$) are more valuable. As @Cochrane_2005 puts it, the SDF can be seen as a measure of hunger: "Good" assets pay off well in bad times, when investors are hungry. Investors all want them, which drive up their price, and thereby lower their average returns.
+
+Eq. \@ref(eq:Mbasicpricing) rewrites:
+\begin{equation}
+p_{j,t} = \mathbb{C}ov_t(\mathcal{M}_{t,t+1},p_{j,t+1}) +\mathbb{E}_t(\mathcal{M}_{t,t+1})\mathbb{E}_t(p_{j,t+1}).(\#eq:covpM1)
+\end{equation}
+
+Consider the one-period risk-free bond, whose payoff, on date $t+1$, is 1 unit. The price of this asset, on the current date ($t$) is $\frac{1}{1+R_{f,t}}$---by definition of the short-term risk free rate $R_{f,t}$. Eq. \@ref(eq:Mbasicpricing) gives, for this specific asset:
+$$
+\frac{1}{1+R_{f,t}} = \mathbb{E}_t(\mathcal{M}_{t,t+1}).
+$$
+Using this in \@ref(eq:covpM1) gives:
+\begin{equation}
+p_{j,t} = \mathbb{C}ov_t(\mathcal{M}_{t,t+1},p_{j,t+1}) +\frac{1}{1+R_{f,t}}\mathbb{E}_t(p_{j,t+1}),(\#eq:covpM2)
+\end{equation}
+that also rewrites:
+\begin{equation}
+\boxed{\mathbb{E}_t(R_{j,t+1} - R_{f,t}) = - (1 + R_{f,t}) \mathbb{C}ov_t(\mathcal{M}_{t,t+1},R_{j,t+1}),}(\#eq:MRCov)
+\end{equation}
+where $R_{j,t+1}$ is asset $j$'s return, i.e., $R_{j,t+1} = (p_{j,t+1} - p_{j,t})/p_{j,t}$. The previous formula says that the expected excess return, $\mathbb{E}_t(R_{j,t+1} - R_{f,t})$, is higher for those assets whose returns are low when the SDF is high (and vice versa). In other words, for investors to hold them, assets that are exposed to bad states of the world (i.e., that lose value in bad states of the world) should provide an average excess return.
+
+Another way to look at formula \@ref(eq:MRCov) is:
+\begin{eqnarray*}
+p_{j,t} = \underbrace{\exp(-r_t) \mathbb{E}_t(p_{j,t+1})}_{\mbox{Discount.  expect. payoff}} + \mathbb{V}ar_t(\mathcal{M}_{t,t+1}) \underbrace{\frac{\mathbb{C}ov_t(\mathcal{M}_{t,t+1},p_{j,t+1})}{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}_{\mbox{Risk exposure}}.
+\end{eqnarray*}
+
+
+### Risk aversion and intertemporal elasticity of substitution
+
+At that stage, let us introduce the defintion of two metrics that characterize agents' preferences regarding risky income (Definition \@ref(def:RAmeasures)) and intertemporal substitution (Def. \@ref(def:IES)).
+
+:::{.definition #RAmeasures name="Risk aversion measures"}
+Consider a utility function $u$.
+
+* The *absolute risk aversion* is defined by:
+$$
+ARA = - \frac{u''(C)}{u'(C)}.
+$$
+* The *relative risk aversion* is defined by:
+$$
+RRA = - \frac{C u''(C)}{u'(C)}.
+$$
+If $u$ is concave, both measures are positive.
+:::
+
+:::{.definition #IES name="Intertemporal Elasticity of Substitution"}
+The *Intertemporal Elasticity of Substitution (IES)* is defined as the change in consumption growth per change in the interest rate, that is:
+$$
+IES = \frac{d \log\left( \dfrac{C_{t+1}}{C_{t}}\right)}{d r} = - \frac{d \log\left( \dfrac{C_{t+1}}{C_{t}}\right)}{d\log\left(\dfrac{u'(C_{t+1})}{u'(C_{t})}\right)}.
+$$
+:::
+
+
+### The case of the power utility function
+
+In the standard CCAPM, the utility function is a power utility function:
+
+:::{.example #CCAPM name="Power utility function"}
+A standard case is the one of the power utility $u(C) =  \frac{C^{1-\gamma}-1}{1-\gamma}$, where  $\gamma>0$ is the coefficient of relative risk aversion.
+
+We have $U'(C) = C^{-\gamma} > 0$ and $U''(C) = - \gamma C^{-\gamma-1} < 0$. As a result, the stochastic discount factor is
+\begin{eqnarray}
+\mathcal{M}_{t,t+1} &=&  \frac{q_t}{q_{t+1}} \delta \left(
+\frac{C_{t+1}}{C_t} \right)^{-\gamma} \nonumber\\
+&=& \exp(\log
+\delta + \log q_t + \gamma \log  C_t - \log  q_{t+1} - \gamma
+\log  C_{t+1}).(\#eq:powerutilSDF)
+\end{eqnarray}
+The vector of prices $p_t$ satisfies:
+$$
+p_t = \delta q_t C^\gamma_t \mathbb{E}_t \left(
+\frac{C^{-\gamma}_{t+1}}{q_{t+1}} p_{t+1}
+\right),
+$$
+or (Euler equation):
+$$
+\mathbb{E}_t\left[
+\delta\left(
+\frac{C_{t+1}}{C_t}
+\right)^{-\gamma}  \frac{q_t}{q_{t+1}}
+\frac{p_{t+1}}{p_t} - 1
+\right] = 0.
+$$
+
+Here, $\gamma$ has two interpretations:
 
 * *Relative Risk Aversion (RRA)* (see Definition \@ref(def:RAmeasures)): aversion to variability *across states of nature*.
 * *Intertemporal Elasticity of Substitution*  (see Definition \@ref(def:IES)): aversion to variability *across time*.
@@ -97,51 +219,59 @@ text(x = 1.2,y=1/(1-gamma) - 1,
      labels = paste("Risk premium = ",toString(round(mean(cc)-c.CE,2)),sep=""),
      col="red")
 lines(c(mean(c(c.CE,1)),1.2),c(C[1]^(1-gamma)/(1-gamma),1/(1-gamma) - 1.05),col="red")
-
 ```
 :::
 
-:::{.definition #RAmeasures name="Risk aversion measures"}
-Consider a utility function $u$.
+<!-- In the basic CCAPM version, a representative investor with time-additive preferences operates in a complete market. It has been extended in several directions to account for more complex investor preferences (e.g., Epstein-Zin see XXX), investor heterogeneity, incomplete markets, borrowing restrictions. -->
 
-* The *absolute risk aversion* is defined by:
-$$
-ARA = - \frac{u''(C)}{u'(C)}.
-$$
-* The *relative risk aversion* is defined by:
-$$
-RRA = - \frac{C u''(C)}{u'(C)}.
-$$
-If $u$ is concave, both measures are positive.
-:::
+<!-- Consider a representative agent maximizing her expected utility: -->
+<!-- $$ -->
+<!-- U_t = \mathbb{E}_t \left[ \sum_{j=0}^\infty \delta^j u(C_{t+j}) \right], -->
+<!-- $$ -->
+<!-- where $u$ is a utility function of consumption and $\delta$ is the subjective time discount factor ($\ne$ SDF). The budget constraint of the agent is -->
+<!-- $$ -->
+<!-- C_t + \sum_i w_{i,t} P_{i,t} \le \sum_i w_{i,t-1}\underbrace{(P_{i,t}+D_{i,t})}_{x_{i,t}} + Y_t, -->
+<!-- $$ -->
+<!-- where $Y_t$ is her labor income at date $t$. The first-order condition (FOC) for intertemporal utility optimization yields, for asset $i$:^[This FOC states that the agent indifferent between investing an additional infinitesimal amount of asset $i$ or not.] -->
+<!-- \begin{equation} -->
+<!-- P_{i,t} = \mathbb{E}_t \left[ \delta \frac{u'(C_{t+1})}{u'(C_{t})} x_{i,t+1} \right] = \mathbb{E}_t \left[ \mathcal{M}_{t,t+1} x_{i,t+1} \right],(\#eq:pricingcapm) -->
+<!-- \end{equation} -->
+<!-- where $\mathcal{M}_{t,t+1}$ is the stochastic discount factor: -->
+<!-- $$ -->
+<!-- \boxed{\mathcal{M}_{t,t+1}=\delta \dfrac{u'(C_{t+1})}{u'(C_{t})}.} -->
+<!-- $$ -->
 
-:::{.definition #IES name="Intertemporal Elasticity of Substitution"}
-The *Intertemporal Elasticity of Substitution (IES)* is defined as the change in consumption growth per change in the interest rate, that is:
-$$
-IES = \frac{d \log\left( \dfrac{C_{t+1}}{C_{t}}\right)}{d r} = - \frac{d \log\left( \dfrac{C_{t+1}}{C_{t}}\right)}{d\log\left(\dfrac{u'(C_{t+1})}{u'(C_{t})}\right)}.
-$$
-:::
+:::{.example #CCAPMRRAinvestment name="A practical interpretation of the RRA"}
 
-Case of the isoelastic, or power, utility function. The isoelastic, or power, utility function defined by: $u:$ $C \rightarrow \dfrac{C^{1 - \gamma}-1}{1-\gamma}$ has a constant RRA of $\gamma$.
-
-Consider an agent whose wealth is $W$. She can invest in an asset whose price is 1 and whose payoff is $1+\varepsilon$ with probability $1/2$ and $1/(1+\varepsilon)$ with probability $1/2$. Her utility function is denoted by $u(.)$.
+Consider an agent whose wealth is $W$. She will consumes only on date $1$, and features a power utility function $U$ (see Example \@ref(exm:CCAPM)). She can invest, on date $0$, in an asset whose price is 1 and whose payoff is $1+\varepsilon$ with probability $1/2$ and $1/(1+\varepsilon)$ with probability $1/2$.
 
 We want to compute the optimal share of wealth, denoted by $\alpha$, invested in the asset. The expected utility is:
 $$
-\frac{1}{2}u\left(C(1-\alpha)+C\alpha(1+\varepsilon)\right) + \frac{1}{2}u\left(C(1-\alpha)+C\alpha/(1+\varepsilon)\right).
+\frac{1}{2}U\left(C(1-\alpha)+C\alpha(1+\varepsilon)\right) + \frac{1}{2}U\left(C(1-\alpha)+C\alpha/(1+\varepsilon)\right).
 $$
 Taking the second-order Taylor expansion of the previous expression and letting $\varepsilon$ tend to zero, it appears that one has to maximize the following expression:
 $$
-\alpha u'(C) + \frac{1}{2}C \alpha^2 u''(C).
+\alpha U'(C) + \frac{1}{2}C \alpha^2 U''(C).
 $$
 Hence, the utility is maximized for:
 $$
-\alpha = - \frac{u'(C)}{C u''(C)} = \frac{1}{RRA}.
+\alpha = - \frac{U'(C)}{C U''(C)} = \frac{1}{RRA}.
 $$
+:::
+
+The CCAPM is a simple model; it is easy to test once a form for $u$ has been posited. It turns out it is difficult to reconcile with the data (see next subsection).
 
 
 
-Using Eq. \@ref(eq:MRCov)---that also applies in the present context---we get the following average excess return:
+### The limitations of the CCAPM
+
+Three important limitations of the CCAPM approach have been largely documented in the literature:
+
+* Fitting average excess return implies implausible risk aversions (*equity premium puzzle*).
+* The resulting risk-free short-term rate is too large unless risk aversion is small (*interest-rate puzzle*).
+* It suggests maximum Sharpe ratios that are far too low [@Hansen_Jagannathan_1991].
+
+Using Eq. \@ref(eq:MRCov) in the power-utility situation, we get the following average excess return:
 \begin{eqnarray*}
 \mathbb{E}_t(R_{i,t+1} - R_{f,t}) &=& - (1 + R_{f,t}) \mathbb{C}ov_t\left(\delta \dfrac{u'(C_{t+1})}{u'(C_{t})},R_{i,t+1}\right)\\
 &\approx& (1 + R_{f,t}) \delta \gamma  \mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right),
@@ -156,14 +286,10 @@ knitr::include_graphics("figures/table_campbell1999_eqpuzzle.png")
 ```
 
 
-For sake of comparison: microeconomic study points to estimates of $\gamma$ in $[1,3]$ (e.g., @Hartley_Lanot_Walker_2014).
-**Equity premium puzzle** put forward by @Mehra_Prescott_1985.
-@Kandel_Stambaugh_1991: Maybe that risk aversion is very high indeed?
-But then, another substantial problem arise: If people are very risk averse, they want to transfer consumption from high levels to low levels.
-In order to allow for a 2\% average increase in $C_t$, the model predicts that average short-term rate should be high (to prevent people from borrowing too much). Such high interest rates are at odds with the data.
-**Risk-free rate puzzle**.
+For sake of comparison: microeconomic study points to estimates of $\gamma$ in $[1,3]$ (e.g., @Hartley_Lanot_Walker_2014). This constitutes the *equity premium puzzle* [@Mehra_Prescott_1985].
 
-
+What if one uses a high risk aversion to get high enough risk premiums? In that case, a novel problem arise [@Kandel_Stambaugh_1991]: If people are very risk averse, they want to transfer consumption from high levels to low levels.
+In order to allow for a 2\% average increase in $C_t$, the model predicts that average short-term rate should be high (to prevent people from borrowing too much). Such high interest rates are at odds with the data. This is the *risk-free rate puzzle*.
 
 In the case of the power utility function, the risk aversion is the inverse of the Intertemporal Elasticity of Substitution (Def. \@ref(def:IES)):
 $$
@@ -173,8 +299,7 @@ For given values of the risk-free rates $R_{f,t}$, a decrease in the IES (increa
 $$
 \frac{1}{1+R_{f,t}} \approx \mathbb{E}_t(\delta (1 - \gamma \Delta c_{t+1}))
 $$
-Hence, for the very large values of $\gamma$ necessary to fit average equity excess returns, agents strongly want to smoothen consumption.
-To reconcile a high risk aversion this with the observed low real interest rate observed on average, it must be that investors are infinitely patients (*risk-free rate puzzle*):
+Consequently, for the very large $\gamma$ values needed to adjust average excess returns on equities, agents have a strong desire to smooth consumption. To reconcile a high risk aversion this with the observed low real interest rate observed on average, it must be that investors are infinitely patients (*risk-free rate puzzle*):
 If $\gamma=10$, $R_{f,t} \approx 0\%$ and $\Delta c_{t+1} \approx 2\%$, then $\delta \approx 1.25$, which is not reasonable.
 
 
@@ -223,40 +348,26 @@ legend("topright", # places a legend at the appropriate place c("Health","Defens
        seg.len = 4
 )
 ```
-
 :::
 
 
-
-A third problem pertains to the volatility of the SDF
-
-XXX We have
-\begin{eqnarray*}
-P_{i,t} = \underbrace{\frac{1}{1 + R_{f,t}} \mathbb{E}_t(x_{i,t+1})}_{\mbox{Discount.  expect. payoff}} + \mathbb{V}ar_t(M_{t,t+1}) \underbrace{\frac{\mathbb{C}ov_t(M_{t,t+1},x_{i,t+1})}{\mathbb{V}ar_t(M_{t,t+1})}}_{\mbox{Risk exposure}}
-\end{eqnarray*}
-or
-\begin{equation}
-\boxed{\mathbb{E}_t(R_{i,t+1} - R_{f,t}) = - (1 + R_{f,t}) \mathbb{C}ov_t(M_{t,t+1},R_{i,t+1}).}(\#eq:MRCov)
-\end{equation}
-
-@Grossman_Shiller_1981 and @Hansen_Jagannathan_1991: Sharpe ratios give lower bounds to the volatility of SDF:
+A third problem pertains to the volatility of the SDF. @Grossman_Shiller_1981 and @Hansen_Jagannathan_1991 show that observed Sharpe ratios give lower bounds to the volatility of SDF:
 $$
 \frac{\sigma_t(\mathcal{M}_{t,t+1})}{\mathbb{E}_t(\mathcal{M}_{t,t+1})} \ge \underbrace{\frac{\mathbb{E}_t(R_{i,t+1}-R_{f,t})}{\sigma_t(R_{i,t+1})}}_{\mbox{Sharpe ratio of asset $i$.}}
 $$
-(results from Eq. \@ref(eq:MRCov), using the fact that $\mathbb{C}ov(X,Y) \le \sigma(X)\sigma(Y)$)
-For postwar U.S. stock market, the Sharpe ratio is about 50\% [Table \@ref(fig:Campbell1)]. Given that $\mathbb{E}_t(\mathcal{M}_{t,t+1}) \approx 1$, this implies that the volatility of the SDF should be at least 50\%.
-For a power utility function [Def. \@ref(def:RAmeasures)]:
+The previous inequality results from Eq. \@ref(eq:MRCov), using the fact that $\mathbb{C}ov(X,Y) \le \sigma(X)\sigma(Y)$.
+
+For postwar U.S. stock market, the Sharpe ratio is about 50\% see Table \@ref(fig:Campbell1)). Given that $\mathbb{E}_t(\mathcal{M}_{t,t+1}) \approx 1$, this implies that the volatility of the SDF should be at least 50\%.
+However, for a power utility function:
 $$
 \mathcal{M}_{t,t+1}=\delta (C_t/C_{t+1})^\gamma \approx (1 - \gamma \Delta c_{t+1}).
 $$
-Given the small volatility of $\Delta c_{t+1}$ [column $\sigma(\Delta c)$ in Table \@ref(fig:Campbell1)], $\gamma$ should be very high for the SDF volatility to be equal to 50\%.
+Given the small volatility of $\Delta c_{t+1}$ (see column $\sigma(\Delta c)$ in Table \@ref(fig:Campbell1), or use this [web interface](https://jrenne.shinyapps.io/APModels)), $\gamma$ should be very high for the SDF volatility to be equal to 50\%.
 
 
-Econometric Test of the C-CAPM: GMM
+:::{.example #GMM name="Econometric Test of the C-CAPM: the GMM approach"}
 
-
-@Hansen_Singleton_1982 have developed and used the General Method of Moments to test the C-CAPM.
-This approach is based on the equation [Eq. \@ref(eq:pricingcapm)]:
+@Hansen_Singleton_1982 have developed and used the General Method of Moments to test the C-CAPM. This approach is based on Eq. \@ref(eq:pricingcapm):
 \begin{equation}
 1 = \color{red}{\mathbb{E}_t}\left( \delta \left(\frac{C_t}{C_{t+1}}\right)^\gamma (1+R_{i,t+1})\right).(\#eq:momentcondi)
 \end{equation}
@@ -266,58 +377,34 @@ For this to be verified, we must have, for any variable $z_t$:
 \end{equation}
 If this is not the case, one can use $z_t$ to predict $\delta \left(\frac{C_t}{C_{t+1}}\right)^\gamma (1+R_{i,t+1})$ and Eq. \@ref(eq:momentcondi) is not valid. Moment condition: $\mathbb{E}(h_{t+1})=0$.
 
-
-
-
 Empirical counterpart of the moment condition \@ref(eq:GMM):
 \begin{equation}
 \frac{1}{T}\sum_{t=1}^{T} \left[\hat\delta \left(\frac{C_t}{C_{t+1}}\right)^{\hat\gamma} (1+R_{i,t+1}) - 1\right] \times\underbrace{z_{j,t}}_{\mbox{instrument}} = 0.
 \end{equation}
-In order to identify $\delta$ and $\gamma$, one need at least two such equations (with some $z_{1,t}$ and $z_{2,t}$).
-@Hansen_Singleton_1982 used lagged values of $R_{i,t+1}$ as instruments. [New York Stock Exchange indexes + indexes for different industries]
+In order to identify $\delta$ and $\gamma$, one need at least two such equations (with some $z_{1,t}$ and $z_{2,t}$). @Hansen_Singleton_1982 used lagged values of $R_{i,t+1}$ as instruments. [New York Stock Exchange indexes + indexes for different industries]
 
-If we have more than 2 equations, we are in a situation of over-identification. One can use over-identifying restrictions to test for the model.
+If we have more than two equations, we are in a situation of over-identification. One can use over-identifying restrictions to test for the model.
 
-Economically meaningful estimates with $\gamma$ ($=-\hat\alpha$ in the table below) close to unity (although with a large standard error) and $\delta$ ($=\hat\beta$ in the table below) slightly smaller than unity.
-However, when applied to more than one stock index, the over-identifying restrictions are generally rejected. The data reject the simple version of CCAPM.
+THey obtained economically meaningful estimates with $\gamma$ ($=-\hat\alpha$ in the table below) close to unity (although with a large standard error) and $\delta$ ($=\hat\beta$ in the table below) slightly smaller than unity. However, when applied to more than one stock index, the over-identifying restrictions are generally rejected. The data reject the simple version of CCAPM.
 
 ```{r HansenSinfgleton1982, fig.align = 'center', out.width = "100%", fig.cap = "Source: Hansen and Singleton (1982).", echo=FALSE}
 knitr::include_graphics("figures/tableHansenSingleton82A.png")
 ```
+:::
 
 
-[Web interface](https://jrenne.shinyapps.io/APModels)
+<!-- Explanation?: A lot of purchases happen at Christmas, with an annual planning horizon (monthly horizon is maybe not relevant). -->
 
 
-Long-run horizon
+### C-CAPM: That bad?
 
-Stocks and consumption are more correlated at low frequencies (see, e.g., this [web interface](https://jrenne.shinyapps.io/APModels)). Hence equity-premium puzzle a little less strong for longer horizons (e.g., @DANIEL_MARSHALL_1997).
-@Jagannathan_Wang_2007: CAPM not so bad when using fourth-quarter over fourth-quarter non-durable and service consumption [see next slide].
+Some studies show that the CCAPM-based puzzles are somehow alleviated when considering longer investment horizons. Indeed, stocks and consumption are more correlated at low frequencies (see, e.g., this [web interface](https://jrenne.shinyapps.io/APModels)). Hence equity-premium puzzle a little less strong for longer horizons (e.g., @DANIEL_MARSHALL_1997). @Jagannathan_Wang_2007 find that the CCAPM performs reasonably well when using fourth-quarter over fourth-quarter non-durable and service consumption. @Parker_Julliard_2005 study whether the 25 Fama-French portfolios can be priced when considering their exposure to "long-run" consumption risk, and find better results than in the standard situation.
 
-Explanation?: A lot of purchases happen at Christmas, with an annual planning horizon (monthly horizon is maybe not relevant).
+According to @Cochrane_2005, the failure of the C-CAPM models is quantitative, not qualitative. In particular:
 
-Time aggregation = Spurious effect [Slide \@ref(slide:spuriousXS}]? Maybe. But average excess returns line up  $\Rightarrow$ there is something here.
-
-@Parker_Julliard_2005: study whether the 25 Fama-French portfolios can be priced when considering their exposure to "long-run" consumption risk. Formally, they study the condition:
-$$
-1 = \mathbb{E}_t \left( \beta \left(\frac{C_{t+k}}{C_t}\right)^{- \gamma} (1 + R_{i,t+1})(1 + R_{f,t+1})\times (1 + R_{f,t+k-1}) \right).
-$$
-
-
-
-C-CAPM: That bad?
-
-
-*Should we completely discard C-CAPM and the likes?*
-
-@Cochrane_2005: The failure of the C-CAPM models is quantitative, not qualitative. In particular:
-
-* Signs are consistent: since stock returns are positively correlated to consumption growth, the premiums have to be positive (which they are).
-* The decrease in bond term premiums over the last decades is consistent with decrease in the correlation between long-term bond excess returns and consumption [e.g.,[web interface](https://jrenne.shinyapps.io/APModels)].
-* In terms of signs, the CAPM is also consistent with currency risk premiums [see SLIDE FX]:
-
-@Lustig_Verdelhan_2007 show that high interest rate currencies depreciate on average when domestic consumption growth is low $\Rightarrow$ the CAPM predicts higher average return for investments in foreign high-interest rate currencies.
-
+* The signs are consistent: since stock market returns are positively correlated with consumption growth, the premiums must be positive (which they are).
+* The decrease in bond term premiums over the last decades is consistent with decrease in the correlation between long-term bond excess returns and consumption (see Figure \@ref(fig:fredCorrel), and this [web interface](https://jrenne.shinyapps.io/APModels)).
+* In terms of signs, the CAPM is also consistent with currency risk premiums.^[@Lustig_Verdelhan_2007 show that high interest rate currencies depreciate on average when domestic consumption growth is low $\Rightarrow$ the CAPM predicts higher average return for investments in foreign high-interest rate currencies.]
 
 
 ```{r fredCorrel, echo=FALSE, fig.cap="Consumption-Inflation correlation. Growth rates are 2-year growth rates. Dynamic correlation is computed using a 7-year rolling window.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
@@ -373,39 +460,19 @@ text(vec_dates[120],+.25,labels="Demand shocks prevail",cex=.9)
 ```
 
 
-
 ## Recursive Utilities and Epstein-Zin Preferences
 
-Given the problems of the consumption-based models, one has questioned the utility function (e.g., @Cochrane_2005). The functional form is not really an issue: in the time-separable framework, linearized and non-linearized models behave relatively similarly. (Utility functions are monotonously increasing with negative second order derivatives.) What about the arguments of the utility function?
+Given the limitations of consumption-based models, one has questioned the utility function. But the functional form is not really an issue: in the time-separable framework, linearized and non-linearized models behave relatively similarly. (Utility functions are monotonously increasing with negative second order derivatives, so they all have the same broad shapes.) What about the arguments of the utility function? The idea is the following: the marginal utility of consumption may not depend *only* on today's consumption. Pricing implications are very different when the marginal utility of consumption depends on past or (expected) future consumption. In particular, this will permit to address the following limitations of expected utility time-separable preferences (Def. \@ref(def:EUTSpref)):
 
-**Idea**: The marginal utility of consumption may not depend only on today's consumption. Pricing implications are very different when the marginal utility of consumption depends past or (expected) future consumption.
+* No premium for early resolution of uncertainty: as of date $t$, the promise to know $C_{t+h}$ at date $t+1$ has no value.
+* No utility effect of potential autocorrelation in $C_t$: each stream of consumption intervenes independently from the others in the utility computation.
 
-
-:::{.definition #EUTSpref name="Expected Utility Time-Separable Preferences"}
-
-In the context of *expected utility time-separable preferences*, the intertemporal utility $U_t$ is defined as:
-$$
-U_t = \mathbb{E}_t\left(\sum_{i=0}^{\infty} \delta^{i}u(C_{t+i})\right),
-$$
-or, equivalently, as:
-$$
-U_t = u(C_t) + \delta \mathbb{E}_t\left(U_{t+1}\right).
-$$
-:::
-
-Implications of expected utility time-separable preferences:
-
-* No premium for early resolution of uncertainty.
-* As of date $t$, the promise to know $C_{t+h}$ at date $t+1$ has no value.
-* No utility effect of potential autocorrelation in $C_t$.
-* Each stream of consumption intervenes independently from the others in the utility computation.
+*Non-separability over time* means that the marginal utility of today's consumption depends on past consumption. In other words, what you consumed yesterday can have an impact on how you feel about more consumption today.^[As @Cochrane_2005 puts it: "*Yesterday's pizza lowers the marginal utility for another pizza today.*")]
 
 
-What does *non-separability over time* means?
+### Habit formation
 
-That the marginal utility of today's consumption depends on past consumption. In other words, what you consumed yesterday can have an impact on how you feel about more consumption today.^[As @Cochrane_2005 puts it: "*Yesterday's pizza lowers the marginal utility for another pizza today.*")]
-
-A first example is that of *habit formation* [@Campbell_Shiller_1999]
+A first example of recursive utilities is that of *habit formation* [@Campbell_Shiller_1999], where
 \begin{equation}
 U_t = \sum_{s=t}^{\infty} \delta^{s-t} u(C_s - X_s) \quad where \quad X_t = \rho X_{t-1} + \lambda C_t.(\#eq:Uhabit_nonstoch)
 \end{equation}
@@ -417,25 +484,18 @@ $$
 
 A fall in consumption hurts after a few years of good times (even if the same level of consumption would have been very pleasant if it arrived after a few bad years).
 
-Without the external habit assumption, the Euler equation (equilibrium relationship between risk-free short-term rate and marginal utilities) is far less tractable:
+If one assumes that $X_t$ is exogenous---a case referred to as *external habits*---and if $u(Z)=Z^{1-\gamma}/(1-\gamma)$ (Def. \@ref(def:power)) then:^[Without the external habit assumption, the Euler equation (equilibrium relationship between risk-free short-term rate and marginal utilities) is far less tractable:
 \begin{eqnarray*}
 && 0 = \Delta U_t / \varepsilon =\\
 && \underbrace{ - u'\left(C_{t} - \lambda \sum_{j=0}^\infty \rho^j C_{t-j}\right) + \lambda  \sum_{h=0}^{\infty} \rho^h \delta^{h}u'\left(C_{t+h} - \lambda \sum_{j=0}^\infty \rho^j C_{t+h-j}\right)}_{\mbox{decrease in utility stemming from lower consumption at date $t$}} +\\
-&& \underbrace{\delta(1+R_{f,t}) u'\left(C_{t+1} - \lambda \sum_{j=0}^\infty \rho^j C_{t+1-j}\right) - \lambda (1+R_{f,t}) \sum_{h=1}^{\infty} \rho^h \delta^{h}u'\left(C_{t+h} - \lambda \sum_{j=0}^\infty \rho^j C_{t+h-j}\right)}_{\mbox{increase in utility stemming from higher consumption at date $t+1$}}
+&& \underbrace{\delta(1+R_{f,t}) u'\left(C_{t+1} - \lambda \sum_{j=0}^\infty \rho^j C_{t+1-j}\right) - \lambda (1+R_{f,t}) \sum_{h=1}^{\infty} \rho^h \delta^{h}u'\left(C_{t+h} - \lambda \sum_{j=0}^\infty \rho^j C_{t+h-j}\right)}_{\mbox{increase in utility stemming from higher consumption at date $t+1$}},
 \end{eqnarray*}
-
-(Formula derived in the context where we decrease $C_t$ by $\varepsilon$ and increase $C_{t+1}$ by $\varepsilon(1+R_{f,t})$.)
-
-
-If one assumes that $X_t$ is exogenous (external habits) and if $u(Z)=Z^{1-\gamma}/(1-\gamma)$ (Def. \@ref(def:power)) then:
+which is obtained by considering a marginal decrease in $C_t$ by $\varepsilon$ and an increase in $C_{t+1}$ by $\varepsilon(1+R_{f,t})$.
+]
 \begin{equation}
 \mathcal{M}_{t,t+1} = \delta \left( \frac{C_{t+1}}{C_t} \right)^{-\gamma}\left( \frac{S_{t+1}}{S_t} \right)^{-\gamma},(\#eq:Mhabit)
 \end{equation}
-where $S_t = (C_t - X_t)/C_t$.
-This extends the standard power utility case by adding an additional state variable ($X_t$).
-In this model, recessions are periods where consumption is closer to habits (otherwise it is higher).
-Specification of the SDF as in Eq. \@ref(eq:Mhabit) can arise in more general contexts (not necessarily habits); $S_t$ may for instance reflect a business-cycle-related variable.
-
+where $S_t = (C_t - X_t)/C_t$. This extends the standard power utility case by adding an additional state variable ($X_t$). In this model, recessions are periods where consumption is closer to habits (otherwise it is higher). SDF specifications of the type of Eq. \@ref(eq:Mhabit) can arise in more general contexts (not necessarily habits); $S_t$ may for instance reflect a business-cycle-related variable.
 
 :::{.example #habit name="Comparisons of situations according to habit preferences"}
 
@@ -835,6 +895,7 @@ where $\mathcal{M}_{t,t+1}$ is given by:
 \begin{equation}
 \mathcal{M}_{t,t+1}= \delta \left(\frac{C_{t+1}}{C_t}\right)^{-\rho}  \left(\frac{U_{t+1}}{R_{t}(U_{t+1})}\right)^{\rho-\gamma}.(\#eq:SSS)
 \end{equation}
+
 :::{.proof}
 See Appendix \@ref(SDFEZ).
 :::
@@ -1090,9 +1151,56 @@ With E-Z preferences, another key correlation is that between stock returns and 
 For this second channel to be relevant, observed excess returns should positively correlate to the updates of expectations of long-term consumption. See Figure \@ref(fig:SPF10yrStock).
 
 
-```{r SPF10yrStock, fig.align = 'center', out.width = "100%", fig.cap = "Source: Survey of Professional Forecasters (Philadelphia Fed).", echo=FALSE}
-knitr::include_graphics("figures/Figure_Stock_chge_expect.png")
+
+
+```{r SPF10yrStock, echo=FALSE, fig.cap="Sources: SPF Philadelphia and Wilshire 5000 Price Index (FRED database).", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE,warning = FALSE}
+library(fredr)
+fredr_set_key("df65e14c054697a52b4511e77fcfa1f3")
+start_date <- as.Date("1959-01-01"); end_date <- as.Date("2023-10-01")
+f <- function(ticker){
+  fredr(series_id = ticker,
+        observation_start = start_date,observation_end = end_date,
+        frequency = "q",aggregation_method = "eop")
+}
+stocks <- f("WILL5000PR")
+stocks$date <- as.Date(stocks$date)
+
+# Get SPFs:
+download.file("https://www.philadelphiafed.org/-/media/frbp/assets/surveys-and-data/survey-of-professional-forecasters/data-files/files/mean_rgdp10_level.xlsx",
+              "data/mean_rgdp10_level.xlsx")
+SPF <- readxl::read_xlsx(path="data/mean_rgdp10_level.xlsx")
+SPF$date <- as.Date(paste(SPF$YEAR,"-",1+3*(SPF$QUARTER-1),"-01",sep=""))
+DATA <- merge(as.data.frame(stocks),as.data.frame(SPF),by="date")
+DATA$RGDP10 <- as.double(DATA$RGDP10)
+DATA$chgestock <- NaN
+T <- dim(DATA)[1]
+DATA$chgestock[5:T] <- log(DATA$value[5:T]/DATA$value[1:(T-4)])
+DATA$chgeGDP10 <- NaN
+DATA$chgeGDP10[5:T] <- DATA$RGDP10[5:T] - DATA$RGDP10[1:(T-4)]
+
+X <- DATA$chgestock
+Y <- DATA$chgeGDP10
+XY <- cbind(X,Y,DATA$YEAR)
+XY <- XY[complete.cases(XY),]
+X <- XY[,1]
+Y <- XY[,2]
+model <- lm(Y ~ X)
+coefficients <- coefficients(model)
+x_interval <- seq(min(X), max(X), length.out = 100)
+y_lower <- coefficients[1] + coefficients[2] * x_interval - (1.96 * qt(0.975, df = df.residual(model))) * sqrt(coefficients[2]^2 + (x_interval - coefficients[1])^2)
+y_upper <- coefficients[1] + coefficients[2] * x_interval + (1.96 * qt(0.975, df = df.residual(model))) * sqrt(coefficients[2]^2 + (x_interval - coefficients[1])^2)
+par(plt=c(.15,.95,.2,.95))
+plot(X, Y, xlab = "(log) change in stock prices", ylab = "Chge in 10-yr GDP expect.", main = "",ylim=c(-.5,.5),pch=19,las=1)
+abline(lm(Y~X), col = "red")
+grid()
+text(X+.05,Y,XY[,3],col="light grey")
+#polygon(c(x_interval, rev(x_interval)), c(y_lower, rev(y_upper)), col = "lightgrey", border = NA)
 ```
+
+
+<!-- ```{r SPF10yrStock, fig.align = 'center', out.width = "100%", fig.cap = "Source: Survey of Professional Forecasters (Philadelphia Fed).", echo=FALSE} -->
+<!-- knitr::include_graphics("figures/Figure_Stock_chge_expect.png") -->
+<!-- ``` -->
 
 ### Long Run Risk Model
 

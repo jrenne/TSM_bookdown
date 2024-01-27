@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 Pricing and risk-neutral dynamics | Introduction to Term Structure Models</title>
+<meta name="author" content="Jean-Paul Renne and Alain Monfort">
+<meta name="description" content="2.1 SDF: Absence of Arbitrage Approach Consider a period of interest \({\mathcal T} = \{0,1,2,...,T^*\}\). As in Chapter ??, vector \(w_t\) constitutes the new information in the economy at \(t\)....">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Pricing and risk-neutral dynamics | Introduction to Term Structure Models">
+<meta property="og:type" content="book">
+<meta property="og:description" content="2.1 SDF: Absence of Arbitrage Approach Consider a period of interest \({\mathcal T} = \{0,1,2,...,T^*\}\). As in Chapter ??, vector \(w_t\) constitutes the new information in the economy at \(t\)....">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 Pricing and risk-neutral dynamics | Introduction to Term Structure Models">
+<meta name="twitter:description" content="2.1 SDF: Absence of Arbitrage Approach Consider a period of interest \({\mathcal T} = \{0,1,2,...,T^*\}\). As in Chapter ??, vector \(w_t\) constitutes the new information in the economy at \(t\)....">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="my-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction to Term Structure Models</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
+<li><a class="" href="Structural.html"><span class="header-section-number">1</span> A detour through structural approaches</a></li>
+<li><a class="active" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">3</span> References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="pricing-and-risk-neutral-dynamics" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Pricing and risk-neutral dynamics<a class="anchor" aria-label="anchor" href="#pricing-and-risk-neutral-dynamics"><i class="fas fa-link"></i></a>
+</h1>
+<div id="PricingAAO" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> SDF: Absence of Arbitrage Approach<a class="anchor" aria-label="anchor" href="#PricingAAO"><i class="fas fa-link"></i></a>
+</h2>
+<p>Consider a period of interest <span class="math inline">\({\mathcal T} = \{0,1,2,...,T^*\}\)</span>. As in Chapter <a href="#ChapterAffine"><strong>??</strong></a>, vector <span class="math inline">\(w_t\)</span> constitutes the new information in the economy at <span class="math inline">\(t\)</span>. The historical, or physical, dynamics of <span class="math inline">\(w_t\)</span>, <span class="math inline">\(f(\underline{w_t})\)</span>, is defined by <span class="math inline">\(f(w_{t+1}|\underline{w_t})\)</span>. The physical probability is denoted by <span class="math inline">\(\mathbb{P}\)</span>. <span class="math inline">\(L_{2t}, t \in {\mathcal T}\)</span>, is the (Hilbert) space of square integrate functions <span class="math inline">\(g(\underline{w_t})\)</span>, and we have <span class="math inline">\(L_{2t} \subset L_{2s}, t&lt; s\)</span>.</p>
+<div id="existence-and-unicity-of-the-sdf" class="section level3" number="2.1.1">
+<h3>
+<span class="header-section-number">2.1.1</span> Existence and unicity of the SDF<a class="anchor" aria-label="anchor" href="#existence-and-unicity-of-the-sdf"><i class="fas fa-link"></i></a>
+</h3>
+<div class="hypothesis">
+<p><span id="hyp:Apricing1" class="hypothesis"><strong>Hypothesis 2.1  (Price existence and uniqueness) </strong></span>For any <span class="math inline">\(\underline{w_t}\)</span>, there exists a unique <span class="math inline">\(p_t[g(\underline{w_s})]\)</span>,
+function of <span class="math inline">\(\underline{w_t}\)</span>, price at <span class="math inline">\(t\)</span> of a payoff
+<span class="math inline">\(g(\underline{w_s})\)</span> delivered at <span class="math inline">\(s, \forall t \le s\)</span>.</p>
+</div>
+<div class="hypothesis">
+<p><span id="hyp:Apricing2" class="hypothesis"><strong>Hypothesis 2.2  (Linearity and continuity) </strong></span>For all <span class="math inline">\(t &lt; s\)</span>, <span class="math inline">\(\underline{w_t}\)</span>, <span class="math inline">\(g_1\)</span>, <span class="math inline">\(g_2\)</span>, we have</p>
+<ul>
+<li>
+<span class="math inline">\(p_t[\lambda_1 g_1(\underline{w_s}) + \lambda_2g_2(\underline{w_s})] = \lambda_1p_t[g_1(\underline{w_s})]+\lambda_2 p_t[g_2(\underline{w_s})]\)</span>,</li>
+<li>If <span class="math inline">\(g_n(\underline{w_s}) \overset{L_{2s}}{\underset{n\rightarrow\infty}{\longrightarrow}} 0\)</span>, then <span class="math inline">\(p_t[g_n(\underline{w_s})] \underset{n\rightarrow\infty}{\longrightarrow} 0\)</span>.</li>
+</ul>
+</div>
+<div class="hypothesis">
+<p><span id="hyp:Apricing3" class="hypothesis"><strong>Hypothesis 2.3  (Absence of Arbitrage Opportunity (AAO)) </strong></span>At any <span class="math inline">\(t\)</span>, it is impossible to constitute a portfolio of future payoffs, possibly modified at subsequent dates, such that:</p>
+<ul>
+<li>the price of the portfolio at <span class="math inline">\(t\)</span> is zero,</li>
+<li>payoffs at subsequent dates are <span class="math inline">\(\ge 0\)</span>,</li>
+<li>there is at least one subsequent date <span class="math inline">\(s\)</span> such that the net payoff at <span class="math inline">\(s\)</span> is strictly positive with a non zero conditional probability at <span class="math inline">\(t\)</span>.</li>
+</ul>
+</div>
+<div class="theorem">
+<p><span id="thm:Riesz" class="theorem"><strong>Theorem 2.1  (Riesz representation theorem) </strong></span>Under Assumptions <a href="pricing-and-risk-neutral-dynamics.html#hyp:Apricing1">2.1</a> and <a href="pricing-and-risk-neutral-dynamics.html#hyp:Apricing2">2.2</a>, for all <span class="math inline">\(\underline{w_t}\)</span>, and <span class="math inline">\(s &gt; t\)</span>, there exists <span class="math inline">\(\mathcal{M}_{t,s}(\underline{w_s}) \in L_{2s}\)</span>, unique such that, <span class="math inline">\(\forall g(\underline{w_s}) \in L_{2s}\)</span>,
+<span class="math display">\[
+p_t[g(\underline{w_s})] = \mathbb{E}[\mathcal{M}_{t,s}(\underline{w_s})g(\underline{w_s})|\underline{w_t}].
+\]</span>
+In particular the price at <span class="math inline">\(t\)</span> of a zero coupon bond maturing at <span class="math inline">\(s\)</span> is <span class="math inline">\(\mathbb{E}(\mathcal{M}_{t,s}|\underline{w_t})\)</span>.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:PositivityM" class="proposition"><strong>Proposition 2.1  (Positivity of M) </strong></span>If Assumption <a href="pricing-and-risk-neutral-dynamics.html#hyp:Apricing3">2.3</a> is satisfied, then for all <span class="math inline">\(t\)</span> and <span class="math inline">\(s\)</span>, <span class="math inline">\(\mathbb{P}(\mathcal{M}_{t,s}&gt;0|\underline{w_t})=1\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-2" class="proof"><em>Proof</em>. </span><span class="math inline">\(\Leftarrow\)</span> is obvious. If <span class="math inline">\(\Rightarrow\)</span> was not true, the payoff
+<span class="math inline">\(\textbf{1}_{\{\mathcal{M}_{t,s} \le 0\}}\)</span>, at <span class="math inline">\(s\)</span>, would be such that:
+<span class="math inline">\(\mathbb{P}[\textbf{1}_{\{\mathcal{M}_{t,s} \le 0\}}=1|\underline{w_t}] &gt; 0\)</span> and <span class="math inline">\(p_t[\textbf{1}_{\{\mathcal{M}_{t,s} \le 0\}}] = \mathbb{E}_t[\mathcal{M}_{t,s}\textbf{1}_{\{\mathcal{M}_{t,s} \le 0\}}] \le 0\)</span>.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:timeconsist" class="proposition"><strong>Proposition 2.2  (Time consistency) </strong></span>For all <span class="math inline">\(t &lt; r &lt; s\)</span>, we have <span class="math inline">\(\mathcal{M}_{t,s} = \mathcal{M}_{t,r} \mathcal{M}_{r,s}\)</span>, which implies:</p>
+<ul>
+<li><span class="math inline">\(\mathcal{M}_{t,s} = \mathcal{M}_{t,t+1} \mathcal{M}_{t+1,t+2}\dots\mathcal{M}_{s-1,s}\)</span></li>
+<li>
+<span class="math inline">\(\mathcal{M}_{0,t} = \Pi^{t-1}_{j=0} \mathcal{M}_{j,j+1}\)</span> (<span class="math inline">\(\mathcal{M}_{0,t}\)</span> is called <strong>pricing kernel</strong>).</li>
+</ul>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-3" class="proof"><em>Proof</em>. </span>Using Lemma <a href="pricing-and-risk-neutral-dynamics.html#lem:sdf">2.1</a> we have:
+<span class="math display">\[\begin{eqnarray*}
+p_t(g_s) &amp;=&amp; \mathbb{E}(\mathcal{M}_{t,s}g_s|\underline{w_t}) = \mathbb{E}(\mathcal{M}_{t,r} p_r(g_s)|\underline{w_t}) \\
+&amp;=&amp; \mathbb{E}[\mathcal{M}_{t,r}\mathbb{E}(\mathcal{M}_{r,s} g_s|\underline{w_r})|\underline{w_t}] = \mathbb{E}(\mathcal{M}_{t,r} \mathcal{M}_{r,s} g_s|\underline{w_t}), \forall g, \forall \underline{w}_{t}
+\end{eqnarray*}\]</span>
+and, therefore, <span class="math inline">\(\mathcal{M}_{t,s} = \mathcal{M}_{t,r}\mathcal{M}_{r,s}\)</span>.</p>
+</div>
+<div class="lemma">
+<p><span id="lem:sdf" class="lemma"><strong>Lemma 2.1  </strong></span>For any payoff <span class="math inline">\(g_s\)</span> at <span class="math inline">\(s, p_t(g_s) = p_t[p_r(g_s)]\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-4" class="proof"><em>Proof</em>. </span>If this was not true, we could construct a sequence of portfolios with a strictly positive payoff at <span class="math inline">\(s\)</span> with zero payoff at any other future date and with price zero at <span class="math inline">\(t\)</span>, contradicting Assumption <a href="pricing-and-risk-neutral-dynamics.html#hyp:Apricing3">2.3</a>. Indeed, assuming, for instance, <span class="math inline">\(p_t(g_s) &gt; p_t[p_r(g_s)]\)</span>, the payoff at <span class="math inline">\(s\)</span> is defined by the following strategy: (i) at <span class="math inline">\(t\)</span>: buy <span class="math inline">\(p_r(g_s)\)</span>, (short) sell <span class="math inline">\(g_s\)</span>, buy
+<span class="math inline">\(\frac{p_t(g_s)-p_t[p_r(g_s)]}{\mathbb{E}(\mathcal{M}_{t,s}|\underline{w_t})}\)</span> zero-coupon bonds maturing at <span class="math inline">\(s\)</span>, at global price zero, (ii) at <span class="math inline">\(r\)</span>: buy <span class="math inline">\(g_s\)</span> and sell <span class="math inline">\(p_r(g_s)\)</span>, generating a zero net payoff, (iii) at <span class="math inline">\(s\)</span>, the net payoff is: <span class="math inline">\(g_s-g_s+\frac{p_t(g_s)-p_t[p_r(g_s)]}{\mathbb{E}(\mathcal{M}_{t,s}|\underline{w_t})} &gt; 0\)</span>.</p>
+</div>
+<p>Consider an asset whose payoff, on date <span class="math inline">\(s\)</span>, is <span class="math inline">\(g(\underline{w_s})\)</span>. We have, <span class="math inline">\(\forall t &lt; s\)</span>:
+<span class="math display" id="eq:basic">\[\begin{equation}
+\boxed{p_t[g(\underline{w_s})] = \mathbb{E}_t[\mathcal{M}_{t,t+1}...\mathcal{M}_{s-1,s}g(\underline{w_s})].}\tag{2.1}
+\end{equation}\]</span>
+In particular, since <span class="math inline">\(L_{2,t+1}\)</span> contains 1, the price at <span class="math inline">\(t\)</span> of a zero-coupon with residual maturity one is given by:
+<span class="math display">\[
+B(t,1) := \mathbb{E}_t [\mathcal{M}_{t,t+1}].
+\]</span>
+Denoting by <span class="math inline">\(r_t\)</span> the continously-compounded interest rate, defined through <span class="math inline">\(B(t,1)=\exp(-r_{t})\)</span>, we get
+<span class="math display">\[
+r_{t}=-\log \mathbb{E}_t [\mathcal{M}_{t,t+1}].
+\]</span></p>
+<div class="definition">
+<p><span id="def:bankaccount" class="definition"><strong>Definition 2.1  (Bank account) </strong></span>The bank account process <span class="math inline">\(R_t\)</span> is defined by <span class="math inline">\(R_{t} \equiv \exp(r_0+...+r_{t-1}) = \frac{1}{\mathbb{E}_0[ \mathcal{M}_{0,1}]\times ... \times \mathbb{E}_{t-1} [\mathcal{M}_{t-1,t}]}\)</span>.</p>
+<p><span class="math inline">\(R_t\)</span> is the price of an investment initiated on date 0, when it was worth one dollar, and invested on each date at the risk-free rate (for one period).</p>
+</div>
+<p>For any price process <span class="math inline">\(p_t\)</span>, we have <span class="math inline">\(p_t = \mathbb{E}_t(\mathcal{M}_{t,s} p_s)\)</span> (with <span class="math inline">\(s&gt;t\)</span>), or <span class="math inline">\(\mathcal{M}_{0,t} p_t = \mathbb{E}_t(\mathcal{M}_{0,s}p_s)\)</span>. That is, <span class="math inline">\(\mathcal{M}_{0,t} p_t\)</span> is a martingale. In particular <span class="math inline">\(\mathcal{M}_{0,t} R_t\)</span> is a martingale.</p>
+</div>
+<div id="PricingAffine" class="section level3" number="2.1.2">
+<h3>
+<span class="header-section-number">2.1.2</span> Exponential affine SDF<a class="anchor" aria-label="anchor" href="#PricingAffine"><i class="fas fa-link"></i></a>
+</h3>
+<p>A specific (tractable) case is that of exponential affine SDF. Assume that
+<span class="math display">\[
+\mathcal{M}_{t,t+1}(\underline{w_{t+1}}) = \exp[\alpha_t(\underline{w_t})'w_{t+1}+\beta_t(\underline{w_t})]
+\]</span>
+where <span class="math inline">\(\alpha_t\)</span> defines the <em>prices of risk</em> or <em>sensitivity</em> vector. Using <span class="math inline">\(\mathbb{E}_t[\mathcal{M}_{t,t+1}]=\exp(-r_{t})=\exp[\psi_t(\alpha_t)+\beta_t]\)</span>, we get:
+<span class="math display" id="eq:keySDF">\[\begin{equation}
+\mathcal{M}_{t,t+1} = \exp[-r_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)].\tag{2.2}
+\end{equation}\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 2.1  (CCAPM/Power utility case) </strong></span>In the CCAPM-power-utility case (see Example <a href="Structural.html#exm:CCAPM">1.1</a>), we have (Eq. <a href="Structural.html#eq:powerutilSDF">(1.8)</a>):
+<span class="math display">\[
+\mathcal{M}_{t,t+1} = \exp(\log \delta + \log q_t + \gamma \log   C_t - \log   q_{t+1} - \gamma  \log   C_{t+1}),
+\]</span>
+where <span class="math inline">\(q_t\)</span> is the price of the consumption good, <span class="math inline">\(C_t\)</span> is the quantity consumed at <span class="math inline">\(t\)</span> and <span class="math inline">\(\delta\)</span> is the intertemporal discount rate.</p>
+<p>Hence, in that case, <span class="math inline">\(\mathcal{M}_{t,t+1}\)</span> is exponential affine in <span class="math inline">\(w_{t+1} = (\log q_{t+1}, \log C_{t+1})'\)</span> (and its first lag).</p>
+</div>
+</div>
+</div>
+<div id="PricingRN" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> The risk-neutral (R.N.) dynamics<a class="anchor" aria-label="anchor" href="#PricingRN"><i class="fas fa-link"></i></a>
+</h2>
+<p>The historical Dynamics is characterized by <span class="math inline">\(f(\underline{w_{T^*}})\)</span>, or by the
+sequence of conditional p.d.f. <span class="math inline">\(f_{t+1}(w_{t+1}|\underline{w_t})\)</span>, or
+<span class="math inline">\(f_{t+1}(w_{t+1})\)</span>, with respect to (w.r.t.) some measure <span class="math inline">\(\mu\)</span>.</p>
+<p>We define the conditional risk-neutral p.d.f. w.r.t. the conditional historical probability. For that, we employ the Radon-Nikodym derivative <span class="math inline">\(d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t})\)</span>:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Of course, the conditional historical p.d.f. with respect to the conditional risk-neutral (R.N.) p.d.f. is:
+&lt;span class="math inline"&gt;\(d_{t+1}(w_{t+1}) = \frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})}\)&lt;/span&gt; or &lt;span class="math inline"&gt;\(d_{t+1}(w_{t+1}) = \frac{\exp(-r_{t})}{\mathcal{M}_{t,t+1}}\)&lt;/span&gt;.&lt;/p&gt;'><sup>4</sup></a>
+<span class="math display">\[
+d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t}) =
+\frac{\mathcal{M}_{t,t+1}(\underline{w_{t+1}})}{\mathbb{E}[\mathcal{M}_{t,t+1}(\underline{w_{t+1}})|\underline{w_t}]},
+\]</span>
+or
+<span class="math display">\[
+d^{\mathbb{Q}}_{t+1}(w_{t+1})=
+\frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}=\exp(r_{t}) \mathcal{M}_{t,t+1}.
+\]</span>
+In this context, the risk neutral conditional p.d.f. is:
+<span class="math display" id="eq:fQfP">\[\begin{eqnarray}
+f^{\mathbb{Q}}_{t+1}(w_{t+1}) &amp;=&amp; f_{t+1}(w_{t+1})d^{\mathbb{Q}}_{t+1}(w_{t+1}) \nonumber \\
+&amp;=&amp;f_{t+1} (w_{t+1}) \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) \exp [r_{t} (\underline{w_t})].\tag{2.3}
+\end{eqnarray}\]</span></p>
+<p>The p.d.f. of <span class="math inline">\(\mathbb{Q}\)</span> w.r.t. the historical dynamics <span class="math inline">\(\mathbb{P}\)</span> is:
+<span class="math display">\[
+\xi_{T^*} =  \frac{d\mathbb{Q}}{d\mathbb{P}} =
+\Pi^{T^{*}-1}_{t=0} d^{\mathbb{Q}}_{t+1}(w_{t+1}) =
+\Pi^{T^{*}-1}_{t=0} \exp(r_{t}) \mathcal{M}_{t,t+1},
+\]</span>
+and the p.d.f. of the R.N. distribution of <span class="math inline">\(\underline{w_t}\)</span>, w.r.t. the corresponding historical distribution is:
+<span class="math display">\[
+\xi_t= \Pi^{t-1}_{\tau=1}
+d^{\mathbb{Q}}_{\tau+1}(w_{\tau+1})=\mathbb{E}_t\left(\frac{d\mathbb{Q}}{d\mathbb{P}}\right) = \mathbb{E}_t\xi_{T^*}.
+\]</span>
+Therefore, <span class="math inline">\(\xi_t\)</span> is a <span class="math inline">\(\mathbb{P}\)</span>-martingale.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Indeed:
+&lt;span class="math display"&gt;\[
+\mathbb{E}_t \left( \frac{d\mathbb{Q}}{d\mathbb{P}}\right) = \Pi^{t-1}_{\tau = 1} d^{\mathbb{Q}}_{\tau + 1} (w_{\tau+1}) \mathbb{E}_t \left( d^{\mathbb{Q}}_{t+1} (w_{t+1}) \ldots d^{\mathbb{Q}}_{T^*} (w_{T^*})\right).
+\]&lt;/span&gt;&lt;/p&gt;'><sup>5</sup></a></p>
+<p>Consider the date-<span class="math inline">\(t\)</span> price of a payoff <span class="math inline">\(g(\underline{w_s})\)</span> at time <span class="math inline">\(s&gt;t\)</span>. An equivalent form of the pricing formula <a href="pricing-and-risk-neutral-dynamics.html#eq:basic">(2.1)</a> is:
+<span class="math display">\[\begin{eqnarray*}
+p_t[g(\underline{w_s})] &amp;=&amp; \mathbb{E}_t[\mathcal{M}_{t,t+1}...\mathcal{M}_{s-1,s}g(\underline{w_s})] \\
+&amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t[\exp(-r_{t}-...-r_{s-1})g(\underline{w_s})],
+\end{eqnarray*}\]</span>
+or, with simpler notations:
+<span class="math display">\[
+p_t = \mathbb{E}^{\mathbb{Q}}_t[\exp(-r_{t}-...-r_{s-1})p_s] = \mathbb{E}^{\mathbb{Q}}_t\left(\frac{R_t}{R_s} p_s\right),
+\]</span>
+where <span class="math inline">\(R_t\)</span> is the <em>bank account</em>.</p>
+<p>We also have <span class="math inline">\(p_t/R_t = \mathbb{E}^{\mathbb{Q}}_t\left( p_s/R_s\right)\)</span>, that is, <span class="math inline">\(p_t/R_t\)</span> is a <span class="math inline">\(\mathbb{Q}\)</span>-martingale. In particular <span class="math inline">\(p_t = \exp(-r_{t})\mathbb{E}^{\mathbb{Q}}_t(p_{t+1})\)</span>, or, using the arithmetic return of any payoff <span class="math inline">\((p_{t+1}-p_t)/p_t\)</span>, and the arithmetic return of the riskless asset <span class="math inline">\(r_{A,t+1}=\exp(r_{t})-1\)</span>, we get:
+<span class="math display">\[
+\mathbb{E}^{\mathbb{Q}}_t\left(\frac{p_{t+1}-p_t}{p_t}\right)=r_{A,t}.
+\]</span>
+Moreover the excess arithmetic return process <span class="math inline">\((p_{t+1}-p_t)/p_t-r_{A,t}\)</span> is a <span class="math inline">\(\mathbb{Q}\)</span>-martingale difference and, therefore, <span class="math inline">\(\mathbb{Q}\)</span>-serially uncorrelated.</p>
+<p>Let us consider the case of an exponential affine SDF <span class="math inline">\(\mathcal{M}_{t,t+1}=\exp(\alpha'_t w_{t+1}+\beta_t)\)</span>:
+<span class="math display">\[
+d^{\mathbb{Q}}_{t+1}(w_{t+1}) = \frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})} = \frac{\exp(\alpha'_t
+w_{t+1}+\beta_t)}{\exp[\psi_t(\alpha_t)+\beta_t]} = \exp[\alpha'_t w_{t+1}-\psi_t(\alpha_t)]
+\]</span>
+We then have that <span class="math inline">\(d^{\mathbb{Q}}_{t+1}(w_{t+1})\)</span> is also exponential affine. Moreover:
+<span class="math display">\[
+f^{\mathbb{Q}}_{t+1} (w_{t+1}) = \frac{f_{t+1} (w_{t+1}) \exp (\alpha'_t w_{t+1})}{\varphi_t (\alpha_t)}.
+\]</span>
+The previous equation shows that <span class="math inline">\(f^{\mathbb{Q}}_{t+1}\)</span> is the Esscher transform of <span class="math inline">\(f_{t+1}\)</span> evaluated at <span class="math inline">\(\alpha_t\)</span>.</p>
+<p>Let us know consider the Laplace transform of the conditional R.N. probability, <span class="math inline">\(\varphi^{\mathbb{Q}}_t(u|\underline{w_t})\)</span>, also denoted by <span class="math inline">\(\varphi^{\mathbb{Q}}_t(u)\)</span>. We have:
+<span class="math display">\[\begin{eqnarray*}
+\varphi^{\mathbb{Q}}_t(u) &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t \exp(u' w_{t+1}) \\
+&amp;=&amp; \mathbb{E}_t \exp[(u+\alpha_t)'w_{t+1}-\psi_t(\alpha_t)] \\
+&amp;=&amp; \exp[\psi_t(u+\alpha_t)-\psi_t(\alpha_t)] =
+\frac{\varphi_t(u+\alpha_t)}{\varphi_t(\alpha_t)}.
+\end{eqnarray*}\]</span>
+Hence:
+<span class="math display" id="eq:transfoPQ">\[\begin{equation}
+\boxed{\psi^{\mathbb{Q}}_t(u) = \psi_t(u+\alpha_t)-\psi_t(\alpha_t).}\tag{2.4}
+\end{equation}\]</span>
+We check that, if <span class="math inline">\(\alpha_t=0\)</span>, <span class="math inline">\(\psi^{\mathbb{Q}}_t=\psi_t\)</span> (since <span class="math inline">\(\psi_t(0)=0)\)</span>.</p>
+<p>Moreover, putting <span class="math inline">\(u=-\alpha_t\)</span> in the expression of
+<span class="math inline">\(\psi^{\mathbb{Q}}_t(u)\)</span> we get <span class="math inline">\(\psi^{\mathbb{Q}}_t(-\alpha_t)=-\psi_t(\alpha_t)\)</span>,
+and, replacing <span class="math inline">\(u\)</span> by <span class="math inline">\(u-\alpha_t\)</span>, we get:
+<span class="math display">\[
+\boxed{\psi_t(u) = \psi^{\mathbb{Q}}_t(u-\alpha_t)-\psi^{\mathbb{Q}}_t(-\alpha_t).}
+\]</span>
+Also:
+<span class="math display">\[\begin{equation*}
+\left\{
+\begin{array}{ccl}
+d_{t+1}(w_{t+1}) &amp;=&amp; \exp[-\alpha'_t(w_{t+1})-\psi^{\mathbb{Q}}_t(-\alpha_t)] \\
+d^{\mathbb{Q}}_{t+1}(w_{t+1}) &amp;=&amp; \exp[\alpha'_t(w_{t+1})+\psi^{\mathbb{Q}}_t(-\alpha_t)].
+\end{array}
+\right.
+\end{equation*}\]</span></p>
+<!-- XXX* Back to the historical conditional probability: -->
+<!-- $$ -->
+<!-- d_{t+1}(w_{t+1}) = -->
+<!-- \frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})} = \exp[-\alpha'_t -->
+<!-- w_{t+1}+\psi_t(\alpha_t)], -->
+<!-- $$ -->
+</div>
+<div id="PricingTypology" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Typology of econometric asset-pricing models<a class="anchor" aria-label="anchor" href="#PricingTypology"><i class="fas fa-link"></i></a>
+</h2>
+<div class="definition">
+<p><span id="def:typo" class="definition"><strong>Definition 2.2  (Econometric Asset Pricing Model (EAPM)) </strong></span>An Econometric Asset Pricing Model (EAPM) is defined by the following functions:</p>
+<ul>
+<li>
+<span class="math inline">\(r_{t}(\underline{w_t})\)</span>,</li>
+<li>
+<span class="math inline">\(f(w_{t+1}|\underline{w_t}))\)</span> [or <span class="math inline">\(\psi_t(u)\)</span>],</li>
+<li>
+<span class="math inline">\(\mathcal{M}_{t,t+1}(\underline{w_{t+1}})\)</span>,</li>
+<li>
+<span class="math inline">\(f^{\mathbb{Q}}(w_{t+1}|\underline{w_t})\)</span> [or <span class="math inline">\(\psi^{\mathbb{Q}}_t(u)\)</span>].</li>
+</ul>
+</div>
+<p>The previous functions have to to be specified and parameterized. They are linked by:
+<span class="math display">\[
+f^{\mathbb{Q}}(w_{t+1}|\underline{w_t}) = f(w_{t+1}|\underline{w_t}) \mathcal{M}_{t,t+1}(\underline{w_{t+1}}) \exp[r_{t}(\underline{w_t}))].
+\]</span></p>
+<p>In the following, we present three ways of specifying an EAPM:</p>
+<ol style="list-style-type: decimal">
+<li>the direct modelling,</li>
+<li>the R.N.-constrained direct modelling (or mixed modelling),</li>
+<li>the back modelling.</li>
+</ol>
+<p>We focus on the case where <span class="math inline">\(\mathcal{M}_{t,t+1}\)</span> is exponential affine, as in Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:keySDF">(2.2)</a>:
+<span class="math display">\[
+\mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -r_{t} (\underline{w_t}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)]\right\}.
+\]</span>
+Once the short-term rate function <span class="math inline">\(r_{t}(\underline{w_t})\)</span> is specified, we have to specify <span class="math inline">\(\psi_t\)</span>, <span class="math inline">\(\alpha_t\)</span>, and <span class="math inline">\(\psi^{\mathbb{Q}}_t\)</span>, that are linked by Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:transfoPQ">(2.4)</a>.</p>
+<p>In all approaches, we have to specify the status of the short rate. The short rate <span class="math inline">\(r_{t}\)</span> is a function of <span class="math inline">\(\underline{w_t}\)</span>, this function may be known or unknown by the econometrician. It is known in two cases: (a) <span class="math inline">\(r_{t}\)</span> is exogenous (<span class="math inline">\(r_{t}(\underline{w_t})\)</span> does not depend on <span class="math inline">\(\underline{w_t}\)</span>) or (b) <span class="math inline">\(r_{t}\)</span> is a component of <span class="math inline">\(w_t\)</span>. By contrast, if the function <span class="math inline">\(r_{t} (\underline{w_t})\)</span> is unknown, it has to be specified parametrically:
+<span class="math display">\[
+\left\{ r_{t} (\underline{w_t}, \tilde{\theta}), \tilde{\theta}\in \tilde{\Theta} \right\},
+\]</span>
+where <span class="math inline">\(r_{t}(\bullet,\bullet)\)</span> is a known function.</p>
+<p>Let us now detail the three steps on which each of the three ways of defining an EAPM is based.</p>
+<div id="DirectModeling" class="section level3" number="2.3.1">
+<h3>
+<span class="header-section-number">2.3.1</span> The direct modelling<a class="anchor" aria-label="anchor" href="#DirectModeling"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<strong>Step 1 – Specification of the historical dynamics</strong>. We choose a parametric family for the conditional historical Log-Laplace transform <span class="math inline">\(\psi_t(u|\underline{w_t})\)</span>: <span class="math inline">\(\left\{ \psi_t (u|\underline{w_t} ; \theta_1), \theta_1 \in \Theta_1 \right\}\)</span>.</li>
+<li>
+<strong>Step 2 – Specification of the SDF</strong>. Considering the affine specification of as Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:keySDF">(2.2)</a>, that is:
+<span class="math display">\[
+\mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -r_{t}(\underline{w_t}, \tilde{\theta}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)|\underline{w_t} ; \theta_1]\right\},
+\]</span>
+we need to specifiy functions <span class="math inline">\(r_{t}(\underline{w_t}, \tilde{\theta})\)</span> and <span class="math inline">\(\alpha_t(\underline{w_t})\)</span>. Assume that <span class="math inline">\(\alpha_t(\underline{w_t})\)</span> belongs to a parametric family: <span class="math inline">\(\left\{ \alpha_t (\underline{w_t} ; \theta_2),\theta_2 \in \Theta_2 \right\}\)</span>.
+We then have:
+<span class="math display">\[\begin{eqnarray*}
+\mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) &amp;=&amp; \exp \left\{ - r_{t}
+(\underline{w_t}, \tilde{\theta}) + \alpha'_t (\underline{w_t},\theta_2) w_{t+1} - \psi_{t} \left[ \alpha_t (\underline{w_t},
+\theta_2) | \underline{w_t} ; \theta_1 \right] \right\},
+\end{eqnarray*}\]</span>
+where <span class="math inline">\(\theta = (\tilde{\theta}', \theta'_1,\theta'_2)' \in \tilde{\Theta}\times \Theta_1 \times \Theta_2 = \Theta\)</span>.</li>
+<li>
+<strong>Step 3 – Internal consistency conditions (ICC)</strong>. For any payoff <span class="math inline">\(g(\underline{w_s})\)</span> settled at <span class="math inline">\(s&gt;t\)</span>, with price <span class="math inline">\(p(\underline{w_t})\)</span> at <span class="math inline">\(t\)</span> which is a known function of
+<span class="math inline">\(\underline{w_t}\)</span>, we must have:
+<span class="math display" id="eq:ICCgen">\[\begin{equation*}
+p(\underline{w_t}) = \mathbb{E} \left\{\mathcal{M}_{t,t+1} (\theta) \dots \mathcal{M}_{s-1,s} (\theta) g(\underline{w_s})  |  \underline{w_t},
+\theta_1 \right\}    \forall \; \underline{w_t}, \theta.\tag{2.5}
+\end{equation*}\]</span>
+These ICC pricing conditions may imply strong constraints on <span class="math inline">\(\theta\)</span>. For instance, when components of <span class="math inline">\(w_t\)</span> are returns of some assets: if <span class="math inline">\(w_{1,t} = \log(p_{1,t}/p_{1,t-1})\)</span>, then we must have <span class="math inline">\(\mathbb{E}_t [\mathcal{M}_{t,t+1} \exp (e'_1 w_{t+1})]= 1\)</span> (Euler equation). Or, in the case of interest rates with various maturities: if <span class="math inline">\(w_{1,t} = -1/h\log B(t,h)\)</span>, then we must have <span class="math inline">\(e'_1 w_{t} = - 1/h \log \mathbb{E}_t (\mathcal{M}_{t,t+1}\times \dots \times \mathcal{M}_{t+h-1,t+h})\)</span>.</li>
+</ul>
+<p>The previous three steps imply the specification of the R.N. dynamics (according to Eq. <a href="pricing-and-risk-neutral-dynamics.html#eq:transfoPQ">(2.4)</a>):
+<span class="math display">\[\begin{equation*}
+\psi^{\mathbb{Q}} (u | \underline{w_t}, \theta_1, \theta_2) =
+\psi_t \left[ u + \alpha_t (\underline{w_t}, \theta_2) |
+\underline{w_t}, \theta_1 \right] - \psi_t \left[ \alpha_t
+(\underline{w_t}, \theta_2) | \underline{w_t}, \theta_1
+\right].
+\end{equation*}\]</span></p>
+</div>
+<div id="the-r.n.-constrained-direct-modelling-or-mixed-modelling" class="section level3" number="2.3.2">
+<h3>
+<span class="header-section-number">2.3.2</span> The R.N.-constrained direct modelling (or mixed modelling)<a class="anchor" aria-label="anchor" href="#the-r.n.-constrained-direct-modelling-or-mixed-modelling"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<strong>Step 1 – Specification of the physical dynamics</strong>. We select a family <span class="math inline">\(\{ \psi_t (u | \underline{w_t},\theta_1), \theta_1 \in \Theta_1 \}\)</span>.</li>
+<li>
+<strong>Step 2 – Specification of the risk-neutral dynamics</strong>. We select a family <span class="math inline">\(\{\psi^{\mathbb{Q}}_t (u | \underline{w_t}, \theta^*),\theta^* \in \Theta^* \}\)</span> and, possibly, <span class="math inline">\(\{r_{t}(\underline{w_t},\tilde{\theta}),\tilde{\theta}\in\tilde{\Theta}\}\)</span>.</li>
+<li>
+<strong>Step 3 – Internal Consistency Conditions (ICC)</strong>. Once the parameterization <span class="math inline">\((\tilde{\theta}, \theta_1, \theta^*) \in \tilde{\Theta} \times \Theta^*_1\)</span> is defined, ICCs may be imposed. For instance, if <span class="math inline">\(w_{1,t} = \log(p_{1,t}/p_{1,t-1})\)</span>, then we must have <span class="math inline">\(\exp(-r_t)\mathbb{E}^{\mathbb{Q}}_t \exp (e_{1}' w_{t+1}) = 1\)</span>. Or if <span class="math inline">\(w_{1,t} = B(t,h)\)</span>, then <span class="math inline">\(e_{1}' w_{t} = \mathbb{E}_t^{\mathbb{Q}} \exp(-r_t - \dots - r_{t+h-1})\)</span>.</li>
+</ul>
+<p>The SDF is a by-product. If we want an exponential affine SDF, for any pair <span class="math inline">\((\psi^{\mathbb{Q}}_t, \psi_t)\)</span> belonging to these families, there must exist a unique function <span class="math inline">\(\alpha_t (\underline{w_t})\)</span> denoted by <span class="math inline">\(\alpha_t (w_t ; \theta_1, \theta^*)\)</span>, and satisfying:
+<span class="math display">\[\begin{equation*}
+\psi^{\mathbb{Q}}_t (u | \underline{w_t}) = \psi_t \left[ u +
+\alpha_t (w_t) | \underline{w_t} \right] - \psi_t \left[
+\alpha_t (\underline{w_t}) | \underline{w_t} \right].
+\end{equation*}\]</span></p>
+</div>
+<div id="back-modelling-based-on-three-steps" class="section level3" number="2.3.3">
+<h3>
+<span class="header-section-number">2.3.3</span> Back modelling (based on three steps)<a class="anchor" aria-label="anchor" href="#back-modelling-based-on-three-steps"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<strong>Step 1 – Specification of the R.N. dynamics</strong>, and possibly of <span class="math inline">\(r_{t}(\underline{w_t})\)</span>]: <span class="math inline">\(\psi^{\mathbb{Q}}_t (u | \underline{w_t}; \theta^*_1)\)</span>.</li>
+<li>
+<strong>Step 2 – Internal consistency conditions (ICC)</strong>, if relevant, are taken into account:
+<span class="math display">\[\begin{equation*}
+\begin{array}{lll}
+&amp;&amp; p(\underline{w_t}) = \mathbb{E}^{\mathbb{Q}}_t \left[ \exp (-r_{t} (\underline{w_t},\tilde{\theta}) - \dots - r_{s-1} (\underline{w_s}, \tilde{\theta}))g(\underline{w_s}) | \underline{w_t} , \theta^*_1\right] ,\\
+&amp;&amp; \forall    \underline{w_t} , \tilde{\theta} , \theta^*_1.
+\end{array}
+\end{equation*}\]</span>
+</li>
+<li>
+<strong>Step 3 – Choice of the specification of the prices of risk</strong>. One chooses function <span class="math inline">\(\alpha_t(\underline{w_t})\)</span> without any constraint; this amounts to defining the family <span class="math inline">\(\{ \alpha_t (\underline{w_t}, \theta^*_2), \theta^*_2\in \Theta^*_2 \}\)</span>.</li>
+</ul>
+<p>The historical dynamics is obtained as a by-product. Indeed:
+<span class="math display">\[\begin{equation*}
+\psi_t(u | \underline{w_t} ; \theta^*_1, \theta^*_2) = \psi_t^{\mathbb{Q}}\left[ u -\alpha_t (\underline{w_t}, \theta^*_2)|\underline{w_t} ; \theta^*_1 \right] -\psi^{\mathbb{Q}}_t \left[- \alpha_t (\underline{w_t}, \theta^*_2) | \underline{w_t},\theta^*_1 \right].
+\end{equation*}\]</span></p>
+
+</div>
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="Structural.html"><span class="header-section-number">1</span> A detour through structural approaches</a></div>
+<div class="next"><a href="references.html"><span class="header-section-number">3</span> References</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#pricing-and-risk-neutral-dynamics"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
+<li>
+<a class="nav-link" href="#PricingAAO"><span class="header-section-number">2.1</span> SDF: Absence of Arbitrage Approach</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#existence-and-unicity-of-the-sdf"><span class="header-section-number">2.1.1</span> Existence and unicity of the SDF</a></li>
+<li><a class="nav-link" href="#PricingAffine"><span class="header-section-number">2.1.2</span> Exponential affine SDF</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#PricingRN"><span class="header-section-number">2.2</span> The risk-neutral (R.N.) dynamics</a></li>
+<li>
+<a class="nav-link" href="#PricingTypology"><span class="header-section-number">2.3</span> Typology of econometric asset-pricing models</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#DirectModeling"><span class="header-section-number">2.3.1</span> The direct modelling</a></li>
+<li><a class="nav-link" href="#the-r.n.-constrained-direct-modelling-or-mixed-modelling"><span class="header-section-number">2.3.2</span> The R.N.-constrained direct modelling (or mixed modelling)</a></li>
+<li><a class="nav-link" href="#back-modelling-based-on-three-steps"><span class="header-section-number">2.3.3</span> Back modelling (based on three steps)</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-27.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

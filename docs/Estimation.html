@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 Estimation of affine asset-pricing models | Introduction to Term Structure Models</title>
+<meta name="author" content="Jean-Paul Renne and Alain Monfort">
+<meta name="description" content="5.1 State-space model By nature, dynamic asset-pricing models are state-space models: The dynamics of all variables, gathered in vector \(y_t\) (yields, equity returns, macroeconomic variables,...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 5 Estimation of affine asset-pricing models | Introduction to Term Structure Models">
+<meta property="og:type" content="book">
+<meta property="og:description" content="5.1 State-space model By nature, dynamic asset-pricing models are state-space models: The dynamics of all variables, gathered in vector \(y_t\) (yields, equity returns, macroeconomic variables,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 Estimation of affine asset-pricing models | Introduction to Term Structure Models">
+<meta name="twitter:description" content="5.1 State-space model By nature, dynamic asset-pricing models are state-space models: The dynamics of all variables, gathered in vector \(y_t\) (yields, equity returns, macroeconomic variables,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="my-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction to Term Structure Models</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
+<li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
+<li><a class="" href="PandQ.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
+<li><a class="" href="TSModels.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
+<li><a class="" href="Structural.html"><span class="header-section-number">4</span> A detour through structural approaches</a></li>
+<li><a class="active" href="Estimation.html"><span class="header-section-number">5</span> Estimation of affine asset-pricing models</a></li>
+<li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
+<li><a class="" href="CreditLiRisks.html"><span class="header-section-number">7</span> Credit and liquidity risks</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">8</span> References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="Estimation" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Estimation of affine asset-pricing models<a class="anchor" aria-label="anchor" href="#Estimation"><i class="fas fa-link"></i></a>
+</h1>
+<div id="EstimationSSModel" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> State-space model<a class="anchor" aria-label="anchor" href="#EstimationSSModel"><i class="fas fa-link"></i></a>
+</h2>
+<p>By nature, dynamic asset-pricing models are <em>state-space models</em>: The dynamics of all variables, gathered in vector <span class="math inline">\(y_t\)</span> (yields, equity returns, macroeconomic variables, survey-based variables) are accounted for by state variables (<span class="math inline">\(w_t\)</span>). The equations defining the relationship between the other variables and the state variables are called <em>measurement equations</em> (Eq. <a href="Estimation.html#eq:measeq">(5.1)</a>). The equations defining the dynamics of the state variables are called <em>transition equations</em> (Eq. <a href="Estimation.html#eq:transeq">(5.2)</a>).</p>
+<p>In the case where <span class="math inline">\(w_t\)</span> is an affine process (see Definition <a href="ChapterAffine.html#def:Car1">1.1</a>), the transition equations admit a VAR(1) representation (Proposition <a href="ChapterAffine.html#prp:affineVAR">1.1</a>). In that case, the state-space model is said to be linear, as formalized by the following definition. This defintion introduces, in particular, the notion of <em>measurement errors</em>.</p>
+<div class="definition">
+<p><span id="def:LSSM" class="definition"><strong>Definition 5.1  (Linear State-Space Model) </strong></span>A linear state-space model writes as follows:
+<span class="math display" id="eq:transeq">\[\begin{eqnarray}
+\underset{(m \times 1)}{y_t}  &amp;=&amp; A + Bw_t + \eta_t  \quad \mbox{with }  \eta_t \sim i.i.d. \mathcal{N}(0,\Omega) \tag{5.1} \\
+\underset{(n \times 1)}{w_t} &amp; =&amp; \mu + \Phi w_{t-1} + \Sigma^{\frac{1}{2}}(w_{t-1}) \varepsilon_t,\tag{5.2}
+\end{eqnarray}\]</span>
+where <span class="math inline">\(\varepsilon_t\)</span> is a martingale difference sequence satisfying <span class="math inline">\(\mathbb{V}ar_t(\varepsilon_{t+1}) = Id\)</span>. The components of <span class="math inline">\(\eta_t\)</span> are measurement errors.</p>
+</div>
+<blockquote>
+<p><strong>Note:</strong> Eq. <a href="Estimation.html#eq:transeq">(5.2)</a> derives from Proposition <a href="ChapterAffine.html#prp:affineVAR">1.1</a> (Eq. <a href="ChapterAffine.html#eq:VARw">(1.12)</a>).</p>
+</blockquote>
+<p>In practice, one can distinguish two situations: (a) all state variables (components of <span class="math inline">\(w_t\)</span>) are observed and (b) some of these variables are latent. What do we mean by <em>model estimation</em> in case (b)? There are different situations:</p>
+<ul>
+<li>(b.i) We know the model parameters but we want to recover the latent factors—for instance to compute model-implied prices.</li>
+<li>(b.ii) We know neither the model parameters nor the latent variables, we want to estimate both of them.</li>
+<li>(b.iii) We know neither the model parameters nor the latent variables, we are just interested in the model parameters.</li>
+</ul>
+<p>In case (a): One can resort to standard estimation techniques (GMM, Maximum Likelihood) to estimate model parameters. Take for instance the maximum-likelihood case, we have:
+<span class="math display">\[\begin{eqnarray*}
+f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}) &amp;=&amp; f(y_t|\underline{y_{t-1}},\underline{w_{t}}) \times \underbrace{f(w_t|\underline{y_{t-1}},\underline{w_{t-1}})}_{= f(w_t|\underline{w_{t-1}})}\\
+&amp;=&amp; \mathbf{n}(y_t;A + Bw_t,\Omega) f(w_t|\underline{w_{t-1}}),
+\end{eqnarray*}\]</span>
+where <span class="math inline">\(\mathbf{n}(x;\mu,\Omega)\)</span> denotes the evaluation, at vector <span class="math inline">\(x\)</span>, of the p.d.f. of the multivariate normal distribution <span class="math inline">\(\mathcal{N}(\mu,\Omega)\)</span>. That is, if <span class="math inline">\(x\)</span> is a <span class="math inline">\(m\)</span>-dimensional vector:
+<span class="math display" id="eq:varPHI">\[\begin{equation}
+\mathbf{n}(x;\mu,\Omega) = \frac{1}{\sqrt{(2 \pi)^{m}|\Omega|}} \exp\left(-\frac{1}{2}\{x - \mu\}'\Omega^{-1}\{x-\mu\}\right).\tag{5.3}
+\end{equation}\]</span>
+Once this conditional p.d.f. is known, the total likelihood is given by (conditional on <span class="math inline">\(y_0\)</span> and <span class="math inline">\(w_0\)</span>):
+<span class="math display">\[
+\prod_{t=1}^T f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}).
+\]</span>
+Of course, <span class="math inline">\(f(w_t|\underline{w_{t-1}})\)</span> depends on the process chosen for <span class="math inline">\(w_t\)</span>. If it is complicated to compute, one can employ Pseudo Maximum Likelihood <span class="citation">(<a href="references.html#ref-Gourieroux_Monfort_Trognon_1984">C. Gourieroux, Monfort, and Trognon 1984</a>)</span>. The p.d.f. may involve, for instance, an infinite sum, which is the case in the ARG case of Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>. When <span class="math inline">\(w_t\)</span> is affine, the Pseudo Maximum Likelihood approach consists in replacing <span class="math inline">\(f(w_t|\underline{w_{t-1}})\)</span> by:
+<span class="math display">\[
+\mathbf{n}(w_t;\mu + \Phi w_{t-1},\Sigma(w_t)),
+\]</span>
+where <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\Sigma(w_t)\)</span> are introduced in Eqs. <a href="ChapterAffine.html#eq:MUPHI">(1.13)</a> and <a href="ChapterAffine.html#eq:SigmaWt">(1.14)</a> in Proposition <a href="ChapterAffine.html#prp:affineVAR">1.1</a>.</p>
+<p>In case (b.iii), one can estimate the model by Generalized Method of Moments (GMM), fitting sample moments computed using observed variables (prices, yields, returns). In the context of affine processes, conditional and unconditional moments of the state vector <span class="math inline">\(w_t\)</span> are available in closed from, as shown by Eqs. <a href="ChapterAffine.html#eq:condmean">(1.15)</a>, <a href="ChapterAffine.html#eq:condvar">(1.16)</a> and <a href="ChapterAffine.html#eq:uncondmeanvar">(1.17)</a>. If the model-implied moments are not available in closed-form, one may have to to resort to the <em>Simulated Method of Moments (SMM)</em> (see, e.g., <span class="citation">Gouriéroux and Monfort (<a href="references.html#ref-GourMonf96">1997</a>)</span> or <span class="citation">Darrell Duffie and Singleton (<a href="references.html#ref-Duffie_Singleton_1993">1993</a>)</span>).</p>
+<p>In cases (b.i) and (b.ii), one has to implement <em>filtering methods</em>, on which we focus on in the following.</p>
+</div>
+<div id="Estimation:KF" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Kalman-filter-based approach<a class="anchor" aria-label="anchor" href="#Estimation:KF"><i class="fas fa-link"></i></a>
+</h2>
+<div id="the-gaussian-linear-state-space-case" class="section level3" number="5.2.1">
+<h3>
+<span class="header-section-number">5.2.1</span> The Gaussian linear state-space case<a class="anchor" aria-label="anchor" href="#the-gaussian-linear-state-space-case"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let us start with a particular case of state-space model (Def. <a href="Estimation.html#def:LSSM">5.1</a>) where <span class="math inline">\(\varepsilon_t\)</span> is Gaussian and where <span class="math inline">\(\Sigma^{\frac{1}{2}}\)</span> does not depend on <span class="math inline">\(w_t\)</span>, i.e.with a homoskedastic linear Gaussian state-space model.</p>
+<p>Let’s denote by <span class="math inline">\(\theta\)</span> the vector of parameters that defines the model. For a given <span class="math inline">\(\theta\)</span> and a sequence of observations <span class="math inline">\(\{y_1,\dots,y_T\}\)</span>, the Kalman filter computes the distribution of <span class="math inline">\(w_t\)</span> given <span class="math inline">\(\{y_1,\dots,y_t\}\)</span> (see Def. <a href="Estimation.html#def:FiltvsSmooth">5.2</a>). This distribution is Gaussian, and obtained by a recursive algorithm. A byproduct of this algorithm is the likelihood function associated with <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\{y_1,\dots,y_T\}\)</span>. This opens the door to the estimation of <span class="math inline">\(\theta\)</span> by MLE, maximizing this function. In this sense, Kalman-filter techniques can address Objective (b.ii).</p>
+<p>Let us first introduce the notion of <em>filtered</em> and <em>smoothed</em> estimates of a latent variable (or vector of variables) <span class="math inline">\(w_t\)</span>:</p>
+<div class="definition">
+<p><span id="def:FiltvsSmooth" class="definition"><strong>Definition 5.2  (Filtered versus smoothed estimates) </strong></span>The filtering and smoothing problems consist in computing the following conditional moments:
+<span class="math display">\[\begin{equation*}
+\begin{array}{lccllllll}
+\mbox{Filtering:} &amp; w_{t|t} &amp; = &amp; \mathbb{E}(w_t|\underline{y_t}) &amp; \mbox{and}  &amp; P_{t|t} &amp;=&amp; \mathbb{V}ar(w_t|\underline{y_t})\\
+\mbox{Smoothing:} &amp; w_{t|T} &amp; = &amp; \mathbb{E}(w_t|\underline{y_T}) &amp; \mbox{and} &amp; P_{t|T} &amp;=&amp; \mathbb{V}ar(w_t|\underline{y_T}).
+\end{array}
+\end{equation*}\]</span></p>
+</div>
+<p>The following proposition outlines the Kalman algorithm (see, e.g. <span class="citation">Nelson and Kim (<a href="references.html#ref-Kim_Nelson_1999">1999</a>)</span>).</p>
+<div class="proposition">
+<p><span id="prp:KF" class="proposition"><strong>Proposition 5.1  (Kalman filter and smoother) </strong></span>If <span class="math inline">\(\varepsilon_t \sim \mathcal{N}(0,I)\)</span> in the state-space defined in Def. <a href="Estimation.html#def:LSSM">5.1</a>, then we have (<em>filtering</em>):
+<span class="math display">\[
+w_t|y_1,\dots,y_t \sim  \mathcal{N}(w_{t|t}|P_{t|t}),
+\]</span>
+where <span class="math inline">\(w_{t|t}\)</span> and <span class="math inline">\(P_{t|t}\)</span> result from the following recursive equations:
+<span class="math display">\[
+\boxed{
+\begin{array}{ccl}
+w_{t|t} &amp;=&amp; w_{t|t-1} + K_t \lambda_t\\
+P_{t|t} &amp;=&amp; (I - K_t B)P_{t|t-1} \\ \\
+\mbox{where (updating step)} \\
+\lambda_t &amp;=&amp; y_t - A - Bw_{t|t-1}  \quad \mbox{(forecast error)}\\
+S_{t|t-1} &amp;=&amp; \mathbb{V}ar(y_t|\underline{y_{t-1}}) = B P_{t|t-1} B' + \Omega\\
+K_t &amp;=&amp; P_{t|t-1}B'S_{t|t-1}^{-1} \quad \mbox{(Kalman gain)} \\ \\
+\mbox{and where (forecasting step)} \\
+w_{t|t-1} &amp;=&amp; \mu + \Phi w_{t-1|t-1} \\
+P_{t|t-1} &amp;=&amp; \Sigma + \Phi P_{t-1|t-1} \Phi' \quad (\Sigma = \Sigma^{\frac{1}{2}}{\Sigma^{\frac{1}{2}}}').
+\end{array}
+}
+\]</span>
+The log likelihood is (recursively) computed as follows:
+<span class="math display" id="eq:logLikKF">\[\begin{eqnarray}
+\log \mathcal{L}(\theta;\underline{y_T}) &amp;=&amp; \frac{mT}{2}\log\left(2\pi\right) \tag{5.4}\\
+&amp;  &amp; -\frac{1}{2}\sum_{t=1}^{T}\left(\log\left|S_{t | t-1}(\theta)\right|+\lambda'_{t}(\theta)S_{t\mid t-1}^{-1}(\theta)\lambda{}_{t}(\theta)\right). \nonumber
+\end{eqnarray}\]</span></p>
+<p>Moreover, we have (<em>smoothing</em>):
+<span class="math display">\[
+w_t|y_1,\dots,y_T \sim  \mathcal{N}(w_{t|T}|P_{t|T}),
+\]</span>
+where <span class="math inline">\(w_{t|T}\)</span> and <span class="math inline">\(P_{t|T}\)</span> result from the following recursive equations:
+<span class="math display">\[
+\boxed{
+\begin{array}{ccl}
+w_{t|T} &amp; = &amp; w_{t|t}+F_{t}(w_{t+1|T}-w_{t+1|t})\\
+P_{t|T} &amp; = &amp; P_{t|t}+F_{t}(P_{t+1|T}-P_{t+1|t})F'_{t}\\ \\
+\mbox{where} \\
+F_{t} &amp;=&amp; P_{t|t}\Phi'_{t+1}P_{t+1|t}^{-1}.
+\end{array}
+}
+\]</span></p>
+</div>
+<p>The following figure illustrates the updating step of the Kalman algorithm:</p>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:illusKF"></span>
+<img src="TSM_files/figure-html/illusKF-1.png" alt="Updating in the Kalman filter." width="95%"><p class="caption">
+Figure 5.1: Updating in the Kalman filter.
+</p>
+</div>
+<p>The recursive equations of the Kalman filter need to be initialized. That is, one needs to provide initial values for <span class="math inline">\(w_{0|0}\)</span>, <span class="math inline">\(P_{0|0}\)</span>. Different possibilities have been proposed. One can for instance:</p>
+<ul>
+<li>Include the elements of(<span class="math inline">\(w_{0|0}\)</span>, <span class="math inline">\(P_{0|0}\)</span>) among the parameters to estimate;</li>
+<li>Set <span class="math inline">\(w_{0|0}\)</span> and <span class="math inline">\(P_{0|0}\)</span> to their unconditional values (using, e.g., Eq. <a href="ChapterAffine.html#eq:uncondmeanvar">(1.17)</a>);</li>
+<li>Set <span class="math inline">\(w_{0|0}\)</span> to a prior value and take either an arbitrary large value for <span class="math inline">\(P_{0\mid0}\)</span> if the prior value is uncertain (which depicts a situation of <em>diffuse prior</em>) or a small value for <span class="math inline">\(P_{0\mid0}\)</span> if we are confident in this prior value <span class="math inline">\(w_{0|0}\)</span>.</li>
+</ul>
+<div class="example">
+<p><span id="exm:RKalman" class="example"><strong>Example 5.1  (Kalman filtering and smoothing) </strong></span>To illustrate, consider the following model:
+<span class="math display">\[\begin{eqnarray}
+\left[\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}\right] &amp; = &amp;
+\left[\begin{array}{cc}
+\alpha_{1} &amp; 0\\
+0 &amp; \alpha_{2}
+\end{array}\right]
+\left[\begin{array}{c}
+y_{1,t-1}\\
+y_{2,t-2}
+\end{array}\right]+\left[\begin{array}{c}
+\gamma_{1}\\
+\gamma_{2}
+\end{array}\right]w_{t}+ D\eta_t\label{eq_measur}\\
+w_{t} &amp; = &amp; \phi w_{t-1}+\varepsilon_{t},\label{eq_trans}
+\end{eqnarray}\]</span>
+where <span class="math inline">\(\eta_t \sim \mathcal{N}(0,Id)\)</span>.</p>
+<p>In the following lines, we specify one version of the previous model. We simulate trajectories of <span class="math inline">\(y_{1,t}\)</span>, <span class="math inline">\(y_{2,t}\)</span> and <span class="math inline">\(w_t\)</span> over 100 periods (Figure <a href="Estimation.html#fig:Kalmansimul">5.2</a>) and we further call <code>Kalman_filter</code> and <code>Kalman_filter</code> (from the <code>TSModels</code> package) to compute the filtered and smoothed estimates of <span class="math inline">\(w_t\)</span> (Figure <a href="Estimation.html#fig:Kalman2">5.3</a>).</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">TSModels</span><span class="op">)</span> <span class="co"># Kalman filter procedure in there.</span></span>
+<span><span class="co"># Set model specifications:</span></span>
+<span><span class="va">alpha1</span> <span class="op">&lt;-</span> <span class="fl">.5</span>;<span class="va">alpha2</span> <span class="op">&lt;-</span> <span class="fl">.95</span>;<span class="va">Alpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">alpha1</span>,<span class="va">alpha2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">d_11</span> <span class="op">&lt;-</span> <span class="fl">1</span>;<span class="va">d_12</span> <span class="op">&lt;-</span> <span class="fl">.5</span>;<span class="va">d_21</span> <span class="op">&lt;-</span> <span class="fl">.5</span>;<span class="va">d_22</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<span><span class="va">D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">d_11</span>,<span class="va">d_21</span>,<span class="va">d_12</span>,<span class="va">d_22</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">gamma1</span> <span class="op">&lt;-</span> <span class="fl">1</span>;<span class="va">gamma2</span> <span class="op">&lt;-</span> <span class="fl">2</span>;<span class="va">Gamma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">gamma1</span>,<span class="va">gamma2</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fl">.8</span></span>
+<span><span class="co"># Simulate model:</span></span>
+<span><span class="cn">T</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>;<span class="va">X</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="va">Alpha.Y_1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>;<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="cn">T</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">Alpha.Y_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">Alpha.Y_1</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Alpha</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">Alpha</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">y</span> <span class="op">+</span> <span class="va">Gamma</span> <span class="op">*</span> <span class="va">x</span> <span class="op">+</span> <span class="va">D</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">phi</span> <span class="op">*</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">Y</span>,<span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>;<span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">X</span>,<span class="va">x</span><span class="op">)</span><span class="op">}</span></span>
+<span><span class="co"># Define matrices needed in the Kalman_filter procedures:</span></span>
+<span><span class="va">nu_t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>,<span class="cn">T</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">H</span> <span class="op">&lt;-</span> <span class="va">phi</span>;<span class="va">G</span> <span class="op">&lt;-</span> <span class="va">Gamma</span></span>
+<span><span class="va">mu_t</span> <span class="op">&lt;-</span> <span class="va">Alpha.Y_1</span></span>
+<span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">1</span>;<span class="va">M</span> <span class="op">&lt;-</span> <span class="va">D</span></span>
+<span><span class="va">Sigma_0</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">phi</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="co"># unconditional variance of w</span></span>
+<span><span class="va">rho_0</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># unconditional mean of w</span></span>
+<span><span class="va">filter.res</span>   <span class="op">&lt;-</span> <span class="fu">Kalman_filter</span><span class="op">(</span><span class="va">Y</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,<span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span>,indic_pos<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">smoother.res</span> <span class="op">&lt;-</span> <span class="fu">Kalman_smoother</span><span class="op">(</span><span class="va">Y</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,<span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span>,indic_pos<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:Kalmansimul"></span>
+<img src="TSM_files/figure-html/Kalmansimul-1.png" alt="Simulated trajectories of $y_{1,t}$, $y_{2,t}$, and $w_t$." width="95%"><p class="caption">
+Figure 5.2: Simulated trajectories of <span class="math inline">\(y_{1,t}\)</span>, <span class="math inline">\(y_{2,t}\)</span>, and <span class="math inline">\(w_t\)</span>.
+</p>
+</div>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:Kalman2"></span>
+<img src="TSM_files/figure-html/Kalman2-1.png" alt="Filtered and smoothed estimates of $w_t$." width="95%"><p class="caption">
+Figure 5.3: Filtered and smoothed estimates of <span class="math inline">\(w_t\)</span>.
+</p>
+</div>
+</div>
+</div>
+<div id="missing-observations" class="section level3" number="5.2.2">
+<h3>
+<span class="header-section-number">5.2.2</span> Missing observations<a class="anchor" aria-label="anchor" href="#missing-observations"><i class="fas fa-link"></i></a>
+</h3>
+<p>In many application, one does not observe all the entries of <span class="math inline">\(y_t\)</span> at every date. This arises for instance in situations where (i) measurement variables feature different frequencies, (ii) we have unreliable data for some period (that we prefer not to include among observations), (iii) some of the measurement variables are observed over a shorter time span.</p>
+<p>These situations are easily addressed by Kalman filtering/smoothing (e.g., <span class="citation">Chow and Lin (<a href="references.html#ref-Chow_Lin_1971">1971</a>)</span> or <span class="citation">Harvey and Pierse (<a href="references.html#ref-Harvey_Pierse_1984">1984</a>)</span>). To accommodate missing observations in some of the <span class="math inline">\(y_t\)</span>’s, one simply has to change the size of this vector (and of <span class="math inline">\(\lambda_t\)</span>, <span class="math inline">\(S_{t|t-1}\)</span>, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>) for the relevant dates. Of course, the accuracy of <span class="math inline">\(w_{t|t}\)</span> will tend to be lower during periods where one or several (or all) the entries of <span class="math inline">\(y_t\)</span> are unobserved. (This will be apparent in the resulting covariance matrix of <span class="math inline">\(w_{t|t}\)</span>, namely <span class="math inline">\(P_{t|t}\)</span>.) The log-likelihood computation (Eq. <a href="Estimation.html#eq:logLikKF">(5.4)</a>) is still valid in this case; one simply has to adjust the number of observed variables at each iteration; that is, <span class="math inline">\(m\)</span> then depends on time.</p>
+<div class="example">
+<p><span id="exm:RKalmanMissing" class="example"><strong>Example 5.2  (Kalman filtering and smoothing) </strong></span>This example extends Example <a href="Estimation.html#exm:RKalmanMissing">5.2</a>. We take the simulated path of the obeerved variables <span class="math inline">\(y_{1,t}\)</span> and <span class="math inline">\(y_{2,t}\)</span> and remove observations of <span class="math inline">\(y_{1,t}\)</span> (respectively of <span class="math inline">\(y_{2,t}\)</span>) between periods <span class="math inline">\(t=30\)</span> and <span class="math inline">\(t=50\)</span> (resp. between periods <span class="math inline">\(t=40\)</span> and <span class="math inline">\(t=70\)</span>), and then use the Kalman filter and smother to recover the states <span class="math inline">\(w_t\)</span> in this situation with missing observations.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Y.modif</span> <span class="op">&lt;-</span> <span class="va">Y</span></span>
+<span><span class="va">Y.modif</span><span class="op">[</span><span class="fl">30</span><span class="op">:</span><span class="fl">50</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NaN</span></span>
+<span><span class="va">Y.modif</span><span class="op">[</span><span class="fl">40</span><span class="op">:</span><span class="fl">70</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NaN</span></span>
+<span><span class="co"># Call of Kalman filter and smoother:</span></span>
+<span><span class="va">filter.res</span>   <span class="op">&lt;-</span> <span class="fu">Kalman_filter</span><span class="op">(</span><span class="va">Y.modif</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,<span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span>,indic_pos<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">smoother.res</span> <span class="op">&lt;-</span> <span class="fu">Kalman_smoother</span><span class="op">(</span><span class="va">Y.modif</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,<span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span>,indic_pos<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:Kalman5"></span>
+<img src="TSM_files/figure-html/Kalman5-1.png" alt="Situation of missing observations." width="95%"><p class="caption">
+Figure 5.4: Situation of missing observations.
+</p>
+</div>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:Kalman6"></span>
+<img src="TSM_files/figure-html/Kalman6-1.png" alt="Filtered and smoothed estimates of $w_t$ in a situation of missing observations. The lower plot shows the standard errors associated with filtered and smoothed estimates. As expected, undertainty is larger for those dates where observations are missing." width="95%"><p class="caption">
+Figure 5.5: Filtered and smoothed estimates of <span class="math inline">\(w_t\)</span> in a situation of missing observations. The lower plot shows the standard errors associated with filtered and smoothed estimates. As expected, undertainty is larger for those dates where observations are missing.
+</p>
+</div>
+</div>
+<!-- \begin{center} -->
+<!-- \includegraphics[width=.8\linewidth]{figures/Figure_Kalman3_new.pdf} -->
+<!-- \end{center} -->
+<!-- \begin{center} -->
+<!-- \includegraphics[width=1\linewidth]{figures/Figure_Kalman4_new.pdf} -->
+<!-- \end{center} -->
+</div>
+</div>
+<div id="about-non-constant-conditional-matrix-sigma" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> About non-constant conditional matrix <span class="math inline">\(\Sigma\)</span><a class="anchor" aria-label="anchor" href="#about-non-constant-conditional-matrix-sigma"><i class="fas fa-link"></i></a>
+</h2>
+<p>Proposition <a href="Estimation.html#prp:KF">5.1</a> is valid when <span class="math inline">\(\varepsilon_t\)</span> is Gaussian and when <span class="math inline">\(\Sigma^{\frac{1}{2}}\)</span> does not depend on <span class="math inline">\(w_t\)</span>. However, in the general case (but when <span class="math inline">\(w_t\)</span> is an affine process), we have that <span class="math inline">\(\Sigma(w_{t-1}) \equiv \mathbb{V}ar(w_{t+1}|\underline{w_t})\)</span> is affine in <span class="math inline">\(w_t\)</span> (see Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>). In order to deal with this, the Kalman filter algorithm can be modified. Specifically, in the prediction step (see Prop. <a href="Estimation.html#prp:KF">5.1</a>), <span class="math inline">\(P_{t|t-1}\)</span> can be approximated by:
+<span class="math display">\[
+P_{t|t-1} = \Sigma\color{red}{(w_{t-1|t-1})} + \Phi P_{t-1|t-1} \Phi',
+\]</span>
+i.e. we replace <span class="math inline">\(\Sigma(w_{t-1})\)</span> by <span class="math inline">\(\Sigma(w_{t-1|t-1})\)</span>.</p>
+<p>Though the approach is then not necessarily optimal, it shows good empirical properties (<span class="citation">Jong (<a href="references.html#ref-deJong_2000">2000</a>)</span> or <span class="citation">Duan and Simonato (<a href="references.html#ref-Duan_Simonato_1999">1999</a>)</span>). In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations <span class="citation">(<a href="references.html#ref-zarg_2017">Alain Monfort et al. 2017</a>)</span>.</p>
+</div>
+<div id="nonlinear" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Non-linear models<a class="anchor" aria-label="anchor" href="#nonlinear"><i class="fas fa-link"></i></a>
+</h2>
+<p>As soon as <span class="math inline">\(w_t\)</span> follows an affine process, it admits the VAR dynamics presented in Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>, i.e., it features a linear transition equation. However, measurement equations may be non-linear (affine) functions of <span class="math inline">\(w_t\)</span>. This is in particular the case if observed variables include Swaps rates (see Remark SWAPS XXXX), CDS rates (see Subsection <a href="#subsec:Credit:CDS"><strong>??</strong></a>, in particular Eq. <a href="CreditLiRisks.html#eq:MCCDSformula1">(7.35)</a>) or prices of tranche products (see Example <a href="CreditLiRisks.html#exm:DD">7.5</a>).</p>
+<p>In a context of non-linear measurement equations, one can for instance resort to the Extended Kalman Filter (linearizing the measurement equations) or, to higher-order Taylor. <span class="citation">Alain Monfort, Renne, and Roussellet (<a href="references.html#ref-Monfort_Renne_Roussellet_2015">2015</a>)</span> develop a Quadratic Kalman Filter (QKF), where measurement equations are quadratic functions of the state vector.</p>
+</div>
+<div id="EstimationInversion" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> The inversion technique<a class="anchor" aria-label="anchor" href="#EstimationInversion"><i class="fas fa-link"></i></a>
+</h2>
+<p>The inversion technique has been introduced by <span class="citation">Chen and Scott (<a href="references.html#ref-Chen_Scott_1993">1993</a>)</span>. It is used, e.g., by <span class="citation">Ang and Piazzesi (<a href="references.html#ref-Ang_Piazzesi_2003">2003</a>)</span> and <span class="citation">Liu, Longstaff, and Mandell (<a href="references.html#ref-Liu_longstaff_Mandell_2006">2006</a>)</span>. Contrary to Kalman-type approaches, this approach is not recursive. it can therefore be faster, especially for long sample.</p>
+<p>This approach works under the assumption that some of the observed variables are <em>perfectly priced</em> (or modelled).(Recall that <span class="math inline">\(y_t\)</span> and <span class="math inline">\(w_t\)</span> are respectively of dimension <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span>, see Eqs. <a href="Estimation.html#eq:measeq">(5.1)</a> and <a href="Estimation.html#eq:transeq">(5.2)</a> in Def. <a href="Estimation.html#def:LSSM">5.1</a>.) Formally:</p>
+<div class="hypothesis">
+<p><span id="hyp:perfectlymodelled" class="hypothesis"><strong>Hypothesis 5.1  (Perfectly-modelled variables) </strong></span><span class="math inline">\(n\)</span> components of the <span class="math inline">\(m\)</span>-dimensional vector <span class="math inline">\(y_t\)</span> (with <span class="math inline">\(n \le m\)</span>) are perfectly modelled. That is, there is no measurement errors in associated measurement equations.</p>
+<p>Without loss of generality, these perfectly-modelled variables are the first <span class="math inline">\(n\)</span> components of <span class="math inline">\(y_t\)</span>, that is:
+<span class="math display">\[
+y_t =
+\left(\begin{array}{c}
+\underbrace{y_{1,t}}_{(n \times 1)} \\
+\underbrace{y_{2,t}}_{(m-n)\times1}
+\end{array}\right).
+\]</span></p>
+</div>
+<p>Under Assumption <a href="Estimation.html#hyp:perfectlymodelled">5.1</a>, the measurement equation (Eq. <a href="Estimation.html#eq:measeq">(5.1)</a>) becomes:
+<span class="math display">\[
+\left[
+\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}
+\right]
+=
+\left[
+\begin{array}{c}
+A_{1}\\
+A_{2}
+\end{array}
+\right]+
+\left[
+\begin{array}{c}
+B_{1}\\
+B_{2}
+\end{array}
+\right]w_t +
+\left[
+\begin{array}{c}
+0\\
+\eta_{2,t}
+\end{array}
+\right],
+\]</span>
+where <span class="math inline">\(\eta_{2,t} \sim \mathcal{N}(0,\Omega_2)\)</span> (say). This notably implies that
+<span class="math display" id="eq:wY1">\[\begin{equation}
+w_t = B_{1}^{-1}(y_{1,t} - A_1).\tag{5.5}
+\end{equation}\]</span></p>
+<p>Under this assumption, and if the conditional distribution of <span class="math inline">\(w_t\)</span> is available in closed form, then Proposition <a href="Estimation.html#prp:logLikinversion">5.2</a> shows that the (exact) likelihood of the model can then be computed. This proposition shows in particular that the conditional p.d.f. <span class="math inline">\(f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})\)</span> involves three terms:</p>
+<ul>
+<li>The first term (in blue in <a href="Estimation.html#eq:inversionLogL">(5.6)</a>) stems from the conditional distribution <span class="math inline">\(w_t|\underline{w_{t-1}}\)</span>.</li>
+<li>The second term (in red in <a href="Estimation.html#eq:inversionLogL">(5.6)</a>) is associated with the measurement errors pertaining to <span class="math inline">\(y_{2,t}\)</span>, that are the components of <span class="math inline">\(\eta_{2,t}\)</span>.</li>
+<li>The third term (in brown in <a href="Estimation.html#eq:inversionLogL">(5.6)</a>) is the determinant of the Jacobian matrix associated with the linear transformation between <span class="math inline">\(w_t\)</span> and <span class="math inline">\(y_{1,t}\)</span> (Eq. <a href="Estimation.html#eq:wY1">(5.5)</a>), that is <span class="math inline">\(|B_1|\)</span>.</li>
+</ul>
+<p>Once one knows how to compute <span class="math inline">\(f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})\)</span>, the total likelihood is easily obtained since:
+<span class="math display">\[
+f_{Y_1,\dots,Y_T}(y_1,y_2,\dots,y_T) = f_{Y_1}(y_1) \prod_{t=2}^T f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}}).
+\]</span></p>
+<div class="proposition">
+<p><span id="prp:logLikinversion" class="proposition"><strong>Proposition 5.2  (Log-likelihood in the inversion context) </strong></span>In the context of a linear state-space model as defined in Def. <a href="Estimation.html#def:LSSM">5.1</a>, under Assumption <a href="Estimation.html#hyp:perfectlymodelled">5.1</a>, and if <span class="math inline">\(w_t\)</span> is a Markovian process, we have:
+<span class="math display" id="eq:inversionLogL">\[\begin{eqnarray}
+f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}}) &amp;=&amp; \color{blue}{f_{w_t|w_{t-1}}(w(y_{1,t});w(y_{t-1}))} \times \nonumber\\
+&amp;&amp; \color{red}{\mathbf{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2)} \times \color{brown}{|B_1|^{-1}}.\tag{5.6}
+\end{eqnarray}\]</span>
+where <span class="math inline">\(w(y_{1,t}) = B_{1}^{-1}(y_{1,t} - A_1)\)</span> and where <span class="math inline">\(\mathbf{n}\)</span> denotes the multivariate normal p.d.f. (Eq. <a href="Estimation.html#eq:varPHI">(5.3)</a>).</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-21" class="proof"><em>Proof</em>. </span>Since <span class="math inline">\(w_t\)</span> is Markov, so is <span class="math inline">\(y_{1,t}\)</span> and since <span class="math inline">\(y_{2,t} = A_2 + B_2 w(y_{1,t}) + \eta_{2,t}\)</span>, with <span class="math inline">\(w(y_{1,t}) = B_{1}^{-1}(y_{1,t} - A_1)\)</span>, we have:
+<span class="math display">\[\begin{eqnarray*}
+f(y_t|y_{t-1}) &amp;=&amp; f_1(y_{1,t}|y_{1,t-1}) f_2(y_{2,t}|y_{1,t}) \\
+&amp;=&amp; |B_1|^{-1} f_w(w(y_{1,t})|w(y_{1,t-1})) \mathbf{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2),
+\end{eqnarray*}\]</span>
+where</p>
+<ul>
+<li>
+<span class="math inline">\(f_1(y_{1,t}|y_{1,t-1})= |B_1|^{-1} f_w(w(y_{1,t})|w(y_{1,t-1}))\)</span> comes from the fact that, if <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are two random variables such that <span class="math inline">\(V = g(U)\)</span>, where <span class="math inline">\(g\)</span> is a bijective and differentiable function, then <span class="math inline">\(f_V(v)=\left|\frac{\partial g^{-1}(v)}{\partial v'}\right| f_U(g^{-1}(v))\)</span>,</li>
+<li>and <span class="math inline">\(f_2(y_{2,t}|y_{1,t}) = \mathbf{n}(y_{2,t}; A_2 + B_2w(y_{1,t}),\Omega_2)\)</span> comes from the fact that <span class="math inline">\(y_{2,t}|y_{1,t} \sim \mathcal{N}(A_2 + B_2 w(y_{1,t}),\Omega_2)\)</span>.</li>
+</ul>
+</div>
+<div id="EstimationRS" class="section level3" number="5.5.1">
+<h3>
+<span class="header-section-number">5.5.1</span> Dealing with unobserved regimes<a class="anchor" aria-label="anchor" href="#EstimationRS"><i class="fas fa-link"></i></a>
+</h3>
+<p>Kalman and inversion techniques are not suited to the case where some of the components of <span class="math inline">\(w_t\)</span> are valued in a discrete set. This is typically the case if <span class="math inline">\(w_t\)</span> is of the form:
+<span class="math display">\[
+w_t = \left(\begin{array}{c}
+z_t \\
+x_t
+\end{array}\right),
+\]</span>
+where <span class="math inline">\(z_t\)</span> is valued in <span class="math inline">\(\{e_1,\dots,e_J\}\)</span>, <span class="math inline">\(e_j\)</span> being the <span class="math inline">\(j^{th}\)</span> column of <span class="math inline">\(Id_J\)</span>, which is the case in the prsence of regime switching features (see Subsection <a href="ChapterAffine.html#Markov">1.6</a>).</p>
+<p>Assume that <span class="math inline">\(z_t\)</span> is an exogenous and homogenous Markov chain whose dynamics is defined by the <span class="math inline">\(\pi(e_i,e_j)\)</span>’s that are such that:
+<span class="math display" id="eq:transitproba">\[\begin{equation}
+\pi(e_i, e_j) = \mathbb{P}(z_{t+1}=e_j | z_t=e_i).\tag{5.7}
+\end{equation}\]</span>
+Denote by <span class="math inline">\(\Pi\)</span> the matrix of transition probabilities, i.e., the <span class="math inline">\((i,j)\)</span> component of <span class="math inline">\(\Pi\)</span> is <span class="math inline">\(\pi(e_i, e_j)\)</span>. Assume further that we have:
+<span class="math display" id="eq:dynxRS">\[\begin{equation}
+x_t = m(z_t,x_{t-1}) + \varepsilon_t,\tag{5.8}
+\end{equation}\]</span>
+where <span class="math inline">\(\mathbb{E}(\varepsilon_t|\underline{z_t},\underline{x_{t-1}})=0\)</span>.</p>
+<p>We denote the conditional distribution of <span class="math inline">\(\varepsilon_t\)</span> w.r.t. <span class="math inline">\((z_t,x_{t-1})\)</span> by <span class="math inline">\(f_{\varepsilon}(.;z_t,x_{t-1})\)</span>.</p>
+<div class="hypothesis">
+<p><span id="hyp:RSmeasurement" class="hypothesis"><strong>Hypothesis 5.2  (Measurement equations) </strong></span>The measurement equation is of the form:
+<span class="math display" id="eq:RSmeasur">\[\begin{equation}
+y_t = A z_t + B x_t + \eta_t,  \quad \mbox{with }  \eta_t \sim i.i.d. \mathcal{N}(0,\Omega).\tag{5.9}
+\end{equation}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:GRSVAR" class="example"><strong>Example 5.3  (Regime-Switching Gaussian VAR) </strong></span>Building on Example <a href="ChapterAffine.html#exm:RSVAR">1.13</a>, we know that if
+<span class="math display" id="eq:xRSVAR">\[\begin{equation}
+x_t = \mu z_t + \Phi x_{t-1} +  \varepsilon_t,\tag{5.10}
+\end{equation}\]</span>
+where <span class="math inline">\(\varepsilon_t|\underline{x_t},z_t \sim \mathcal{N}(0,\Sigma(z_t))\)</span> and if <span class="math inline">\(z_t\)</span> is an exogenous independent Markov chain, then <span class="math inline">\(w_t = (x_t',z_t')'\)</span> is affine. Using the notations of Eq. <a href="Estimation.html#eq:dynxRS">(5.8)</a>, we have:
+<span class="math display">\[
+m(z_t,x_{t-1}) = \mu z_t + \Phi x_{t-1}.
+\]</span>
+If <span class="math inline">\(r_t\)</span> and the s.d.f. are respectively affine and exponential in <span class="math inline">\(w_t\)</span>, then, in particular, yields are also affine in <span class="math inline">\(w_t\)</span>, i.e. of the form <span class="math inline">\(R(t,h)= A_h'z_t + B_{h}'x_t\)</span> (see Eq. <a href="TSModels.html#eq:RthAB">(3.7)</a>). Therefore, if the components of <span class="math inline">\(y_t\)</span> are yields of different maturities, the measurement equations are consistent with Assumption <a href="Estimation.html#hyp:RSmeasurement">5.2</a>.</p>
+</div>
+<p>How to estimate such a model when the regimes <span class="math inline">\(z_t\)</span> are unobservable? We distinguish two distinct situations:</p>
+<p><strong>Case 1. The <span class="math inline">\(x_t\)</span> factors are observable.</strong> The probabilities of being in the different regimes on each date can be estimated by employing the Kitagawa-Hamilton filter, with (using the notations of Proposition <a href="#app:KitagHamilton"><strong>??</strong></a>): <span class="math inline">\(F_t = (y_t',x_t')'\)</span> and
+<span class="math display">\[\begin{eqnarray*}
+f(F_t|z_t=e_j,\underline{F_{t-1}}) &amp;=&amp; f(y_t|x_t,z_t=e_j,\underline{F_{t-1}})f(x_t|z_t=e_j,\underline{F_{t-1}}) \\
+&amp;=&amp; \mathbf{n}(y_t;A z_t + B x_t,\Omega) \times \\
+&amp;&amp;f_{\varepsilon}(x_t - m(z_t,x_{t-1});z_t,x_{t-1}),
+\end{eqnarray*}\]</span>
+where <span class="math inline">\(\mathbf{n}(u;\mu,\Omega)\)</span> denotes the evaluation, at vector <span class="math inline">\(u\)</span> of the p.d.f. of the multivariate normal distribution <span class="math inline">\(\mathcal{N}(\mu,\Omega)\)</span> (see eq. <a href="Estimation.html#eq:varPHI">(5.3)</a>). A by-product of the Kitagawa-Hamilton filter is the likelihood function associated with the dataset. As a result, the model parameterization can be estimated by maximum llikelihood approach.</p>
+<p><strong>Case 2. The <span class="math inline">\(x_t\)</span> factors are not observable.</strong> There are two sub-cases:</p>
+<ul>
+<li>(2.i) the components of <span class="math inline">\(y_t\)</span> are not perfectly modelled (i.e. <span class="math inline">\(\Omega \ne 0\)</span>, where <span class="math inline">\(\Omega\)</span> defined in Eq. <a href="Estimation.html#eq:RSmeasur">(5.9)</a>. One has then to resort to filters dealing with two types of uncertainty: hidden discrete values (<span class="math inline">\(z_t\)</span>) and continuously distributed latent variables (<span class="math inline">\(x_t\)</span>). <span class="citation">C.-J. Kim (<a href="references.html#ref-Kim_1994">1994</a>)</span>’s filter can be employed when the state-space model is of the form <a href="Estimation.html#eq:RSmeasur">(5.9)</a>-<a href="Estimation.html#eq:xRSVAR">(5.10)</a> (see, e.g., <span class="citation">Alain Monfort and Renne (<a href="references.html#ref-Monfort_Renne_2014">2014</a>)</span>), detailed in Example <a href="CreditLiRisks.html#exm:SovereignSpreads">7.2</a>).</li>
+<li>(2.ii) <span class="math inline">\(n_x\)</span> components of <span class="math inline">\(y_t\)</span> are perfectly modelled (where <span class="math inline">\(n_x\)</span> is the dimension of <span class="math inline">\(x_t\)</span>). One can then resort to an inversion technique, complemented with the Kitagawa-Hamilton filter, to estimate the model (see <span class="citation">Alain Monfort and Renne (<a href="references.html#ref-Monfort_Renne_2013">2013</a>)</span> and <span class="citation">Renne (<a href="references.html#ref-Renne_2017">2017</a>)</span> for applications).</li>
+</ul>
+<div class="proposition">
+<p><span id="prp:KitagHamilton" class="proposition"><strong>Proposition 5.3  (Kitagawa-Hamilton filter) </strong></span>Consider a <span class="math inline">\(q\)</span>-dimensional vector of variables <span class="math inline">\(F_t\)</span> and an exogenous homogenous Markov chain <span class="math inline">\(z_t\)</span>. We make use of the following notations:</p>
+<ul>
+<li>
+<span class="math inline">\(\eta_t\)</span> is a <span class="math inline">\(J\)</span>-dimensional vector whose <span class="math inline">\(j^{th}\)</span> component is the p.d.f. of <span class="math inline">\(F_t\)</span> conditional on <span class="math inline">\((z_t = e_j,\underline{F_{t-1}})\)</span>, i.e. <span class="math inline">\(f(F_t|z_t=e_j,\underline{F_{t-1}})\)</span>
+</li>
+<li>
+<span class="math inline">\(\xi_{t}\)</span> is a <span class="math inline">\(J\)</span>-dimensional vector whose <span class="math inline">\(j^{th}\)</span> component is <span class="math inline">\(\mathbb{P}(z_t = e_j|\underline{F_t})\)</span>.</li>
+</ul>
+<p>The sequence <span class="math inline">\(\xi_{t}\)</span> can then be computed recursively as follows:
+<span class="math display" id="eq:KHfilter">\[\begin{equation}
+\xi_t = \frac{(\Pi' \xi_{t-1}) \odot \eta_t}{\mathbf{1}'(\Pi' \xi_{t-1} \odot \eta_t)},\tag{5.11}
+\end{equation}\]</span>
+where <span class="math inline">\(\odot\)</span> denotes the element-by-element (Hadamard) product and where <span class="math inline">\(\mathbf{1}\)</span> denotes a <span class="math inline">\(J\)</span>-dimensional vector of ones.</p>
+<p>Moreover, the previous formulas also show how to compute the likelihood of the model since:
+<span class="math display" id="eq:KHlikelihood">\[\begin{equation}
+f(F_t|\underline{F_{t-1}})=\mathbf{1}'(\Pi' \xi_{t-1} \odot \eta_t).\tag{5.12}
+\end{equation}\]</span></p>
+</div>
+</div>
+<div id="MixedKitagawaHamilton" class="section level3" number="5.5.2">
+<h3>
+<span class="header-section-number">5.5.2</span> Mixed use of Kitagawa-Hamilton and inversion techniques<a class="anchor" aria-label="anchor" href="#MixedKitagawaHamilton"><i class="fas fa-link"></i></a>
+</h3>
+<p>Without loss of generality, assume that the <span class="math inline">\(n_x\)</span> first components of <span class="math inline">\(y_t\)</span> are observed without error, i.e. Assumption <a href="Estimation.html#hyp:RSmeasurement">5.2</a> becomes
+<span class="math display">\[
+\left[
+\begin{array}{c}
+y_{1,t}\\
+y_{2,t}
+\end{array}
+\right]
+=
+\left[
+\begin{array}{c}
+A_{1}z_t\\
+A_{2}z_t
+\end{array}
+\right]+
+\left[
+\begin{array}{c}
+B_{1}\\
+B_{2}
+\end{array}
+\right]x_t +
+\left[
+\begin{array}{c}
+0\\
+\eta_{2,t}
+\end{array}
+\right],
+\]</span>
+where <span class="math inline">\(\varepsilon_2 \sim \mathcal{N}(0,\Omega_2)\)</span>.</p>
+<p>Since <span class="math inline">\(y_{1,t} = A_1 z_t + B_1 x_t\)</span>, we then have:
+<span class="math display" id="eq:xRS">\[\begin{equation}
+x_t \equiv x(y_{t},z_t) = B_1^{-1}(y_{1,t} - A_1 z_t).\tag{5.13}
+\end{equation}\]</span></p>
+<p>In order to employ the Kitagawa-Hamilton filter (Proposition <a href="Estimation.html#prp:KitagHamilton">5.3</a>), one need to define the extended Markov chain:
+<span class="math display">\[
+\mathcal{Z}_t = z_{t-1} \otimes z_t,
+\]</span>
+whose matrix of transition probabilities is detailed in Proposition <a href="Estimation.html#prp:mixedKFinversion">5.4</a>.</p>
+<div class="proposition">
+<p><span id="prp:mixedKFinversion" class="proposition"><strong>Proposition 5.4  (Kitagawa-Hamilton and inversion techniques) </strong></span>The matrix of transition probabilities of <span class="math inline">\(\mathcal{Z}_t\)</span> is of the form <span class="math inline">\(\mathbf{1}_{n \times 1} \otimes \widetilde{\Pi}\)</span>, with
+<span class="math display">\[
+\widetilde{\Pi} =
+\left[
+\begin{array}{ccccc}
+\pi_{1,\bullet} &amp; 0_{1 \times n} \dots &amp; &amp; &amp; 0_{1 \times n} \\
+0_{1 \times n} &amp; \pi_{2,\bullet} &amp; 0_{1 \times n} &amp; \dots &amp; 0_{1 \times n} \\
+&amp;&amp; \ddots \\
+&amp; &amp;  0_{1 \times n} &amp; \pi_{n-1,\bullet} &amp; 0_{1 \times n} \\
+0_{1 \times n} &amp;\dots &amp;&amp; 0_{1 \times n} &amp; \pi_{n,\bullet}
+\end{array}
+\right],
+\]</span>
+where <span class="math inline">\(\pi_{i,\bullet}\)</span> denotes the <span class="math inline">\(i^{th}\)</span> row of <span class="math inline">\(\Pi\)</span> (<span class="math inline">\(\Pi\)</span> is defined on Slide XXX).</p>
+<p>The last term appearing in Eq. <a href="Estimation.html#eq:conddistri4KHfilter">(5.14)</a> can be computed as follows:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp;f\left(\left[\begin{array}{c}x(y_t,z(\mathcal{Z}_t))\\y_{2,t}\end{array}\right]|\mathcal{Z}_t,\underline{y_{t-1}}\right) \\
+&amp;=&amp; f\left(y_{2,t}|x_t=x(y_t,z(\mathcal{Z}_t)),\mathcal{Z}_t,\underline{y_{t-1}}\right) \times\\
+&amp;&amp; f\left(x(y_t,z(\mathcal{Z}_t))|\mathcal{Z}_t,\underline{y_{t-1}}\right) \\
+&amp;=&amp; \mathbf{n}(y_{2,t};A_2z_t + B_2x_t,\Omega_2) \times\\
+&amp;&amp; f_\varepsilon\left(\varepsilon_t|z_t = z(\mathcal{Z}_t),x_{t-1}=x(y_{t-1},z_{-1}(y_{t-1},\mathcal{Z}_t))\right),
+\end{eqnarray*}\]</span>
+where <span class="math inline">\(\mathbf{n}\)</span> is the p.d.f. of a multivariate normal distri, (Prop. <a href="Estimation.html#prp:logLikinversion">5.2</a>, where <span class="math inline">\(\varepsilon_t = x_t - m[z(\mathcal{Z}_t),x(y_{t-1},z_{-1}(y_{t-1},\mathcal{Z}_t))]\)</span> (<span class="math inline">\(m\)</span> defined in Eq. <a href="Estimation.html#eq:dynxRS">(5.8)</a>).</p>
+</div>
+<p>Note that we have:
+<span class="math display">\[
+\left\{
+\begin{array}{cclll}
+z_t &amp;\equiv&amp; z(\mathcal{Z}_t) &amp;=&amp; (\mathbf{1}' \otimes Id_{n}) \mathcal{Z}_t \\
+z_{t-1} &amp;\equiv&amp; z_{-1}(\mathcal{Z}_t) &amp;=&amp; (Id_{n} \otimes \mathbf{1}') \mathcal{Z}_t.
+\end{array}
+\right.
+\]</span></p>
+<p>The Kitagawa-Hamilton filter (Proposition <a href="Estimation.html#prp:KitagHamilton">5.3</a>) can then be employed, with <span class="math inline">\(F_t = y_t\)</span> and:
+<span class="math display" id="eq:conddistri4KHfilter">\[\begin{eqnarray}
+f(y_t|\mathcal{Z}_t,\underline{y_{t-1}}) &amp;=&amp;|B_1^{-1}| \times \nonumber \\
+&amp;&amp; f\left(\left[\begin{array}{c}x(y_t,z(\mathcal{Z}_t))\\ y_{2,t}\end{array}\right]|\mathcal{Z}_t,\underline{y_{t-1}}\right),\tag{5.14}
+\end{eqnarray}\]</span>
+where the computation of the last term is detailed in Proposition <a href="Estimation.html#prp:mixedKFinversion">5.4</a>.</p>
+<div class="example">
+<p><span id="exm:RSMP" class="example"><strong>Example 5.4  (Interest-rate model with monetary policy-related regimes) </strong></span><span class="citation">Renne (<a href="references.html#ref-Renne_2017">2017</a>)</span> porposes a model where regimes have monetary-policy interpretations. The model is estimated on daily data. The short-term rate is the euro-area overnight interbank rate (EONIA). It is modeled as follows:
+<span class="math display">\[\begin{equation}
+\boxed{r_{t}=\underset{\mbox{Target}}{\underbrace{\bar{r}_{t}}}+\underset{\mbox{EONIA spread}}{\underbrace{x_{t}}}.}
+\end{equation}\]</span>
+The target rate <span class="math inline">\(\bar{r}_{t}\)</span> has a step-like path <span class="math inline">\(\bar{r}_{t}=\Delta'z_{r,t}\)</span>,
+where</p>
+<ul>
+<li>
+<span class="math inline">\(\Delta=[\begin{array}{ccccc} 0 &amp; 0.25 &amp; 0.50 &amp; \ldots &amp; \bar{r}_{max}\end{array}]'\)</span> and</li>
+<li><span class="math inline">\(z_{r,t}=[\begin{array}{ccccccc} 0 &amp; \ldots &amp; 0 &amp; 1 &amp; 0 &amp; \ldots &amp; 0\end{array}]'\)</span></li>
+<li>EONIA spread (<span class="math inline">\(x_t\)</span>) persistent and mean-reverting fluctuations (AR process).</li>
+<li>
+<span class="math inline">\(z_t = z_{r,t}\otimes z_{m,t}\)</span> where <span class="math inline">\(z_{m,t}\)</span> is the monetary-policy regime:</li>
+<li>Easing (<span class="math inline">\(z_{m,t}=[\begin{array}{ccc} 1 &amp; 0 &amp; 0\end{array}]\)</span>),</li>
+<li>Status Quo (<span class="math inline">\(z_{m,t}=[\begin{array}{ccc} 0 &amp; 1 &amp; 0\end{array}]\)</span>),</li>
+<li>Tightening (<span class="math inline">\(z_{m,t}=[\begin{array}{ccc} 0 &amp; 0 &amp; 1\end{array}]\)</span>).</li>
+</ul>
+<p>One can simulate this model by using this <a href="https://fixed-income.shinyapps.io/NLIR/">web-interface</a>.</p>
+<p>In terms of observability, <span class="math inline">\(z_{r,t}\)</span> is observed (since the policy rate is osberved), but not <span class="math inline">\(z_{m,t}\)</span>. Hence, a filtering procedure is needed. <span class="citation">Renne (<a href="references.html#ref-Renne_2017">2017</a>)</span> adapts the approach presented in Subsection <a href="Estimation.html#MixedKitagawaHamilton">5.5.2</a> to the case where <span class="math inline">\(z_{t}\)</span> is partially observed.</p>
+<p>In this model, the results of Example <a href="Estimation.html#exm:GRSVAR">5.3</a> imply that we have:
+<span class="math display">\[
+R(t,h) = A_h' z_t + B_h x_t.
+\]</span>
+Denote by <span class="math inline">\(\mathcal{A}_h\)</span> the <span class="math inline">\((3 \times n_r)\)</span> matrix such that <span class="math inline">\(A_h = vec(\mathcal{A}_h)\)</span>. We then have <span class="math inline">\(A_h' z_t = (\mathcal{A}_h z_{r,t})' z_{m,t}\)</span> and, therefore:
+<span class="math display">\[
+R(t,h) = A_{t,h}' z_t + B_h x_t, \quad \mbox{where $A_{t,h} = \mathcal{A}_h z_{r,t}$.}
+\]</span>
+The model is estimated by a combination of Kitagawa-Hamilton and inversion techniques, assuming that a linear combination of yields is modeled without errors (which gives <span class="math inline">\(x_t = x(y_t,z_{m,t},z_{r,t})\)</span>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:figRenne2017"></span>
+<img src="figures/Fig-SNDE.png" alt="Source: Renne (2017)." width="95%"><p class="caption">
+Figure 5.6: Source: Renne (2017).
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="EstimationPersistency" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> A typical small-sample issue<a class="anchor" aria-label="anchor" href="#EstimationPersistency"><i class="fas fa-link"></i></a>
+</h2>
+<p>Interest rates are particularly persistent variables. Since affine models eventually lead to linear relationships between state variables and interest rates (see Eq. <a href="TSModels.html#eq:RthAB">(3.7)</a>), some state variables are also necessarily highly persistent. Accordingly, in small sample, maximum-likelihood estimates of the model parameters are likely to suffer from a downward bias (see, e.g., <span class="citation">Michael D. Bauer and Wu (<a href="references.html#ref-Bauer_Rudebusch_Wu_2012">2012</a>)</span> or <span class="citation">Jardet, Monfort, and Pegoraro (<a href="references.html#ref-Jardet_Monfort_Pegoraro_2013">2013</a>)</span>). This relates to a well-known econometric problem illustrated by Figure <a href="Estimation.html#fig:persist1">5.7</a>.</p>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:persist1"></span>
+<img src="TSM_files/figure-html/persist1-1.png" alt="1000 random walk samples of size $T$ ($T=50$ for the left plot and $T=400$ for the right plot) have been simulated. For each sample, we run the OLS regression $y_t = \phi y_{t-1} + \varepsilon_t$ to estimate $\phi$ (whose true value is 1). The plots show the distributions (kernel-based estimation) of the estimated $\phi$. The vertical red bar indicate the means of the distributions; the vertical blue line shows the usual bias approximation ($1-5.3/T$)." width="95%"><p class="caption">
+Figure 5.7: 1000 random walk samples of size <span class="math inline">\(T\)</span> (<span class="math inline">\(T=50\)</span> for the left plot and <span class="math inline">\(T=400\)</span> for the right plot) have been simulated. For each sample, we run the OLS regression <span class="math inline">\(y_t = \phi y_{t-1} + \varepsilon_t\)</span> to estimate <span class="math inline">\(\phi\)</span> (whose true value is 1). The plots show the distributions (kernel-based estimation) of the estimated <span class="math inline">\(\phi\)</span>. The vertical red bar indicate the means of the distributions; the vertical blue line shows the usual bias approximation (<span class="math inline">\(1-5.3/T\)</span>).
+</p>
+</div>
+<p>This small-sample downward bias has dramatic consequences in terms of term premium estimates. For the sake of illustration, consider the following process for the short-term interest rate under the physical measure (monthly frequency):
+<span class="math display">\[
+i_{t+1} = \bar{i} + \phi (i_{t}-\bar{i}) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
+\]</span>
+and the following under the risk-neutral measure:
+<span class="math display">\[
+i_{t+1} = \bar{i}^* + \phi^* (i_{t}-\bar{i}^*) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
+\]</span>
+with <span class="math inline">\(\bar{i} = 3\%/12\)</span>, <span class="math inline">\(\bar{i}^* = 5\%/12\)</span>, <span class="math inline">\(\phi = 0.98\)</span>, <span class="math inline">\(\phi^*=0.99\)</span>, <span class="math inline">\(\sigma = 0.2\%\)</span>.
+Assume the estimate of <span class="math inline">\(\phi\)</span> is downward biased (<span class="math inline">\(\hat\phi=0.9\)</span>). The influence of that bias on the 10-year term premium is illustrated by Figure <a href="Estimation.html#fig:persist2">5.8</a>.</p>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:persist2"></span>
+<img src="TSM_files/figure-html/persist2-1.png" alt="This figure illustrates the influence of the downward bias on on estimated term premiums, see the text for more details." width="95%"><p class="caption">
+Figure 5.8: This figure illustrates the influence of the downward bias on on estimated term premiums, see the text for more details.
+</p>
+</div>
+<p><span class="citation">D. H. Kim and Orphanides (<a href="references.html#ref-Kim_Orphanides_2005">2005</a>)</span> have proposed a simple approach to deal with this problem. Their approach consists in adding measurement equations to impose that the model-implied forecasts are—up to some measurement errors—equal to survey-based ones. In their empirical exercise, they use the <a href="https://lrus.wolterskluwer.com/store/products/blue-chip-financial-forecasts-prod-ss07418345/paperback-item-1-ss07418345">Blue Chip Financial Forecasts</a>. Alternative (publicly available) surveys are: <a href="https://www.philadelphiafed.org/research-and-data/real-time-center/survey-of-professional-forecasters">the Philly Fed Survey of Professional Forecasters</a> and <a href="https://www.ecb.europa.eu/stats/ecb_surveys/survey_of_professional_forecasters/html/index.en.html">the ECB SPF</a>.</p>
+<p><span class="citation">D. H. Kim and Orphanides (<a href="references.html#ref-Kim_Orphanides_2005">2005</a>)</span> exploit the fact that, in the context of affine models, model-implied forecasts of yields are affine in the state vector (see see Eq. <a href="TSModels.html#eq:condmeanRth">(3.10)</a>); this implies that their mesurement equations are affine in the state vector, which facilitates the estimation of the latent factors. As shown by Figure <a href="Estimation.html#fig:figKimOrph">5.9</a>, their model is able to satisfyingly fit both survey-based forecasts and market yields.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:figKimOrph"></span>
+<img src="figures/Fig-SNDE.png" alt="Source: Kim and Orphanides (2005)." width="95%"><p class="caption">
+Figure 5.9: Source: Kim and Orphanides (2005).
+</p>
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="Structural.html"><span class="header-section-number">4</span> A detour through structural approaches</a></div>
+<div class="next"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#Estimation"><span class="header-section-number">5</span> Estimation of affine asset-pricing models</a></li>
+<li><a class="nav-link" href="#EstimationSSModel"><span class="header-section-number">5.1</span> State-space model</a></li>
+<li>
+<a class="nav-link" href="#Estimation:KF"><span class="header-section-number">5.2</span> Kalman-filter-based approach</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#the-gaussian-linear-state-space-case"><span class="header-section-number">5.2.1</span> The Gaussian linear state-space case</a></li>
+<li><a class="nav-link" href="#missing-observations"><span class="header-section-number">5.2.2</span> Missing observations</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#about-non-constant-conditional-matrix-sigma"><span class="header-section-number">5.3</span> About non-constant conditional matrix \(\Sigma\)</a></li>
+<li><a class="nav-link" href="#nonlinear"><span class="header-section-number">5.4</span> Non-linear models</a></li>
+<li>
+<a class="nav-link" href="#EstimationInversion"><span class="header-section-number">5.5</span> The inversion technique</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#EstimationRS"><span class="header-section-number">5.5.1</span> Dealing with unobserved regimes</a></li>
+<li><a class="nav-link" href="#MixedKitagawaHamilton"><span class="header-section-number">5.5.2</span> Mixed use of Kitagawa-Hamilton and inversion techniques</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#EstimationPersistency"><span class="header-section-number">5.6</span> A typical small-sample issue</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-30.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

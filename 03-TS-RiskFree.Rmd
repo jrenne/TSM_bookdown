@@ -1,4 +1,4 @@
-# The term structure or risk-free yields
+# The term structure or risk-free yields {#TSModels}
 
 
 <!-- ```{r extractECB, echo=TRUE, fig.cap="Simulation of a quadratic processes $x_t$.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE} -->
@@ -21,38 +21,38 @@
 
 ## Introduction {#RFIntroduction}
 
-Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are usually considered to be risk-free.
+Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are usually considered to be risk-free. (Credit and liquidity risks are covered in Section \@ref(CreditLiRisks).)
 
 An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models involve macro factors in $w_t$ [@Ang_Piazzesi_2003]; some do not [@Duffie_Singleton_1997]. The latter are sometimes called *yield-only* models.
 
-The basic pricing formula of a risk-free zero coupon bond is (see Eq. \@ref(eq:stdbond) in Example \@ref(exm:nominalBth)):
+The basic pricing formula of a risk-free zero coupon bond is (see Eq. \@ref(eq:ihandM)):
 \begin{eqnarray}
-B(t,h) &=& \exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1})\\
-R(t,h) &=& - \frac{1}{h} \log B(t,h). (\#eq:stdbondRFchapter)
+B_{t,h} &=& \exp(-i_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{t+1}-\dots-i_{t+h-1})\\
+i_{t,h} &=& - \frac{1}{h} \log B_{t,h}. (\#eq:stdbondRFchapter)
 \end{eqnarray}
 
 Term structure models are often used to extract *term premiums* from observed yields-to-maturity. Term premiums are those components of yields that would not exist if investors were not risk-averse.
 
-If agents were not risk averse, i.e., under the *Expectation Hypothesis (EH)*, we would have $\mathcal{M}_{t,t+1} = \exp(- r_t)$. We would then have $\mathbb{P} \equiv \mathbb{Q}$  and $B(t,h)$ would become:
+If agents were not risk averse, i.e., under the *Expectation Hypothesis (EH)*, we would have $\mathcal{M}_{t,t+1} = \exp(- i_t)$. We would then have $\mathbb{P} \equiv \mathbb{Q}$  and $B_{t,h}$ would become:
 \begin{equation}
-\exp(-r_{t}) \mathbb{E}_t \exp(-r_{t+1}-\dots-r_{t+h-1}).(\#eq:stdbondRFchapterP)
+\exp(-i_{t}) \mathbb{E}_t \exp(-i_{t+1}-\dots-i_{t+h-1}).(\#eq:stdbondRFchapterP)
 \end{equation}
 And the maturity-$h$ yield-to-maturity would then be:
 \begin{eqnarray}
-R^{EH}(t,h) &=& -\frac{1}{h}\log \left( \mathbb{E}_t \exp(-r_t-\dots-r_{t+h-1})\right)\nonumber\\
-&\approx& \frac{1}{h}\mathbb{E}_t(r_t + \dots + r_{t+h-1}).(\#eq:REH)
+i^{EH}_{t,h} &=& -\frac{1}{h}\log \left( \mathbb{E}_t \exp(-i_t-\dots-i_{t+h-1})\right)\nonumber\\
+&\approx& \frac{1}{h}\mathbb{E}_t(i_t + \dots + i_{t+h-1}).(\#eq:REH)
 \end{eqnarray}
 
 The term premium is given by:
 \begin{eqnarray}
-TP_{t,h} &=& \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1})}_{=R(t,h)} - \nonumber \\
-&& \underbrace{- \frac{1}{h}  \log  \mathbb{E}_t \exp(-r_{t+1}-\dots-r_{t+h-1}).}_{=R^{EH}(t,h)}(\#eq:TP)
+TP_{t,h} &=& \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{t+1}-\dots-i_{t+h-1})}_{=i_{t,h}} - \nonumber \\
+&& \underbrace{- \frac{1}{h}  \log  \mathbb{E}_t \exp(-i_{t+1}-\dots-i_{t+h-1}).}_{=i^{EH}_{t,h}}(\#eq:TP)
 \end{eqnarray}
 
-What is the economic meaning of the term premium? Under EH, investors are willing to buy a maturity-$h$ bond as long as its expected return is---up to Jensen's inequality---equal to the average of future short-term rates. (Hence the definition of $R^{EH}(t,h)$, see Eq. \@ref(eq:REH).) When $TP_{t,h}>0$, investors are willing to buy the maturity-$h$ bond only if its return is, on average, higher than expected future short-term rates; this corresponds to a situation where investors consider that long-term bonds tend to lose value in *bad states of the world* (i.e., states of high marginal utility).
+What is the economic meaning of the term premium? Under EH, investors are willing to buy a maturity-$h$ bond as long as its expected return is---up to Jensen's inequality---equal to the average of future short-term rates. (Hence the definition of $i^{EH}_{t,h}$, see Eq. \@ref(eq:REH).) When $TP_{t,h}>0$, investors are willing to buy the maturity-$h$ bond only if its return is, on average, higher than expected future short-term rates; this corresponds to a situation where investors consider that long-term bonds tend to lose value in *bad states of the world* (i.e., states of high marginal utility).
 
 
-> **_Risk premium:_** According to Eq. \@ref(eq:Mbasicpricing), the price of any asset $j$ satisfies:
+> **_Risk premium:_** According to Eq. \@ref(eq:basic), the price of any asset $j$ satisfies:
 $$
 p_{jt} = \mathbb{E}_t(\mathcal{M}_{t,t+1} p_{j,t+1}).
 $$
@@ -64,7 +64,7 @@ or
 \begin{equation}
 p_{jt} = \underbrace{\exp(-r_t)\mathbb{E}_t( p_{j,t+1})}_{=p^{EH}_{jt}} + \underbrace{\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})}_{\mbox{Risk premium}}.(\#eq:CovRP)
 \end{equation}
-If investors were not risk-averse, then we would have $p_{jt} = p^{EH}_{jt}$. The S.D.F. is high (resp. low) in bad (resp. good) states of the world (states of high marginal utility in the equilibrium approach). Hence, we have $p_{jt}< p^{EH}_{jt}$ if asset $j$ tends to pay less in bad states of the world (i.e., if $\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})<0$).
+If investors were not risk-averse, then we would have $p_{jt} = p^{EH}_{jt}$. The SDF is high (resp. low) in bad (resp. good) states of the world (states of high marginal utility in the equilibrium approach). Hence, we have $p_{jt}< p^{EH}_{jt}$ if asset $j$ tends to pay less in bad states of the world (i.e., if $\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})<0$).
 
 
 
@@ -73,24 +73,24 @@ Bonds issued by top-rated (Aaa/AAA) countries are often considered to be risk-fr
 
 If agents were risk-neutral, we would have:
 $$
-B_{t,n} = \exp(-R_{t,m})\mathbb{E}_t(B_{t+m,n-m}).
+B_{t,n} = \exp(-i_{t,m})\mathbb{E}_t(B_{t+m,n-m}).
 $$
 This would imply:
 $$
--n R_{t,n} = -R_{t,m} + \log \mathbb{E}_t[\exp(-(n-m) R_{t+m,n-m})].
+-n i_{t,n} = -i_{t,m} + \log \mathbb{E}_t[\exp(-(n-m) i_{t+m,n-m})].
 $$
 Up to the Jensen inequality, and taking expectations on both sides, we get:
 $$
--n R_{t,n} \approx \mathbb{E}_t(-R_{t,m} -(n-m) R_{t+m,n-m}).
+-n i_{t,n} \approx \mathbb{E}_t(-i_{t,m} -(n-m) i_{t+m,n-m}).
 $$
 After having reorganized:
 \begin{equation}
-\mathbb{E}_t(R_{t+m,n-m}-R_{t,n}) \approx \frac{R_{t,n}-R_{t,m}}{n-m}.(\#eq:CStheo)
+\mathbb{E}_t(i_{t+m,n-m}-i_{t,n}) \approx \frac{i_{t,n}-i_{t,m}}{n-m}.(\#eq:CStheo)
 \end{equation}
 
 @Campbell_Shiller_1991 have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of $n$ and $m$:
 $$
-R_{t+m,n-m}-R_{t,n}) = \phi_n\frac{R_{t,n}-R_{t,m}}{n-m} + \varepsilon_{t+m}
+i_{t+m,n-m}-i_{t,n}) = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}
 $$
 
 According to \@ref(eq:CStheo), under the Expectation Hypothesis, we should have $\phi_{n,m} \approx 1$. But they do find that the $\phi_{n,m}$ are statistically lower than one. Besides, they find that, for a given holding period $m$, the term structure of the $\phi_{n,m}$ decreases with the maturity $n$. Figure \@ref(fig:CSregressions) shows 
@@ -169,54 +169,57 @@ for(i in 1:2){
 
 ## The Affine Case {#RiskFreeAffine}
 
-### Affine yields
+### Affine yields {#AffineYields}
 
-In this subsection, we consider the case where the state vector $w_t$ is affine under both $\mathbb{P}$ and $\mathbb{Q}$. If the nominal short-term rate is affine in $w_t$, i.e., if $r_t = \omega_0 + \omega'_1 w_t$, then:
+In this subsection, we consider the case where the state vector $w_t$ is affine under both $\mathbb{P}$ and $\mathbb{Q}$. If the nominal short-term rate is affine in $w_t$, i.e., if $i_t = \omega_0 + \omega'_1 w_t$, then (see Eq. \@ref(eq:ihandM)):
 \begin{eqnarray*}
-B(t,h) &=& \mathbb{E}^{\mathbb{Q}}_t \exp (-r_{t}-\dots-r_{t+h-1})\\
+B_{t,h} &=& \mathbb{E}^{\mathbb{Q}}_t \exp (-i_{t}-\dots-i_{t+h-1})\\
 &=& \exp(-h\omega_0 - \omega'_1 w_t) \color{blue}{\mathbb{E}^{\mathbb{Q}}_t \exp (- \omega'_1 w_{t+1}-\dots- \omega'_1 w_{t+h-1})}.
 \end{eqnarray*}
 The (blue) expectation is easily computed using the recursive equations of Lemma \@ref(lem:MHLT) (see Example \@ref(exm:nominalBth)), leading to:
 \begin{equation}
-R(t,h)= -  \frac{1}{h}   \log   B(t,h) = A_h'w_t + B_h.(\#eq:RthAB)
+i_{t,h}= -  \frac{1}{h}   \log   B_{t,h} = A_h'w_t + B_h.(\#eq:RthAB)
 \end{equation}
 It is easily seen that we can also get:
 \begin{equation}
-R^{EH}(t,h) = {A^{EH}_h}'w_t + B^{EH}_h.(\#eq:RthABEH)
+i^{EH}_{t,h} = {A^{EH}_h}'w_t + B^{EH}_h.(\#eq:RthABEH)
 \end{equation}
 Moreover, if inflation is also affine in $w_t$, i.e., if $\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t$, then real yields are given by:
 \begin{eqnarray*}
-\bar{B}(t,h) &=& \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t}-\dots-r_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h})
+\mathcal{B}_{t,h} &=& \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{t}-\dots-i_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h})
 \end{eqnarray*}
 (see Example \@ref(exm:realBth)) which also leads to:
 \begin{equation}
-\bar{R}(t,h) = -  \frac{1}{h}   \log   \bar{B}(t,h) = \bar{A}_h'w_t + \bar{B}_h.(\#eq:RbarthAB)
+r_{t,h} = -  \frac{1}{h}   \log   \mathcal{B}_{t,h} = \bar{A}_h'w_t + \bar{B}_h.(\#eq:RbarthAB)
 \end{equation}
 Eqs. \@ref(eq:RthAB) and \@ref(eq:RthABEH) imply that term premiums are affine in $w_t$ (see Eq. \@ref(eq:TP)). Specifically:
 $$
-TP(t,h) = R(t,h) - E^{EH}(t,h) = B_h - B_h^{EH} + (A_h - A_h^{EH})'w_t.
+TP_{t,h} = i_{t,h} - i^{EH}_{t,h} = B_h - B_h^{EH} + (A_h - A_h^{EH})'w_t.
 $$
+
+> The same approach can be employed to compute real term premiums ($r_{t,h} - r^{EH}_{t,h}$), and inflation term premiums($(i_{t,h}-r_{t,h}) - (i^{EH}_{t,h}-r^{EH}_{t,h})$).
+
 Expected excess returns resulting from holding zero-coupon bonds are also affine in $w_t$. Indeed, holding a maturity-$h$ zero-coupon bond for one period provides the following expected gross return:
 $$
-\mathbb{E}_t\left(\frac{B(t+1,h-1)}{B(t,h)}\right) = \mathbb{E}_t\left(\exp(B_{h-1} - B_h + A_{h-1}'w_{t+1} - A_h'w_{t})\right),
+\mathbb{E}_t\left(\frac{B_{t+1,h-1}}{B_{t,h}}\right) = \mathbb{E}_t\left(\exp(B_{h-1} - B_h + A_{h-1}'w_{t+1} - A_h'w_{t})\right),
 $$
-which is clearly exponential affine in $w_t$ if $w_t$ is an affine process. Therefore, the expected excess return, that is:
+which is clearly exponential affine in $w_t$ if $w_t$ is an affine process. Therefore, the log expected excess return, that is:
 $$
-\log \mathbb{E}_t\left(\frac{B(t+1,h-1)}{B(t,h)}\right) - r_t
+\log \mathbb{E}_t\left(\frac{B_{t+1,h-1}}{B_{t,h}}\right) - r_t
 $$
-is also affine in $w_t$ in this context. The fact that excess returns are affine in this context is exploited in the estimation approach proposed by @Adrian_Crump_Moench_2013.
+is also affine in $w_t$. This is exploited in the estimation approach proposed by @Adrian_Crump_Moench_2013.
 
 Moreover, *conditional expectations* of future interest rates (real or nominal) and of term premiums are also affine in $w_t$. In particular:
 \begin{equation}
-\mathbb{E}_t[R(t+k,h)] = \mathbb{E}_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{E}_t(w_{t+k}) + B_h,(\#eq:condmeanRth)
+\mathbb{E}_t[i_{t+k,h}] = \mathbb{E}_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{E}_t(w_{t+k}) + B_h,(\#eq:condmeanRth)
 \end{equation}
-and $\mathbb{E}_t(w_{t+k})$ is affine in $w_t$ (see Eq. \@ref(eq:condmean)). This can notably be used at the estimation stage, if one wants to fit survey data (see Section XXX).
+and $\mathbb{E}_t(w_{t+k})$ is affine in $w_t$ (see Eq. \@ref(eq:condmean)). This can notably be used at the estimation stage, if one wants to fit survey data (see Subsection \@ref(EstimationPersistency)).
 
 Similarly, *conditional variances* of future interest rates (real or nominal) and of term premiums are affine in $w_t$. In particular:
 \begin{equation}
-\mathbb{V}ar_t[R(t+k,h)] = \mathbb{V}ar_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{V}ar_t(w_{t+k})A_h,(\#eq:condvarRth)
+\mathbb{V}ar_t[i_{t+k,h}] = \mathbb{V}ar_t[{A_h}'w_{t+k} + B_h] = {A_h}'\mathbb{V}ar_t(w_{t+k})A_h,(\#eq:condvarRth)
 \end{equation}
-where the components of $\mathbb{V}ar_t(w_{t+k})$ (and therefore $\mathbb{V}ar_t[R(t+k,h)]$) is affine in $w_t$ (see Eq. \@ref(eq:condvar)). This can also be used at the estimation stage, if one wants to fit (proxies of) conditional variances [@zarg_2017].
+where the components of $\mathbb{V}ar_t(w_{t+k})$ (and therefore $\mathbb{V}ar_t[i_{t+k,h}]$) is affine in $w_t$ (see Eq. \@ref(eq:condvar)). This can also be used at the estimation stage, if one wants to fit (proxies of) conditional variances [@zarg_2017].
 
 
 ### Maximum Sharpe ratio
@@ -225,14 +228,14 @@ In an affine model, the maximum Sharpe ratio is easily computed. This has been n
 
 Let us derive the maximum Sharpe ratio in the context of a genral affine framework. Eq. \@ref(eq:CovRP) implies that
 $$
-\mathbb{E}_t\underbrace{\left(\frac{p_{j,t+1}}{p_{j,t}} - \exp(r_t)\right)}_{=xs_{j,t+1},\mbox{ excess return}} =  - \exp(r_t) \mathbb{C}ov_t\left(\mathcal{M}_{t,t+1},\frac{p_{j,t+1}}{p_{j,t}}\right),
+\mathbb{E}_t\underbrace{\left(\frac{p_{j,t+1}}{p_{j,t}} - \exp(i_t)\right)}_{=xs_{j,t+1},\mbox{ excess return}} =  - \exp(i_t) \mathbb{C}ov_t\left(\mathcal{M}_{t,t+1},\frac{p_{j,t+1}}{p_{j,t}}\right),
 $$
 and, using $|\mathbb{C}ov(X,Y)| \le \sqrt{\mathbb{V}ar(X)\mathbb{V}ar(Y)}$, we get the @Hansen_Jagannathan_1991 bound:
 \begin{equation}
 \underbrace{\frac{\mathbb{E}_t(xs_{j,t+1})}{\sqrt{\mathbb{V}ar_t(xs_{j,t+1})}}}_{\mbox{Sharpe ratio}} \le \underbrace{\frac{\sqrt{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}}_{\mbox{Maximum Sharpe ratio}}.
 \end{equation}
 
-If the S.D.F. is given by $\mathcal{M}_{t,t+1} = \exp[-r_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)]$ (Eq. \@ref(eq:keySDF)), and using that $\mathbb{E}_t(\mathcal{M}_{t,t+1}^2)=\exp(-2r_t+\psi_t(2\alpha_t)-2\psi_t(\alpha_t))$ we get:
+If the SDF is given by $\mathcal{M}_{t,t+1} = \exp[-i_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)]$ (Eq. \@ref(eq:keySDF)), and using that $\mathbb{E}_t(\mathcal{M}_{t,t+1}^2)=\exp(-2i_t+\psi_t(2\alpha_t)-2\psi_t(\alpha_t))$ we get:
 $$
 \mbox{Maximum Sharpe ratio} = \sqrt{\exp(\psi_t(2\alpha_t)-2\psi_t(\alpha_t)) - 1}.
 $$
@@ -240,7 +243,7 @@ $$
 
 ## Gaussian Affine Term Structure Model {#RiskFreeGaussian}
 
-The Gaussian Affine Term Structure Model (GATSM) is a *workhorse* model, widely used in academic and economic-policy circles. In a GATSM, $w_t$ follows a Gaussian vector autoregressive model, and is therefore affine under $\mathbb{P}$. The S.D.F. is exponential affine in $w_t$, which implies that it is also affine under $\mathbb{Q}$ (see Subsection XXX). Since the components of $w_t$ are valued in $\mathbb{R}$, one can easily introduce macro-factors among the state variables.
+The Gaussian Affine Term Structure Model (GATSM) is a *workhorse* model, widely used in academic and economic-policy circles. In a GATSM, $w_t$ follows a Gaussian vector autoregressive model, and is therefore affine under $\mathbb{P}$. The SDF is exponential affine in $w_t$, which implies that process $w_t$ is also affine under $\mathbb{Q}$ (shown below). Since the components of $w_t$ are valued in $\mathbb{R}$, one can easily introduce macro-factors among the state variables.
 
 Let us be more specific. The state vector $w_t$ follows:
 \begin{equation}
@@ -252,9 +255,9 @@ This implies the following Laplace transform for $w_t$ (see Example \@ref(exm:Ga
 $$
 \psi_t(u) = \log \mathbb{E}_t(\exp(u'w_{t+1})|\underline{w_t}) = \color{blue}{u'\mu + u'\Phi w_t + \frac{1}{2}u'\Sigma'u}.
 $$
-Using the notations of Eq. \@ref(eq:keySDF), the s.d.f. is defined as:
+Using the notations of Eq. \@ref(eq:keySDF), the SDF is defined as:
 $$
-\mathcal{M}_{t,t+1} = \exp(- r_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t.
+\mathcal{M}_{t,t+1} = \exp(- i_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t.
 $$
 
 In that case, using Eq. \@ref(eq:transfoPQ), we get:
@@ -274,13 +277,11 @@ w_{t+1} = \mu^{\mathbb{Q}} + \Phi^{\mathbb{Q}} w_{t} + \Sigma^{1/2} \varepsilon^
 $$
 where $\mu^{\mathbb{Q}} = \mu + \Sigma  \alpha_0$ and $\Phi^{\mathbb{Q}}=\Phi + \Sigma \alpha_1'$.
 
-With affine specifications of the nominal short term rate ($r_{t} = \omega_0 + \omega'_1 w_t$) and of the inflation rate ($\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t$), we obtain affine formulas for nominal and real yields of any maturity (Eqs. \@ref(eq:RthAB) and \@ref(eq:RbarthAB)).
-
-
+With affine specifications of the nominal short term rate ($i_{t} = \omega_0 + \omega'_1 w_t$) and of the inflation rate ($\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t$), we obtain affine formulas for nominal and real yields of any maturity (Eqs. \@ref(eq:RthAB) and \@ref(eq:RbarthAB)).
 
 
 :::{.example #KimWright name="Kim and Wright (2005)"}
-This model is a three-factor *yield-only model* (no macro variables, except inflation in one variant of the model), where the short-term rate reads $r_t = \omega_0 + \omega_{1,1} w_{1,t} +\omega_{1,2} w_{2,t} +\omega_{1,3} w_{3,t}$.
+This model is a three-factor *yield-only model* (no macro variables, except inflation in one variant of the model), where the short-term rate reads $i_t = \omega_0 + \omega_{1,1} w_{1,t} +\omega_{1,2} w_{2,t} +\omega_{1,3} w_{3,t}$.
 
 The model estimated by Kalman filter (see Subsection,\@ref(Estimation:KF); the state-space model (Def. \@ref(def:LSSM)) includes survey-based variables (see Subsection \@ref(EstimationPersistency)).
 
@@ -348,7 +349,7 @@ knitr::include_graphics("figures/AngPiazzesi1.png")
 
 They propose a model where macro factors are unspanned by the yield curve, but can still help predict yields. In their model, $w_t = [\mathcal{P}_t',M_t']'$, where $\mathcal{P}_t$ are yield factors ($\approx$ principal components) and $M_t$ are macro factors. The model is as follows:
 \begin{eqnarray*}
-r_t &=& \omega_{0} + \omega_{\mathcal{P}}'\mathcal{P}_t \\
+i_t &=& \omega_{0} + \omega_{\mathcal{P}}'\mathcal{P}_t \\
 \left[\begin{array}{c}\mathcal{P}_t \\ M_t \end{array}\right]
 &=&
 \left[\begin{array}{cc}\Phi_{\mathcal{P}\mathcal{P}}&\Phi_{\mathcal{P}M} \\
@@ -361,14 +362,13 @@ r_t &=& \omega_{0} + \omega_{\mathcal{P}}'\mathcal{P}_t \\
 \end{eqnarray*}
 where $\varepsilon_t$ and $\varepsilon^{\mathbb{Q}}_t$ are $\mathcal{N}(0,Id)$ under $\mathbb{P}$ and $\mathbb{Q}$, respectively.
 
-$M_t$ does  Granger-cause $\mathcal{P}_t$ under $\mathbb{Q}$ and $r_t$ is affine in $\mathcal{P}_t$ (only).
+$M_t$ does  Granger-cause $\mathcal{P}_t$ under $\mathbb{Q}$ and $i_t$ is affine in $\mathcal{P}_t$ (only).
 
-In this context, yields $R(t,h)$ are affine in $\mathcal{P}_t$ (only). However $M_t$ does Granger-cause $\mathcal{P}_t$ under $\mathbb{P}$, that is, macro-shocks affect the yield curve.
+In this context, yields $i_{t,h}$ are affine in $\mathcal{P}_t$ (only). However $M_t$ does Granger-cause $\mathcal{P}_t$ under $\mathbb{P}$, that is, macro-shocks affect the yield curve.
 
 ```{r JPSIRF, fig.align = 'center', out.width = "95%", fig.cap = "Source: Joslin, Priebsch, and Singleton (2014). Impulse response functions.", echo=FALSE}
 knitr::include_graphics("figures/JPS_IRF.png")
 ```
-
 :::
 
 
@@ -376,11 +376,11 @@ knitr::include_graphics("figures/JPS_IRF.png")
 
 @Ang_Boivin_Dong_LooKung_2011 propose a macro-finance model based on a quadratic framework. The short-term rate follows a Taylor rule with time-varying parameters:
 $$
-r_t = \omega_0 + a_t g_t + b_t \pi_t,
+i_t = \omega_0 + a_t g_t + b_t \pi_t,
 $$
 where $x_t=(g_t,\pi_t,a_t,b_t)'$ follows a Gaussian VAR. This is the context described in Example \@ref(exm:QGVAR1). The previous equation shows that $r_t$ is linear in $w_t = (x_t,vec(x_t x_t')')'$. Specifically:
 $$
-r_t = \omega_0 + \omega_1'w_t,
+i_t = \omega_0 + \omega_1'w_t,
 $$
 with $\omega_1 = [v,vec(V)]'$, where
 $$
@@ -404,7 +404,6 @@ $$
 ```{r AngBoivin, fig.align = 'center', out.width = "70%", fig.cap = "Source: Ang, Boivin, Dong, Loo-Kung (2011). Estimated factor loadings ($a_t$ and $b_t$).", echo=FALSE}
 knitr::include_graphics("figures/Ang_Boivin_loadings.png")
 ```
-
 :::
 
 
@@ -418,42 +417,42 @@ In the presence of physical currency, absence of arbitrage opportunity and of st
 
 The shadow-rate model is originally due to @Black_1995. In this model, the short term rate is given by:
 \begin{equation}
-r_t = \max(s_t,\underline{r}),(\#eq:SRSTR)
+i_t = \max(s_t,\underline{i}),(\#eq:SRSTR)
 \end{equation}
-where $s_t$ is the shadow short-term interest rate and $\underline{r}$ is the effective lower bound ($\le 0$). While $s_t$ can be real-valued, the short term rate is nonnegative under \@ref(eq:SRSTR). In shadow-rate models, the shadow rate $s_t$ is usually a linear combination of a vector $w_t$ that follows a Gaussian auto-regressive model. While $s_t$ is a linear combination of components of an affine process, this is not the case for $r_t$. As a result, pricing formula are not available in closed-form. Approximation formula have been proposed by, e.g., @Krippner_2013, @Priebsch_2013, @Wu_Xia_2016.
+where $s_t$ is the shadow short-term interest rate and $\underline{i}$ is the effective lower bound ($\le 0$). While $s_t$ can be real-valued, the short term rate is nonnegative under \@ref(eq:SRSTR). In shadow-rate models, the shadow rate $s_t$ is usually a linear combination of a vector $w_t$ that follows a Gaussian auto-regressive model. While $s_t$ is a linear combination of components of an affine process, this is not the case for $i_t$. As a result, pricing formula are not available in closed-form. Approximation formula have been proposed by, e.g., @Krippner_2013, @Priebsch_2013, @Wu_Xia_2016.
 
-Let us describe the latter approach [@Wu_Xia_2016]. As in Subsection \@ref(RiskFreeGaussian), the S.D.F. is defined as:
+Let us describe the latter approach [@Wu_Xia_2016]. As in Subsection \@ref(RiskFreeGaussian), the SDF is defined as:
 $$
-\mathcal{M}_{t,t+1} = \exp(- r_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t,
+\mathcal{M}_{t,t+1} = \exp(- i_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t,
 $$
-(this is Eq. \@ref(eq:keySDF)), but the short-term rate $r_t$ is given by $r_t = \max(s_t,0)$, with
+(this is Eq. \@ref(eq:keySDF)), but the short-term rate $i_t$ is given by $i_t = \max(s_t,0)$, with
 $$
 s_t = \delta_0 + \delta_1' w_t.
 $$
 
 The approximation approach proposed by @Wu_Xia_2016 is based on an approximation to the conditional expectations of forward rates. Using the results of Subsection \@ref(FWD), we have (Eq. \@ref(eq:forward)):
 $$
-f_{n-1,n,t} = n R_{t,n} - (n-1) R_{t,n-1}.,
+f_{n-1,n,t} = n i_{t,n} - (n-1) i_{t,n-1}.,
 $$
 for $n>0$ (and using $R_{t,0}=0$). This implies that:
 $$
-R_{t,h} =  \frac{1}{h}(f_{t,0,1}+f_{t,1,2}+\dots+f_{t,h-1,h}).
+i_{t,h} =  \frac{1}{h}(f_{t,0,1}+f_{t,1,2}+\dots+f_{t,h-1,h}).
 $$
 
 The approximation of @Wu_Xia_2016 consists in finding approximations of the forward rates $f_{t,n-1,n}$ (denoted by $\tilde{f}_{t,n-1,n}$, say) and to use them in the previous equation to get:
 \begin{equation}
-\boxed{R_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).}(\#eq:RapproxSR)
+\boxed{i_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).}(\#eq:RapproxSR)
 \end{equation}
 
 Using that, for any random variable $Z$, we have $\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]$ (based on a second order Taylor expansion), @Wu_Xia_2016 further show that:
 \begin{eqnarray}
-f_{t,n,n+1} &=& -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n r_{t+j}}\right)\right) + \log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^{n-1} r_{t+j}}\right)\right)\\
-&\approx& \mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] - \frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right).
+f_{t,n,n+1} &=& -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n i_{t+j}}\right)\right) + \log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^{n-1} i_{t+j}}\right)\right)\\
+&\approx& \mathbb{E}_t^{\mathbb{Q}}[i_{t+n}] - \frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n i_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} i_{t+j}\right)\right).
 \end{eqnarray}
 
 The expectation can be computed analytically:
 $$
-\mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] = \underline{r} + \sigma_n^{\mathbb{Q}}g\left(\frac{\bar{a}_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right),
+\mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] = \underline{i} + \sigma_n^{\mathbb{Q}}g\left(\frac{\bar{a}_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right),
 $$
 where $g(x)= x\Phi(x)-\phi(x)$, $\Phi$ and $\phi$ being the c.d.f. and p.d.f. of the standard normal distribution, respectively, and where
 \begin{eqnarray*}
@@ -462,7 +461,7 @@ b_n' &=& \delta_1'\left(\Phi^{\mathbb{Q}}\right)^n.
 \end{eqnarray*}
 They also show that
 $$
-\frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right) \approx \Phi\left(\frac{\bar{a}_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right)\times(\bar{a}_n - a_n),
+\frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right) \approx \Phi\left(\frac{\bar{a}_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right)\times(\bar{a}_n - a_n),
 $$
 where
 $$
@@ -474,9 +473,9 @@ $$
 $$
 They finally obtain:
 $$
-\boxed{f_{t,n,n+1} \approx \tilde{f}_{t,n,n+1} = \underline{r} + \sigma_n^{\mathbb{Q}}g\left(\frac{a_n + b_n'X_t - \underline{r}}{\sigma_n^{\mathbb{Q}}}\right),}
+\boxed{f_{t,n,n+1} \approx \tilde{f}_{t,n,n+1} = \underline{i} + \sigma_n^{\mathbb{Q}}g\left(\frac{a_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right),}
 $$
-which is used in \@ref(eq:RapproxSR) to obtain an approximation to $R_{t,h}$.
+which is used in \@ref(eq:RapproxSR) to obtain an approximation to $i_{t,h}$.
 
 
 ```{r WuXia, fig.align = 'center', out.width = "95%", fig.cap = "bla bla bla.",echo=TRUE}
@@ -527,15 +526,15 @@ If $\mu = (\mu_1,\dots,\mu_n)'$, $\alpha = (\alpha_1,\dots,\alpha_n)'$, $\nu = (
 \end{eqnarray*}
 where $\odot$ denotes the element-by-element multiplication and, where, with abuse of notation, the division and log operators work element-by-element when applied to vectors.
 
-In their baseline model, @zarg_2017 use four factors. They set $\nu_1 = \nu_2 = 0$, implying that $w_{1,t}$ and $w_{2,t}$ can stay at zero (see Example \@ref(exm:ARG1)). The short-term rate $r_t$ is posited to be an affine combination of $w_{1,t}$ and $w_{2,t}$, that is:
+In their baseline model, @zarg_2017 use four factors. They set $\nu_1 = \nu_2 = 0$, implying that $w_{1,t}$ and $w_{2,t}$ can stay at zero (see Example \@ref(exm:ARG1)). The short-term rate $i_t$ is posited to be an affine combination of $w_{1,t}$ and $w_{2,t}$, that is:
 $$
-r_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t},
+i_t = \omega'w_t = \omega_{1} w_{1,t} + \omega_{2} w_{2,t},
 $$
 hence, it can stay at zero.
 
-Factors $w_{3,t}$ and $w_{4,t}$ Granger-cause $w_{1,t}$ and $w_{2,t}$, thereby causing $r_t$. As a result, for $h \ge 2$, $R(t,h)$ is a non-zero combination of the four components of $w_t$.
+Factors $w_{3,t}$ and $w_{4,t}$ Granger-cause $w_{1,t}$ and $w_{2,t}$, thereby causing $i_t$. As a result, for $h \ge 2$, $i_{t,h}$ is a non-zero combination of the four components of $w_t$.
 
-For the same reason, when $r_t=0$, the lift-off probability depends on $w_{3,t}$ and $w_{4,t}$. The framework offers closed-form solutions for lift-off probabilities. Indeed, using Lemma \@ref(lemma:mass):
+For the same reason, when $i_t=0$, the lift-off probability depends on $w_{3,t}$ and $w_{4,t}$. The framework offers closed-form solutions for lift-off probabilities. Indeed, using Lemma \@ref(lemma:mass):
 $$
 \mathbb{P}_t(\alpha'w_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\alpha),
 $$
@@ -543,16 +542,15 @@ where $\varphi_{t,h}$ is the multi-horizon Laplace transform defined in Eq. \@re
 \begin{equation}
 \left\{
 \begin{array}{l}
-\mathbb{P}_t(r_{t+h}>0) = 1 - \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\omega) \\ \\
-\mathbb{P}_t(r_{t+1}=0,\dots,r_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(u\omega,\dots,u\omega,u\omega) \equiv p_{h}\\ \\
-\mathbb{P}_t(r_{t+1}=0,\dots,r_{t+h-1}=0,r_{t+h}>0) = p_{h-1} - p_h.
+\mathbb{P}_t(i_{t+h}>0) = 1 - \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\omega) \\ \\
+\mathbb{P}_t(i_{t+1}=0,\dots,r_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(u\omega,\dots,u\omega,u\omega) \equiv p_{h}\\ \\
+\mathbb{P}_t(i_{t+1}=0,\dots,i_{t+h-1}=0,i_{t+h}>0) = p_{h-1} - p_h.
 \end{array}
 \right.
 \end{equation}
-Other lift-off probabilities, of the type $\mathbb{P}_t[R(t+h,k)>threshold]$, can be derived from Eq. \@ref(eq:DPS).
+Other lift-off probabilities, of the type $\mathbb{P}_t[i_{t+h,k}>threshold]$, can be derived from Eq. \@ref(eq:DPS).
 
 @zarg_2017 esitmate this model by means of Kalman filtering techniques (see Subsection \@ref(EstimationKF)). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection \@ref(EstimationPersistency) and (e-GARCH-based) proxies of conditional variances (see Eq. \@ref(eq:condvar)).
-
 
 ```{r fitZarg, fig.align = 'center', out.width = "95%", fig.cap = "Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters.", echo=FALSE}
 knitr::include_graphics("figures/Figure_fit_ZARG.png")

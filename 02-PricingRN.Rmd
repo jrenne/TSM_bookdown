@@ -1,9 +1,8 @@
-# Pricing and risk-neutral dynamics
-
+# Pricing and risk-neutral dynamics {#PandQ}
 
 ## SDF: Absence of Arbitrage Approach {#PricingAAO}
 
-Consider a period of interest ${\mathcal T} = \{0,1,2,...,T^*\}$. As in Chapter \@ref(ChapterAffine), vector $w_t$ constitutes the new information in the economy at $t$. The historical, or physical, dynamics of $w_t$, $f(\underline{w_t})$, is defined by $f(w_{t+1}|\underline{w_t})$. The physical probability is denoted by $\mathbb{P}$. $L_{2t}, t \in {\mathcal T}$, is the (Hilbert) space of square integrate functions $g(\underline{w_t})$, and we have $L_{2t} \subset L_{2s}, t< s$.
+Consider a period of interest ${\mathcal T} = \{0,1,2,...,T^*\}$. As in Section \@ref(ChapterAffine), vector $w_t$ constitutes the new information in the economy at $t$. The historical, or physical, dynamics of $w_t$, $f(\underline{w_t})$, is defined by $f(w_{t+1}|\underline{w_t})$. The physical probability is denoted by $\mathbb{P}$. $L_{2t}, t \in {\mathcal T}$, is the (Hilbert) space of square integrate functions $g(\underline{w_t})$, and we have $L_{2t} \subset L_{2s}, t< s$.
 
 ### Existence and unicity of the SDF
 
@@ -32,7 +31,7 @@ At any $t$, it is impossible to constitute a portfolio of future payoffs, possib
 
 :::{.theorem #Riesz name="Riesz representation theorem"}
 
-Under Assumptions \@ref(hyp:Apricing1) and \@ref(hyp:Apricing2), for all $\underline{w_t}$, and $s > t$, there exists $\mathcal{M}_{t,s}(\underline{w_s}) \in L_{2s}$, unique such that, $\forall g(\underline{w_s}) \in L_{2s}$,
+Under Assumptions \@ref(hyp:Apricing1) and \@ref(hyp:Apricing2), for all $\underline{w_t}$, and $s > t$, there exists a unique $\mathcal{M}_{t,s}(\underline{w_s}) \in L_{2s}$ such that, $\forall g(\underline{w_s}) \in L_{2s}$,
 $$
 p_t[g(\underline{w_s})] = \mathbb{E}[\mathcal{M}_{t,s}(\underline{w_s})g(\underline{w_s})|\underline{w_t}].
 $$
@@ -52,7 +51,7 @@ $\mathbb{P}[\textbf{1}_{\{\mathcal{M}_{t,s} \le 0\}}=1|\underline{w_t}] > 0$ and
 For all $t < r < s$, we have $\mathcal{M}_{t,s} = \mathcal{M}_{t,r} \mathcal{M}_{r,s}$, which implies:
 
 * $\mathcal{M}_{t,s} = \mathcal{M}_{t,t+1} \mathcal{M}_{t+1,t+2}\dots\mathcal{M}_{s-1,s}$
-* $\mathcal{M}_{0,t} =  \Pi^{t-1}_{j=0} \mathcal{M}_{j,j+1}$ ($\mathcal{M}_{0,t}$ is called **pricing kernel**).
+* $\mathcal{M}_{0,t} =  \Pi^{t-1}_{j=0} \mathcal{M}_{j,j+1}$ ($\mathcal{M}_{0,t}$ is called *pricing kernel*).
 :::
 :::{.proof}
 Using Lemma \@ref(lem:sdf) we have:
@@ -64,7 +63,7 @@ and, therefore, $\mathcal{M}_{t,s} = \mathcal{M}_{t,r}\mathcal{M}_{r,s}$.
 :::
 
 :::{.lemma #sdf}
-For any payoff $g_s$ at $s, p_t(g_s) = p_t[p_r(g_s)]$.
+For any payoff $g_s$ at $s$, $p_t(g_s) = p_t[p_r(g_s)]$.
 :::
 :::{.proof}
 If this was not true, we could construct a sequence of portfolios with a strictly positive payoff at $s$ with zero payoff at any other future date and with price zero at $t$, contradicting Assumption \@ref(hyp:Apricing3). Indeed, assuming, for instance, $p_t(g_s) > p_t[p_r(g_s)]$, the payoff at $s$ is defined by the following strategy: (i) at $t$: buy $p_r(g_s)$, (short) sell $g_s$, buy
@@ -78,18 +77,27 @@ Consider an asset whose payoff, on date $s$, is $g(\underline{w_s})$. We have, $
 \end{equation}
 In particular, since $L_{2,t+1}$ contains 1, the price at $t$ of a zero-coupon with residual maturity one is given by:
 $$
-B(t,1) := \mathbb{E}_t [\mathcal{M}_{t,t+1}].
+B_{t,1} := \mathbb{E}_t [\mathcal{M}_{t,t+1}].
 $$
-Denoting by $r_t$ the continously-compounded interest rate, defined through $B(t,1)=\exp(-r_{t})$, we get
+Denoting by $i_t$ the continuously-compounded interest rate, defined through $B_{t,1}=\exp(-i_{t})$, we get
+\begin{equation}
+\boxed{i_{t}=-\log \mathbb{E}_t [\mathcal{M}_{t,t+1}].}(\#eq:iandM)
+\end{equation}
+Denoting by $B_{t,h}$ the price of a zero-coupon bond of maturity $h$, we have:
 $$
-r_{t}=-\log \mathbb{E}_t [\mathcal{M}_{t,t+1}].
+B_{t,h} = \mathbb{E}_t(\mathcal{M}_{t,t+1}\times \dots \times \mathcal{M}_{t+h-1,t+h})=\mathbb{E}_t(\mathcal{M}_{t,t+h}),
 $$
+and the associated continuously-compounded yield is:
+\begin{equation}
+\boxed{i_{t,h}=-\frac{1}{h}\log \mathbb{E}_t [\mathcal{M}_{t,t+h}].}(\#eq:ihandM)
+\end{equation}
+
 
 :::{.definition #bankaccount name="Bank account"}
-The bank account process $R_t$ is defined by $R_{t} \equiv \exp(r_0+...+r_{t-1}) =  \frac{1}{\mathbb{E}_0[ \mathcal{M}_{0,1}]\times ... \times \mathbb{E}_{t-1}
+The bank account process $R_t$ is defined by $R_{t} \equiv \exp(i_0+...+i_{t-1}) =  \frac{1}{\mathbb{E}_0[ \mathcal{M}_{0,1}]\times ... \times \mathbb{E}_{t-1}
 [\mathcal{M}_{t-1,t}]}$.
 
-$R_t$ is the price of an investment initiated on date 0, when it was worth one dollar, and invested on each date at the risk-free rate (for one period).
+$R_t$ is the price of an investment initiated on date 0---when it was worth one dollar---and invested on each date at the risk-free rate (for one period).
 :::
 
 For any price process $p_t$, we have $p_t = \mathbb{E}_t(\mathcal{M}_{t,s} p_s)$ (with $s>t$), or $\mathcal{M}_{0,t} p_t = \mathbb{E}_t(\mathcal{M}_{0,s}p_s)$. That is, $\mathcal{M}_{0,t} p_t$ is a martingale. In particular $\mathcal{M}_{0,t} R_t$ is a martingale.
@@ -98,11 +106,11 @@ For any price process $p_t$, we have $p_t = \mathbb{E}_t(\mathcal{M}_{t,s} p_s)$
 
 A specific (tractable) case is that of exponential affine SDF. Assume that
 $$
-\mathcal{M}_{t,t+1}(\underline{w_{t+1}}) = \exp[\alpha_t(\underline{w_t})'w_{t+1}+\beta_t(\underline{w_t})]
+\mathcal{M}_{t,t+1}(\underline{w_{t+1}}) = \exp[\alpha_t(\underline{w_t})'w_{t+1}+\beta_t(\underline{w_t})],
 $$
-where $\alpha_t$ defines the *prices of risk* or *sensitivity* vector. Using $\mathbb{E}_t[\mathcal{M}_{t,t+1}]=\exp(-r_{t})=\exp[\psi_t(\alpha_t)+\beta_t]$, we get:
+where $\alpha_t$ defines the *prices of risk* or *sensitivity* vector. Using $\mathbb{E}_t[\mathcal{M}_{t,t+1}]=\exp(-i_{t})=\exp[\psi_t(\alpha_t)+\beta_t]$, we get:
 \begin{equation}
-\mathcal{M}_{t,t+1} = \exp[-r_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)].(\#eq:keySDF)
+\boxed{\mathcal{M}_{t,t+1} = \exp[-i_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)].}(\#eq:keySDF)
 \end{equation}
 
 :::{.example name="CCAPM/Power utility case"}
@@ -113,7 +121,7 @@ $$
 $$
 where $q_t$ is the price of the consumption good, $C_t$ is the quantity consumed at $t$ and $\delta$ is the intertemporal discount rate.
 
-Hence, in that case, $\mathcal{M}_{t,t+1}$ is exponential affine in $w_{t+1} = (\log q_{t+1}, \log C_{t+1})'$ (and its first lag).
+Hence, in that case, $\mathcal{M}_{t,t+1}$ is exponential affine in $w_{t+1} = (\pi_t, \Delta c_{t+1})'$, where $\pi_{t+1}$ is the inflation between dates $t$ and $t+1$, i.e., $\pi_t = \log q_{t+1} - \log q_{t}$ and $\Delta c_{t+1}$ is the (log) consumption growth rate.
 :::
 
 
@@ -125,7 +133,7 @@ $f_{t+1}(w_{t+1})$, with respect to (w.r.t.) some measure $\mu$.
 
 We define the conditional risk-neutral p.d.f. w.r.t. the conditional historical probability. For that, we employ the Radon-Nikodym derivative $d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t})$:^[Of course, the conditional historical p.d.f. with respect to the conditional risk-neutral (R.N.) p.d.f. is:
 $d_{t+1}(w_{t+1}) = \frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})}$ or $d_{t+1}(w_{t+1}) =
-\frac{\exp(-r_{t})}{\mathcal{M}_{t,t+1}}$.]
+\frac{\exp(-i_{t})}{\mathcal{M}_{t,t+1}}$.]
 $$
 d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t}) =
 \frac{\mathcal{M}_{t,t+1}(\underline{w_{t+1}})}{\mathbb{E}[\mathcal{M}_{t,t+1}(\underline{w_{t+1}})|\underline{w_t}]},
@@ -133,19 +141,19 @@ $$
 or
 $$
 d^{\mathbb{Q}}_{t+1}(w_{t+1})=
-\frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}=\exp(r_{t}) \mathcal{M}_{t,t+1}.
+\frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}=\exp(i_{t}) \mathcal{M}_{t,t+1}.
 $$
 In this context, the risk neutral conditional p.d.f. is:
 \begin{eqnarray}
 f^{\mathbb{Q}}_{t+1}(w_{t+1}) &=& f_{t+1}(w_{t+1})d^{\mathbb{Q}}_{t+1}(w_{t+1}) \nonumber \\
-&=&f_{t+1} (w_{t+1}) \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) \exp [r_{t} (\underline{w_t})].(\#eq:fQfP)
+&=&f_{t+1} (w_{t+1}) \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) \exp [i_{t} (\underline{w_t})].(\#eq:fQfP)
 \end{eqnarray}
 
 The p.d.f. of $\mathbb{Q}$ w.r.t. the historical dynamics $\mathbb{P}$ is:
 $$
 \xi_{T^*} =  \frac{d\mathbb{Q}}{d\mathbb{P}} =
 \Pi^{T^{*}-1}_{t=0} d^{\mathbb{Q}}_{t+1}(w_{t+1}) =
-\Pi^{T^{*}-1}_{t=0} \exp(r_{t}) \mathcal{M}_{t,t+1},
+\Pi^{T^{*}-1}_{t=0} \exp(i_{t}) \mathcal{M}_{t,t+1},
 $$
 and the p.d.f. of the R.N. distribution of $\underline{w_t}$, w.r.t. the corresponding historical distribution is:
 $$
@@ -160,15 +168,25 @@ $$]
 Consider the date-$t$ price of a payoff $g(\underline{w_s})$ at time $s>t$. An equivalent form of the pricing formula \@ref(eq:basic) is:
 \begin{eqnarray*}
 p_t[g(\underline{w_s})] &=& \mathbb{E}_t[\mathcal{M}_{t,t+1}...\mathcal{M}_{s-1,s}g(\underline{w_s})] \\
-&=& \mathbb{E}^{\mathbb{Q}}_t[\exp(-r_{t}-...-r_{s-1})g(\underline{w_s})],
+&=& \mathbb{E}^{\mathbb{Q}}_t[\exp(-i_{t}-...-i_{s-1})g(\underline{w_s})],
 \end{eqnarray*}
 or, with simpler notations:
 $$
-p_t = \mathbb{E}^{\mathbb{Q}}_t[\exp(-r_{t}-...-r_{s-1})p_s] = \mathbb{E}^{\mathbb{Q}}_t\left(\frac{R_t}{R_s} p_s\right),
+p_t = \mathbb{E}^{\mathbb{Q}}_t[\exp(-i_{t}-...-i_{s-1})p_s] = \mathbb{E}^{\mathbb{Q}}_t\left(\frac{R_t}{R_s} p_s\right),
 $$
-where $R_t$ is the *bank account*.
+where $R_t$ is the *bank account* (Def. \@ref(def:bankaccount)).
 
-We also have $p_t/R_t = \mathbb{E}^{\mathbb{Q}}_t\left( p_s/R_s\right)$, that is, $p_t/R_t$ is a $\mathbb{Q}$-martingale. In particular $p_t = \exp(-r_{t})\mathbb{E}^{\mathbb{Q}}_t(p_{t+1})$, or, using the arithmetic return of any payoff $(p_{t+1}-p_t)/p_t$, and the arithmetic return of the riskless asset $r_{A,t+1}=\exp(r_{t})-1$, we get:
+In particular, considering a zero-coupon bond of maturity $h$, we have
+$$
+B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t[\exp(-i_{t}-...-i_{s-1})],
+$$
+which gives:
+\begin{equation}
+\boxed{i_{t,h}=-\frac{1}{h}\log \mathbb{E}^{\mathbb{Q}}_t[\exp(-i_{t}-...-i_{s-1})].}(\#eq:ihandMQ)
+\end{equation}
+(This is equivalent to \@ref(eq:ihandM).)
+
+We also have $p_t/R_t = \mathbb{E}^{\mathbb{Q}}_t\left( p_s/R_s\right)$, that is, $p_t/R_t$ is a $\mathbb{Q}$-martingale. In particular $p_t = \exp(-i_{t})\mathbb{E}^{\mathbb{Q}}_t(p_{t+1})$, or, using the arithmetic return of any payoff $(p_{t+1}-p_t)/p_t$, and the arithmetic return of the riskless asset $r_{A,t+1}=\exp(i_{t})-1$, we get:
 $$
 \mathbb{E}^{\mathbb{Q}}_t\left(\frac{p_{t+1}-p_t}{p_t}\right)=r_{A,t}.
 $$
@@ -178,7 +196,7 @@ Let us consider the case of an exponential affine SDF $\mathcal{M}_{t,t+1}=\exp(
 w_{t+1}+\beta_t)$:
 $$
 d^{\mathbb{Q}}_{t+1}(w_{t+1}) = \frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})} = \frac{\exp(\alpha'_t
-w_{t+1}+\beta_t)}{\exp[\psi_t(\alpha_t)+\beta_t]} = \exp[\alpha'_t w_{t+1}-\psi_t(\alpha_t)]
+w_{t+1}+\beta_t)}{\exp[\psi_t(\alpha_t)+\beta_t]} = \exp[\alpha'_t w_{t+1}-\psi_t(\alpha_t)].
 $$
 We then have that $d^{\mathbb{Q}}_{t+1}(w_{t+1})$ is also exponential affine. Moreover:
 $$
@@ -231,7 +249,7 @@ d^{\mathbb{Q}}_{t+1}(w_{t+1}) &=& \exp[\alpha'_t(w_{t+1})+\psi^{\mathbb{Q}}_t(-\
 :::{.definition #typo name="Econometric Asset Pricing Model (EAPM)"}
 An Econometric Asset Pricing Model (EAPM) is defined by the following functions:
 
-* $r_{t}(\underline{w_t})$,
+* $i_{t}(\underline{w_t})$,
 * $f(w_{t+1}|\underline{w_t}))$ [or $\psi_t(u)$],
 * $\mathcal{M}_{t,t+1}(\underline{w_{t+1}})$,
 * $f^{\mathbb{Q}}(w_{t+1}|\underline{w_t})$ [or $\psi^{\mathbb{Q}}_t(u)$].
@@ -239,7 +257,7 @@ An Econometric Asset Pricing Model (EAPM) is defined by the following functions:
 
 The previous functions have to to be specified and parameterized. They are linked by:
 $$
-f^{\mathbb{Q}}(w_{t+1}|\underline{w_t}) = f(w_{t+1}|\underline{w_t}) \mathcal{M}_{t,t+1}(\underline{w_{t+1}}) \exp[r_{t}(\underline{w_t}))].
+f^{\mathbb{Q}}(w_{t+1}|\underline{w_t}) = f(w_{t+1}|\underline{w_t}) \mathcal{M}_{t,t+1}(\underline{w_{t+1}}) \exp[i_{t}(\underline{w_t}))].
 $$
 
 In the following, we present three ways of specifying an EAPM:
@@ -250,15 +268,15 @@ In the following, we present three ways of specifying an EAPM:
 
 We focus on the case where $\mathcal{M}_{t,t+1}$ is exponential affine, as in Eq. \@ref(eq:keySDF):
 $$
-\mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -r_{t} (\underline{w_t}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)]\right\}.
+\mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -i_{t} (\underline{w_t}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)]\right\}.
 $$
-Once the short-term rate function $r_{t}(\underline{w_t})$ is specified, we have to specify $\psi_t$, $\alpha_t$, and $\psi^{\mathbb{Q}}_t$, that are linked by Eq. \@ref(eq:transfoPQ).
+Once the short-term rate function $i_{t}(\underline{w_t})$ is specified, we have to specify $\psi_t$, $\alpha_t$, and $\psi^{\mathbb{Q}}_t$, that are linked by Eq. \@ref(eq:transfoPQ).
 
-In all approaches, we have to specify the status of the short rate. The short rate $r_{t}$ is a function of $\underline{w_t}$, this function may be known or unknown by the econometrician. It is known in two cases: (a) $r_{t}$ is exogenous ($r_{t}(\underline{w_t})$ does not depend on $\underline{w_t}$) or (b) $r_{t}$ is a component of $w_t$. By contrast, if the function $r_{t} (\underline{w_t})$ is unknown, it has to be specified parametrically:
+In all approaches, we have to specify the status of the short rate. The short rate $i_{t}$ is a function of $\underline{w_t}$, this function may be known or unknown by the econometrician. It is known in two cases: (a) $i_{t}$ is exogenous ($i_{t}(\underline{w_t})$ does not depend on $\underline{w_t}$) or (b) $i_{t}$ is a component of $w_t$. By contrast, if the function $i_{t} (\underline{w_t})$ is unknown, it has to be specified parametrically:
 $$
-\left\{ r_{t} (\underline{w_t}, \tilde{\theta}), \tilde{\theta}\in \tilde{\Theta} \right\},
+\left\{ i_{t} (\underline{w_t}, \tilde{\theta}), \tilde{\theta}\in \tilde{\Theta} \right\},
 $$
-where $r_{t}(\bullet,\bullet)$ is a known function.
+where $i_{t}(\bullet,\bullet)$ is a known function.
 
 Let us now detail the three steps on which each of the three ways of defining an EAPM is based.
 
@@ -267,12 +285,12 @@ Let us now detail the three steps on which each of the three ways of defining an
 * **Step 1 -- Specification of the historical dynamics**. We choose a parametric family for the conditional historical Log-Laplace transform $\psi_t(u|\underline{w_t})$: $\left\{ \psi_t (u|\underline{w_t} ; \theta_1), \theta_1 \in \Theta_1 \right\}$.
 * **Step 2 -- Specification of the SDF**. Considering the affine specification of as Eq. \@ref(eq:keySDF), that is:
 $$
-\mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -r_{t}(\underline{w_t}, \tilde{\theta}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)|\underline{w_t} ; \theta_1]\right\},
+\mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -i_{t}(\underline{w_t}, \tilde{\theta}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)|\underline{w_t} ; \theta_1]\right\},
 $$
-we need to specifiy functions $r_{t}(\underline{w_t}, \tilde{\theta})$ and $\alpha_t(\underline{w_t})$. Assume that $\alpha_t(\underline{w_t})$ belongs to a parametric family: $\left\{ \alpha_t (\underline{w_t} ; \theta_2),\theta_2 \in \Theta_2 \right\}$.
+we need to specifiy functions $i_{t}(\underline{w_t}, \tilde{\theta})$ and $\alpha_t(\underline{w_t})$. Assume that $\alpha_t(\underline{w_t})$ belongs to a parametric family: $\left\{ \alpha_t (\underline{w_t} ; \theta_2),\theta_2 \in \Theta_2 \right\}$.
 We then have:
 \begin{eqnarray*}
-\mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) &=& \exp \left\{ - r_{t}
+\mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) &=& \exp \left\{ - i_{t}
 (\underline{w_t}, \tilde{\theta}) + \alpha'_t (\underline{w_t},\theta_2) w_{t+1} - \psi_{t} \left[ \alpha_t (\underline{w_t},
 \theta_2) | \underline{w_t} ; \theta_1 \right] \right\},
 \end{eqnarray*}
@@ -299,9 +317,9 @@ The previous three steps imply the specification of the R.N. dynamics (according
 
 * **Step 1 -- Specification of the physical dynamics**. We select a family $\{ \psi_t (u | \underline{w_t},\theta_1), \theta_1 \in \Theta_1 \}$.
 * **Step 2 -- Specification of the risk-neutral dynamics**. We select a family $\{\psi^{\mathbb{Q}}_t (u | \underline{w_t},
-\theta^*),\theta^* \in \Theta^* \}$ and, possibly, $\{r_{t}(\underline{w_t},\tilde{\theta}),\tilde{\theta}\in\tilde{\Theta}\}$.
+\theta^*),\theta^* \in \Theta^* \}$ and, possibly, $\{i_{t}(\underline{w_t},\tilde{\theta}),\tilde{\theta}\in\tilde{\Theta}\}$.
 * **Step 3 -- Internal Consistency Conditions (ICC)**. Once the parameterization $(\tilde{\theta},
-\theta_1, \theta^*) \in \tilde{\Theta} \times \Theta^*_1$ is defined, ICCs may be imposed. For instance, if $w_{1,t} = \log(p_{1,t}/p_{1,t-1})$, then we must have $\exp(-r_t)\mathbb{E}^{\mathbb{Q}}_t \exp (e_{1}' w_{t+1}) = 1$. Or if $w_{1,t} = B(t,h)$, then $e_{1}' w_{t} = \mathbb{E}_t^{\mathbb{Q}} \exp(-r_t - \dots - r_{t+h-1})$.
+\theta_1, \theta^*) \in \tilde{\Theta} \times \Theta^*_1$ is defined, ICCs may be imposed. For instance, if $w_{1,t} = \log(p_{1,t}/p_{1,t-1})$, then we must have $\exp(-i_t)\mathbb{E}^{\mathbb{Q}}_t \exp (e_{1}' w_{t+1}) = 1$. Or if $w_{1,t} = B(t,h)$, then $e_{1}' w_{t} = \mathbb{E}_t^{\mathbb{Q}} \exp(-i_t - \dots - i_{t+h-1})$.
 
 The SDF is a by-product. If we want an exponential affine SDF, for any pair $(\psi^{\mathbb{Q}}_t, \psi_t)$ belonging to these families, there must exist a unique function $\alpha_t (\underline{w_t})$ denoted by $\alpha_t (w_t ; \theta_1, \theta^*)$, and satisfying:
 \begin{equation*}
@@ -312,11 +330,11 @@ The SDF is a by-product. If we want an exponential affine SDF, for any pair $(\p
 
 ### Back modelling (based on three steps)
 
-* **Step 1 -- Specification of the R.N. dynamics**, and possibly of $r_{t}(\underline{w_t})$]: $\psi^{\mathbb{Q}}_t (u | \underline{w_t}; \theta^*_1)$.
+* **Step 1 -- Specification of the R.N. dynamics**, and possibly of $i_{t}(\underline{w_t})$]: $\psi^{\mathbb{Q}}_t (u | \underline{w_t}; \theta^*_1)$.
 * **Step 2 -- Internal consistency conditions (ICC)**, if relevant, are taken into account:
 \begin{equation*}
 \begin{array}{lll}
-&& p(\underline{w_t}) = \mathbb{E}^{\mathbb{Q}}_t \left[ \exp (-r_{t} (\underline{w_t},\tilde{\theta}) - \dots - r_{s-1} (\underline{w_s}, \tilde{\theta}))g(\underline{w_s}) | \underline{w_t} , \theta^*_1\right] ,\\
+&& p(\underline{w_t}) = \mathbb{E}^{\mathbb{Q}}_t \left[ \exp (-i_{t} (\underline{w_t},\tilde{\theta}) - \dots - i_{s-1} (\underline{w_s}, \tilde{\theta}))g(\underline{w_s}) | \underline{w_t} , \theta^*_1\right] ,\\
 && \forall    \underline{w_t} , \tilde{\theta} , \theta^*_1.
 \end{array}
 \end{equation*}

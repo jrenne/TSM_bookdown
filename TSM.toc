@@ -1,61 +1,90 @@
-\contentsline {chapter}{\numberline {1}Affine processes}{7}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Information in the Economy: The ``factors''}{7}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Dynamic models and Laplace transform (L.T.)}{8}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Laplace Transform and moments/cumulants}{9}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Additional properties of the Laplace transform}{10}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Affine (or Car) processes}{12}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}Car processes of order one}{12}{subsection.1.5.1}%
-\contentsline {subsection}{\numberline {1.5.2}Car processes of order \(p\)}{16}{subsection.1.5.2}%
-\contentsline {section}{\numberline {1.6}Markov chains}{18}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Wishart autoregressive (WAR) processes}{19}{section.1.7}%
-\contentsline {section}{\numberline {1.8}Building affine processes}{20}{section.1.8}%
-\contentsline {subsection}{\numberline {1.8.1}Univariate affine processes with stochastic parameters}{20}{subsection.1.8.1}%
-\contentsline {subsection}{\numberline {1.8.2}Multivariate affine processes}{21}{subsection.1.8.2}%
-\contentsline {subsection}{\numberline {1.8.3}Extending multivariate stochastic processes}{22}{subsection.1.8.3}%
-\contentsline {subsection}{\numberline {1.8.4}Extended affine processes}{24}{subsection.1.8.4}%
-\contentsline {section}{\numberline {1.9}Multi-horizon Laplace transform}{26}{section.1.9}%
-\contentsline {subsection}{\numberline {1.9.1}Recursive computation and direct pricing implications}{26}{subsection.1.9.1}%
-\contentsline {subsection}{\numberline {1.9.2}Exponential payoff}{30}{subsection.1.9.2}%
-\contentsline {section}{\numberline {1.10}VAR representation and conditional moments}{31}{section.1.10}%
-\contentsline {section}{\numberline {1.11}Truncated Laplace transforms of affine processes}{32}{section.1.11}%
-\contentsline {section}{\numberline {1.12}Appendices}{34}{section.1.12}%
-\contentsline {chapter}{\numberline {2}A detour through structural approaches}{43}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF)}{43}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}The SDF when agents feature expected-utility time-separable preferences}{44}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Risk aversion and intertemporal elasticity of substitution}{46}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}The case of the power utility function}{47}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4}The limitations of the CCAPM}{49}{subsection.2.1.4}%
-\contentsline {subsection}{\numberline {2.1.5}C-CAPM: That bad?}{54}{subsection.2.1.5}%
-\contentsline {subsection}{\numberline {2.1.6}The term structure of real interest rates in the CCAPM}{56}{subsection.2.1.6}%
-\contentsline {section}{\numberline {2.2}Recursive Utilities}{62}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Habit formation}{63}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Limitations of the Habit Models for Long-Horizons}{65}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Epstein-Zin preferences}{66}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Epstein-Zin preferences and risk aversion}{67}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Epstein-Zin preferences and IES}{68}{subsection.2.2.5}%
-\contentsline {subsection}{\numberline {2.2.6}Epstein-Zin Preferences and the time composition of risk}{69}{subsection.2.2.6}%
-\contentsline {subsection}{\numberline {2.2.7}Epstein-Zin preferences and early resolution uncertainty}{70}{subsection.2.2.7}%
-\contentsline {subsection}{\numberline {2.2.8}The SDF with Epstein-Zin preferences}{71}{subsection.2.2.8}%
-\contentsline {subsection}{\numberline {2.2.9}Long-run risk model}{77}{subsection.2.2.9}%
-\contentsline {section}{\numberline {2.3}Preferred-habitat model of the term-structure of interest rate}{81}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Appendix}{92}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}SDF in the CES Epstein-Zin Context}{92}{subsection.2.4.1}%
-\contentsline {chapter}{\numberline {3}Pricing and risk-neutral dynamics}{93}{chapter.3}%
-\contentsline {section}{\numberline {3.1}SDF: Absence of Arbitrage Approach}{93}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Existence and unicity of the SDF}{93}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Exponential affine SDF}{95}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}The risk-neutral (R.N.) dynamics}{96}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Typology of econometric asset-pricing models}{98}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}The direct modelling}{100}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}The R.N.-constrained direct modelling (or mixed modelling)}{100}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Back modelling (based on three steps)}{101}{subsection.3.3.3}%
-\contentsline {chapter}{\numberline {4}The term structure or risk-free yields}{103}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Introduction}{103}{section.4.1}%
-\contentsline {section}{\numberline {4.2}The Affine Case}{106}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Affine yields}{106}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Maximum Sharpe ratio}{108}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Gaussian Affine Term Structure Model}{109}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Non-Negative Affine Term Structure Model}{113}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}The shadow-rate approach}{113}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}The auto-regressive gamma approach}{117}{subsection.4.4.2}%
-\contentsline {chapter}{\numberline {5}References}{123}{chapter.5}%
+\contentsline {chapter}{\numberline {1}Affine processes}{9}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Information in the Economy: The ``factors''}{9}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Dynamic models and Laplace transform (L.T.)}{10}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Laplace Transform and moments/cumulants}{11}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Additional properties of the Laplace transform}{12}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Affine (or Car) processes}{14}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Car processes of order one}{14}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Car processes of order \(p\)}{18}{subsection.1.5.2}%
+\contentsline {section}{\numberline {1.6}Markov chains}{20}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Wishart autoregressive (WAR) processes}{21}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Building affine processes}{22}{section.1.8}%
+\contentsline {subsection}{\numberline {1.8.1}Univariate affine processes with stochastic parameters}{22}{subsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.8.2}Multivariate affine processes}{23}{subsection.1.8.2}%
+\contentsline {subsection}{\numberline {1.8.3}Extending multivariate stochastic processes}{24}{subsection.1.8.3}%
+\contentsline {subsection}{\numberline {1.8.4}Extended affine processes}{25}{subsection.1.8.4}%
+\contentsline {section}{\numberline {1.9}Multi-horizon Laplace transform}{28}{section.1.9}%
+\contentsline {subsection}{\numberline {1.9.1}Recursive computation and direct pricing implications}{28}{subsection.1.9.1}%
+\contentsline {subsection}{\numberline {1.9.2}Exponential payoff}{32}{subsection.1.9.2}%
+\contentsline {section}{\numberline {1.10}VAR representation and conditional moments}{33}{section.1.10}%
+\contentsline {section}{\numberline {1.11}Truncated Laplace transforms of affine processes}{34}{section.1.11}%
+\contentsline {section}{\numberline {1.12}Appendices}{36}{section.1.12}%
+\contentsline {chapter}{\numberline {2}Pricing and risk-neutral dynamics}{45}{chapter.2}%
+\contentsline {section}{\numberline {2.1}SDF: Absence of Arbitrage Approach}{45}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Existence and unicity of the SDF}{45}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Exponential affine SDF}{48}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}The risk-neutral (R.N.) dynamics}{48}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Typology of econometric asset-pricing models}{51}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}The direct modelling}{52}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}The R.N.-constrained direct modelling (or mixed modelling)}{53}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Back modelling (based on three steps)}{53}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}The term structure or risk-free yields}{55}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{55}{section.3.1}%
+\contentsline {section}{\numberline {3.2}The Affine Case}{58}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Affine yields}{58}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Maximum Sharpe ratio}{60}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Gaussian Affine Term Structure Model}{61}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Non-Negative Affine Term Structure Model}{65}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}The shadow-rate approach}{65}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}The auto-regressive gamma approach}{69}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}A detour through structural approaches}{75}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF)}{75}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}The SDF when agents feature expected-utility time-separable preferences}{76}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Risk aversion and intertemporal elasticity of substitution}{78}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}The case of the power utility function}{79}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}The limitations of the CCAPM}{81}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}C-CAPM: That bad?}{86}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}The term structure of real interest rates in the CCAPM}{88}{subsection.4.1.6}%
+\contentsline {section}{\numberline {4.2}Recursive Utilities}{94}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Habit formation}{95}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Limitations of the Habit Models for Long-Horizons}{97}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Epstein-Zin preferences}{98}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Epstein-Zin preferences and risk aversion}{99}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Epstein-Zin preferences and IES}{100}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Epstein-Zin Preferences and the time composition of risk}{101}{subsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.2.7}Epstein-Zin preferences and early resolution uncertainty}{102}{subsection.4.2.7}%
+\contentsline {subsection}{\numberline {4.2.8}The SDF with Epstein-Zin preferences}{103}{subsection.4.2.8}%
+\contentsline {subsection}{\numberline {4.2.9}Long-run risk model}{109}{subsection.4.2.9}%
+\contentsline {section}{\numberline {4.3}Preferred-habitat model of the term-structure of interest rate}{118}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Appendix}{126}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}SDF in the CES Epstein-Zin Context}{126}{subsection.4.4.1}%
+\contentsline {chapter}{\numberline {5}Estimation of affine asset-pricing models}{129}{chapter.5}%
+\contentsline {section}{\numberline {5.1}State-space model}{129}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Kalman-filter-based approach}{131}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}The Gaussian linear state-space case}{131}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Missing observations}{135}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}About non-constant conditional matrix \(\mitSigma \)}{137}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Non-linear models}{139}{section.5.4}%
+\contentsline {section}{\numberline {5.5}The inversion technique}{139}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Dealing with unobserved regimes}{141}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Mixed use of Kitagawa-Hamilton and inversion techniques}{144}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.6}A typical small-sample issue}{146}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Forward, futures, dividends, commodity pricing, and convenience yields}{151}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Derivatives written on stocks or commodities}{151}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Forward contracts}{151}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Futures contracts, futures prices}{153}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Convenience yields}{154}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Pricing with affine models}{156}{subsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.1.5}Historical dynamics}{156}{subsection.6.1.5}%
+\contentsline {section}{\numberline {6.2}Interest-rate swaps and forward contracts}{161}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Swap rates}{161}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Forward rates}{162}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Credit and liquidity risks}{165}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Notations}{165}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Pricing under standard assumptions}{166}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Pricing illiquid bonds}{173}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Relaxing the classical framework assumptions}{179}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}General affine credit-risk framework}{180}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}CDS pricing in the general framework}{185}{subsection.7.4.2}%
+\contentsline {section}{\numberline {7.5}Top-down approach}{188}{section.7.5}%
+\contentsline {chapter}{\numberline {8}References}{191}{chapter.8}%

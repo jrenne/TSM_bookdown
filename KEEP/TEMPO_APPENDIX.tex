@@ -8,19 +8,6 @@
 
 
 
-The results rsults from:
-\begin{eqnarray*}
-&& \log(P_{t+1}+D_{t+1})\\
-&=& \log(P_{t+1}) + \log \left(1+\frac{D_{t+1}}{P_{t+1}}\right) = p_{t+1} + \log(1+\exp(d_{t+1}-p_{t+1}))\\
-&=& p_{t+1} + \log\left(1+\exp(\overline{d-p}) + \exp(d_{t+1}-p_{t+1}) - \exp(\overline{d-p})\right)\\
-&=& p_{t+1} + \log(1+\exp(\overline{d-p})) + \log\left(1+\frac{\exp(d_{t+1}-p_{t+1}) -\exp(\overline{d-p})}{1+\exp(\overline{d-p})}\right)\\
-&=& p_{t+1} + \log(1+\exp(\overline{d-p})) + \log\left(1+\exp(\overline{d-p})\frac{\exp(\overbrace{d_{t+1}-p_{t+1}- \{\overline{d-p}\}}^{\mbox{assumed to be small}}) -1}{1+\exp(\overline{d-p})}\right)\\
-&=& p_{t+1} + \log(1+\exp(\overline{d-p})) + \frac{\exp(\overline{d-p})}{{1+\exp(\overline{d-p})}} \left(d_{t+1}-p_{t+1}- \{\overline{d-p}\}\right)\\
-&=& p_{t+1} \frac{1}{1+\exp(\overline{d-p})} + d_{t+1} \frac{\exp(\overline{d-p})}{{1+\exp(\overline{d-p})}} +\\
-&& \log(1+\exp(\overline{d-p})) - \left(\overline{d-p}\right) \frac{\exp(\overline{d-p})}{{1+\exp(\overline{d-p})}}.
-\end{eqnarray*}
-
-
 
 {S.D.F. in the CES Epstein-Zin Context}\label{slide:sdf_appendix}
 

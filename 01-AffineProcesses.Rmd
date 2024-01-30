@@ -55,17 +55,14 @@ If $w_{t+1}|\underline{w_t} \sim {\mathcal{P}}(\lambda_t)$, then:
 If $w_{t+1}|\underline{w_t} \sim \mathcal{N}\left(m(\underline{w_t},\theta), \Sigma(\underline{w_t},\theta)\right)$, then:
 
 $$
-u'w_{t+1}|\underline{w_t} \sim \mathcal{N}\left(u'm(\underline{w_t},\theta), u'\Sigma(\underline{w_t},\theta)u\right).
+u'w_{t+1}|\underline{w_t} \sim \mathcal{N}\left(u'm(\underline{w_t},\theta), u'\Sigma(\underline{w_t},\theta)u\right),
 $$
-
+and, therefore:
 $$
-\Rightarrow
 \left\{
 \begin{array}{ccc}
-\varphi(u|\underline{w_t},\theta) &=& \exp\left[
-\begin{array}{l} u'm(\underline{w_t},\theta)+
-\frac{1}{2} u'\Sigma(\underline{w_t},\theta)u\end{array}
-\right]\\
+\varphi(u|\underline{w_t},\theta) &=& \exp\left[u'm(\underline{w_t},\theta)+
+\frac{1}{2} u'\Sigma(\underline{w_t},\theta)u\right]\\
 \psi(u|\underline{w_t},\theta) &=&
 u'm(\underline{w_t},\theta) +  \frac{1}{2}
 u'\Sigma(\underline{w_t},\theta)u.
@@ -520,9 +517,7 @@ Let $W_{t+1}$ be a $WAR_L(K, M, \Omega)$ process. It is defined by:
 &=& \exp\left\{Tr[M'\Gamma(Id-2\Omega \Gamma)^{-1}M W_t]  -  \frac{K}{2}   \log [det(Id-2\Omega \Gamma)]\right\}, \nonumber
 \end{eqnarray}
 where $\Gamma$ is a symmetric matrix,^[Indeed, $Tr(\Gamma W_{t+1})$ is equal to:
-\begin{eqnarray*}
-\sum^L_{i=1}(\Gamma W_{t+1})_{ii} = \sum^L_{i=1}  \sum^L_{j=1} \gamma_{ij} W_{t+1,ij} = \sum^L_{i=1} \gamma_{ii} W_{t+1,ii} + \sum^L_{i<j} (\gamma_{ij}+\gamma_{ji}) W_{t+1,ij}.
-\end{eqnarray*}] $K$ is a positive scalar, $M$ is a $(L \times L)$ matrix, and $\Omega$ is a $(L \times L)$ symmetric positive definite matrix.
+$\sum^L_{i=1}(\Gamma W_{t+1})_{ii} = \sum^L_{i=1}  \sum^L_{j=1} \gamma_{ij} W_{t+1,ij} = \sum^L_{i=1} \gamma_{ii} W_{t+1,ii} + \sum^L_{i<j} (\gamma_{ij}+\gamma_{ji}) W_{t+1,ij}$.] $K$ is a positive scalar, $M$ is a $(L \times L)$ matrix, and $\Omega$ is a $(L \times L)$ symmetric positive definite matrix.
 :::
 
 If $K$ is an integer, Proposition \@ref(prp:WARAR) (in the appendix) shows that $W_{t+1}$ can be obtained from:
@@ -618,12 +613,12 @@ w_{2,t}
 &&\mathbb{E}[\exp(u_1 w_{1,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}})]\\
 &=& \exp[a_{11}(u_1)w_{1,{\color{red}{t}}}+a_{12}(u_1)w_{2,{\color{red}{t}}}+b_{1}(u_1)],
 \end{eqnarray*}
-and:
+(which defines $w_{1,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}}$) and:
 \begin{eqnarray*}
 && \mathbb{E}[\exp(u_2 w_{2,t+1}|\underline{w_{1,t+1}}, \underline{w_{2,t}})]\\
-&= & \exp[a_0(u_2)w_{1,{\color{red}{t+1}}}+a_{21}(u_2)w_{1,{\color{red}{t}}}+a_{22}(u_2)w_{2,{\color{red}{t}}}+b_2(u_2)].
+&= & \exp[a_0(u_2)w_{1,{\color{red}{t+1}}}+a_{21}(u_2)w_{1,{\color{red}{t}}}+a_{22}(u_2)w_{2,{\color{red}{t}}}+b_2(u_2)]
 \end{eqnarray*}
-Then $w_t$ is an affine process.^[Indeed, we have:
+(which defines $w_{2,t+1}|\underline{w_{1,t+1}}, \underline{w_{2,t}}$). Then $w_t$ is an affine process.^[Indeed, we have:
 \begin{eqnarray*}
 && \mathbb{E}[\exp(u_1 w_{1,t+1}+u_2 w_{2,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}})]\\
 &= & \mathbb{E}\{\exp(u_1 w_{1,t+1}) \mathbb{E}[\exp(u_{2}w_{2,t+1})|\underline{w_{1,t+1}}, \underline{w_{2,t}})]|\underline{w_{1,t}}, \underline{w_{2,t}})\} \\
@@ -647,7 +642,7 @@ Consider the same framework as in Section \@ref(stoch) when $y_t$ is a $n$-dimen
 \end{equation}
 and further assume that $\delta$ is stochastic and depends on $z_t$, such that:
 $$
-\mathbb{E}[\exp(u y_{t+1})|\underline{y_t}, \underline{z_{t+1}}] = \exp[a_0(u)y_t+b_0(u)'\Lambda z_{t+1}],
+\mathbb{E}[\exp(u y_{t+1})|\underline{y_t}, \underline{z_{t+1}}] = \exp[a_0'(u)y_t+b_0(u)\Lambda z_{t+1}],
 $$
 where $\Lambda$ is a $(m\times k)$ matrix, with $\Lambda z_{t+1} \in \mathcal{D}$. In this case, if:
 $$
@@ -672,9 +667,9 @@ where
 
 * $z_{1,t+1}$ is, for instance, a Gaussian VAR process.
 * $z_{2,t+1}$ is
-* obtained by applying the $vec$ operator to a Wishart process,
-* replaced by $\Lambda_2 z_{2,t+1}$, where $\Lambda_2$ is a $(n^2 \times J)$ matrix whose columns are $vec(\Sigma_j)$, $j \in \{1,\dots,J\}$, the $\Sigma_j$ being $(n \times n)$ positive semi-definite,
-* a standardized $J$-dimensional VARG process (multivariate extension of Example \@ref(exm:ARG1)).
+    * obtained by applying the $vec$ operator to a Wishart process,
+    * replaced by $\Lambda_2 z_{2,t+1}$, where $\Lambda_2$ is a $(n^2 \times J)$ matrix whose columns are $vec(\Sigma_j)$, $j \in \{1,\dots,J\}$, the $\Sigma_j$ being $(n \times n)$ positive semi-definite, and $z_{2,t+1}$ is a selection vector of dimension $J \times 1$,
+    * a standardized $J$-dimensional VARG process (multivariate extension of Example \@ref(exm:ARG1)).
 :::
 
 :::{.example #RSVAR2 name="Regime-switching VAR(1)"}
@@ -856,7 +851,7 @@ As mentioned above, what precedes has useful implications to price long-dated fi
 :::{.example #nominalBth name="Nominal interest rates"}
 Let $B(t,h)$ denote the date-$t$ price of a nominal zero-coupon bond of maturity $h$. We Have:
 \begin{equation}
-B(t,h) = \mathbb{E}^{\mathbb{Q}}_t exp (-r_{t}-\dots-r_{t+h-1}),(\#eq:stdbond)
+B(t,h) = \mathbb{E}^{\mathbb{Q}}_t \exp (-r_{t}-\dots-r_{t+h-1}),(\#eq:stdbond)
 \end{equation}
 where $r_{t}$ is the nominal short rate between $t$ and $t+1$ (observed at $t$), and the associated (continuously-compounded) yield-to-maturity is given by:
 \begin{equation}
@@ -923,7 +918,7 @@ Denote by $q_t$ the price index on date $t$ and by $\pi_{t+1} = \log
 \end{eqnarray*}
 If $r_t = \omega'w_t$ and $\pi_t = \bar\omega'w_t$, then $\bar{B}(t,h)$ is given by:
 \begin{eqnarray*}
-\exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t exp[(\bar\omega-\omega)'w_{t+1}+\dots+(\bar\omega-\omega)'w_{t+h-1}+\bar\omega'
+\exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp[(\bar\omega-\omega)'w_{t+1}+\dots+(\bar\omega-\omega)'w_{t+h-1}+\bar\omega'
 w_{t+h}]
 \end{eqnarray*}
 One can then price this bond by directly employing Eq. \@ref(eq:LTreverse), with $u_1 = \bar\omega$ and $u_i = \bar\omega-\omega$, $i = 2,\dots, H$.
@@ -945,7 +940,7 @@ P(t,h;\nu) = \mathbb{E}^{\mathbb{Q}}_t[\exp(-r_{t}-\dots-r_{t+h-1}) \exp(\nu' w_
 $$
 If $r_t = \omega'w_t$, we have:
 $$
-P(t,h;\nu) = \exp(-r_{t})\mathbb{E}^{\mathbb{Q}}_t \left(exp[-\omega' w_{t+1}-\dots-\omega' w_{t+h-1}+ \nu' w_{t+h}]\right),
+P(t,h;\nu) = \exp(-r_{t})\mathbb{E}^{\mathbb{Q}}_t \left(\exp[-\omega' w_{t+1}-\dots-\omega' w_{t+h-1}+ \nu' w_{t+h}]\right),
 $$
 which can be calculated by Eq. \@ref(eq:LTreverse), with $u_1 = \nu$ and $u_i = -\omega$ for $i = 2,\dots,H$.
 
@@ -1341,7 +1336,7 @@ Finally note that if we put $h-j+1 = i$, formulas (ii) become (i).
 If the functions $a_{t}$ and $b_{t}$ do not depend on $t$, and if different sequences $(\gamma^h_1,\dots,\gamma^h_h), h=1,\dots,H$ (say) satisfy $\gamma^h_{h+1-i} = u_i$, for
 $i=1,\dots,h$, and for any $h \leq H$, that is if we want to compute ("reverse order" case):
 $$
-\varphi_{t,h}(u_h,\dots,u_1)=\mathbb{E}_t[\exp(u'_{{\color{red}h}} w_{{\color{red}t+1}}+\dots+u'_{{\color{red}1}} w_{{\color{red}t+h}})],
+\varphi_{t,h}(u_h,\dots,u_1)=\mathbb{E}_t[\exp(u'_{\color{red}{h}} w_{\color{red}{t+1}}+\dots+u'_{\color{red}{1}} w_{\color{red}{t+h}})],
 \quad h=1,\dots,H,
 $$
 then we can compute the $\varphi_{t,h}(u_h,\dots,u_1)$ for any $t$ and any $h \leq H$, with only one recursion, i.e. $\varphi_{t,h}(u_h,\dots,u_1)=\exp(A'_hw_t+B_h)$ with:

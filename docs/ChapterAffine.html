@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 1 Affine processes | Introduction to Term Structure Models</title>
+<meta name="author" content="Jean-Paul Renne and Alain Monfort">
+<meta name="description" content="1.1 Information in the Economy: The “factors” On each date \(t=1,2,\dots,T\), agents receive new information by observing factors, also called states. We denote the (\(K\)-dimensional) vector of...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 1 Affine processes | Introduction to Term Structure Models">
+<meta property="og:type" content="book">
+<meta property="og:description" content="1.1 Information in the Economy: The “factors” On each date \(t=1,2,\dots,T\), agents receive new information by observing factors, also called states. We denote the (\(K\)-dimensional) vector of...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 1 Affine processes | Introduction to Term Structure Models">
+<meta name="twitter:description" content="1.1 Information in the Economy: The “factors” On each date \(t=1,2,\dots,T\), agents receive new information by observing factors, also called states. We denote the (\(K\)-dimensional) vector of...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="my-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction to Term Structure Models</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
+<li><a class="active" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
+<li><a class="" href="Structural.html"><span class="header-section-number">2</span> A detour through structural approaches</a></li>
+<li><a class="" href="pricing-and-risk-neutral-dynamics.html"><span class="header-section-number">3</span> Pricing and risk-neutral dynamics</a></li>
+<li><a class="" href="the-term-structure-or-risk-free-yields.html"><span class="header-section-number">4</span> The term structure or risk-free yields</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">5</span> References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ChapterAffine" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Affine processes<a class="anchor" aria-label="anchor" href="#ChapterAffine"><i class="fas fa-link"></i></a>
+</h1>
+<div id="Information" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Information in the Economy: The “factors”<a class="anchor" aria-label="anchor" href="#Information"><i class="fas fa-link"></i></a>
+</h2>
+<p>On each date <span class="math inline">\(t=1,2,\dots,T\)</span>, agents receive new information by observing <em>factors</em>, also called <em>states</em>. We denote the (<span class="math inline">\(K\)</span>-dimensional) vector of factors by <span class="math inline">\(w_t\)</span>. Vector <span class="math inline">\(w_t\)</span> is usually random. On date <span class="math inline">\(t\)</span>, vector <span class="math inline">\(w_t\)</span> is supposed to be perfectly observed by the agents (investors), but can be only partially observed, or unobserved by the econometrician.</p>
+<p>Naturally, <span class="math inline">\(w_t\)</span> can be decomposed into different sub-vectors of different natures. For instance, we can have <span class="math inline">\(w_t = (y_t', z_t')'\)</span> with
+* <span class="math inline">\(y_t\)</span>: observable vector of (geometric) returns,
+* <span class="math inline">\(z_t\)</span>: regime, unobserved by the econometrician.</p>
+<p>Some of the components of <span class="math inline">\(w_t\)</span> can be prices. For instance, one component could be a short-term rate, a stock return, or an exchange rate. It can also include macroeconomic variables (inflation, GDP growth), or agent-specific variables.</p>
+</div>
+<div id="Dynamic" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Dynamic models and Laplace transform (L.T.)<a class="anchor" aria-label="anchor" href="#Dynamic"><i class="fas fa-link"></i></a>
+</h2>
+<p>The objective of a dynamic model is to describe the random changes in <span class="math inline">\(w_t\)</span>. The dynamics can be historical or risk-neutral (see Chapter <a href="#PandQ"><strong>??</strong></a>). The dynamics we consider are parametric, in the sense that the conditional distribution <span class="math inline">\(w_{t+1}|\underline{w_t}\)</span> (with <span class="math inline">\(\underline{w_t}=\{w_t,w_{t-1},\dots\}\)</span>) depends on a vector of parameters <span class="math inline">\(\theta\)</span>. In practice, it may be the case that <span class="math inline">\(\theta\)</span> is unknown by the econometrician (see Chapter <a href="#Estimation"><strong>??</strong></a>). The choice (or estimation) of a conditional distribution is equivalent to the choice (or estimation) of a conditional <em>Laplace transforms</em>:
+<span class="math display" id="eq:LT">\[\begin{equation}
+\varphi(u|\underline{w_t},\theta) =
+\mathbb{E}_{\theta}[\exp(u'w_{t+1})|\underline{w_t}], \quad u \in \mathbb{R}^K,\tag{1.1}
+\end{equation}\]</span>
+or a conditional <em>log Laplace transforms</em>:
+<span class="math display">\[
+\psi(u|\underline{w_t},\theta) =
+\log\{\mathbb{E}_{\theta}[\exp(u'w_{t+1})|\underline{w_t}]\}, \quad u \in
+\mathbb{R}^K.
+\]</span></p>
+<div class="example">
+<p><span id="exm:exBenoulli" class="example"><strong>Example 1.1  (Conditionally Bernoulli process) </strong></span>If <span class="math inline">\(w_{t+1}|\underline{w_t} \sim {\mathcal{I}} [p(\underline{w_t},\theta)]\)</span>, then:
+<span class="math display">\[
+\varphi(u|w_t)=
+\mathbb{E}[\exp(u w_{t+1}) \mid \underline{w_t}] = p_t \exp(u) + 1-p_t
+\]</span>
+with <span class="math inline">\(p_t = p(\underline{w_t}, \theta)\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:exBenoulli2" class="example"><strong>Example 1.2  (Conditionally Binomial process) </strong></span>If <span class="math inline">\(w_{t+1}|\underline{w_t} \in {\mathcal{B}}(n, p_t)\)</span>, then:
+<span class="math display">\[
+\varphi(u|w_t)=[p_t   \exp(u) + 1-p_t]^n.
+\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:exPoisson" class="example"><strong>Example 1.3  (Conditionally Poisson process) </strong></span>If <span class="math inline">\(w_{t+1}|\underline{w_t} \sim {\mathcal{P}}(\lambda_t)\)</span>, then:
+<span class="math display">\[\begin{eqnarray*}
+\varphi(u|w_t) &amp; =&amp;   \sum^\infty_{j=0}  \dfrac{1}{j!}  \exp(-\lambda_t) \lambda^j_t   \exp(uj)  = \exp(-\lambda_t) exp[\lambda_t \exp(u)] \\
+&amp; =&amp; \exp\{\lambda_t[\exp(u)-1]\}.
+\end{eqnarray*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:exGaussian" class="example"><strong>Example 1.4  (Conditionally normal (or Gaussian) process) </strong></span>If <span class="math inline">\(w_{t+1}|\underline{w_t} \sim \mathcal{N}\left(m(\underline{w_t},\theta), \Sigma(\underline{w_t},\theta)\right)\)</span>, then:</p>
+<p><span class="math display">\[
+u'w_{t+1}|\underline{w_t} \sim \mathcal{N}\left(u'm(\underline{w_t},\theta), u'\Sigma(\underline{w_t},\theta)u\right),
+\]</span>
+and, therefore:
+<span class="math display">\[
+\left\{
+\begin{array}{ccc}
+\varphi(u|\underline{w_t},\theta) &amp;=&amp; \exp\left[u'm(\underline{w_t},\theta)+
+\frac{1}{2} u'\Sigma(\underline{w_t},\theta)u\right]\\
+\psi(u|\underline{w_t},\theta) &amp;=&amp;
+u'm(\underline{w_t},\theta) +  \frac{1}{2}
+u'\Sigma(\underline{w_t},\theta)u.
+\end{array}
+\right.
+\]</span></p>
+</div>
+</div>
+<div id="AffineLaplace" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Laplace Transform and moments/cumulants<a class="anchor" aria-label="anchor" href="#AffineLaplace"><i class="fas fa-link"></i></a>
+</h2>
+<p>Here are some properties of the Laplace transform (Eq. <a href="ChapterAffine.html#eq:LT">(1.1)</a>):</p>
+<ul>
+<li>
+<span class="math inline">\(\varphi(0|\underline{w_t},\theta) = 1\)</span> and <span class="math inline">\(\psi(0|\underline{w_t},\theta)=0\)</span>.</li>
+<li>It is defined in a convex set <span class="math inline">\(E\)</span> (containing <span class="math inline">\(0\)</span>).</li>
+<li>If the interior of <span class="math inline">\(E\)</span> is non empty, all the (conditional) moments exist.</li>
+</ul>
+<p>As mentioned above, knowing the (conditional) Laplace transform is equivalent to knowing the (conditional) moments—if they exist. In the scalar case, we have that:</p>
+<ul>
+<li>the moment of order <span class="math inline">\(n\)</span> closely relates to the <span class="math inline">\(n^{th}\)</span> derivatives of <span class="math inline">\(\varphi\)</span>:
+<span class="math display">\[
+\left[ \begin{array}{l}  \dfrac{\partial^n
+\varphi(u|\underline{w_t},\theta)}{\partial u^n}
+\end{array} \right]_{u=0} = \mathbb{E}_{\theta}[w^n_{t+1}|\underline{w_t}],
+\]</span>
+</li>
+<li>the cumulant of order <span class="math inline">\(n\)</span> closely relates to the <span class="math inline">\(n^{th}\)</span> derivatives of <span class="math inline">\(\psi\)</span>:
+<span class="math display">\[
+\left[ \begin{array}{l}  \dfrac{\partial^n
+\psi(u|\underline{w_t},\theta)}{\partial u^n}
+\end{array} \right]_{u=0} = K_n(\underline{w_t},\theta).
+\]</span>
+</li>
+</ul>
+<p>In particular, what precedes implies that:
+<span class="math display">\[
+\left\{
+\begin{array}{ccc}
+K_1(\underline{w_t},\theta) &amp;=&amp; \mathbb{E}_{\theta}[w_{t+1}|\underline{w_t}]\\
+K_2(\underline{w_t}, \theta) &amp;=&amp; \mathbb{V}ar_{\theta}[w_{t+1}|\underline{w_t}].
+\end{array}
+\right.
+\]</span></p>
+<p>Accordingly, <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span> are respectively called conditional <strong>moment</strong> and <strong>cumulant</strong> generating function.</p>
+<p>In the multivariate case, we have:
+<span class="math display">\[\begin{eqnarray*}
+\left[\begin{array}{l}  \dfrac{\partial \psi}{\partial
+u} (u|\underline{w_t},\theta)  \end{array} \right]_{u=0} &amp;=&amp; \mathbb{E}_{\theta}[w_{t+1}|\underline{w_t}] \\
+\left[\begin{array}{l}  \dfrac{\partial^2
+\psi}{\partial u\partial u'} (u|\underline{w_t},\theta)  \end{array}
+\right]_{u=0} &amp;=&amp; \mathbb{V}ar_{\theta}[w_{t+1}|\underline{w_t}].
+\end{eqnarray*}\]</span></p>
+<div class="example">
+<p><span id="exm:exGaussian" class="example"><strong>Example 1.4  (Conditionally normal (or Gaussian) process) </strong></span>Consider Example <a href="ChapterAffine.html#exm:exGaussian">1.4</a>. Applying the previous formula, we have, in the scalar case:</p>
+<ul>
+<li>
+<span class="math inline">\(\psi(u|\underline{w_t},\theta)=u m(\underline{w_t},\theta) + \frac{1}{2}u^2\sigma^2(\underline{w_t},\theta)\)</span>.</li>
+<li>
+<span class="math inline">\(\left[\begin{array}{l} \dfrac{\partial \psi}{\partial u} (u|\underline{w_t},\theta) \end{array} \right]_{u=0} = m(\underline{w_t},\theta)\)</span>.</li>
+<li>
+<span class="math inline">\(\left[\begin{array}{l} \dfrac{\partial^2 \psi}{\partial u^2} (u|\underline{w_t},\theta) \end{array} \right]_{u=0} = \sigma^2(\underline{w_t},\theta)\)</span>.</li>
+</ul>
+<p>and, in the multidimensional normal case:</p>
+<ul>
+<li>
+<span class="math inline">\(\psi(u|\underline{w_t},\theta)=u' m(\underline{w_t},\theta) + \frac{1}{2}u'\Sigma(\underline{w_t},\theta)u\)</span>.</li>
+<li>
+<span class="math inline">\(\left[\begin{array}{l} \dfrac{\partial \psi}{\partial u} (u|\underline{w_t},\theta) \end{array} \right]_{u=0} = m(\underline{w_t},\theta)\)</span>.</li>
+<li>
+<span class="math inline">\(\left[\begin{array}{l} \dfrac{\partial^2 \psi}{\partial u\partial u'} (u|\underline{w_t},\theta) \end{array} \right]_{u=0} = \Sigma(\underline{w_t},\theta)\)</span>.</li>
+</ul>
+<p>In both cases, cumulants of order <span class="math inline">\(&gt;2\)</span> equal to <span class="math inline">\(0\)</span>.</p>
+</div>
+</div>
+<div id="additional-properties-of-the-laplace-transform" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Additional properties of the Laplace transform<a class="anchor" aria-label="anchor" href="#additional-properties-of-the-laplace-transform"><i class="fas fa-link"></i></a>
+</h2>
+<p>Here are additional properties of multivariate Laplace transform:</p>
+<ul>
+<li><p>If <span class="math inline">\(w_t=(w'_{1t},w'_{2t})'\)</span> <span class="math inline">\(, u=(u'_1, u'_2)'\)</span>:
+<span class="math display">\[\begin{eqnarray*}
+\mathbb{E}_{\theta}[\exp(u'_1 w_{1,t+1}|\underline{w_t})&amp;=&amp;\varphi(u_1,0|\underline{w_t},\theta)] \\
+\mathbb{E}_{\theta}[\exp(u'_2 w
+_{2,t+1}|\underline{w_t})&amp;=&amp;\varphi(0,u_2|\underline{w_t},\theta)].
+\end{eqnarray*}\]</span></p></li>
+<li><p>If <span class="math inline">\(w_t=(w'_{1t},w'_{2t})'\)</span>, and if <span class="math inline">\(w_{1t}\)</span> and <span class="math inline">\(w_{2t}\)</span> are conditionally independent:
+<span class="math display">\[\begin{eqnarray*}
+\varphi(u|\underline{w_t},\theta) &amp;=&amp;
+\varphi(u_1,0|\underline{w_t},\theta)\times\varphi(0,u_2|\underline{w_t},\theta) \\
+\psi(u|\underline{w_t},\theta) &amp;=&amp;
+\psi(u_1,0|\underline{w_t},\theta)+\psi(0,u_2|\underline{w_t},\theta).
+\end{eqnarray*}\]</span></p></li>
+<li><p>If <span class="math inline">\(w_{1t}\)</span> and <span class="math inline">\(w_{2t}\)</span> have the same size and if
+<span class="math display">\[
+\varphi(u_1, u_2|\underline{w_t},\theta) = \mathbb{E}_\theta[\exp(u'_1 w_{1, t+1} + u'_2 w_{2,t+1}|\underline{w_t}],
+\]</span>
+then the conditional Laplace transform of <span class="math inline">\(w_{1, t+1} + w_{2, t+1}\)</span> given
+<span class="math inline">\(\underline{w_t}\)</span> is <span class="math inline">\(\varphi(u, u|\underline{w_t},\theta)\)</span>.
+In particular, if <span class="math inline">\(w_{1t}\)</span> and <span class="math inline">\(w_{2t}\)</span> are conditionally independent and
+have the same size, the conditional Laplace transform and Log-Laplace
+transform of <span class="math inline">\(w_{1,t+1}+w_{2,t+1}\)</span> are respectively:
+<span class="math display">\[
+\varphi(u,0|\underline{w_t},\theta)\times \varphi(0,
+u|\underline{w_t},\theta), \quad \mbox{and}\quad \psi(u,0|\underline{w_t},\theta)+ \psi(0,
+u|\underline{w_t},\theta).
+\]</span></p></li>
+</ul>
+<div class="lemma">
+<p><span id="lem:lemMass" class="lemma"><strong>Lemma 1.1  (Conditional zero probability for non-negative processes) </strong></span>If <span class="math inline">\(w_t\)</span> is univariate and nonnegative its (conditional)
+Laplace transform <span class="math inline">\(\varphi_t(u) = \mathbb{E}_t[\exp(u w_{t+1})]\)</span> is defined
+for <span class="math inline">\(u \leq 0\)</span> and
+<span class="math display">\[
+\mathbb{P}_t(w_{t+1} = 0) = \lim_{u\rightarrow - \infty} \varphi_t(u).
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-1" class="proof"><em>Proof</em>. </span>We have <span class="math inline">\(\varphi_t(u) = \mathbb{P}_t(w_{t+1} = 0) + \int_{w_{t+1}&gt; 0} \exp(u w_{t+1}) d\mathbb{P}_t(w_{t+1})\)</span>. The Lebesgue theorem ensures that the last integral converges to zero when <span class="math inline">\(u\)</span> goes to <span class="math inline">\(-\infty\)</span>.</p>
+</div>
+<div class="lemma">
+<p><span id="lem:lemPetitLemme" class="lemma"><strong>Lemma 1.2  (Conditional zero probability for non-negative multivariate processes) </strong></span>Assume that:</p>
+<ul>
+<li>
+<span class="math inline">\(w_{1,t}\)</span> is valued in <span class="math inline">\(\mathbb{R}^{d}\)</span> (<span class="math inline">\(d \geq 1\)</span>),</li>
+<li>
+<span class="math inline">\(w_{2,t}\)</span> is valued in <span class="math inline">\(\mathbb{R}^+ = [0, + \infty )\)</span>,</li>
+<li>
+<span class="math inline">\(\mathbb{E}_t \left[ \exp \left( u_1 ' w_{1,t+1} + u_2 w_{2,t+1} \right) \right]\)</span> exists for a given <span class="math inline">\(u_1\)</span> and <span class="math inline">\(u_2 \leq 0\)</span>.</li>
+</ul>
+<p>Then, we have:
+<span class="math display" id="eq:petitlemme">\[\begin{equation}
+\mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1})  \textbf{1}_{\{w_{2,t+1} = 0 \}} \right] =  \underset{u_2 \rightarrow -\infty}{\lim} \mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1} + u_2   w_{2,t+1} )  \right].\tag{1.2}
+\end{equation}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-2" class="proof"><em>Proof</em>. </span>We have that
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp;\underset{u_2 \rightarrow -\infty}{\lim} \mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1} + u_2   w_{2,t+1} )  \right] \\
+&amp;=&amp; \mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1})   \textbf{1}_{\{w_{2,t+1} = 0 \}} \right] +\\
+&amp;&amp; \underset{u_2 \rightarrow -\infty}{\lim}   \mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1} + u_2   w_{2,t+1} )  \textbf{1}_{\{w_{2,t+1} &gt; 0 \}}  \right] ,
+\end{eqnarray*}\]</span>
+and since in the second term on the right-hand side <span class="math inline">\(\exp(u_2 w_{2,t+1}) \textbf{1}_{\{w_{2,t+1} &gt; 0 \}} \rightarrow 0\)</span> when <span class="math inline">\(u_2 \rightarrow -\infty\)</span>, Eq. <a href="ChapterAffine.html#eq:petitlemme">(1.2)</a> is a consequence of the Lebesgue theorem.</p>
+</div>
+</div>
+<div id="AffineCar" class="section level2" number="1.5">
+<h2>
+<span class="header-section-number">1.5</span> Affine (or Car) processes<a class="anchor" aria-label="anchor" href="#AffineCar"><i class="fas fa-link"></i></a>
+</h2>
+<p>In term structure applications, we will often consider <em>affine</em> processes (Definitions <a href="ChapterAffine.html#def:Car1">1.1</a> and <a href="ChapterAffine.html#def:Carp">1.2</a>). These processes are indeed such that their multi-horizon Laplace transform are simple to compute (Lemma <a href="ChapterAffine.html#lem:MHLT">1.5</a> and Proposition <a href="ChapterAffine.html#prp:reverseMLT">1.5</a>), which is key to compute bond prices.</p>
+<div id="car-processes-of-order-one" class="section level3" number="1.5.1">
+<h3>
+<span class="header-section-number">1.5.1</span> Car processes of order one<a class="anchor" aria-label="anchor" href="#car-processes-of-order-one"><i class="fas fa-link"></i></a>
+</h3>
+<p>Here is the definition of a <em>compound auto-regressive (Car)</em> process of order one:</p>
+<div class="definition">
+<p><span id="def:Car1" class="definition"><strong>Definition 1.1  (Affine process of order 1) </strong></span>A multivariate process <span class="math inline">\(w_{t+1}\)</span> is Affine of order 1 [or <span class="math inline">\(Car(1)\)</span>] if
+<span class="math display">\[
+\varphi_t(u)=\mathbb{E}_t[\exp(u'w_{t+1})]=\exp[a(u)'w_t+b(u)]
+\]</span>
+for some functions <span class="math inline">\(a(.)\)</span> and <span class="math inline">\(b(.)\)</span>. These functions are univariate if <span class="math inline">\(w_{t+1}\)</span> (and therefore <span class="math inline">\(u\)</span>) is scalar.</p>
+</div>
+<p>Note that <span class="math inline">\(a(.)\)</span> and <span class="math inline">\(b(.)\)</span> may be deterministic functions of time (e.g., <span class="citation">Chikhani and Renne (<a href="references.html#ref-Chikhani_Renne_2022">2023</a>)</span>).</p>
+<p>A first key example is that of the Gaussian auto-regressive processes:</p>
+<div class="example">
+<p><span id="exm:GAR1" class="example"><strong>Example 1.5  (Univariate AR(1) Gaussian process) </strong></span>If <span class="math inline">\(w_{t+1}|\underline{w_t} \sim \mathcal{N}(\nu+\rho w_t, \sigma^2)\)</span>, then:
+<span class="math display">\[
+\varphi_t(u) = \exp\left(
+\begin{array}{l}
+u \rho w_t + u \nu + u^2  \frac{\sigma^2}{2}
+\end{array}
+\right) = \exp[a(u)'w_t+b(u)],
+\]</span>
+<span class="math display">\[
+\mbox{with }\left\{
+\begin{array}{ccc}
+a(u) &amp;=&amp; u \rho\\
+b(u) &amp;=&amp; u \nu + u^2  \dfrac{\sigma^2}{2}.
+\end{array}
+\right.
+\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:GVAR1" class="example"><strong>Example 1.6  (Gaussian VAR) </strong></span>If <span class="math inline">\(w_{t+1}|\underline{w_t} \sim \mathcal{N}(\mu+\Phi w_t, \Sigma)\)</span>, then:
+<span class="math display">\[
+\varphi_t(u) = \exp\left(
+\begin{array}{l}
+u' (\mu + \Phi  w_t)  +  \frac{1}{2} u' \Sigma u
+\end{array}
+\right) = \exp[a(u)'w_t+b(u)],
+\]</span>
+<span class="math display">\[
+\mbox{with }\left\{
+\begin{array}{ccl}
+a(u) &amp;=&amp; \Phi'u\\
+b(u) &amp;=&amp; u' \mu +  \frac{1}{2} u' \Sigma u = u' \mu + \frac{1}{2}(u \otimes u)' vec(\Sigma).
+\end{array}
+\right.
+\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:QGVAR1" class="example"><strong>Example 1.7  (Quadratic Gaussian process) </strong></span>Consider vector <span class="math inline">\(w_t = (x'_t,vec(x_t x_t')')'\)</span>, where <span class="math inline">\(x_t\)</span> is a <span class="math inline">\(n\)</span>-dimensional vector following a Gaussian VAR(1), i.e.
+<span class="math display">\[
+x_{t+1}|\underline{w_t} \sim \mathcal{N}(\mu+\Phi x_t, \Sigma).
+\]</span>
+Proposition <a href="ChapterAffine.html#prp:QGVAR1">1.2</a> shows that if <span class="math inline">\(u = (v,V)\)</span> where <span class="math inline">\(v \in \mathbb{R}^n\)</span> and <span class="math inline">\(V\)</span> a square symmetric matrix of size <span class="math inline">\(n\)</span>, we have:
+<span class="math display">\[\begin{eqnarray*}
+\varphi_t(u) &amp;=&amp; \mathbb{E}_t\big\{\exp\big[(v',vec(V)')\times w_{t+1}\big]\big\} \\
+&amp; =&amp; \exp \left\{a_1(v,V)'x_t +vec(a_2(v,V))' vec(x_t'x_t) + b(v,V) \right\},
+\end{eqnarray*}\]</span>
+where:
+<span class="math display" id="eq:laplaceZ">\[\begin{eqnarray*}
+a_2(u) &amp; = &amp; \Phi'V (I_n - 2\Sigma V)^{-1} \Phi \nonumber \\
+a_1(u) &amp; = &amp; \Phi'\left[(I_n-2V\Sigma)^{-1}(v+2V\mu)\right] \nonumber \\
+b(u) &amp; = &amp; u'(I_n - 2 \Sigma V)^{-1}\left(\mu + \frac{1}{2} \Sigma v\right) +\\
+&amp;&amp; \mu'V(I_n - 2 \Sigma V)^{-1}\mu - \frac{1}{2}\log\big|I_n - 2\Sigma V\big|.\tag{1.3}
+\end{eqnarray*}\]</span></p>
+<p>Quadratic processes can be used to construct positive process. Indeed, one can determine linear combinations of the components of <span class="math inline">\(w_t\)</span> (<span class="math inline">\(\alpha'w_t\)</span>, say) that are such that <span class="math inline">\(\alpha'w_t \ge 0\)</span>. For instance, if <span class="math inline">\(x_t\)</span> is scalar, <span class="math inline">\(\alpha'w_t = x_t^2\)</span> if <span class="math inline">\(\alpha = (0,1)'\)</span>. This is illustrated by Figure <a href="ChapterAffine.html#fig:simQVAR">1.1</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="cn">T</span> <span class="op">&lt;-</span> <span class="fl">200</span></span>
+<span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fl">.9</span>;<span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="va">x.t</span> <span class="op">&lt;-</span> <span class="fl">0</span>; <span class="va">x</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">t</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="cn">T</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">x.t</span> <span class="op">&lt;-</span> <span class="va">phi</span><span class="op">*</span><span class="va">x.t</span> <span class="op">+</span> <span class="va">sigma</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">x.t</span><span class="op">)</span><span class="op">}</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>,plt<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.1</span>,<span class="fl">.95</span>,<span class="fl">.15</span>,<span class="fl">.85</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>,type<span class="op">=</span><span class="st">"l"</span>,xlab<span class="op">=</span><span class="st">""</span>,ylab<span class="op">=</span><span class="st">""</span>,main<span class="op">=</span><span class="st">"x_t"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span>,type<span class="op">=</span><span class="st">"l"</span>,xlab<span class="op">=</span><span class="st">""</span>,ylab<span class="op">=</span><span class="st">""</span>,main<span class="op">=</span><span class="st">"x_t^2"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:simQVAR"></span>
+<img src="TSM_files/figure-html/simQVAR-1.png" alt="Simulation of a quadratic processes $x_t$." width="95%"><p class="caption">
+Figure 1.1: Simulation of a quadratic processes <span class="math inline">\(x_t\)</span>.
+</p>
+</div>
+</div>
+<p>Another example of nonnegative process is that of the auto-regressive Gamma process <span class="citation">(<a href="references.html#ref-Gourieroux_Jasiak_2006">Gourieroux and Jasiak 2006</a>)</span> and its extension <span class="citation">(<a href="references.html#ref-zarg_2017">Monfort et al. 2017</a>)</span>.</p>
+<div class="example">
+<p><span id="exm:ARG1" class="example"><strong>Example 1.8  (Autoregressive gamma process, ARG(1)) </strong></span>An ARG process is defined as follows:
+<span class="math display">\[
+\frac{w_{t+1}}{\mu} \sim \gamma(\nu+z_t) \quad \mbox{where} \quad z_t \sim \mathcal{P} \left( \frac{\rho w_t}{\mu} \right),
+\]</span>
+with <span class="math inline">\(\nu\)</span>, <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\rho &gt; 0\)</span>. (Alternatively <span class="math inline">\(z_t \sim {\mathcal{P}}(\beta w_t)\)</span>, with <span class="math inline">\(\rho = \beta \mu\)</span>.)</p>
+<p>Proposition <a href="ChapterAffine.html#prp:LTARG">1.3</a> shows that we have <span class="math inline">\(\varphi_t(u) = \exp[a(u)'w_t+b(u)]\)</span> with
+<span class="math display">\[
+\left\{
+\begin{array}{ccc}
+a(u) &amp;=&amp;  \dfrac{\rho u}{1-u \mu}\\
+b(u) &amp;=&amp; -\nu  
+\log(1-u \mu).
+\end{array}
+\right.
+\]</span></p>
+<p>One can simulate ARG processes by using <a href="https://jrenne.shinyapps.io/Affine/">this web-interface</a> (select the “ARG” panel).</p>
+<p>It can be shown that:
+<span class="math display">\[
+\left\{
+\begin{array}{ccc}
+\mathbb{E}(w_{t+1}|\underline{w_t}) &amp;=&amp; \nu \mu + \rho w_t \\
+\mathbb{V}ar(w_{t+1}|\underline{w_t}) &amp;=&amp; \nu \mu^2 + 2 \mu \rho w_t.
+\end{array}
+\right.
+\]</span>
+and that:
+<span class="math display">\[
+w_{t+1}=\nu\mu+\rho w_t+\varepsilon_{t+1},
+\]</span>
+where <span class="math inline">\(\varepsilon_{t+1}\)</span> is a martingale difference <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(w_{t+1}\)</span> is a weak <span class="math inline">\(AR(1)\)</span>.</p>
+<p><span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> porpose the extended ARG process and the ARG<span class="math inline">\(_0\)</span> process. The latter is such that <span class="math inline">\(\nu = 0\)</span> and <span class="math inline">\(\beta w_t\)</span> is replaced with <span class="math inline">\(\alpha + \beta w_t\)</span>, i.e.:
+<span class="math display" id="eq:ARG0">\[\begin{equation}
+\frac{w_{t+1}}{\mu} \sim \gamma(z_t),\quad z_t \sim {\mathcal{P}}(\alpha + \beta w_t).\tag{1.4}
+\end{equation}\]</span>
+It is easily seen that we then have:
+<span class="math display">\[
+\varphi_t(u) = exp \left[\frac{\beta \mu u}{1-u \mu} w_t + \frac{\alpha \mu u}{1-u \mu}
+\right].
+\]</span>
+The ARG<span class="math inline">\(_0\)</span> process features a point mass at zero, with conditional probability <span class="math inline">\(exp(-\alpha - \beta w_t)\)</span>. Note that 0 is absorbing if <span class="math inline">\(\alpha = 0\)</span>.</p>
+<p>Figure <a href="ChapterAffine.html#fig:simARG0">1.2</a> displays the simulated path of an ARG<span class="math inline">\(_0\)</span> process (since we set <span class="math inline">\(\nu\)</span> to zero). Note that function <code>simul.ARG</code> is included in the <code>TSModels</code> package.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">TSModels</span><span class="op">)</span></span>
+<span><span class="va">W</span> <span class="op">&lt;-</span> <span class="fu">simul.ARG</span><span class="op">(</span><span class="fl">300</span>,mu<span class="op">=</span><span class="fl">.5</span>,nu<span class="op">=</span><span class="fl">0</span>,rho<span class="op">=</span><span class="fl">.9</span>,alpha<span class="op">=</span><span class="fl">.1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">W</span>,type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:simARG0"></span>
+<img src="TSM_files/figure-html/simARG0-1.png" alt="Simulation of an ARG0 processes." width="95%"><p class="caption">
+Figure 1.2: Simulation of an ARG0 processes.
+</p>
+</div>
+</div>
+<p>Certain affine processes are valued in specific sets (e.g., integers). It is the case of compound Poisson proceses:</p>
+<div class="example">
+<p><span id="exm:CompoundPoisson" class="example"><strong>Example 1.9  (Compound Poisson process) </strong></span>A compound Poisson process is defined as follows (with <span class="math inline">\(\gamma &gt; 0\)</span>, <span class="math inline">\(0 &lt; \pi&lt; 1\)</span>, and <span class="math inline">\(\lambda &gt; 0\)</span>):
+<span class="math display">\[\frac{w_{t+1}}{\gamma} = z_{t+1} + \varepsilon_{t+1},
+\]</span>
+where <span class="math inline">\(z_{t+1}\)</span> and <span class="math inline">\(\varepsilon_{t+1}\)</span> conditionally independent, and where
+<span class="math inline">\(z_{t+1} \sim {\mathcal B} \left(\frac{w_t}{\gamma},\pi\right)\)</span>, with <span class="math inline">\(\varepsilon_{t+1} \sim {\mathcal P}(\lambda)\)</span>.</p>
+<p>This process is valued in <span class="math inline">\(\{j \gamma, j \in \mathbb{N}, \gamma \in \mathbb{R}^+\}\)</span> and we have:
+<span class="math display">\[
+\varphi_t(u) = \exp\left\{
+\begin{array}{l}
+\dfrac{w_t}{\gamma}   \log[\pi
+\exp(u\gamma)+1-\pi]-\lambda[1-\exp(u \gamma)]
+\end{array}
+\right\},
+\]</span>
+i.e., <span class="math inline">\(\varphi_t(u) = \exp\left(a(u)w_t+b(u)\right)\)</span> with
+<span class="math display">\[
+\left\{
+\begin{array}{ccl}
+a(u)&amp;=&amp; \frac{1}{\gamma}   \log[\pi   \exp(u
+\gamma)+1-\pi],\\
+b(u) &amp;=&amp; -\lambda[1-\exp(u \gamma)].
+\end{array}
+\right.
+\]</span></p>
+<p>We also have: <span class="math inline">\(w_{t+1} = \pi w_t + \lambda \gamma + \eta_{t+1}\)</span>, where <span class="math inline">\(\eta_{t+1}\)</span> is a
+martingale difference.</p>
+<p>One can simulate such processes by using <a href="https://jrenne.shinyapps.io/Affine/">this web-interface</a> (select the “Compound Poisson” panel). Figure <a href="ChapterAffine.html#fig:simCPoisson">1.3</a> makes use of function <code>simul.compound.poisson</code> (in package <code>TSModels</code>) to simulate a compound Poisson process.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">TSModels</span><span class="op">)</span></span>
+<span><span class="va">W</span> <span class="op">&lt;-</span> <span class="fu">simul.compound.poisson</span><span class="op">(</span><span class="fl">100</span>,Gamma<span class="op">=</span><span class="fl">.5</span>,Pi<span class="op">=</span><span class="fl">0.5</span>,lambda<span class="op">=</span><span class="fl">.9</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">W</span>,type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:simCPoisson"></span>
+<img src="TSM_files/figure-html/simCPoisson-1.png" alt="Simulation of a Compound Poisson process." width="95%"><p class="caption">
+Figure 1.3: Simulation of a Compound Poisson process.
+</p>
+</div>
+</div>
+</div>
+<div id="SubCarp" class="section level3" number="1.5.2">
+<h3>
+<span class="header-section-number">1.5.2</span> Car processes of order <span class="math inline">\(p\)</span><a class="anchor" aria-label="anchor" href="#SubCarp"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let us now define Car processes of order <span class="math inline">\(p\)</span>:</p>
+<div class="definition">
+<p><span id="def:Carp" class="definition"><strong>Definition 1.2  (Affine process of order p) </strong></span>A multivariate process <span class="math inline">\(w_{t+1}\)</span> is affine of order <span class="math inline">\(p\)</span> [or <span class="math inline">\(Car(p)\)</span>] if there exist functions <span class="math inline">\(a_1(.),\dots,a_p(.)\)</span>, and <span class="math inline">\(b(.)\)</span> such that:
+<span class="math display">\[
+\varphi_t(u)=\mathbb{E}_t[\exp(u' w_{t+1})]=\exp[a_1(u)'w_t+\dots+a_p(u)'w_{t+1-p}+b(u)].
+\]</span></p>
+</div>
+<p>It can be seen that if <span class="math inline">\(w_t\)</span> is <span class="math inline">\(Car(p)\)</span>, then <span class="math inline">\(W_t = [w_t', w_{t-1}',\dots,w_{t-p+1}']'\)</span> is <span class="math inline">\(Car(1)\)</span>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We have:
+&lt;span class=&quot;math display&quot;&gt;\[\begin{eqnarray*}
+\mathbb{E}_t[\exp(u'W_{t+1})] &amp;amp;=&amp;amp; \mathbb{E}_t[\exp(u'_1 w_{t+1}+u'_2 w_t+\dots+u'_p w_{t-p+2})] \\
+&amp;amp;=&amp;amp; \exp(u'_2 w_t+\dots+u'_p w_{t-p+2})\mathbb{E}_t[\exp(u'_1 w_{t+1})] \\
+&amp;amp;=&amp;amp; \exp(u'_2 w_t+\dots+u'_p w_{t-p+2}+a'_1(u_1)
+w_t  +\dots+a'_p(u_1)w_{t+1-p}+b(u_1)) \\
+&amp;amp;=&amp;amp; \exp[A(u)'W_t+B(u)],
+\end{eqnarray*}\]&lt;/span&gt;
+with &lt;span class=&quot;math inline&quot;&gt;\(A(u)' = [u'_2+a'_1(u_1),\dots,u'_p+a'_{p-1}(u_1), a'_p(u_1)]\)&lt;/span&gt; and &lt;span class=&quot;math inline&quot;&gt;\(B(u) = b(u_1)\)&lt;/span&gt;.&lt;/p&gt;"><sup>1</sup></a> Therefore, without loss of generality we can assume <span class="math inline">\(p = 1\)</span>.</p>
+<p>The standard Car(<span class="math inline">\(p\)</span>) processes are auto-regressive processes of order <span class="math inline">\(p\)</span>. These processes satisfy the definition of index affine processes:</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-3" class="definition"><strong>Definition 1.3  (Univariate index affine process of order p) </strong></span>Let <span class="math inline">\(\exp[a(u)w_t+b(u)]\)</span> be the conditional Laplace transform of a univariate affine process of order 1, the process <span class="math inline">\(w_{t+1}\)</span> is an <em>index-affine</em> process of order <span class="math inline">\(p\)</span> if:
+<span class="math display">\[
+\varphi_t(u)=\mathbb{E}_t[\exp(u w_{t+1})]=\exp[a(u)(\beta_1 w_t+\dots+\beta_p
+w_{t+1-p})+b(u)].
+\]</span></p>
+</div>
+<p>Examples <a href="ChapterAffine.html#exm:ARp">1.10</a> and <a href="ChapterAffine.html#exm:ARGp">1.11</a> are two examples of index affine processes.</p>
+<div class="example">
+<p><span id="exm:ARp" class="example"><strong>Example 1.10  (Gaussian AR(p) process) </strong></span>This example extends Example <a href="ChapterAffine.html#exm:GAR1">1.5</a>. Consider a Gaussian AR(p) process <span class="math inline">\(w_t\)</span>; that is:
+<span class="math display">\[
+w_{t+1} = \nu + \varphi_1 w_t +\dots+ \varphi_p w_{t+1-p}+\sigma \varepsilon_{t+1},\quad \varepsilon_{t+1} \sim i.i.d. \mathcal{N}(0,1).
+\]</span>
+We have:
+<span class="math display">\[
+\varphi_t(u) = \exp \left[ u \rho (\beta_1 w_t+\dots+\beta_p w_{t+1-p})+u\nu + u^2  \frac{\sigma^2}{2}\right]
+\]</span>
+with <span class="math inline">\(\varphi_i = \rho \beta_i\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:ARGp" class="example"><strong>Example 1.11  (ARG(p) process (positive)) </strong></span>This example extends Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>.
+An ARG process of order <span class="math inline">\(p\)</span> is defined as follows:
+<span class="math display">\[
+\frac{w_{t+1}}{\mu} \sim \gamma(\nu+z_t) \quad \mbox{where} \quad z_t \sim \mathcal{P} \left( \beta_1 w_t+\dots+\beta_p w_{t+1-p} \right),
+\]</span>
+with <span class="math inline">\(\nu\)</span>, <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\beta_i &gt; 0\)</span>. We have:
+<span class="math display">\[
+\varphi_t(u) = \exp\left[\frac{\rho u}{1-u \mu} (\beta_1 w_t+\dots+\beta_p w_{t+1-p})-\nu  \log(1-u\mu)\right],
+\]</span>
+Process <span class="math inline">\(w_t\)</span> admits the following AR(<span class="math inline">\(p\)</span>) representation:
+<span class="math display">\[
+w_{t+1} = \nu\mu + \varphi_1 w_t +\dots+ \varphi_p w_{t+1-p}+\varepsilon_{t+1},
+\]</span>
+with <span class="math inline">\(\varphi_i = \beta_i\mu\)</span> and where <span class="math inline">\(\varepsilon_{t+1}\)</span> is a martingale difference.</p>
+</div>
+</div>
+</div>
+<div id="Markov" class="section level2" number="1.6">
+<h2>
+<span class="header-section-number">1.6</span> Markov chains<a class="anchor" aria-label="anchor" href="#Markov"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this subsection, we show that the family of affine processes includes (some) regime-switching models. We consider a time-homogeneous Markov chain <span class="math inline">\(z_t\)</span>, valued in the set of columns of <span class="math inline">\(Id_J\)</span>, the identity matrix of dimension <span class="math inline">\(J \times J\)</span>. The transition probabilities are denoted by <span class="math inline">\(\pi(e_i, e_j)\)</span>, with <span class="math inline">\(\pi(e_i, e_j) = \mathbb{P}(z_{t+1}=e_j | z_t=e_i)\)</span>. With these notations:
+<span class="math display">\[
+\mathbb{E}[\exp(v'z_{t+1})|z_t=e_i,\underline{z_{t-1}}] = \sum^J_{j=1} \exp(v'e_j)\pi (e_i, e_j).
+\]</span>
+Hence, we have:
+<span class="math display">\[
+\varphi_t(v) = \exp[a_z(v)'z_t],
+\]</span>
+with
+<span class="math display">\[
+a_z(v)= \left[ \begin{array}{c} \log \left(\sum^J_{j=1} \exp(v'e_j)  \pi(e_1,e_j)\right)\\
+\vdots\\
+\log \left(\sum^J_{j=1} \exp(v'e_j)  \pi(e_J,e_j)\right)
+\end{array}\right].
+\]</span>
+This proves that <span class="math inline">\(z_t\)</span> is an affine process.</p>
+<p>One can simulate a two-regime Markov chain by using <a href="https://jrenne.shinyapps.io/Affine/">this web-interface</a> (select the “Markov-Switching” panel).</p>
+</div>
+<div id="WAR" class="section level2" number="1.7">
+<h2>
+<span class="header-section-number">1.7</span> Wishart autoregressive (WAR) processes<a class="anchor" aria-label="anchor" href="#WAR"><i class="fas fa-link"></i></a>
+</h2>
+<p>WAR are <em>matrix processes</em>, valued in the space of <span class="math inline">\((L \times L)\)</span> symmetric positive
+definite matrices.</p>
+<div class="definition">
+<p><span id="def:WAR" class="definition"><strong>Definition 1.4  (Wishart autoregressive (WAR) processes) </strong></span>Let <span class="math inline">\(W_{t+1}\)</span> be a <span class="math inline">\(WAR_L(K, M, \Omega)\)</span> process. It is defined by:
+<span class="math display" id="eq:Trace">\[\begin{eqnarray}
+&amp;&amp;\mathbb{E}[\exp   Tr(\Gamma W_{t+1})|\underline{W_t}] \tag{1.5}\\
+&amp;=&amp; \exp\left\{Tr[M'\Gamma(Id-2\Omega \Gamma)^{-1}M W_t]  -  \frac{K}{2}   \log [det(Id-2\Omega \Gamma)]\right\}, \nonumber
+\end{eqnarray}\]</span>
+where <span class="math inline">\(\Gamma\)</span> is a symmetric matrix,<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Indeed, &lt;span class="math inline"&gt;\(Tr(\Gamma W_{t+1})\)&lt;/span&gt; is equal to:
+&lt;span class="math inline"&gt;\(\sum^L_{i=1}(\Gamma W_{t+1})_{ii} = \sum^L_{i=1} \sum^L_{j=1} \gamma_{ij} W_{t+1,ij} = \sum^L_{i=1} \gamma_{ii} W_{t+1,ii} + \sum^L_{i&amp;lt;j} (\gamma_{ij}+\gamma_{ji}) W_{t+1,ij}\)&lt;/span&gt;.&lt;/p&gt;'><sup>2</sup></a> <span class="math inline">\(K\)</span> is a positive scalar, <span class="math inline">\(M\)</span> is a <span class="math inline">\((L \times L)\)</span> matrix, and <span class="math inline">\(\Omega\)</span> is a <span class="math inline">\((L \times L)\)</span> symmetric positive definite matrix.</p>
+</div>
+<p>If <span class="math inline">\(K\)</span> is an integer, Proposition <a href="ChapterAffine.html#prp:WARAR">1.4</a> (in the appendix) shows that <span class="math inline">\(W_{t+1}\)</span> can be obtained from:
+<span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ccl}
+W_{t+1} &amp; =&amp;  \sum^K_{k=1} x_{k,t+1} x'_{k,t+1}\\
+&amp;&amp;\\
+x_{k,t+1} &amp; =&amp; M x_{k,t} + \varepsilon_{k,t+1},\quad k \in \{1,\dots,K\},
+\end{array}
+\right.
+\end{eqnarray*}\]</span>
+where <span class="math inline">\(\varepsilon_{k,t+1} \sim i.i.d. \mathcal{N}(0, \Omega)\)</span> (independent across <span class="math inline">\(k\)</span>’s).
+The proposition also shows that we have:
+<span class="math display">\[
+\mathbb{E}(W_{t+1}|\underline{W_t}) = MW_tM'+K \Omega,
+\]</span>
+i.e. <span class="math inline">\(W_t\)</span> follows a matrix weak AR(1) process.</p>
+<p>In particular case, where <span class="math inline">\(L=1\)</span> (univariate case), we have that:
+<span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[\exp(u W_{t+1})|\underline{W_t}] = \exp\left[
+\frac{u m^2}{1-2\omega u}W_t -
+\frac{K}{2}   \log(1-2\omega u)\right].
+\end{eqnarray*}\]</span>
+Hence, when <span class="math inline">\(L=1\)</span>, the Wishart process boils down to an <span class="math inline">\(ARG(1)\)</span> process (Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>) with <span class="math inline">\(\rho = m^2\)</span>, <span class="math inline">\(\mu = 2\omega\)</span>, <span class="math inline">\(\nu = \frac{K}{2}\)</span>.</p>
+</div>
+<div id="building" class="section level2" number="1.8">
+<h2>
+<span class="header-section-number">1.8</span> Building affine processes<a class="anchor" aria-label="anchor" href="#building"><i class="fas fa-link"></i></a>
+</h2>
+<div id="stoch" class="section level3" number="1.8.1">
+<h3>
+<span class="header-section-number">1.8.1</span> Univariate affine processes with stochastic parameters<a class="anchor" aria-label="anchor" href="#stoch"><i class="fas fa-link"></i></a>
+</h3>
+<p>Some univariate affine processes can be extended if they satisfy certain conditions. Specifically, consider a univariate affine process whose conditional L.T. is of the form:
+<span class="math display" id="eq:extaffine">\[\begin{equation}
+\mathbb{E}_t   \exp(u y_{t+1}) = \exp[a_0(u)y_t+b_0(u)\delta],\tag{1.6}
+\end{equation}\]</span>
+where <span class="math inline">\(\delta = (\delta_1,\dots,\delta_m)' \in \mathcal{D}\)</span>. This process can be generalized by making <span class="math inline">\(\delta\)</span> stochastic (while staying in the affine family). More precisely assume that:
+<span class="math display">\[
+\mathbb{E}[\exp(u y_{t+1})|\underline{y_t}, \underline{z_{t+1}}] = \exp[a_0(u)y_t+b_0(u)'\Lambda z_{t+1}],
+\]</span>
+where <span class="math inline">\(\Lambda\)</span> is a <span class="math inline">\((m\times k)\)</span> matrix, with <span class="math inline">\(\Lambda z_{t+1} \in \mathcal{D}\)</span>. In this case, if:
+<span class="math display">\[
+\mathbb{E}[\exp(v' z_{t+1})|\underline{y_t}, \underline{z_{t}}] = \exp[a_1(v)'z_t+b_1(v)],
+\]</span>
+then <span class="math inline">\(w_{t+1} = (y_{t+1}, z'_{t+1})'\)</span> is affine.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Indeed, we have:
+&lt;span class=&quot;math display&quot;&gt;\[\begin{eqnarray*}
+&amp;amp;&amp;amp;\mathbb{E}[\exp(u y_{t+1}+v'z_{t+1})|\underline{y_t}, \underline{z_{t}}] \\
+&amp;amp;=&amp;amp; \mathbb{E}\{\exp(v' z_{t+1})\mathbb{E}[\exp(u y_{t+1})|\underline{y_t},
+\underline{z_{t+1}}]|\underline{y_t}, \underline{z_{t}} \} \\
+&amp;amp;=&amp;amp; \mathbb{E}\{\exp[a_0(u) y_{t}+b_0(u)'\Lambda z_{t+1}+v'z_{t+1}]|\underline{y_t},
+\underline{z_{t}} \} \\
+&amp;amp;=&amp;amp; \exp\{ a_0(u) y_{t}+a_1[\Lambda' b_0(u)+v]'z_t+b_1 [\Lambda' b_0(u)+v]\}.
+\end{eqnarray*}\]&lt;/span&gt;&lt;/p&gt;"><sup>3</sup></a></p>
+<div class="example">
+<p><span id="exm:extendedARp" class="example"><strong>Example 1.12  (Gaussian AR(p)) </strong></span>Using the notation of Example <a href="ChapterAffine.html#exm:ARp">1.10</a>, it comes that an AR(p) processes satisfies Eq. <a href="ChapterAffine.html#eq:extaffine">(1.6)</a> with <span class="math inline">\(b_0(u) = \left(u, \; \frac{u^2}{2}\right)'\)</span> and <span class="math inline">\(\delta = (\nu,\sigma^2)' \in \mathcal{D}=\mathbb{R} \times \mathbb{R}^+\)</span>. In that case, <span class="math inline">\(\delta\)</span> (the vector of conditional mean and variance) can be replaced by …</p>
+<ul>
+<li>
+<span class="math inline">\(\left( \begin{array}{l} z_{1,t+1} \\ z_{2,t+1} \end{array} \right)\)</span>, where <span class="math inline">\(z_{1,t+1}\)</span> and <span class="math inline">\(z_{2,t+1}\)</span> are independent AR(1) (see Example <a href="ChapterAffine.html#exm:GAR1">1.5</a>) and ARG(1) (see Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>) processes, respectively.</li>
+<li>
+<span class="math inline">\(\left( \begin{array}{ll} \lambda'_1 &amp; 0 \\ 0 &amp; \lambda'_2 \end{array} \right)\)</span><span class="math inline">\(\left( \begin{array}{l} z_{1,t+1} \\ z_{2,t+1} \end{array} \right)\)</span>, where <span class="math inline">\(z_{1,t+1}\)</span> and <span class="math inline">\(z_{2,t+1}\)</span> are independent Markov chains.</li>
+<li>
+<span class="math inline">\(\left( \begin{array}{l} \lambda'_1 \\ \lambda'_2 \end{array}\right)z_{t+1}\)</span>, where <span class="math inline">\(z_{t+1}\)</span> is a Markov chain.</li>
+</ul>
+</div>
+<div class="example">
+<p><span id="exm:ARGp" class="example"><strong>Example 1.11  (ARG(p) model) </strong></span></p>
+<ul>
+<li>
+<span class="math inline">\(b_0(u)= - \nu \log(1-u\mu)\)</span>, <span class="math inline">\(\delta=\nu\)</span>.</li>
+<li>
+<span class="math inline">\(\nu\)</span> (<span class="math inline">\(\ge 0\)</span>) can be specified for instance as a Markov chain or an ARG.</li>
+</ul>
+</div>
+</div>
+<div id="buildingmulti" class="section level3" number="1.8.2">
+<h3>
+<span class="header-section-number">1.8.2</span> Multivariate affine processes<a class="anchor" aria-label="anchor" href="#buildingmulti"><i class="fas fa-link"></i></a>
+</h3>
+<p>One can construct multivariate affine processes by employing the so-called recursive approach. Let us illustrate this by considering the bivariate case. (The multivariate generalization is straightforward.) Consider <span class="math inline">\(w_t = \left(\begin{array}{c} w_{1,t}\\ w_{2,t} \end{array} \right)\)</span>,and assume that we have:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp;\mathbb{E}[\exp(u_1 w_{1,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}})]\\
+&amp;=&amp; \exp[a_{11}(u_1)w_{1,{\color{red}{t}}}+a_{12}(u_1)w_{2,{\color{red}{t}}}+b_{1}(u_1)],
+\end{eqnarray*}\]</span>
+(which defines <span class="math inline">\(w_{1,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}}\)</span>) and:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp; \mathbb{E}[\exp(u_2 w_{2,t+1}|\underline{w_{1,t+1}}, \underline{w_{2,t}})]\\
+&amp;= &amp; \exp[a_0(u_2)w_{1,{\color{red}{t+1}}}+a_{21}(u_2)w_{1,{\color{red}{t}}}+a_{22}(u_2)w_{2,{\color{red}{t}}}+b_2(u_2)]
+\end{eqnarray*}\]</span>
+(which defines <span class="math inline">\(w_{2,t+1}|\underline{w_{1,t+1}}, \underline{w_{2,t}}\)</span>). Then <span class="math inline">\(w_t\)</span> is an affine process.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Indeed, we have:
+&lt;span class="math display"&gt;\[\begin{eqnarray*}
+&amp;amp;&amp;amp; \mathbb{E}[\exp(u_1 w_{1,t+1}+u_2 w_{2,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}})]\\
+&amp;amp;= &amp;amp; \mathbb{E}\{\exp(u_1 w_{1,t+1}) \mathbb{E}[\exp(u_{2}w_{2,t+1})|\underline{w_{1,t+1}}, \underline{w_{2,t}})]|\underline{w_{1,t}}, \underline{w_{2,t}})\} \\
+&amp;amp;= &amp;amp; \mathbb{E}\{\exp[u_1+a_0(u_2)w_{1,t+1}+a_{21}(u_2)w_{1,t} + a_{22}(u_2)w_{2,t}+b_2(u_2)]|\underline{w_{1,t}}, \underline{w_{2,t}})\} \\
+&amp;amp;= &amp;amp; \exp\{a_{11}[u_1+a_0(u_2)]w_{1,t}+a_{12}[u_1+a_0(u_2)]w_{2,t}+b_1[u_1+a_0(u_2)] \\
+&amp;amp;&amp;amp;+  a_{21}(u_2)w_{1,t}+a_{22}(u_2)w_{2,t}+b_2(u_2)\}.
+\end{eqnarray*}\]&lt;/span&gt;&lt;/p&gt;'><sup>4</sup></a>
+The dynamics of the two components of <span class="math inline">\(w_t\)</span> are of the form:
+<span class="math display">\[\begin{eqnarray*}
+w_{1,t+1} &amp;=&amp; \alpha_1 \hspace{1.55cm} + \alpha_{11}w_{1,t} + \alpha_{12}w_{2,t} + \varepsilon_{1,t+1} \\
+w_{2,t+1} &amp;=&amp; \alpha_2 + \alpha_{0}w_{1,t+1} + \alpha_{21}w_{1,t} + \alpha _{22} w_{2,t} + \varepsilon_{2,t+1}
+\end{eqnarray*}\]</span>
+Note that <span class="math inline">\(\varepsilon_{1,t+1}\)</span> and <span class="math inline">\(\varepsilon_{2,t+1}\)</span> are non-correlated martingale differences. In the general case, they are conditionally heteroskedastic. What precedes is at play in <span class="math inline">\(VAR\)</span> model; <span class="citation">Monfort et al. (<a href="references.html#ref-zarg_2017">2017</a>)</span> employ this approach to build vector auto-regressive gamma (VARG) processes.</p>
+</div>
+<div id="extending-multivariate-stochastic-processes" class="section level3" number="1.8.3">
+<h3>
+<span class="header-section-number">1.8.3</span> Extending multivariate stochastic processes<a class="anchor" aria-label="anchor" href="#extending-multivariate-stochastic-processes"><i class="fas fa-link"></i></a>
+</h3>
+<p>Consider the same framework as in Section <a href="ChapterAffine.html#stoch">1.8.1</a> when <span class="math inline">\(y_t\)</span> is a <span class="math inline">\(n\)</span>-dimensional vector. That is, replace Eq. <a href="ChapterAffine.html#eq:extaffine">(1.6)</a> with:
+<span class="math display" id="eq:Multiextaffine">\[\begin{equation}
+\mathbb{E}_t   \exp(u' y_{t+1}) = \exp[a_0(u)'y_t+b_0(u)\delta],\tag{1.7}
+\end{equation}\]</span>
+and further assume that <span class="math inline">\(\delta\)</span> is stochastic and depends on <span class="math inline">\(z_t\)</span>, such that:
+<span class="math display">\[
+\mathbb{E}[\exp(u y_{t+1})|\underline{y_t}, \underline{z_{t+1}}] = \exp[a_0'(u)y_t+b_0(u)\Lambda z_{t+1}],
+\]</span>
+where <span class="math inline">\(\Lambda\)</span> is a <span class="math inline">\((m\times k)\)</span> matrix, with <span class="math inline">\(\Lambda z_{t+1} \in \mathcal{D}\)</span>. In this case, if:
+<span class="math display">\[
+\mathbb{E}[\exp(v' z_{t+1})|\underline{y_t}, \underline{z_{t}}] = \exp[a_1(v)'z_t+b_1(v)],
+\]</span>
+then <span class="math inline">\(w_{t+1} = (y_{t+1}, z'_{t+1})'\)</span> is affine.</p>
+<div class="example">
+<p><span id="exm:RSVAR" class="example"><strong>Example 1.13  (Stochastic parameters Gaussian VAR(1)) </strong></span>This example extends Example <a href="ChapterAffine.html#exm:GVAR1">1.6</a>. Using the same notations as in the latter example <a href="ChapterAffine.html#exm:GVAR1">1.6</a>, we have
+<span class="math display">\[
+b_0(u) = \left(u', \frac{1}{2} (u \otimes u)'\right)' \quad \mbox{and} \quad\delta = (\mu', vec(\Sigma)')' \in \mathbb{R}^n \times vec(\mathcal{S}),
+\]</span>
+where <span class="math inline">\(\mathcal{S}\)</span> is the set of symmetric positive semi-definite matrices. Vector <span class="math inline">\(\delta\)</span> can be replaced by:
+<span class="math display">\[
+\left( \begin{array}{l} z_{1,t+1}
+\\ z_{2,t+1}
+\end{array} \right),
+\]</span>
+where</p>
+<ul>
+<li>
+<span class="math inline">\(z_{1,t+1}\)</span> is, for instance, a Gaussian VAR process.</li>
+<li>
+<span class="math inline">\(z_{2,t+1}\)</span> is
+<ul>
+<li>obtained by applying the <span class="math inline">\(vec\)</span> operator to a Wishart process,</li>
+<li>replaced by <span class="math inline">\(\Lambda_2 z_{2,t+1}\)</span>, where <span class="math inline">\(\Lambda_2\)</span> is a <span class="math inline">\((n^2 \times J)\)</span> matrix whose columns are <span class="math inline">\(vec(\Sigma_j)\)</span>, <span class="math inline">\(j \in \{1,\dots,J\}\)</span>, the <span class="math inline">\(\Sigma_j\)</span> being <span class="math inline">\((n \times n)\)</span> positive semi-definite, and <span class="math inline">\(z_{2,t+1}\)</span> is a selection vector of dimension <span class="math inline">\(J \times 1\)</span>,</li>
+<li>a standardized <span class="math inline">\(J\)</span>-dimensional VARG process (multivariate extension of Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>).</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="example">
+<p><span id="exm:RSVAR2" class="example"><strong>Example 1.14  (Regime-switching VAR(1)) </strong></span>One can also use this approach to construct (affine) regime-switching VAR processes (which is another extension of Example <a href="ChapterAffine.html#exm:GVAR1">1.6</a> (see, e.g., <span class="citation">Gourieroux et al. (<a href="references.html#ref-Gourieroux_Monfort_Pegoraro_Renne_2014">2014</a>)</span>). For that, replace <span class="math inline">\(\delta\)</span> with</p>
+<ul>
+<li>
+<span class="math inline">\(\left( \begin{array}{ll} \Lambda_1 &amp; 0 \\ 0 &amp; \Lambda_2 \end{array} \right)\)</span><span class="math inline">\(\left( \begin{array}{l} z_{1,t+1} \\ z_{2,t+1} \end{array} \right)\)</span>, where <span class="math inline">\(\Lambda_1\)</span> is a <span class="math inline">\((n \times J_1)\)</span> matrix and <span class="math inline">\(z_{1,t+1}\)</span> is a Markov chain valued in the set of selection vectors of size <span class="math inline">\(J_1\)</span> (see Subsection <a href="ChapterAffine.html#Markov">1.6</a>), <span class="math inline">\(\Lambda_2\)</span> is the same matrix as in Example <a href="ChapterAffine.html#exm:RSVAR">1.13</a> and <span class="math inline">\(z_{2,t+1}\)</span> is a Markov chain valued in the set of selection vectors of size <span class="math inline">\(J_2\)</span>.</li>
+<li>or <span class="math inline">\(\left( \begin{array}{l} \Lambda_1 \\ \Lambda_2 \end{array}\right)z_{t+1}\)</span>, where <span class="math inline">\(\Lambda_1\)</span> and<span class="math inline">\(\Lambda_2\)</span> are the same matrices as above with <span class="math inline">\(J_1=J_2=J\)</span>, and <span class="math inline">\(z_{t+1}\)</span> is a Markov chain valued in the set of selection vectors of size <span class="math inline">\(J\)</span>.</li>
+</ul>
+</div>
+</div>
+<div id="AffineExtended" class="section level3" number="1.8.4">
+<h3>
+<span class="header-section-number">1.8.4</span> Extended affine processes<a class="anchor" aria-label="anchor" href="#AffineExtended"><i class="fas fa-link"></i></a>
+</h3>
+<p>Some processes are not affine, but may be sub-components of an affine process. This can be useful to compute their conditional moments and multi-horizon Laplace transform (as one can use the formulas presented above for that, using the enlarged—affine—vector).</p>
+<p>Let us formally define an extended affine process:</p>
+<div class="definition">
+<p><span id="def:ExtAffine" class="definition"><strong>Definition 1.5  (Extended Affine Processes) </strong></span>A process <span class="math inline">\(w_{1,t}\)</span> is extended affine if there exists a process <span class="math inline">\(w_{2,t} = g(\underline{w_{1,t}})\)</span> such that <span class="math inline">\((w'_{1,t}, w'_{2,t})'\)</span> is affine (of order 1).</p>
+</div>
+<p>For an extended affine processes, <span class="math inline">\(\varphi_{1,t}(u) = \mathbb{E}[\exp(u'w_{1,t+1})|\underline{w_{1,t}}]\)</span> can be obtained from:
+<span class="math display">\[\begin{eqnarray*}
+\varphi_t(u_1, u_2) &amp;=&amp; \mathbb{E}[\exp(u'_1w_{1,t+1}+u'_2 w_{2,t+1)}|\underline{w_{1,t}}, \underline{w_{2,t}}] \\
+&amp;=&amp; \exp[a'_1(u_1,u_2)w_{1,t} + a'_2(u_1,u_2)w_{2,t}+b(u_1,u_2)]
+\end{eqnarray*}\]</span>
+by:
+<span class="math display">\[
+\varphi_{1,t}(u) = \varphi_t(u, 0) = \exp[a'_1(u,0)w_{1,t}+a'_2(u,0)g(\underline{w_{1,t}}) + b(u, 0)].
+\]</span>
+In particular <span class="math inline">\(w_{1,t}\)</span> may be non-Markovian.</p>
+<p>Similarly the multi-horizon Laplace transform (see Section <a href="ChapterAffine.html#MHLT">1.9</a>)
+<span class="math display">\[
+\mathbb{E}[\exp(\gamma'_{1}w_{1,t+1}+\dots+\gamma'_{h}w_{1,t+h})|\underline{w_{1,t}}]
+\]</span>
+can be obtained from the knowledge of the extended multi-horizon Laplace transform:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp;\mathbb{E}_t[\exp(\{\gamma'_{1,1}w_{1,t+1}+\gamma'_{2,1}w_{2,t+1}\}+\dots+ \{\gamma'_{1,h}w_{1,t+h}+\gamma'_{2,h}w_{2,t+h}\}] \\
+&amp;=&amp; \exp[A'_{1,t,h}(\gamma^h_1, \gamma^h_2)w_{1,t}+A'_{2,t,h}(\gamma^h_1, \gamma^h_2)w_{2,t}+B_{t,h}(\gamma^h_1, \gamma^h_2)],
+\end{eqnarray*}\]</span>
+(with <span class="math inline">\(\gamma^h_1 = (\gamma'_{1,1},\dots, \gamma'_{1,h})'\)</span>, and <span class="math inline">\(\gamma^h_2 = (\gamma'_{2,1},\dots, \gamma'_{2,h})'\)</span>). We indeed have:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp; \mathbb{E}[\exp(\gamma'_{1}w_{1,t+1}+\dots+\gamma'_{h}w_{1,t+h})|\underline{w_{1,t}}]\\
+&amp;=&amp; \exp[A'_{1,t,h}(\gamma^h,0) w_{1,t} + A'_{2,t,h}(\gamma^h,0)g (\underline{w_{1,t}}) + B_{t,h}(\gamma^h,0)],
+\end{eqnarray*}\]</span>
+with <span class="math inline">\(\gamma^h = (\gamma_1',\dots,\gamma_h')'\)</span>.</p>
+<div class="example">
+<p><span id="exm:AffProcessOrderp" class="example"><strong>Example 1.15  (Affine process of order p) </strong></span>If <span class="math inline">\(\{w_{1,t}\}\)</span> is affine or order <span class="math inline">\(p&gt;1\)</span>, then <span class="math inline">\((w_{1,t},\dots,w_{1,t-p+1})\)</span> is affine of order 1, but <span class="math inline">\(\{w_{1,t}\}\)</span> is not affine. That is, in that case, <span class="math inline">\(w_{2,t} = (w'_{1,t-1}, \dots.w'_{1,t-p+1})'\)</span>.</p>
+<p>This a kind of extreme case since <span class="math inline">\(w_{2,t}\)</span> belongs to the information at <span class="math inline">\(t-1\)</span>, which implies <span class="math inline">\(a_2(u_1, u_2) = u_2\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:GaussianARMA" class="example"><strong>Example 1.16  (Gaussian ARMA process) </strong></span>Consider an <span class="math inline">\(ARMA(1,1)\)</span> process
+<span class="math display">\[
+w_{1,t} - \varphi w_{1,t-1} = \varepsilon_t-\theta \varepsilon_{t-1},
+\]</span>
+with <span class="math inline">\(|\varphi | &lt; 1\)</span>, <span class="math inline">\(|\theta| &lt; 1\)</span>, and <span class="math inline">\(\varepsilon_t \sim i.i.d. \mathcal{N}(0, \sigma^2)\)</span>.</p>
+<p><span class="math inline">\(w_{1,t}\)</span> is not Markovian. Now, take <span class="math inline">\(w_{2,t} = \varepsilon_t = (1-\theta L)^{-1}(1-\varphi L)w_{1,t}\)</span>. We have:
+<span class="math display">\[
+\left(
+\begin{array}{l}
+w_{1,t+1} \\
+w_{2,t+1}
+\end{array}
+\right) =
+\left(
+\begin{array}{ll}
+\varphi &amp; -\theta \\
+0 &amp;      0
+\end{array}
+\right)
+\left(
+\begin{array}{l}
+w_{1,t} \\
+w_{2,t}
+\end{array}
+\right) +
+\left(
+\begin{array}{l}
+1 \\
+1
+\end{array}
+\right) \varepsilon_{t+1}.
+\]</span>
+Hence <span class="math inline">\((w_{1,t}, w_{2,t})'\)</span> is Gaussian <span class="math inline">\(VAR(1)\)</span>, and, therefore, it is affine of order 1.</p>
+<p>This is easily extended to <span class="math inline">\(ARMA(p,q)\)</span> and <span class="math inline">\(VARMA(p,q)\)</span> processes.</p>
+</div>
+<div class="example">
+<p><span id="exm:GARCH" class="example"><strong>Example 1.17  (GARCH type process) </strong></span>Consider process <span class="math inline">\(w_{1,t}\)</span>, defined by:
+<span class="math display">\[
+w_{1,t+1}  = \mu + \varphi w_{1,t} + \sigma_{t+1} \varepsilon_{t+1},
+\]</span>
+where <span class="math inline">\(|\varphi| &lt; 1\)</span> and <span class="math inline">\(\varepsilon_t \sim i.i.d. \mathcal{N}(0,1)\)</span>, and
+<span class="math display">\[
+\sigma^2_{t+1} = \omega + \alpha \varepsilon^2_t + \beta \sigma^2_t,
+\]</span>
+where <span class="math inline">\(0 &lt; \beta &lt; 1\)</span>.</p>
+<p>Consider <span class="math inline">\(w_{2,t} = \sigma^2_{t+1}\)</span> (which is a non-linear function of <span class="math inline">\(\underline{w_{1,t}}\)</span>). Proposition <a href="ChapterAffine.html#prp:GARCH">1.7</a> shows that:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp; \mathbb{E}\left[\exp(u_1 w_{1,t+1} + u_2 w_{2,t+1})|\underline{w_{1,t}}\right] \\
+&amp;=&amp; \exp\left[u_1 \mu + u_2 \omega - \frac{1}{2}   \log(1-2 u_2 \alpha) \right. \\
+&amp;&amp;\left. +  u_1 \varphi w_{1,t} + (u_2\beta +  \frac{u^2_1}{2(1-2u_2\alpha)}) w_{2,t}\right],
+\end{eqnarray*}\]</span>
+which is exponential affine in <span class="math inline">\((w_{1,t}, w_{2,t})\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="MHLT" class="section level2" number="1.9">
+<h2>
+<span class="header-section-number">1.9</span> Multi-horizon Laplace transform<a class="anchor" aria-label="anchor" href="#MHLT"><i class="fas fa-link"></i></a>
+</h2>
+<div id="recursive-computation-and-direct-pricing-implications" class="section level3" number="1.9.1">
+<h3>
+<span class="header-section-number">1.9.1</span> Recursive computation and direct pricing implications<a class="anchor" aria-label="anchor" href="#recursive-computation-and-direct-pricing-implications"><i class="fas fa-link"></i></a>
+</h3>
+<p>In this subsection, we show that multi-horizon Laplace transforms of affine processes can be calculated recursively. Various examples will show how this can be exploited to price long-dated financial instruments.</p>
+<p>Let us consider a multivariate process <span class="math inline">\(w_{t}\)</span>, affine of order one. (As explained in Subsection <a href="ChapterAffine.html#SubCarp">1.5.2</a>, this includes the case of the order <span class="math inline">\(p\)</span> case.) For the sake of generality, we consider the case where functions <span class="math inline">\(a(.)\)</span>, <span class="math inline">\(b(.)\)</span> are possibly deterministic functions of time, denoted in this case <span class="math inline">\(a_{t+1}(.)\)</span> and <span class="math inline">\(b_{t+1}(.)\)</span>:
+<span class="math display">\[
+\mathbb{E}_t \exp[(u'w_{t+1})] = \exp[a'_{t+1}(u)w_t+b_{t+1}(u)].
+\]</span>
+The multi-horizon Laplace transform of associated with date <span class="math inline">\(t\)</span> and horizon <span class="math inline">\(h\)</span> is defined by:
+<span class="math display" id="eq:multiLT">\[\begin{equation}
+\varphi_{t,h}(\gamma_1,\dots,\gamma_h) = \mathbb{E}_t[\exp(\gamma'_1w_{t+1}+\dots+\gamma'_h w_{t+h})].\tag{1.8}
+\end{equation}\]</span></p>
+<p>Lemma <a href="ChapterAffine.html#lem:MHLT">1.5</a> (in the appendix) shows that we have:
+<span class="math display">\[
+\varphi_{t,h}(\gamma_1,\dots,\gamma_h) = \exp(A'_{t,h} w_t + B_{t,h}),
+\]</span>
+where <span class="math inline">\(A_{t,h} = A^h_{t,h}\)</span> and <span class="math inline">\(B_{t,h} = B^h_{t,h}\)</span>, the <span class="math inline">\(A^h_{t,i}, B^h_{t,i}\)</span> <span class="math inline">\(i = 1,\dots,h\)</span>, being given recursively by:
+<span class="math display">\[
+\left\{
+\begin{array}{ccl}
+A^h_{t,i} &amp;=&amp; a_{t+h+1-i}(\gamma_{h+1-i} + A^h_{t,i-1}), \\
+B^h_{t,i} &amp;=&amp; b_{t+h+1-i}(\gamma_{h+1-i} + A^h_{t,i-1}) + B^h_{t,i-1}, \\
+A^h_{t,0} &amp;=&amp; 0, B^h_{t,0} = 0.
+\end{array}
+\right.
+\]</span></p>
+<p>If the functions <span class="math inline">\(a_{t}\)</span> and <span class="math inline">\(b_{t}\)</span> do not depend on <span class="math inline">\(t\)</span>, these recursive formulas do not depend on <span class="math inline">\(t\)</span>, and we get <span class="math inline">\(\varphi_{t,h}(\gamma_1,\dots,\gamma_h)\)</span>, for any <span class="math inline">\(t\)</span>, with only one recursion for each <span class="math inline">\(h\)</span>.</p>
+<p>Moreover, if the functions <span class="math inline">\(a_{t}\)</span> and <span class="math inline">\(b_{t}\)</span> do not depend on <span class="math inline">\(t\)</span>, and if different sequences <span class="math inline">\((\gamma^h_1,\dots,\gamma^h_h), h=1,\dots,H\)</span> (say) satisfy <span class="math inline">\(\gamma^h_{h+1-i} = u_i\)</span>, for
+<span class="math inline">\(i=1,\dots,h\)</span>, and for any <span class="math inline">\(h \leq H\)</span>, that is if we want to compute (<em>reverse-order</em> case):
+<span class="math display" id="eq:LTreverse">\[\begin{equation}
+\varphi_{t,h}(u_h,\dots,u_1)=\mathbb{E}_t[\exp(u'_{{\color{red}h}} w_{{\color{red}t+1}}+\dots+u'_{{\color{red}1}} w_{{\color{red}t+h}})],
+\quad h=1,\dots,H,\tag{1.9}
+\end{equation}\]</span>
+then Proposition <a href="ChapterAffine.html#prp:reverseMLT">1.5</a> (in the appendix) shows that we can compute the <span class="math inline">\(\varphi_{t,h}(u_h,\dots,u_1)\)</span> for any <span class="math inline">\(t\)</span> and any <span class="math inline">\(h \leq H\)</span> with only one recursion. That is <span class="math inline">\(\varphi_{t,h}(u_h,\dots,u_1)=\exp(A'_hw_t+B_h)\)</span> with:
+<span class="math display">\[\begin{equation*}
+\left\{
+\begin{array}{ccl}
+A_{h} &amp;=&amp; a(u_{h} + A_{h-1}), \\
+B_{h} &amp;=&amp; b(u_{h} + A_{h-1}) + B_{h-1}, \\
+A_{0} &amp;=&amp; 0,\quad  B_{0} = 0.
+\end{array}
+\right.
+\end{equation*}\]</span></p>
+<p>As mentioned above, what precedes has useful implications to price long-dated financial instruments such as nominal and real bonds (Examples <a href="ChapterAffine.html#exm:nominalBth">1.18</a> and <a href="ChapterAffine.html#exm:realBth">1.20</a>, respectively), or futures (Example <a href="ChapterAffine.html#exm:Futures">1.21</a>).</p>
+<div class="example">
+<p><span id="exm:nominalBth" class="example"><strong>Example 1.18  (Nominal interest rates) </strong></span>Let <span class="math inline">\(B(t,h)\)</span> denote the date-<span class="math inline">\(t\)</span> price of a nominal zero-coupon bond of maturity <span class="math inline">\(h\)</span>. We Have:
+<span class="math display" id="eq:stdbond">\[\begin{equation}
+B(t,h) = \mathbb{E}^{\mathbb{Q}}_t \exp (-r_{t}-\dots-r_{t+h-1}),\tag{1.10}
+\end{equation}\]</span>
+where <span class="math inline">\(r_{t}\)</span> is the nominal short rate between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+1\)</span> (observed at <span class="math inline">\(t\)</span>), and the associated (continuously-compounded) yield-to-maturity is given by:
+<span class="math display">\[\begin{equation}
+R(t,h) = -  \frac{1}{h}   \log   B(t,h), \quad   h=1,\dots,H.
+\end{equation}\]</span>
+If <span class="math inline">\(r_t = \omega'w_t\)</span> (say), then:
+<span class="math display">\[
+B(t,h) = \exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp(-\omega' w_{t+1} - \dots - \omega' w_{t+h-1}).
+\]</span>
+One can then price this bond by directly employing Eq. <a href="ChapterAffine.html#eq:LTreverse">(1.9)</a>, with <span class="math inline">\(u_1 = 0\)</span> and <span class="math inline">\(u_i = - \omega\)</span>, <span class="math inline">\(i = 2,\dots, H\)</span>.
+The price <span class="math inline">\(B(t,h)\)</span> is exponential affine in <span class="math inline">\(w_t\)</span>, the associated yield-to-maturity <span class="math inline">\(R(t,h)=-1/h\log B(t,h)\)</span> is affine in <span class="math inline">\(w_t\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:CDR2009" class="example"><strong>Example 1.19  (No-arbitrage Nelson-Siegel model) </strong></span>In this example, we employ the results of Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a> in the context described by <span class="citation">Christensen, Diebold, and Rudebusch (<a href="references.html#ref-Christensen_Diebold_Rudebusch_2009">2009</a>)</span>. Specifically, we consider a three factor model following a Gaussian VAR (see Example <a href="ChapterAffine.html#exm:GVAR1">1.6</a>):
+<span class="math display">\[
+w_t = \left[\begin{array}{c}X_{1,t}\\X_{2,t}\\X_{3,t}\end{array}\right] =
+\left[\begin{array}{ccc}
+1 &amp; 0 &amp; 0\\
+0&amp;1-\lambda&amp;\lambda\\
+0&amp;0&amp;1-\lambda\end{array}\right]
+\left[\begin{array}{c}X_{1,t-1}\\X_{2,t-1}\\X_{2,t-1}\end{array}\right] +
+\left[\begin{array}{ccc}
+\sigma_{11} &amp; 0 &amp; 0\\
+\sigma_{21}&amp;\sigma_{22}&amp;0\\
+\sigma_{31}&amp;\sigma_{32}&amp;\sigma_{33}\end{array}\right]
+\left[\begin{array}{c}\varepsilon_{1,t}\\\varepsilon_{2,t}\\\varepsilon_{3,t}\end{array}\right],
+\]</span>
+where <span class="math inline">\(\left[\begin{array}{c}\varepsilon_{1,t}\\\varepsilon_{2,t}\\\varepsilon_{3,t}\end{array}\right] \sim \,i.i.d.\, \mathcal{N}(0,Id)\)</span>.</p>
+<p>The nominal short-term rate is given by <span class="math inline">\(r_t = X_{1,t}+X_{2,t}\)</span>. In that case, we can use the results of Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a> with <span class="math inline">\(\omega = (-1,-1,0)'\)</span>. The following lines of code do that:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">TSModels</span><span class="op">)</span></span>
+<span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">.05</span></span>
+<span><span class="va">Phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">-</span><span class="va">lambda</span>,<span class="fl">1</span><span class="op">-</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span>;<span class="va">Phi</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">lambda</span></span>
+<span><span class="va">Sigma</span> <span class="op">&lt;-</span> <span class="fl">.0005</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">psi.parameterization</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mu<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span>,Phi<span class="op">=</span><span class="va">Phi</span>,Sigma<span class="op">=</span><span class="va">Sigma</span><span class="op">)</span></span>
+<span><span class="va">u1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">u2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">H</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
+<span><span class="va">AB</span> <span class="op">&lt;-</span> <span class="fu">reverse.MHLT</span><span class="op">(</span><span class="va">psi.GaussianVAR</span>,u1 <span class="op">=</span> <span class="va">u1</span>,u2 <span class="op">=</span> <span class="va">u2</span>,H <span class="op">=</span> <span class="va">H</span>,</span>
+<span>                   psi.parameterization <span class="op">=</span> <span class="va">psi.parameterization</span><span class="op">)</span></span>
+<span><span class="va">AB</span><span class="op">$</span><span class="va">A</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,,<span class="op">]</span> <span class="op">&lt;-</span> <span class="va">AB</span><span class="op">$</span><span class="va">A</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,,<span class="op">]</span> <span class="op">-</span> <span class="fl">1</span> <span class="co"># add terms corresponding to exp(-r_t)</span></span>
+<span><span class="va">a.yield</span> <span class="op">&lt;-</span> <span class="op">-</span> <span class="va">AB</span><span class="op">$</span><span class="va">A</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html">array</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/kronecker.html">%x%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span>,<span class="va">H</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">b.yield</span> <span class="op">&lt;-</span> <span class="op">-</span> <span class="va">AB</span><span class="op">$</span><span class="va">B</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html">array</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/kronecker.html">%x%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="va">H</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">a.yield</span><span class="op">[</span><span class="fl">1</span>,,<span class="op">]</span>,type<span class="op">=</span><span class="st">"l"</span>,lwd<span class="op">=</span><span class="fl">2</span>,ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>,</span>
+<span>     xlab<span class="op">=</span><span class="st">"Maturity"</span>,ylab<span class="op">=</span><span class="st">"Factor loadings"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">a.yield</span><span class="op">[</span><span class="fl">2</span>,,<span class="op">]</span>,col<span class="op">=</span><span class="st">"red"</span>,lwd<span class="op">=</span><span class="fl">2</span>,lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">a.yield</span><span class="op">[</span><span class="fl">3</span>,,<span class="op">]</span>,col<span class="op">=</span><span class="st">"blue"</span>,lwd<span class="op">=</span><span class="fl">2</span>,lty<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:CDR"></span>
+<img src="TSM_files/figure-html/CDR-1.png" alt="Factor loadings in the context of a no-arbitrage nelson-Siegel model (Christensen, Diebold and Rudebusch, 2009). The first factor (black solid line) is a level factor. The second and third factors (red dashed line and blue dotted line, respectively) are slope factors." width="95%"><p class="caption">
+Figure 1.4: Factor loadings in the context of a no-arbitrage nelson-Siegel model (Christensen, Diebold and Rudebusch, 2009). The first factor (black solid line) is a level factor. The second and third factors (red dashed line and blue dotted line, respectively) are slope factors.
+</p>
+</div>
+</div>
+<p>In the previous example, note the use of function <code>reverse.MHLT</code> (in package <code>TSModels</code>), that notably takes a L.T. as an argument (<code>psi</code>). In the previous example, we consider a Gaussian VAR, and we therefore assign <code>psi.GaussianVAR</code> to <code>psi</code>. We then need to provide function <code>reverse.MHLT</code> with the arguments of the <code>psi</code> function. These arguments are provided in the form of a list (input <code>psi.parameterization</code>).</p>
+<div class="example">
+<p><span id="exm:realBth" class="example"><strong>Example 1.20  (Real interest rates) </strong></span>Denote by <span class="math inline">\(q_t\)</span> the price index on date <span class="math inline">\(t\)</span> and by <span class="math inline">\(\pi_{t+1} = \log \dfrac{q_{t+1}}{q_t}\)</span> the inflation rate on date <span class="math inline">\(t+1\)</span>. We have:
+<span class="math display">\[\begin{eqnarray*}
+\bar{R}(t,h) &amp; =&amp; -   \frac{1}{h}   \log   \bar{B}(t,h), \quad h=1,\dots,H \\    \\
+\bar{B}(t,h) &amp; =&amp;  \mathbb{E}^{\mathbb{Q}}_t   \exp(-r_{t}-\dots-r_{t+h-1} + \pi_{t+1}+\dots+\pi_{t+h}),  \\      \\
+&amp; =&amp; \exp(-r_{t}) \times \\
+&amp;&amp; \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h})
+\end{eqnarray*}\]</span>
+If <span class="math inline">\(r_t = \omega'w_t\)</span> and <span class="math inline">\(\pi_t = \bar\omega'w_t\)</span>, then <span class="math inline">\(\bar{B}(t,h)\)</span> is given by:
+<span class="math display">\[\begin{eqnarray*}
+\exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp[(\bar\omega-\omega)'w_{t+1}+\dots+(\bar\omega-\omega)'w_{t+h-1}+\bar\omega'
+w_{t+h}]
+\end{eqnarray*}\]</span>
+One can then price this bond by directly employing Eq. <a href="ChapterAffine.html#eq:LTreverse">(1.9)</a>, with <span class="math inline">\(u_1 = \bar\omega\)</span> and <span class="math inline">\(u_i = \bar\omega-\omega\)</span>, <span class="math inline">\(i = 2,\dots, H\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:Futures" class="example"><strong>Example 1.21  (Futures) </strong></span>Denote by <span class="math inline">\(F(t,h)\)</span> the date-<span class="math inline">\(t\)</span> price of a future of maturity <span class="math inline">\(h\)</span> (see Section XXX). That is <span class="math inline">\(F(t,h) = \mathbb{E}^{\mathbb{Q}}_t (S_{t+h})\)</span>, <span class="math inline">\(h=1,\dots,H\)</span>, where <span class="math inline">\(S_t\)</span> is the date-<span class="math inline">\(t\)</span> price of the underlying asset.</p>
+<ul>
+<li><p>If <span class="math inline">\(w_t = (\log S_t, x'_t)'\)</span> then <span class="math inline">\(F(t,h) = \mathbb{E}^{\mathbb{Q}}_t \exp(e'_1 w_{t+h})\)</span>. This can be calculated by using Eq. <a href="ChapterAffine.html#eq:LTreverse">(1.9)</a> with <span class="math inline">\(u_1 = e_1\)</span>, and <span class="math inline">\(u_i = 0\)</span>, for <span class="math inline">\(i=2,\dots,H\)</span>.</p></li>
+<li><p>If <span class="math inline">\(w_t = (y_t, x'_t)'\)</span> with <span class="math inline">\(y_t = \log\frac{S_t}{S_{t-1}}\)</span>, then <span class="math inline">\(F(t,h) = S_t \mathbb{E}^{\mathbb{Q}}_t \exp(e'_1 w_{t+1}+\dots+e'_1 w_{t+h})\)</span>. This can be calculated by using Eq. <a href="ChapterAffine.html#eq:LTreverse">(1.9)</a> with <span class="math inline">\(u_i = e'_1\)</span>, <span class="math inline">\(i=1,\dots,H\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div id="ExponentialPayoff" class="section level3" number="1.9.2">
+<h3>
+<span class="header-section-number">1.9.2</span> Exponential payoff<a class="anchor" aria-label="anchor" href="#ExponentialPayoff"><i class="fas fa-link"></i></a>
+</h3>
+<p>Consider an asset providing the payoff <span class="math inline">\(\exp(\nu' w_{t+h})\)</span> on date <span class="math inline">\(t+h\)</span>. Its price is given by:
+<span class="math display">\[
+P(t,h;\nu) = \mathbb{E}^{\mathbb{Q}}_t[\exp(-r_{t}-\dots-r_{t+h-1}) \exp(\nu' w_{t+h})].
+\]</span>
+If <span class="math inline">\(r_t = \omega'w_t\)</span>, we have:
+<span class="math display">\[
+P(t,h;\nu) = \exp(-r_{t})\mathbb{E}^{\mathbb{Q}}_t \left(\exp[-\omega' w_{t+1}-\dots-\omega' w_{t+h-1}+ \nu' w_{t+h}]\right),
+\]</span>
+which can be calculated by Eq. <a href="ChapterAffine.html#eq:LTreverse">(1.9)</a>, with <span class="math inline">\(u_1 = \nu\)</span> and <span class="math inline">\(u_i = -\omega\)</span> for <span class="math inline">\(i = 2,\dots,H\)</span>.</p>
+<p>What precedes can be extended to the case where the payoff (settled on date <span class="math inline">\(t+h\)</span>) is of the form:
+<span class="math display">\[
+(\nu_1'w_{t+h}) \exp(\nu_2' w_{t+h}).
+\]</span>
+Indeed, we have
+<span class="math display">\[
+\left[\frac{\partial \exp[(s \nu_1+ \nu_2)'w_{t+h}]}{\partial s}\right]_{s=0} = (\nu_1'w_{t+h}) \exp(\nu_2' w_{t+h}).
+\]</span>
+Therefore:
+<span class="math display" id="eq:Affineexppayoff">\[\begin{eqnarray}
+&amp;&amp;\mathbb{E}_t^{\mathbb{Q}}[\exp(-r_t - \dots - r_{t+h-1})(\nu_1'w_{t+h}) \exp(\nu_2' w_{t+h})] \nonumber\\
+&amp;=&amp; \left[
+\frac{\partial P(t,h;s \nu_1 + \nu_2)}{\partial s}
+\right]_{s=0}.\tag{1.11}
+\end{eqnarray}\]</span>
+This method is easily extended to price payoffs of the form <span class="math inline">\((\nu_1'w_{t+h})^k \exp(\nu_2' w_{t+h})\)</span>, with <span class="math inline">\(k \in \mathbb{N}\)</span>.</p>
+</div>
+</div>
+<div id="var-representation-and-conditional-moments" class="section level2" number="1.10">
+<h2>
+<span class="header-section-number">1.10</span> VAR representation and conditional moments<a class="anchor" aria-label="anchor" href="#var-representation-and-conditional-moments"><i class="fas fa-link"></i></a>
+</h2>
+<p>An important property of affine processes is that their dynamics can be written as a vector-autoregressive process. This is useful to compute conditional moments of the process.</p>
+<div class="proposition">
+<p><span id="prp:affineVAR" class="proposition"><strong>Proposition 1.1  (VAR representation of an affine process' dynamics) </strong></span>If <span class="math inline">\(w_t\)</span> is the affine process whose Laplace transform is defined in Def. <a href="ChapterAffine.html#def:Car1">1.1</a>, then its dynamics admits the following vectorial autoregressive representation:
+<span class="math display" id="eq:VARw">\[\begin{equation}
+w_{t+1} = \mu + \Phi w_{t} + \Sigma^{\frac{1}{2}}(w_t) \varepsilon_{t+1},\tag{1.12}
+\end{equation}\]</span>
+where <span class="math inline">\(\varepsilon_{t+1}\)</span> is a difference of martingale sequence whose conditional covariance matrix is the identity matrix and where <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\Sigma(w_t) = \Sigma^{\frac{1}{2}}(w_t){\Sigma^{\frac{1}{2}}(w_t)}'\)</span> satisfy:
+<span class="math display" id="eq:MUPHI">\[\begin{equation}
+\mu =  \left[\frac{\partial }{\partial u}b(u)\right]_{u=0}, \quad \Phi= \left[\frac{\partial }{\partial u}a(u)'\right]_{u=0}\tag{1.13}
+\end{equation}\]</span>
+<span class="math display" id="eq:SigmaWt">\[\begin{equation}
+\Sigma(w_t) =  \left[\frac{\partial }{\partial u\partial u'}b(u)\right]_{u=0} + \left[\frac{\partial }{\partial u\partial u'}a(u)'w_t\right]_{u=0}.\tag{1.14}
+\end{equation}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-4" class="proof"><em>Proof</em>. </span>When <span class="math inline">\(w_t\)</span> is affine, its (conditional) cumulant generating function is of the form <span class="math inline">\(\psi(u)=a(u)'w_t+b(u)\)</span>. The result directly follows from the formulas given in Section <a href="ChapterAffine.html#AffineLaplace">1.3</a>.</p>
+</div>
+<p>Proposition <a href="ChapterAffine.html#prp:condvarAffine">1.6</a> (in the appendix) shows that the conditional means and variances of <span class="math inline">\(w_t\)</span> are given by:
+<span class="math display" id="eq:condvar">\[\begin{eqnarray}
+\mathbb{E}_t(w_{t+h}) &amp;=&amp; (I - \Phi)^{-1}(I - \Phi^h)\mu + \Phi^h w_t \tag{1.15}\\
+\mathbb{V}ar_t(w_{t+h}) &amp;=&amp; \Sigma(\mathbb{E}_t(w_{t+h-1}))+\Phi \Sigma(\mathbb{E}_t(w_{t+h-2}))\Phi' + \nonumber \\
+&amp;&amp; \dots + \Phi^{h-1} \Sigma(w_{t}){\Phi^{h-1}}'. \tag{1.16}
+\end{eqnarray}\]</span>
+Eq. <a href="ChapterAffine.html#eq:condvar">(1.16)</a> notably implies that <span class="math inline">\(\mathbb{V}ar_t(w_{t+h})\)</span> is an affine function of <span class="math inline">\(w_t\)</span>. Indeed <span class="math inline">\(\Sigma(.)\)</span> is an affine function, and the conditional expectations <span class="math inline">\(\mathbb{E}_t(w_{t+h})\)</span> are affine in <span class="math inline">\(w_t\)</span>, as shown by Eq. <a href="ChapterAffine.html#eq:condmean">(1.15)</a>.</p>
+<p>The unconditional means and variances are given by:
+<span class="math display" id="eq:uncondmeanvar">\[\begin{equation}
+\left\{
+\begin{array}{ccl}
+\mathbb{E}(w_t) &amp;=&amp; (I - \Phi)^{-1}\mu\\
+vec[\mathbb{V}ar(w_t)] &amp;=&amp; (I_{n^2} - \Phi \otimes \Phi)^{-1} vec\left(\Sigma[(I - \Phi)^{-1}\mu]\right).
+\end{array}
+\right.\tag{1.17}
+\end{equation}\]</span></p>
+</div>
+<div id="TransfAna" class="section level2" number="1.11">
+<h2>
+<span class="header-section-number">1.11</span> Truncated Laplace transforms of affine processes<a class="anchor" aria-label="anchor" href="#TransfAna"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this section, we show how one can employ Fourier transforms to compute truncated conditional moments of affine processes. For that, let us introduce the following notation:
+<span class="math display">\[
+w_{t+1,T} = (w'_{t+1}, w'_{t+2},\dots, w'_T)'
+\]</span>
+with <span class="math inline">\(w_t\)</span> affine <span class="math inline">\(n\)</span>-dimensional process.</p>
+<p>We want to compute:
+<span class="math display">\[
+\tilde{\varphi}_t(u ; v, \gamma) = \mathbb{E}_t[\exp(u'w_{t+1,T})\textbf{1}_{\{v'w_{t+1,T}&lt;\gamma\}}].
+\]</span></p>
+<p>Consider the complex untruncated conditional Laplace transform:
+<span class="math display">\[
+\varphi_t(z) = \mathbb{E}_t[\exp(z'w_{t+1,T})],\quad  z \in \mathbb{C}^{nT},
+\]</span>
+computed using the same recursive algorithm as in the real case (see Section <a href="ChapterAffine.html#MHLT">1.9</a>).</p>
+<p><span class="citation">Darrell Duffie, Pan, and Singleton (<a href="references.html#ref-Duffie_Pan_Singleton_2000">2000</a>)</span> have shown that we have (see also Proposition <a href="ChapterAffine.html#prp:Fourier">1.8</a> in the appendix):
+<span class="math display" id="eq:DPS">\[\begin{equation}
+\tilde{\varphi}_t(u ; v, \gamma) =  \frac{\varphi_t(u)}{2} - \frac{1}{\pi}
+\int^\infty_0 \frac{Im[\varphi_t(u+ivx) \exp(-i\gamma x)]}{x} dx.\tag{1.18}
+\end{equation}\]</span>
+where <span class="math inline">\(Im\)</span> means imaginary part.</p>
+<p>Note that the integral in Eq. <a href="ChapterAffine.html#eq:DPS">(1.18)</a> is one dimensional (whatever the dimension of <span class="math inline">\(w_t\)</span>). As shown in the following example, this can be exploited to price options.</p>
+<div class="example">
+<p><span id="exm:OptionPricing" class="example"><strong>Example 1.22  (Option pricing) </strong></span>Pricing calls and puts amounts to conditional expectations of the type (with <span class="math inline">\(k &gt; 0\)</span>):
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp; \mathbb{E}_t\left([\exp(u'_1 w_{t+1,T})-k   \exp(u'_2 w_{t+1,T})]^+\right) \\
+&amp;= &amp;  \mathbb{E}_t\left([\exp(u'_1 w_{t+1,T})-k   \exp(u'_2 w_{t+1,T})]\textbf{1}_{\{[\exp(u_1-u_2)'w_{t+1,T}] &gt; k \}}\right) \\
+&amp;= &amp; \tilde{\varphi}_t(u_1 ; u_2-u_1, - \log   k) - k \tilde{\varphi}_t(u_2 ; u_2-u_1, - \log   k).
+\end{eqnarray*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:ExogSTR" class="example"><strong>Example 1.23  (Exogenous short rate) </strong></span>Consider an asset whose date-<span class="math inline">\(t\)</span> price is <span class="math inline">\(p_t\)</span>. Denote its geometric asset return by <span class="math inline">\(y_t\)</span>, i.e., <span class="math inline">\(y_t = \log(p_t/p_{t-1})\)</span>. Consider an option written on this asset, with a strike equal <span class="math inline">\(k p_t\)</span>.</p>
+<p>If interest rates are deterministic, the option price, for a maturity <span class="math inline">\(h\)</span>, is given by:
+<span class="math display">\[
+p_t   \exp(-r_{t}-\dots-r_{t+h-1}) \mathbb{E}^{\mathbb{Q}}_t[\exp   u'_1 w_{t+1, t+h} - k]^+
+\]</span>
+with <span class="math inline">\(u_1 = e \otimes e_1\)</span>, where <span class="math inline">\(e\)</span> is the <span class="math inline">\(h\)</span>-dimensional vector with components equal to 1, and <span class="math inline">\(e_1\)</span> is the <span class="math inline">\(n\)</span>-vector selecting the 1st component (<span class="math inline">\(y_t\)</span> being the 1st component of <span class="math inline">\(w_t\)</span>, say).</p>
+</div>
+<div class="example">
+<p><span id="exm:EndogSTR" class="example"><strong>Example 1.24  (Endogenous short rate) </strong></span>Consider the same context as in Example <a href="ChapterAffine.html#exm:ExogSTR">1.23</a>, but with a stochastic (endogenous) short-term rate. For instance, assume that <span class="math inline">\(r_{t+1} = \omega_0 + \omega'_1 w_t\)</span>. The option price then is:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp; p_t \mathbb{E}^{\mathbb{Q}}_t  \left[ \exp(-\omega_0 - \omega'_1 w_t-\dots- \omega_0 - \omega'_1 w_{t+h-1}) [\exp(u'_1 w_{t+1,t+h})-k]^+ \right]\\
+&amp;= &amp; p_t   \exp(-h \omega_0 - \omega'_1 w_t)\mathbb{E}^{\mathbb{Q}}_t\left(\left[\exp(\tilde{u}'_1w_{t+1,t+h})-k   \exp(u_2 w_{t+1, t+h})\right]^+\right),
+\end{eqnarray*}\]</span>
+with <span class="math inline">\(\tilde{u}'_1 = u_1 + u_2\)</span>, [<span class="math inline">\(u_1 = e \otimes e_1\)</span> as before], and <span class="math inline">\(u_2 = (-\omega'_1,\dots, -\omega'_1, 0)'\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:truncatedR" class="example"><strong>Example 1.25  (Numerical example: Conditional cumulated distribution function (c.d.f.)) </strong></span>Let us use the model used in Example <a href="ChapterAffine.html#exm:CDR2009">1.19</a>. Suppose we want to compute the conditional distribution of the average interest rate over the next <span class="math inline">\(H\)</span> periods, i.e., <span class="math inline">\(\frac{1}{H}(r_{t+1}+\dots+r_{t+H})\)</span>. Hence, we want to compute <span class="math inline">\(\mathbb{E}_t[\textbf{1}_{\{v'w_{t+1,T}&lt;\gamma\}}]\)</span> with <span class="math inline">\(v'w_{t+1,T}=\frac{1}{H}(r_{t+1}+\dots+r_{t+H})\)</span>.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">H</span>  <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>,<span class="fl">.02</span>,<span class="fl">0</span><span class="op">)</span>,<span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">x</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>,length.out<span class="op">=</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">u1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">H</span>,<span class="fl">1</span><span class="op">/</span><span class="va">H</span>,<span class="fl">0</span><span class="op">)</span>,<span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1i</span><span class="op">*</span><span class="va">x</span>,nrow<span class="op">=</span><span class="fl">1</span><span class="op">)</span>;<span class="va">u2</span> <span class="op">&lt;-</span> <span class="va">u1</span></span>
+<span><span class="va">AB</span> <span class="op">&lt;-</span> <span class="fu">reverse.MHLT</span><span class="op">(</span><span class="va">psi.GaussianVAR</span>,u1 <span class="op">=</span> <span class="va">u1</span>,u2 <span class="op">=</span> <span class="va">u2</span>,H <span class="op">=</span> <span class="va">H</span>,</span>
+<span>                   psi.parameterization <span class="op">=</span> <span class="va">psi.parameterization</span><span class="op">)</span></span>
+<span><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">AB</span><span class="op">$</span><span class="va">A</span><span class="op">[</span>,,<span class="va">H</span><span class="op">]</span> <span class="op">+</span> <span class="va">AB</span><span class="op">$</span><span class="va">B</span><span class="op">[</span>,,<span class="va">H</span><span class="op">]</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">dx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">x</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">gamma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.2</span>,<span class="fl">.3</span>,length.out<span class="op">=</span><span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="va">fx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/outer.html">outer</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">gamma</span>,<span class="kw">function</span><span class="op">(</span><span class="va">r</span>,<span class="va">c</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/complex.html">Im</a></span><span class="op">(</span><span class="va">s1</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1i</span><span class="op">*</span><span class="va">r</span><span class="op">*</span><span class="va">c</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="va">r</span><span class="op">}</span><span class="op">)</span><span class="op">*</span><span class="va">dx</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">f</span>  <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">/</span><span class="va">pi</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">fx</span>,<span class="fl">2</span>,<span class="va">sum</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">gamma</span>,<span class="va">f</span>,type<span class="op">=</span><span class="st">"l"</span>,xlab<span class="op">=</span><span class="st">""</span>,lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:truncatedRR"></span>
+<img src="TSM_files/figure-html/truncatedRR-1.png" alt="Conditional cumulated distribution function (c.d.f.) of $\frac{1}{H}(r_{t+1}+\dots+r_{t+H})$." width="672"><p class="caption">
+Figure 1.5: Conditional cumulated distribution function (c.d.f.) of <span class="math inline">\(\frac{1}{H}(r_{t+1}+\dots+r_{t+H})\)</span>.
+</p>
+</div>
+</div>
+</div>
+<div id="appendices" class="section level2" number="1.12">
+<h2>
+<span class="header-section-number">1.12</span> Appendices<a class="anchor" aria-label="anchor" href="#appendices"><i class="fas fa-link"></i></a>
+</h2>
+<div class="lemma">
+<p><span id="lem:integralQuadratic" class="lemma"><strong>Lemma 1.3  </strong></span>If <span class="math inline">\(\mu \in \mathbb{R}^L\)</span> and <span class="math inline">\(Q\)</span> is a <span class="math inline">\((L \times L)\)</span> matrix symmetric positive definite, then:
+<span class="math display">\[
+\int_{\mathbb{R}^{L}} \exp(-u'Q u + \mu'u)du =
+\frac{\pi^{L/2}}{(det   Q)^{1/2}} exp \left(
+\begin{array}{l}  \frac{1}{4} \mu'Q^{-1}\mu \end{array} \right).
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-5" class="proof"><em>Proof</em>. </span>The integral is:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp; \int_{\mathbb{R}^{L}} exp \left[ \begin{array}{l} - (u -
+\frac{1}{2}  Q^{-1} \mu)'  Q (u -
+\frac{1}{2} Q^{-1} \mu)'
+\end{array}
+\right] exp\left(
+\begin{array}{l}  \frac{1}{4} \mu'Q^{-1}\mu \end{array}
+\right)du \\
+&amp;=&amp;  \frac{\pi^{L/2}}{(det Q)^{1/2}} exp\left(
+\begin{array}{l}  \frac{1}{4} \mu'Q^{-1}\mu \end{array}
+\right)
+\end{eqnarray*}\]</span>
+[using the formula for the unit mass of <span class="math inline">\(\mathcal{N}( 0.5Q^{-1}\mu,(2Q)^{-1})\)</span>].</p>
+</div>
+<div class="lemma">
+<p><span id="lem:Quadr" class="lemma"><strong>Lemma 1.4  </strong></span>If <span class="math inline">\(\varepsilon_{t+1} \sim \mathcal{N}(0,Id)\)</span>, we have
+<span class="math display">\[
+\mathbb{E}_t \left(\exp[\lambda'\varepsilon_{t+1}+\varepsilon'_{t+1} V \varepsilon_{t+1}]\right) =  \frac{1}{[\det(I-2V)]^{1/2}} \exp\left[
+\frac{1}{2} \lambda'(I-2V)^{-1}\lambda
+\right].
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-6" class="proof"><em>Proof</em>. </span>We have
+<span class="math display">\[
+\mathbb{E}_t   \exp(\lambda'\varepsilon_{t+1}+\varepsilon'_{t+1}V\varepsilon_{t+1})
+=  \frac{1}{(2\pi)^{n/2}}  \int_{\mathbb{R}^{n}} \exp\left[
+\begin{array}{l}
+-u'\left(
+\begin{array}{l}
+\frac{1}{2} I-V
+\end{array}
+\right)u+\lambda'u
+\end{array}
+\right]du
+\]</span>
+From Lemma <a href="ChapterAffine.html#lem:integralQuadratic">1.3</a>, if <span class="math inline">\(u\in\mathbb{R}^n\)</span>, then
+<span class="math display">\[
+\int_{\mathbb{R}^{n}} \exp(-u' Q u+\mu'u) du =
+\frac{\pi^{n/2}}{(\det Q)^{1/2}} \exp\left(
+\begin{array}{l}
+\frac{1}{4} \mu'Q^{-1}\mu
+\end{array}
+\right).
+\]</span>
+Therefore:
+<span class="math display">\[
+\begin{array}{l}
+\mathbb{E}_t   \exp(\lambda'\varepsilon_{t+1}+\varepsilon'_{t+1}V\varepsilon_{t+1}) \\
+=  \frac{1}{2^{n/2}
+\left[
+\begin{array}{l}
+\det \left(
+\begin{array}{l}
+\frac{1}{2} I-V
+\end{array}
+\right)
+\end{array}
+\right]^{1/2}
+}
+\exp\left[
+\begin{array}{l}
+\frac{1}{4}  \lambda'\left(
+\begin{array}{l}
+\frac{1}{2} I-V
+\end{array}
+\right)^{-1}\lambda
+\end{array}
+\right].
+\end{array}
+\]</span></p>
+</div>
+<div class="proposition">
+<p><span id="prp:QGVAR1" class="proposition"><strong>Proposition 1.2  (Quadratic Gaussian process) </strong></span>Consider vector <span class="math inline">\(w_t = (x'_t,vec(x_t x_t')')'\)</span>, where <span class="math inline">\(x_t\)</span> is a <span class="math inline">\(n\)</span>-dimensional vector following a Gaussian VAR(1), i.e.
+<span class="math display">\[
+x_{t+1}|\underline{w_t} \sim \mathcal{N}(\mu+\Phi x_t, \Sigma).
+\]</span>
+If <span class="math inline">\(u = (v,V)\)</span> where <span class="math inline">\(v \in \mathbb{R}^n\)</span> and <span class="math inline">\(V\)</span> a square symmetric matrix of size <span class="math inline">\(n\)</span>, we have:
+<span class="math display">\[\begin{eqnarray*}
+\varphi_t(u) &amp;=&amp; \mathbb{E}_t\big\{\exp\big[(v',vec(V)')\times w_{t+1}\big]\big\} \\
+&amp; =&amp; \exp \left\{a_1(v,V)'x_t +vec(a_2(v,V))' vec(x_t'x_t) + b(v,V) \right\},
+\end{eqnarray*}\]</span>
+where:
+<span class="math display" id="eq:laplaceZ">\[\begin{eqnarray*}
+a_2(u) &amp; = &amp; \Phi'V (I_n - 2\Sigma V)^{-1} \Phi \nonumber \\
+a_1(u) &amp; = &amp; \Phi'\left[(I_n-2V\Sigma)^{-1}(v+2V\mu)\right] \nonumber \\
+b(u) &amp; = &amp; u'(I_n - 2 \Sigma V)^{-1}\left(\mu + \frac{1}{2} \Sigma v\right) +\\
+&amp;&amp; \mu'V(I_n - 2 \Sigma V)^{-1}\mu - \frac{1}{2}\log\big|I_n - 2\Sigma V\big|.\tag{1.3}
+\end{eqnarray*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-7" class="proof"><em>Proof</em>. </span>We have:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp;\mathbb{E}_t(\exp(v' x_{t+1} + vec(V)'vec(x_{t+1} x_{t+1}'))) \\
+&amp;=&amp; \mathbb{E}_t[\exp(v' (\mu + \Phi x_t + \Sigma^{1/2}\varepsilon_{t+1}) + \\
+&amp;&amp; vec(V)'vec((\mu + \Phi x_t + \Sigma^{1/2}\varepsilon_{t+1}) (\mu + \Phi x_t + \Sigma^{1/2}\varepsilon_{t+1})'))] \\
+&amp;=&amp; \exp[v' (\mu + \Phi x_t) + vec(V)'vec\{(\mu + \Phi x_t)(\mu + \Phi x_t)'\}] \times \\
+&amp;&amp; \mathbb{E}_t[\exp(v'\Sigma^{1/2}\varepsilon_{t+1} +2\underbrace{ vec(V)' vec\{(\mu + \Phi x_t)(\varepsilon_{t+1}'{\Sigma^{1/2}}')\}}_{=(\mu + \Phi x_t)'V\Sigma^{1/2}\varepsilon_{t+1}} +\\
+&amp;&amp; \underbrace{vec(V)'vec\{(\Sigma^{1/2}\varepsilon_{t+1})(\Sigma^{1/2}\varepsilon_{t+1})'}_{=\varepsilon_{t+1}'{\Sigma^{1/2}}'V\Sigma^{1/2}\varepsilon_{t+1}}\}]
+\end{eqnarray*}\]</span>
+Lemma <a href="ChapterAffine.html#lem:Quadr">1.4</a> can be used to compute the previous conditional expectation, with <span class="math inline">\(\lambda = {\Sigma^{1/2}}'(v + 2 V'(\mu + \Phi x_t))\)</span>. Some algebra then leads to the result.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:LTARG" class="proposition"><strong>Proposition 1.3  () </strong></span>Consider the following auto-regressive gamma process:
+<span class="math display">\[
+\frac{w_{t+1}}{\mu} \sim \gamma(\nu+z_t) \quad \mbox{where} \quad z_t \sim \mathcal{P} \left( \frac{\rho w_t}{\mu} \right),
+\]</span>
+with <span class="math inline">\(\nu\)</span>, <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\rho &gt; 0\)</span>. (Alternatively <span class="math inline">\(z_t \sim {\mathcal{P}}(\beta w_t)\)</span>, with <span class="math inline">\(\rho = \beta \mu\)</span>.)</p>
+<p>We have:
+<span class="math inline">\(\varphi_t(u) = exp \left[ \begin{array}{l} \dfrac{\rho u}{1-u \mu} w_t - \nu \log(1-u \mu)\end{array} \right], \mbox{ for } u &lt; \dfrac{1}{\mu}\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-8" class="proof"><em>Proof</em>. </span>Given <span class="math inline">\(\underline{w_t}\)</span>, we have <span class="math inline">\(z_t \sim {\mathcal P}\left( \begin{array}{l} \frac{\rho w_t} {\mu} \end{array}\right)\)</span>. We have:
+<span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[\exp(u w_{t+1})|\underline{w_t}] &amp;=&amp; \mathbb{E}\left\{\mathbb{E}\left[\exp \left(u \mu  \frac{w_{t+1}}{\mu}\right)|\underline{w_t}, \underline{z}_t\right]\underline{w_t}\right\}\\
+&amp;=&amp; \mathbb{E}[(1-u\mu)^{-(\nu+z_t)}|\underline{w_t}] \\
+&amp;=&amp; (1-u\mu)^{-\nu}\mathbb{E}\{\exp[-z_t   \log(1-u\mu)]|\underline{w_t}\} \\
+&amp;=&amp; (1-u\mu)^{-\nu} \exp \left\{\frac{\rho w_t}{\mu}[\exp(-\log(1-u\mu)] -  \frac{\rho w_t}{\mu}\right\}\\
+&amp;=&amp; \exp\left[ \begin{array}{l}  \frac{\rho u w_t}{1-u\mu} - \nu   \log(1-u\mu)  \end{array}\right],
+\end{eqnarray*}\]</span>
+using the fact that the L.T. of <span class="math inline">\(\gamma(\nu)\)</span> is <span class="math inline">\((1-u)^{-\nu}\)</span>
+and that the L.T. of <span class="math inline">\({\mathcal P}(\lambda)\)</span> is <span class="math inline">\(\exp[\lambda(\exp(u)-1)]\)</span>.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:WARAR" class="proposition"><strong>Proposition 1.4  (Dynamics of a WAR process) </strong></span>If <span class="math inline">\(K\)</span> is an integer, <span class="math inline">\(W_{t+1}\)</span> can be obtained from:
+<span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ccl}
+W_{t+1} &amp; =&amp;  \sum^K_{k=1} x_{k,t+1} x'_{k,t+1}\\
+&amp;&amp;\\
+x_{k,t+1} &amp; =&amp; M x_{k,t} + \varepsilon_{k,t+1},\quad k \in \{1,\dots,K\},
+\end{array}
+\right.
+\end{eqnarray*}\]</span>
+where <span class="math inline">\(\varepsilon_{k,t+1} \sim i.i.d. \mathcal{N}(0, \Omega)\)</span> (independent across <span class="math inline">\(k\)</span>’s).
+In particular, we have:
+<span class="math display">\[
+\mathbb{E}(W_{t+1}|\underline{W_t}) = MW_tM'+K \Omega,
+\]</span>
+i.e. <span class="math inline">\(W_t\)</span> follows a matrix weak AR(1) process.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-9" class="proof"><em>Proof</em>. </span>For <span class="math inline">\(K=1\)</span>, <span class="math inline">\(W_{t+1}=x_{t+1} x'_{t+1}\)</span>, <span class="math inline">\(x_{t+1} = M x_t + \Omega^{1/2} u_{t+1}\)</span> and <span class="math inline">\(u_{t+1} \sim i.i.d. \mathcal{N}(0,Id_L)\)</span>. We have:
+<span class="math display">\[
+\mathbb{E}[\exp(Tr \Gamma W_{t+1})|\underline{w_t}] = \mathbb{E}\{\mathbb{E}[\exp(Tr \Gamma x_{t+1} x'_{t+1})|\underline{x}_t]|\underline{w_t}\}
+\]</span>
+and:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp; \mathbb{E}[\exp(Tr \Gamma x_{t+1}x'_{t+1})|\underline{x}_t] = \mathbb{E}[\exp(x'_{t+1}\Gamma x_{t+1}|\underline{x}_t] \\
+&amp;=&amp; \mathbb{E}[\exp(M x_t + \Omega^{1/2} u_{t+1})'\Gamma(M x_t + \Omega^{1/2} u_{t+1})/x_t] \\
+&amp;=&amp; \exp(x'_tM'\Gamma M x_t)\mathbb{E}[\exp(2 x'_t M'\Gamma \Omega^{1/2}
+u_{t+1}+u'_{t+1}\Omega^{1/2} \Gamma \Omega^{1/2} u_{t+1})/x_t] \\
+&amp;=&amp;  \frac{exp(x'_tM'\Gamma M x_t)}{(2\pi)^{L/2}} \times \\
+&amp;&amp; \int_{\mathbb{R}^L} \exp\left[2x'_tM'\Gamma
+\Omega^{1/2}u_{t+1}-u'_{t+1}\left(
+\frac{1}{2} Id_L-\Omega^{1/2} \Gamma \Omega^{1/2}\right)u_{t+1}\right]  du_{t+1}.
+\end{eqnarray*}\]</span>
+Using Lemma <a href="ChapterAffine.html#lem:integralQuadratic">1.3</a> with <span class="math inline">\(\mu' = 2 x'_t M'\Gamma \Omega^{1/2}, Q = \frac{1}{2} Id_L-\Omega^{1/2}\Gamma\Omega^{1/2}\)</span> \
+and after some algebra, the RHS becomes:
+<span class="math display">\[
+\frac{exp[x'_tM'\Gamma(Id_L-2\Omega\Gamma)^{-1}M
+x_t]}{det[Id_L-2\Omega^{1/2}\Gamma\Omega^{1/2}]} =  \frac{exp Tr[M'\Gamma(Id_L-2\Omega^{-1}]M
+W_t]}{det[Id_L-2\Omega \Gamma]^{1/2}},
+\]</span>
+which depends on <span class="math inline">\(x_t\)</span> through <span class="math inline">\(W_t\)</span>, and gives the result for
+<span class="math inline">\(K=1\)</span>; the result for any <span class="math inline">\(K\)</span> integer follows.</p>
+</div>
+<div class="lemma">
+<p><span id="lem:MHLT" class="lemma"><strong>Lemma 1.5  </strong></span>We have:
+<span class="math display">\[
+\varphi_{t,h}(\gamma_1,\dots,\gamma_h) = \exp(A'_{t,h} w_t + B_{t,h}),
+\]</span>
+where <span class="math inline">\(A_{t,h} = A^h_{t,h}\)</span> and <span class="math inline">\(B_{t,h} = B^h_{t,h}\)</span>, the <span class="math inline">\(A^h_{t,i}, B^h_{t,i}\)</span> <span class="math inline">\(i = 1,\dots,h\)</span>, being given recursively by:
+<span class="math display">\[
+(i) \left\{
+\begin{array}{ccl}
+A^h_{t,i} &amp;=&amp; a_{t+h+1-i}(\gamma_{h+1-i} + A^h_{t,i-1}), \\
+B^h_{t,i} &amp;=&amp; b_{t+h+1-i}(\gamma_{h+1-i} + A^h_{t,i-1}) + B^h_{t,i-1}, \\
+A^h_{t,0} &amp;=&amp; 0, B^h_{t,0} = 0.
+\end{array}
+\right.
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-10" class="proof"><em>Proof</em>. </span>For any <span class="math inline">\(j=1,\dots,h\)</span> we have:
+<span class="math display">\[
+\varphi_{t,h}(\gamma_1,\dots,\gamma_h) = \mathbb{E}_t[\exp(\gamma'_1 w_{t+1}+\dots\gamma'_j w_{t+j}+A^{h'}_{t,h-j}w_{t+j}+B^h_{t,h-j})]
+\]</span>
+where:
+<span class="math display">\[
+(ii) \left\{
+\begin{array}{l}
+A^h_{t,h-j+1} = a_{t+j}(\gamma_{j} + A^h_{t,h-j}), \\
+B^h_{t,h-j+1} = b_{t+j}(\gamma_{j} + A^h_{t,h-j}) + B^h_{t,h-j}, \\
+A^h_{t,0} = 0, B^h_{t,0} = 0.
+\end{array}
+\right.
+\]</span>
+Since this is true for <span class="math inline">\(j=h\)</span>, and if this is true for <span class="math inline">\(j\)</span>, we get:
+<span class="math display">\[
+\begin{array}{ll}
+\varphi_{t,h}(\gamma_1,\dots,\gamma_h) &amp; = \mathbb{E}_t [\exp(\gamma'_1 w_{t+1}+\dots+\gamma'_{j-1}w_{t+j-1}+a'_{t+j}(\gamma_j+A^h_{t,h-j})w_{t+j-1} \\
+&amp; + b_{t+j}(\gamma_j+A^h_{t,h-j})+B^h_{t,h-j}],
+\end{array}
+\]</span>
+and, therefore, this is true for <span class="math inline">\(j-1\)</span>, with <span class="math inline">\(A^h_{t,h-j+1}\)</span> and <span class="math inline">\(B^h_{t,h-j+1}\)</span> given by formulas (ii) above.</p>
+<p>For <span class="math inline">\(j=1\)</span> we get:
+<span class="math display">\[\begin{eqnarray*}
+\varphi_{t,h}(\gamma_1,\dots,\gamma_h) &amp;=&amp; \mathbb{E}_t \exp(\gamma'_1 w_{t+1}+A^{h'}_{t,h-1}w_{t+1}+B^h_{t,h-1}) \\
+&amp;=&amp; \exp(A'_{t,h} w_t+B_{t,h}),
+\end{eqnarray*}\]</span></p>
+<p>Finally note that if we put <span class="math inline">\(h-j+1 = i\)</span>, formulas (ii) become (i).</p>
+</div>
+<div class="proposition">
+<p><span id="prp:reverseMLT" class="proposition"><strong>Proposition 1.5  (Reverse-order multi-horizon Laplace transform) </strong></span>If the functions <span class="math inline">\(a_{t}\)</span> and <span class="math inline">\(b_{t}\)</span> do not depend on <span class="math inline">\(t\)</span>, and if different sequences <span class="math inline">\((\gamma^h_1,\dots,\gamma^h_h), h=1,\dots,H\)</span> (say) satisfy <span class="math inline">\(\gamma^h_{h+1-i} = u_i\)</span>, for
+<span class="math inline">\(i=1,\dots,h\)</span>, and for any <span class="math inline">\(h \leq H\)</span>, that is if we want to compute (“reverse order” case):
+<span class="math display">\[
+\varphi_{t,h}(u_h,\dots,u_1)=\mathbb{E}_t[\exp(u'_{\color{red}{h}} w_{\color{red}{t+1}}+\dots+u'_{\color{red}{1}} w_{\color{red}{t+h}})],
+\quad h=1,\dots,H,
+\]</span>
+then we can compute the <span class="math inline">\(\varphi_{t,h}(u_h,\dots,u_1)\)</span> for any <span class="math inline">\(t\)</span> and any <span class="math inline">\(h \leq H\)</span>, with only one recursion, i.e. <span class="math inline">\(\varphi_{t,h}(u_h,\dots,u_1)=\exp(A'_hw_t+B_h)\)</span> with:
+<span class="math display" id="eq:auxLemmareverseMLT">\[\begin{equation}
+\left\{
+\begin{array}{ccl}
+A_{h} &amp;=&amp; a(u_{h} + A_{h-1}), \\
+B_{h} &amp;=&amp; b(u_{h} + A_{h-1}) + B_{h-1}, \\
+A_{0} &amp;=&amp; 0,\quad  B_{0} = 0.
+\end{array}
+\right.\tag{1.19}
+\end{equation}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-11" class="proof"><em>Proof</em>. </span>According to Lemma <a href="ChapterAffine.html#lem:MHLT">1.5</a>, we have, in this case:
+<span class="math display">\[
+\left\{
+\begin{array}{ccl}
+A^h_{i} &amp;=&amp; a(u_{i} + A^h_{i-1}), \\
+B^h_{i} &amp;=&amp; b(u_{i} + A^h_{i-1}) + B^h_{i-1}, \\
+A^h_{0} &amp;=&amp; 0, \quad B^h_{0} = 0.
+\end{array}
+\right.
+\]</span>
+The previous sequences do not dependent on <span class="math inline">\(h\)</span> and are given by Eq. <a href="ChapterAffine.html#eq:auxLemmareverseMLT">(1.19)</a>.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:condvarAffine" class="proposition"><strong>Proposition 1.6  (Conditional means and variances of an affine process) </strong></span>Consider an affine process <span class="math inline">\(w_t\)</span>. Using the notation of Proposition <a href="ChapterAffine.html#prp:affineVAR">1.1</a>, we have:
+<span class="math display" id="eq:condvarAppendix">\[\begin{eqnarray}
+\mathbb{E}_t(w_{t+h}) &amp;=&amp; (I - \Phi)^{-1}(I - \Phi^h)\mu + \Phi^h w_t \tag{1.20}\\
+\mathbb{V}ar_t(w_{t+h}) &amp;=&amp; \Sigma(\mathbb{E}_t(w_{t+h-1}))+\Phi \Sigma(\mathbb{E}_t(w_{t+h-2}))\Phi' + \nonumber \\
+&amp;&amp; \dots + \Phi^{h-1} \Sigma(w_{t}){\Phi^{h-1}}'. \tag{1.21}
+\end{eqnarray}\]</span>
+Eq. <a href="ChapterAffine.html#eq:condvarAppendix">(1.21)</a> notably shows that <span class="math inline">\(\mathbb{V}ar_t(w_{t+h})\)</span> is an affine function of <span class="math inline">\(w_t\)</span>. Indeed <span class="math inline">\(\Sigma(.)\)</span> is an affine function, and the conditional expectations <span class="math inline">\(\mathbb{E}_t(w_{t+h})\)</span> are affine in <span class="math inline">\(w_t\)</span>, as shown by Eq. <a href="ChapterAffine.html#eq:condmeanAppendix">(1.20)</a>.</p>
+<p>The unconditional mean and variance of <span class="math inline">\(w_t\)</span> are given by:
+<span class="math display" id="eq:uncondmeanvarAppendix">\[\begin{equation}
+\left\{
+\begin{array}{ccl}
+\mathbb{E}(w_t) &amp;=&amp; (I - \Phi)^{-1}\mu\\
+vec[\mathbb{V}ar(w_t)] &amp;=&amp; (I_{n^2} - \Phi \otimes \Phi)^{-1} vec\left(\Sigma[(I - \Phi)^{-1}\mu]\right).
+\end{array}
+\right.\tag{1.22}
+\end{equation}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-12" class="proof"><em>Proof</em>. </span>Eq. <a href="ChapterAffine.html#eq:condmeanAppendix">(1.20)</a> is easily deduced from Eq. <a href="ChapterAffine.html#eq:VARw">(1.12)</a>, using that <span class="math inline">\(\mathbb{E}_t(\varepsilon_{t+k})=0\)</span> for <span class="math inline">\(k&gt;0\)</span>.</p>
+<p>As regards Eq. <a href="ChapterAffine.html#eq:condvarAppendix">(1.21)</a>:
+<span class="math display">\[\begin{eqnarray*}
+\mathbb{V}ar_t(w_{t+h}) &amp;=&amp; \mathbb{V}ar_t\left(\Sigma(w_{t+h-1})^{\frac{1}{2}}\varepsilon_{t+h}+\dots + \Phi^{h-1} \Sigma(w_{t})^{\frac{1}{2}}\varepsilon_{t+1} \right).
+\end{eqnarray*}\]</span>
+The conditional expectation at <span class="math inline">\(t\)</span> of all the terms of the sum is equal to zero since, for <span class="math inline">\(i \ge 1\)</span>:
+<span class="math display">\[
+\mathbb{E}_t\left[\Sigma(w_{t+i-1})^{\frac{1}{2}}\varepsilon_{t+i}\right] = \mathbb{E}_t[\underbrace{\mathbb{E}_{t+i-1}\{\Sigma(w_{t+i-1})^{\frac{1}{2}}\varepsilon_{t+i}\}}_{=\Sigma(w_{t+i-1})^{\frac{1}{2}}\mathbb{E}_{t+i-1}\{\varepsilon_{t+i}\}=0}\}],
+\]</span>
+and <span class="math inline">\(\forall i &lt;j\)</span>,
+<span class="math display">\[
+\mathbb{C}ov_t\left[\Sigma(w_{t+i-1})^{\frac{1}{2}}\varepsilon_{t+i},\Sigma(w_{t+j-1})^{\frac{1}{2}}\varepsilon_{t+j}\right] = \mathbb{E}_t\left[\Sigma(w_{t+i-1})^{\frac{1}{2}}\varepsilon_{t+i}\varepsilon_{t+j}'\Sigma'(w_{t+j-1})^{\frac{1}{2}}\right],
+\]</span>
+which can be seen to be equal to zero by conditioning on the information available on date <span class="math inline">\(t+j-1\)</span>.</p>
+<p>Using the same conditioning, we obtain that:
+<span class="math display">\[\begin{eqnarray*}
+\mathbb{V}ar_t\left[\Phi^{h-j}\Sigma(w_{t+j-1})^{\frac{1}{2}}\varepsilon_{t+j}\right] &amp;=&amp; \mathbb{E}_t\left[\Phi^{h-j}\Sigma(w_{t+j-1})^{\frac{1}{2}}\varepsilon_{t+j}\varepsilon_{t+j}'\Sigma'(w_{t+j-1})^{\frac{1}{2}}{\Phi^{h-j}}'\right] \\
+&amp;=&amp;  \mathbb{E}_t\left[\Phi^{h-j}\Sigma(w_{t+j-1})^{\frac{1}{2}} \mathbb{E}_{t+j-1}(\varepsilon_{t+j}\varepsilon_{t+j}')\Sigma'(w_{t+j-1})^{\frac{1}{2}}{\Phi^{h-j}}'\right] \\
+&amp;=&amp;  \Phi^{h-j}\mathbb{E}_t[\Sigma(w_{t+j-1})]{\Phi^{h-j}}' \\
+&amp;=&amp;  \Phi^{h-j}\Sigma(\mathbb{E}_t[w_{t+j-1}]){\Phi^{h-j}}',
+\end{eqnarray*}\]</span>
+where the last equality results from the fact that he fact that <span class="math inline">\(\Sigma(.)\)</span> is affine (see Eq. <a href="ChapterAffine.html#eq:SigmaWt">(1.14)</a>).</p>
+</div>
+<div class="proposition">
+<p><span id="prp:GARCH" class="proposition"><strong>Proposition 1.7  (Affine property of the GARCH-type process) </strong></span>The process <span class="math inline">\(w_t = (w_{1,t}, w_{2,t})\)</span> defined by:
+<span class="math display">\[
+\left\{
+\begin{array}{ccl}
+w_{1, t+1} &amp;=&amp; \mu + \varphi w_{1,t} + \sigma_{t+1} \varepsilon_{t+1}    \mid \varphi \mid &lt; 1 \\
+\sigma^2_{t+1} &amp;=&amp; \omega + \alpha \varepsilon^2_t + \beta \sigma^2_t      0 &lt; \beta &lt; 1, \alpha &gt; 0, \omega &gt; 0    \\
+w_{2,t} &amp;=&amp; \sigma^2_{t+1}, \quad \varepsilon_t \sim   i.i.d.   \mathcal{N}(0,1)
+\end{array}
+\right.
+\]</span>
+is affine.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-13" class="proof"><em>Proof</em>. </span>Note that <span class="math inline">\(w_{2,t}\)</span> is function of <span class="math inline">\(\underline{w_{1,t}}\)</span>
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp; \mathbb{E}[\exp(u_1 w_{1, t+1} + u_2 w_{2, t+1})|\underline{w_{1,t}}] \\
+&amp;= &amp; \exp(u_1 \mu + u_1 \varphi w_{1,t} + u_2 \omega + u_2 \beta w_{2,t})  \mathbb{E}[\exp(u_1 \sigma_{t+1} \varepsilon_{t+1} + u_2 \alpha \varepsilon^2_{t+1})|\underline{w_{1,t}}]
+\end{eqnarray*}\]</span>
+and, using Lemma <a href="ChapterAffine.html#lem:Quadr">1.4</a>:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp;\mathbb{E}[\exp(u_1 w_{1, t+1} + u_2 w_{2, t+1})|\underline{w_{1,t}}] \\
+&amp;= &amp; \exp(u_1 \mu + u_1 \varphi w_{1,t} + u_2 \omega + u_2 \beta w_{2t})  \exp \left[ -   \frac{1}{2}   \log(1-2 u_2 \alpha) +
+\frac{u^2_1 w_{2,t}}{2(1-2 u_2 \alpha)} \right]\\
+&amp;= &amp; \exp \left[ u_1 \mu + u_2 \omega -  \frac{1}{2}   \log(1-2u_2\alpha)+  u_1 \varphi w_{1,t} + \left(u_2 \beta +  \frac{u^2_1}{2(1-2u_2\alpha)}\right)
+w_{2,t}\right],
+\end{eqnarray*}\]</span>
+which is exponential affine in <span class="math inline">\((w_{1,t}, w_{2,t})\)</span>.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:Fourier" class="proposition"><strong>Proposition 1.8  (Computation of truncated conditional moments) </strong></span>If <span class="math inline">\(\varphi(z)=\mathbb{E}[exp(z'w)]\)</span>, we have:
+<span class="math display" id="eq:Truncated">\[\begin{equation}
+\mathbb{E}[\exp(u'w)\textbf{1}_{(v'w&lt;\gamma})] = \frac{\varphi(u)}{2} -  \frac{1}{\pi} \int^\infty_o
+\frac{{\mathcal I}m[\varphi(u+ivx)\exp(-i\gamma x)]}{x}dx.\tag{1.23}
+\end{equation}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-14" class="proof"><em>Proof</em>. </span>We want to compute <span class="math inline">\(\tilde{\varphi}_t(u;v,\gamma) = \mathbb{E}_t[\exp(u'w)\textbf{1}_{(v'w&lt;\gamma})]\)</span>. Let us first note that, for given <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>, <span class="math inline">\(\tilde{\varphi}_t(u;v,\gamma)\)</span> is a positive increasing bounded function of <span class="math inline">\(\gamma\)</span> and therefore can be seen as the c.d.f. of a positive finite measure on <span class="math inline">\(\mathbb{R}\)</span>, the Fourier transform of which is:
+<span class="math display">\[
+\int_{\mathbb{R}} \exp(i\gamma x)d\tilde{\varphi}(u;v,\gamma) = \mathbb{E} \int_{\mathbb{R}} \exp(i\gamma x)d\tilde{\varphi}_w(u;v,\gamma),
+\]</span>
+where, for given <span class="math inline">\(w, \tilde{\varphi}_w(u;v,\gamma)\)</span> is the c.d.f. of the mass point <span class="math inline">\(\exp(u'w)\)</span> at <span class="math inline">\(v'w\)</span>. We then get:
+<span class="math display">\[\begin{eqnarray*}
+\int_{\mathbb{R}} \exp(i\gamma x) d\tilde{\varphi}(u;v,\gamma) &amp;=&amp; \mathbb{E}[\exp(ixv'w)exp(u'w)] \\
+&amp; =&amp; \mathbb{E}[\exp(u+ivx)'w] \\
+&amp; =&amp; \varphi(u+ivx).
+\end{eqnarray*}\]</span>
+Let us now compute <span class="math inline">\(A(x_0,\lambda)\)</span> for any real number <span class="math inline">\(\lambda\)</span>, with:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp;A(x_0,\lambda) \\
+&amp;=&amp;  \frac{1}{2\pi} \int^{x_0}_{-x_0}
+\frac{\exp(i\lambda x)\varphi(u-ivx)-\exp(-i\lambda)\varphi(u+ivx)}{ix}dx \\
+&amp;=&amp;  \frac{1}{2\pi} \int^{x_0}_{-x_0}\left[ \begin{array}{l}  \int_{\mathbb{R}}
+\frac{\exp[-ix(\gamma-\lambda)]-\exp[ix(\gamma-\lambda)]}{ix}d\tilde{\varphi}(u;v,\gamma)
+\end{array} \right]dx \\
+&amp;=&amp;  \frac{1}{2\pi}  \int_{\mathbb{R}}
+\left[ \begin{array}{l}   \int^{x_0}_{-x_0}   \frac{\exp[-ix(\gamma-\lambda)]
+-\exp[ix(\gamma-\lambda)]}{ix}dx \end{array} \right]d\tilde{\varphi}(u;v,\gamma).
+\end{eqnarray*}\]</span>
+Now :
+<span class="math display">\[\begin{eqnarray*}
+\frac{1}{2\pi} \int^{x_o}_{-x_o}
+\frac{\exp[-ix(\gamma-\lambda)]
+-\exp[ix(\gamma-\lambda)]}{ix}dx \\ =  \frac{-sign(\gamma-\lambda)}{\pi}
+\int^{x_o}_{-x_o} \frac{sin(x\mid\gamma-\lambda\mid)}{x}dx
+\end{eqnarray*}\]</span>
+which tends to <span class="math inline">\(-sign(\gamma-\lambda)\)</span> when <span class="math inline">\(x_0\rightarrow\infty\)</span> (where <span class="math inline">\(sign(\omega)=1\)</span> if <span class="math inline">\(\omega&gt;0\)</span>, <span class="math inline">\(sign(\omega)=0\)</span> if <span class="math inline">\(\omega=0\)</span>, <span class="math inline">\(sign(\omega)=-1\)</span> if <span class="math inline">\(\omega&lt;0\)</span>).
+Therefore:
+<span class="math display">\[
+A(\infty,\lambda) = -  \int_{\mathbb{R}} sign(\gamma-\lambda)d\tilde{\varphi}(u;v,\gamma) = -\mathbb{E}  \int_{\mathbb{R}} sign(\gamma-\lambda)d\tilde{\varphi}_w(u;\theta,\gamma),
+\]</span>
+where <span class="math inline">\(\tilde{\varphi}_w(u;v,\gamma)\)</span> is the c.d.f. of the mass point <span class="math inline">\(\exp(u'w)\)</span> at <span class="math inline">\(v'w\)</span> and
+<span class="math display">\[
+\int_{\mathbb{R}} \mbox{sign}(\gamma-\lambda)d\tilde{\varphi}_w(u;v,\gamma)=
+\left\{
+\begin{array}{ccc}
+\exp(u'w) &amp; \mbox{if} &amp; \lambda &lt; v'w \\
+0 &amp; \mbox{if}&amp; \lambda = v'w \\
+-\exp(u'w) &amp; \mbox{if} &amp; \lambda &gt; v'w.
+\end{array}
+\right.
+\]</span>
+Therefore, we have:
+<span class="math display">\[\begin{eqnarray*}
+A(\infty,\lambda) &amp; =&amp; - \mathbb{E}[\exp(u'w)(1-\textbf{1}_{(v'w&lt;\lambda)})-\exp(u'w)\textbf{1}_{(v'w&lt;\lambda)}] \\
+&amp; =&amp; - \varphi(u) + 2\tilde{\varphi}(u;v,\lambda)
+\end{eqnarray*}\]</span>
+and, further,:
+<span class="math display">\[
+\tilde{\varphi}(u;,v,\gamma) =  \frac{\varphi(u)}{2} +  \frac{1}{2} A(\infty,\gamma),
+\]</span>
+where
+<span class="math display">\[\begin{eqnarray*}
+\frac{1}{2} A(\infty,\gamma) &amp; =&amp;  \frac{1}{4\pi} \int^{\infty}_{-\infty}  \frac{\exp(i\gamma x)\varphi(u-ivx)-\exp(-i\gamma x)\varphi(u+ivx)}{ix} dx \\
+&amp; =&amp;  \frac{1}{2\pi} \int^{\infty}_{o}  \frac{\exp(i\gamma x)\varphi(u-ivx)-\exp(-i\gamma x)\varphi(u+ivx)}{ix} dx \\
+&amp; =&amp; -  \frac{1}{\pi} \int^{\infty}_{o}  \frac{{\mathcal I}m[\exp(-i\gamma x)\varphi(u+ivx)]}{x}dx,
+\end{eqnarray*}\]</span>
+which leads to Eq. <a href="ChapterAffine.html#eq:Truncated">(1.23)</a>.</p>
+</div>
+
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html">Introduction to Term Structure Models</a></div>
+<div class="next"><a href="Structural.html"><span class="header-section-number">2</span> A detour through structural approaches</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ChapterAffine"><span class="header-section-number">1</span> Affine processes</a></li>
+<li><a class="nav-link" href="#Information"><span class="header-section-number">1.1</span> Information in the Economy: The “factors”</a></li>
+<li><a class="nav-link" href="#Dynamic"><span class="header-section-number">1.2</span> Dynamic models and Laplace transform (L.T.)</a></li>
+<li><a class="nav-link" href="#AffineLaplace"><span class="header-section-number">1.3</span> Laplace Transform and moments/cumulants</a></li>
+<li><a class="nav-link" href="#additional-properties-of-the-laplace-transform"><span class="header-section-number">1.4</span> Additional properties of the Laplace transform</a></li>
+<li>
+<a class="nav-link" href="#AffineCar"><span class="header-section-number">1.5</span> Affine (or Car) processes</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#car-processes-of-order-one"><span class="header-section-number">1.5.1</span> Car processes of order one</a></li>
+<li><a class="nav-link" href="#SubCarp"><span class="header-section-number">1.5.2</span> Car processes of order \(p\)</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#Markov"><span class="header-section-number">1.6</span> Markov chains</a></li>
+<li><a class="nav-link" href="#WAR"><span class="header-section-number">1.7</span> Wishart autoregressive (WAR) processes</a></li>
+<li>
+<a class="nav-link" href="#building"><span class="header-section-number">1.8</span> Building affine processes</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#stoch"><span class="header-section-number">1.8.1</span> Univariate affine processes with stochastic parameters</a></li>
+<li><a class="nav-link" href="#buildingmulti"><span class="header-section-number">1.8.2</span> Multivariate affine processes</a></li>
+<li><a class="nav-link" href="#extending-multivariate-stochastic-processes"><span class="header-section-number">1.8.3</span> Extending multivariate stochastic processes</a></li>
+<li><a class="nav-link" href="#AffineExtended"><span class="header-section-number">1.8.4</span> Extended affine processes</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#MHLT"><span class="header-section-number">1.9</span> Multi-horizon Laplace transform</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#recursive-computation-and-direct-pricing-implications"><span class="header-section-number">1.9.1</span> Recursive computation and direct pricing implications</a></li>
+<li><a class="nav-link" href="#ExponentialPayoff"><span class="header-section-number">1.9.2</span> Exponential payoff</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#var-representation-and-conditional-moments"><span class="header-section-number">1.10</span> VAR representation and conditional moments</a></li>
+<li><a class="nav-link" href="#TransfAna"><span class="header-section-number">1.11</span> Truncated Laplace transforms of affine processes</a></li>
+<li><a class="nav-link" href="#appendices"><span class="header-section-number">1.12</span> Appendices</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-30.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

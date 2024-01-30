@@ -31,11 +31,11 @@ B(t,h) &=& \exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1})
 R(t,h) &=& - \frac{1}{h} \log B(t,h). (\#eq:stdbondRFchapter)
 \end{eqnarray}
 
-Term structure models are often used to extract **term premiums** from observed yields-to-maturity. Term premiums are those components of yields that would not exist if investors were not risk-averse.
+Term structure models are often used to extract *term premiums* from observed yields-to-maturity. Term premiums are those components of yields that would not exist if investors were not risk-averse.
 
-If agents were not risk averse, i.e., under the **Expectation Hypothesis (EH)**, we would have $\mathcal{M}_{t,t+1} = \exp(- r_t)$. We would then have ``$\mathbb{P} \equiv \mathbb{Q}$''  and $B(t,h)$ would become:
+If agents were not risk averse, i.e., under the *Expectation Hypothesis (EH)*, we would have $\mathcal{M}_{t,t+1} = \exp(- r_t)$. We would then have $\mathbb{P} \equiv \mathbb{Q}$  and $B(t,h)$ would become:
 \begin{equation}
-\exp(-r_{t}) \mathbb{E}_t \exp(-r_{t+1}-\dots-r_{t+h-1}).(\#eq:stdbondRFchapterP).
+\exp(-r_{t}) \mathbb{E}_t \exp(-r_{t+1}-\dots-r_{t+h-1}).(\#eq:stdbondRFchapterP)
 \end{equation}
 And the maturity-$h$ yield-to-maturity would then be:
 \begin{eqnarray}
@@ -67,65 +67,104 @@ p_{jt} = \underbrace{\exp(-r_t)\mathbb{E}_t( p_{j,t+1})}_{=p^{EH}_{jt}} + \under
 If investors were not risk-averse, then we would have $p_{jt} = p^{EH}_{jt}$. The S.D.F. is high (resp. low) in bad (resp. good) states of the world (states of high marginal utility in the equilibrium approach). Hence, we have $p_{jt}< p^{EH}_{jt}$ if asset $j$ tends to pay less in bad states of the world (i.e., if $\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})<0$).
 
 
-## Swap rates and forward rates
 
-### Swap rates {#Swaps}
+Bonds issued by top-rated (Aaa/AAA) countries are often considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks [@Duffie_Stein_2015] (see Subsection \@ref(Swaps)).
 
-Bonds issued by top-rated (Aaa/AAA) countries are often considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks [@Duffie_Stein_2015].
 
-:::{.definition #swap name="Interest Rate Swap (IRS)"}
-
-In an Interest Rate Swap (IRS),  a *fixed-rate payer* agrees to provide the *fixed-rate receiver* with a sequence of cash flows that are determined at the negotiation date of the swap, and at predetermined dates. These cash flows constitute the *fixed leg* of the swap. Conversely, the fixed-rate receiver provides the fixed-rate payer with cash-flows that depend on future values of a reference rate; this is the  *floating rate* of the swap.
-
-More precisely, the dates of payment are of the form $t+ \tau$, $t + 2\tau$, \dots, $t + n\tau$, where $\tau$ is a period expressed in years (typically 1/2 or 1/4) and $n$ is the number of payments. The maturity, or *tenor*, of the swap contract is $h = n \tau$.
-
-The payoffs of the fixed leg are $\tau S$, where $S$ is the annualized payment (or *swap rate*). On date $t+j\tau$, the payoff of the floating leg is $\tau L(t+(j-1)\tau,\tau)$, where $L$, the annualized linear rate is given by:
+If agents were risk-neutral, we would have:
 $$
-L(t+(j-1)\tau,\tau) = \frac{1 - B(t+(j-1)\tau,\tau)}{\tau B(t+(j-1)\tau,\tau)},
+B_{t,n} = \exp(-R_{t,m})\mathbb{E}_t(B_{t+m,n-m}).
 $$
-where $B(t+(j-1)\tau,\tau)$ is the price, at date $t+(j-1)\tau$ of a bond of maturity $\tau$.
-
-On the negotiation date, the values of the fixed and floating legs are identical, so that the value of the swap is zero.
-:::
-
-At $t$, the price of the fixed leg is:
+This would imply:
 $$
-\sum_{j=1}^n \tau S B(t,j\tau).
+-n R_{t,n} = -R_{t,m} + \log \mathbb{E}_t[\exp(-(n-m) R_{t+m,n-m})].
 $$
-Let us turn to the price of the floating leg. The payoff at date $t+j\tau$, that is $\frac{1 - B(t+(j-1)\tau,\tau)}{B(t+(j-1)\tau,\tau)}$ is known on date $t+(j-1)\tau$, so its price at date $t+(j-1)\tau$ is $1 - B(t+(j-1)\tau,\tau)$, and its price at $t$ therefore is $B(t,(j-1)\tau) - B(t,j\tau)$. Summing over $j=1,\dots,n$, the date-$t$ price of the floating leg is $1 - B(t,n\tau)$ (independent of the payment dates).
-
-Since the price of the contract is zero at date $t$ (by definition of the swap), we must have:
+Up to the Jensen inequality, and taking expectations on both sides, we get:
 $$
-\sum_{j=1}^n \tau S B(t,j\tau) = 1 - B(t,n\tau) \Rightarrow S = \frac{1 - B(t,n\tau)}{ \tau \sum_{j=1}^n  B(t,j\tau)},
+-n R_{t,n} \approx \mathbb{E}_t(-R_{t,m} -(n-m) R_{t+m,n-m}).
 $$
-or
-$$
-\boxed{S(t,h) = \frac{1 - B(t,h)}{\tau \sum_{j=1}^{h/\tau}  B(t,j\tau)}.}
-$$
-
-Note that all the terms appearing in the previous formula are available in closed-form in the context of an affine model (see Example \@ref(exm:nominalBth)).
-
-### Forward rates {#FWD}
-
-:::{.definition #FWD name="Forward Rate Agreement (FRA)"}
-An interest rate forward contract is a contract in which the rate to be paid or received on a specific obligation for a set period, beginning in the future, is set at contract initiation.
-:::
-
-Denote by $f(t,h_1,h_2)$ the forward interest rate, set on date $t$, for the period between $t+h_1$ and $t+h_2$. Let us relate $f(t,h_1,h_2)$ to bond rates. For that, consider two strategies (decided on date $t$):
-
-1. Buy a zero-coupon bond of maturity $h_2$ (price $B(t,h_2)$) and sell zero-coupon bonds of maturity $h_1$ for the same amount (yielding a payoff of $B(t,h_2)/B(t,h_1)$ on date $t+h_1$).
-2. Enter a forward rate agreement between dates $t+h_1$ and $t+h_2$, whereby you receive 1 on date $t+h_2$.
-
-These two strategies deliver the same payoffs on date $t$ (the payoff is zero) and on date $t+h_2$ (the payoff is 1). By absence of arbitrage, the payoffs on date $t+h_1$ have to be the same. Therefore
-\begin{eqnarray*}
-\exp(-(h_2 - h_1)f(t,h_1,h_2)) &=& B(t,h_2)/B(t,h_1) \\
-\Rightarrow f(t,h_1,h_2) &=& \frac{1}{h_2 - h_1}(\log[B(t,h_1)] - \log[B(t,h_2)]),
-\end{eqnarray*}
-which gives:
+After having reorganized:
 \begin{equation}
-\boxed{f(t,h_1,h_2) = \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1}.}(\#eq:forward)
+\mathbb{E}_t(R_{t+m,n-m}-R_{t,n}) \approx \frac{R_{t,n}-R_{t,m}}{n-m}.(\#eq:CStheo)
 \end{equation}
-In an affine model (where $R(t,h)$ is an affine function of the state vector $w_t$), forward rates are linear in the state vector $w_t$.
+
+@Campbell_Shiller_1991 have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of $n$ and $m$:
+$$
+R_{t+m,n-m}-R_{t,n}) = \phi_n\frac{R_{t,n}-R_{t,m}}{n-m} + \varepsilon_{t+m}
+$$
+
+According to \@ref(eq:CStheo), under the Expectation Hypothesis, we should have $\phi_{n,m} \approx 1$. But they do find that the $\phi_{n,m}$ are statistically lower than one. Besides, they find that, for a given holding period $m$, the term structure of the $\phi_{n,m}$ decreases with the maturity $n$. Figure \@ref(fig:CSregressions) shows 
+
+```{r CSregressions, echo=FALSE, fig.cap="Regressions as in Campbell and Shiller (1991). Data are at the monthly frequency; they are collected from the FRED database. The estimation period starts in 1990. The figure reports 90% confidence intervals of the $\\phi_{n,m}$ parameter estimates (Newey-West robust standard deviations).", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
+library(sandwich)
+lag <- function(X,n){
+  X_lag <- 0*X
+  N <- max(dim(t(X)))
+  X_lag[1:n] <- X[1]
+  X_lag[(n+1):N] <- X[1:(N-n)]
+  return(X_lag)
+}
+
+# Load data in Fred:
+library(fredr)
+fredr_set_key("df65e14c054697a52b4511e77fcfa1f3")
+start_date <- as.Date("1990-01-01"); end_date <- as.Date("2022-01-01")
+f <- function(ticker){
+  fredr(series_id = ticker,
+        observation_start = start_date,observation_end = end_date,
+        frequency = "m",aggregation_method = "avg")
+}
+
+par(mfrow=c(1,2))
+par(plt=c(.25,.95,.2,.85))
+
+list.of.rates <- c("THREEFY2","THREEFY3","THREEFY5",
+                   "THREEFY7","THREEFY10")
+
+for(i in 1:2){
+  
+  if(i==1){
+    lags    <- 3
+    regress <- f("DTB3")
+    main_title = "3-month holding period"      
+  }
+  if(i==2){
+    lags    <- 6
+    regress <- f("DTB6")  
+    main_title = "6-month holding period"      
+  }
+  if(i==3){
+    lags    <- 12
+    regress <- f("THREEFY1")
+    main_title = "12-month holding period"      
+  }
+  
+  res <- matrix(0,5,3)
+  res[,1] <- c(2,3,5,7,10)
+  
+  count <- 0
+  for(j in 1:length(list.of.rates)){
+    count <- count + 1
+    yy <- f(list.of.rates[j])
+    DATA <- merge(yy,regress,by="date")
+    yn <- DATA$value.x
+    y1 <- DATA$value.y
+    eq <- lm((yn-lag(yn,lags))~(lag((yn-y1)/2/(12/lags),lags)))
+    
+    res[count,2] <- eq$coefficients[2]
+    res[count,3] <- sqrt(diag(NeweyWest(eq,lag = lags, prewhite = FALSE)))[2]
+  }
+  
+  plot(res[,1],res[,2],ylim=c(-1,1),pch=16,
+       ylab=expression(paste("Parameter ",phi[n*','*m])),
+       xlab=expression(paste("Maturity (in years)")),col="black",
+       main=main_title,cex=1.5,cex.main=1)
+  lines(res[,1],res[,2],lwd=3)
+  lines(res[,1],res[,2]-1.64*res[,3],lty=1,col="red",lwd=3)
+  lines(res[,1],res[,2]+1.64*res[,3],lty=1,col="red",lwd=3)
+  lines(res[,1],0*res[,1],lty=3,lwd=2)
+}
+```
 
 
 ## The Affine Case {#RiskFreeAffine}
@@ -201,7 +240,7 @@ $$
 
 ## Gaussian Affine Term Structure Model {#RiskFreeGaussian}
 
-The Gaussian Affine Term Structure Model (GATSM) is a *Workhorse* model, widely used in academic and economic-policy circles. In a GATSM, $w_t$ follows a Gaussian vector autoregressive model, and is therefore affine under $\mathbb{P}$. The S.D.F. is exponential affine in $w_t$, which implies that it is also affine under $\mathbb{Q}$ (see Subsection XXX). Since the components of $w_t$ are valued in $\mathbb{R}$, one can easily introduce macro-factors among the state variables.
+The Gaussian Affine Term Structure Model (GATSM) is a *workhorse* model, widely used in academic and economic-policy circles. In a GATSM, $w_t$ follows a Gaussian vector autoregressive model, and is therefore affine under $\mathbb{P}$. The S.D.F. is exponential affine in $w_t$, which implies that it is also affine under $\mathbb{Q}$ (see Subsection XXX). Since the components of $w_t$ are valued in $\mathbb{R}$, one can easily introduce macro-factors among the state variables.
 
 Let us be more specific. The state vector $w_t$ follows:
 \begin{equation}
@@ -451,7 +490,7 @@ Sigma <- diag(n)
 delta.0 <- 0;delta.1 <- rep(.01,n)
 r.bar <- 0 # r = max(s,r.bar) [i.e., r.bar=0 in standard model]
 Model <- list(rho = rho,mu = mu,Sigma = Sigma,
-  delta.0 = delta.0,delta.1 = delta.1,r.bar = r.bar)
+              delta.0 = delta.0,delta.1 = delta.1,r.bar = r.bar)
 # Simulate model and compute shadow rate:
 X <- simul.var(Model,nb.sim = 200) # simulated path
 s <- delta.0 + X %*% delta.1

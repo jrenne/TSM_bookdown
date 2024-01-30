@@ -1,6 +1,9 @@
 # Forward, futures, dividends, commodity pricing, and convenience yields
 
-## Forward contracts {#FCFPForwards}
+
+## Derivatives written on stocks or commodities
+
+### Forward contracts {#FCFPForwards}
 
 Let us denote by $\underline{w_{t}}$ the information available at $t$, i.e., $\underline{w_{t}}= \{w_t,w_{t-1},\dots\}$.
 
@@ -68,7 +71,7 @@ $$
 $$
 
 
-## Futures contracts, futures prices {#FCFPFutures}
+### Futures contracts, futures prices {#FCFPFutures}
 
 A futures contract is an agreement, signed at $t$, to buy/sell an asset (a commodity) at given delivery date $T>t$ at a price $F_{t,T}$, called *futures price*, decided at $t$. The difference with forward contract is that both counterparties are required to deposit into a *margin account*, at every trading day $s>t$, the resettlement payment (*margin call*). The latter is equal to:
 $$
@@ -111,7 +114,7 @@ We have:
 Hence, $\Phi_{t,T} = F_{t,T}$ if, and only if, $\prod^{T-1}_{s=t} \exp (-r_s)$ and $S_T$ are conditionally uncorrelated under $\mathbb{Q}$. It is true, in particular, in the case of deterministic short rates.
 
 
-## Convenience yields {#FCFPConvenience}
+### Convenience yields {#FCFPConvenience}
 
 A convenience yield is defined as the net benefit associated with holding a physical asset (rather than a forward or futures contract). It is *net* in the sense that it is equal to the positive gain of holding minus potential storage costs.
 
@@ -153,7 +156,7 @@ Eq. \@ref(eq:convenience3) is automatically satisfied (using Eq. \@ref(eq:conven
 
 
 
-## Pricing with affine models {#FCFPPricingRN}
+### Pricing with affine models {#FCFPPricingRN}
 
 In this section, we consider a storable commodity. The state vector is as follows:
 $$
@@ -183,8 +186,7 @@ F_{t,T} & = & \mathbb{E}^{\mathbb{Q}}_t [\exp (s_T)].
 Using the multi-horizon Laplace transforms of  $w_t = (s_t, c_t, r_t, x^{'}_t)'$, we get quasi explicit formulas for these prices (as they are exponential affine in future values of $w_t$, which is an affine process).
 
 
-
-## Historical dynamics
+### Historical dynamics
 
 Using the notation of Subsection \@ref(PricingAffine), assume the s.d.f. is of the form:
 $$
@@ -338,7 +340,81 @@ As can be seen in the previous equations, constraints are imposed between the $\
 ```{r Schwartz2, fig.align = 'center', out.width = "95%", fig.cap = "Out of sample means for maturities not used at the  estimation stage. F1 contract : the closest to maturity F2 : the second contract to maturity and so one. Source: Schwartz (1997).", echo=FALSE}
 knitr::include_graphics("figures/Tab2_Schwartz.png")
 ```
-
 :::
+
+
+## Interest-rate swaps and forward contracts
+
+### Swap rates {#Swaps}
+
+:::{.definition #swap name="Interest Rate Swap (IRS)"}
+In an Interest Rate Swap (IRS),  a *fixed-rate payer* agrees to provide the *fixed-rate receiver* with a sequence of cash flows that are determined at the negotiation date of the swap, and at predetermined dates. These cash flows constitute the *fixed leg* of the swap. Conversely, the fixed-rate receiver provides the fixed-rate payer with cash-flows that depend on future values of a reference rate; this is the  *floating rate* of the swap.
+
+More precisely, the dates of payment are of the form $t+ \tau$, $t + 2\tau$, \dots, $t + n\tau$, where $\tau$ is a period expressed in years (typically 1/2 or 1/4) and $n$ is the number of payments. The maturity, or *tenor*, of the swap contract is $h = n \tau$.
+
+The payoffs of the fixed leg are $\tau S$, where $S$ is the annualized payment (or *swap rate*). On date $t+j\tau$, the payoff of the floating leg is $\tau L(t+(j-1)\tau,\tau)$, where $L$, the annualized linear rate is given by:
+$$
+L(t+(j-1)\tau,\tau) = \frac{1 - B(t+(j-1)\tau,\tau)}{\tau B(t+(j-1)\tau,\tau)},
+$$
+where $B(t+(j-1)\tau,\tau)$ is the price, at date $t+(j-1)\tau$ of a bond of maturity $\tau$.
+
+On the negotiation date, the values of the fixed and floating legs are identical, so that the value of the swap is zero.
+:::
+
+
+:::{.proposition #swap name="Swap rate formula"}
+The swap rate $S(t,h)$, as defined in Def. \@ref(def:swap) satisfies:
+\begin{equation}
+\boxed{S(t,h) = \frac{1 - B(t,h)}{\tau \sum_{j=1}^{h/\tau}  B(t,j\tau)}.}(\#eq:swap)
+\end{equation}
+:::
+:::{.proof}
+At $t$, the price of the fixed leg is:
+$$
+\sum_{j=1}^n \tau S B(t,j\tau).
+$$
+Let us turn to the price of the floating leg. The payoff at date $t+j\tau$, that is $\frac{1 - B(t+(j-1)\tau,\tau)}{B(t+(j-1)\tau,\tau)}$ is known on date $t+(j-1)\tau$, so its price at date $t+(j-1)\tau$ is $1 - B(t+(j-1)\tau,\tau)$, and its price at $t$ therefore is $B(t,(j-1)\tau) - B(t,j\tau)$. Summing over $j=1,\dots,n$, the date-$t$ price of the floating leg is $1 - B(t,n\tau)$ (independent of the payment dates).
+
+Since the price of the contract is zero at date $t$ (by definition of the swap), we must have:
+$$
+\sum_{j=1}^n \tau S B(t,j\tau) = 1 - B(t,n\tau),
+$$
+which gives \@ref(eq:swap).
+:::
+
+> Note that all the terms appearing in the previous formula are available in closed-form in the context of an affine model (see Example \@ref(exm:nominalBth)).
+
+> Eq. \@ref(eq:swap) also shows that we have $100\% = B(t,h) + S(t,h) \tau \sum_{j=1}^{h/\tau}  B(t,j\tau)$. This equation means that the swap rate $S(t,h)$ is homogenous to the yield-to-maturity of a bond valued at par ($100\%$), whose coupons are equal to $S(t,h) \tau$. (The coupons are paid on $\{t+\tau,\dots,t+n\tau\}$.)
+
+### Forward rates {#FWD}
+
+:::{.definition #FWD name="Forward Rate Agreement (FRA)"}
+An interest rate forward contract is a contract in which the rate to be paid or received on a specific obligation for a set period, beginning in the future, is set at contract initiation.
+
+Denote by $f(t,h_1,h_2)$ the forward interest rate, set on date $t$, for the period between $t+h_1$ and $t+h_2$. One of the two counterparties will pay $\exp(-f(t,h_1,h_2)(h_2 - h_1))$ on date $t+h_1$, and receive one on date $t+h_2$.
+:::
+
+:::{.proposition #fwd name="Forward rate formula"}
+The forward rate defined in Def. \@ref(def:FWD) satisfies:
+\begin{equation}
+\boxed{f(t,h_1,h_2) = \frac{h_2 R(t,h_2) - h_1 R(t,h_1)}{h_2 - h_1},}(\#eq:forward)
+\end{equation}
+where $R_{t,h}$ denotes the date-$t$ continuously-compounded yield of maturity $h$.
+:::
+:::{.proof}
+Consider two strategies (decided on date $t$):
+
+1. Buy a zero-coupon bond of maturity $h_2$ (price $B(t,h_2)$) and sell zero-coupon bonds of maturity $h_1$ for the same amount (yielding a payoff of $B(t,h_2)/B(t,h_1)$ on date $t+h_1$).
+2. Enter a forward rate agreement between dates $t+h_1$ and $t+h_2$, whereby you receive 1 on date $t+h_2$.
+
+These two strategies deliver the same payoffs on date $t$ (the payoff is zero) and on date $t+h_2$ (the payoff is 1). By absence of arbitrage, the payoffs on date $t+h_1$ have to be the same. Therefore
+\begin{eqnarray*}
+\exp(-(h_2 - h_1)f(t,h_1,h_2)) &=& B(t,h_2)/B(t,h_1) \\
+\Rightarrow f(t,h_1,h_2) &=& \frac{1}{h_2 - h_1}(\log[B(t,h_1)] - \log[B(t,h_2)]),
+\end{eqnarray*}
+which gives \@ref(eq:forward).
+:::
+
+> In an affine model (where $R(t,h)$ is an affine function of the state vector $w_t$), forward rates are linear in the state vector $w_t$.
 
 

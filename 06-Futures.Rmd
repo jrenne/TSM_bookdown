@@ -188,7 +188,7 @@ Using the multi-horizon Laplace transforms of  $w_t = (s_t, c_t, r_t, x^{'}_t)'$
 
 ### Historical dynamics
 
-Using the notation of Subsection \@ref(PricingAffine), assume the s.d.f. is of the form:
+Using the notation of Subsection \@ref(PricingAffine), assume the SDF is of the form:
 $$
 \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp \left[-r_t + \alpha'_t w_{t+1} + \psi^{\mathbb{Q}}_t (-\alpha_t)\right],
 $$

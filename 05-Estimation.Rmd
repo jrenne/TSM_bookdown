@@ -598,7 +598,7 @@ where $\varepsilon_t|\underline{x_t},z_t \sim   \mathcal{N}(0,\Sigma(z_t))$ and 
 $$
 m(z_t,x_{t-1}) = \mu z_t + \Phi x_{t-1}.
 $$
-If $r_t$ and the s.d.f. are respectively affine and exponential in $w_t$, then, in particular, yields are also affine in $w_t$, i.e. of the form $R(t,h)= A_h'z_t + B_{h}'x_t$ (see Eq. \@ref(eq:RthAB)). Therefore, if the components of $y_t$ are yields of different maturities, the measurement equations are consistent with Assumption \@ref(hyp:RSmeasurement).
+If $r_t$ and the SDF are respectively affine and exponential in $w_t$, then, in particular, yields are also affine in $w_t$, i.e. of the form $R(t,h)= A_h'z_t + B_{h}'x_t$ (see Eq. \@ref(eq:RthAB)). Therefore, if the components of $y_t$ are yields of different maturities, the measurement equations are consistent with Assumption \@ref(hyp:RSmeasurement).
 :::
 
 

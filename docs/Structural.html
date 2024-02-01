@@ -613,7 +613,7 @@ U_t = \sum_{s=t}^{\infty} \delta^{s-t} u(C_s - X_s) \quad where \quad X_t = \rho
 U_t = \sum_{h=0}^{\infty} \delta^{h}u\left(C_{t+h} - \lambda \sum_{j=0}^\infty \rho^j C_{t+h-j}\right).
 \]</span></p>
 <p>A fall in consumption hurts after a few years of good times (even if the same level of consumption would have been very pleasant if it arrived after a few bad years).</p>
-<p>If one assumes that <span class="math inline">\(X_t\)</span> is exogenous—a case referred to as <em>external habits</em>—and if <span class="math inline">\(u(Z)=Z^{1-\gamma}/(1-\gamma)\)</span> (Def. <a href="#def:power"><strong>??</strong></a>) then:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Without the external habit assumption, the Euler equation (equilibrium relationship between risk-free short-term rate and marginal utilities) is far less tractable:
+<p>If one assumes that <span class="math inline">\(X_t\)</span> is exogenous—a case referred to as <em>external habits</em>—and if <span class="math inline">\(u(Z)=Z^{1-\gamma}/(1-\gamma)\)</span> (Def. <a href="Structural.html#def:CCAPM">4.4</a>) then:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Without the external habit assumption, the Euler equation (equilibrium relationship between risk-free short-term rate and marginal utilities) is far less tractable:
 &lt;span class=&quot;math display&quot;&gt;\[\begin{eqnarray*}
 &amp;amp;&amp;amp; 0 = \Delta U_t / \varepsilon =\\
 &amp;amp;&amp;amp; \underbrace{ - u'\left(C_{t} - \lambda \sum_{j=0}^\infty \rho^j C_{t-j}\right) + \lambda  \sum_{h=0}^{\infty} \rho^h \delta^{h}u'\left(C_{t+h} - \lambda \sum_{j=0}^\infty \rho^j C_{t+h-j}\right)}_{\mbox{decrease in utility stemming from lower consumption at date $t$}} +\\
@@ -1336,23 +1336,23 @@ with <span class="math inline">\(\varepsilon_t \sim\,i.i.d.\,\mathcal{N}(0,Id)\)
 </div>
 <p>Let us denote by <span class="math inline">\(y_{n,t}\)</span> the yield-to-maturity of a <span class="math inline">\(n\)</span>-period zero-coupon bond. We have:
 <span class="math display" id="eq:Pandy">\[\begin{equation}
-y_{n,t} = - \frac{1}{n}\log P_{n,t}.\tag{4.37}
+i_{n,t} = - \frac{1}{n}\log P_{n,t}.\tag{4.37}
 \end{equation}\]</span></p>
 <div class="proposition">
-<p><span id="prp:prop111" class="proposition"><strong>Proposition 4.1  (Links between bond prices) </strong></span>Under Assumptions <a href="Structural.html#hyp:prefArbit">4.1</a> and <a href="Structural.html#hyp:dynF">4.2</a>, and if the prices of <span class="math inline">\(n\)</span>-period zero-coupon bonds are given by exponential affine functions of <span class="math inline">\(f_t\)</span>, that is, if
+<p><span id="prp:prop111" class="proposition"><strong>Proposition 4.1  (Bond prices) </strong></span>Under Assumptions <a href="Structural.html#hyp:prefArbit">4.1</a> and <a href="Structural.html#hyp:dynF">4.2</a>, and if the prices of <span class="math inline">\(n\)</span>-period zero-coupon bonds are given by exponential affine functions of <span class="math inline">\(f_t\)</span>, that is, if
 <span class="math display" id="eq:PPs">\[\begin{equation}
 P_{n,t} = \exp(a_{n,t} + b_{n,t}'f_t), \tag{4.38}    
 \end{equation}\]</span>
-(which implies, in particular, that we must have <span class="math inline">\(y_{1,t} = - a_1 - b_1'f_t\)</span>), then <span class="math inline">\(a_n\)</span> and <span class="math inline">\(b_n\)</span> approximately verify, for <span class="math inline">\(n \ge 2\)</span>:
+(which implies, in particular, that we must have <span class="math inline">\(i_{1,t} = - a_1 - b_1'f_t\)</span>), then <span class="math inline">\(a_n\)</span> and <span class="math inline">\(b_n\)</span> approximately verify, for <span class="math inline">\(n \ge 2\)</span>:
 <span class="math display" id="eq:Lagr1B">\[\begin{eqnarray}
 -a_1-b_1' f_t &amp;\approx&amp; a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t} + \nonumber \\ &amp;&amp;\frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} - \gamma b_{n-1}'\Sigma\Sigma'\Theta' z_t, \tag{4.39}
 \end{eqnarray}\]</span>
 where <span class="math inline">\(\Theta\)</span> is an <span class="math inline">\(N \times m\)</span> matrices whose <span class="math inline">\(n^{th}\)</span> rows is <span class="math inline">\(b_{n-1}'\)</span>. (Note that the first rows of this matrix is filled with zeros.)</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-19" class="proof"><em>Proof</em>. </span>Using that <span class="math inline">\(z_{1,t} = 1 - \sum_{n=2}^{N}z_{n,t}\)</span>, and noting that <span class="math inline">\(y_{1,t}=r_{1,t,t+1}\)</span>, one obtains the following first-order conditions to the arbitrageurs’ problem (as defined by Assumption <a href="Structural.html#hyp:prefArbit">4.1</a>), for <span class="math inline">\(n \ge 2\)</span>:
+<p><span id="unlabeled-div-19" class="proof"><em>Proof</em>. </span>Using that <span class="math inline">\(z_{1,t} = 1 - \sum_{n=2}^{N}z_{n,t}\)</span>, and noting that <span class="math inline">\(i_{1,t}=r_{1,t,t+1}\)</span>, one obtains the following first-order conditions to the arbitrageurs’ problem (as defined by Assumption <a href="Structural.html#hyp:prefArbit">4.1</a>), for <span class="math inline">\(n \ge 2\)</span>:
 <span class="math display" id="eq:Lagr1">\[\begin{eqnarray}
-y_{1,t} &amp;=&amp; \mathbb{E}_t(r_{n,t,t+1}) - \frac{\gamma}{2} \frac{\partial}{\partial z_{n,t}} \mathbb{V}ar_t(r_{t,t+1}). \tag{4.40}
+i_{1,t} &amp;=&amp; \mathbb{E}_t(r_{n,t,t+1}) - \frac{\gamma}{2} \frac{\partial}{\partial z_{n,t}} \mathbb{V}ar_t(r_{t,t+1}). \tag{4.40}
 \end{eqnarray}\]</span>
 When bond prices are as in <a href="Structural.html#eq:PPs">(4.38)</a>, we have:
 <span class="math display">\[\begin{eqnarray*}
@@ -1361,7 +1361,7 @@ r_{n,t,t+1} &amp;=&amp; P_{n-1,t+1}/P_{n,t}-1 = \exp(a_{n-1} + b_{n-1}'f_{t+1} -
 from which we get the following approximations, assuming that one-period bond returns are small <span class="citation">(<a href="references.html#ref-Hamilton_Wu_2012">Hamilton and Wu 2012</a>)</span>:
 <span class="math display" id="eq:Exp1">\[\begin{eqnarray}
 \mathbb{E}_t(r_{n,t,t+1}) &amp;\approx&amp;  a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t}\nonumber\\
-&amp;&amp;+ \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} \tag{4.41}
+&amp;&amp;+ \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1}. \tag{4.41}
 \end{eqnarray}\]</span>
 Moreover, using <span class="math inline">\(r_{n,t,t+1} \approx \log(P_{n-1,t+1}/P_{n,t})\)</span>, we get:
 <span class="math display" id="eq:Var">\[\begin{equation}
@@ -1380,7 +1380,7 @@ Using the previous equation as well as <a href="Structural.html#eq:Exp1">(4.41)<
 <div class="hypothesis">
 <p><span id="hyp:supply" class="hypothesis"><strong>Hypothesis 4.3  (Bond supply) </strong></span>Bond supplies, expressed as fractions of the arbitrageurs’ wealth, depend on a time-varying component (<span class="math inline">\(\alpha_n + \beta_n' f_t\)</span>) and on yields-to-maturity. Specifically:
 <span class="math display" id="eq:supply1">\[\begin{eqnarray}
-s_{n,t} &amp;=&amp; (\alpha_n + {\beta_n}' f_t) - \zeta_n y_{n,t}. \tag{4.43}
+s_{n,t} &amp;=&amp; (\alpha_n + {\beta_n}' f_t) - \zeta_n i_{n,t}. \tag{4.43}
 \end{eqnarray}\]</span></p>
 </div>
 <div class="definition">
@@ -1409,7 +1409,7 @@ with
 <div class="proof">
 <p><span id="unlabeled-div-20" class="proof"><em>Proof</em>. </span>If prices are as in <a href="Structural.html#eq:PPs">(4.38)</a>, and using <a href="Structural.html#eq:Pandy">(4.37)</a>, we have:
 <span class="math display">\[
-y_{n,t} = -\frac{1}{n}(a_n + b_n'f_t).
+i_{n,t} = -\frac{1}{n}(a_n + b_n'f_t).
 \]</span></p>
 <p>Combining the last equation with <a href="Structural.html#eq:supply1">(4.43)</a> gives:
 <span class="math display">\[\begin{eqnarray}
@@ -1425,7 +1425,7 @@ This implies that we have:
 \]</span>
 with <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\Lambda\)</span> given in <a href="Structural.html#eq:lambdas">(4.46)</a>. Using these notations, <a href="Structural.html#eq:Lagr1B">(4.39)</a> rewrites:
 <span class="math display">\[\begin{eqnarray*}
-y_{1,t} &amp;\approx&amp; a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t} + \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} - b_{n-1}'\Sigma (\lambda + \Lambda f_t).
+i_{1,t} &amp;\approx&amp; a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t} + \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} - b_{n-1}'\Sigma (\lambda + \Lambda f_t).
 \end{eqnarray*}\]</span>
 Using the notations introduced in <a href="Structural.html#eq:muPHIQ">(4.45)</a>, this leads to:
 <span class="math display" id="eq:Lagr1C">\[\begin{eqnarray}
@@ -1439,7 +1439,7 @@ The recursions <a href="Structural.html#eq:recursConventio">(4.44)</a> are requi
 <span class="math display">\[
 \sum_{n=1}^N z_{i,t} = 1.
 \]</span>
-For this to hold for any value of <span class="math inline">\(f_t\)</span>, we need to have:
+For this to hold for any value of <span class="math inline">\(f_t\)</span>, we need to have (using <span class="math inline">\(z_t = \mathcal{A} + \mathcal{B}f_t\)</span>):
 <span class="math display" id="eq:constr2">\[\begin{eqnarray}
 \alpha_1 + \zeta_1 a_1 &amp;=&amp; 1 - \sum_{n=2}^N\mathcal{A}_i \tag{4.48}\\
 \beta_1 + \zeta_1 b_1&amp;=&amp;  - \sum_{n=2}^N\mathcal{B}_i,\tag{4.49}
@@ -1449,9 +1449,9 @@ In particular, consider the case where one factor corresponds to the conventiona
 <span class="math display">\[
 a_1 = 0 \quad \mbox{and}\quad b_1 = [-1,0,0,\dots]'.
 \]</span>
-Assume that <a href="Structural.html#eq:supply1">(4.43)</a> holds for <span class="math inline">\(n \ge 2\)</span>. Proposition <a href="Structural.html#prp:PropII">4.2</a> then states that one can solve for the <span class="math inline">\((a_n,b_n)\)</span>’s. However, it should then by checked that <span class="math inline">\(\alpha_1\)</span>, <span class="math inline">\(\beta_1\)</span>, and <span class="math inline">\(\zeta_1\)</span> satisfy <a href="Structural.html#eq:constr1">(4.48)</a> and <a href="Structural.html#eq:constr2">(4.49)</a>. Alternatively, assuming for instance that <span class="math inline">\(\zeta_1\)</span> is fixed, one can then deduce <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
+Assume that <a href="Structural.html#eq:supply1">(4.43)</a> holds for <span class="math inline">\(n \ge 2\)</span>. Proposition <a href="Structural.html#prp:PropII">4.2</a> then states that one can solve for the <span class="math inline">\((a_n,b_n)\)</span>’s. However, it should then by checked that <span class="math inline">\(\alpha_1\)</span>, <span class="math inline">\(\beta_1\)</span>, and <span class="math inline">\(\zeta_1\)</span> satisfy <a href="Structural.html#eq:constr1">(4.48)</a> and <a href="Structural.html#eq:constr2">(4.49)</a>. Alternatively, assuming for instance that <span class="math inline">\(\zeta_1\)</span> is fixed, one can deduce <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
 </blockquote>
-<p>The following lines of codes build a discrete-time version of the model proposed by <span class="citation">Vayanos and Vila (<a href="references.html#ref-Vayanos_Vila_2021">2021</a>)</span>. This model features two factors. The first (<span class="math inline">\(f_{1,t}\)</span>) is the short-term interest rate, the seconf (<span class="math inline">\(f_{2,t}\)</span>) is a supply factor. Parameters <span class="math inline">\(\zeta_n\)</span>, <span class="math inline">\(\alpha_n\)</span>, and <span class="math inline">\(\beta_{n,2}\)</span>, defining the specification of bond supplies (see Assumption <a href="Structural.html#hyp:supply">4.3</a>, are given by:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We have &lt;span class="math inline"&gt;\(\beta_{n,1}=0\)&lt;/span&gt;. That is, the short-term rate has no direct influence on the &lt;span class="math inline"&gt;\(s_{n,t}\)&lt;/span&gt;’s.&lt;/p&gt;'><sup>16</sup></a>
+<p>The following lines of codes build a discrete-time version of the model proposed by <span class="citation">Vayanos and Vila (<a href="references.html#ref-Vayanos_Vila_2021">2021</a>)</span>. This model features two factors. The first (<span class="math inline">\(f_{1,t}\)</span>) is the short-term interest rate, the seconf (<span class="math inline">\(f_{2,t}\)</span>) is a supply factor. Parameters <span class="math inline">\(\zeta_n\)</span>, <span class="math inline">\(\alpha_n\)</span>, and <span class="math inline">\(\beta_{n,2}\)</span>, defining the specification of bond supplies (see Assumption <a href="Structural.html#hyp:supply">4.3</a>, are given by:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We have &lt;span class="math inline"&gt;\(\beta_{n,1}=0\)&lt;/span&gt; for all &lt;span class="math inline"&gt;\(n \ge 1\)&lt;/span&gt;. That is, the short-term rate has no direct influence on the &lt;span class="math inline"&gt;\(s_{n,t}\)&lt;/span&gt;’s.&lt;/p&gt;'><sup>16</sup></a>
 <span class="math display">\[\begin{eqnarray}
 \zeta_n &amp;=&amp; \zeta_0 n \exp(-\delta_\zeta n) \\
 \beta_{n,2} &amp;=&amp; \kappa_{\beta} \big( \exp(-\delta_\zeta n) - \exp(-\delta_{\beta} n) \big) \\

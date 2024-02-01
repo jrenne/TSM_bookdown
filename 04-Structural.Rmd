@@ -684,7 +684,7 @@ $$
 
 A fall in consumption hurts after a few years of good times (even if the same level of consumption would have been very pleasant if it arrived after a few bad years).
 
-If one assumes that $X_t$ is exogenous---a case referred to as *external habits*---and if $u(Z)=Z^{1-\gamma}/(1-\gamma)$ (Def. \@ref(def:power)) then:^[Without the external habit assumption, the Euler equation (equilibrium relationship between risk-free short-term rate and marginal utilities) is far less tractable:
+If one assumes that $X_t$ is exogenous---a case referred to as *external habits*---and if $u(Z)=Z^{1-\gamma}/(1-\gamma)$ (Def. \@ref(def:CCAPM)) then:^[Without the external habit assumption, the Euler equation (equilibrium relationship between risk-free short-term rate and marginal utilities) is far less tractable:
 \begin{eqnarray*}
 && 0 = \Delta U_t / \varepsilon =\\
 && \underbrace{ - u'\left(C_{t} - \lambda \sum_{j=0}^\infty \rho^j C_{t-j}\right) + \lambda  \sum_{h=0}^{\infty} \rho^h \delta^{h}u'\left(C_{t+h} - \lambda \sum_{j=0}^\infty \rho^j C_{t+h-j}\right)}_{\mbox{decrease in utility stemming from lower consumption at date $t$}} +\\
@@ -1670,24 +1670,24 @@ with $\varepsilon_t \sim\,i.i.d.\,\mathcal{N}(0,Id)$.
 
 Let us denote by $y_{n,t}$ the yield-to-maturity of a $n$-period zero-coupon bond. We have:
 \begin{equation}
-y_{n,t} = - \frac{1}{n}\log P_{n,t}.(\#eq:Pandy)
+i_{n,t} = - \frac{1}{n}\log P_{n,t}.(\#eq:Pandy)
 \end{equation}
 
-:::{.proposition #prop111 name="Links between bond prices"}
+:::{.proposition #prop111 name="Bond prices"}
 Under Assumptions \@ref(hyp:prefArbit) and \@ref(hyp:dynF), and if the prices of $n$-period zero-coupon bonds are given by exponential affine functions of $f_t$, that is, if
 \begin{equation}
 P_{n,t} = \exp(a_{n,t} + b_{n,t}'f_t), (\#eq:PPs)    
 \end{equation}
-(which implies, in particular, that we must have $y_{1,t} = - a_1 - b_1'f_t$), then $a_n$ and $b_n$ approximately verify, for $n \ge 2$:
+(which implies, in particular, that we must have $i_{1,t} = - a_1 - b_1'f_t$), then $a_n$ and $b_n$ approximately verify, for $n \ge 2$:
 \begin{eqnarray}
 -a_1-b_1' f_t &\approx& a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t} + \nonumber \\ &&\frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} - \gamma b_{n-1}'\Sigma\Sigma'\Theta' z_t, (\#eq:Lagr1B)
 \end{eqnarray}
 where $\Theta$ is an $N \times m$ matrices whose $n^{th}$ rows is $b_{n-1}'$. (Note that the first rows of this matrix is filled with zeros.)
 :::
 :::{.proof}
-Using that $z_{1,t} = 1 - \sum_{n=2}^{N}z_{n,t}$, and noting that $y_{1,t}=r_{1,t,t+1}$, one obtains the following first-order conditions to the arbitrageurs' problem (as defined by Assumption \@ref(hyp:prefArbit)), for $n \ge 2$:
+Using that $z_{1,t} = 1 - \sum_{n=2}^{N}z_{n,t}$, and noting that $i_{1,t}=r_{1,t,t+1}$, one obtains the following first-order conditions to the arbitrageurs' problem (as defined by Assumption \@ref(hyp:prefArbit)), for $n \ge 2$:
 \begin{eqnarray}
-y_{1,t} &=& \mathbb{E}_t(r_{n,t,t+1}) - \frac{\gamma}{2} \frac{\partial}{\partial z_{n,t}} \mathbb{V}ar_t(r_{t,t+1}). (\#eq:Lagr1)
+i_{1,t} &=& \mathbb{E}_t(r_{n,t,t+1}) - \frac{\gamma}{2} \frac{\partial}{\partial z_{n,t}} \mathbb{V}ar_t(r_{t,t+1}). (\#eq:Lagr1)
 \end{eqnarray}
 When bond prices are as in \@ref(eq:PPs), we have:
 \begin{eqnarray*}
@@ -1696,7 +1696,7 @@ r_{n,t,t+1} &=& P_{n-1,t+1}/P_{n,t}-1 = \exp(a_{n-1} + b_{n-1}'f_{t+1} - a_{n} -
 from which we get the following approximations, assuming that one-period bond returns are small [@Hamilton_Wu_2012]:
 \begin{eqnarray}
 \mathbb{E}_t(r_{n,t,t+1}) &\approx&  a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t}\nonumber\\
-&&+ \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} (\#eq:Exp1)
+&&+ \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1}. (\#eq:Exp1)
 \end{eqnarray}
 Moreover, using $r_{n,t,t+1} \approx \log(P_{n-1,t+1}/P_{n,t})$, we get:
 \begin{equation}
@@ -1716,7 +1716,7 @@ Using the previous equation as well as \@ref(eq:Exp1) in \@ref(eq:Lagr1) leads t
 :::{.hypothesis #supply name="Bond supply"}
 Bond supplies, expressed as fractions of the arbitrageurs' wealth, depend on a time-varying component ($\alpha_n + \beta_n' f_t$) and on yields-to-maturity. Specifically:
 \begin{eqnarray}
-s_{n,t} &=& (\alpha_n + {\beta_n}' f_t) - \zeta_n y_{n,t}. (\#eq:supply1)
+s_{n,t} &=& (\alpha_n + {\beta_n}' f_t) - \zeta_n i_{n,t}. (\#eq:supply1)
 \end{eqnarray}
 :::
 
@@ -1748,7 +1748,7 @@ $\mathcal{A}$ being a $N$-dimensional vector whose $n^{th}$ entry is $\alpha_n  
 :::{.proof}
 If prices are as in \@ref(eq:PPs), and using \@ref(eq:Pandy), we have:
 $$
-y_{n,t} = -\frac{1}{n}(a_n + b_n'f_t).
+i_{n,t} = -\frac{1}{n}(a_n + b_n'f_t).
 $$
 
 Combining the last equation with \@ref(eq:supply1) gives:
@@ -1765,7 +1765,7 @@ $$
 $$
 with $\lambda$ and $\Lambda$ given in \@ref(eq:lambdas). Using these notations, \@ref(eq:Lagr1B) rewrites:
 \begin{eqnarray*}
-y_{1,t} &\approx& a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t} + \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} - b_{n-1}'\Sigma (\lambda + \Lambda f_t).
+i_{1,t} &\approx& a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t} + \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} - b_{n-1}'\Sigma (\lambda + \Lambda f_t).
 \end{eqnarray*}
 Using the notations introduced in \@ref(eq:muPHIQ), this leads to:
 \begin{eqnarray}
@@ -1780,7 +1780,7 @@ The recursions \@ref(eq:recursConventio) are required for \@ref(eq:Lagr1C) to be
 $$
 \sum_{n=1}^N z_{i,t} = 1.
 $$
-For this to hold for any value of $f_t$, we need to have:
+For this to hold for any value of $f_t$, we need to have (using $z_t = \mathcal{A} + \mathcal{B}f_t$):
 \begin{eqnarray}
 \alpha_1 + \zeta_1 a_1 &=& 1 - \sum_{n=2}^N\mathcal{A}_i (\#eq:constr1)\\
 \beta_1 + \zeta_1 b_1&=&  - \sum_{n=2}^N\mathcal{B}_i,(\#eq:constr2)
@@ -1790,9 +1790,9 @@ In particular, consider the case where one factor corresponds to the conventiona
 $$
 a_1 = 0 \quad \mbox{and}\quad b_1 = [-1,0,0,\dots]'.
 $$
-Assume that \@ref(eq:supply1) holds for $n \ge 2$. Proposition \@ref(prp:PropII) then states that one can solve for the $(a_n,b_n)$'s. However, it should then by checked that $\alpha_1$, $\beta_1$, and $\zeta_1$ satisfy \@ref(eq:constr1) and \@ref(eq:constr2). Alternatively, assuming for instance that $\zeta_1$ is fixed, one can then deduce $\alpha_1$ and $\beta_1$.
+Assume that \@ref(eq:supply1) holds for $n \ge 2$. Proposition \@ref(prp:PropII) then states that one can solve for the $(a_n,b_n)$'s. However, it should then by checked that $\alpha_1$, $\beta_1$, and $\zeta_1$ satisfy \@ref(eq:constr1) and \@ref(eq:constr2). Alternatively, assuming for instance that $\zeta_1$ is fixed, one can deduce $\alpha_1$ and $\beta_1$.
 
-The following lines of codes build a discrete-time version of the model proposed by @Vayanos_Vila_2021. This model features two factors. The first ($f_{1,t}$) is the short-term interest rate, the seconf ($f_{2,t}$) is a supply factor. Parameters $\zeta_n$, $\alpha_n$, and $\beta_{n,2}$, defining the specification of bond supplies (see Assumption \@ref(hyp:supply), are given by:^[We have $\beta_{n,1}=0$. That is, the short-term rate has no direct influence on the $s_{n,t}$'s.]
+The following lines of codes build a discrete-time version of the model proposed by @Vayanos_Vila_2021. This model features two factors. The first ($f_{1,t}$) is the short-term interest rate, the seconf ($f_{2,t}$) is a supply factor. Parameters $\zeta_n$, $\alpha_n$, and $\beta_{n,2}$, defining the specification of bond supplies (see Assumption \@ref(hyp:supply), are given by:^[We have $\beta_{n,1}=0$ for all $n \ge 1$. That is, the short-term rate has no direct influence on the $s_{n,t}$'s.]
 \begin{eqnarray}
 \zeta_n &=& \zeta_0 n \exp(-\delta_\zeta n) \\
 \beta_{n,2} &=& \kappa_{\beta} \big( \exp(-\delta_\zeta n) - \exp(-\delta_{\beta} n) \big) \\

@@ -56,8 +56,8 @@
 \contentsline {subsection}{\numberline {4.2.8}The SDF with Epstein-Zin preferences}{103}{subsection.4.2.8}%
 \contentsline {subsection}{\numberline {4.2.9}Long-run risk model}{109}{subsection.4.2.9}%
 \contentsline {section}{\numberline {4.3}Preferred-habitat model of the term-structure of interest rate}{118}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Appendix}{126}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}SDF in the CES Epstein-Zin Context}{126}{subsection.4.4.1}%
+\contentsline {section}{\numberline {4.4}Appendix}{127}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}SDF in the CES Epstein-Zin Context}{127}{subsection.4.4.1}%
 \contentsline {chapter}{\numberline {5}Estimation of affine asset-pricing models}{129}{chapter.5}%
 \contentsline {section}{\numberline {5.1}State-space model}{129}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Kalman-filter-based approach}{131}{section.5.2}%

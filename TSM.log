@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  1 FEB 2024 15:00
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  1 FEB 2024 18:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1072,10 +1072,6 @@ Overfull \hbox (27.40201pt too wide) detected at line 3212
 Underfull \vbox (badness 1259) has occurred while \output is active []
 
 [94] [95]
-
-LaTeX Warning: Reference `def:power' on page 96 undefined on input line 3249.
-
-
 Overfull \hbox (61.75157pt too wide) in alignment at lines 3255--3255
  [][][] []
  []
@@ -1182,7 +1178,7 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [120]
-Overfull \hbox (40.55812pt too wide) in alignment at lines 3963--3965
+Overfull \hbox (38.81812pt too wide) in alignment at lines 3963--3965
  [][][] []
  []
 
@@ -1204,14 +1200,14 @@ Overfull \hbox (115.64825pt too wide) has occurred while \output is active
 [123]
 File: TSM_files/figure-latex/VV1-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/VV1-1.pdf>
-File: TSM_files/figure-latex/VV2-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/VV2-1.pdf>
 
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 124 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [124]
+File: TSM_files/figure-latex/VV2-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/VV2-1.pdf>
 File: TSM_files/figure-latex/VV3-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/VV3-1.pdf>
 
@@ -1223,6 +1219,9 @@ Overfull \hbox (115.64825pt too wide) has occurred while \output is active
 File: TSM_files/figure-latex/VV4-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/VV4-1.pdf>
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 126 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
@@ -1232,21 +1231,21 @@ Overfull \hbox (53.7646pt too wide) detected at line 4112
 [][][][][] [][][][][][][][] [][][][][][][][][] [] [][][][][][][] [][][][][][][] [] [][][] [][][][][][][][][][]
  []
 
-
+[127]
 Overfull \hbox (83.59726pt too wide) detected at line 4124
 [][] [][] [] [][][][][][] [] [][][][][][][][][][] [] []
  []
 
-[127]
+
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 128 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
-[128
-
-]
+[128]
 Chapter 5.
-[129] [130] [131] [132]
+[129
+
+] [130] [131] [132]
 File: TSM_files/figure-latex/illusKF-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/illusKF-1.pdf>
 [133] [134]
@@ -1394,13 +1393,13 @@ Overfull \hbox (61.12766pt too wide) in paragraph at lines 6160--6160
  []
 
 
-Overfull \hbox (61.04395pt too wide) in paragraph at lines 6160--6160
-[]\TU/lmtt/m/n/12 ## [1,] 0.92803726 0.86605589 0.81229085 0.76534715 0.72407727 0.68753745[] 
+Overfull \hbox (60.95996pt too wide) in paragraph at lines 6160--6160
+[]\TU/lmtt/m/n/12 ## [1,] 0.95103802 0.90726149 0.86782690 0.83205235 0.79937995 0.76935661[] 
  []
 
 
-Overfull \hbox (60.97195pt too wide) in paragraph at lines 6160--6160
-[]\TU/lmtt/m/n/12 ## [2,] 0.07468339 0.07190292 0.06929894 0.06685644 0.06457143 0.06243983[] 
+Overfull \hbox (61.07997pt too wide) in paragraph at lines 6160--6160
+[]\TU/lmtt/m/n/12 ## [2,] 0.05020123 0.04866228 0.04725434 0.04596498 0.04478378 0.04370012[] 
  []
 
 [194]
@@ -1435,10 +1434,10 @@ Package rerunfilecheck Info: File `TSM.out' has not changed.
 (rerunfilecheck)             Checksum: C72B7DEB606516D4A136559348F79D85;9723.
  ) 
 Here is how much of TeX's memory you used:
- 18785 strings out of 476884
- 354299 string characters out of 5804569
- 2009627 words of memory out of 5000000
- 40382 multiletter control sequences out of 15000+600000
+ 18784 strings out of 476884
+ 354288 string characters out of 5804569
+ 2010627 words of memory out of 5000000
+ 40381 multiletter control sequences out of 15000+600000
  565625 words of font info for 113 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  90i,19n,120p,1046b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s

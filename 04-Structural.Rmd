@@ -1071,21 +1071,21 @@ Before looking into it, Example \@ref(exm:EZpricingInfo) explores an important i
 
 :::{.example #EZpricingInfo name="Pricing information on future consumption path"}
 
-Consider the case where $\rho = 1$ and log-normal conditionally homoskedastic consumption [@Cochrane_2005]. Using $v_t = \log(U_t)$, we have:
-$$
-v_t = (1 - \delta) c_t + \delta \frac{1}{1 - \gamma} \log \mathbb{E}_t \left(\exp((1-\gamma)v_{t+1})\right).
-$$
-If $c_t$ is log-normal, one can show that $v_t$ is log-normal as well. Hence:
+Consider the case where $\rho = 1$ and log-normal conditionally homoskedastic consumption [@Cochrane_2005]. Using $v_t = \log(U_t)$, performing a Taylor expansion of \@ref(eq:EZpreferences) around $\rho = 1$ leads to:
+\begin{equation}
+v_t = (1 - \delta) c_t + \delta \frac{1}{1 - \gamma} \log \mathbb{E}_t \left(\exp((1-\gamma)v_{t+1})\right).(\#eq:EZunitIES)
+\end{equation}
+If $C_t$ is log-normal, one can show that $v_t$ is normal. Hence:
 \begin{eqnarray}
 v_t &=& (1 - \delta) c_t + \delta \mathbb{E}_t(v_{t+1}) + \frac{1}{2}\delta (1-\gamma) \sigma^2(v_{t+1})\nonumber \\
 &=& (1 - \delta) \left( \sum_{j=0}^{\infty}  \delta^j \mathbb{E}_t (c_{t+j}) \right) + \frac{1}{2}\delta \frac{1-\gamma}{1-\delta} \sigma^2(v_{t+1}) (\#eq:vrho1).
 \end{eqnarray}
-Besides, Eq. \@ref(eq:SSS) gives:
+Besides, \@ref(eq:SSS) gives:
 \begin{eqnarray*}
 m_{t,t+1} &=& \log(\delta) - \rho \Delta c_{t+1} + (\rho - \gamma) \left(v_{t+1} - \frac{1}{1 - \gamma} \log \mathbb{E}_t \left(\exp((1-\gamma)v_{t+1})\right)\right)\\
 &=& \log(\delta) - \rho \Delta c_{t+1} + (\rho - \gamma) \left(v_{t+1} - \mathbb{E}_t(v_{t+1}) - \frac{1}{2} \frac{1-\gamma}{1-\delta} \sigma^2(v_{t+1})\right).
 \end{eqnarray*}
-Using the *expectation updating" operator* $\mathbb{E}_{t+1} - \mathbb{E}_t$, we obtain:
+Using the *"expectation updating" operator* $\mathbb{E}_{t+1} - \mathbb{E}_t$, we obtain:
 $$
 (\mathbb{E}_{t+1} - \mathbb{E}_t) m_{t,t+1} = - \rho(\mathbb{E}_{t+1} - \mathbb{E}_t) c_{t+1} + (\rho - \gamma) (\mathbb{E}_{t+1} - \mathbb{E}_t) v_{t+1},
 $$
@@ -1102,7 +1102,7 @@ The previous equation can be rewritten as:
 \end{eqnarray}
 Hence, news about future consumption growth affect the current SDF (marginal rate of substitution). As a consequence, shocks that correlate with updates of future consumption growth are "priced". The date-$t$ prices---and more precisely their risk premium components---depend on the  covariances between their payoffs and consumption on date $t+1$, as well as future consumption growth (regarding $t+h$, $h>1$).
 
-> If consumption is a random walk, then EZ preferences are observationally equivalent to power utility [@Kocherlakota_1990].
+> If consumption is a random walk, then Epstein-Zin preferences are observationally equivalent to power utility [@Kocherlakota_1990].
 
 Consider the case where $C_0 = C_1 = 1$.
 At date $t=1$, one get information about future consumption levels:
@@ -1425,7 +1425,7 @@ Hence, in particular, $A_0 = f(\bar{z})$. But, in turn, since $z_t = A_0 + A_1 x
 
 <!-- **Remnark**: constant $\sigma$ $\Rightarrow$ constant risk premium. -->
 
-
+> **The unit EIS case**. Solving for the Epstein-Zin SDF is simpler when the intertemporal elasticity of substitution (EIS) is equal to one [@Piazzesi_Schneider_2007]. In that case, and if consumption is an affine combination of affine processes, we can indeed solve for the utility function using \@ref(eq:EZunitIES). For that: (a) Posit $v_t = \mu_{v,0}+\mu_{v,1}'w_t$, (b) use the Laplace transform of $w_t$ in \@ref(eq:EZunitIES) to obtain $K+1$ restrictions on the scalar $\mu_{v,0}$ and the vector $\mu_{v,1}$ ($K$ is the dimension of $w_t$). These restrictions will take the form of non-linear equations (involving the log-Laplace transform of $w_t$) that one can solve numerically. (c) Once $v_t = \mu_{v,0}+\mu_{v,1}'w_t$ is determines, the SDF is obtained from \@ref(eq:SSS). This strategy is employed, in particular, in @Gourieroux_Monfort_Mouabbi_Renne_2021, @Monfort_Pegoraro_Renne_Roussellet_2021, and @Bletzinger_Lemke_Renne_2024.
 
 :::{.example #BYHeterosk name="Bansal and Yaron (2004), heteroskedastic"}
 
@@ -1905,7 +1905,7 @@ $$
 \varepsilon R_t(U_{t+1})^{\gamma - \rho} \mathbb{E}_t \left(  x_{t+1} (1-\beta) C_{t+1}^{-\rho} U_{t+1}^{\rho-\gamma} \right) U_t^{\rho}
 - \varepsilon \pi_t(x_{t+1}) (1-\beta) C_t^{-\rho} U_t^{\rho} + o(\varepsilon),
 $$
-which gives \@ref(eq:SS).
+which gives \@ref(eq:SSS).
 
 
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  31 JAN 2024 14:56
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  1 FEB 2024 11:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1140,7 +1140,7 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 File: figures/table_BY4.png Graphic file (type bmp)
 <figures/table_BY4.png>
 
-LaTeX Warning: Reference `TSM' on page 113 undefined on input line 3744.
+LaTeX Warning: Reference `TSM' on page 113 undefined on input line 3748.
 
 [113]
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
@@ -1150,25 +1150,19 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 [114] [115]
 File: TSM_files/figure-latex/BS2013-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/BS2013-1.pdf>
+Missing character: There is no 𝜌 (U+1D70C) in font [lmroman12-regular]:mapping=tex-text;!
+Missing character: There is no 𝜋 (U+1D70B) in font [lmroman12-regular]:mapping=tex-text;!
 
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 116 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
-[116]
-Missing character: There is no 𝜌 (U+1D70C) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 𝜋 (U+1D70B) in font [lmroman12-regular]:mapping=tex-text;!
-
-Underfull \hbox (badness 1558) in paragraph at lines 3818--3818
+[116] [117]
+Underfull \hbox (badness 1558) in paragraph at lines 3822--3822
 []\TU/lmr/bx/n/17.28 Preferred-habitat model of the term-
  []
 
 
-Overfull \hbox (115.64825pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 4.3.  PREFERRED-HABITAT MODEL OF THE TERM-STRUCTURE OF INTEREST RATE \TU/lmr/m/n/12 117
- []
-
-[117]
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 118 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
@@ -1184,7 +1178,7 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [120]
-Overfull \hbox (40.55812pt too wide) in alignment at lines 3950--3952
+Overfull \hbox (40.55812pt too wide) in alignment at lines 3954--3956
  [][][] []
  []
 
@@ -1199,31 +1193,23 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [122]
-File: TSM_files/figure-latex/VV1-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/VV1-1.pdf>
-
 Overfull \hbox (115.64825pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.3.  PREFERRED-HABITAT MODEL OF THE TERM-STRUCTURE OF INTEREST RATE \TU/lmr/m/n/12 123
  []
 
 [123]
+File: TSM_files/figure-latex/VV1-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/VV1-1.pdf>
 File: TSM_files/figure-latex/VV2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/VV2-1.pdf>
-File: TSM_files/figure-latex/VV3-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/VV3-1.pdf>
 
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 124 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [124]
-Underfull \vbox (badness 10000) detected at line 4081
- []
-
-
-Overfull \vbox (1.5971pt too high) detected at line 4081
- []
-
+File: TSM_files/figure-latex/VV3-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/VV3-1.pdf>
 
 Overfull \hbox (115.64825pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.3.  PREFERRED-HABITAT MODEL OF THE TERM-STRUCTURE OF INTEREST RATE \TU/lmr/m/n/12 125
@@ -1233,22 +1219,19 @@ Overfull \hbox (115.64825pt too wide) has occurred while \output is active
 File: TSM_files/figure-latex/VV4-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/VV4-1.pdf>
 
-Overfull \hbox (53.7646pt too wide) detected at line 4099
-[][][][][] [][][][][][][][] [][][][][][][][][] [] [][][][][][][] [][][][][][][] [] [][][] [][][][][][][][][][]
- []
-
-
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 126 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [126]
-Overfull \hbox (83.59726pt too wide) detected at line 4111
-[][] [][] [] [][][][][][] [] [][][][][][][][][][] [] []
+Overfull \hbox (53.7646pt too wide) detected at line 4103
+[][][][][] [][][][][][][][] [][][][][][][][][] [] [][][][][][][] [][][][][][][] [] [][][] [][][][][][][][][][]
  []
 
 
-LaTeX Warning: Reference `eq:SS' on page 127 undefined on input line 4117.
+Overfull \hbox (83.59726pt too wide) detected at line 4115
+[][] [][] [] [][][][][][] [] [][][][][][][][][][] [] []
+ []
 
 [127]
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
@@ -1272,21 +1255,7 @@ File: TSM_files/figure-latex/Kalman5-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman5-1.pdf>
 File: TSM_files/figure-latex/Kalman6-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman6-1.pdf>
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 17.28pt on input line 4364.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 17.28157pt on input line 4364.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 17.27815pt on input line 4364.
-[137] [138]
-
-LaTeX Warning: Reference `subsec:Credit:CDS' on page 139 undefined on input line 4377.
-
-[139] [140] [141]
-
-LaTeX Warning: Reference `app:KitagHamilton' on page 142 undefined on input line 4524.
-
-[142] [143] [144] [145]
+[137] [138] [139] [140] [141] [142] [143] [144] [145]
 File: figures/Fig-SNDE.pdf Graphic file (type pdf)
 <use figures/Fig-SNDE.pdf>
 File: TSM_files/figure-latex/persist1-1.pdf Graphic file (type pdf)
@@ -1301,7 +1270,7 @@ Chapter 6.
 [151
 
 ]
-Overfull \hbox (17.21101pt too wide) in paragraph at lines 4769--4771
+Overfull \hbox (17.21101pt too wide) in paragraph at lines 4773--4775
 []\TU/lmr/m/n/12 The price at $[]$ of $[][] [] [][]$ is zero. Therefore: $[][][][][][] [] [] [][][][][] []
  []
 
@@ -1334,7 +1303,7 @@ Overfull \hbox (213.27747pt too wide) has occurred while \output is active
  []
 
 [160] [161]
-Underfull \hbox (badness 1331) in paragraph at lines 5142--5143
+Underfull \hbox (badness 1331) in paragraph at lines 5146--5147
 []\TU/lmr/m/n/12 Eq. [] also shows that we have $[][][][] [] [][][][] [][] []
  []
 
@@ -1353,29 +1322,29 @@ Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 ]
 Chapter 7.
 [165]
-Underfull \hbox (badness 4899) in paragraph at lines 5245--5246
+Underfull \hbox (badness 4899) in paragraph at lines 5249--5250
 []\TU/lmr/m/n/12 Hypothesis []7.3[] also implies that the short-term risk-free rate $[][]$
  []
 
 File: figures/Schema0.pdf Graphic file (type pdf)
 <use figures/Schema0.pdf>
 [166] [167] [168] [169]
-Overfull \hbox (42.76819pt too wide) in alignment at lines 5375--5378
+Overfull \hbox (42.76819pt too wide) in alignment at lines 5379--5382
  [][][] []
  []
 
 [170]
-Overfull \hbox (38.3721pt too wide) detected at line 5392
+Overfull \hbox (38.3721pt too wide) detected at line 5396
 []
  []
 
 [171] [172]
-Overfull \hbox (43.24458pt too wide) in paragraph at lines 5483--5484
+Overfull \hbox (43.24458pt too wide) in paragraph at lines 5487--5488
 []\TU/lmr/m/n/12 The $[]$ conditional density of $[][]$ given $[][]$, namely $[][][][][][][][][][][][][][][][][][] [][][]$,
  []
 
 
-Overfull \hbox (17.59521pt too wide) in paragraph at lines 5483--5484
+Overfull \hbox (17.59521pt too wide) in paragraph at lines 5487--5488
 \TU/lmr/m/n/12 tional to $[][][][][][] [][][][][][][][][][][][][][][][][][][][] [][][] [][][][][][][][][][][][] [][][] [][][]$.
  []
 
@@ -1383,7 +1352,7 @@ Overfull \hbox (17.59521pt too wide) in paragraph at lines 5483--5484
 File: TSM_files/figure-latex/MRintensity-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/MRintensity-1.pdf>
 
-LaTeX Warning: Reference `Swap' on page 176 undefined on input line 5604.
+LaTeX Warning: Reference `Swap' on page 176 undefined on input line 5608.
 
 [176] [177] [178]
 File: figures/IBOROIS.pdf Graphic file (type pdf)
@@ -1401,13 +1370,13 @@ File: figures/FigureCDSFX.pdf Graphic file (type pdf)
 <use figures/FigureCDSFX.pdf>
 [185] [186]
 
-LaTeX Warning: Reference `lemma:petitlemme' on page 187 undefined on input line 5946.
+LaTeX Warning: Reference `lemma:petitlemme' on page 187 undefined on input line 5950.
 
 [187] [188]
 File: figures/schemaDD.pdf Graphic file (type pdf)
 <use figures/schemaDD.pdf>
 
-LaTeX Warning: Reference `fig:CDO' on page 189 undefined on input line 6022.
+LaTeX Warning: Reference `fig:CDO' on page 189 undefined on input line 6026.
 
 [189] [190]
 Chapter 8.
@@ -1432,15 +1401,15 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `TSM.out' has not changed.
-(rerunfilecheck)             Checksum: F1AAD74448BFB48E7C56A4B6AB69B801;9945.
+(rerunfilecheck)             Checksum: D32961C460FFCFF5E2C4238EF7E17DD2;9512.
  ) 
 Here is how much of TeX's memory you used:
- 18734 strings out of 476884
- 352675 string characters out of 5804569
+ 18723 strings out of 476884
+ 352332 string characters out of 5804569
  2009627 words of memory out of 5000000
- 40332 multiletter control sequences out of 15000+600000
- 566586 words of font info for 119 fonts, out of 8000000 for 9000
+ 40324 multiletter control sequences out of 15000+600000
+ 565625 words of font info for 113 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,19n,120p,856b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,120p,1046b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on TSM.pdf (200 pages).

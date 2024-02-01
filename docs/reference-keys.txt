@@ -155,6 +155,7 @@ fig:EZresolution
 eq:SDFV
 eq:SSS
 exm:EZpricingInfo
+eq:EZunitIES
 eq:vrho1
 eq:sdfAbc
 fig:EZresolution2

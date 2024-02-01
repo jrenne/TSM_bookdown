@@ -855,25 +855,25 @@ As a result, under <a href="Structural.html#eq:SSS">(4.22)</a>, expected returns
 To make the formula operational, one has to make the second term more explicit. We will employ the ``wealth portfolio’’ for that.</p>
 <p>Before looking into it, Example <a href="Structural.html#exm:EZpricingInfo">4.5</a> explores an important implication of <a href="Structural.html#eq:SSS">(4.22)</a>, namely the fact that, with Epstein-Zin preferences, changes in the information regarding future consumption path is priced—in the sense that it gives rise in specific risk premiums.</p>
 <div class="example">
-<p><span id="exm:EZpricingInfo" class="example"><strong>Example 4.5  (Pricing information on future consumption path) </strong></span>Consider the case where <span class="math inline">\(\rho = 1\)</span> and log-normal conditionally homoskedastic consumption <span class="citation">(<a href="references.html#ref-Cochrane_2005">Cochrane 2005</a>)</span>. Using <span class="math inline">\(v_t = \log(U_t)\)</span>, we have:
-<span class="math display">\[
-v_t = (1 - \delta) c_t + \delta \frac{1}{1 - \gamma} \log \mathbb{E}_t \left(\exp((1-\gamma)v_{t+1})\right).
-\]</span>
-If <span class="math inline">\(c_t\)</span> is log-normal, one can show that <span class="math inline">\(v_t\)</span> is log-normal as well. Hence:
+<p><span id="exm:EZpricingInfo" class="example"><strong>Example 4.5  (Pricing information on future consumption path) </strong></span>Consider the case where <span class="math inline">\(\rho = 1\)</span> and log-normal conditionally homoskedastic consumption <span class="citation">(<a href="references.html#ref-Cochrane_2005">Cochrane 2005</a>)</span>. Using <span class="math inline">\(v_t = \log(U_t)\)</span>, performing a Taylor expansion of <a href="Structural.html#eq:EZpreferences">(4.17)</a> around <span class="math inline">\(\rho = 1\)</span> leads to:
+<span class="math display" id="eq:EZunitIES">\[\begin{equation}
+v_t = (1 - \delta) c_t + \delta \frac{1}{1 - \gamma} \log \mathbb{E}_t \left(\exp((1-\gamma)v_{t+1})\right).\tag{4.23}
+\end{equation}\]</span>
+If <span class="math inline">\(C_t\)</span> is log-normal, one can show that <span class="math inline">\(v_t\)</span> is normal. Hence:
 <span class="math display" id="eq:vrho1">\[\begin{eqnarray}
 v_t &amp;=&amp; (1 - \delta) c_t + \delta \mathbb{E}_t(v_{t+1}) + \frac{1}{2}\delta (1-\gamma) \sigma^2(v_{t+1})\nonumber \\
-&amp;=&amp; (1 - \delta) \left( \sum_{j=0}^{\infty}  \delta^j \mathbb{E}_t (c_{t+j}) \right) + \frac{1}{2}\delta \frac{1-\gamma}{1-\delta} \sigma^2(v_{t+1}) \tag{4.23}.
+&amp;=&amp; (1 - \delta) \left( \sum_{j=0}^{\infty}  \delta^j \mathbb{E}_t (c_{t+j}) \right) + \frac{1}{2}\delta \frac{1-\gamma}{1-\delta} \sigma^2(v_{t+1}) \tag{4.24}.
 \end{eqnarray}\]</span>
-Besides, Eq. <a href="Structural.html#eq:SSS">(4.22)</a> gives:
+Besides, <a href="Structural.html#eq:SSS">(4.22)</a> gives:
 <span class="math display">\[\begin{eqnarray*}
 m_{t,t+1} &amp;=&amp; \log(\delta) - \rho \Delta c_{t+1} + (\rho - \gamma) \left(v_{t+1} - \frac{1}{1 - \gamma} \log \mathbb{E}_t \left(\exp((1-\gamma)v_{t+1})\right)\right)\\
 &amp;=&amp; \log(\delta) - \rho \Delta c_{t+1} + (\rho - \gamma) \left(v_{t+1} - \mathbb{E}_t(v_{t+1}) - \frac{1}{2} \frac{1-\gamma}{1-\delta} \sigma^2(v_{t+1})\right).
 \end{eqnarray*}\]</span>
-Using the <em>expectation updating” operator</em> <span class="math inline">\(\mathbb{E}_{t+1} - \mathbb{E}_t\)</span>, we obtain:
+Using the <em>“expectation updating” operator</em> <span class="math inline">\(\mathbb{E}_{t+1} - \mathbb{E}_t\)</span>, we obtain:
 <span class="math display">\[
 (\mathbb{E}_{t+1} - \mathbb{E}_t) m_{t,t+1} = - \rho(\mathbb{E}_{t+1} - \mathbb{E}_t) c_{t+1} + (\rho - \gamma) (\mathbb{E}_{t+1} - \mathbb{E}_t) v_{t+1},
 \]</span>
-which gives, when <span class="math inline">\(\rho = 1\)</span> (using Eq. <a href="Structural.html#eq:vrho1">(4.23)</a>):
+which gives, when <span class="math inline">\(\rho = 1\)</span> (using Eq. <a href="Structural.html#eq:vrho1">(4.24)</a>):
 <span class="math display">\[\begin{eqnarray}
 (\mathbb{E}_{t+1} - \mathbb{E}_t) m_{t,t+1} &amp;=&amp; - (\mathbb{E}_{t+1} - \mathbb{E}_t) c_{t+1} +  \\
 &amp;&amp; (1 - \gamma)(1 - \delta) (\mathbb{E}_{t+1} - \mathbb{E}_t) \left(  \sum_{j=1}^{\infty}  \delta^j c_{t+j}  \right).\nonumber
@@ -881,11 +881,11 @@ which gives, when <span class="math inline">\(\rho = 1\)</span> (using Eq. <a hr
 <p>The previous equation can be rewritten as:
 <span class="math display" id="eq:sdfAbc">\[\begin{eqnarray}
 &amp;&amp; (\mathbb{E}_{t+1} - \mathbb{E}_t) m_{t,t+1} \nonumber \\
-&amp;=&amp; - \gamma(\mathbb{E}_{t+1} - \mathbb{E}_t)\Delta c_{t+1} +    (1 - \gamma) \times \underbrace{ (\mathbb{E}_{t+1} - \mathbb{E}_t) \left(  \sum_{j=1}^{\infty}  \delta^j \Delta c_{t+1+j}  \right).}_{\mbox{innovat. in long-run consump. growth}}\tag{4.24}
+&amp;=&amp; - \gamma(\mathbb{E}_{t+1} - \mathbb{E}_t)\Delta c_{t+1} +    (1 - \gamma) \times \underbrace{ (\mathbb{E}_{t+1} - \mathbb{E}_t) \left(  \sum_{j=1}^{\infty}  \delta^j \Delta c_{t+1+j}  \right).}_{\mbox{innovat. in long-run consump. growth}}\tag{4.25}
 \end{eqnarray}\]</span>
 Hence, news about future consumption growth affect the current SDF (marginal rate of substitution). As a consequence, shocks that correlate with updates of future consumption growth are “priced”. The date-<span class="math inline">\(t\)</span> prices—and more precisely their risk premium components—depend on the covariances between their payoffs and consumption on date <span class="math inline">\(t+1\)</span>, as well as future consumption growth (regarding <span class="math inline">\(t+h\)</span>, <span class="math inline">\(h&gt;1\)</span>).</p>
 <blockquote>
-<p>If consumption is a random walk, then EZ preferences are observationally equivalent to power utility <span class="citation">(<a href="references.html#ref-Kocherlakota_1990">Kocherlakota 1990</a>)</span>.</p>
+<p>If consumption is a random walk, then Epstein-Zin preferences are observationally equivalent to power utility <span class="citation">(<a href="references.html#ref-Kocherlakota_1990">Kocherlakota 1990</a>)</span>.</p>
 </blockquote>
 <p>Consider the case where <span class="math inline">\(C_0 = C_1 = 1\)</span>.
 At date <span class="math inline">\(t=1\)</span>, one get information about future consumption levels:</p>
@@ -898,7 +898,7 @@ At date <span class="math inline">\(t=1\)</span>, one get information about futu
 </li>
 </ul>
 <p>where <span class="math inline">\(\omega \ge 0\)</span>.
-Eq. <a href="Structural.html#eq:sdfAbc">(4.24)</a> implies that:
+Eq. <a href="Structural.html#eq:sdfAbc">(4.25)</a> implies that:
 <span class="math display">\[
 m_{0,1} = \mathbb{E}_0(m_{0,1}) + (1 - \gamma)\delta \Delta c_{2}.
 \]</span>
@@ -919,23 +919,23 @@ Figure 4.10: Price of an asset that pays 1 under Case II.
 </div>
 <p>Because <span class="math inline">\(F\)</span> is homogenous of degree one in its arguments (<span class="math inline">\(C_t\)</span> and <span class="math inline">\(R_t(U_{t+1})\)</span>), the Euler’s theorem yields <span class="citation">(<a href="references.html#ref-HANSEN20073967">Hansen et al. 2007</a>)</span>:
 <span class="math display" id="eq:XXYXX">\[\begin{equation}
-U_t = C_t \frac{\partial U_t}{\partial C_t} +  R_t(U_{t+1}) \frac{\partial U_t}{\partial R_t(U_{t+1})}.\tag{4.25}
+U_t = C_t \frac{\partial U_t}{\partial C_t} +  R_t(U_{t+1}) \frac{\partial U_t}{\partial R_t(U_{t+1})}.\tag{4.26}
 \end{equation}\]</span>
 Taking the current consumption as numeraire, the wealth <span class="math inline">\(W_t\)</span> is defined by:
 <span class="math display" id="eq:WWWWW">\[\begin{equation}
-W_t =   U_t \big/ \frac{\partial U_t}{\partial C_t}.\tag{4.26}
+W_t =   U_t \big/ \frac{\partial U_t}{\partial C_t}.\tag{4.27}
 \end{equation}\]</span>
-It can be understood as a conversion of the intertemporal utility in terms of today’s consumption. It can also be seen as a consumption-priced virtual asset that delivers aggregate consumption as its dividends on each time period; this asset is called <em>wealth portfolio</em>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since &lt;span class="math inline"&gt;\(F\)&lt;/span&gt; homogeneous of order 1, if all future consumption streams are multiplied by &lt;span class="math inline"&gt;\(1+\epsilon\)&lt;/span&gt;, then the utility becomes &lt;span class="math inline"&gt;\((1+\epsilon)U_t\)&lt;/span&gt;. Consider the asset that provides &lt;span class="math inline"&gt;\(\epsilon C_{t+h}\)&lt;/span&gt; at all future periods (if one purchases &lt;span class="math inline"&gt;\(\epsilon\)&lt;/span&gt; units of it). Expressed in consumption units, the equilibrium unit price of this asset (&lt;span class="math inline"&gt;\(\mathcal{W}_t\)&lt;/span&gt;, say) must satisfy &lt;span class="math inline"&gt;\(-\epsilon U_t + \epsilon \mathcal{W}_t (\partial U_t / \partial C_t)=0\)&lt;/span&gt;. According to Eq. &lt;a href="Structural.html#eq:WWWWW"&gt;(4.26)&lt;/a&gt;, we have &lt;span class="math inline"&gt;\(\mathcal{W}_t = W_t\)&lt;/span&gt;.&lt;/p&gt;'><sup>14</sup></a></p>
-<p>Using that <span class="math inline">\(\frac{\partial U_t}{\partial C_t}=(1 - \delta)(V_t^\rho)/(C_t^{\rho})\)</span>, we get (using <a href="Structural.html#eq:WWWWW">(4.26)</a>):
+It can be understood as a conversion of the intertemporal utility in terms of today’s consumption. It can also be seen as a consumption-priced virtual asset that delivers aggregate consumption as its dividends on each time period; this asset is called <em>wealth portfolio</em>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since &lt;span class="math inline"&gt;\(F\)&lt;/span&gt; homogeneous of order 1, if all future consumption streams are multiplied by &lt;span class="math inline"&gt;\(1+\epsilon\)&lt;/span&gt;, then the utility becomes &lt;span class="math inline"&gt;\((1+\epsilon)U_t\)&lt;/span&gt;. Consider the asset that provides &lt;span class="math inline"&gt;\(\epsilon C_{t+h}\)&lt;/span&gt; at all future periods (if one purchases &lt;span class="math inline"&gt;\(\epsilon\)&lt;/span&gt; units of it). Expressed in consumption units, the equilibrium unit price of this asset (&lt;span class="math inline"&gt;\(\mathcal{W}_t\)&lt;/span&gt;, say) must satisfy &lt;span class="math inline"&gt;\(-\epsilon U_t + \epsilon \mathcal{W}_t (\partial U_t / \partial C_t)=0\)&lt;/span&gt;. According to Eq. &lt;a href="Structural.html#eq:WWWWW"&gt;(4.27)&lt;/a&gt;, we have &lt;span class="math inline"&gt;\(\mathcal{W}_t = W_t\)&lt;/span&gt;.&lt;/p&gt;'><sup>14</sup></a></p>
+<p>Using that <span class="math inline">\(\frac{\partial U_t}{\partial C_t}=(1 - \delta)(V_t^\rho)/(C_t^{\rho})\)</span>, we get (using <a href="Structural.html#eq:WWWWW">(4.27)</a>):
 <span class="math display" id="eq:WWW">\[\begin{equation}
-W_t = \frac{U_t^{1-\rho}C_t^\rho}{1 - \delta}.\tag{4.27}
+W_t = \frac{U_t^{1-\rho}C_t^\rho}{1 - \delta}.\tag{4.28}
 \end{equation}\]</span>
 Let’s denote by <span class="math inline">\(R_{a,t+1}\)</span> the return on the wealth portfolio. We have:
 <span class="math display" id="eq:Ra">\[\begin{equation}
-1+R_{a,t+1} := \frac{W_{t+1}}{W_t - C_t} = \frac{P_{a,t+1}+C_{t+1}}{P_{a,t}},\tag{4.28}
+1+R_{a,t+1} := \frac{W_{t+1}}{W_t - C_t} = \frac{P_{a,t+1}+C_{t+1}}{P_{a,t}},\tag{4.29}
 \end{equation}\]</span>
 where <span class="math inline">\(P_{a,t} := W_t - C_t\)</span>.</p>
-<p>Using <a href="Structural.html#eq:EZpreferences2">(4.18)</a> and <a href="Structural.html#eq:WWW">(4.27)</a>, it can be shown that:
+<p>Using <a href="Structural.html#eq:EZpreferences2">(4.18)</a> and <a href="Structural.html#eq:WWW">(4.28)</a>, it can be shown that:
 <span class="math display">\[
 1+R_{a,t+1} = \left[ \delta \left( \frac{C_{t+1}}{C_t} \right)^{-\rho} \left( \frac{R_t(U_{t+1})}{U_{t+1}} \right)^{1-\rho} \right]^{-1},
 \]</span>
@@ -953,9 +953,9 @@ where
 \]</span>
 Therefore (using <span class="math inline">\(\exp(r_{a,t+1}):=1+R_{a,t+1}\)</span>):
 <span class="math display" id="eq:sdfEZ">\[\begin{equation}
-\boxed{\log(\mathcal{M}_{t,t+1}) = \theta \log \delta - \frac{\theta}{\psi} \Delta \log(C_{t+1}) - (1-\theta) r_{a,t+1}.}\tag{4.29}
+\boxed{\log(\mathcal{M}_{t,t+1}) = \theta \log \delta - \frac{\theta}{\psi} \Delta \log(C_{t+1}) - (1-\theta) r_{a,t+1}.}\tag{4.30}
 \end{equation}\]</span></p>
-<p>Let’s take the log of <a href="Structural.html#eq:Ra">(4.28)</a>:
+<p>Let’s take the log of <a href="Structural.html#eq:Ra">(4.29)</a>:
 <span class="math display">\[\begin{eqnarray*}
 r_{a,t+1} &amp;=&amp; \log(P_{a,t+1}+C_{t+1}) - \log(P_{a,t})\\
 &amp;=&amp; z_{t+1} - z_t + g_{t+1} + \log(1 + C_{t+1} / P_{a,t+1}).
@@ -970,11 +970,11 @@ Let’s denote by <span class="math inline">\(\bar{z}\)</span> the unconditional
 \end{eqnarray*}\]</span>
 Therefore:
 <span class="math display" id="eq:approxRa">\[\begin{equation}
-\boxed{r_{a,t+1} \approx \kappa_0 + \kappa_1 z_{t+1} - z_t + g_{t+1},}\tag{4.30}
+\boxed{r_{a,t+1} \approx \kappa_0 + \kappa_1 z_{t+1} - z_t + g_{t+1},}\tag{4.31}
 \end{equation}\]</span>
 where <span class="math inline">\(\kappa_1= \dfrac{\exp(\bar{z})}{1 + \exp(\bar{z})}\)</span> and <span class="math inline">\(\kappa_0 = \log(1 + \exp(\bar{z})) + \kappa_1 \bar{z}\)</span>.</p>
 <blockquote>
-<p>The approximation underlying Eq. <a href="Structural.html#eq:approxRa">(4.30)</a> is the same as that used by <span class="citation">Campbell and Shiller (<a href="references.html#ref-Campbell_Shiller_1988">1988</a>)</span> used to linearize stock returns.</p>
+<p>The approximation underlying Eq. <a href="Structural.html#eq:approxRa">(4.31)</a> is the same as that used by <span class="citation">Campbell and Shiller (<a href="references.html#ref-Campbell_Shiller_1988">1988</a>)</span> used to linearize stock returns.</p>
 </blockquote>
 <!-- Specifically: -->
 <!-- \begin{eqnarray*} -->
@@ -989,19 +989,19 @@ where <span class="math inline">\(\kappa_1= \dfrac{\exp(\bar{z})}{1 + \exp(\bar{
 <!-- \end{eqnarray*} -->
 <p>For any asset <span class="math inline">\(i\)</span>, whose return is <span class="math inline">\(1+R_{i,t+1}\)</span>, we have:
 <span class="math display" id="eq:Euler">\[\begin{equation}
-1 = \mathbb{E}_t(\mathcal{M}_{t,t+1}(1+R_{i,t+1})). \quad \mbox{(Euler equation)}\tag{4.31}
+1 = \mathbb{E}_t(\mathcal{M}_{t,t+1}(1+R_{i,t+1})). \quad \mbox{(Euler equation)}\tag{4.32}
 \end{equation}\]</span>
 The wealth portfolio should also satisfy the Euler equation. That is, for <span class="math inline">\(1+R_{i,t+1} = 1+R_{a,t+1} = \exp(r_{a,t+1})\)</span>, we get:
 <span class="math display" id="eq:sdfRa">\[\begin{equation}
-1 = \mathbb{E}_t \left[ \exp\left(\theta \log \delta - \frac{\theta}{\psi} \Delta \log(C_{t+1}) + \theta r_{a,t+1} \right) \right].\tag{4.32}
+1 = \mathbb{E}_t \left[ \exp\left(\theta \log \delta - \frac{\theta}{\psi} \Delta \log(C_{t+1}) + \theta r_{a,t+1} \right) \right].\tag{4.33}
 \end{equation}\]</span></p>
 <blockquote>
-<p>The previous equation can be used to calculate an approximately exponential affine SDF. (Indeed, <a href="Structural.html#eq:sdfEZ">(4.29)</a> shows that the SDF is approximately exponential affine if <span class="math inline">\(\Delta \log(C_{t+1})\)</span> and <span class="math inline">\(r_{a,t+1}\)</span> are affine functions of the state vector.) <span class="citation">Bansal and Yaron (<a href="references.html#ref-Bansal_Yaron_2004">2004</a>)</span> propose the follopwing approach: (a) Conjecture that the log price-consumption ratio <span class="math inline">\(z_t\)</span> is linear in the sate vector, of the form <span class="math inline">\(A_0 + A_1'w_t\)</span>, say. (b) Then use the fact that the Euler equation has to hold for all values of the state variables to solve for <span class="math inline">\(A_0\)</span> and <span class="math inline">\(A_1\)</span>.</p>
+<p>The previous equation can be used to calculate an approximately exponential affine SDF. (Indeed, <a href="Structural.html#eq:sdfEZ">(4.30)</a> shows that the SDF is approximately exponential affine if <span class="math inline">\(\Delta \log(C_{t+1})\)</span> and <span class="math inline">\(r_{a,t+1}\)</span> are affine functions of the state vector.) <span class="citation">Bansal and Yaron (<a href="references.html#ref-Bansal_Yaron_2004">2004</a>)</span> propose the follopwing approach: (a) Conjecture that the log price-consumption ratio <span class="math inline">\(z_t\)</span> is linear in the sate vector, of the form <span class="math inline">\(A_0 + A_1'w_t\)</span>, say. (b) Then use the fact that the Euler equation has to hold for all values of the state variables to solve for <span class="math inline">\(A_0\)</span> and <span class="math inline">\(A_1\)</span>.</p>
 </blockquote>
 <blockquote>
 <p>The same methodology can apply to any asset <span class="math inline">\(i\)</span>. For instance, consider a stock paying dividends <span class="math inline">\(D_{i,t}\)</span> on each period. The <span class="citation">Campbell and Shiller (<a href="references.html#ref-Campbell_Shiller_1988">1988</a>)</span> approximation implies that <span class="math inline">\(r_{i,t+1} \approx \kappa_0 + \kappa_1 z_{i,t+1} - z_{i,t} + d_{i,t+1}\)</span> where <span class="math inline">\(d_{i,t+1}\)</span> is the log-growth rate of dividends and where <span class="math inline">\(z_{i,t} = \log(P_{i,t}/D_t)\)</span> is the log price-dividend ratio. If <span class="math inline">\(d_{i,t+1}\)</span> is affine in the state vector, one can then posit that it is also the case of <span class="math inline">\(z_t= A_{i,0}+A_{i,1}'w_t\)</span>, and use the Euler equation
 <span class="math display" id="eq:sdfRi">\[\begin{equation}
-1 = \mathbb{E}_t \left[ \exp\left(\theta \log \delta - \frac{\theta}{\psi} \Delta \log(C_{t+1}) - (1 - \theta) r_{a,t+1} + r_{i,t+1} \right) \right].\tag{4.33}
+1 = \mathbb{E}_t \left[ \exp\left(\theta \log \delta - \frac{\theta}{\psi} \Delta \log(C_{t+1}) - (1 - \theta) r_{a,t+1} + r_{i,t+1} \right) \right].\tag{4.34}
 \end{equation}\]</span>
 to solve for <span class="math inline">\(A_{i,0}\)</span> and <span class="math inline">\(A_{i,1}\)</span>.</p>
 </blockquote>
@@ -1037,7 +1037,7 @@ to solve for <span class="math inline">\(A_{i,0}\)</span> and <span class="math 
 <p>We have shown that the CCAPM had difficulties in generating large average excess returns without implying unreasonable risk aversion parameters.
 As will be shown later (notably in the <span class="citation">Bansal and Yaron (<a href="references.html#ref-Bansal_Yaron_2004">2004</a>)</span>’s framework), E-Z preferences can address this problem.
 With time-separable utilities, average excess returns (i.e. risk premiums) had to be accounted by the sole correlation between stock returns and current consumption.
-With E-Z preferences, another key correlation is that between stock returns and updates about future consumption growth—the second term in Eq. <a href="Structural.html#eq:sdfAbc">(4.24)</a>.
+With E-Z preferences, another key correlation is that between stock returns and updates about future consumption growth—the second term in Eq. <a href="Structural.html#eq:sdfAbc">(4.25)</a>.
 For this second channel to be relevant, observed excess returns should positively correlate to the updates of expectations of long-term consumption. See Figure <a href="Structural.html#fig:SPF10yrStock">4.11</a>.</p>
 <div class="figure" style="text-align: left-aligned">
 <span style="display:block;" id="fig:SPF10yrStock"></span>
@@ -1055,7 +1055,7 @@ x_{t+1} &amp;=&amp; \rho_x x_t + \phi_e \sigma e_{t+1}\\
 g_{d,t+1} &amp;=&amp; \mu_d + \phi x_t + \phi_d \sigma u_{t+1},
 \end{eqnarray*}\]</span>
 where <span class="math inline">\(e_{t+1},\eta_{t+1},u_{t+1} \sim i.i.d. \mathcal{N}(0,1)\)</span>. In this model,
-<span class="math inline">\(\mu + x_t\)</span> and <span class="math inline">\(\mu_d + \phi x_t\)</span> are, respectively, the conditional expectations of consumption growth (<span class="math inline">\(g_t\)</span>) and dividend growth (<span class="math inline">\(g_{d,t}\)</span>). Processes <span class="math inline">\(g_t\)</span> and <span class="math inline">\(g_{d,t}\)</span> are exogenous. The model is solved by finding associated processes <span class="math inline">\(r_{a,t}\)</span> and <span class="math inline">\(r_{m,t}\)</span> that make the model internally consistent. These returns have to satisfy both <a href="Structural.html#eq:approxRa">(4.30)</a> and <a href="Structural.html#eq:sdfRa">(4.32)</a>.
+<span class="math inline">\(\mu + x_t\)</span> and <span class="math inline">\(\mu_d + \phi x_t\)</span> are, respectively, the conditional expectations of consumption growth (<span class="math inline">\(g_t\)</span>) and dividend growth (<span class="math inline">\(g_{d,t}\)</span>). Processes <span class="math inline">\(g_t\)</span> and <span class="math inline">\(g_{d,t}\)</span> are exogenous. The model is solved by finding associated processes <span class="math inline">\(r_{a,t}\)</span> and <span class="math inline">\(r_{m,t}\)</span> that make the model internally consistent. These returns have to satisfy both <a href="Structural.html#eq:approxRa">(4.31)</a> and <a href="Structural.html#eq:sdfRa">(4.33)</a>.
 <span class="math inline">\(z_t\)</span> and <span class="math inline">\(z_{m,t}\)</span> are the log price-consumption and price-dividend ratios, respectively, i.e.:
 <span class="math display">\[
 z_t = \log\left(\frac{P_{a,t}}{C_t}\right) \quad and \quad z_{m,t} = \log\left(\frac{P_{m,t}}{C_t}\right).
@@ -1064,12 +1064,12 @@ The price of a claim on aggregate consumption is not observable (return: <span c
 <p>The solution approach is as follows:</p>
 <ul>
 <li>Posit that <span class="math inline">\(z_t = A_0 + A_1 x_t\)</span>;</li>
-<li>substitute the last expression into <a href="Structural.html#eq:approxRa">(4.30)</a> and</li>
-<li>inject <span class="math inline">\(r_{a,t+1}\)</span> in <a href="Structural.html#eq:sdfRa">(4.32)</a> and look for the values of <span class="math inline">\(A_0\)</span> and <span class="math inline">\(A_1\)</span> that satisfy this Euler equation.</li>
+<li>substitute the last expression into <a href="Structural.html#eq:approxRa">(4.31)</a> and</li>
+<li>inject <span class="math inline">\(r_{a,t+1}\)</span> in <a href="Structural.html#eq:sdfRa">(4.33)</a> and look for the values of <span class="math inline">\(A_0\)</span> and <span class="math inline">\(A_1\)</span> that satisfy this Euler equation.</li>
 </ul>
 <p>Doing the same for <span class="math inline">\(z_{m,t}\)</span> yields to:
 <span class="math display" id="eq:solABY1">\[\begin{equation}
-A_1 = \frac{1- \dfrac{1}{\psi}}{1 - \kappa_1 \rho_x} \quad and \quad A_{1,m} = \frac{\Phi- \dfrac{1}{\psi}}{1 - \kappa_{1,m} \rho_x}.\tag{4.34}
+A_1 = \frac{1- \dfrac{1}{\psi}}{1 - \kappa_1 \rho_x} \quad and \quad A_{1,m} = \frac{\Phi- \dfrac{1}{\psi}}{1 - \kappa_{1,m} \rho_x}.\tag{4.35}
 \end{equation}\]</span>
 If the IES <span class="math inline">\(\psi &gt; 1\)</span>, then <span class="math inline">\(A_1 &gt; 0\)</span>; the price-consumption ratio increases with long-term growth.
 <!-- In this context, we have (from Eq. \@ref(eq:sdfEZ)): -->
@@ -1103,7 +1103,7 @@ Figure 4.12: Source: Bansal and Yaron (2004).
 </div>
 </div>
 <blockquote>
-<p><strong>About the solution procedure</strong>. Eq. <a href="Structural.html#eq:solABY1">(4.34)</a> shows that the <span class="math inline">\(A_i\)</span>s depends on the <span class="math inline">\(\kappa_i\)</span>s. Eq. <a href="Structural.html#eq:approxRa">(4.30)</a> shows that the <span class="math inline">\(\kappa_i\)</span>s depend on <span class="math inline">\(\bar{z}\)</span>.
+<p><strong>About the solution procedure</strong>. Eq. <a href="Structural.html#eq:solABY1">(4.35)</a> shows that the <span class="math inline">\(A_i\)</span>s depends on the <span class="math inline">\(\kappa_i\)</span>s. Eq. <a href="Structural.html#eq:approxRa">(4.31)</a> shows that the <span class="math inline">\(\kappa_i\)</span>s depend on <span class="math inline">\(\bar{z}\)</span>.
 Hence, in particular, <span class="math inline">\(A_0 = f(\bar{z})\)</span>. But, in turn, since <span class="math inline">\(z_t = A_0 + A_1 x_t\)</span>, we have <span class="math inline">\(\bar{z}=A_0 + A_1 \bar{x}=A_0\)</span>. For the model to be internally consistent, we should have <span class="math inline">\(\bar{z}=f(\bar{z})\)</span>. Hence, there is a fixed-point problem (<span class="math inline">\(\bar{z}\)</span> cannot be chosen arbitrarily).</p>
 </blockquote>
 <!-- :::{.example #PrRiskEZ name="Prices of risk"} -->
@@ -1129,13 +1129,16 @@ Hence, in particular, <span class="math inline">\(A_0 = f(\bar{z})\)</span>. But
 <!-- $\beta_{m,e}$ measure the exposure of stocks to the long-run risk shock $e_t$. -->
 <!-- The risk premium increases with $\rho_x$. Similarly, BY show that the volatility of the market return increases with $\rho_x$. [web interface](https://jrenne.shinyapps.io/LRRModels). -->
 <!-- **Remnark**: constant $\sigma$ $\Rightarrow$ constant risk premium. -->
+<blockquote>
+<p><strong>The unit EIS case</strong>. Solving for the Epstein-Zin SDF is simpler when the intertemporal elasticity of substitution (EIS) is equal to one <span class="citation">(<a href="references.html#ref-Piazzesi_Schneider_2007">Piazzesi and Schneider 2007</a>)</span>. In that case, and if consumption is an affine combination of affine processes, we can indeed solve for the utility function using <a href="Structural.html#eq:EZunitIES">(4.23)</a>. For that: (a) Posit <span class="math inline">\(v_t = \mu_{v,0}+\mu_{v,1}'w_t\)</span>, (b) use the Laplace transform of <span class="math inline">\(w_t\)</span> in <a href="Structural.html#eq:EZunitIES">(4.23)</a> to obtain <span class="math inline">\(K+1\)</span> restrictions on the scalar <span class="math inline">\(\mu_{v,0}\)</span> and the vector <span class="math inline">\(\mu_{v,1}\)</span> (<span class="math inline">\(K\)</span> is the dimension of <span class="math inline">\(w_t\)</span>). These restrictions will take the form of non-linear equations (involving the log-Laplace transform of <span class="math inline">\(w_t\)</span>) that one can solve numerically. (c) Once <span class="math inline">\(v_t = \mu_{v,0}+\mu_{v,1}'w_t\)</span> is determines, the SDF is obtained from <a href="Structural.html#eq:SSS">(4.22)</a>. This strategy is employed, in particular, in <span class="citation">Christian Gourieroux et al. (<a href="references.html#ref-Gourieroux_Monfort_Mouabbi_Renne_2021">2021</a>)</span>, <span class="citation">Alain Monfort et al. (<a href="references.html#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span>, and <span class="citation">Bletzinger, Lemke, and Renne (<a href="references.html#ref-Bletzinger_Lemke_Renne_2024">2024</a>)</span>.</p>
+</blockquote>
 <div class="example">
 <p><span id="exm:BYHeterosk" class="example"><strong>Example 4.7  (Bansal and Yaron (2004), heteroskedastic) </strong></span><span class="citation">Bansal and Yaron (<a href="references.html#ref-Bansal_Yaron_2004">2004</a>)</span> consider a second version of their model. They introduce a novel factor, <span class="math inline">\(\sigma_t\)</span>, that generates time-variation in the conditional variances of consumption and dividends:
 <span class="math display" id="eq:BYheteroscked">\[\begin{eqnarray}
 x_{t+1} &amp;=&amp; \rho_x x_t + \phi_e \sigma_t e_{t+1} \nonumber\\
 g_{t+1} &amp;=&amp; \mu + x_t + \sigma_t \eta_{t+1} \nonumber\\
 g_{d,t+1} &amp;=&amp; \mu_d + \phi x_t + \phi_d \sigma_t u_{t+1} \nonumber\\
-\sigma_{t+1}^2 &amp;=&amp; \sigma^2 + \nu_1(\sigma^2_t -\sigma^2) + \sigma_w w_{t+1}, \tag{4.35}
+\sigma_{t+1}^2 &amp;=&amp; \sigma^2 + \nu_1(\sigma^2_t -\sigma^2) + \sigma_w w_{t+1}, \tag{4.36}
 \end{eqnarray}\]</span>
 where <span class="math inline">\(e_{t+1},\eta_{t+1},u_{t+1},w_{t+1} \sim i.i.d. \mathcal{N}(0,1)\)</span>.
 Here, the posited solution for <span class="math inline">\(z_t\)</span> is:
@@ -1235,7 +1238,7 @@ Figure 4.13: Source: Bansal and Yaron (2004).
 <!-- ```{r BKY2, fig.align = 'center', out.width = "100%", fig.cap = "Source: Bansal, Kiku, and Yaron (2016).", echo=FALSE} -->
 <!-- knitr::include_graphics("figures/table_BKY2.png") -->
 <!-- ``` -->
-<p>As explained above, together, <a href="Structural.html#eq:sdfEZ">(4.29)</a> and <a href="Structural.html#eq:approxRa">(4.30)</a> imply an exponential affine SDF. This open the door to tractable term-structure modeling (see, e.g., Subsection <a href="ChapterAffine.html#MHLT">1.9</a> and Section <a href="#TSM"><strong>??</strong></a>). This is exploited, e.g., by <span class="citation">Bansal and Shaliastovich (<a href="references.html#ref-Bansal_Shaliastovich_2013">2013</a>)</span> (see Example <a href="Structural.html#exm:BS2013">4.8</a>).</p>
+<p>As explained above, together, <a href="Structural.html#eq:sdfEZ">(4.30)</a> and <a href="Structural.html#eq:approxRa">(4.31)</a> imply an exponential affine SDF. This open the door to tractable term-structure modeling (see, e.g., Subsection <a href="ChapterAffine.html#MHLT">1.9</a> and Section <a href="#TSM"><strong>??</strong></a>). This is exploited, e.g., by <span class="citation">Bansal and Shaliastovich (<a href="references.html#ref-Bansal_Shaliastovich_2013">2013</a>)</span> (see Example <a href="Structural.html#exm:BS2013">4.8</a>).</p>
 <div class="example">
 <p><span id="exm:BS2013" class="example"><strong>Example 4.8  (Bansal and Shaliastovich (2013)) </strong></span><span class="citation">Bansal and Shaliastovich (<a href="references.html#ref-Bansal_Shaliastovich_2013">2013</a>)</span> develop a term structure model where agents feature Epstein-Zin preferences and where the dynamics of macroeconomic takes the form of an heteroskedastic VAR model. Specifically:
 <span class="math display">\[\begin{eqnarray*}
@@ -1333,38 +1336,38 @@ with <span class="math inline">\(\varepsilon_t \sim\,i.i.d.\,\mathcal{N}(0,Id)\)
 </div>
 <p>Let us denote by <span class="math inline">\(y_{n,t}\)</span> the yield-to-maturity of a <span class="math inline">\(n\)</span>-period zero-coupon bond. We have:
 <span class="math display" id="eq:Pandy">\[\begin{equation}
-y_{n,t} = - \frac{1}{n}\log P_{n,t}.\tag{4.36}
+y_{n,t} = - \frac{1}{n}\log P_{n,t}.\tag{4.37}
 \end{equation}\]</span></p>
 <div class="proposition">
 <p><span id="prp:prop111" class="proposition"><strong>Proposition 4.1  (Links between bond prices) </strong></span>Under Assumptions <a href="Structural.html#hyp:prefArbit">4.1</a> and <a href="Structural.html#hyp:dynF">4.2</a>, and if the prices of <span class="math inline">\(n\)</span>-period zero-coupon bonds are given by exponential affine functions of <span class="math inline">\(f_t\)</span>, that is, if
 <span class="math display" id="eq:PPs">\[\begin{equation}
-P_{n,t} = \exp(a_{n,t} + b_{n,t}'f_t), \tag{4.37}    
+P_{n,t} = \exp(a_{n,t} + b_{n,t}'f_t), \tag{4.38}    
 \end{equation}\]</span>
 (which implies, in particular, that we must have <span class="math inline">\(y_{1,t} = - a_1 - b_1'f_t\)</span>), then <span class="math inline">\(a_n\)</span> and <span class="math inline">\(b_n\)</span> approximately verify, for <span class="math inline">\(n \ge 2\)</span>:
 <span class="math display" id="eq:Lagr1B">\[\begin{eqnarray}
--a_1-b_1' f_t &amp;\approx&amp; a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t} + \nonumber \\ &amp;&amp;\frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} - \gamma b_{n-1}'\Sigma\Sigma'\Theta' z_t, \tag{4.38}
+-a_1-b_1' f_t &amp;\approx&amp; a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t} + \nonumber \\ &amp;&amp;\frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} - \gamma b_{n-1}'\Sigma\Sigma'\Theta' z_t, \tag{4.39}
 \end{eqnarray}\]</span>
 where <span class="math inline">\(\Theta\)</span> is an <span class="math inline">\(N \times m\)</span> matrices whose <span class="math inline">\(n^{th}\)</span> rows is <span class="math inline">\(b_{n-1}'\)</span>. (Note that the first rows of this matrix is filled with zeros.)</p>
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-19" class="proof"><em>Proof</em>. </span>Using that <span class="math inline">\(z_{1,t} = 1 - \sum_{n=2}^{N}z_{n,t}\)</span>, and noting that <span class="math inline">\(y_{1,t}=r_{1,t,t+1}\)</span>, one obtains the following first-order conditions to the arbitrageurs’ problem (as defined by Assumption <a href="Structural.html#hyp:prefArbit">4.1</a>), for <span class="math inline">\(n \ge 2\)</span>:
 <span class="math display" id="eq:Lagr1">\[\begin{eqnarray}
-y_{1,t} &amp;=&amp; \mathbb{E}_t(r_{n,t,t+1}) - \frac{\gamma}{2} \frac{\partial}{\partial z_{n,t}} \mathbb{V}ar_t(r_{t,t+1}). \tag{4.39}
+y_{1,t} &amp;=&amp; \mathbb{E}_t(r_{n,t,t+1}) - \frac{\gamma}{2} \frac{\partial}{\partial z_{n,t}} \mathbb{V}ar_t(r_{t,t+1}). \tag{4.40}
 \end{eqnarray}\]</span>
-When bond prices are as in <a href="Structural.html#eq:PPs">(4.37)</a>, we have:
+When bond prices are as in <a href="Structural.html#eq:PPs">(4.38)</a>, we have:
 <span class="math display">\[\begin{eqnarray*}
 r_{n,t,t+1} &amp;=&amp; P_{n-1,t+1}/P_{n,t}-1 = \exp(a_{n-1} + b_{n-1}'f_{t+1} - a_{n} - b_{n}'f_{t})-1,
 \end{eqnarray*}\]</span>
 from which we get the following approximations, assuming that one-period bond returns are small <span class="citation">(<a href="references.html#ref-Hamilton_Wu_2012">Hamilton and Wu 2012</a>)</span>:
 <span class="math display" id="eq:Exp1">\[\begin{eqnarray}
 \mathbb{E}_t(r_{n,t,t+1}) &amp;\approx&amp;  a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t}\nonumber\\
-&amp;&amp;+ \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} \tag{4.40}
+&amp;&amp;+ \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} \tag{4.41}
 \end{eqnarray}\]</span>
 Moreover, using <span class="math inline">\(r_{n,t,t+1} \approx \log(P_{n-1,t+1}/P_{n,t})\)</span>, we get:
 <span class="math display" id="eq:Var">\[\begin{equation}
-\mathbb{V}ar_t(r_{t,t+1}) \approx z_t'\Theta\Sigma\Sigma'\Theta' z_t.\tag{4.41}
+\mathbb{V}ar_t(r_{t,t+1}) \approx z_t'\Theta\Sigma\Sigma'\Theta' z_t.\tag{4.42}
 \end{equation}\]</span>
-Eq. <a href="Structural.html#eq:Var">(4.41)</a> implies in particular that:
+Eq. <a href="Structural.html#eq:Var">(4.42)</a> implies in particular that:
 <span class="math display">\[\begin{eqnarray*}
 \frac{\partial}{\partial z_t} \mathbb{V}ar_t(r_{t,t+1}) &amp;\approx&amp; 2 \Theta\Sigma\Sigma'\Theta' z_t,
 \end{eqnarray*}\]</span>
@@ -1372,43 +1375,43 @@ which, in turn, gives:
 <span class="math display">\[\begin{eqnarray*}
 \frac{\partial}{\partial z_{n,t}} \mathbb{V}ar_t(r_{t,t+1}) &amp;\approx&amp; 2 b_{n-1}'\Sigma\Sigma'\Theta' z_t.
 \end{eqnarray*}\]</span>
-Using the previous equation as well as <a href="Structural.html#eq:Exp1">(4.40)</a> in <a href="Structural.html#eq:Lagr1">(4.39)</a> leads to <a href="Structural.html#eq:Lagr1B">(4.38)</a>.</p>
+Using the previous equation as well as <a href="Structural.html#eq:Exp1">(4.41)</a> in <a href="Structural.html#eq:Lagr1">(4.40)</a> leads to <a href="Structural.html#eq:Lagr1B">(4.39)</a>.</p>
 </div>
 <div class="hypothesis">
 <p><span id="hyp:supply" class="hypothesis"><strong>Hypothesis 4.3  (Bond supply) </strong></span>Bond supplies, expressed as fractions of the arbitrageurs’ wealth, depend on a time-varying component (<span class="math inline">\(\alpha_n + \beta_n' f_t\)</span>) and on yields-to-maturity. Specifically:
 <span class="math display" id="eq:supply1">\[\begin{eqnarray}
-s_{n,t} &amp;=&amp; (\alpha_n + {\beta_n}' f_t) - \zeta_n y_{n,t}. \tag{4.42}
+s_{n,t} &amp;=&amp; (\alpha_n + {\beta_n}' f_t) - \zeta_n y_{n,t}. \tag{4.43}
 \end{eqnarray}\]</span></p>
 </div>
 <div class="definition">
 <p><span id="def:Equilib" class="definition"><strong>Definition 4.6  (Equilibrium) </strong></span>In equilibrium, bond market clears (for each maturity). Arbitrageurs maximize the problem defined in Assumption <a href="Structural.html#hyp:prefArbit">4.1</a>, which determines the bond demand, and bond supply is determined by Assumption <a href="Structural.html#hyp:supply">4.3</a>.</p>
 </div>
 <div class="proposition">
-<p><span id="prp:PropII" class="proposition"><strong>Proposition 4.2  (Bond prices) </strong></span>Under Assumptions <a href="Structural.html#hyp:prefArbit">4.1</a> to <a href="Structural.html#hyp:supply">4.3</a>, and if bond prices are exponential affine in <span class="math inline">\(f_t\)</span>, then the loadings <span class="math inline">\(a_n\)</span> and <span class="math inline">\(b_n\)</span>—which appear in equation <a href="Structural.html#eq:PPs">(4.37)</a>—approximately satisfy the following recursive equations, for <span class="math inline">\(n\ge 1\)</span>:
+<p><span id="prp:PropII" class="proposition"><strong>Proposition 4.2  (Bond prices) </strong></span>Under Assumptions <a href="Structural.html#hyp:prefArbit">4.1</a> to <a href="Structural.html#hyp:supply">4.3</a>, and if bond prices are exponential affine in <span class="math inline">\(f_t\)</span>, then the loadings <span class="math inline">\(a_n\)</span> and <span class="math inline">\(b_n\)</span>—which appear in equation <a href="Structural.html#eq:PPs">(4.38)</a>—approximately satisfy the following recursive equations, for <span class="math inline">\(n\ge 1\)</span>:
 <span class="math display" id="eq:recursConventio">\[\begin{equation}
 \left\{
 \begin{array}{cll}
 a_n &amp;\approx&amp; a_1 + a_{n-1} + b_{n-1}'\mu_f^{\mathbb{Q}} + \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} \\
 b_n &amp;\approx&amp; b_1 + {\Phi^{\mathbb{Q}}}'b_{n-1},
 \end{array}
-\right.\tag{4.43}
+\right.\tag{4.44}
 \end{equation}\]</span>
 with <span class="math inline">\(a_0=0\)</span>, <span class="math inline">\(b_0=0\)</span>, and where
 <span class="math display" id="eq:muPHIQ">\[\begin{equation}
-\mu_f^{\mathbb{Q}} = \mu_f - \Sigma \lambda \quad \mbox{and} \quad \Phi^{\mathbb{Q}} = \Phi - \Sigma \Lambda,\tag{4.44}
+\mu_f^{\mathbb{Q}} = \mu_f - \Sigma \lambda \quad \mbox{and} \quad \Phi^{\mathbb{Q}} = \Phi - \Sigma \Lambda,\tag{4.45}
 \end{equation}\]</span>
 with
 <span class="math display" id="eq:lambdas">\[\begin{equation}
-\lambda = \gamma \Sigma' \Theta'\mathcal{A} \quad \mbox{and} \quad \Lambda = \gamma \Sigma' \Theta'\mathcal{B},\tag{4.45}
+\lambda = \gamma \Sigma' \Theta'\mathcal{A} \quad \mbox{and} \quad \Lambda = \gamma \Sigma' \Theta'\mathcal{B},\tag{4.46}
 \end{equation}\]</span>
 <span class="math inline">\(\mathcal{A}\)</span> being a <span class="math inline">\(N\)</span>-dimensional vector whose <span class="math inline">\(n^{th}\)</span> entry is <span class="math inline">\(\alpha_n + \frac{1}{n}\zeta_n a_n\)</span>, and <span class="math inline">\(\mathcal{B}\)</span> being a <span class="math inline">\(N \times m\)</span> matrix whose <span class="math inline">\(n^{th}\)</span> row is <span class="math inline">\((\beta_n + \frac{1}{n}\zeta_n b_n)'\)</span>. (Matrix <span class="math inline">\(\Theta\)</span> is defined in Proposition <a href="Structural.html#prp:prop111">4.1</a>.)</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-20" class="proof"><em>Proof</em>. </span>If prices are as in <a href="Structural.html#eq:PPs">(4.37)</a>, and using <a href="Structural.html#eq:Pandy">(4.36)</a>, we have:
+<p><span id="unlabeled-div-20" class="proof"><em>Proof</em>. </span>If prices are as in <a href="Structural.html#eq:PPs">(4.38)</a>, and using <a href="Structural.html#eq:Pandy">(4.37)</a>, we have:
 <span class="math display">\[
 y_{n,t} = -\frac{1}{n}(a_n + b_n'f_t).
 \]</span></p>
-<p>Combining the last equation with <a href="Structural.html#eq:supply1">(4.42)</a> gives:
+<p>Combining the last equation with <a href="Structural.html#eq:supply1">(4.43)</a> gives:
 <span class="math display">\[\begin{eqnarray}
 s_{n,t} &amp;=&amp; \alpha_n  + \frac{1}{n}\zeta_n a_n + \left(\beta_n + \frac{1}{n}\zeta_n b_n\right)'f_t.
 \end{eqnarray}\]</span>
@@ -1420,33 +1423,33 @@ This implies that we have:
 <span class="math display">\[
 \gamma \Sigma' B'z_t  = \lambda + \Lambda f_t,
 \]</span>
-with <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\Lambda\)</span> given in <a href="Structural.html#eq:lambdas">(4.45)</a>. Using these notations, <a href="Structural.html#eq:Lagr1B">(4.38)</a> rewrites:
+with <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\Lambda\)</span> given in <a href="Structural.html#eq:lambdas">(4.46)</a>. Using these notations, <a href="Structural.html#eq:Lagr1B">(4.39)</a> rewrites:
 <span class="math display">\[\begin{eqnarray*}
 y_{1,t} &amp;\approx&amp; a_{n-1} + b_{n-1}'\mu_f  - a_{n} + b_{n-1}'\Phi f_t - b_{n}'f_{t} + \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1} - b_{n-1}'\Sigma (\lambda + \Lambda f_t).
 \end{eqnarray*}\]</span>
-Using the notations introduced in <a href="Structural.html#eq:muPHIQ">(4.44)</a>, this leads to:
+Using the notations introduced in <a href="Structural.html#eq:muPHIQ">(4.45)</a>, this leads to:
 <span class="math display" id="eq:Lagr1C">\[\begin{eqnarray}
 &amp;&amp;- a_1 - b_1' f_t \nonumber\\
-&amp;\approx&amp; a_{n-1} + b_{n-1}'\mu_f^{\mathbb{Q}}  - a_{n} + b_{n-1}'\Phi^{\mathbb{Q}} f_t - b_{n}'f_{t} + \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1}. \tag{4.46}
+&amp;\approx&amp; a_{n-1} + b_{n-1}'\mu_f^{\mathbb{Q}}  - a_{n} + b_{n-1}'\Phi^{\mathbb{Q}} f_t - b_{n}'f_{t} + \frac{1}{2}b_{n-1}'\Sigma \Sigma'b_{n-1}. \tag{4.47}
 \end{eqnarray}\]</span>
-The recursions <a href="Structural.html#eq:recursConventio">(4.43)</a> are required for <a href="Structural.html#eq:Lagr1C">(4.46)</a> to be satisfied for any value of <span class="math inline">\(f_t\)</span>.</p>
+The recursions <a href="Structural.html#eq:recursConventio">(4.44)</a> are required for <a href="Structural.html#eq:Lagr1C">(4.47)</a> to be satisfied for any value of <span class="math inline">\(f_t\)</span>.</p>
 </div>
 <blockquote>
-<p>The first row of <span class="math inline">\(\Theta\)</span> is <span class="math inline">\(b_0'=0\)</span>. As a result, looking at <a href="Structural.html#eq:lambdas">(4.45)</a>, it appears that the first component entry of <span class="math inline">\(\mathcal{A}\)</span> (namely <span class="math inline">\(\alpha_1 + \zeta_1 a_1\)</span>) and the first row of <span class="math inline">\(\mathcal{B}\)</span> (namely <span class="math inline">\(\beta_1' + \zeta_1 b_1'\)</span>) do not appear in <span class="math inline">\(\lambda\)</span>, nor in <span class="math inline">\(\Lambda\)</span>. This gives the impression that the bond supply specification for one-period bond has no pricing impact. This is however false, as we must have:
+<p>The first row of <span class="math inline">\(\Theta\)</span> is <span class="math inline">\(b_0'=0\)</span>. As a result, looking at <a href="Structural.html#eq:lambdas">(4.46)</a>, it appears that the first component entry of <span class="math inline">\(\mathcal{A}\)</span> (namely <span class="math inline">\(\alpha_1 + \zeta_1 a_1\)</span>) and the first row of <span class="math inline">\(\mathcal{B}\)</span> (namely <span class="math inline">\(\beta_1' + \zeta_1 b_1'\)</span>) do not appear in <span class="math inline">\(\lambda\)</span>, nor in <span class="math inline">\(\Lambda\)</span>. This gives the impression that the bond supply specification for one-period bond has no pricing impact. This is however false, as we must have:
 <span class="math display">\[
 \sum_{n=1}^N z_{i,t} = 1.
 \]</span>
 For this to hold for any value of <span class="math inline">\(f_t\)</span>, we need to have:
 <span class="math display" id="eq:constr2">\[\begin{eqnarray}
-\alpha_1 + \zeta_1 a_1 &amp;=&amp; 1 - \sum_{n=2}^N\mathcal{A}_i \tag{4.47}\\
-\beta_1 + \zeta_1 b_1&amp;=&amp;  - \sum_{n=2}^N\mathcal{B}_i,\tag{4.48}
+\alpha_1 + \zeta_1 a_1 &amp;=&amp; 1 - \sum_{n=2}^N\mathcal{A}_i \tag{4.48}\\
+\beta_1 + \zeta_1 b_1&amp;=&amp;  - \sum_{n=2}^N\mathcal{B}_i,\tag{4.49}
 \end{eqnarray}\]</span>
 where <span class="math inline">\(\mathcal{B}_i\)</span> is the <span class="math inline">\(i^{th}\)</span> row of <span class="math inline">\(\mathcal{B}\)</span>. These two equations show that <span class="math inline">\(a_1\)</span> and <span class="math inline">\(b_1\)</span> cannot be chosen independently from the specification of the supply for one-period bonds (characterized by <span class="math inline">\(\alpha_1\)</span>, <span class="math inline">\(\beta_1\)</span>, and <span class="math inline">\(\zeta_1\)</span>).
 In particular, consider the case where one factor corresponds to the conventional short-term yield (a situation that is standard in the literature). Assume for instance that the first component of <span class="math inline">\(f_t\)</span> is the conventional one-period yield. In that case, we have:
 <span class="math display">\[
 a_1 = 0 \quad \mbox{and}\quad b_1 = [-1,0,0,\dots]'.
 \]</span>
-Assume that <a href="Structural.html#eq:supply1">(4.42)</a> holds for <span class="math inline">\(n \ge 2\)</span>. Proposition <a href="Structural.html#prp:PropII">4.2</a> then states that one can solve for the <span class="math inline">\((a_n,b_n)\)</span>’s. However, it should then by checked that <span class="math inline">\(\alpha_1\)</span>, <span class="math inline">\(\beta_1\)</span>, and <span class="math inline">\(\zeta_1\)</span> satisfy <a href="Structural.html#eq:constr1">(4.47)</a> and <a href="Structural.html#eq:constr2">(4.48)</a>. Alternatively, assuming for instance that <span class="math inline">\(\zeta_1\)</span> is fixed, one can then deduce <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
+Assume that <a href="Structural.html#eq:supply1">(4.43)</a> holds for <span class="math inline">\(n \ge 2\)</span>. Proposition <a href="Structural.html#prp:PropII">4.2</a> then states that one can solve for the <span class="math inline">\((a_n,b_n)\)</span>’s. However, it should then by checked that <span class="math inline">\(\alpha_1\)</span>, <span class="math inline">\(\beta_1\)</span>, and <span class="math inline">\(\zeta_1\)</span> satisfy <a href="Structural.html#eq:constr1">(4.48)</a> and <a href="Structural.html#eq:constr2">(4.49)</a>. Alternatively, assuming for instance that <span class="math inline">\(\zeta_1\)</span> is fixed, one can then deduce <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
 </blockquote>
 <p>The following lines of codes build a discrete-time version of the model proposed by <span class="citation">Vayanos and Vila (<a href="references.html#ref-Vayanos_Vila_2021">2021</a>)</span>. This model features two factors. The first (<span class="math inline">\(f_{1,t}\)</span>) is the short-term interest rate, the seconf (<span class="math inline">\(f_{2,t}\)</span>) is a supply factor. Parameters <span class="math inline">\(\zeta_n\)</span>, <span class="math inline">\(\alpha_n\)</span>, and <span class="math inline">\(\beta_{n,2}\)</span>, defining the specification of bond supplies (see Assumption <a href="Structural.html#hyp:supply">4.3</a>, are given by:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We have &lt;span class="math inline"&gt;\(\beta_{n,1}=0\)&lt;/span&gt;. That is, the short-term rate has no direct influence on the &lt;span class="math inline"&gt;\(s_{n,t}\)&lt;/span&gt;’s.&lt;/p&gt;'><sup>16</sup></a>
 <span class="math display">\[\begin{eqnarray}
@@ -1575,7 +1578,7 @@ Therefore, <span class="math inline">\(F(C_t{\color{blue} - \varepsilon \pi_t(x_
 \varepsilon R_t(U_{t+1})^{\gamma - \rho} \mathbb{E}_t \left(  x_{t+1} (1-\beta) C_{t+1}^{-\rho} U_{t+1}^{\rho-\gamma} \right) U_t^{\rho}
 - \varepsilon \pi_t(x_{t+1}) (1-\beta) C_t^{-\rho} U_t^{\rho} + o(\varepsilon),
 \]</span>
-which gives <a href="#eq:SS">(<strong>??</strong>)</a>.</p>
+which gives <a href="Structural.html#eq:SSS">(4.22)</a>.</p>
 
 </div>
 </div>
@@ -1631,7 +1634,7 @@ which gives <a href="#eq:SS">(<strong>??</strong>)</a>.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-01-31.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-02-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

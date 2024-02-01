@@ -121,7 +121,7 @@
 
 \title{Introduction to Term Structure Models}
 \author{Jean-Paul Renne and Alain Monfort}
-\date{2024-01-31}
+\date{2024-02-01}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -3490,21 +3490,21 @@ Before looking into it, Example \ref{exm:EZpricingInfo} explores an important im
 \begin{example}[Pricing information on future consumption path]
 \protect\hypertarget{exm:EZpricingInfo}{}\label{exm:EZpricingInfo}
 
-Consider the case where \(\rho = 1\) and log-normal conditionally homoskedastic consumption \citep{Cochrane_2005}. Using \(v_t = \log(U_t)\), we have:
-\[
-v_t = (1 - \delta) c_t + \delta \frac{1}{1 - \gamma} \log \mathbb{E}_t \left(\exp((1-\gamma)v_{t+1})\right).
-\]
-If \(c_t\) is log-normal, one can show that \(v_t\) is log-normal as well. Hence:
+Consider the case where \(\rho = 1\) and log-normal conditionally homoskedastic consumption \citep{Cochrane_2005}. Using \(v_t = \log(U_t)\), performing a Taylor expansion of \eqref{eq:EZpreferences} around \(\rho = 1\) leads to:
+\begin{equation}
+v_t = (1 - \delta) c_t + \delta \frac{1}{1 - \gamma} \log \mathbb{E}_t \left(\exp((1-\gamma)v_{t+1})\right).\label{eq:EZunitIES}
+\end{equation}
+If \(C_t\) is log-normal, one can show that \(v_t\) is normal. Hence:
 \begin{eqnarray}
 v_t &=& (1 - \delta) c_t + \delta \mathbb{E}_t(v_{t+1}) + \frac{1}{2}\delta (1-\gamma) \sigma^2(v_{t+1})\nonumber \\
 &=& (1 - \delta) \left( \sum_{j=0}^{\infty}  \delta^j \mathbb{E}_t (c_{t+j}) \right) + \frac{1}{2}\delta \frac{1-\gamma}{1-\delta} \sigma^2(v_{t+1}) \label{eq:vrho1}.
 \end{eqnarray}
-Besides, Eq. \eqref{eq:SSS} gives:
+Besides, \eqref{eq:SSS} gives:
 \begin{eqnarray*}
 m_{t,t+1} &=& \log(\delta) - \rho \Delta c_{t+1} + (\rho - \gamma) \left(v_{t+1} - \frac{1}{1 - \gamma} \log \mathbb{E}_t \left(\exp((1-\gamma)v_{t+1})\right)\right)\\
 &=& \log(\delta) - \rho \Delta c_{t+1} + (\rho - \gamma) \left(v_{t+1} - \mathbb{E}_t(v_{t+1}) - \frac{1}{2} \frac{1-\gamma}{1-\delta} \sigma^2(v_{t+1})\right).
 \end{eqnarray*}
-Using the \emph{expectation updating'' operator} \(\mathbb{E}_{t+1} - \mathbb{E}_t\), we obtain:
+Using the \emph{``expectation updating'' operator} \(\mathbb{E}_{t+1} - \mathbb{E}_t\), we obtain:
 \[
 (\mathbb{E}_{t+1} - \mathbb{E}_t) m_{t,t+1} = - \rho(\mathbb{E}_{t+1} - \mathbb{E}_t) c_{t+1} + (\rho - \gamma) (\mathbb{E}_{t+1} - \mathbb{E}_t) v_{t+1},
 \]
@@ -3522,7 +3522,7 @@ The previous equation can be rewritten as:
 Hence, news about future consumption growth affect the current SDF (marginal rate of substitution). As a consequence, shocks that correlate with updates of future consumption growth are ``priced''. The date-\(t\) prices---and more precisely their risk premium components---depend on the covariances between their payoffs and consumption on date \(t+1\), as well as future consumption growth (regarding \(t+h\), \(h>1\)).
 
 \begin{quote}
-If consumption is a random walk, then EZ preferences are observationally equivalent to power utility \citep{Kocherlakota_1990}.
+If consumption is a random walk, then Epstein-Zin preferences are observationally equivalent to power utility \citep{Kocherlakota_1990}.
 \end{quote}
 
 Consider the case where \(C_0 = C_1 = 1\).
@@ -3708,6 +3708,10 @@ If the IES \(\psi > 1\), then \(A_1 > 0\); the price-consumption ratio increases
 \begin{quote}
 \textbf{About the solution procedure}. Eq. \eqref{eq:solABY1} shows that the \(A_i\)s depends on the \(\kappa_i\)s. Eq. \eqref{eq:approxRa} shows that the \(\kappa_i\)s depend on \(\bar{z}\).
 Hence, in particular, \(A_0 = f(\bar{z})\). But, in turn, since \(z_t = A_0 + A_1 x_t\), we have \(\bar{z}=A_0 + A_1 \bar{x}=A_0\). For the model to be internally consistent, we should have \(\bar{z}=f(\bar{z})\). Hence, there is a fixed-point problem (\(\bar{z}\) cannot be chosen arbitrarily).
+\end{quote}
+
+\begin{quote}
+\textbf{The unit EIS case}. Solving for the Epstein-Zin SDF is simpler when the intertemporal elasticity of substitution (EIS) is equal to one \citep{Piazzesi_Schneider_2007}. In that case, and if consumption is an affine combination of affine processes, we can indeed solve for the utility function using \eqref{eq:EZunitIES}. For that: (a) Posit \(v_t = \mu_{v,0}+\mu_{v,1}'w_t\), (b) use the Laplace transform of \(w_t\) in \eqref{eq:EZunitIES} to obtain \(K+1\) restrictions on the scalar \(\mu_{v,0}\) and the vector \(\mu_{v,1}\) (\(K\) is the dimension of \(w_t\)). These restrictions will take the form of non-linear equations (involving the log-Laplace transform of \(w_t\)) that one can solve numerically. (c) Once \(v_t = \mu_{v,0}+\mu_{v,1}'w_t\) is determines, the SDF is obtained from \eqref{eq:SSS}. This strategy is employed, in particular, in \citet{Gourieroux_Monfort_Mouabbi_Renne_2021}, \citet{Monfort_Pegoraro_Renne_Roussellet_2021}, and \citet{Bletzinger_Lemke_Renne_2024}.
 \end{quote}
 
 \begin{example}[Bansal and Yaron (2004), heteroskedastic]
@@ -4114,7 +4118,7 @@ Therefore, \(F(C_t{\color{blue} - \varepsilon \pi_t(x_{t+1})},R_t(F(C_{t+1}+{\co
 \varepsilon R_t(U_{t+1})^{\gamma - \rho} \mathbb{E}_t \left(  x_{t+1} (1-\beta) C_{t+1}^{-\rho} U_{t+1}^{\rho-\gamma} \right) U_t^{\rho}
 - \varepsilon \pi_t(x_{t+1}) (1-\beta) C_t^{-\rho} U_t^{\rho} + o(\varepsilon),
 \]
-which gives \eqref{eq:SS}.
+which gives \eqref{eq:SSS}.
 
 \hypertarget{Estimation}{%
 \chapter{Estimation of affine asset-pricing models}\label{Estimation}}
@@ -4122,7 +4126,7 @@ which gives \eqref{eq:SS}.
 \hypertarget{EstimationSSModel}{%
 \section{State-space model}\label{EstimationSSModel}}
 
-By nature, dynamic asset-pricing models are \emph{state-space models}: The dynamics of all variables, gathered in vector \(y_t\) (yields, equity returns, macroeconomic variables, survey-based variables) are accounted for by state variables (\(w_t\)). The equations defining the relationship between the other variables and the state variables are called \emph{measurement equations} (Eq. \eqref{eq:measeq}). The equations defining the dynamics of the state variables are called \emph{transition equations} (Eq. \eqref{eq:transeq}).
+By nature, dynamic asset-pricing models are \emph{state-space models}: The dynamics of all variables of interest, gathered in vector \(y_t\) (yields, equity returns, macroeconomic variables, survey-based variables) are accounted for by state variables (\(w_t\)). The equations defining the relationship between the other variables and the state variables are called \emph{measurement equations} (Eq. \eqref{eq:measeq}). The equations defining the dynamics of the state variables are called \emph{transition equations} (Eq. \eqref{eq:transeq}).
 
 In the case where \(w_t\) is an affine process (see Definition \ref{def:Car1}), the transition equations admit a VAR(1) representation (Proposition \ref{prp:affineVAR}). In that case, the state-space model is said to be linear, as formalized by the following definition. This defintion introduces, in particular, the notion of \emph{measurement errors}.
 
@@ -4139,7 +4143,7 @@ where \(\varepsilon_t\) is a martingale difference sequence satisfying \(\mathbb
 \textbf{Note:} Eq. \eqref{eq:transeq} derives from Proposition \ref{prp:affineVAR} (Eq. \eqref{eq:VARw}).
 \end{quote}
 
-In practice, one can distinguish two situations: (a) all state variables (components of \(w_t\)) are observed and (b) some of these variables are latent. What do we mean by \emph{model estimation} in case (b)? There are different situations:
+In practice, one can distinguish two situations: (a) all state variables (components of \(w_t\)) are observed and (b) some of these variables are latent. What do we mean by \emph{model estimation} in case (b)? One can distinguish different situations:
 
 \begin{itemize}
 \tightlist
@@ -4164,13 +4168,13 @@ Once this conditional p.d.f. is known, the total likelihood is given by (conditi
 \[
 \prod_{t=1}^T f(y_t,w_t|\underline{y_{t-1}},\underline{w_{t-1}}).
 \]
-Of course, \(f(w_t|\underline{w_{t-1}})\) depends on the process chosen for \(w_t\). If it is complicated to compute, one can employ Pseudo Maximum Likelihood \citep{Gourieroux_Monfort_Trognon_1984}. The p.d.f. may involve, for instance, an infinite sum, which is the case in the ARG case of Example \ref{exm:ARG1}. When \(w_t\) is affine, the Pseudo Maximum Likelihood approach consists in replacing \(f(w_t|\underline{w_{t-1}})\) by:
+Of course, \(f(w_t|\underline{w_{t-1}})\) depends on the process chosen for \(w_t\). If it is complicated to compute, one can employ Pseudo Maximum Likelihood (PML) \citep{Gourieroux_Monfort_Trognon_1984}. The p.d.f. may involve, for instance, an infinite sum, which is the case in the ARG case of Example \ref{exm:ARG1}. When \(w_t\) is affine, the Pseudo Maximum Likelihood approach consists in replacing \(f(w_t|\underline{w_{t-1}})\) by:
 \[
 \mathbf{n}(w_t;\mu + \Phi w_{t-1},\Sigma(w_t)),
 \]
-where \(\mu\), \(\Phi\) and \(\Sigma(w_t)\) are introduced in Eqs. \eqref{eq:MUPHI} and \eqref{eq:SigmaWt} in Proposition \ref{prp:affineVAR}.
+where \(\mu\), \(\Phi\) and \(\Sigma(w_t)\) are defined in \eqref{eq:MUPHI} and \eqref{eq:SigmaWt} in Proposition \ref{prp:affineVAR}.
 
-In case (b.iii), one can estimate the model by Generalized Method of Moments (GMM), fitting sample moments computed using observed variables (prices, yields, returns). In the context of affine processes, conditional and unconditional moments of the state vector \(w_t\) are available in closed from, as shown by Eqs. \eqref{eq:condmean}, \eqref{eq:condvar} and \eqref{eq:uncondmeanvar}. If the model-implied moments are not available in closed-form, one may have to to resort to the \emph{Simulated Method of Moments (SMM)} (see, e.g., \citet{GourMonf96} or \citet{Duffie_Singleton_1993}).
+In case (b.iii), one can estimate the model by Generalized Method of Moments (GMM), fitting sample moments computed using observed variables (prices, yields, returns). In the context of affine processes, conditional and unconditional moments of the state vector \(w_t\) are available in closed from, as shown by \eqref{eq:condmean}, \eqref{eq:condvar} and \eqref{eq:uncondmeanvar}. If the model-implied moments are not available in closed-form, one may have to to resort to the \emph{Simulated Method of Moments (SMM)} (see, e.g., \citet{GourMonf96} or \citet{Duffie_Singleton_1993}).
 
 In cases (b.i) and (b.ii), one has to implement \emph{filtering methods}, on which we focus on in the following.
 
@@ -4180,9 +4184,9 @@ In cases (b.i) and (b.ii), one has to implement \emph{filtering methods}, on whi
 \hypertarget{the-gaussian-linear-state-space-case}{%
 \subsection{The Gaussian linear state-space case}\label{the-gaussian-linear-state-space-case}}
 
-Let us start with a particular case of state-space model (Def. \ref{def:LSSM}) where \(\varepsilon_t\) is Gaussian and where \(\Sigma^{\frac{1}{2}}\) does not depend on \(w_t\), i.e.with a homoskedastic linear Gaussian state-space model.
+Let us start with a particular case of state-space model (Def. \ref{def:LSSM}) where \(\varepsilon_t\) is Gaussian and where \(\Sigma^{\frac{1}{2}}\) does not depend on \(w_t\), i.e., with a homoskedastic linear Gaussian state-space model.
 
-Let's denote by \(\theta\) the vector of parameters that defines the model. For a given \(\theta\) and a sequence of observations \(\{y_1,\dots,y_T\}\), the Kalman filter computes the distribution of \(w_t\) given \(\{y_1,\dots,y_t\}\) (see Def. \ref{def:FiltvsSmooth}). This distribution is Gaussian, and obtained by a recursive algorithm. A byproduct of this algorithm is the likelihood function associated with \(\theta\) and \(\{y_1,\dots,y_T\}\). This opens the door to the estimation of \(\theta\) by MLE, maximizing this function. In this sense, Kalman-filter techniques can address Objective (b.ii).
+Denote by \(\theta\) the vector of parameters that defines the model. For a given \(\theta\) and a sequence of observations \(\{y_1,\dots,y_T\}\), the Kalman filter computes the distribution of \(w_t\) given \(\{y_1,\dots,y_t\}\) (see Def. \ref{def:FiltvsSmooth}). This distribution is Gaussian, and obtained by a recursive algorithm. A byproduct of this algorithm is the likelihood function associated with \(\theta\) and \(\{y_1,\dots,y_T\}\). This opens the door to the estimation of \(\theta\) by MLE, maximizing this function. In this sense, Kalman-filter techniques can address Objective (b.ii).
 
 Let us first introduce the notion of \emph{filtered} and \emph{smoothed} estimates of a latent variable (or vector of variables) \(w_t\):
 
@@ -4255,7 +4259,7 @@ The recursive equations of the Kalman filter need to be initialized. That is, on
 \item
   Include the elements of(\(w_{0|0}\), \(P_{0|0}\)) among the parameters to estimate;
 \item
-  Set \(w_{0|0}\) and \(P_{0|0}\) to their unconditional values (using, e.g., Eq. \eqref{eq:uncondmeanvar});
+  Set \(w_{0|0}\) and \(P_{0|0}\) to their unconditional values (using, e.g., \eqref{eq:uncondmeanvar});
 \item
   Set \(w_{0|0}\) to a prior value and take either an arbitrary large value for \(P_{0\mid0}\) if the prior value is uncertain (which depicts a situation of \emph{diffuse prior}) or a small value for \(P_{0\mid0}\) if we are confident in this prior value \(w_{0|0}\).
 \end{itemize}
@@ -4332,7 +4336,7 @@ In the following lines, we specify one version of the previous model. We simulat
 
 In many application, one does not observe all the entries of \(y_t\) at every date. This arises for instance in situations where (i) measurement variables feature different frequencies, (ii) we have unreliable data for some period (that we prefer not to include among observations), (iii) some of the measurement variables are observed over a shorter time span.
 
-These situations are easily addressed by Kalman filtering/smoothing (e.g., \citet{Chow_Lin_1971} or \citet{Harvey_Pierse_1984}). To accommodate missing observations in some of the \(y_t\)'s, one simply has to change the size of this vector (and of \(\lambda_t\), \(S_{t|t-1}\), \(A\) and \(B\)) for the relevant dates. Of course, the accuracy of \(w_{t|t}\) will tend to be lower during periods where one or several (or all) the entries of \(y_t\) are unobserved. (This will be apparent in the resulting covariance matrix of \(w_{t|t}\), namely \(P_{t|t}\).) The log-likelihood computation (Eq. \eqref{eq:logLikKF}) is still valid in this case; one simply has to adjust the number of observed variables at each iteration; that is, \(m\) then depends on time.
+These situations are easily addressed by Kalman filtering/smoothing (e.g., \citet{Chow_Lin_1971} or \citet{Harvey_Pierse_1984}). To accommodate missing observations in some of the \(y_t\)'s, one simply has to change the size of this vector (and of \(\lambda_t\), \(S_{t|t-1}\), \(A\) and \(B\)) for the relevant dates. Of course, the accuracy of \(w_{t|t}\) will tend to be lower during periods where one or several (or all) the entries of \(y_t\) are unobserved. (This will be apparent in the resulting covariance matrix of \(w_{t|t}\), namely \(P_{t|t}\).) The log-likelihood computation of \eqref{eq:logLikKF} is still valid in this case; one simply has to adjust the number of observed variables at each iteration; that is, \(m\) then depends on time.
 
 \begin{example}[Kalman filtering and smoothing]
 \protect\hypertarget{exm:RKalmanMissing}{}\label{exm:RKalmanMissing}
@@ -4361,7 +4365,7 @@ This example extends Example \ref{exm:RKalmanMissing}. We take the simulated pat
 \end{example}
 
 \hypertarget{about-non-constant-conditional-matrix-sigma}{%
-\section{\texorpdfstring{About non-constant conditional matrix \(\Sigma\)}{About non-constant conditional matrix \textbackslash Sigma}}\label{about-non-constant-conditional-matrix-sigma}}
+\subsection{\texorpdfstring{About non-constant conditional matrix \(\Sigma\)}{About non-constant conditional matrix \textbackslash Sigma}}\label{about-non-constant-conditional-matrix-sigma}}
 
 Proposition \ref{prp:KF} is valid when \(\varepsilon_t\) is Gaussian and when \(\Sigma^{\frac{1}{2}}\) does not depend on \(w_t\). However, in the general case (but when \(w_t\) is an affine process), we have that \(\Sigma(w_{t-1}) \equiv \mathbb{V}ar(w_{t+1}|\underline{w_t})\) is affine in \(w_t\) (see Prop. \ref{prp:affineVAR}). In order to deal with this, the Kalman filter algorithm can be modified. Specifically, in the prediction step (see Prop. \ref{prp:KF}), \(P_{t|t-1}\) can be approximated by:
 \[
@@ -4369,12 +4373,12 @@ P_{t|t-1} = \Sigma\color{red}{(w_{t-1|t-1})} + \Phi P_{t-1|t-1} \Phi',
 \]
 i.e.~we replace \(\Sigma(w_{t-1})\) by \(\Sigma(w_{t-1|t-1})\).
 
-Though the approach is then not necessarily optimal, it shows good empirical properties (\citet{deJong_2000} or \citet{Duan_Simonato_1999}). In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations \citep{zarg_2017}.
+Although this approach is not optimal---in the sense that it does not deliver the conditional expectation of Def. \ref{def:FiltvsSmooth}---it shows good empirical properties (\citet{deJong_2000} or \citet{Duan_Simonato_1999}). In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations \citep{zarg_2017}.
 
 \hypertarget{nonlinear}{%
-\section{Non-linear models}\label{nonlinear}}
+\subsection{Non-linear models}\label{nonlinear}}
 
-As soon as \(w_t\) follows an affine process, it admits the VAR dynamics presented in Prop. \ref{prp:affineVAR}, i.e., it features a linear transition equation. However, measurement equations may be non-linear (affine) functions of \(w_t\). This is in particular the case if observed variables include Swaps rates (see Remark SWAPS XXXX), CDS rates (see Subsection \ref{subsec:Credit:CDS}, in particular Eq. \eqref{eq:MCCDSformula1}) or prices of tranche products (see Example \ref{exm:DD}).
+As soon as \(w_t\) follows an affine process, it admits the VAR dynamics presented in Prop. \ref{prp:affineVAR}, i.e., it features a linear transition equation. However, measurement equations may be non-linear (affine) functions of \(w_t\). This is in particular the case if observed variables include Swaps rates (see Eq. \eqref{eq:swap} of Subsection \ref{Swaps}), CDS rates (see Subsection \ref{CreditCDS}, in particular Eq. \eqref{eq:MCCDSformula1}) or prices of tranche products (see Example \ref{exm:DD}).
 
 In a context of non-linear measurement equations, one can for instance resort to the Extended Kalman Filter (linearizing the measurement equations) or, to higher-order Taylor. \citet{Monfort_Renne_Roussellet_2015} develop a Quadratic Kalman Filter (QKF), where measurement equations are quadratic functions of the state vector.
 
@@ -4383,7 +4387,7 @@ In a context of non-linear measurement equations, one can for instance resort to
 
 The inversion technique has been introduced by \citet{Chen_Scott_1993}. It is used, e.g., by \citet{Ang_Piazzesi_2003} and \citet{Liu_longstaff_Mandell_2006}. Contrary to Kalman-type approaches, this approach is not recursive. it can therefore be faster, especially for long sample.
 
-This approach works under the assumption that some of the observed variables are \emph{perfectly priced} (or modelled).(Recall that \(y_t\) and \(w_t\) are respectively of dimension \(m\) and \(n\), see Eqs. \eqref{eq:measeq} and \eqref{eq:transeq} in Def. \ref{def:LSSM}.) Formally:
+This approach works under the assumption that some of the observed variables are \emph{perfectly priced} (or modelled).(Recall that \(y_t\) and \(w_t\) are respectively of dimension \(m\) and \(n\), see \eqref{eq:measeq} and \eqref{eq:transeq} in Def. \ref{def:LSSM}.) Formally:
 
 \begin{hypothesis}[Perfectly-modelled variables]
 \protect\hypertarget{hyp:perfectlymodelled}{}\label{hyp:perfectlymodelled}\(n\) components of the \(m\)-dimensional vector \(y_t\) (with \(n \le m\)) are perfectly modelled. That is, there is no measurement errors in associated measurement equations.
@@ -4398,7 +4402,7 @@ y_t =
 \]
 \end{hypothesis}
 
-Under Assumption \ref{hyp:perfectlymodelled}, the measurement equation (Eq. \eqref{eq:measeq}) becomes:
+Under Assumption \ref{hyp:perfectlymodelled}, the measurement equation \eqref{eq:measeq} becomes:
 \[
 \left[
 \begin{array}{c}
@@ -4440,7 +4444,7 @@ Under this assumption, and if the conditional distribution of \(w_t\) is availab
 \item
   The second term (in red in \eqref{eq:inversionLogL}) is associated with the measurement errors pertaining to \(y_{2,t}\), that are the components of \(\eta_{2,t}\).
 \item
-  The third term (in brown in \eqref{eq:inversionLogL}) is the determinant of the Jacobian matrix associated with the linear transformation between \(w_t\) and \(y_{1,t}\) (Eq. \eqref{eq:wY1}), that is \(|B_1|\).
+  The third term (in brown in \eqref{eq:inversionLogL}) is the determinant of the Jacobian matrix associated with the linear transformation \eqref{eq:wY1} between \(w_t\) and \(y_{1,t}\) , that is \(|B_1|\).
 \end{itemize}
 
 Once one knows how to compute \(f_{Y_t|\underline{Y_{t-1}}}(y_t;\underline{y_{t-1}})\), the total likelihood is easily obtained since:
@@ -4512,29 +4516,29 @@ y_t = A z_t + B x_t + \eta_t,  \quad \mbox{with }  \eta_t \sim i.i.d. \mathcal{N
 \begin{equation}
 x_t = \mu z_t + \Phi x_{t-1} +  \varepsilon_t,\label{eq:xRSVAR}
 \end{equation}
-where \(\varepsilon_t|\underline{x_t},z_t \sim \mathcal{N}(0,\Sigma(z_t))\) and if \(z_t\) is an exogenous independent Markov chain, then \(w_t = (x_t',z_t')'\) is affine. Using the notations of Eq. \eqref{eq:dynxRS}, we have:
+where \(\varepsilon_t|\underline{x_t},z_t \sim \mathcal{N}(0,\Sigma(z_t))\) and if \(z_t\) is an exogenous independent Markov chain, then \(w_t = (x_t',z_t')'\) is affine. Using the notations of \eqref{eq:dynxRS}, we have:
 \[
 m(z_t,x_{t-1}) = \mu z_t + \Phi x_{t-1}.
 \]
-If \(r_t\) and the SDF are respectively affine and exponential in \(w_t\), then, in particular, yields are also affine in \(w_t\), i.e.~of the form \(R(t,h)= A_h'z_t + B_{h}'x_t\) (see Eq. \eqref{eq:RthAB}). Therefore, if the components of \(y_t\) are yields of different maturities, the measurement equations are consistent with Assumption \ref{hyp:RSmeasurement}.
+If \(r_t\) and the SDF are respectively affine and exponential in \(w_t\), then, in particular, yields are also affine in \(w_t\), i.e.~of the form \(i_{t,h}= A_h'z_t + B_{h}'x_t\), as in, e.g., \eqref{eq:RthAB}. Therefore, if the components of \(y_t\) are yields of different maturities, the measurement equations are consistent with Assumption \ref{hyp:RSmeasurement}.
 \end{example}
 
 How to estimate such a model when the regimes \(z_t\) are unobservable? We distinguish two distinct situations:
 
-\textbf{Case 1. The \(x_t\) factors are observable.} The probabilities of being in the different regimes on each date can be estimated by employing the Kitagawa-Hamilton filter, with (using the notations of Proposition \ref{app:KitagHamilton}): \(F_t = (y_t',x_t')'\) and
+\textbf{Case 1. The \(x_t\) factors are observable.} The probabilities of being in the different regimes on each date can be estimated by employing the Kitagawa-Hamilton filter, with (using the notations of Proposition \ref{prp:KitagHamilton}): \(F_t = (y_t',x_t')'\) and
 \begin{eqnarray*}
 f(F_t|z_t=e_j,\underline{F_{t-1}}) &=& f(y_t|x_t,z_t=e_j,\underline{F_{t-1}})f(x_t|z_t=e_j,\underline{F_{t-1}}) \\
 &=& \mathbf{n}(y_t;A z_t + B x_t,\Omega) \times \\
 &&f_{\varepsilon}(x_t - m(z_t,x_{t-1});z_t,x_{t-1}),
 \end{eqnarray*}
-where \(\mathbf{n}(u;\mu,\Omega)\) denotes the evaluation, at vector \(u\) of the p.d.f. of the multivariate normal distribution \(\mathcal{N}(\mu,\Omega)\) (see eq. \eqref{eq:varPHI}). A by-product of the Kitagawa-Hamilton filter is the likelihood function associated with the dataset. As a result, the model parameterization can be estimated by maximum llikelihood approach.
+where \(\mathbf{n}(u;\mu,\Omega)\) denotes the evaluation, at vector \(u\) of the p.d.f. of the multivariate normal distribution \(\mathcal{N}(\mu,\Omega)\)---see \eqref{eq:varPHI}. A by-product of the Kitagawa-Hamilton filter is the likelihood function associated with the dataset. As a result, the model parameterization can be estimated by maximum llikelihood approach.
 
 \textbf{Case 2. The \(x_t\) factors are not observable.} There are two sub-cases:
 
 \begin{itemize}
 \tightlist
 \item
-  (2.i) the components of \(y_t\) are not perfectly modelled (i.e.~\(\Omega \ne 0\), where \(\Omega\) defined in Eq. \eqref{eq:RSmeasur}. One has then to resort to filters dealing with two types of uncertainty: hidden discrete values (\(z_t\)) and continuously distributed latent variables (\(x_t\)). \citet{Kim_1994}'s filter can be employed when the state-space model is of the form \eqref{eq:RSmeasur}-\eqref{eq:xRSVAR} (see, e.g., \citet{Monfort_Renne_2014}), detailed in Example \ref{exm:SovereignSpreads}).
+  (2.i) the components of \(y_t\) are not perfectly modelled (i.e.~\(\Omega \ne 0\), where \(\Omega\) defined in \eqref{eq:RSmeasur}. One has then to resort to filters dealing with two types of uncertainty: hidden discrete values (\(z_t\)) and continuously distributed latent variables (\(x_t\)). \citet{Kim_1994}'s filter can be employed when the state-space model is of the form \eqref{eq:RSmeasur}-\eqref{eq:xRSVAR} (see, e.g., \citet{Monfort_Renne_2014}, detailed in Example \ref{exm:SovereignSpreads}).
 \item
   (2.ii) \(n_x\) components of \(y_t\) are perfectly modelled (where \(n_x\) is the dimension of \(x_t\)). One can then resort to an inversion technique, complemented with the Kitagawa-Hamilton filter, to estimate the model (see \citet{Monfort_Renne_2013} and \citet{Renne_2017} for applications).
 \end{itemize}
@@ -4718,7 +4722,7 @@ i_{t+1} = \bar{i} + \phi (i_{t}-\bar{i}) + \sigma \varepsilon_{t+1}, \quad \vare
 \]
 and the following under the risk-neutral measure:
 \[
-i_{t+1} = \bar{i}^* + \phi^* (i_{t}-\bar{i}^*) + \sigma \varepsilon_{t+1}, \quad \varepsilon_t \sim \mathcal{N}(0,1).
+i_{t+1} = \bar{i}^* + \phi^* (i_{t}-\bar{i}^*) + \sigma \varepsilon^{\mathbb{Q}}_{t+1}, \quad \varepsilon^{\mathbb{Q}}_t \sim \mathcal{N}(0,1).
 \]
 with \(\bar{i} = 3\%/12\), \(\bar{i}^* = 5\%/12\), \(\phi = 0.98\), \(\phi^*=0.99\), \(\sigma = 0.2\%\).
 Assume the estimate of \(\phi\) is downward biased (\(\hat\phi=0.9\)). The influence of that bias on the 10-year term premium is illustrated by Figure \ref{fig:persist2}.

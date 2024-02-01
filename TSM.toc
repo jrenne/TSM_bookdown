@@ -55,7 +55,7 @@
 \contentsline {subsection}{\numberline {4.2.7}Epstein-Zin preferences and early resolution uncertainty}{102}{subsection.4.2.7}%
 \contentsline {subsection}{\numberline {4.2.8}The SDF with Epstein-Zin preferences}{103}{subsection.4.2.8}%
 \contentsline {subsection}{\numberline {4.2.9}Long-run risk model}{109}{subsection.4.2.9}%
-\contentsline {section}{\numberline {4.3}Preferred-habitat model of the term-structure of interest rate}{117}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Preferred-habitat model of the term-structure of interest rate}{118}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Appendix}{126}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}SDF in the CES Epstein-Zin Context}{126}{subsection.4.4.1}%
 \contentsline {chapter}{\numberline {5}Estimation of affine asset-pricing models}{129}{chapter.5}%
@@ -63,12 +63,12 @@
 \contentsline {section}{\numberline {5.2}Kalman-filter-based approach}{131}{section.5.2}%
 \contentsline {subsection}{\numberline {5.2.1}The Gaussian linear state-space case}{131}{subsection.5.2.1}%
 \contentsline {subsection}{\numberline {5.2.2}Missing observations}{135}{subsection.5.2.2}%
-\contentsline {section}{\numberline {5.3}About non-constant conditional matrix \(\mitSigma \)}{137}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Non-linear models}{139}{section.5.4}%
-\contentsline {section}{\numberline {5.5}The inversion technique}{139}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Dealing with unobserved regimes}{141}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Mixed use of Kitagawa-Hamilton and inversion techniques}{144}{subsection.5.5.2}%
-\contentsline {section}{\numberline {5.6}A typical small-sample issue}{146}{section.5.6}%
+\contentsline {subsection}{\numberline {5.2.3}About non-constant conditional matrix \(\mitSigma \)}{137}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Non-linear models}{139}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}The inversion technique}{139}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Dealing with unobserved regimes}{141}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Mixed use of Kitagawa-Hamilton and inversion techniques}{144}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}A typical small-sample issue}{146}{section.5.4}%
 \contentsline {chapter}{\numberline {6}Forward, futures, dividends, commodity pricing, and convenience yields}{151}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Derivatives written on stocks or commodities}{151}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}Forward contracts}{151}{subsection.6.1.1}%

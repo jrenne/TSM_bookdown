@@ -68,7 +68,7 @@
 <li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
 <li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="PandQ.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
-<li><a class="" href="TSModels.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
+<li><a class="" href="TSModels.html"><span class="header-section-number">3</span> The term structure of risk-free yields</a></li>
 <li><a class="" href="Structural.html"><span class="header-section-number">4</span> A detour through structural approaches</a></li>
 <li><a class="active" href="Estimation.html"><span class="header-section-number">5</span> Estimation of affine asset-pricing models</a></li>
 <li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
@@ -318,7 +318,7 @@ i.e. we replace <span class="math inline">\(\Sigma(w_{t-1})\)</span> by <span c
 <h3>
 <span class="header-section-number">5.2.4</span> Non-linear models<a class="anchor" aria-label="anchor" href="#nonlinear"><i class="fas fa-link"></i></a>
 </h3>
-<p>As soon as <span class="math inline">\(w_t\)</span> follows an affine process, it admits the VAR dynamics presented in Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>, i.e., it features a linear transition equation. However, measurement equations may be non-linear (affine) functions of <span class="math inline">\(w_t\)</span>. This is in particular the case if observed variables include Swaps rates (see Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:swap">(6.5)</a> of Subsection <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#Swaps">6.2.1</a>), CDS rates (see Subsection <a href="CreditLiRisks.html#CreditCDS">7.4.2</a>, in particular Eq. <a href="CreditLiRisks.html#eq:MCCDSformula1">(7.35)</a>) or prices of tranche products (see Example <a href="CreditLiRisks.html#exm:DD">7.5</a>).</p>
+<p>As soon as <span class="math inline">\(w_t\)</span> follows an affine process, it admits the VAR dynamics presented in Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>, i.e., it features a linear transition equation. However, measurement equations may be non-linear (affine) functions of <span class="math inline">\(w_t\)</span>. This is in particular the case if observed variables include Swaps rates (see Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:swap">(6.5)</a> of Subsection <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#Swaps">6.2.1</a>), CDS rates (see Subsection <a href="CreditLiRisks.html#CreditCDS">7.4.2</a>, in particular Eq. <a href="CreditLiRisks.html#eq:MCCDSformula1">(7.36)</a>) or prices of tranche products (see Example <a href="CreditLiRisks.html#exm:DD">7.5</a>).</p>
 <p>In a context of non-linear measurement equations, one can for instance resort to the Extended Kalman Filter (linearizing the measurement equations) or, to higher-order Taylor. <span class="citation">Alain Monfort, Renne, and Roussellet (<a href="references.html#ref-Monfort_Renne_Roussellet_2015">2015</a>)</span> develop a Quadratic Kalman Filter (QKF), where measurement equations are quadratic functions of the state vector.</p>
 </div>
 </div>

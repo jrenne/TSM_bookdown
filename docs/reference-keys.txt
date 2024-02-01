@@ -294,6 +294,7 @@ exm:exDefaultVARG
 eq:EARGs
 fig:VARGschema
 hyp:H4
+eq:shortrate
 eq:affineQcLT
 eq:aQbQ
 hyp:RRvalue
@@ -319,6 +320,12 @@ eq:systemF12
 eq:Deltacrewritten
 eq:Zdistrinew
 fig:SchemaDD
+fig:CDOs
+eq:condExp
+eq:var
+fig:simulation2
+fig:chartspreads
+fig:loaddataset
 ChapterAffine
 Information
 Dynamic
@@ -356,7 +363,7 @@ AffineYields
 maximum-sharpe-ratio
 RiskFreeGaussian
 RiskFreeNonNegative
-the-shadow-rate-approach
+Shadowrate
 the-auto-regressive-gamma-approach
 Structural
 PricingEquilibrium
@@ -408,4 +415,8 @@ Creditrelaxing
 CreditGeneral
 CreditCDS
 CreditDD
+the-shadow-intensity-framework
+overview
+a-numerical-example
+sec:Model
 references

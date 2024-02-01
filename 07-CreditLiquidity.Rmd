@@ -56,9 +56,9 @@ The default events (or credit events) are not priced, in the sense that:
 \end{equation*}
 :::
 
-In other words, under Hypothesis \@ref(hyp:A3), defaults do not affect the SDF (conditionally on $\underline{y_t}$).
+In other words, under Hypothesis \@ref(hyp:A3), defaults do not affect the SDF conditionally on $\underline{y_t}$.
 
-Hypothesis \@ref(hyp:A3) also implies that the short-term risk-free rate $r_t$ ($=-\log\mathbb{E}_t(\mathcal{M}_{t,t+1})$) depends on $\underline{y_t}$ (but not on $d_t$).
+Hypothesis \@ref(hyp:A3) also implies that the short-term risk-free rate $i_t=-\log\mathbb{E}_t(\mathcal{M}_{t,t+1})$ depends on $\underline{y_t}$ (but not on $d_t$).
 
 Figure \@ref(fig:classical) provides a graphical representation of the causality scheme in the classical credit-risk framework. 
 
@@ -79,17 +79,17 @@ that is, $\{d_t\}$ does not Granger-cause $\{y_t\}$ under the risk-neutral measu
 :::{.proof}
 We have:
 \begin{eqnarray}
-f^{\mathbb{Q}}(y_t|w_{t-1}) &=& f(y_t|w_{t-1})\mathcal{M}_{t-1,t}\exp(r_{t-1})\\
-&=& f(y_t|y_{t-1})\mathcal{M}_{t-1,t}\exp(r_{t-1}),
+f^{\mathbb{Q}}(y_t|w_{t-1}) &=& f(y_t|w_{t-1})\mathcal{M}_{t-1,t}\exp(i_{t-1})\\
+&=& f(y_t|y_{t-1})\mathcal{M}_{t-1,t}\exp(i_{t-1}),
 \end{eqnarray}
-which gives the results, using that $\mathcal{M}_{t-1,t}$ and $\exp(r_{t-1})$ depend on $y_{t-1}$ only (and not on $d_t$).
+which gives the results, using that $\mathcal{M}_{t-1,t}$ and $\exp(i_{t-1})$ depend on $y_{t-1}$ only (and not on $d_t$).
 :::
 
 <!-- Proposition \@ref(prp:exogdunderQ) shows that, under Hypotheses \@ref(hyp:A1) and \@ref(hyp:A3), $d_t$ does not Granger-cause $y_t$ under the risk-neutral measure. -->
 
-To simplify, let us focus on a single entity ($d_t \equiv d_{1,t}$), alive on date $t$ ($d_t=0$). Consider the date-$t$ price of a bond issued by the defaultable entity. The residual maturity of this bond is denoted by $h$, and we consider a zero recovery rate (in case of default, the pyoff is zero). The price of this bond writes:
+To simplify, let us focus on a single entity ($d_t \equiv d_{1,t}$), alive on date $t$ ($d_t=0$). Consider the date-$t$ price of a bond issued by the defaultable entity. The residual maturity of this bond is denoted by $h$, and we consider a zero recovery rate (in case of default, the payoff is zero). Using \@ref(#eq:basic), the price of this bond writes:
 $$
-B(t,h) = \mathbb{E}_t^{\mathbb{Q}}[\exp(-r_t-\dots-r_{t+h-1})(1-d_{t+h})].
+B^d_{t,h} = \mathbb{E}_t^{\mathbb{Q}}[\exp(-i_t-\dots-i_{t+h-1})(1-d_{t+h})].
 $$
 
 The following proposition is at the core of the *classical credit-risk framework* [@Duffie_Singleton_1999]:
@@ -105,28 +105,28 @@ we have:
 \end{equation}
 and
 \begin{equation}
-\boxed{B(t,h) = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-r_t-\dots-r_{t+h-1}- \lambda_{t+1} - \dots - \lambda_{t+h}\right)\right].}(\#eq:standardPriceCredit2)
+\boxed{B_{t,h}^d = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-i_t-\dots-i_{t+h-1}- \lambda_{t+1} - \dots - \lambda_{t+h}\right)\right].}(\#eq:standardPriceCredit2)
 \end{equation}
-which rewrites, using $\tilde{r}_t = r_t + \lambda_{t+1}$:
+which rewrites, using $\tilde{i}_t = i_t + \lambda_{t+1}$:
 \begin{equation}
-B(t,h) = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-\tilde{r}_t-\dots-\tilde{r}_{t+h-1}\right)\right],(\#eq:standardPriceCredit3)
+B_{t,h}^d = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-\tilde{i}_t-\dots-\tilde{i}_{t+h-1}\right)\right],(\#eq:standardPriceCredit3)
 \end{equation}
 :::
 :::{.proof}
-We have (Eq. \@ref(eq:fQfP)):
+According to Eq. \@ref(eq:fQfP):
 \begin{equation}
-f^{\mathbb{Q}}(d_t,y_t|d_{t-1},y_{t-1}) = \exp(r_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(d_t,y_t|d_{t-1},y_{t-1}).(\#eq:aaq1)
+f^{\mathbb{Q}}(d_t,y_t|d_{t-1},y_{t-1}) = \exp(i_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(d_t,y_t|d_{t-1},y_{t-1}).(\#eq:aaq1)
 \end{equation}
 Using Hypothesis \@ref(hyp:A3), we obtain, by integrating both sides w.r.t. $d_t$:
 \begin{eqnarray}
-f^{\mathbb{Q}}(y_t|d_{t-1},y_{t-1}) &=& \exp(r_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(y_t|d_{t-1},y_{t-1})\nonumber\\
-&=& \exp(r_{t-1})\mathcal{M}_{t-1,t} \underbrace{f^{\mathbb{P}}(y_t|y_{t-1})}_{\mbox{by hypothesis}}. (\#eq:aaq2)
+f^{\mathbb{Q}}(y_t|d_{t-1},y_{t-1}) &=& \exp(i_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(y_t|d_{t-1},y_{t-1})\nonumber\\
+&=& \exp(i_{t-1})\mathcal{M}_{t-1,t} \underbrace{f^{\mathbb{P}}(y_t|y_{t-1})}_{\mbox{by hypothesis}}. (\#eq:aaq2)
 \end{eqnarray}
 By Bayes, we have:
 $$
 f^{\mathbb{Q}}(d_t|d_{t-1},y_t,y_{t-1}) = \frac{f^{\mathbb{Q}}(d_t,y_t|d_{t-1},y_{t-1})}{f^{\mathbb{Q}}(y_t|d_{t-1},y_{t-1})}.
 $$
-Using Eq. \@ref(eq:aaq1) (numerator) and Eq. \@ref(eq:aaq2) (denominator), we get:
+Using \@ref(eq:aaq1) (numerator) and \@ref(eq:aaq2) (denominator), we get:
 \begin{eqnarray*}
 && f^{\mathbb{Q}}(d_t|d_{t-1},y_t,y_{t-1}) = f^{\mathbb{P}}(d_t|d_{t-1},y_t,y_{t-1}),
 \end{eqnarray*}
@@ -134,10 +134,10 @@ which gives \@ref(eq:lambdaPQ).
 
 Conditioning w.r.t. $\underline{y_{t+h}}$, the bond price is given by:
 \begin{eqnarray*}
-&& \mathbb{E}_t^{\mathbb{Q}}[\mathbb{E}_t^{\mathbb{Q}}\{\exp(-r_t-\dots-r_{t+h-1})(1-d_{t+h})|\underline{y_{t+h}}\}]\\
-&=& \mathbb{E}_t^{\mathbb{Q}}[\exp(-r_t-\dots-r_{t+h-1})\mathbb{E}_t^{\mathbb{Q}}\{(1-d_{t+h})|\underline{y_{t+h}}\}]\\
-&=& \mathbb{E}_t^{\mathbb{Q}}[\exp(-r_t-\dots-r_{t+h-1})\mathbb{Q}\{d_{t+h}=0|\underline{y_{t+h}}\}]\\
-&=& \mathbb{E}_t^{\mathbb{Q}}\left[\exp(-r_t-\dots-r_{t+h-1})\prod_{j=1}^h\mathbb{Q}\{d_{t+j}=0|d_{t+j-1}=0,\underline{y_{t+h}}\}\right],
+&& \mathbb{E}_t^{\mathbb{Q}}[\mathbb{E}_t^{\mathbb{Q}}\{\exp(-i_t-\dots-i_{t+h-1})(1-d_{t+h})|\underline{y_{t+h}}\}]\\
+&=& \mathbb{E}_t^{\mathbb{Q}}[\exp(-i_t-\dots-i_{t+h-1})\mathbb{E}_t^{\mathbb{Q}}\{(1-d_{t+h})|\underline{y_{t+h}}\}]\\
+&=& \mathbb{E}_t^{\mathbb{Q}}[\exp(-i_t-\dots-i_{t+h-1})\mathbb{Q}\{d_{t+h}=0|\underline{y_{t+h}}\}]\\
+&=& \mathbb{E}_t^{\mathbb{Q}}\left[\exp(-i_t-\dots-i_{t+h-1})\prod_{j=1}^h\mathbb{Q}\{d_{t+j}=0|d_{t+j-1}=0,\underline{y_{t+h}}\}\right],
 \end{eqnarray*}
 Because Granger and Sims non-causalities are equivalent, and since $d_t$ does not Granger-cause $y_t$ under the risk-neutral measure (see Proposition \@ref(prp:exogdunderQ)), we have:
 $$
@@ -145,7 +145,7 @@ $$
 $$
 As a result:
 \begin{equation}
-B(t,h) = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-r_t-\dots-r_{t+h-1}- \lambda_{t+1}^{\mathbb{Q}} - \dots - \lambda_{t+h}^{\mathbb{Q}}\right)\right].(\#eq:standardPriceCredit)
+B_{t,h}^d = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-i_t-\dots-i_{t+h-1}- \lambda_{t+1}^{\mathbb{Q}} - \dots - \lambda_{t+h}^{\mathbb{Q}}\right)\right].(\#eq:standardPriceCredit)
 \end{equation}
 Using \@ref(eq:lambdaPQ) in \@ref(eq:standardPriceCredit), we obtain \@ref(eq:standardPriceCredit2).
 ::::
@@ -153,13 +153,13 @@ Using \@ref(eq:lambdaPQ) in \@ref(eq:standardPriceCredit), we obtain \@ref(eq:st
 
 > Although $\mathbb{P}$ and $\mathbb{Q}$ intensities are the same functions of $y_t$ and $y_{t-1}$, their historical and risk-neutral dynamics are in general different since $y_t$'s $\mathbb{P}$ and $\mathbb{Q}$ dynamics are different.
 
-> Eq. \@ref(eq:standardPriceCredit3) is reminiscent of Eq. \@ref(eq:stdbond), where the risk-free short-term rate $r_t$ is replaced by the *credit-adjusted short-term rate* $\tilde{r}_t$.
+> Eq. \@ref(eq:standardPriceCredit3) is reminiscent of Eq. \@ref(eq:stdbond), where the risk-free short-term rate $i_t$ is replaced by the *credit-adjusted short-term rate* $\tilde{i}_t$.
 
-Importantly, if both $r_t$ and $\lambda_t$ are affine in $y_t$, where the latter is an affine process, then bond prices are easily computed by means of recursive formulas (as was the case in the context of Eq. \@ref(eq:stdbond), see Example \@ref(exm:nominalBth).
+Importantly, if both $i_t$ and $\lambda_t$ are affine in $y_t$, where the latter is an affine process, then bond prices are easily computed by means of recursive formulas (as was the case in the context of \@ref(eq:stdbond), see Example \@ref(exm:nominalBth).
 
-In this case, $B(t,h)$ is exponential affine in $y_t$, that is, it is of the form:
+In this case, $B_{t,h}^d$ is exponential affine in $y_t$, that is, it is of the form:
 \begin{equation}
-B(t,h) = \exp({A^d_h}'y_t + B^d_h)\quad (say).(\#eq:standardPriceCredit4)
+B_{t,h}^d = \exp({A^d_h}'y_t + B^d_h)\quad (say).(\#eq:standardPriceCredit4)
 \end{equation}
 
 
@@ -260,13 +260,13 @@ The previous framework can be adapted in order to accommodate non-zero recovery 
 
 
 :::{.proposition #RMVclassical name="Bond pricing in the RMV classical framework"}
-Under Hypotheses \@ref(hyp:A1) and \@ref(hyp:A3), and if, in case of default on date $t+i$, the recovery payment is $\zeta \widetilde{B}(t+i,h-i)$, with $\zeta \in [0,1]$, then
+Under Hypotheses \@ref(hyp:A1) and \@ref(hyp:A3), and if, in case of default on date $t+i$, the recovery payment is $\zeta \widetilde{B}_{t+i,h-i}$, with $\zeta \in [0,1]$, then
 \begin{equation}
-B(t,h) =  (1-d_t)\widetilde{B}(t,h),(\#eq:BBcredit)
+B_{t,h}^d =  (1-d_t)\widetilde{B}_{t,h},(\#eq:BBcredit)
 \end{equation}
-where $\widetilde{B}(t,h)$ is a *pseudo-price* given by:
+where $\widetilde{B}_{t,h}$ is a *pseudo-price* given by:
 \begin{equation}
-\widetilde{B}(t,h) = \mathbb{E}_t^{\mathbb{Q}} [\exp(-r_{t}-\tilde\lambda_{t+1}-\dots -r_{t+h-1}-\tilde\lambda_{t+h}],(\#eq:BtildeCredit)
+\widetilde{B}_{t,h} = \mathbb{E}_t^{\mathbb{Q}} [\exp(-i_{t}-\tilde\lambda_{t+1}-\dots -i_{t+h-1}-\tilde\lambda_{t+h}],(\#eq:BtildeCredit)
 \end{equation}
 where the pseudo-intensity $\tilde\lambda_{t}$ is defined by:
 \begin{eqnarray}
@@ -275,24 +275,24 @@ where the pseudo-intensity $\tilde\lambda_{t}$ is defined by:
 \end{eqnarray}
 :::
 :::{.proof}
-Relation \@ref(eq:BBcredit) is true for $B(t+h, 0)$ since $\widetilde{B}(t+h, 0) = 1$ and $B(t+h, 0) = 1 - d_{t+h}$.
-Assuming that $B(t+i+1, h-i-1) = (1 - d_{t+i+1} ) \widetilde{B}(t+i+1, h-i-1)$ (which is valid for $i=h-1$), we get:
+Relation \@ref(eq:BBcredit) is true for $B_{t+h,0}^d$ since $\widetilde{B}_{t+h,0} = 1$ and $B_{t+h,0}^d = 1 - d_{t+h}$.
+Assuming that $B_{t+i+1, h-i-1}^d = (1 - d_{t+i+1} ) \widetilde{B}_{t+i+1,h-i-1}$ (which is valid for $i=h-1$), we get:
 \begin{eqnarray*}
-B(t+i, h-i) &=& \left(1 - d_{t+i} \right)  \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp(- r_{t+i})   \left[ \left(1 - d_{t+i+1} \right) \widetilde{B}(t+i+1, h-i-1) \right. \right. \\
-&& \left. \left. +  d_{t+i+1}\zeta\widetilde{B}(t+i+1, h-i-1) \right] \right\},
+B_{t+i, h-i}^d &=& \left(1 - d_{t+i} \right)  \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp(- i_{t+i})   \left[ \left(1 - d_{t+i+1} \right) \widetilde{B}_{t+i+1,h-i-1} \right. \right. \\
+&& \left. \left. +  d_{t+i+1}\zeta\widetilde{B}_{t+i+1,h-i-1} \right] \right\},
 \end{eqnarray*}
-since, in case of no default at date $t+i$, the value of the bond at date $t+i+1$ is either $\zeta B(t+i+1, h-i-1) = \zeta \widetilde{B}(t+i+1, h-i-1)$ if default happens, and $B(t+i+1, h-i-1) = \widetilde{B}(t+i+1, h-i-1)$ otherwise. Hypotheses \@ref(hyp:A1) and \@ref(hyp:A3) imply that $\widetilde{B}(t+i+1, h-i-1)$ does not depend on $d_{t+i+1}$ and taking first the conditional expectation given $w_{t+i}$ and $y_{t+i+1}$ we obtain:
+since, in case of no default at date $t+i$, the value of the bond at date $t+i+1$ is either $\zeta B_{t+i+1, h-i-1}^d = \zeta \widetilde{B}_{t+i+1,h-i-1}$ if default happens, and $B_{t+i+1, h-i-1}^d = \widetilde{B}_{t+i+1,h-i-1}$ otherwise. Hypotheses \@ref(hyp:A1) and \@ref(hyp:A3) imply that $\widetilde{B}_{t+i+1,h-i-1}$ does not depend on $d_{t+i+1}$ and taking first the conditional expectation given $w_{t+i}$ and $y_{t+i+1}$ we obtain:
 \begin{equation}
 \begin{array}{lll}
-B(t+i, h-i) &=& \left(1 - d_{t+i} \right) \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp(- r_{t+i})  \widetilde{B}(t+i+1, h-i-1) \times \right. \\
+B_{t+i, h-i}^d &=& \left(1 - d_{t+i} \right) \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp(- i_{t+i})  \widetilde{B}_{t+i+1,h-i-1} \times \right. \\
 && \quad\left. \mathbb{E}^{\mathbb{Q}} \left[ \left(1 - d_{t+i+1} \right) +  \zeta d_{t+i+1}  | y_{t+i+1}, w_{t+i} \right] \right\} .
 \end{array}(\#eq:Prop21demo)
 \end{equation}
 Using  the definition of $\widetilde{\lambda}_{t}$ (Eq. \@ref(eq:pseudodefintens)) we get:
 \begin{equation*}
 \begin{array}{lll}
-B(t+i, h-i) &=& \left(1 - d_{t+i} \right)  \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp \left( - r_{t+i} - \widetilde{\lambda}_{t+i+1} \right)  \widetilde{B}(t+i+1, h-i-1) \right\}\\
-&=& \left(1 - d_{t+i} \right)   \widetilde{B}(t+i, h-i) .
+B_{t+i, h-i}^d &=& \left(1 - d_{t+i} \right)  \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp \left( - i_{t+i} - \widetilde{\lambda}_{t+i+1} \right)  \widetilde{B}_{t+i+1,h-i-1} \right\}\\
+&=& \left(1 - d_{t+i} \right)   \widetilde{B}_{t+i,h-i} .
 \end{array}
 \end{equation*}
 Therefore it is also true for $i=0$.
@@ -304,8 +304,8 @@ Therefore it is also true for $i=0$.
 <!-- * Sketch if the proof of Eq. \@ref(eq:BtildeCredit) -->
 <!-- * If $d_t=0$ (entity alive on date $t$), we then have: -->
 <!-- \begin{eqnarray*} -->
-<!-- B(t,h) &=& \exp(-r_t)\mathbb{E}_t^{\mathbb{Q}} [ d_{t+1} \zeta B(t+1,h-1) + (1-d_{t+1})B(t+1,h-1)]\\ -->
-<!-- &=& \exp(-r_t)\mathbb{E}_t^{\mathbb{Q}} [\{1 - d_{t+1} (1-\zeta)\} B(t+1,h-1) ]. -->
+<!-- B(t,h) &=& \exp(-i_t)\mathbb{E}_t^{\mathbb{Q}} [ d_{t+1} \zeta B(t+1,h-1) + (1-d_{t+1})B(t+1,h-1)]\\ -->
+<!-- &=& \exp(-i_t)\mathbb{E}_t^{\mathbb{Q}} [\{1 - d_{t+1} (1-\zeta)\} B(t+1,h-1) ]. -->
 <!-- \end{eqnarray*} -->
 <!-- * Defining the *recovery-adjusted default intensity* $\tilde\lambda_{t+1}$ through -->
 <!-- \begin{eqnarray} -->
@@ -314,13 +314,13 @@ Therefore it is also true for $i=0$.
 <!-- \end{eqnarray} -->
 <!-- one obtains: -->
 <!-- \begin{eqnarray*} -->
-<!-- B(t,h) &=& \mathbb{E}_t^{\mathbb{Q}} [\exp(-r_t-\tilde\lambda_{t+1}) B(t+1,h-1) ], -->
+<!-- B(t,h) &=& \mathbb{E}_t^{\mathbb{Q}} [\exp(-i_t-\tilde\lambda_{t+1}) B(t+1,h-1) ], -->
 <!-- \end{eqnarray*} -->
 <!-- and, by recursion, we get \@ref(eq:BtildeCredit). -->
 
 
 
-Again, if $r_t$ and $\tilde\lambda_t$ are affine combinations of an affine process $y_t$, then (exponential affine) bond prices are easily computed by means of recursive formulas. This is formalized below.
+Again, if $i_t$ and $\tilde\lambda_t$ are affine combinations of an affine process $y_t$, then (exponential affine) bond prices are easily computed by means of recursive formulas. This is formalized below.
 
 :::{.hypothesis #A6 name="Affine process"}
 The process $\{ y_t \}$ is affine under the $\mathbb{Q}$ measure:
@@ -330,9 +330,9 @@ The process $\{ y_t \}$ is affine under the $\mathbb{Q}$ measure:
 = \exp \left[ a^{\mathbb{Q}}_{y} (u_{y}) ' y_{t-1} + b^{\mathbb{Q}}_{y} (u_{y}) \right],
 \end{array}(\#eq:affineyPcLT)
 \end{equation}
-and $r_t$ and $\widetilde{\lambda}_{e, t}$ are affine in $(y_t, y_{t-1})$, that is (say):
+and $i_t$ and $\widetilde{\lambda}_{e, t}$ are affine in $(y_t, y_{t-1})$, that is (say):
 \begin{eqnarray}
-r_{t} &=& \omega_0 + \omega_{1} ' y_{t} \\
+i_{t} &=& \omega_0 + \omega_{1} ' y_{t} \\
 \widetilde{\lambda}_{e, t} &=& \kappa_{0} + \kappa_{1}' y_t.
 \end{eqnarray}
 :::
@@ -340,7 +340,7 @@ r_{t} &=& \omega_0 + \omega_{1} ' y_{t} \\
 :::{.proposition #standardCreditFormula name="Standard affine bond pricing, under RMV convention"}
 Under the Assumptions of Proposition \@ref(prp:RMVclassical) and under Hypothesis \@ref(hyp:A6), we have, for $h \ge 1$:
 \begin{equation}
-B(t, h) = \left(1 - d_{t} \right)\exp(- h[\omega_0 + \kappa_{0}] - \omega_{1} ' y_{t} + A_h'y_t + B_h),(\#eq:standardAffineCredit)
+B_{t,h}^d = \left(1 - d_{t} \right)\exp(- h[\omega_0 + \kappa_{0}] - \omega_{1} ' y_{t} + A_h'y_t + B_h),(\#eq:standardAffineCredit)
 \end{equation}
 where $A_h$ and $B_h$ are given by the following recursive equations:
 \begin{equation}
@@ -376,8 +376,8 @@ p(d_t|y_t, w_{t-1} ) &=& p_1 ( d_{1, t}  |  y_t, y_{t-1}, d_{1, t-1}) \times \\
 then:
 
 1. Proposition \@ref(prp:RMVclassical) is still valid for both entities;
-2. In an affine framework, the computation of $\widetilde{B}_1 (t, h)$ (and $B_1 (t, h)$) is straightforward;
-3. but formulas for $\widetilde{B}_2 (t, h)$ and $B_2 (t, h)$ are not explicit anymore even if $\widetilde{\lambda}_{2, t}$ is affine in $(y_t, y_{t-1}, d_{1, t}, d_{1, t-1})$.
+2. In an affine framework, the computation of $\widetilde{B}^{(1)}_{t,h}$ (and $B^{(1)}_{t,h}$) is straightforward;
+3. but formulas for $\widetilde{B}^{(2)}_{t,h}$ and $B^{(2)}_{t,h}$ are not explicit anymore even if $\widetilde{\lambda}_{2, t}$ is affine in $(y_t, y_{t-1}, d_{1, t}, d_{1, t-1})$.
 
 
 
@@ -424,7 +424,7 @@ The *liquidity-shock intensity* $\lambda_\ell(y_t)$---that defines the probabili
 $$
 \underbrace{1- \exp[-\lambda_\ell(y_t)]}_{\approx \lambda_\ell(y_t)\mbox{ if small}} = \mathbb{P}(\ell_t = 1|\underline{w_{t-1}},y_t).
 $$
-The binary variable $\ell_t$ is assumed not to Granger-cause $y_t$ (as in Hypothesis \@ref(hyp:A1)) and not to be priced (as in Hypothesis \@ref(hyp:A3)). As in Proposition \@ref(prp:defaultBondclassical) (and more precisely Eq. \@ref(eq:lambdaPQ)), this implies that
+The binary variable $\ell_t$ is assumed not to Granger-cause $y_t$ (as in Hypothesis \@ref(hyp:A1)) and not to be priced (as in Hypothesis \@ref(hyp:A3)). As in Proposition \@ref(prp:defaultBondclassical)---and more precisely \@ref(eq:lambdaPQ)---this implies that
 $$
 \lambda_\ell^{\mathbb{Q}}(y_t) = \lambda_\ell(y_t),
 $$
@@ -435,17 +435,17 @@ $$
 
 Upon the arrival of the liquidity shock ($\ell_{t}=1$), the investor has to exit by selling her bond holdings. She is then limited in the number of traders she can call and, as a result, get only a fraction ($\theta_\ell^{(e)}$, say) of the price she would get in normal-liquidity times, i.e., when $\ell_{t}=0$ (see the structural interpretation in Example \@ref(exm:illiqLGD)).
 
-In that context, following the approach used in Proposition \@ref(prp:RMVclassical), one can define a *pseudo-illiquidity intensity* as follows (mimicking Eq. \@ref(eq:pseudodefintens)):
+In that context, following the approach used in Proposition \@ref(prp:RMVclassical), one can define a *pseudo-illiquidity intensity* as follows---mimicking \@ref(eq:pseudodefintens):
 \begin{eqnarray}
 \widetilde{\lambda}_{e,\ell, t} \left( y_t, y_{t-1} \right) &=& - \log \left\{ \exp \Big[ -
 \lambda_{e,\ell} \left( y_t\right) \Big] \right. + (\#eq:pseudoilliqintensity)\\
 && \left. \Big( 1 - \exp \Big[ - \lambda_{e,\ell} \left( y_t \right) \Big]
-\Big) \theta_\ell^{(e)}  \right\} \nonumber
+\Big) \theta_\ell^{(e)}  \right\}. \nonumber
 \end{eqnarray}
 
 Still consiering credit risk (on top of liquidity risk), we then have the following payoff on date $t$ (assuming no default on date $t-1$):
 \begin{equation}
-\widetilde{B}_e (t, h) = \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( r_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{e,\ell, t+i} \right) \right] \right\}.(\#eq:pseudopriceilliq)
+\widetilde{B}^{(e)}_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( i_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{e,\ell, t+i} \right) \right] \right\}.(\#eq:pseudopriceilliq)
 \end{equation}
 
 
@@ -453,7 +453,7 @@ Still consiering credit risk (on top of liquidity risk), we then have the follow
 
 This structural interpretation of the illiquidity intensity is due to @Ericsson_Renault_2006.
 
-When hit by a liquidity shock, a bondholder has to liquidate her bond in a small amount of time (between $t$ and $t+\varepsilon$, with $\varepsilon \ll 1$). She collects offers on the market; each offer is a random fraction $\omega_{i}$ ($i\in\{1,\ldots,\kappa\}$) of $\widetilde{B}_e (t, h)$ (see Eq. \@ref(eq:pseudopriceilliq)), where the $\omega_{i}$'s are uniformly distributed in $[0,1]$.
+When hit by a liquidity shock, a bondholder has to liquidate her bond in a small amount of time (between $t$ and $t+\varepsilon$, with $\varepsilon \ll 1$). She collects offers on the market; each offer is a random fraction $\omega_{i}$ ($i\in\{1,\ldots,\kappa\}$) of $\widetilde{B}^{(w)}_{t,h}$ (see Eq. \@ref(eq:pseudopriceilliq)), where the $\omega_{i}$'s are uniformly distributed in $[0,1]$.
 
 At $t+\varepsilon$, the bond is sold to the trader that has offered the highest price. Formally, when $\ell_{t}=1$, the selling price is:
 $$
@@ -615,21 +615,21 @@ lines(all.x,lwd=2)
 
 :::{.example #IBOROIS name="IBOR-OIS spreads"}
 
-@DUBECQ201629 decompose the EURIBOR versus Overnight Index Swap (OIS) spreads into a credit and a liquidity component. (See Subsection \@ref(Swap) for the definition of a swap contract.)
+@DUBECQ201629 decompose the EURIBOR versus Overnight Index Swap (OIS) spreads into a credit and a liquidity component. (See Subsection \@ref(Swaps) for the definition of a swap contract.)
 
 From the point of view of bank $j$, the EURIBOR rate is the rate of an unsecured loan to one bank ($e$, say) of the panel. Assume that the panel of the $N$ constituting the EURIBOR are homogenous. We have:
 \begin{equation}
-R^{IBOR}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( r_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{j,\ell, t+i} \right) \right] \right\}.(\#eq:EURIBOR)
+R^{IBOR}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( i_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{j,\ell, t+i} \right) \right] \right\}.(\#eq:EURIBOR)
 \end{equation}
 Note that the liquidity intensity refers to the lending bank ($j$) and the default intensity relates to the borrowing bank ($e$).
 
 
-By constrast, the Overnight-Index Swap (OIS) rate satisfies:^[The OIS is an interest-rate swap where the floating rate is an overnight-rate reference (EONIA in the euro area). At maturity, the payoff received by the fixed-rate payer is the difference between: (a) the notional ($W$, say) inflated with the date-$t$ OIS (fixed) rate (i.e. $W\exp\{h R_{t,h}^{OIS}\}$) and (b) the same notional capitalized with the realized short-term rates (i.e. $W\exp\{r_{t} + \ldots + r_{t+h-1}\}$).]
+By constrast, the Overnight-Index Swap (OIS) rate satisfies:^[The OIS is an interest-rate swap where the floating rate is an overnight-rate reference (EONIA in the euro area). At maturity, the payoff received by the fixed-rate payer is the difference between: (a) the notional ($W$, say) inflated with the date-$t$ OIS (fixed) rate (i.e. $W\exp\{h i_{t,h}^{OIS}\}$) and (b) the same notional capitalized with the realized short-term rates (i.e. $W\exp\{i_{t} + \ldots + i_{t+h-1}\}$).]
 \begin{equation}
-R^{OIS}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left( - \sum_{i=1}^{h}  r_{t+i-1} \right) \right\}.(\#eq:OIS)
+R^{OIS}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left( - \sum_{i=1}^{h}  i_{t+i-1} \right) \right\}.(\#eq:OIS)
 \end{equation}
 
-Assuming that $r_t$, the short-term risk-free rate (i.e., the reference rate of the OIS, EONIA here) is independent from the intensities and under the homogeneity assumption, we obtain:^[It is assumed here that the overnight interbank market preserves the lending bank from (i) liquidity and (ii) credit risk. The rationale behind that is twofold: (a) By rolling its cash on the overnight market (at the EONIA rate), a bank is not exposed to the risk of having to liquidate longer-term investments upon the realization of the liquidity shock; (b) while the EONIA is an unsecured-transaction rate, the extremely-short maturity of these transactions substantially reduces the credit-risk exposure of the lending bank.]
+Assuming that $i_t$, the short-term risk-free rate (i.e., the reference rate of the OIS, EONIA here) is independent from the intensities and under the homogeneity assumption, we obtain:^[It is assumed here that the overnight interbank market preserves the lending bank from (i) liquidity and (ii) credit risk. The rationale behind that is twofold: (a) By rolling its cash on the overnight market (at the EONIA rate), a bank is not exposed to the risk of having to liquidate longer-term investments upon the realization of the liquidity shock; (b) while the EONIA is an unsecured-transaction rate, the extremely-short maturity of these transactions substantially reduces the credit-risk exposure of the lending bank.]
 $$
 R^{IBOR}_{t,h} - R^{OIS}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( \widetilde{\lambda}_{c, t+i} + \widetilde{\lambda}_{\ell, t+i} \right) \right] \right\}.
 $$
@@ -659,9 +659,9 @@ Formula \@ref(eq:standardAffineCredit) and its tractability is a key feature of 
 
 * If $f (y_t  |  w_{t-1}) = f (y_t  |  y_{t-1} , d_{1, t-1})$ (entity $e = 1$ is *systemic*) then:
 
-    * The pseudo-price $\widetilde{B}_e (t, h)$ now depends on $y_t$ and $d_{1, t}$;
-    * Eq. \@ref(eq:standardPriceCredit2) is valid for entity $e = 2$ only;
-    * The computation of $\widetilde{B}_2 (t, h)$ is not straightforward: $\{ y_t \}$
+    a. The pseudo-price $\widetilde{B}^{(e)}_{t,h}$ now depends on $y_t$ and $d_{1, t}$;
+    b. Eq. \@ref(eq:standardPriceCredit2) is valid for entity $e = 2$ only;
+    c. The computation of $\widetilde{B}^{(2)}_{t,h}$ is not straightforward: $\{ y_t \}$
 is not autonomous and the autonomous process $\{ y_t, d_{1,t} \}$ is not affine.
 * If there is a contagion effect from $e = 1$ towards $e = 2$, i.e., if
 \begin{eqnarray*}
@@ -670,14 +670,14 @@ p ( d_t  |  y_t, w_{t-1} ) &=& p_1 ( d_{1, t}  |  y_t, y_{t-1}, d_{1, t-1}) \\
 \end{eqnarray*}
 then:
 
-    * Eq. \@ref(eq:standardPriceCredit2) is still valid for both entities;
-    * In an affine framework, the computation of $\widetilde{B}_1 (t, h)$ (and $B_1 (t, h)$) is straightforward; but formulas for $\widetilde{B}_2 (t, h)$ and $B_2 (t, h)$ are not explicit anymore even if $\widetilde{\lambda}_{2, t}$ is affine in $(y_t, y_{t-1}, d_{1, t}, d_{1, t-1})$.
+    a. Eq. \@ref(eq:standardPriceCredit2) is still valid for both entities;
+    b. In an affine framework, the computation of $\widetilde{B}^{(1)}_{t, h}$ (and $B^{(1)}_{t,h}$) is straightforward; but formulas for $\widetilde{B}^{(2)}_{t,h}$ and $B^{(2)}_{t,h}$ are not explicit anymore even if $\widetilde{\lambda}_{2, t}$ is affine in $(y_t, y_{t-1}, d_{1, t}, d_{1, t-1})$.
 
 * If the default event of the first entity only ($d_{1,t}$) is a source of risk that is priced: $\mathcal{M}_{t-1, t}( w_t, w_{t-1}) = \mathcal{M}_{t-1, t}( y_t, y_{t-1}, d_{1, t}, d_{1, t-1})$, then
 
-    * $\lambda^{\mathbb{Q}}_{1, t} \neq \lambda_{1, t}$ and $\lambda^{\mathbb{Q}}_{2, t} = \lambda_{2, t}$;
-    * the exogeneity of $\{ y_t \}$ is  no longer preserved under $\mathbb{Q}$;
-    * Eq. \@ref(eq:standardPriceCredit2) is no longer valid for entity $e = 1$. It remains valid for $e=2$ but the computation of $\widetilde{B}_{2} (t, h)$ is not straightforward: even if $y_t$ is $\mathbb{P}$-autonomous, this is not true under $\mathbb{Q}$.
+    a. $\lambda^{\mathbb{Q}}_{1, t} \neq \lambda_{1, t}$ and $\lambda^{\mathbb{Q}}_{2, t} = \lambda_{2, t}$;
+    b. the exogeneity of $\{ y_t \}$ is  no longer preserved under $\mathbb{Q}$;
+    c. Eq. \@ref(eq:standardPriceCredit2) is no longer valid for entity $e = 1$. It remains valid for $e=2$ but the computation of $\widetilde{B}^{(2)}_{t,h}$ is not straightforward: even if $y_t$ is $\mathbb{P}$-autonomous, this is not true under $\mathbb{Q}$.
 
 
 ### General affine credit-risk framework {#CreditGeneral}
@@ -743,17 +743,16 @@ knitr::include_graphics("figures/schema_VARG.png")
 
 
 :::{.hypothesis #H4 name="Stochastic discount factor"}
-The one-period positive SDF $\mathcal{M}_{t-1, t}$ is given by (this is Eq. \@ref(eq:keySDF), with $\alpha_t \equiv \alpha_w$):
+The one-period positive SDF $\mathcal{M}_{t-1, t}$ is given by (this is \@ref(eq:keySDF), with $\alpha_t \equiv \alpha_w$):
 \begin{equation}
-\mathcal{M}_{t,t+1} = exp[-r_{t}+\alpha'_w w_{t+1}-\psi_t(\alpha_w)],
+\mathcal{M}_{t,t+1} = exp[-i_{t}+\alpha'_w w_{t+1}-\psi_t(\alpha_w)],
 \end{equation}
-and the risk-free short rate (between $t$ and $t+1$) is given by the following affine function of the factors:
-\begin{equation}(\#eq:short_rate)
+where $\alpha_w = (\alpha_y ' , \alpha_x ' , \alpha_{\delta} ') '$ is the vector of *prices of risk*, and the risk-free short rate (between $t$ and $t+1$) is given by the following affine function of the factors:
+\begin{equation}
 \begin{array}{lll}
-r_{t}(\underline{w_{t}}) = \xi_0 + \xi_1 ' w_{t}.
-\end{array}
+i_{t}(\underline{w_{t}}) = \xi_0 + \xi_1 ' w_{t}.
+\end{array}(\#eq:shortrate)
 \end{equation}
-$\alpha_w = (\alpha_y ' , \alpha_x ' , \alpha_{\delta} ') '$ is the vector of *prices of risk*.
 :::
 
 
@@ -792,8 +791,8 @@ and where $\mathcal{V}^{(e)}_{t+i, h-i}$ denotes the *Recovery Value* (Exposure-
 
 The general framework allows for flexible specifications of the recovery payment. It can be:
 
-* the fraction of the pre-default value of the claim (Recovery of Market Value, or RMV) [see Prop. \@ref(prp:generalRMV)];
-* the fraction of par (Recovery of Face Value, or RFV) [see Proposition \@ref(prp:generalRFV)];
+* the fraction of the pre-default value of the claim (Recovery of Market Value, or RMV), see Proposition \@ref(prp:generalRMV);
+* the fraction of par (Recovery of Face Value, or RFV), see Proposition \@ref(prp:generalRFV);
 * the fraction of a no-default version of the same claim (Recovery of Treasury, or RT). In that case, the recovery payment is a fraction of the (risk-free) present value of the principal.
 
 
@@ -802,7 +801,7 @@ The general framework allows for flexible specifications of the recovery payment
 The price, at date $t < \tau^{(e)}$, of a ZCB issued by entity $e$  and maturing in $h$ periods is given by:
 \begin{equation}
 \begin{array}{lll}
-\boxed{B_{e} (t, h) = \sum_{i = 1}^{h} \left( \Lambda^{\mathbb{Q}}_{(1, t, i)} - \Lambda^{\mathbb{Q}}_{(2, t, i)} \right) + \Lambda^{\mathbb{Q}}_{(3, t, h)} ,}
+\boxed{B^{(e)}_{t,h} = \sum_{i = 1}^{h} \left( \Lambda^{\mathbb{Q}}_{(1, t, i)} - \Lambda^{\mathbb{Q}}_{(2, t, i)} \right) + \Lambda^{\mathbb{Q}}_{(3, t, h)} ,}
 \end{array}(\#eq:ZCBRFV1)
 \end{equation}
 where:
@@ -832,11 +831,11 @@ See @Monfort_Pegoraro_Renne_Roussellet_2021.
 If the recovery value at date $t+i$ (defined in \@ref(hyp:RRvalue)) is of the form:
 \begin{equation}
 \mathcal{V}^{(e)}_{t+i, h-i} =
-\mathbb{E}^{\mathbb{Q}} \left\{ \exp \left[ - \sum_{j = i}^{h-1} \left(r_{t+j} + \delta^{(e)}_{t+j+1} \right) \right]  \Big|  \underline{w_{t+i}} \right\},(\#eq:ZCBRMV1)
+\mathbb{E}^{\mathbb{Q}} \left\{ \exp \left[ - \sum_{j = i}^{h-1} \left(i_{t+j} + \delta^{(e)}_{t+j+1} \right) \right]  \Big|  \underline{w_{t+i}} \right\},(\#eq:ZCBRMV1)
 \end{equation}
-with $RR_t^{(e)} = \exp(-\delta_t^{(e)})$, and under Hypothesis \@ref(hyp:H1) to \@ref(hyp:H4), the price $B_{e} (t, h)$ at date $t < \tau^{(e)}$ is given by:
+with $RR_t^{(e)} = \exp(-\delta_t^{(e)})$, and under Hypothesis \@ref(hyp:H1) to \@ref(hyp:H4), the price $B^{(e)}_{t,h}$ at date $t < \tau^{(e)}$ is given by:
 \begin{equation}
-B_{e} (t, h) = \mathcal{V}^{(e)}_{t, h},(\#eq:ZCBRMV2)
+B^{(e)}_{t,h} = \mathcal{V}^{(e)}_{t, h},(\#eq:ZCBRMV2)
 \end{equation}
 where
 \begin{equation}
@@ -853,9 +852,9 @@ See Appendix A.4 of @Monfort_Pegoraro_Renne_Roussellet_2021.
 
 Eq. \@ref(eq:ZCBRMV2) is a key result. It reads:
 \begin{equation}
-\boxed{B_{e} (t, h) = \mathbb{E}^{\mathbb{Q}} \left\{ \exp \left[ -  \left( \sum_{i = 1}^{h}{\color{red}r_{t+i-1} + \delta^{(e)}_{t+i}} \right) \right]  \Big|  \underline{w_{t}} \right\}.}(\#eq:ZCBRMVformula2)
+\boxed{B^{(e)}_{t,h} = \mathbb{E}^{\mathbb{Q}} \left\{ \exp \left[ -  \left( \sum_{i = 1}^{h}\color{red}{i_{t+i-1} + \delta^{(e)}_{t+i}} \right) \right]  \Big|  \underline{w_{t}} \right\}.}(\#eq:ZCBRMVformula2)
 \end{equation}
-It is reminiscent of Eq. \@ref(eq:standardPriceCredit2), with $\lambda$ (default intensity) replaced with $\delta$ (credit-event variable). However, contrary to the classical framework, credit events are priced sources of risk, the no-jump condition is relaxed, contagion is allowed, and the recovery rate is stochastic. This formula can therefore be seen as a generalization of the setting of @Duffie_Singleton_1999.
+It is reminiscent of \@ref(eq:standardPriceCredit2), with $\lambda$ (default intensity) replaced with $\delta$ (credit-event variable). However, contrary to the classical framework, credit events are priced sources of risk, the no-jump condition is relaxed, contagion is allowed, and the recovery rate is stochastic. This formula can therefore be seen as a generalization of the setting of @Duffie_Singleton_1999.
 
 
 ### CDS pricing in the general framework {#CreditCDS}
@@ -888,7 +887,7 @@ Hence, the present values of the fixed-leg payments, expressed in the domestic c
 \begin{equation*}
 \begin{array}{lll}
 \mathcal{S}^{(e) f}_{t, t+h}  \sum_{i=1}^{h}   \mathbb{E}^{\mathbb{Q}}
-\left[\exp \left( s_{t+i} - \sum_{j = 1}^{i} r_{t + j - 1} \right) \textbf{1}_{\{ \delta^{(e) '}_{t : t+i} {\bf 1} = 0 \} }
+\left[\exp \left( s_{t+i} - \sum_{j = 1}^{i} i_{t + j - 1} \right) \textbf{1}_{\{ \delta^{(e) '}_{t : t+i} {\bf 1} = 0 \} }
 \Big|  \underline{w_t} \right],
 \end{array}
 \end{equation*}
@@ -896,7 +895,7 @@ Hence, the present values of the fixed-leg payments, expressed in the domestic c
 Let us turn to the *floating leg*. Under the RFV convention, the protection seller will make a payment of $(1 - RR^{(e)}_{t+i})  \exp(s_{t+i})$ (this is the loss-given-default. LGD) at date $t+i$  in case of default over the time interval $] t + i - 1, t+i ]$. The present values of the floating leg, expressed in the domestic currency, is:
 \begin{equation*}
 \begin{array}{lll}
-&& \sum_{i=1}^{h}   \mathbb{E}^{\mathbb{Q}} \left[ \exp \left( s_{t+i} - \sum_{j = 1}^{i} r_{t + j - 1}
+&& \sum_{i=1}^{h}   \mathbb{E}^{\mathbb{Q}} \left[ \exp \left( s_{t+i} - \sum_{j = 1}^{i} i_{t + j - 1}
 \right)   (1 - RR^{(e)}_{t+i})\right. \\ \\
 && \hspace{7em} \left.   \left( \textbf{1}_{\{ \delta^{(e) '}_{t : t+i-1} {\bf 1} = 0 \} } - \textbf{1}_{\{ \delta^{(e) '}_{t : t+i}
 {\bf 1} = 0 \} } \right)  \Big|  \underline{w_t}   \right],(\#eq:MCCDSPS)
@@ -920,13 +919,13 @@ where:
 and where $\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u_2 , u_1 \right)$ is given in Eq. \@ref(eq:ZCBRFV3).
 :::
 :::{.proof}
-See Online Appendix A.4 of @Monfort_Pegoraro_Renne_Roussellet_2021. The proof notably makes use of Lemma \@ref(lemma:petitlemme) (Subsection \@ref(AffineLaplace)).
+See Online Appendix A.4 of @Monfort_Pegoraro_Renne_Roussellet_2021. The proof notably makes use of Lemma \@ref(lem:lemPetitLemme) (Subsection \@ref(AffineLaplace)).
 :::
 
 
 To price a standard CDS (with payments in domestic currency), one simply has to set $\chi=0$ and $u_s=0$, which gives $s_t=0$ (since $s_t = \chi + u_s ' w_t$).
 
-@Monfort_Pegoraro_Renne_Roussellet_2021 exploit these formulas to model quanto CDSs in the euro area. Quanto CDSs are spread differentials between the two types of CDS. They exploit this framework to estimate "depreciations upon default". Indeed, in their model, $s_t$ (the log EURUSD exchange rate) is affected by the credit event variables $\delta_t$.
+@Monfort_Pegoraro_Renne_Roussellet_2021 exploit these formulas to model quanto CDSs in the euro area. Quanto CDSs are spread differentials between the two types of CDS [@Augustin_Chernov_Song_2020]. They exploit this framework to estimate "depreciations upon default". Indeed, in their model, $s_t$ (the log EURUSD exchange rate) is affected by the credit event variables $\delta_t$.
 
 ## Top-down approach {#CreditDD}
 
@@ -982,13 +981,18 @@ In this context, a wide range of credit derivatives can be priced. In particular
 
 * CDS: protection payoff $>0$, when the entity on which the CDS is written defaults.
 * CIS: protection payoff $>0$, when one entity of the underlying portfolio defaults.
-* CDO: protection payoff $>0$, when one entity of the underlying portfolio defaults, given that losses are in a given interval $[a,b]$ (e.g. $[a,b]=[3\%,6\%]$). See Figure \@ref(fig:CDO).
+* CDO: protection payoff $>0$, when one entity of the underlying portfolio defaults, given that losses are in a given interval $[a,b]$ (e.g. $[a,b]=[3\%,6\%]$). See Figure \@ref(fig:CDOs).
 
 
 
 Typical credit indices are the iTraxx (Europe) and CDX (U.S.); these indices track the default status of 125 large firms.
 
 The pricing CDO formula make an intensive use of the truncated Laplace transform (see Eq. \@ref(eq:DPS), @Duffie_Pan_Singleton_2000). The model estimation would be infeasible without the tractability provided by affine processes.
+
+```{r CDOs, fig.align = 'center', out.width = "90%", fig.cap = "Collaterlized Debt Obligations (CDOs).", echo=FALSE}
+knitr::include_graphics("figures/CDOs.png")
+```
+
 
 <!-- * Estimation based (in particular) on iTraxx Europe main index; CDOs: maturities of 3, 5 and 7 years and, for each maturity, 5 tranches: 0\%-3\%, 3\%-6\%, 6\%-9\%, 9\%-12\% and 12\%-22\%. -->
 <!-- * Fit of tranche prices shown on Figure \@ref(fig:fittranche). -->
@@ -1130,6 +1134,146 @@ The pricing CDO formula make an intensive use of the truncated Laplace transform
 <!-- \end{figure} -->
 
 
+## The shadow-intensity framework
+
+### Overview
+
+@Pallara_Renne_2023 and @Renne_Pallara_2023 investigate the pricing the sovereign credit risk in the context of shadow-intensity frameworks. In that type of framework, the prices of defaultable bonds are given by conditional expectations of the form:
+\begin{equation}
+\mathbb{E}^{\mathbb{Q}}_t(\exp[\color{blue}{-z_{t+1}-\dots-z_{t+h}}-\max(0,\lambda_{t+1})-\dots -\max(0,\lambda_{t+h})]),(\#eq:condExp)
+\end{equation}
+where $z_t$ (risk-free short-term rate) and $\lambda_t$ (*shadow default intensity*) are affine functions of the state vector $w_t$. In addition, $y_t$ follows a Gaussian vector auto-regressive (VAR) model. That is, we have:
+\begin{eqnarray*}
+z_t &=& \dot{a}'y_t + \dot{b}\\
+\lambda_t &=& a'y_t + b,
+\end{eqnarray*}
+and
+\begin{equation}
+y_t = \mu + \Phi y_{t-1}+ \Sigma\varepsilon_t,(\#eq:var)
+\end{equation}
+with $\varepsilon_t \sim \mathcal{N}(0,Id)$ (where $Id$ denotes the identity matrix).
+
+Equation \@ref(eq:condExp) gives the risk-neutral price of a bond of maturity $h$, issued by an entity whose default intensity is $\underline{\lambda}_t = \max(0,\lambda_t)$. (That is, the conditional default probability of the issuer, on date $t$, is $1-\exp(-\underline{\lambda}_t)$.) Because of the (nonlinear) max operator, the default intensity is not affine and the conditional expectation \@ref(eq:condExp) cannot be computed using the standard affine-process machinery.
+
+Absent the blue terms, the conditional expectations appearing in \@ref(eq:condExp) would be of the same type as the ones considered in the shadow-rate literature (see Subsection \@ref(Shadowrate)). In that case, one could for instance use the approaches proposed by @Priebsch_2013 or @Wu_Xia_2016 to calculate approximations for these conditional expectations. @Pallara_Renne_2023 and @Renne_Pallara_2023 extend the approach of @Wu_Xia_2016 to compute approximate values to \@ref(eq:condExp). Th present page uses the latter approach, employing codes contained in package `TSModels` to implement this approach.
+
+
+### A numerical example
+
+Consider a two-factor model, that is $y_t = [y_{1,t},y_{2,t}]'$. Assume that $z_t$ (that can be interpreted as the risk-free short term rate) depends on $y_{1,t}$ only, and that $\lambda_t$ (the shadow default intensity) depends on $y_{2,t}$.
+
+We consider the following VAR dynamics for $y_t$:
+$$
+y_t = \left[\begin{array}{cc}0.9 & 0 \\ 0 & 0.9\end{array}\right] y_{t-1} +
+\left[\begin{array}{cc}1 & 0.1 \\ 0 & 1\end{array}\right]\varepsilon_t,
+$$
+which determines $\mu$, $\Phi$, and $\Sigma$ of \@ref(eq:var).
+
+Further, we want $z_t$ (respectively $\lambda_t$) to be of mean 2\% (respectively 0) and of standard deviation $1\%$ (resp. 2/%).
+
+Let us code these specifications:
+
+```{r settings}
+Phi_x <- .9 * diag(2) # set Phi
+Sigma_x <- diag(2) # set Sigma
+Sigma_x[1,2] <- .1
+Mu_x <- matrix(0,2,1) # set mu
+stdv.z      <- .01 # set the unconditional std dev of z
+stdv.lambda <- .02 # set the unconditional std dev of lambda
+# Compute the unconditional variance of y_t:
+uncond.Variance.X <- matrix(solve(diag(2*2) - Phi_x %x% Phi_x) %*%
+                              c(Sigma_x %*% t(Sigma_x)),2,2)
+# Deduce a and a.dot:
+a.dot <- matrix(c(stdv.z/sqrt(uncond.Variance.X[1,1]),0))
+a     <- matrix(c(0,stdv.lambda/sqrt(uncond.Variance.X[2,2])))
+# Set the unconditional means of and lambda:
+b.dot <- .02; b <- .0
+```
+
+Let us have a look at simulated paths for $z_t$ and $\lambda_t$:
+
+```{r simulation1}
+library(TSModels)
+
+nb.periods <- 200
+X <- simul.X(Phi_x,Mu_x,Sigma_x,nb.periods)
+z <- b.dot + a.dot[1] * X[1,1,]
+lambda <- b + a[2] * X[2,1,]
+```
+
+```{r simulation2, fig.cap="This plots shows simulated paths for $z_t$ (risk-free short-term rate) and $\\lambda_t$ (shadow intensity). The blue dotted line, on the right-hand-side plot, is the effective intensity, that is $\\max(0,\\lambda_t)$. The vertical lines indicate those dates where lambda is minimal and maximal.", echo=FALSE}
+par(mfrow=c(1,2))
+plot(z,type="l",xlab="",main=expression(z[t]))
+plot(lambda,type="l",xlab="",main=expression(lambda[t]))
+abline(h=0,col="grey")
+lines(pmax(0,lambda),col="blue",lwd=2,lty=3)
+t.min.lambda <- which(lambda==min(lambda))
+t.max.lambda <- which(lambda==max(lambda))
+abline(v=t.min.lambda,col="red")
+abline(v=t.max.lambda,col="red",lty=2)
+```
+
+### Bond pricing {#sec:Model}
+
+Let us now evaluate the conditional expectations of \@ref(eq:condExp), for $h=\{1,\dots,10\}$. For that, we make use of function `compute.condit.Exp` of package `TSModels`.
+
+```{r computeExp, fig.cap="This is the caption"}
+H <- 10
+res <- compute.condit.Exp(a,b,a.dot,b.dot,
+                          Phi_x,Mu_x,Sigma_x,
+                          X=cbind(X[1,1,],X[2,1,]),
+                          max.h = H)
+t.min.lambda <- which(lambda==min(lambda))
+t.max.lambda <- which(lambda==max(lambda))
+rbind(res$E.n[t.max.lambda,], #approximate values of the conditional expect. for date t
+      -log(res$E.n[t.max.lambda,])/(1:H))
+```
+
+The last two lines respectively give, for the date featuring the highest $\lambda_t$, the term structures of the bond prices and of associated yields-to-maturity.
+
+Let us now compute credit-risk-free bond prices. This is obtained by taking $a=0$ and $b=0$ (so that $\lambda_t=0$): 
+
+```{r riskfree, fig.cap="This is the caption"}
+res0 <- compute.condit.Exp(a*0.00001,b*0.00001,a.dot,b.dot,
+                          Phi_x,Mu_x,Sigma_x,
+                          X=cbind(X[1,1,],X[2,1,]),
+                          max.h = H)
+y       <- - log(res$E.n) / t(matrix(1:H,H,nb.periods))
+y_RF    <- - log(res0$E.n) / t(matrix(1:H,H,nb.periods))
+spreads <- y - y_RF
+```
+
+Let us plot the term structures of yields and spreads for the date on which we observe the highest $\lambda_t$:
+
+```{r chartspreads, fig.cap="Term structures of risk-free yields (in red), and credit-risky yields (in black). Solid lines (respectively dashed lines) correspond to the date where $\\lambda_t$ is the highest (resp. the lowest). These two dates are indicated by vertical lines on the previous figure."}
+plot(y[t.max.lambda,],type="l",ylim=c(0,max(y)),xlab="maturity",ylab="yields",
+     main="Term structures of bond yields (risk-free and defaultable bonds)",lwd=2)
+lines(y_RF[t.max.lambda,],col="red",lwd=2)
+lines(y_RF[t.min.lambda,],col="red",lwd=2,lty=2)
+lines(y[t.min.lambda,],lwd=2,lty=2)
+```
+
+Let us check the formulas by simulations. More precisely, we calculate the conditional expectation given in \@ref(eq:condExp) using Monte-Carlo simulations, for different maturities $h$. We will then compare these prices with the ones resulting from function `compute.condit.Exp`. We consider the date on which $\lambda_t$ is the highest.
+
+
+```{r loaddataset, fig.cap="Comparison between formula-based prices and Monte-Carlo-based defaultable bond prices."}
+nb.replics <- 10000 # Number of simulated trajectories
+t  <- t.max.lambda # date on which cond. expect. are computed
+Xt <- matrix(X[,1,t],ncol=1) # state vector on that date
+
+# Simulate trajectories starting from Xt:
+X <- simul.X(Phi_x,Mu_x,Sigma_x,nb.periods=H,X0 = Xt,nb.replics = nb.replics)
+# Compute prices for each trajectory:
+aux1 <- apply(X,c(2,3),function(x){exp(- b.dot - t(x)%*%a.dot -
+                                        pmax(0,b + t(x)%*%a))})
+aux2 <- apply(aux1,1,cumprod)
+# Compute averages of prices across simulated trajectories:
+simul.prices <- apply(aux2,1,mean)
+# Compare with output of compute.condit.Exp:
+plot(res$E.n[t,],lwd=2,main="Approximate formula versus Monte-Carlo approach")
+lines(simul.prices)
+legend("topright",c("Approximate formula","Monte-Carlo"),lty=c(NaN,1),pch=c(1,NaN),lwd=c(2,1))
+```
 
 
 

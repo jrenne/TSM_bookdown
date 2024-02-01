@@ -28,15 +28,15 @@
 \contentsline {subsection}{\numberline {2.3.1}The direct modelling}{52}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}The R.N.-constrained direct modelling (or mixed modelling)}{53}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}Back modelling (based on three steps)}{53}{subsection.2.3.3}%
-\contentsline {chapter}{\numberline {3}The term structure or risk-free yields}{55}{chapter.3}%
+\contentsline {chapter}{\numberline {3}The term structure of risk-free yields}{55}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Introduction}{55}{section.3.1}%
 \contentsline {section}{\numberline {3.2}The Affine Case}{58}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Affine yields}{58}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Maximum Sharpe ratio}{60}{subsection.3.2.2}%
 \contentsline {section}{\numberline {3.3}Gaussian Affine Term Structure Model}{61}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Non-Negative Affine Term Structure Model}{65}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}The shadow-rate approach}{65}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}The auto-regressive gamma approach}{69}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.1}The shadow-rate approach}{67}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}The auto-regressive gamma approach}{71}{subsection.3.4.2}%
 \contentsline {chapter}{\numberline {4}A detour through structural approaches}{75}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF)}{75}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}The SDF when agents feature expected-utility time-separable preferences}{76}{subsection.4.1.1}%
@@ -87,4 +87,8 @@
 \contentsline {subsection}{\numberline {7.4.1}General affine credit-risk framework}{180}{subsection.7.4.1}%
 \contentsline {subsection}{\numberline {7.4.2}CDS pricing in the general framework}{185}{subsection.7.4.2}%
 \contentsline {section}{\numberline {7.5}Top-down approach}{188}{section.7.5}%
-\contentsline {chapter}{\numberline {8}References}{191}{chapter.8}%
+\contentsline {section}{\numberline {7.6}The shadow-intensity framework}{190}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Overview}{190}{subsection.7.6.1}%
+\contentsline {subsection}{\numberline {7.6.2}A numerical example}{192}{subsection.7.6.2}%
+\contentsline {subsection}{\numberline {7.6.3}Bond pricing}{193}{subsection.7.6.3}%
+\contentsline {chapter}{\numberline {8}References}{197}{chapter.8}%

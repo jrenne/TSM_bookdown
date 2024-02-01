@@ -1,259 +1,90 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Credit and liquidity risks | Introduction to Term Structure Models</title>
-  <meta name="description" content="This is an introduction to the modelling of dynamic term structures." />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 7 Credit and liquidity risks | Introduction to Term Structure Models" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="This is an introduction to the modelling of dynamic term structures." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Credit and liquidity risks | Introduction to Term Structure Models" />
-  
-  <meta name="twitter:description" content="This is an introduction to the modelling of dynamic term structures." />
-  
-
-<meta name="author" content="Jean-Paul Renne and Alain Monfort" />
-
-
-<meta name="date" content="2024-02-01" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"/>
-<link rel="next" href="references.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Credit and liquidity risks | Introduction to Term Structure Models</title>
+<meta name="author" content="Jean-Paul Renne and Alain Monfort">
+<meta name="description" content="7.1 Notations The information of the investor at date \(t\) is still denoted by \(\underline{w_t} = (w_t',w_{t-1}',\dots, w_1 ') '\), but \(w_t\) now comprises a new subsector, namely \(d_t\),...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Credit and liquidity risks | Introduction to Term Structure Models">
+<meta property="og:type" content="book">
+<meta property="og:description" content="7.1 Notations The information of the investor at date \(t\) is still denoted by \(\underline{w_t} = (w_t',w_{t-1}',\dots, w_1 ') '\), but \(w_t\) now comprises a new subsector, namely \(d_t\),...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Credit and liquidity risks | Introduction to Term Structure Models">
+<meta name="twitter:description" content="7.1 Notations The information of the investor at date \(t\) is still denoted by \(\underline{w_t} = (w_t',w_{t-1}',\dots, w_1 ') '\), but \(w_t\) now comprises a new subsector, namely \(d_t\),...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 <style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="my-style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Term Structure Models</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="ChapterAffine.html"><a href="ChapterAffine.html"><i class="fa fa-check"></i><b>1</b> Affine processes</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="ChapterAffine.html"><a href="ChapterAffine.html#Information"><i class="fa fa-check"></i><b>1.1</b> Information in the Economy: The “factors”</a></li>
-<li class="chapter" data-level="1.2" data-path="ChapterAffine.html"><a href="ChapterAffine.html#Dynamic"><i class="fa fa-check"></i><b>1.2</b> Dynamic models and Laplace transform (L.T.)</a></li>
-<li class="chapter" data-level="1.3" data-path="ChapterAffine.html"><a href="ChapterAffine.html#AffineLaplace"><i class="fa fa-check"></i><b>1.3</b> Laplace Transform and moments/cumulants</a></li>
-<li class="chapter" data-level="1.4" data-path="ChapterAffine.html"><a href="ChapterAffine.html#additional-properties-of-the-laplace-transform"><i class="fa fa-check"></i><b>1.4</b> Additional properties of the Laplace transform</a></li>
-<li class="chapter" data-level="1.5" data-path="ChapterAffine.html"><a href="ChapterAffine.html#AffineCar"><i class="fa fa-check"></i><b>1.5</b> Affine (or Car) processes</a>
-<ul>
-<li class="chapter" data-level="1.5.1" data-path="ChapterAffine.html"><a href="ChapterAffine.html#car-processes-of-order-one"><i class="fa fa-check"></i><b>1.5.1</b> Car processes of order one</a></li>
-<li class="chapter" data-level="1.5.2" data-path="ChapterAffine.html"><a href="ChapterAffine.html#SubCarp"><i class="fa fa-check"></i><b>1.5.2</b> Car processes of order <span class="math inline">\(p\)</span></a></li>
-</ul></li>
-<li class="chapter" data-level="1.6" data-path="ChapterAffine.html"><a href="ChapterAffine.html#Markov"><i class="fa fa-check"></i><b>1.6</b> Markov chains</a></li>
-<li class="chapter" data-level="1.7" data-path="ChapterAffine.html"><a href="ChapterAffine.html#WAR"><i class="fa fa-check"></i><b>1.7</b> Wishart autoregressive (WAR) processes</a></li>
-<li class="chapter" data-level="1.8" data-path="ChapterAffine.html"><a href="ChapterAffine.html#building"><i class="fa fa-check"></i><b>1.8</b> Building affine processes</a>
-<ul>
-<li class="chapter" data-level="1.8.1" data-path="ChapterAffine.html"><a href="ChapterAffine.html#stoch"><i class="fa fa-check"></i><b>1.8.1</b> Univariate affine processes with stochastic parameters</a></li>
-<li class="chapter" data-level="1.8.2" data-path="ChapterAffine.html"><a href="ChapterAffine.html#buildingmulti"><i class="fa fa-check"></i><b>1.8.2</b> Multivariate affine processes</a></li>
-<li class="chapter" data-level="1.8.3" data-path="ChapterAffine.html"><a href="ChapterAffine.html#extending-multivariate-stochastic-processes"><i class="fa fa-check"></i><b>1.8.3</b> Extending multivariate stochastic processes</a></li>
-<li class="chapter" data-level="1.8.4" data-path="ChapterAffine.html"><a href="ChapterAffine.html#AffineExtended"><i class="fa fa-check"></i><b>1.8.4</b> Extended affine processes</a></li>
-</ul></li>
-<li class="chapter" data-level="1.9" data-path="ChapterAffine.html"><a href="ChapterAffine.html#MHLT"><i class="fa fa-check"></i><b>1.9</b> Multi-horizon Laplace transform</a>
-<ul>
-<li class="chapter" data-level="1.9.1" data-path="ChapterAffine.html"><a href="ChapterAffine.html#recursive-computation-and-direct-pricing-implications"><i class="fa fa-check"></i><b>1.9.1</b> Recursive computation and direct pricing implications</a></li>
-<li class="chapter" data-level="1.9.2" data-path="ChapterAffine.html"><a href="ChapterAffine.html#ExponentialPayoff"><i class="fa fa-check"></i><b>1.9.2</b> Exponential payoff</a></li>
-</ul></li>
-<li class="chapter" data-level="1.10" data-path="ChapterAffine.html"><a href="ChapterAffine.html#var-representation-and-conditional-moments"><i class="fa fa-check"></i><b>1.10</b> VAR representation and conditional moments</a></li>
-<li class="chapter" data-level="1.11" data-path="ChapterAffine.html"><a href="ChapterAffine.html#TransfAna"><i class="fa fa-check"></i><b>1.11</b> Truncated Laplace transforms of affine processes</a></li>
-<li class="chapter" data-level="1.12" data-path="ChapterAffine.html"><a href="ChapterAffine.html#appendices"><i class="fa fa-check"></i><b>1.12</b> Appendices</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="PandQ.html"><a href="PandQ.html"><i class="fa fa-check"></i><b>2</b> Pricing and risk-neutral dynamics</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="PandQ.html"><a href="PandQ.html#PricingAAO"><i class="fa fa-check"></i><b>2.1</b> SDF: Absence of Arbitrage Approach</a>
-<ul>
-<li class="chapter" data-level="2.1.1" data-path="PandQ.html"><a href="PandQ.html#existence-and-unicity-of-the-sdf"><i class="fa fa-check"></i><b>2.1.1</b> Existence and unicity of the SDF</a></li>
-<li class="chapter" data-level="2.1.2" data-path="PandQ.html"><a href="PandQ.html#PricingAffine"><i class="fa fa-check"></i><b>2.1.2</b> Exponential affine SDF</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="PandQ.html"><a href="PandQ.html#PricingRN"><i class="fa fa-check"></i><b>2.2</b> The risk-neutral (R.N.) dynamics</a></li>
-<li class="chapter" data-level="2.3" data-path="PandQ.html"><a href="PandQ.html#PricingTypology"><i class="fa fa-check"></i><b>2.3</b> Typology of econometric asset-pricing models</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="PandQ.html"><a href="PandQ.html#DirectModeling"><i class="fa fa-check"></i><b>2.3.1</b> The direct modelling</a></li>
-<li class="chapter" data-level="2.3.2" data-path="PandQ.html"><a href="PandQ.html#the-r.n.-constrained-direct-modelling-or-mixed-modelling"><i class="fa fa-check"></i><b>2.3.2</b> The R.N.-constrained direct modelling (or mixed modelling)</a></li>
-<li class="chapter" data-level="2.3.3" data-path="PandQ.html"><a href="PandQ.html#back-modelling-based-on-three-steps"><i class="fa fa-check"></i><b>2.3.3</b> Back modelling (based on three steps)</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="TSModels.html"><a href="TSModels.html"><i class="fa fa-check"></i><b>3</b> The term structure or risk-free yields</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="TSModels.html"><a href="TSModels.html#RFIntroduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="TSModels.html"><a href="TSModels.html#RiskFreeAffine"><i class="fa fa-check"></i><b>3.2</b> The Affine Case</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="TSModels.html"><a href="TSModels.html#AffineYields"><i class="fa fa-check"></i><b>3.2.1</b> Affine yields</a></li>
-<li class="chapter" data-level="3.2.2" data-path="TSModels.html"><a href="TSModels.html#maximum-sharpe-ratio"><i class="fa fa-check"></i><b>3.2.2</b> Maximum Sharpe ratio</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="TSModels.html"><a href="TSModels.html#RiskFreeGaussian"><i class="fa fa-check"></i><b>3.3</b> Gaussian Affine Term Structure Model</a></li>
-<li class="chapter" data-level="3.4" data-path="TSModels.html"><a href="TSModels.html#RiskFreeNonNegative"><i class="fa fa-check"></i><b>3.4</b> Non-Negative Affine Term Structure Model</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="TSModels.html"><a href="TSModels.html#the-shadow-rate-approach"><i class="fa fa-check"></i><b>3.4.1</b> The shadow-rate approach</a></li>
-<li class="chapter" data-level="3.4.2" data-path="TSModels.html"><a href="TSModels.html#the-auto-regressive-gamma-approach"><i class="fa fa-check"></i><b>3.4.2</b> The auto-regressive gamma approach</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="Structural.html"><a href="Structural.html"><i class="fa fa-check"></i><b>4</b> A detour through structural approaches</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="Structural.html"><a href="Structural.html#PricingEquilibrium"><i class="fa fa-check"></i><b>4.1</b> Consumption-based Capital Asset Pricing Model (CCAPM) and stochastic discount factor (SDF)</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="Structural.html"><a href="Structural.html#the-sdf-when-agents-feature-expected-utility-time-separable-preferences"><i class="fa fa-check"></i><b>4.1.1</b> The SDF when agents feature expected-utility time-separable preferences</a></li>
-<li class="chapter" data-level="4.1.2" data-path="Structural.html"><a href="Structural.html#risk-aversion-and-intertemporal-elasticity-of-substitution"><i class="fa fa-check"></i><b>4.1.2</b> Risk aversion and intertemporal elasticity of substitution</a></li>
-<li class="chapter" data-level="4.1.3" data-path="Structural.html"><a href="Structural.html#the-case-of-the-power-utility-function"><i class="fa fa-check"></i><b>4.1.3</b> The case of the power utility function</a></li>
-<li class="chapter" data-level="4.1.4" data-path="Structural.html"><a href="Structural.html#limitationsCCAPM"><i class="fa fa-check"></i><b>4.1.4</b> The limitations of the CCAPM</a></li>
-<li class="chapter" data-level="4.1.5" data-path="Structural.html"><a href="Structural.html#c-capm-that-bad"><i class="fa fa-check"></i><b>4.1.5</b> C-CAPM: That bad?</a></li>
-<li class="chapter" data-level="4.1.6" data-path="Structural.html"><a href="Structural.html#the-term-structure-of-real-interest-rates-in-the-ccapm"><i class="fa fa-check"></i><b>4.1.6</b> The term structure of real interest rates in the CCAPM</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="Structural.html"><a href="Structural.html#recursive-utilities"><i class="fa fa-check"></i><b>4.2</b> Recursive Utilities</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="Structural.html"><a href="Structural.html#habit-formation"><i class="fa fa-check"></i><b>4.2.1</b> Habit formation</a></li>
-<li class="chapter" data-level="4.2.2" data-path="Structural.html"><a href="Structural.html#limitations-of-the-habit-model-for-long-horizons"><i class="fa fa-check"></i><b>4.2.2</b> Limitations of the habit model for long-horizons</a></li>
-<li class="chapter" data-level="4.2.3" data-path="Structural.html"><a href="Structural.html#EZsection"><i class="fa fa-check"></i><b>4.2.3</b> Epstein-Zin preferences</a></li>
-<li class="chapter" data-level="4.2.4" data-path="Structural.html"><a href="Structural.html#epstein-zin-preferences-and-risk-aversion"><i class="fa fa-check"></i><b>4.2.4</b> Epstein-Zin preferences and risk aversion</a></li>
-<li class="chapter" data-level="4.2.5" data-path="Structural.html"><a href="Structural.html#epstein-zin-preferences-and-ies"><i class="fa fa-check"></i><b>4.2.5</b> Epstein-Zin preferences and IES</a></li>
-<li class="chapter" data-level="4.2.6" data-path="Structural.html"><a href="Structural.html#epstein-zin-preferences-and-the-time-composition-of-risk"><i class="fa fa-check"></i><b>4.2.6</b> Epstein-Zin Preferences and the time composition of risk</a></li>
-<li class="chapter" data-level="4.2.7" data-path="Structural.html"><a href="Structural.html#epstein-zin-preferences-and-early-resolution-uncertainty"><i class="fa fa-check"></i><b>4.2.7</b> Epstein-Zin preferences and early resolution uncertainty</a></li>
-<li class="chapter" data-level="4.2.8" data-path="Structural.html"><a href="Structural.html#the-sdf-with-epstein-zin-preferences"><i class="fa fa-check"></i><b>4.2.8</b> The SDF with Epstein-Zin preferences</a></li>
-<li class="chapter" data-level="4.2.9" data-path="Structural.html"><a href="Structural.html#long-run-risk-model"><i class="fa fa-check"></i><b>4.2.9</b> Long-run risk model</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="Structural.html"><a href="Structural.html#PHabitat"><i class="fa fa-check"></i><b>4.3</b> Preferred-habitat model of the term-structure of interest rate</a></li>
-<li class="chapter" data-level="4.4" data-path="Structural.html"><a href="Structural.html#appendix"><i class="fa fa-check"></i><b>4.4</b> Appendix</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="Structural.html"><a href="Structural.html#SDFEZ"><i class="fa fa-check"></i><b>4.4.1</b> SDF in the CES Epstein-Zin Context</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="Estimation.html"><a href="Estimation.html"><i class="fa fa-check"></i><b>5</b> Estimation of affine asset-pricing models</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="Estimation.html"><a href="Estimation.html#EstimationSSModel"><i class="fa fa-check"></i><b>5.1</b> State-space model</a></li>
-<li class="chapter" data-level="5.2" data-path="Estimation.html"><a href="Estimation.html#Estimation:KF"><i class="fa fa-check"></i><b>5.2</b> Kalman-filter-based approach</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="Estimation.html"><a href="Estimation.html#the-gaussian-linear-state-space-case"><i class="fa fa-check"></i><b>5.2.1</b> The Gaussian linear state-space case</a></li>
-<li class="chapter" data-level="5.2.2" data-path="Estimation.html"><a href="Estimation.html#missing-observations"><i class="fa fa-check"></i><b>5.2.2</b> Missing observations</a></li>
-<li class="chapter" data-level="5.2.3" data-path="Estimation.html"><a href="Estimation.html#about-non-constant-conditional-matrix-sigma"><i class="fa fa-check"></i><b>5.2.3</b> About non-constant conditional matrix <span class="math inline">\(\Sigma\)</span></a></li>
-<li class="chapter" data-level="5.2.4" data-path="Estimation.html"><a href="Estimation.html#nonlinear"><i class="fa fa-check"></i><b>5.2.4</b> Non-linear models</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="Estimation.html"><a href="Estimation.html#EstimationInversion"><i class="fa fa-check"></i><b>5.3</b> The inversion technique</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="Estimation.html"><a href="Estimation.html#EstimationRS"><i class="fa fa-check"></i><b>5.3.1</b> Dealing with unobserved regimes</a></li>
-<li class="chapter" data-level="5.3.2" data-path="Estimation.html"><a href="Estimation.html#MixedKitagawaHamilton"><i class="fa fa-check"></i><b>5.3.2</b> Mixed use of Kitagawa-Hamilton and inversion techniques</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="Estimation.html"><a href="Estimation.html#EstimationPersistency"><i class="fa fa-check"></i><b>5.4</b> A typical small-sample issue</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><i class="fa fa-check"></i><b>6</b> Forward, futures, dividends, commodity pricing, and convenience yields</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#derivatives-written-on-stocks-or-commodities"><i class="fa fa-check"></i><b>6.1</b> Derivatives written on stocks or commodities</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#FCFPForwards"><i class="fa fa-check"></i><b>6.1.1</b> Forward contracts</a></li>
-<li class="chapter" data-level="6.1.2" data-path="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#FCFPFutures"><i class="fa fa-check"></i><b>6.1.2</b> Futures contracts, futures prices</a></li>
-<li class="chapter" data-level="6.1.3" data-path="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#FCFPConvenience"><i class="fa fa-check"></i><b>6.1.3</b> Convenience yields</a></li>
-<li class="chapter" data-level="6.1.4" data-path="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#FCFPPricingRN"><i class="fa fa-check"></i><b>6.1.4</b> Pricing with affine models</a></li>
-<li class="chapter" data-level="6.1.5" data-path="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#historical-dynamics"><i class="fa fa-check"></i><b>6.1.5</b> Historical dynamics</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#interest-rate-swaps-and-forward-contracts"><i class="fa fa-check"></i><b>6.2</b> Interest-rate swaps and forward contracts</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#Swaps"><i class="fa fa-check"></i><b>6.2.1</b> Swap rates</a></li>
-<li class="chapter" data-level="6.2.2" data-path="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#FWD"><i class="fa fa-check"></i><b>6.2.2</b> Forward rates</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="CreditLiRisks.html"><a href="CreditLiRisks.html"><i class="fa fa-check"></i><b>7</b> Credit and liquidity risks</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="CreditLiRisks.html"><a href="CreditLiRisks.html#CreditNotations"><i class="fa fa-check"></i><b>7.1</b> Notations</a></li>
-<li class="chapter" data-level="7.2" data-path="CreditLiRisks.html"><a href="CreditLiRisks.html#CreditStandard"><i class="fa fa-check"></i><b>7.2</b> Pricing under standard assumptions</a></li>
-<li class="chapter" data-level="7.3" data-path="CreditLiRisks.html"><a href="CreditLiRisks.html#CreditIlliq"><i class="fa fa-check"></i><b>7.3</b> Pricing illiquid bonds</a></li>
-<li class="chapter" data-level="7.4" data-path="CreditLiRisks.html"><a href="CreditLiRisks.html#Creditrelaxing"><i class="fa fa-check"></i><b>7.4</b> Relaxing the classical framework assumptions</a>
-<ul>
-<li class="chapter" data-level="7.4.1" data-path="CreditLiRisks.html"><a href="CreditLiRisks.html#CreditGeneral"><i class="fa fa-check"></i><b>7.4.1</b> General affine credit-risk framework</a></li>
-<li class="chapter" data-level="7.4.2" data-path="CreditLiRisks.html"><a href="CreditLiRisks.html#CreditCDS"><i class="fa fa-check"></i><b>7.4.2</b> CDS pricing in the general framework</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="CreditLiRisks.html"><a href="CreditLiRisks.html#CreditDD"><i class="fa fa-check"></i><b>7.5</b> Top-down approach</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction to Term Structure Models</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Term Structure Models</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
+<li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
+<li><a class="" href="PandQ.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
+<li><a class="" href="TSModels.html"><span class="header-section-number">3</span> The term structure of risk-free yields</a></li>
+<li><a class="" href="Structural.html"><span class="header-section-number">4</span> A detour through structural approaches</a></li>
+<li><a class="" href="Estimation.html"><span class="header-section-number">5</span> Estimation of affine asset-pricing models</a></li>
+<li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
+<li><a class="active" href="CreditLiRisks.html"><span class="header-section-number">7</span> Credit and liquidity risks</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">8</span> References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="CreditLiRisks" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Credit and liquidity risks<a href="CreditLiRisks.html#CreditLiRisks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="CreditLiRisks" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Credit and liquidity risks<a class="anchor" aria-label="anchor" href="#CreditLiRisks"><i class="fas fa-link"></i></a>
+</h1>
 <!-- The modeling of credit and liquidity is  -->
 <!-- ## Dynamic credit risk models: Why? -->
 <!-- * Compute Values-at-Risk of portfolios of credit-sensitive instruments. -->
@@ -261,13 +92,17 @@ div.csl-indent {
 <!-- * Compute expected excess returns of defaultable bonds. -->
 <!-- * Price exotic credit derivatives. -->
 <!-- * Academic perspective: Understanding the pricing of credit risk. -->
-<div id="CreditNotations" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Notations<a href="CreditLiRisks.html#CreditNotations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The information of the investor at date <span class="math inline">\(t\)</span> is still denoted by <span class="math inline">\(\underline{w_t} = (w_t&#39;,w_{t-1}&#39;,\dots, w_1 &#39;) &#39;\)</span>, but <span class="math inline">\(w_t\)</span> now comprises a new subsector, namely <span class="math inline">\(d_t\)</span>, that keeps track of the “default” status of some creditors. Formally, <span class="math inline">\(w_t = (y_t&#39;,d_t&#39;)&#39;\)</span>, where <span class="math inline">\(y_t\)</span> is a <span class="math inline">\(n_y\)</span>-dimensional vector of common factors, and <span class="math inline">\(d_t = (d_{1, t} , \dots, d_{E, t}) &#39;\)</span> a <span class="math inline">\(E\)</span>-dimensional vector of binary variables representing the possible default of entities <span class="math inline">\(e \in \{1, \dots,E\}\)</span>. Vector <span class="math inline">\(w_t\)</span> is <span class="math inline">\(K\)</span>-dimensional, that is <span class="math inline">\(K = n_y + E\)</span>.</p>
+<div id="CreditNotations" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Notations<a class="anchor" aria-label="anchor" href="#CreditNotations"><i class="fas fa-link"></i></a>
+</h2>
+<p>The information of the investor at date <span class="math inline">\(t\)</span> is still denoted by <span class="math inline">\(\underline{w_t} = (w_t',w_{t-1}',\dots, w_1 ') '\)</span>, but <span class="math inline">\(w_t\)</span> now comprises a new subsector, namely <span class="math inline">\(d_t\)</span>, that keeps track of the “default” status of some creditors. Formally, <span class="math inline">\(w_t = (y_t',d_t')'\)</span>, where <span class="math inline">\(y_t\)</span> is a <span class="math inline">\(n_y\)</span>-dimensional vector of common factors, and <span class="math inline">\(d_t = (d_{1, t} , \dots, d_{E, t}) '\)</span> a <span class="math inline">\(E\)</span>-dimensional vector of binary variables representing the possible default of entities <span class="math inline">\(e \in \{1, \dots,E\}\)</span>. Vector <span class="math inline">\(w_t\)</span> is <span class="math inline">\(K\)</span>-dimensional, that is <span class="math inline">\(K = n_y + E\)</span>.</p>
 <p>By convention:</p>
 <ul>
-<li><span class="math inline">\(d_{e, t} = 1\)</span> if entity <span class="math inline">\(e\)</span> is in default status at time <span class="math inline">\(t\)</span>,</li>
-<li><span class="math inline">\(d_{e, t} = 0\)</span> if entity <span class="math inline">\(e\)</span> is not in default status at time <span class="math inline">\(t\)</span>.</li>
+<li>
+<span class="math inline">\(d_{e, t} = 1\)</span> if entity <span class="math inline">\(e\)</span> is in default status at time <span class="math inline">\(t\)</span>,</li>
+<li>
+<span class="math inline">\(d_{e, t} = 0\)</span> if entity <span class="math inline">\(e\)</span> is not in default status at time <span class="math inline">\(t\)</span>.</li>
 </ul>
 <p>We assume that the process <span class="math inline">\(\{w_t\}\)</span> is Markov. Formally, its historical (<span class="math inline">\(\mathbb{P}\)</span>) dynamics is defined by the conditional densities:
 <span class="math display">\[
@@ -283,8 +118,10 @@ p_e ( 0  |  y_t, w_{t-1}, d_{e,t-1}=0 ) = \exp[-\underbrace{\lambda_e ( y_t, w_{
 \end{equation}\]</span></p>
 <p>It is easily checked that <span class="math inline">\(\lambda_e ( y_t, w_{t-1})\)</span> is close to the conditional probability of default when it is small.</p>
 </div>
-<div id="CreditStandard" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Pricing under standard assumptions<a href="CreditLiRisks.html#CreditStandard" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="CreditStandard" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Pricing under standard assumptions<a class="anchor" aria-label="anchor" href="#CreditStandard"><i class="fas fa-link"></i></a>
+</h2>
 <p>To start with, we will consider the pricing of defaultable bonds under assumptions that are standard in the literature, a framework that we call the <em>classical credit-risk framework</em>. These assumptions—namely <a href="CreditLiRisks.html#hyp:A1">7.2</a> and <a href="CreditLiRisks.html#hyp:A3">7.3</a>—lead to simple formulas. We will investigate further what happens when these assumptions are relaxed (Subsection <a href="CreditLiRisks.html#Creditrelaxing">7.4</a>).</p>
 <div class="hypothesis">
 <p><span id="hyp:A1" class="hypothesis"><strong>Hypothesis 7.2  (Non-systemic entity) </strong></span><span class="math inline">\(\{d_t\}\)</span> does not Granger-cause <span class="math inline">\(\{y_t\}\)</span>, in the sense that:
@@ -299,12 +136,12 @@ f(y_t|w_{t-1}) = f(y_t|y_{t-1}).
 \mathcal{M}_{t-1, t}( w_t, w_{t-1}) = \mathcal{M}_{t-1, t}( y_t, y_{t-1}) .
 \end{equation*}\]</span></p>
 </div>
-<p>In other words, under Hypothesis <a href="CreditLiRisks.html#hyp:A3">7.3</a>, defaults do not affect the SDF (conditionally on <span class="math inline">\(\underline{y_t}\)</span>).</p>
-<p>Hypothesis <a href="CreditLiRisks.html#hyp:A3">7.3</a> also implies that the short-term risk-free rate <span class="math inline">\(r_t\)</span> (<span class="math inline">\(=-\log\mathbb{E}_t(\mathcal{M}_{t,t+1})\)</span>) depends on <span class="math inline">\(\underline{y_t}\)</span> (but not on <span class="math inline">\(d_t\)</span>).</p>
+<p>In other words, under Hypothesis <a href="CreditLiRisks.html#hyp:A3">7.3</a>, defaults do not affect the SDF conditionally on <span class="math inline">\(\underline{y_t}\)</span>.</p>
+<p>Hypothesis <a href="CreditLiRisks.html#hyp:A3">7.3</a> also implies that the short-term risk-free rate <span class="math inline">\(i_t=-\log\mathbb{E}_t(\mathcal{M}_{t,t+1})\)</span> depends on <span class="math inline">\(\underline{y_t}\)</span> (but not on <span class="math inline">\(d_t\)</span>).</p>
 <p>Figure <a href="CreditLiRisks.html#fig:classical">7.1</a> provides a graphical representation of the causality scheme in the classical credit-risk framework.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:classical"></span>
-<img src="figures/Schema0.png" alt="Graphical representation of the causality scheme in the classical credit-risk framework." width="80%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:classical"></span>
+<img src="figures/Schema0.png" alt="Graphical representation of the causality scheme in the classical credit-risk framework." width="80%"><p class="caption">
 Figure 7.1: Graphical representation of the causality scheme in the classical credit-risk framework.
 </p>
 </div>
@@ -316,19 +153,19 @@ f^{\mathbb{Q}}(y_t|w_{t-1}) = f^{\mathbb{Q}}(y_t|y_{t-1}),
 that is, <span class="math inline">\(\{d_t\}\)</span> does not Granger-cause <span class="math inline">\(\{y_t\}\)</span> under the risk-neutral measure.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-1" class="proof"><em>Proof</em>. </span>We have:
-<span class="math display">\[\begin{eqnarray}
-f^{\mathbb{Q}}(y_t|w_{t-1}) &amp;=&amp; f(y_t|w_{t-1})\mathcal{M}_{t-1,t}\exp(r_{t-1})\\
-&amp;=&amp; f(y_t|y_{t-1})\mathcal{M}_{t-1,t}\exp(r_{t-1}),
+<p><span id="unlabeled-div-27" class="proof"><em>Proof</em>. </span>We have:
+<span class="math display" id="eq:basic">\[\begin{eqnarray}
+f^{\mathbb{Q}}(y_t|w_{t-1}) &amp;=&amp; f(y_t|w_{t-1})\mathcal{M}_{t-1,t}\exp(i_{t-1})\\
+&amp;=&amp; f(y_t|y_{t-1})\mathcal{M}_{t-1,t}\exp(i_{t-1}),
 \end{eqnarray}\]</span>
-which gives the results, using that <span class="math inline">\(\mathcal{M}_{t-1,t}\)</span> and <span class="math inline">\(\exp(r_{t-1})\)</span> depend on <span class="math inline">\(y_{t-1}\)</span> only (and not on <span class="math inline">\(d_t\)</span>).</p>
+which gives the results, using that <span class="math inline">\(\mathcal{M}_{t-1,t}\)</span> and <span class="math inline">\(\exp(i_{t-1})\)</span> depend on <span class="math inline">\(y_{t-1}\)</span> only (and not on <span class="math inline">\(d_t\)</span>).</p>
 </div>
 <!-- Proposition \@ref(prp:exogdunderQ) shows that, under Hypotheses \@ref(hyp:A1) and \@ref(hyp:A3), $d_t$ does not Granger-cause $y_t$ under the risk-neutral measure. -->
-<p>To simplify, let us focus on a single entity (<span class="math inline">\(d_t \equiv d_{1,t}\)</span>), alive on date <span class="math inline">\(t\)</span> (<span class="math inline">\(d_t=0\)</span>). Consider the date-<span class="math inline">\(t\)</span> price of a bond issued by the defaultable entity. The residual maturity of this bond is denoted by <span class="math inline">\(h\)</span>, and we consider a zero recovery rate (in case of default, the pyoff is zero). The price of this bond writes:
+<p>To simplify, let us focus on a single entity (<span class="math inline">\(d_t \equiv d_{1,t}\)</span>), alive on date <span class="math inline">\(t\)</span> (<span class="math inline">\(d_t=0\)</span>). Consider the date-<span class="math inline">\(t\)</span> price of a bond issued by the defaultable entity. The residual maturity of this bond is denoted by <span class="math inline">\(h\)</span>, and we consider a zero recovery rate (in case of default, the payoff is zero). Using @ref\tag{2.1}, the price of this bond writes:
 <span class="math display">\[
-B(t,h) = \mathbb{E}_t^{\mathbb{Q}}[\exp(-r_t-\dots-r_{t+h-1})(1-d_{t+h})].
+B^d_{t,h} = \mathbb{E}_t^{\mathbb{Q}}[\exp(-i_t-\dots-i_{t+h-1})(1-d_{t+h})].
 \]</span></p>
-<p>The following proposition is at the core of the <em>classical credit-risk framework</em> <span class="citation">(<a href="#ref-Duffie_Singleton_1999">Darrell Duffie and Singleton 1999</a>)</span>:</p>
+<p>The following proposition is at the core of the <em>classical credit-risk framework</em> <span class="citation">(<a href="references.html#ref-Duffie_Singleton_1999">Darrell Duffie and Singleton 1999</a>)</span>:</p>
 <div class="proposition">
 <p><span id="prp:defaultBondclassical" class="proposition"><strong>Proposition 7.2  (Defaultabe zero-coupon bond pricing in the classical credit-risk framework) </strong></span>Under Hypotheses <a href="CreditLiRisks.html#hyp:A1">7.2</a> and <a href="CreditLiRisks.html#hyp:A3">7.3</a>, and with a default intensity defined—as in <a href="CreditLiRisks.html#eq:survival">(7.1)</a>—through:
 <span class="math display">\[\begin{equation}
@@ -340,38 +177,38 @@ we have:
 \end{equation}\]</span>
 and
 <span class="math display" id="eq:standardPriceCredit2">\[\begin{equation}
-\boxed{B(t,h) = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-r_t-\dots-r_{t+h-1}- \lambda_{t+1} - \dots - \lambda_{t+h}\right)\right].}\tag{7.3}
+\boxed{B_{t,h}^d = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-i_t-\dots-i_{t+h-1}- \lambda_{t+1} - \dots - \lambda_{t+h}\right)\right].}\tag{7.3}
 \end{equation}\]</span>
-which rewrites, using <span class="math inline">\(\tilde{r}_t = r_t + \lambda_{t+1}\)</span>:
+which rewrites, using <span class="math inline">\(\tilde{i}_t = i_t + \lambda_{t+1}\)</span>:
 <span class="math display" id="eq:standardPriceCredit3">\[\begin{equation}
-B(t,h) = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-\tilde{r}_t-\dots-\tilde{r}_{t+h-1}\right)\right],\tag{7.4}
+B_{t,h}^d = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-\tilde{i}_t-\dots-\tilde{i}_{t+h-1}\right)\right],\tag{7.4}
 \end{equation}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-2" class="proof"><em>Proof</em>. </span>We have (Eq. <a href="#eq:fQfP">(<strong>??</strong>)</a>):
+<p><span id="unlabeled-div-28" class="proof"><em>Proof</em>. </span>According to Eq. <a href="PandQ.html#eq:fQfP">(2.5)</a>:
 <span class="math display" id="eq:aaq1">\[\begin{equation}
-f^{\mathbb{Q}}(d_t,y_t|d_{t-1},y_{t-1}) = \exp(r_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(d_t,y_t|d_{t-1},y_{t-1}).\tag{7.5}
+f^{\mathbb{Q}}(d_t,y_t|d_{t-1},y_{t-1}) = \exp(i_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(d_t,y_t|d_{t-1},y_{t-1}).\tag{7.5}
 \end{equation}\]</span>
 Using Hypothesis <a href="CreditLiRisks.html#hyp:A3">7.3</a>, we obtain, by integrating both sides w.r.t. <span class="math inline">\(d_t\)</span>:
 <span class="math display" id="eq:aaq2">\[\begin{eqnarray}
-f^{\mathbb{Q}}(y_t|d_{t-1},y_{t-1}) &amp;=&amp; \exp(r_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(y_t|d_{t-1},y_{t-1})\nonumber\\
-&amp;=&amp; \exp(r_{t-1})\mathcal{M}_{t-1,t} \underbrace{f^{\mathbb{P}}(y_t|y_{t-1})}_{\mbox{by hypothesis}}. \tag{7.6}
+f^{\mathbb{Q}}(y_t|d_{t-1},y_{t-1}) &amp;=&amp; \exp(i_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(y_t|d_{t-1},y_{t-1})\nonumber\\
+&amp;=&amp; \exp(i_{t-1})\mathcal{M}_{t-1,t} \underbrace{f^{\mathbb{P}}(y_t|y_{t-1})}_{\mbox{by hypothesis}}. \tag{7.6}
 \end{eqnarray}\]</span>
 By Bayes, we have:
 <span class="math display">\[
 f^{\mathbb{Q}}(d_t|d_{t-1},y_t,y_{t-1}) = \frac{f^{\mathbb{Q}}(d_t,y_t|d_{t-1},y_{t-1})}{f^{\mathbb{Q}}(y_t|d_{t-1},y_{t-1})}.
 \]</span>
-Using Eq. <a href="CreditLiRisks.html#eq:aaq1">(7.5)</a> (numerator) and Eq. <a href="CreditLiRisks.html#eq:aaq2">(7.6)</a> (denominator), we get:
+Using <a href="CreditLiRisks.html#eq:aaq1">(7.5)</a> (numerator) and <a href="CreditLiRisks.html#eq:aaq2">(7.6)</a> (denominator), we get:
 <span class="math display">\[\begin{eqnarray*}
 &amp;&amp; f^{\mathbb{Q}}(d_t|d_{t-1},y_t,y_{t-1}) = f^{\mathbb{P}}(d_t|d_{t-1},y_t,y_{t-1}),
 \end{eqnarray*}\]</span>
 which gives <a href="CreditLiRisks.html#eq:lambdaPQ">(7.2)</a>.</p>
 <p>Conditioning w.r.t. <span class="math inline">\(\underline{y_{t+h}}\)</span>, the bond price is given by:
 <span class="math display">\[\begin{eqnarray*}
-&amp;&amp; \mathbb{E}_t^{\mathbb{Q}}[\mathbb{E}_t^{\mathbb{Q}}\{\exp(-r_t-\dots-r_{t+h-1})(1-d_{t+h})|\underline{y_{t+h}}\}]\\
-&amp;=&amp; \mathbb{E}_t^{\mathbb{Q}}[\exp(-r_t-\dots-r_{t+h-1})\mathbb{E}_t^{\mathbb{Q}}\{(1-d_{t+h})|\underline{y_{t+h}}\}]\\
-&amp;=&amp; \mathbb{E}_t^{\mathbb{Q}}[\exp(-r_t-\dots-r_{t+h-1})\mathbb{Q}\{d_{t+h}=0|\underline{y_{t+h}}\}]\\
-&amp;=&amp; \mathbb{E}_t^{\mathbb{Q}}\left[\exp(-r_t-\dots-r_{t+h-1})\prod_{j=1}^h\mathbb{Q}\{d_{t+j}=0|d_{t+j-1}=0,\underline{y_{t+h}}\}\right],
+&amp;&amp; \mathbb{E}_t^{\mathbb{Q}}[\mathbb{E}_t^{\mathbb{Q}}\{\exp(-i_t-\dots-i_{t+h-1})(1-d_{t+h})|\underline{y_{t+h}}\}]\\
+&amp;=&amp; \mathbb{E}_t^{\mathbb{Q}}[\exp(-i_t-\dots-i_{t+h-1})\mathbb{E}_t^{\mathbb{Q}}\{(1-d_{t+h})|\underline{y_{t+h}}\}]\\
+&amp;=&amp; \mathbb{E}_t^{\mathbb{Q}}[\exp(-i_t-\dots-i_{t+h-1})\mathbb{Q}\{d_{t+h}=0|\underline{y_{t+h}}\}]\\
+&amp;=&amp; \mathbb{E}_t^{\mathbb{Q}}\left[\exp(-i_t-\dots-i_{t+h-1})\prod_{j=1}^h\mathbb{Q}\{d_{t+j}=0|d_{t+j-1}=0,\underline{y_{t+h}}\}\right],
 \end{eqnarray*}\]</span>
 Because Granger and Sims non-causalities are equivalent, and since <span class="math inline">\(d_t\)</span> does not Granger-cause <span class="math inline">\(y_t\)</span> under the risk-neutral measure (see Proposition <a href="CreditLiRisks.html#prp:exogdunderQ">7.1</a>), we have:
 <span class="math display">\[
@@ -379,7 +216,7 @@ Because Granger and Sims non-causalities are equivalent, and since <span class="
 \]</span>
 As a result:
 <span class="math display" id="eq:standardPriceCredit">\[\begin{equation}
-B(t,h) = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-r_t-\dots-r_{t+h-1}- \lambda_{t+1}^{\mathbb{Q}} - \dots - \lambda_{t+h}^{\mathbb{Q}}\right)\right].\tag{7.7}
+B_{t,h}^d = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-i_t-\dots-i_{t+h-1}- \lambda_{t+1}^{\mathbb{Q}} - \dots - \lambda_{t+h}^{\mathbb{Q}}\right)\right].\tag{7.7}
 \end{equation}\]</span>
 Using <a href="CreditLiRisks.html#eq:lambdaPQ">(7.2)</a> in <a href="CreditLiRisks.html#eq:standardPriceCredit">(7.7)</a>, we obtain <a href="CreditLiRisks.html#eq:standardPriceCredit2">(7.3)</a>.</p>
 </div>
@@ -387,14 +224,14 @@ Using <a href="CreditLiRisks.html#eq:lambdaPQ">(7.2)</a> in <a href="CreditLiRis
 <p>Although <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span> intensities are the same functions of <span class="math inline">\(y_t\)</span> and <span class="math inline">\(y_{t-1}\)</span>, their historical and risk-neutral dynamics are in general different since <span class="math inline">\(y_t\)</span>’s <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span> dynamics are different.</p>
 </blockquote>
 <blockquote>
-<p>Eq. <a href="CreditLiRisks.html#eq:standardPriceCredit3">(7.4)</a> is reminiscent of Eq. <a href="#eq:stdbond">(<strong>??</strong>)</a>, where the risk-free short-term rate <span class="math inline">\(r_t\)</span> is replaced by the <em>credit-adjusted short-term rate</em> <span class="math inline">\(\tilde{r}_t\)</span>.</p>
+<p>Eq. <a href="CreditLiRisks.html#eq:standardPriceCredit3">(7.4)</a> is reminiscent of Eq. <a href="ChapterAffine.html#eq:stdbond">(1.10)</a>, where the risk-free short-term rate <span class="math inline">\(i_t\)</span> is replaced by the <em>credit-adjusted short-term rate</em> <span class="math inline">\(\tilde{i}_t\)</span>.</p>
 </blockquote>
-<p>Importantly, if both <span class="math inline">\(r_t\)</span> and <span class="math inline">\(\lambda_t\)</span> are affine in <span class="math inline">\(y_t\)</span>, where the latter is an affine process, then bond prices are easily computed by means of recursive formulas (as was the case in the context of Eq. <a href="#eq:stdbond">(<strong>??</strong>)</a>, see Example <a href="#exm:nominalBth"><strong>??</strong></a>.</p>
-<p>In this case, <span class="math inline">\(B(t,h)\)</span> is exponential affine in <span class="math inline">\(y_t\)</span>, that is, it is of the form:
+<p>Importantly, if both <span class="math inline">\(i_t\)</span> and <span class="math inline">\(\lambda_t\)</span> are affine in <span class="math inline">\(y_t\)</span>, where the latter is an affine process, then bond prices are easily computed by means of recursive formulas (as was the case in the context of <a href="ChapterAffine.html#eq:stdbond">(1.10)</a>, see Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>.</p>
+<p>In this case, <span class="math inline">\(B_{t,h}^d\)</span> is exponential affine in <span class="math inline">\(y_t\)</span>, that is, it is of the form:
 <span class="math display" id="eq:standardPriceCredit4">\[\begin{equation}
-B(t,h) = \exp({A^d_h}&#39;y_t + B^d_h)\quad (say).\tag{7.8}
+B_{t,h}^d = \exp({A^d_h}'y_t + B^d_h)\quad (say).\tag{7.8}
 \end{equation}\]</span></p>
-<p>The previous framework can be adapted in order to accommodate non-zero recovery rates. In this framework, the default intensity will be replaced by a <em>pseudo</em>, or <em>recovery-adjusted default intensity</em> denoted by <span class="math inline">\(\tilde\lambda_t\)</span>. To go further, we need to specifiy the payoff taking place upon default. There exist different modelling conventions for that; one is the so-called <em>Recovery of Market Value (RMV)</em> <span class="citation">(<a href="#ref-Duffie_Singleton_1999">Darrell Duffie and Singleton 1999</a>)</span>. Loosely speaking, under the RMV, the recovery payoff is a fraction <span class="math inline">\(\zeta \in [0,1]\)</span>, called <em>Recovery Rate (RR)</em> of the price that would have prevailed, absent the default. Proposition <a href="CreditLiRisks.html#prp:RMVclassical">7.3</a> makes this definition more precise and gives the bond price stemming from it.</p>
+<p>The previous framework can be adapted in order to accommodate non-zero recovery rates. In this framework, the default intensity will be replaced by a <em>pseudo</em>, or <em>recovery-adjusted default intensity</em> denoted by <span class="math inline">\(\tilde\lambda_t\)</span>. To go further, we need to specifiy the payoff taking place upon default. There exist different modelling conventions for that; one is the so-called <em>Recovery of Market Value (RMV)</em> <span class="citation">(<a href="references.html#ref-Duffie_Singleton_1999">Darrell Duffie and Singleton 1999</a>)</span>. Loosely speaking, under the RMV, the recovery payoff is a fraction <span class="math inline">\(\zeta \in [0,1]\)</span>, called <em>Recovery Rate (RR)</em> of the price that would have prevailed, absent the default. Proposition <a href="CreditLiRisks.html#prp:RMVclassical">7.3</a> makes this definition more precise and gives the bond price stemming from it.</p>
 <!-- \begin{block}{Payoffs of a zero-coupon issued by $e$ (when no default)} -->
 <!-- \begin{figure}[h] \label{Option2} -->
 <!--        \caption{At $t$, investor buys a bond issued by $e$, maturity date $t+h$} -->
@@ -461,13 +298,13 @@ B(t,h) = \exp({A^d_h}&#39;y_t + B^d_h)\quad (say).\tag{7.8}
 <!-- \end{figure} -->
 <!-- \end{block} -->
 <div class="proposition">
-<p><span id="prp:RMVclassical" class="proposition"><strong>Proposition 7.3  (Bond pricing in the RMV classical framework) </strong></span>Under Hypotheses <a href="CreditLiRisks.html#hyp:A1">7.2</a> and <a href="CreditLiRisks.html#hyp:A3">7.3</a>, and if, in case of default on date <span class="math inline">\(t+i\)</span>, the recovery payment is <span class="math inline">\(\zeta \widetilde{B}(t+i,h-i)\)</span>, with <span class="math inline">\(\zeta \in [0,1]\)</span>, then
+<p><span id="prp:RMVclassical" class="proposition"><strong>Proposition 7.3  (Bond pricing in the RMV classical framework) </strong></span>Under Hypotheses <a href="CreditLiRisks.html#hyp:A1">7.2</a> and <a href="CreditLiRisks.html#hyp:A3">7.3</a>, and if, in case of default on date <span class="math inline">\(t+i\)</span>, the recovery payment is <span class="math inline">\(\zeta \widetilde{B}_{t+i,h-i}\)</span>, with <span class="math inline">\(\zeta \in [0,1]\)</span>, then
 <span class="math display" id="eq:BBcredit">\[\begin{equation}
-B(t,h) =  (1-d_t)\widetilde{B}(t,h),\tag{7.9}
+B_{t,h}^d =  (1-d_t)\widetilde{B}_{t,h},\tag{7.9}
 \end{equation}\]</span>
-where <span class="math inline">\(\widetilde{B}(t,h)\)</span> is a <em>pseudo-price</em> given by:
+where <span class="math inline">\(\widetilde{B}_{t,h}\)</span> is a <em>pseudo-price</em> given by:
 <span class="math display" id="eq:BtildeCredit">\[\begin{equation}
-\widetilde{B}(t,h) = \mathbb{E}_t^{\mathbb{Q}} [\exp(-r_{t}-\tilde\lambda_{t+1}-\dots -r_{t+h-1}-\tilde\lambda_{t+h}],\tag{7.10}
+\widetilde{B}_{t,h} = \mathbb{E}_t^{\mathbb{Q}} [\exp(-i_{t}-\tilde\lambda_{t+1}-\dots -i_{t+h-1}-\tilde\lambda_{t+h}],\tag{7.10}
 \end{equation}\]</span>
 where the pseudo-intensity <span class="math inline">\(\tilde\lambda_{t}\)</span> is defined by:
 <span class="math display" id="eq:pseudodefintens">\[\begin{eqnarray}
@@ -476,24 +313,24 @@ where the pseudo-intensity <span class="math inline">\(\tilde\lambda_{t}\)</span
 \end{eqnarray}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-3" class="proof"><em>Proof</em>. </span>Relation <a href="CreditLiRisks.html#eq:BBcredit">(7.9)</a> is true for <span class="math inline">\(B(t+h, 0)\)</span> since <span class="math inline">\(\widetilde{B}(t+h, 0) = 1\)</span> and <span class="math inline">\(B(t+h, 0) = 1 - d_{t+h}\)</span>.
-Assuming that <span class="math inline">\(B(t+i+1, h-i-1) = (1 - d_{t+i+1} ) \widetilde{B}(t+i+1, h-i-1)\)</span> (which is valid for <span class="math inline">\(i=h-1\)</span>), we get:
+<p><span id="unlabeled-div-29" class="proof"><em>Proof</em>. </span>Relation <a href="CreditLiRisks.html#eq:BBcredit">(7.9)</a> is true for <span class="math inline">\(B_{t+h,0}^d\)</span> since <span class="math inline">\(\widetilde{B}_{t+h,0} = 1\)</span> and <span class="math inline">\(B_{t+h,0}^d = 1 - d_{t+h}\)</span>.
+Assuming that <span class="math inline">\(B_{t+i+1, h-i-1}^d = (1 - d_{t+i+1} ) \widetilde{B}_{t+i+1,h-i-1}\)</span> (which is valid for <span class="math inline">\(i=h-1\)</span>), we get:
 <span class="math display">\[\begin{eqnarray*}
-B(t+i, h-i) &amp;=&amp; \left(1 - d_{t+i} \right)  \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp(- r_{t+i})   \left[ \left(1 - d_{t+i+1} \right) \widetilde{B}(t+i+1, h-i-1) \right. \right. \\
-&amp;&amp; \left. \left. +  d_{t+i+1}\zeta\widetilde{B}(t+i+1, h-i-1) \right] \right\},
+B_{t+i, h-i}^d &amp;=&amp; \left(1 - d_{t+i} \right)  \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp(- i_{t+i})   \left[ \left(1 - d_{t+i+1} \right) \widetilde{B}_{t+i+1,h-i-1} \right. \right. \\
+&amp;&amp; \left. \left. +  d_{t+i+1}\zeta\widetilde{B}_{t+i+1,h-i-1} \right] \right\},
 \end{eqnarray*}\]</span>
-since, in case of no default at date <span class="math inline">\(t+i\)</span>, the value of the bond at date <span class="math inline">\(t+i+1\)</span> is either <span class="math inline">\(\zeta B(t+i+1, h-i-1) = \zeta \widetilde{B}(t+i+1, h-i-1)\)</span> if default happens, and <span class="math inline">\(B(t+i+1, h-i-1) = \widetilde{B}(t+i+1, h-i-1)\)</span> otherwise. Hypotheses <a href="CreditLiRisks.html#hyp:A1">7.2</a> and <a href="CreditLiRisks.html#hyp:A3">7.3</a> imply that <span class="math inline">\(\widetilde{B}(t+i+1, h-i-1)\)</span> does not depend on <span class="math inline">\(d_{t+i+1}\)</span> and taking first the conditional expectation given <span class="math inline">\(w_{t+i}\)</span> and <span class="math inline">\(y_{t+i+1}\)</span> we obtain:
+since, in case of no default at date <span class="math inline">\(t+i\)</span>, the value of the bond at date <span class="math inline">\(t+i+1\)</span> is either <span class="math inline">\(\zeta B_{t+i+1, h-i-1}^d = \zeta \widetilde{B}_{t+i+1,h-i-1}\)</span> if default happens, and <span class="math inline">\(B_{t+i+1, h-i-1}^d = \widetilde{B}_{t+i+1,h-i-1}\)</span> otherwise. Hypotheses <a href="CreditLiRisks.html#hyp:A1">7.2</a> and <a href="CreditLiRisks.html#hyp:A3">7.3</a> imply that <span class="math inline">\(\widetilde{B}_{t+i+1,h-i-1}\)</span> does not depend on <span class="math inline">\(d_{t+i+1}\)</span> and taking first the conditional expectation given <span class="math inline">\(w_{t+i}\)</span> and <span class="math inline">\(y_{t+i+1}\)</span> we obtain:
 <span class="math display" id="eq:Prop21demo">\[\begin{equation}
 \begin{array}{lll}
-B(t+i, h-i) &amp;=&amp; \left(1 - d_{t+i} \right) \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp(- r_{t+i})  \widetilde{B}(t+i+1, h-i-1) \times \right. \\
+B_{t+i, h-i}^d &amp;=&amp; \left(1 - d_{t+i} \right) \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp(- i_{t+i})  \widetilde{B}_{t+i+1,h-i-1} \times \right. \\
 &amp;&amp; \quad\left. \mathbb{E}^{\mathbb{Q}} \left[ \left(1 - d_{t+i+1} \right) +  \zeta d_{t+i+1}  | y_{t+i+1}, w_{t+i} \right] \right\} .
 \end{array}\tag{7.12}
 \end{equation}\]</span>
 Using the definition of <span class="math inline">\(\widetilde{\lambda}_{t}\)</span> (Eq. <a href="CreditLiRisks.html#eq:pseudodefintens">(7.11)</a>) we get:
 <span class="math display">\[\begin{equation*}
 \begin{array}{lll}
-B(t+i, h-i) &amp;=&amp; \left(1 - d_{t+i} \right)  \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp \left( - r_{t+i} - \widetilde{\lambda}_{t+i+1} \right)  \widetilde{B}(t+i+1, h-i-1) \right\}\\
-&amp;=&amp; \left(1 - d_{t+i} \right)   \widetilde{B}(t+i, h-i) .
+B_{t+i, h-i}^d &amp;=&amp; \left(1 - d_{t+i} \right)  \mathbb{E}_{t+i}^{\mathbb{Q}} \left\{ \exp \left( - i_{t+i} - \widetilde{\lambda}_{t+i+1} \right)  \widetilde{B}_{t+i+1,h-i-1} \right\}\\
+&amp;=&amp; \left(1 - d_{t+i} \right)   \widetilde{B}_{t+i,h-i} .
 \end{array}
 \end{equation*}\]</span>
 Therefore it is also true for <span class="math inline">\(i=0\)</span>.</p>
@@ -501,8 +338,8 @@ Therefore it is also true for <span class="math inline">\(i=0\)</span>.</p>
 <!-- * Sketch if the proof of Eq. \@ref(eq:BtildeCredit) -->
 <!-- * If $d_t=0$ (entity alive on date $t$), we then have: -->
 <!-- \begin{eqnarray*} -->
-<!-- B(t,h) &=& \exp(-r_t)\mathbb{E}_t^{\mathbb{Q}} [ d_{t+1} \zeta B(t+1,h-1) + (1-d_{t+1})B(t+1,h-1)]\\ -->
-<!-- &=& \exp(-r_t)\mathbb{E}_t^{\mathbb{Q}} [\{1 - d_{t+1} (1-\zeta)\} B(t+1,h-1) ]. -->
+<!-- B(t,h) &=& \exp(-i_t)\mathbb{E}_t^{\mathbb{Q}} [ d_{t+1} \zeta B(t+1,h-1) + (1-d_{t+1})B(t+1,h-1)]\\ -->
+<!-- &=& \exp(-i_t)\mathbb{E}_t^{\mathbb{Q}} [\{1 - d_{t+1} (1-\zeta)\} B(t+1,h-1) ]. -->
 <!-- \end{eqnarray*} -->
 <!-- * Defining the *recovery-adjusted default intensity* $\tilde\lambda_{t+1}$ through -->
 <!-- \begin{eqnarray} -->
@@ -511,28 +348,28 @@ Therefore it is also true for <span class="math inline">\(i=0\)</span>.</p>
 <!-- \end{eqnarray} -->
 <!-- one obtains: -->
 <!-- \begin{eqnarray*} -->
-<!-- B(t,h) &=& \mathbb{E}_t^{\mathbb{Q}} [\exp(-r_t-\tilde\lambda_{t+1}) B(t+1,h-1) ], -->
+<!-- B(t,h) &=& \mathbb{E}_t^{\mathbb{Q}} [\exp(-i_t-\tilde\lambda_{t+1}) B(t+1,h-1) ], -->
 <!-- \end{eqnarray*} -->
 <!-- and, by recursion, we get \@ref(eq:BtildeCredit). -->
-<p>Again, if <span class="math inline">\(r_t\)</span> and <span class="math inline">\(\tilde\lambda_t\)</span> are affine combinations of an affine process <span class="math inline">\(y_t\)</span>, then (exponential affine) bond prices are easily computed by means of recursive formulas. This is formalized below.</p>
+<p>Again, if <span class="math inline">\(i_t\)</span> and <span class="math inline">\(\tilde\lambda_t\)</span> are affine combinations of an affine process <span class="math inline">\(y_t\)</span>, then (exponential affine) bond prices are easily computed by means of recursive formulas. This is formalized below.</p>
 <div class="hypothesis">
 <p><span id="hyp:A6" class="hypothesis"><strong>Hypothesis 7.4  (Affine process) </strong></span>The process <span class="math inline">\(\{ y_t \}\)</span> is affine under the <span class="math inline">\(\mathbb{Q}\)</span> measure:
 <span class="math display" id="eq:affineyPcLT">\[\begin{equation}
 \begin{array}{lll}
-\varphi^{\mathbb{Q}}_{y, t-1} (u_y) = \mathbb{E}^{\mathbb{Q}} \left[\exp( u_y &#39; y_t )   |   \underline{y_{t-1}} \right]
-= \exp \left[ a^{\mathbb{Q}}_{y} (u_{y}) &#39; y_{t-1} + b^{\mathbb{Q}}_{y} (u_{y}) \right],
+\varphi^{\mathbb{Q}}_{y, t-1} (u_y) = \mathbb{E}^{\mathbb{Q}} \left[\exp( u_y ' y_t )   |   \underline{y_{t-1}} \right]
+= \exp \left[ a^{\mathbb{Q}}_{y} (u_{y}) ' y_{t-1} + b^{\mathbb{Q}}_{y} (u_{y}) \right],
 \end{array}\tag{7.13}
 \end{equation}\]</span>
-and <span class="math inline">\(r_t\)</span> and <span class="math inline">\(\widetilde{\lambda}_{e, t}\)</span> are affine in <span class="math inline">\((y_t, y_{t-1})\)</span>, that is (say):
+and <span class="math inline">\(i_t\)</span> and <span class="math inline">\(\widetilde{\lambda}_{e, t}\)</span> are affine in <span class="math inline">\((y_t, y_{t-1})\)</span>, that is (say):
 <span class="math display">\[\begin{eqnarray}
-r_{t} &amp;=&amp; \omega_0 + \omega_{1} &#39; y_{t} \\
-\widetilde{\lambda}_{e, t} &amp;=&amp; \kappa_{0} + \kappa_{1}&#39; y_t.
+i_{t} &amp;=&amp; \omega_0 + \omega_{1} ' y_{t} \\
+\widetilde{\lambda}_{e, t} &amp;=&amp; \kappa_{0} + \kappa_{1}' y_t.
 \end{eqnarray}\]</span></p>
 </div>
 <div class="proposition">
 <p><span id="prp:standardCreditFormula" class="proposition"><strong>Proposition 7.4  (Standard affine bond pricing, under RMV convention) </strong></span>Under the Assumptions of Proposition <a href="CreditLiRisks.html#prp:RMVclassical">7.3</a> and under Hypothesis <a href="CreditLiRisks.html#hyp:A6">7.4</a>, we have, for <span class="math inline">\(h \ge 1\)</span>:
 <span class="math display" id="eq:standardAffineCredit">\[\begin{equation}
-B(t, h) = \left(1 - d_{t} \right)\exp(- h[\omega_0 + \kappa_{0}] - \omega_{1} &#39; y_{t} + A_h&#39;y_t + B_h),\tag{7.14}
+B_{t,h}^d = \left(1 - d_{t} \right)\exp(- h[\omega_0 + \kappa_{0}] - \omega_{1} ' y_{t} + A_h'y_t + B_h),\tag{7.14}
 \end{equation}\]</span>
 where <span class="math inline">\(A_h\)</span> and <span class="math inline">\(B_h\)</span> are given by the following recursive equations:
 <span class="math display" id="eq:auxRecursiveStandardCredit">\[\begin{equation}
@@ -547,7 +384,7 @@ A_{0} &amp;=&amp; 0,\quad  B_{0} = 0,
 with <span class="math inline">\(u_1 = -\kappa_{1}\)</span> and <span class="math inline">\(u_i = -(\kappa_{1} + \omega_{1})\)</span> for <span class="math inline">\(i&gt;1\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-4" class="proof"><em>Proof</em>. </span>The results directly follows from Proposition <a href="CreditLiRisks.html#prp:RMVclassical">7.3</a>.</p>
+<p><span id="unlabeled-div-30" class="proof"><em>Proof</em>. </span>The results directly follows from Proposition <a href="CreditLiRisks.html#prp:RMVclassical">7.3</a>.</p>
 </div>
 <p>What precedes has been estiablished under the assumption that the state vector <span class="math inline">\(w_t\)</span> comprises a single defaultable entity (<span class="math inline">\(E=1\)</span>). What about when different entities are considered (<span class="math inline">\(E = 2\)</span>)? We can demonstrate that similar pricing formulas are obtained under the assumption of no-contagion (Hypothesis <a href="CreditLiRisks.html#hyp:A2">7.5</a>):</p>
 <div class="hypothesis">
@@ -564,15 +401,10 @@ p(d_t|y_t, w_{t-1} ) &amp;=&amp; p_1 ( d_{1, t}  |  y_t, y_{t-1}, d_{1, t-1}) \t
 then:</p>
 <ol style="list-style-type: decimal">
 <li>Proposition <a href="CreditLiRisks.html#prp:RMVclassical">7.3</a> is still valid for both entities;</li>
-<li>In an affine framework, the computation of <span class="math inline">\(\widetilde{B}_1 (t, h)\)</span> (and <span class="math inline">\(B_1 (t, h)\)</span>) is straightforward;</li>
-<li>but formulas for <span class="math inline">\(\widetilde{B}_2 (t, h)\)</span> and <span class="math inline">\(B_2 (t, h)\)</span> are not explicit anymore even if <span class="math inline">\(\widetilde{\lambda}_{2, t}\)</span> is affine in <span class="math inline">\((y_t, y_{t-1}, d_{1, t}, d_{1, t-1})\)</span>.</li>
+<li>In an affine framework, the computation of <span class="math inline">\(\widetilde{B}^{(1)}_{t,h}\)</span> (and <span class="math inline">\(B^{(1)}_{t,h}\)</span>) is straightforward;</li>
+<li>but formulas for <span class="math inline">\(\widetilde{B}^{(2)}_{t,h}\)</span> and <span class="math inline">\(B^{(2)}_{t,h}\)</span> are not explicit anymore even if <span class="math inline">\(\widetilde{\lambda}_{2, t}\)</span> is affine in <span class="math inline">\((y_t, y_{t-1}, d_{1, t}, d_{1, t-1})\)</span>.</li>
 </ol>
-<!-- \begin{figure} -->
-<!-- \caption{Causality scheme in the classical credit-risk framework} -->
-<!-- \label{fig:classicalcredit} -->
-<!-- \includegraphics[width=.8\linewidth]{figures/Schema0.pdf} -->
-<!-- \end{figure} -->
-<div class="proposition">
+<!-- \begin{figure} --><!-- \caption{Causality scheme in the classical credit-risk framework} --><!-- \label{fig:classicalcredit} --><!-- \includegraphics[width=.8\linewidth]{figures/Schema0.pdf} --><!-- \end{figure} --><div class="proposition">
 <p><span id="prp:defBondAffine" class="proposition"><strong>Proposition 7.5  (Absence of contagion) </strong></span>Under Hypotheses <a href="CreditLiRisks.html#hyp:A4">7.1</a>, <a href="CreditLiRisks.html#hyp:A1">7.2</a>, <a href="CreditLiRisks.html#hyp:A3">7.3</a> and <a href="CreditLiRisks.html#hyp:A2">7.5</a>, the risk-neutral (<span class="math inline">\(\mathbb{Q}\)</span>) dynamics is such that:
 <span class="math display">\[
 f^{\mathbb{Q}} ( y_t  |  w_{t-1}) = f^{\mathbb{Q}} ( y_t  |  y_{t-1}) \propto \mathcal{M}_{t-1, t}( y_t, y_{t-1}) f (y_t  |  y_{t-1})
@@ -590,18 +422,20 @@ p_t^{\mathbb{Q}} ( d_{t}  |  y_t, w_{t-1} ) = p_1 ( d_{1, t}  |  y_t, y_{t-1}, d
 (<em>default intensities are the same under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span></em>).</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-5" class="proof"><em>Proof</em>. </span>The <span class="math inline">\(\mathbb{Q}\)</span> conditional density of <span class="math inline">\(w_t\)</span> given <span class="math inline">\(w_{t-1}\)</span>, namely <span class="math inline">\(f^{\mathbb{Q}} (y_t | w_{t-1}) p^{\mathbb{Q}} ( d_t | y_t, w_{t-1} )\)</span>, is proportional to <span class="math inline">\(\mathcal{M}_{t-1, t}( w_t, w_{t-1}) f (y_t | w_{t-1}) p ( d_t | y_t, w_{t-1} )\)</span>, and thus proportional to <span class="math inline">\(\mathcal{M}_{t-1, t}( y_t, y_{t-1}) f (y_t | y_{t-1}) p_1 ( d_{1, t} | y_t, y_{t-1}, d_{1, t-1}) p_2 ( d_{2, t} | y_t, y_{t-1}, d_{2, t-1})\)</span>. The result follows immediately.</p>
+<p><span id="unlabeled-div-31" class="proof"><em>Proof</em>. </span>The <span class="math inline">\(\mathbb{Q}\)</span> conditional density of <span class="math inline">\(w_t\)</span> given <span class="math inline">\(w_{t-1}\)</span>, namely <span class="math inline">\(f^{\mathbb{Q}} (y_t | w_{t-1}) p^{\mathbb{Q}} ( d_t | y_t, w_{t-1} )\)</span>, is proportional to <span class="math inline">\(\mathcal{M}_{t-1, t}( w_t, w_{t-1}) f (y_t | w_{t-1}) p ( d_t | y_t, w_{t-1} )\)</span>, and thus proportional to <span class="math inline">\(\mathcal{M}_{t-1, t}( y_t, y_{t-1}) f (y_t | y_{t-1}) p_1 ( d_{1, t} | y_t, y_{t-1}, d_{1, t-1}) p_2 ( d_{2, t} | y_t, y_{t-1}, d_{2, t-1})\)</span>. The result follows immediately.</p>
 </div>
 </div>
-<div id="CreditIlliq" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Pricing illiquid bonds<a href="CreditLiRisks.html#CreditIlliq" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This subsection shows that a similar approach can be used to price illiquid assets. The idea consists in replacing the Loss Given Default (<span class="math inline">\(LGD = 1-RR^{(e)}\)</span>) by a Loss Given Liquidity Shock (<span class="math inline">\(1-\theta_\ell^{(e)}\)</span>). A structural interpretation of this approach is provided by <span class="citation">Ericsson and Renault (<a href="#ref-Ericsson_Renault_2006">2006</a>)</span> (see Example <a href="CreditLiRisks.html#exm:illiqLGD">7.1</a>).</p>
+<div id="CreditIlliq" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> Pricing illiquid bonds<a class="anchor" aria-label="anchor" href="#CreditIlliq"><i class="fas fa-link"></i></a>
+</h2>
+<p>This subsection shows that a similar approach can be used to price illiquid assets. The idea consists in replacing the Loss Given Default (<span class="math inline">\(LGD = 1-RR^{(e)}\)</span>) by a Loss Given Liquidity Shock (<span class="math inline">\(1-\theta_\ell^{(e)}\)</span>). A structural interpretation of this approach is provided by <span class="citation">Ericsson and Renault (<a href="references.html#ref-Ericsson_Renault_2006">2006</a>)</span> (see Example <a href="CreditLiRisks.html#exm:illiqLGD">7.1</a>).</p>
 <p>Let us introduce a novel binary variable: <span class="math inline">\(\ell_t\)</span>, that represents a <em>liquidity shocks</em>. When a bondholder is hit by the liquidity shock, she needs to liquidate her portfolio (reflecting cash constraints or needs to rebalance portfolio). But in such distressed conditions, she will sell her bonds at a discount (and will therefore face losses, akin to credit losses). Formally: <span class="math inline">\(\ell_{t}=1\)</span> when the bondholder is hit, and <span class="math inline">\(\ell_{t}=0\)</span> otherwise.</p>
 <p>The <em>liquidity-shock intensity</em> <span class="math inline">\(\lambda_\ell(y_t)\)</span>—that defines the probability of occurence of liquidity shocks—is defined through:
 <span class="math display">\[
 \underbrace{1- \exp[-\lambda_\ell(y_t)]}_{\approx \lambda_\ell(y_t)\mbox{ if small}} = \mathbb{P}(\ell_t = 1|\underline{w_{t-1}},y_t).
 \]</span>
-The binary variable <span class="math inline">\(\ell_t\)</span> is assumed not to Granger-cause <span class="math inline">\(y_t\)</span> (as in Hypothesis <a href="CreditLiRisks.html#hyp:A1">7.2</a>) and not to be priced (as in Hypothesis <a href="CreditLiRisks.html#hyp:A3">7.3</a>). As in Proposition <a href="CreditLiRisks.html#prp:defaultBondclassical">7.2</a> (and more precisely Eq. <a href="CreditLiRisks.html#eq:lambdaPQ">(7.2)</a>), this implies that
+The binary variable <span class="math inline">\(\ell_t\)</span> is assumed not to Granger-cause <span class="math inline">\(y_t\)</span> (as in Hypothesis <a href="CreditLiRisks.html#hyp:A1">7.2</a>) and not to be priced (as in Hypothesis <a href="CreditLiRisks.html#hyp:A3">7.3</a>). As in Proposition <a href="CreditLiRisks.html#prp:defaultBondclassical">7.2</a>—and more precisely <a href="CreditLiRisks.html#eq:lambdaPQ">(7.2)</a>—this implies that
 <span class="math display">\[
 \lambda_\ell^{\mathbb{Q}}(y_t) = \lambda_\ell(y_t),
 \]</span>
@@ -610,20 +444,20 @@ where
 1- \exp[-\lambda^{\mathbb{Q}}_\ell(y_t)] = \mathbb{Q}(\ell_t = 1|\underline{w_{t-1}},y_t).
 \]</span></p>
 <p>Upon the arrival of the liquidity shock (<span class="math inline">\(\ell_{t}=1\)</span>), the investor has to exit by selling her bond holdings. She is then limited in the number of traders she can call and, as a result, get only a fraction (<span class="math inline">\(\theta_\ell^{(e)}\)</span>, say) of the price she would get in normal-liquidity times, i.e., when <span class="math inline">\(\ell_{t}=0\)</span> (see the structural interpretation in Example <a href="CreditLiRisks.html#exm:illiqLGD">7.1</a>).</p>
-<p>In that context, following the approach used in Proposition <a href="CreditLiRisks.html#prp:RMVclassical">7.3</a>, one can define a <em>pseudo-illiquidity intensity</em> as follows (mimicking Eq. <a href="CreditLiRisks.html#eq:pseudodefintens">(7.11)</a>):
+<p>In that context, following the approach used in Proposition <a href="CreditLiRisks.html#prp:RMVclassical">7.3</a>, one can define a <em>pseudo-illiquidity intensity</em> as follows—mimicking <a href="CreditLiRisks.html#eq:pseudodefintens">(7.11)</a>:
 <span class="math display" id="eq:pseudoilliqintensity">\[\begin{eqnarray}
 \widetilde{\lambda}_{e,\ell, t} \left( y_t, y_{t-1} \right) &amp;=&amp; - \log \left\{ \exp \Big[ -
 \lambda_{e,\ell} \left( y_t\right) \Big] \right. + \tag{7.16}\\
 &amp;&amp; \left. \Big( 1 - \exp \Big[ - \lambda_{e,\ell} \left( y_t \right) \Big]
-\Big) \theta_\ell^{(e)}  \right\} \nonumber
+\Big) \theta_\ell^{(e)}  \right\}. \nonumber
 \end{eqnarray}\]</span></p>
 <p>Still consiering credit risk (on top of liquidity risk), we then have the following payoff on date <span class="math inline">\(t\)</span> (assuming no default on date <span class="math inline">\(t-1\)</span>):
 <span class="math display" id="eq:pseudopriceilliq">\[\begin{equation}
-\widetilde{B}_e (t, h) = \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( r_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{e,\ell, t+i} \right) \right] \right\}.\tag{7.17}
+\widetilde{B}^{(e)}_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( i_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{e,\ell, t+i} \right) \right] \right\}.\tag{7.17}
 \end{equation}\]</span></p>
 <div class="example">
-<p><span id="exm:illiqLGD" class="example"><strong>Example 7.1  (Structural interpretation of the illiquidity intensity) </strong></span>This structural interpretation of the illiquidity intensity is due to <span class="citation">Ericsson and Renault (<a href="#ref-Ericsson_Renault_2006">2006</a>)</span>.</p>
-<p>When hit by a liquidity shock, a bondholder has to liquidate her bond in a small amount of time (between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+\varepsilon\)</span>, with <span class="math inline">\(\varepsilon \ll 1\)</span>). She collects offers on the market; each offer is a random fraction <span class="math inline">\(\omega_{i}\)</span> (<span class="math inline">\(i\in\{1,\ldots,\kappa\}\)</span>) of <span class="math inline">\(\widetilde{B}_e (t, h)\)</span> (see Eq. <a href="CreditLiRisks.html#eq:pseudopriceilliq">(7.17)</a>), where the <span class="math inline">\(\omega_{i}\)</span>’s are uniformly distributed in <span class="math inline">\([0,1]\)</span>.</p>
+<p><span id="exm:illiqLGD" class="example"><strong>Example 7.1  (Structural interpretation of the illiquidity intensity) </strong></span>This structural interpretation of the illiquidity intensity is due to <span class="citation">Ericsson and Renault (<a href="references.html#ref-Ericsson_Renault_2006">2006</a>)</span>.</p>
+<p>When hit by a liquidity shock, a bondholder has to liquidate her bond in a small amount of time (between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+\varepsilon\)</span>, with <span class="math inline">\(\varepsilon \ll 1\)</span>). She collects offers on the market; each offer is a random fraction <span class="math inline">\(\omega_{i}\)</span> (<span class="math inline">\(i\in\{1,\ldots,\kappa\}\)</span>) of <span class="math inline">\(\widetilde{B}^{(w)}_{t,h}\)</span> (see Eq. <a href="CreditLiRisks.html#eq:pseudopriceilliq">(7.17)</a>), where the <span class="math inline">\(\omega_{i}\)</span>’s are uniformly distributed in <span class="math inline">\([0,1]\)</span>.</p>
 <p>At <span class="math inline">\(t+\varepsilon\)</span>, the bond is sold to the trader that has offered the highest price. Formally, when <span class="math inline">\(\ell_{t}=1\)</span>, the selling price is:
 <span class="math display">\[
 \left(\max_{i\in\{1,\ldots,\kappa\}}\omega_{i}\right)\tilde{P}_{t,h}^{(e)}.
@@ -665,32 +499,36 @@ Function <span class="math inline">\(g\)</span> is increasing and valued in <spa
 <!-- \end{figure} -->
 <!-- \end{block} -->
 <div class="example">
-<p><span id="exm:SovereignSpreads" class="example"><strong>Example 7.2  (Euro area sovereign credit spreads) </strong></span><span class="citation">A. Monfort and Renne (<a href="#ref-Monfort_Renne_NER2011">2011</a>)</span> and <span class="citation">Alain Monfort and Renne (<a href="#ref-Monfort_Renne_2014">2014</a>)</span> propose credit/liquidity decompositions of euro-area sovereign spreads. They emply different estimation approaches: <span class="citation">Kim (<a href="#ref-Kim_1994">1994</a>)</span>’s filter for MR2014, and Kitagawa-Hamilton filter for <span class="citation">A. Monfort and Renne (<a href="#ref-Monfort_Renne_NER2011">2011</a>)</span> (see Subsection <a href="Estimation.html#EstimationRS">5.3.1</a>).</p>
-<p>In both papers, the <span class="math inline">\(y_t\)</span> part of the state vector <span class="math inline">\(w_t\)</span> is of the form <span class="math inline">\(y_t = (x_t&#39;,z_t&#39;)&#39;\)</span>; it follows a Regime-Switching Gaussian VAR (see Example <a href="#exm:GRSVAR"><strong>??</strong></a>). The time-homogenous Markov chain <span class="math inline">\(z_t\)</span> tracks the <em>crisis status</em> (crisis versus normal times).</p>
+<p><span id="exm:SovereignSpreads" class="example"><strong>Example 7.2  (Euro area sovereign credit spreads) </strong></span><span class="citation">A. Monfort and Renne (<a href="references.html#ref-Monfort_Renne_NER2011">2011</a>)</span> and <span class="citation">Alain Monfort and Renne (<a href="references.html#ref-Monfort_Renne_2014">2014</a>)</span> propose credit/liquidity decompositions of euro-area sovereign spreads. They emply different estimation approaches: <span class="citation">C.-J. Kim (<a href="references.html#ref-Kim_1994">1994</a>)</span>’s filter for MR2014, and Kitagawa-Hamilton filter for <span class="citation">A. Monfort and Renne (<a href="references.html#ref-Monfort_Renne_NER2011">2011</a>)</span> (see Subsection <a href="Estimation.html#EstimationRS">5.3.1</a>).</p>
+<p>In both papers, the <span class="math inline">\(y_t\)</span> part of the state vector <span class="math inline">\(w_t\)</span> is of the form <span class="math inline">\(y_t = (x_t',z_t')'\)</span>; it follows a Regime-Switching Gaussian VAR (see Example <a href="Estimation.html#exm:GRSVAR">5.3</a>). The time-homogenous Markov chain <span class="math inline">\(z_t\)</span> tracks the <em>crisis status</em> (crisis versus normal times).</p>
 <p>The total intensity is of the form:
 <span class="math display">\[
-\widetilde{\lambda}_{e,t} = \underbrace{\alpha_{e,c}&#39;z_t + \beta_{e,c}&#39;y_t}_{\mbox{credit intensity $\widetilde{\lambda}_{e,c,t}$}} + \underbrace{\alpha_{e,\ell}&#39;z_t + \beta_{e,\ell}&#39;y_t.}_{\mbox{liquidity intensity $\widetilde{\lambda}_{e,\ell,t}$}}
+\widetilde{\lambda}_{e,t} = \underbrace{\alpha_{e,c}'z_t + \beta_{e,c}'y_t}_{\mbox{credit intensity $\widetilde{\lambda}_{e,c,t}$}} + \underbrace{\alpha_{e,\ell}'z_t + \beta_{e,\ell}'y_t.}_{\mbox{liquidity intensity $\widetilde{\lambda}_{e,\ell,t}$}}
 \]</span>
 In both papers, the identification of credit versus liquidity components is based on:
 <span class="math display">\[
 \mbox{KfW-Bund spreads} =  \mbox{liquidity spreads}.
 \]</span>
 KfW (<em>Kreditanstalt für Wiederaufbau</em>) is a German agency whose bonds are guaranteed by the Federal Republic of Germany. Therefore, they benefit from the same credit quality than their sovereign counterparts—the Bunds—but are less liquid; accordingly, the KfW-Bund spread should beessentially liquidity-driven.</p>
-<p>In <span class="citation">Alain Monfort and Renne (<a href="#ref-Monfort_Renne_2014">2014</a>)</span>, we have
+<p>In <span class="citation">Alain Monfort and Renne (<a href="references.html#ref-Monfort_Renne_2014">2014</a>)</span>, we have
 <span class="math display">\[
 \widetilde{\lambda}_{e,t} = \underbrace{x_{e,t}}_{=\widetilde{\lambda}_{e,c,t}} + \underbrace{(1-\theta^{(e)}_\ell)x_{E+1,t}}_{=\widetilde{\lambda}_{e,\ell,t}},
 \]</span>
 hence <span class="math inline">\(x_t\)</span> of dimension <span class="math inline">\(E+1 = 12\)</span> (11 countries are involved).</p>
 <p>There are 9 Markovian regimes: <span class="math inline">\(z_t = z_{c,t} \otimes z_{\ell,t}\)</span>, where <span class="math inline">\(z_{i,t}\)</span> (<span class="math inline">\(i \in \{c,\ell\}\)</span>) is 3-dimensional:</p>
 <ul>
-<li><span class="math inline">\(z_{i,t}=[1,0,0]&#39;\)</span>: low stress,</li>
-<li><span class="math inline">\(z_{i,t}=[0,1,0]&#39;\)</span>: medium stress,</li>
-<li><span class="math inline">\(z_{i,t}=[0,0,1]&#39;\)</span>: high stress.</li>
-<li><span class="math inline">\(z_{c,t}\)</span> and <span class="math inline">\(z_{\ell,t}\)</span> are not independent: for instance, the probability to transit from the low-credit-stress regime to the medium/high-credit-stress regimes depends on the liquidity-stress regime.</li>
+<li>
+<span class="math inline">\(z_{i,t}=[1,0,0]'\)</span>: low stress,</li>
+<li>
+<span class="math inline">\(z_{i,t}=[0,1,0]'\)</span>: medium stress,</li>
+<li>
+<span class="math inline">\(z_{i,t}=[0,0,1]'\)</span>: high stress.</li>
+<li>
+<span class="math inline">\(z_{c,t}\)</span> and <span class="math inline">\(z_{\ell,t}\)</span> are not independent: for instance, the probability to transit from the low-credit-stress regime to the medium/high-credit-stress regimes depends on the liquidity-stress regime.</li>
 </ul>
 <p>For each intensity <span class="math inline">\(x_{i,t}\)</span> (simulation below XXX):
 <span class="math display">\[
-x_{i,t} = \mu_i&#39;z_t + \phi x_{i,t-1} + \sigma_i \varepsilon_{i,t},
+x_{i,t} = \mu_i'z_t + \phi x_{i,t-1} + \sigma_i \varepsilon_{i,t},
 \]</span>
 with <span class="math inline">\(\varepsilon_{t} \sim i.i.d. \mathcal{N}(0,\Sigma)\)</span>, where <span class="math inline">\(\Sigma\)</span> is diagonal, and <span class="math inline">\(\mu_{i,1} &lt; \mu_{i,2} &lt; \mu_{i,3}\)</span>.
 The Markov chain <span class="math inline">\(z_t\)</span> is the only source of correlation across the <span class="math inline">\(x_{i,t}\)</span>’s.</p>
@@ -703,11 +541,11 @@ The Markov chain <span class="math inline">\(z_t\)</span> is the only source of 
 0 &amp; 0.20 &amp; 0.80
 \end{array}\right],\quad \sigma = 0.002.
 \]</span></p>
-<p>The SDF exponential affine in <span class="math inline">\((z_t&#39;,x_t&#39;)&#39;\)</span>. We have the same type of dynamics under <span class="math inline">\(\mathbb{Q}\)</span> (with risk-asjusted parameters, in particular risk-adjusted transition probabilities).</p>
-<div class="figure" style="text-align: left-aligned"><span style="display:block;" id="fig:MRintensity"></span>
-<img src="TSM_files/figure-html/MRintensity-1.png" alt="Simulation of an process following $x_{t} = \mu'z_t + \phi x_{t-1} + \sigma \varepsilon_{t}$, where $z_t$ follows a three-state time-homogenous Markov process. See the text for the exact parameterization. The light-grey shaded area corresponds to the second regime ($z_t = [0,1,0]'$); the dark-grey shaded area corresponds to the third regime ($z_t = [0,0,1]'$)" width="95%" />
-<p class="caption">
-Figure 7.2: Simulation of an process following <span class="math inline">\(x_{t} = \mu&#39;z_t + \phi x_{t-1} + \sigma \varepsilon_{t}\)</span>, where <span class="math inline">\(z_t\)</span> follows a three-state time-homogenous Markov process. See the text for the exact parameterization. The light-grey shaded area corresponds to the second regime (<span class="math inline">\(z_t = [0,1,0]&#39;\)</span>); the dark-grey shaded area corresponds to the third regime (<span class="math inline">\(z_t = [0,0,1]&#39;\)</span>)
+<p>The SDF exponential affine in <span class="math inline">\((z_t',x_t')'\)</span>. We have the same type of dynamics under <span class="math inline">\(\mathbb{Q}\)</span> (with risk-asjusted parameters, in particular risk-adjusted transition probabilities).</p>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:MRintensity"></span>
+<img src="TSM_files/figure-html/MRintensity-1.png" alt="Simulation of an process following $x_{t} = \mu'z_t + \phi x_{t-1} + \sigma \varepsilon_{t}$, where $z_t$ follows a three-state time-homogenous Markov process. See the text for the exact parameterization. The light-grey shaded area corresponds to the second regime ($z_t = [0,1,0]'$); the dark-grey shaded area corresponds to the third regime ($z_t = [0,0,1]'$)" width="95%"><p class="caption">
+Figure 7.2: Simulation of an process following <span class="math inline">\(x_{t} = \mu'z_t + \phi x_{t-1} + \sigma \varepsilon_{t}\)</span>, where <span class="math inline">\(z_t\)</span> follows a three-state time-homogenous Markov process. See the text for the exact parameterization. The light-grey shaded area corresponds to the second regime (<span class="math inline">\(z_t = [0,1,0]'\)</span>); the dark-grey shaded area corresponds to the third regime (<span class="math inline">\(z_t = [0,0,1]'\)</span>)
 </p>
 </div>
 </div>
@@ -726,75 +564,89 @@ Figure 7.2: Simulation of an process following <span class="math inline">\(x_{t}
 <!-- Source: \href{https://academic.oup.com/rof/article-abstract/18/6/2103/1661774?redirectedFrom=fulltext}{Monfort and Renne (2014)}. -->
 <!-- \end{center} -->
 <div class="example">
-<p><span id="exm:IBOROIS" class="example"><strong>Example 7.3  (IBOR-OIS spreads) </strong></span><span class="citation">Dubecq et al. (<a href="#ref-DUBECQ201629">2016</a>)</span> decompose the EURIBOR versus Overnight Index Swap (OIS) spreads into a credit and a liquidity component. (See Subsection <a href="#Swap"><strong>??</strong></a> for the definition of a swap contract.)</p>
+<p><span id="exm:IBOROIS" class="example"><strong>Example 7.3  (IBOR-OIS spreads) </strong></span><span class="citation">Dubecq et al. (<a href="references.html#ref-DUBECQ201629">2016</a>)</span> decompose the EURIBOR versus Overnight Index Swap (OIS) spreads into a credit and a liquidity component. (See Subsection <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#Swaps">6.2.1</a> for the definition of a swap contract.)</p>
 <p>From the point of view of bank <span class="math inline">\(j\)</span>, the EURIBOR rate is the rate of an unsecured loan to one bank (<span class="math inline">\(e\)</span>, say) of the panel. Assume that the panel of the <span class="math inline">\(N\)</span> constituting the EURIBOR are homogenous. We have:
 <span class="math display" id="eq:EURIBOR">\[\begin{equation}
-R^{IBOR}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( r_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{j,\ell, t+i} \right) \right] \right\}.\tag{7.18}
+R^{IBOR}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( i_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{j,\ell, t+i} \right) \right] \right\}.\tag{7.18}
 \end{equation}\]</span>
 Note that the liquidity intensity refers to the lending bank (<span class="math inline">\(j\)</span>) and the default intensity relates to the borrowing bank (<span class="math inline">\(e\)</span>).</p>
-<p>By constrast, the Overnight-Index Swap (OIS) rate satisfies:<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
+<p>By constrast, the Overnight-Index Swap (OIS) rate satisfies:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The OIS is an interest-rate swap where the floating rate is an overnight-rate reference (EONIA in the euro area). At maturity, the payoff received by the fixed-rate payer is the difference between: (a) the notional (&lt;span class="math inline"&gt;\(W\)&lt;/span&gt;, say) inflated with the date-&lt;span class="math inline"&gt;\(t\)&lt;/span&gt; OIS (fixed) rate (i.e. &lt;span class="math inline"&gt;\(W\exp\{h i_{t,h}^{OIS}\}\)&lt;/span&gt;) and (b) the same notional capitalized with the realized short-term rates (i.e. &lt;span class="math inline"&gt;\(W\exp\{i_{t} + \ldots + i_{t+h-1}\}\)&lt;/span&gt;).&lt;/p&gt;'><sup>17</sup></a>
 <span class="math display" id="eq:OIS">\[\begin{equation}
-R^{OIS}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left( - \sum_{i=1}^{h}  r_{t+i-1} \right) \right\}.\tag{7.19}
+R^{OIS}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left( - \sum_{i=1}^{h}  i_{t+i-1} \right) \right\}.\tag{7.19}
 \end{equation}\]</span></p>
-<p>Assuming that <span class="math inline">\(r_t\)</span>, the short-term risk-free rate (i.e., the reference rate of the OIS, EONIA here) is independent from the intensities and under the homogeneity assumption, we obtain:<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
+<p>Assuming that <span class="math inline">\(i_t\)</span>, the short-term risk-free rate (i.e., the reference rate of the OIS, EONIA here) is independent from the intensities and under the homogeneity assumption, we obtain:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is assumed here that the overnight interbank market preserves the lending bank from (i) liquidity and (ii) credit risk. The rationale behind that is twofold: (a) By rolling its cash on the overnight market (at the EONIA rate), a bank is not exposed to the risk of having to liquidate longer-term investments upon the realization of the liquidity shock; (b) while the EONIA is an unsecured-transaction rate, the extremely-short maturity of these transactions substantially reduces the credit-risk exposure of the lending bank.&lt;/p&gt;"><sup>18</sup></a>
 <span class="math display">\[
 R^{IBOR}_{t,h} - R^{OIS}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( \widetilde{\lambda}_{c, t+i} + \widetilde{\lambda}_{\ell, t+i} \right) \right] \right\}.
 \]</span></p>
-<p><span class="citation">Dubecq et al. (<a href="#ref-DUBECQ201629">2016</a>)</span> employ a quadratic specification for <span class="math inline">\(\widetilde{\lambda}_{c, t}\)</span> and <span class="math inline">\(\widetilde{\lambda}_{\ell, t}\)</span>:
+<p><span class="citation">Dubecq et al. (<a href="references.html#ref-DUBECQ201629">2016</a>)</span> employ a quadratic specification for <span class="math inline">\(\widetilde{\lambda}_{c, t}\)</span> and <span class="math inline">\(\widetilde{\lambda}_{\ell, t}\)</span>:
 <span class="math display">\[
 \widetilde{\lambda}_{c, t} = x_{c,t}^2 \quad \mbox{and} \quad  \widetilde{\lambda}_{\ell, t} = x_{\ell,t}^2,
 \]</span>
-where <span class="math inline">\(X_t = (x_{c,t},x_{\ell,t})&#39;\)</span> follows a Gaussian VAR(1) process. (This is the quandratic Gaussian framework presented in Example <a href="#exm:QGVAR1"><strong>??</strong></a>.)</p>
-<p>The state vector <span class="math inline">\(X_t\)</span> is latent. The estimation involves the Quadratic Kalman Filter <span class="citation">(<a href="#ref-Monfort_Renne_Roussellet_2015">Alain Monfort, Renne, and Roussellet 2015</a>)</span>. The measurement equations include equations stating that observed proxies of credit and liquidity risks relate to quadratic functions of <span class="math inline">\(x_{c,t}\)</span> and <span class="math inline">\(x_{\ell,t}\)</span>, respectively.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:IBOROIS"></span>
-<img src="figures/IBOROIS.png" alt="Source: Dubecq et al. (2016)." width="95%" />
-<p class="caption">
+where <span class="math inline">\(X_t = (x_{c,t},x_{\ell,t})'\)</span> follows a Gaussian VAR(1) process. (This is the quandratic Gaussian framework presented in Example <a href="ChapterAffine.html#exm:QGVAR1">1.7</a>.)</p>
+<p>The state vector <span class="math inline">\(X_t\)</span> is latent. The estimation involves the Quadratic Kalman Filter <span class="citation">(<a href="references.html#ref-Monfort_Renne_Roussellet_2015">Alain Monfort, Renne, and Roussellet 2015</a>)</span>. The measurement equations include equations stating that observed proxies of credit and liquidity risks relate to quadratic functions of <span class="math inline">\(x_{c,t}\)</span> and <span class="math inline">\(x_{\ell,t}\)</span>, respectively.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:IBOROIS"></span>
+<img src="figures/IBOROIS.png" alt="Source: Dubecq et al. (2016)." width="95%"><p class="caption">
 Figure 7.3: Source: Dubecq et al. (2016).
 </p>
 </div>
 </div>
 </div>
-<div id="Creditrelaxing" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> Relaxing the classical framework assumptions<a href="CreditLiRisks.html#Creditrelaxing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Formula <a href="CreditLiRisks.html#eq:standardAffineCredit">(7.14)</a> and its tractability is a key feature of numerous credit-risk term-structure models, e.g., <span class="citation">D. Duffie and Singleton (<a href="#ref-Duffie_Singleton_2003">2003</a>)</span>, <span class="citation">Pan and Singleton (<a href="#ref-Pan_Singleton_2008">2008</a>)</span>, and <span class="citation">Longstaff et al. (<a href="#ref-Longstaff_Pan_Pedersen_Singleton_2011">2011</a>)</span> among many others. This formula is valid under Assumptions <a href="CreditLiRisks.html#hyp:A1">7.2</a> of non-systemic entities, also called <em>no-jump condition</em>, <a href="CreditLiRisks.html#hyp:A3">7.3</a> of unpriced credit risk events, and <a href="CreditLiRisks.html#hyp:A2">7.5</a> absence of contagion. These hypotheses define what we have called the <em>classical credit-risk models</em>. We lose the high degree of tractability of Formula <a href="CreditLiRisks.html#eq:standardAffineCredit">(7.14)</a> when some of the previous assumptions are relaxed:</p>
+<div id="Creditrelaxing" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> Relaxing the classical framework assumptions<a class="anchor" aria-label="anchor" href="#Creditrelaxing"><i class="fas fa-link"></i></a>
+</h2>
+<p>Formula <a href="CreditLiRisks.html#eq:standardAffineCredit">(7.14)</a> and its tractability is a key feature of numerous credit-risk term-structure models, e.g., <span class="citation">D. Duffie and Singleton (<a href="references.html#ref-Duffie_Singleton_2003">2003</a>)</span>, <span class="citation">Pan and Singleton (<a href="references.html#ref-Pan_Singleton_2008">2008</a>)</span>, and <span class="citation">Longstaff et al. (<a href="references.html#ref-Longstaff_Pan_Pedersen_Singleton_2011">2011</a>)</span> among many others. This formula is valid under Assumptions <a href="CreditLiRisks.html#hyp:A1">7.2</a> of non-systemic entities, also called <em>no-jump condition</em>, <a href="CreditLiRisks.html#hyp:A3">7.3</a> of unpriced credit risk events, and <a href="CreditLiRisks.html#hyp:A2">7.5</a> absence of contagion. These hypotheses define what we have called the <em>classical credit-risk models</em>. We lose the high degree of tractability of Formula <a href="CreditLiRisks.html#eq:standardAffineCredit">(7.14)</a> when some of the previous assumptions are relaxed:</p>
 <ul>
-<li><p>If <span class="math inline">\(f (y_t | w_{t-1}) = f (y_t | y_{t-1} , d_{1, t-1})\)</span> (entity <span class="math inline">\(e = 1\)</span> is <em>systemic</em>) then:</p>
-<ul>
-<li>The pseudo-price <span class="math inline">\(\widetilde{B}_e (t, h)\)</span> now depends on <span class="math inline">\(y_t\)</span> and <span class="math inline">\(d_{1, t}\)</span>;</li>
+<li>
+<p>If <span class="math inline">\(f (y_t | w_{t-1}) = f (y_t | y_{t-1} , d_{1, t-1})\)</span> (entity <span class="math inline">\(e = 1\)</span> is <em>systemic</em>) then:</p>
+<ol style="list-style-type: lower-alpha">
+<li>The pseudo-price <span class="math inline">\(\widetilde{B}^{(e)}_{t,h}\)</span> now depends on <span class="math inline">\(y_t\)</span> and <span class="math inline">\(d_{1, t}\)</span>;</li>
 <li>Eq. <a href="CreditLiRisks.html#eq:standardPriceCredit2">(7.3)</a> is valid for entity <span class="math inline">\(e = 2\)</span> only;</li>
-<li>The computation of <span class="math inline">\(\widetilde{B}_2 (t, h)\)</span> is not straightforward: <span class="math inline">\(\{ y_t \}\)</span>
+<li>The computation of <span class="math inline">\(\widetilde{B}^{(2)}_{t,h}\)</span> is not straightforward: <span class="math inline">\(\{ y_t \}\)</span>
 is not autonomous and the autonomous process <span class="math inline">\(\{ y_t, d_{1,t} \}\)</span> is not affine.</li>
-</ul></li>
-<li><p>If there is a contagion effect from <span class="math inline">\(e = 1\)</span> towards <span class="math inline">\(e = 2\)</span>, i.e., if
+</ol>
+</li>
+<li>
+<p>If there is a contagion effect from <span class="math inline">\(e = 1\)</span> towards <span class="math inline">\(e = 2\)</span>, i.e., if
 <span class="math display">\[\begin{eqnarray*}
 p ( d_t  |  y_t, w_{t-1} ) &amp;=&amp; p_1 ( d_{1, t}  |  y_t, y_{t-1}, d_{1, t-1}) \\
 &amp;&amp;  p_2 ( d_{2, t}  |  y_t, y_{t-1}, d_{1, t}, d_{1, t-1}, d_{2, t-1}),
 \end{eqnarray*}\]</span>
 then:</p>
-<ul>
+<ol style="list-style-type: lower-alpha">
 <li>Eq. <a href="CreditLiRisks.html#eq:standardPriceCredit2">(7.3)</a> is still valid for both entities;</li>
-<li>In an affine framework, the computation of <span class="math inline">\(\widetilde{B}_1 (t, h)\)</span> (and <span class="math inline">\(B_1 (t, h)\)</span>) is straightforward; but formulas for <span class="math inline">\(\widetilde{B}_2 (t, h)\)</span> and <span class="math inline">\(B_2 (t, h)\)</span> are not explicit anymore even if <span class="math inline">\(\widetilde{\lambda}_{2, t}\)</span> is affine in <span class="math inline">\((y_t, y_{t-1}, d_{1, t}, d_{1, t-1})\)</span>.</li>
-</ul></li>
-<li><p>If the default event of the first entity only (<span class="math inline">\(d_{1,t}\)</span>) is a source of risk that is priced: <span class="math inline">\(\mathcal{M}_{t-1, t}( w_t, w_{t-1}) = \mathcal{M}_{t-1, t}( y_t, y_{t-1}, d_{1, t}, d_{1, t-1})\)</span>, then</p>
-<ul>
-<li><span class="math inline">\(\lambda^{\mathbb{Q}}_{1, t} \neq \lambda_{1, t}\)</span> and <span class="math inline">\(\lambda^{\mathbb{Q}}_{2, t} = \lambda_{2, t}\)</span>;</li>
-<li>the exogeneity of <span class="math inline">\(\{ y_t \}\)</span> is no longer preserved under <span class="math inline">\(\mathbb{Q}\)</span>;</li>
-<li>Eq. <a href="CreditLiRisks.html#eq:standardPriceCredit2">(7.3)</a> is no longer valid for entity <span class="math inline">\(e = 1\)</span>. It remains valid for <span class="math inline">\(e=2\)</span> but the computation of <span class="math inline">\(\widetilde{B}_{2} (t, h)\)</span> is not straightforward: even if <span class="math inline">\(y_t\)</span> is <span class="math inline">\(\mathbb{P}\)</span>-autonomous, this is not true under <span class="math inline">\(\mathbb{Q}\)</span>.</li>
-</ul></li>
-</ul>
-<div id="CreditGeneral" class="section level3 hasAnchor" number="7.4.1">
-<h3><span class="header-section-number">7.4.1</span> General affine credit-risk framework<a href="CreditLiRisks.html#CreditGeneral" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Exploiting Vector Auto-Regressive Gamma (VARG) processes, <span class="citation">Alain Monfort et al. (<a href="#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span> propose a general affine credit-risk pricing model jointly allowing for:</p>
-<ol style="list-style-type: decimal">
-<li><em>systemic entities</em> (breaking down the no-jump condition; see <span class="citation">Collin-Dufresne, Goldstein, and Hugonnier (<a href="#ref-CollinDufresne_Goldstein_Hugonnier_2004">2004</a>)</span>);</li>
-<li><em>contagion effects between entities</em> (economic/financial linkages; see <span class="citation">Ait-Sahalia, Laeven, and Pelizzon (<a href="#ref-AITSAHALIA2014151">2014</a>)</span>);</li>
-<li><em>pricing of credit events</em> (credit spread puzzle; see <span class="citation">C. Gourieroux, Monfort, and Renne (<a href="#ref-Gourieroux_Monfort_Renne_2014">2014</a>)</span>);</li>
-<li>and <em>stochastic recovery rates (RR)</em> <span class="citation">(<a href="#ref-Altman_Brady_Resti_Sironi_2005">Altman et al. 2005</a>)</span>.</li>
+<li>In an affine framework, the computation of <span class="math inline">\(\widetilde{B}^{(1)}_{t, h}\)</span> (and <span class="math inline">\(B^{(1)}_{t,h}\)</span>) is straightforward; but formulas for <span class="math inline">\(\widetilde{B}^{(2)}_{t,h}\)</span> and <span class="math inline">\(B^{(2)}_{t,h}\)</span> are not explicit anymore even if <span class="math inline">\(\widetilde{\lambda}_{2, t}\)</span> is affine in <span class="math inline">\((y_t, y_{t-1}, d_{1, t}, d_{1, t-1})\)</span>.</li>
 </ol>
-<p>In this general framework, the state vector <span class="math inline">\(w_t\)</span> is of the form <span class="math inline">\([y_t&#39;,\delta_t&#39;]&#39;\)</span>, where <span class="math inline">\(\delta_t\)</span> is a <span class="math inline">\(E\)</span>-dimensional vector of <em>credit-event variables</em> (see Hypothesis <a href="CreditLiRisks.html#hyp:H1">7.6</a>).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Genemework"></span>
-<img src="figures/Schema2.png" alt="Schematic comparison of the classical and general credit-risk frameworks." width="80%" />
-<p class="caption">
+</li>
+<li>
+<p>If the default event of the first entity only (<span class="math inline">\(d_{1,t}\)</span>) is a source of risk that is priced: <span class="math inline">\(\mathcal{M}_{t-1, t}( w_t, w_{t-1}) = \mathcal{M}_{t-1, t}( y_t, y_{t-1}, d_{1, t}, d_{1, t-1})\)</span>, then</p>
+<ol style="list-style-type: lower-alpha">
+<li>
+<span class="math inline">\(\lambda^{\mathbb{Q}}_{1, t} \neq \lambda_{1, t}\)</span> and <span class="math inline">\(\lambda^{\mathbb{Q}}_{2, t} = \lambda_{2, t}\)</span>;</li>
+<li>the exogeneity of <span class="math inline">\(\{ y_t \}\)</span> is no longer preserved under <span class="math inline">\(\mathbb{Q}\)</span>;</li>
+<li>Eq. <a href="CreditLiRisks.html#eq:standardPriceCredit2">(7.3)</a> is no longer valid for entity <span class="math inline">\(e = 1\)</span>. It remains valid for <span class="math inline">\(e=2\)</span> but the computation of <span class="math inline">\(\widetilde{B}^{(2)}_{t,h}\)</span> is not straightforward: even if <span class="math inline">\(y_t\)</span> is <span class="math inline">\(\mathbb{P}\)</span>-autonomous, this is not true under <span class="math inline">\(\mathbb{Q}\)</span>.</li>
+</ol>
+</li>
+</ul>
+<div id="CreditGeneral" class="section level3" number="7.4.1">
+<h3>
+<span class="header-section-number">7.4.1</span> General affine credit-risk framework<a class="anchor" aria-label="anchor" href="#CreditGeneral"><i class="fas fa-link"></i></a>
+</h3>
+<p>Exploiting Vector Auto-Regressive Gamma (VARG) processes, <span class="citation">Alain Monfort et al. (<a href="references.html#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span> propose a general affine credit-risk pricing model jointly allowing for:</p>
+<ol style="list-style-type: decimal">
+<li>
+<em>systemic entities</em> (breaking down the no-jump condition; see <span class="citation">Collin-Dufresne, Goldstein, and Hugonnier (<a href="references.html#ref-CollinDufresne_Goldstein_Hugonnier_2004">2004</a>)</span>);</li>
+<li>
+<em>contagion effects between entities</em> (economic/financial linkages; see <span class="citation">Ait-Sahalia, Laeven, and Pelizzon (<a href="references.html#ref-AITSAHALIA2014151">2014</a>)</span>);</li>
+<li>
+<em>pricing of credit events</em> (credit spread puzzle; see <span class="citation">C. Gourieroux, Monfort, and Renne (<a href="references.html#ref-Gourieroux_Monfort_Renne_2014">2014</a>)</span>);</li>
+<li>and <em>stochastic recovery rates (RR)</em> <span class="citation">(<a href="references.html#ref-Altman_Brady_Resti_Sironi_2005">Altman et al. 2005</a>)</span>.</li>
+</ol>
+<p>In this general framework, the state vector <span class="math inline">\(w_t\)</span> is of the form <span class="math inline">\([y_t',\delta_t']'\)</span>, where <span class="math inline">\(\delta_t\)</span> is a <span class="math inline">\(E\)</span>-dimensional vector of <em>credit-event variables</em> (see Hypothesis <a href="CreditLiRisks.html#hyp:H1">7.6</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:Genemework"></span>
+<img src="figures/Schema2.png" alt="Schematic comparison of the classical and general credit-risk frameworks." width="80%"><p class="caption">
 Figure 7.4: Schematic comparison of the classical and general credit-risk frameworks.
 </p>
 </div>
@@ -803,19 +655,19 @@ Figure 7.4: Schematic comparison of the classical and general credit-risk framew
 <span class="math display" id="eq:defaulttime">\[\begin{equation}
 \tau^{(e)} = \inf \left\{ t &gt; 0 : \delta^{(e)}_t &gt; 0 \right\},\tag{7.20}
 \end{equation}\]</span>
-where <span class="math inline">\(\delta^{(e)}_t\)</span> is a non-negative variable called <em>credit-event variable</em>. The default indicator function can be equivalently written as <span class="math inline">\(d^{(e)}_t = \textbf{1}_{ \{ \tau^{(e)} \leq t \} }\)</span> or <span class="math inline">\(d^{(e)}_t = 1 - \textbf{1}_{ \{ \underline{\delta^{(e)}_t} &#39; {\bf 1} = 0 \} }\)</span>, with <span class="math inline">\(\underline{\delta^{(e)}_t} = (\delta^{(e)}_t, \ldots, \delta^{(e)}_1)\)</span> and
-where <span class="math inline">\({\bf 1} = (1, \ldots, 1)&#39;\)</span> with conformable dimension.</p>
+where <span class="math inline">\(\delta^{(e)}_t\)</span> is a non-negative variable called <em>credit-event variable</em>. The default indicator function can be equivalently written as <span class="math inline">\(d^{(e)}_t = \textbf{1}_{ \{ \tau^{(e)} \leq t \} }\)</span> or <span class="math inline">\(d^{(e)}_t = 1 - \textbf{1}_{ \{ \underline{\delta^{(e)}_t} ' {\bf 1} = 0 \} }\)</span>, with <span class="math inline">\(\underline{\delta^{(e)}_t} = (\delta^{(e)}_t, \ldots, \delta^{(e)}_1)\)</span> and
+where <span class="math inline">\({\bf 1} = (1, \ldots, 1)'\)</span> with conformable dimension.</p>
 </div>
 <div class="hypothesis">
 <p><span id="hyp:H2" class="hypothesis"><strong>Hypothesis 7.7  (State-vector dynamics) </strong></span>The stochastic process <span class="math inline">\(\{w_t\}\)</span> is affine under the historical probability measure <span class="math inline">\(\mathbb{P}\)</span>. The historical Laplace transform of <span class="math inline">\(w_t\)</span>, conditional <span class="math inline">\(\underline{w}_{t-1}\)</span>, is denoted by:
 <span class="math display" id="eq:affinePcLT">\[\begin{eqnarray}
-\varphi^{\mathbb{P}}_{w, t-1} (u_w) &amp;=&amp; \mathbb{E} \left[\exp( u_w &#39; w_t )   |   \underline{w_{t-1}} \right] \nonumber \\
-&amp;=&amp; \exp \left[ a_{w} (u_{w}) &#39; w_{t-1} + b_{w} (u_{w}) \right],\tag{7.21}
+\varphi^{\mathbb{P}}_{w, t-1} (u_w) &amp;=&amp; \mathbb{E} \left[\exp( u_w ' w_t )   |   \underline{w_{t-1}} \right] \nonumber \\
+&amp;=&amp; \exp \left[ a_{w} (u_{w}) ' w_{t-1} + b_{w} (u_{w}) \right],\tag{7.21}
 \end{eqnarray}\]</span>
-with <span class="math inline">\(u_w = (u_y &#39;, u_{\delta} &#39;)&#39;\)</span>.</p>
+with <span class="math inline">\(u_w = (u_y ', u_{\delta} ')'\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:exDefaultVARG" class="example"><strong>Example 7.4  (Vector Autoregressive Gamma process) </strong></span>In <span class="citation">Alain Monfort et al. (<a href="#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span>, <span class="math inline">\(w_t\)</span> follows a VARG (positive affine) process, which satisfies Hypthesis <a href="CreditLiRisks.html#hyp:H2">7.7</a> (Example <a href="#exm:ARG1"><strong>??</strong></a> presents the univariate version of this process.):
+<p><span id="exm:exDefaultVARG" class="example"><strong>Example 7.4  (Vector Autoregressive Gamma process) </strong></span>In <span class="citation">Alain Monfort et al. (<a href="references.html#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span>, <span class="math inline">\(w_t\)</span> follows a VARG (positive affine) process, which satisfies Hypthesis <a href="CreditLiRisks.html#hyp:H2">7.7</a> (Example <a href="ChapterAffine.html#exm:ARG1">1.8</a> presents the univariate version of this process.):
 <span class="math display" id="eq:EARGs">\[\begin{equation}
 \begin{array}{lll}
 y_{t}  |  \underline{w_{t-1}}  &amp;\overset{\mathbb{P}}{\sim}&amp;   \otimes_{j=1}^{N_y}   \gamma_{\nu_{j}^{(y)}}
@@ -825,66 +677,65 @@ y_{t}  |  \underline{w_{t-1}}  &amp;\overset{\mathbb{P}}{\sim}&amp;   \otimes_{j
 \mu_e^{(\delta)} \right) ,
 \end{array}\tag{7.22}
 \end{equation}\]</span>
-where <span class="math inline">\(\delta_t = (\delta^{(1)}_t, \ldots, \delta^{(E)}_t)&#39;\)</span> and <span class="math inline">\(\gamma_{\nu} \left(\lambda, \mu \right)\)</span>: non-central Gamma distribution.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:VARGschema"></span>
-<img src="figures/schema_VARG.png" alt="A potential causality scheme in Monfort et al. (2021)." width="70%" />
-<p class="caption">
+where <span class="math inline">\(\delta_t = (\delta^{(1)}_t, \ldots, \delta^{(E)}_t)'\)</span> and <span class="math inline">\(\gamma_{\nu} \left(\lambda, \mu \right)\)</span>: non-central Gamma distribution.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:VARGschema"></span>
+<img src="figures/schema_VARG.png" alt="A potential causality scheme in Monfort et al. (2021)." width="70%"><p class="caption">
 Figure 7.5: A potential causality scheme in Monfort et al. (2021).
 </p>
 </div>
 </div>
 <div class="hypothesis">
-<p><span id="hyp:H4" class="hypothesis"><strong>Hypothesis 7.8  (Stochastic discount factor) </strong></span>The one-period positive SDF <span class="math inline">\(\mathcal{M}_{t-1, t}\)</span> is given by (this is Eq. <a href="#eq:keySDF">(<strong>??</strong>)</a>, with <span class="math inline">\(\alpha_t \equiv \alpha_w\)</span>):
+<p><span id="hyp:H4" class="hypothesis"><strong>Hypothesis 7.8  (Stochastic discount factor) </strong></span>The one-period positive SDF <span class="math inline">\(\mathcal{M}_{t-1, t}\)</span> is given by (this is <a href="PandQ.html#eq:keySDF">(2.4)</a>, with <span class="math inline">\(\alpha_t \equiv \alpha_w\)</span>):
 <span class="math display">\[\begin{equation}
-\mathcal{M}_{t,t+1} = exp[-r_{t}+\alpha&#39;_w w_{t+1}-\psi_t(\alpha_w)],
+\mathcal{M}_{t,t+1} = exp[-i_{t}+\alpha'_w w_{t+1}-\psi_t(\alpha_w)],
 \end{equation}\]</span>
-and the risk-free short rate (between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+1\)</span>) is given by the following affine function of the factors:
-<span class="math display">\[\begin{equation}(\#eq:short_rate)
+where <span class="math inline">\(\alpha_w = (\alpha_y ' , \alpha_x ' , \alpha_{\delta} ') '\)</span> is the vector of <em>prices of risk</em>, and the risk-free short rate (between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+1\)</span>) is given by the following affine function of the factors:
+<span class="math display" id="eq:shortrate">\[\begin{equation}
 \begin{array}{lll}
-r_{t}(\underline{w_{t}}) = \xi_0 + \xi_1 &#39; w_{t}.
-\end{array}
-\end{equation}\]</span>
-<span class="math inline">\(\alpha_w = (\alpha_y &#39; , \alpha_x &#39; , \alpha_{\delta} &#39;) &#39;\)</span> is the vector of <em>prices of risk</em>.</p>
+i_{t}(\underline{w_{t}}) = \xi_0 + \xi_1 ' w_{t}.
+\end{array}\tag{7.23}
+\end{equation}\]</span></p>
 </div>
 <p>Under Hypotheses <a href="CreditLiRisks.html#hyp:H2">7.7</a> and <a href="CreditLiRisks.html#hyp:H4">7.8</a>, it comes that:
 <span class="math display" id="eq:affineQcLT">\[\begin{eqnarray}
-\varphi^{\mathbb{Q}}_{w, t-1} (u_w) &amp;=&amp; \mathbb{E}^{\mathbb{Q}} \left[\exp( u_w &#39; w_t )   |   \underline{w_{t-1}} \right] \nonumber \\
-&amp;=&amp; \exp \left[ a^{\mathbb{Q}}_{w} (u_{w}) &#39; w_{t-1} + b^{\mathbb{Q}}_{w} (u_{w}) \right],\tag{7.23}
+\varphi^{\mathbb{Q}}_{w, t-1} (u_w) &amp;=&amp; \mathbb{E}^{\mathbb{Q}} \left[\exp( u_w ' w_t )   |   \underline{w_{t-1}} \right] \nonumber \\
+&amp;=&amp; \exp \left[ a^{\mathbb{Q}}_{w} (u_{w}) ' w_{t-1} + b^{\mathbb{Q}}_{w} (u_{w}) \right],\tag{7.24}
 \end{eqnarray}\]</span>
-where, using Eq. <a href="#eq:transfoPQ">(<strong>??</strong>)</a>:
+where, using Eq. <a href="PandQ.html#eq:transfoPQ">(2.7)</a>:
 <span class="math display" id="eq:aQbQ">\[\begin{equation}
 \left\{
 \begin{array}{ccl}
 a^{\mathbb{Q}}_{w} (u_{w}) &amp;=&amp; a_{w} (u_{w} + \alpha_w) - a_{w} (\alpha_w) \\
 b^{\mathbb{Q}}_{w} (u_{w}) &amp;=&amp; b_{w} (u_{w} + \alpha_w) - b_{w} (\alpha_w).
 \end{array}
-\right.\tag{7.24}
+\right.\tag{7.25}
 \end{equation}\]</span></p>
 <div class="hypothesis">
 <p><span id="hyp:RRvalue" class="hypothesis"><strong>Hypothesis 7.9  (General recovery payment) </strong></span>The <em>Recovery Payment</em>of a defaultable ZCB, in the case of default at date <span class="math inline">\(t+i = \tau^{(e)}\)</span>, is given by:
 <span class="math display" id="eq:recoverypaym">\[\begin{equation}
 \begin{array}{lll}
 RR^{(e)}_{t+i}   \times   \mathcal{V}^{(e)}_{t+i, h-i}
-\end{array}\tag{7.25}
+\end{array}\tag{7.26}
 \end{equation}\]</span>
 where the <em>Recovery Rate</em> <span class="math inline">\(RR^{(e)}_{t+i}\)</span> is
 <span class="math display" id="eq:recoveryrate2">\[\begin{equation}
-RR^{(e)}_{t+i} = \exp \left( - a_{e} - a_{w, e} &#39;   w_{t+i} \right),\tag{7.26}
+RR^{(e)}_{t+i} = \exp \left( - a_{e} - a_{w, e} '   w_{t+i} \right),\tag{7.27}
 \end{equation}\]</span>
 and where <span class="math inline">\(\mathcal{V}^{(e)}_{t+i, h-i}\)</span> denotes the <em>Recovery Value</em> (Exposure-at-Default) at <span class="math inline">\(t+i\)</span>}.</p>
 </div>
 <p>The general framework allows for flexible specifications of the recovery payment. It can be:</p>
 <ul>
-<li>the fraction of the pre-default value of the claim (Recovery of Market Value, or RMV) [see Prop. <a href="CreditLiRisks.html#prp:generalRMV">7.7</a>];</li>
-<li>the fraction of par (Recovery of Face Value, or RFV) [see Proposition <a href="CreditLiRisks.html#prp:generalRFV">7.6</a>];</li>
+<li>the fraction of the pre-default value of the claim (Recovery of Market Value, or RMV), see Proposition <a href="CreditLiRisks.html#prp:generalRMV">7.7</a>;</li>
+<li>the fraction of par (Recovery of Face Value, or RFV), see Proposition <a href="CreditLiRisks.html#prp:generalRFV">7.6</a>;</li>
 <li>the fraction of a no-default version of the same claim (Recovery of Treasury, or RT). In that case, the recovery payment is a fraction of the (risk-free) present value of the principal.</li>
 </ul>
 <div class="proposition">
 <p><span id="prp:generalRFV" class="proposition"><strong>Proposition 7.6  (General pricing under the RFV convention) </strong></span>The price, at date <span class="math inline">\(t &lt; \tau^{(e)}\)</span>, of a ZCB issued by entity <span class="math inline">\(e\)</span> and maturing in <span class="math inline">\(h\)</span> periods is given by:
 <span class="math display" id="eq:ZCBRFV1">\[\begin{equation}
 \begin{array}{lll}
-\boxed{B_{e} (t, h) = \sum_{i = 1}^{h} \left( \Lambda^{\mathbb{Q}}_{(1, t, i)} - \Lambda^{\mathbb{Q}}_{(2, t, i)} \right) + \Lambda^{\mathbb{Q}}_{(3, t, h)} ,}
-\end{array}\tag{7.27}
+\boxed{B^{(e)}_{t,h} = \sum_{i = 1}^{h} \left( \Lambda^{\mathbb{Q}}_{(1, t, i)} - \Lambda^{\mathbb{Q}}_{(2, t, i)} \right) + \Lambda^{\mathbb{Q}}_{(3, t, h)} ,}
+\end{array}\tag{7.28}
 \end{equation}\]</span>
 where:
 <span class="math display" id="eq:ZCBRFV2">\[\begin{equation}
@@ -892,57 +743,59 @@ where:
 \Lambda_{(1,t,i)}^{\mathbb{Q}} &amp;:=&amp; \underset{u \rightarrow - \infty}{\lim} \Psi^{\mathbb{Q}}_{(t, i)} (a_e , u \widetilde{e}_\delta - \xi_1, - a_{w,e}) \\
 \Lambda_{(2,t,i)}^{\mathbb{Q}} &amp;:=&amp; \underset{u \rightarrow - \infty}{\lim} \Psi^{\mathbb{Q}}_{(t, i)} (a_e , u \widetilde{e}_\delta - \xi_1,u \widetilde{e}_\delta - a_{w,e} ) \\
 \Lambda_{(3,t,i)}^{\mathbb{Q}} &amp;:=&amp; \underset{u \rightarrow - \infty}{\lim} \Psi^{\mathbb{Q}}_{(t, i)} (0 , u \widetilde{e}_\delta - \xi_1,u \widetilde{e}_\delta)
-\end{array}\tag{7.28}
+\end{array}\tag{7.29}
 \end{equation}\]</span>
 with <span class="math inline">\(u \in \mathbb{R}\)</span> and where [denoting <span class="math inline">\(\varphi^{\mathbb{Q}}_{w, t, i} \left(u_2, \ldots, u_2 , u_1 \right) = \varphi^{\mathbb{Q}}_{w, t, i} \left( u_2 , u_1 \right)\)</span>]:
 <span class="math display" id="eq:ZCBRFV3">\[\begin{equation}
 \begin{array}{lll}
-\Psi^{\mathbb{Q}}_{(t, i)} (\kappa , u_1, u_2) &amp;:=&amp; \exp \left[ -i \xi_0 + \kappa + u_2 &#39; w_t \right]   \varphi_{w,t,i}^{\mathbb{Q}}(u_2, u_1)
-\end{array}\tag{7.29}
+\Psi^{\mathbb{Q}}_{(t, i)} (\kappa , u_1, u_2) &amp;:=&amp; \exp \left[ -i \xi_0 + \kappa + u_2 ' w_t \right]   \varphi_{w,t,i}^{\mathbb{Q}}(u_2, u_1)
+\end{array}\tag{7.30}
 \end{equation}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-6" class="proof"><em>Proof</em>. </span>See <span class="citation">Alain Monfort et al. (<a href="#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span>.</p>
+<p><span id="unlabeled-div-32" class="proof"><em>Proof</em>. </span>See <span class="citation">Alain Monfort et al. (<a href="references.html#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span>.</p>
 </div>
 <div class="proposition">
 <p><span id="prp:generalRMV" class="proposition"><strong>Proposition 7.7  (General pricing under the RMV convention) </strong></span>If the recovery value at date <span class="math inline">\(t+i\)</span> (defined in <a href="CreditLiRisks.html#hyp:RRvalue">7.9</a>) is of the form:
 <span class="math display" id="eq:ZCBRMV1">\[\begin{equation}
 \mathcal{V}^{(e)}_{t+i, h-i} =
-\mathbb{E}^{\mathbb{Q}} \left\{ \exp \left[ - \sum_{j = i}^{h-1} \left(r_{t+j} + \delta^{(e)}_{t+j+1} \right) \right]  \Big|  \underline{w_{t+i}} \right\},\tag{7.30}
+\mathbb{E}^{\mathbb{Q}} \left\{ \exp \left[ - \sum_{j = i}^{h-1} \left(i_{t+j} + \delta^{(e)}_{t+j+1} \right) \right]  \Big|  \underline{w_{t+i}} \right\},\tag{7.31}
 \end{equation}\]</span>
-with <span class="math inline">\(RR_t^{(e)} = \exp(-\delta_t^{(e)})\)</span>, and under Hypothesis <a href="CreditLiRisks.html#hyp:H1">7.6</a> to <a href="CreditLiRisks.html#hyp:H4">7.8</a>, the price <span class="math inline">\(B_{e} (t, h)\)</span> at date <span class="math inline">\(t &lt; \tau^{(e)}\)</span> is given by:
+with <span class="math inline">\(RR_t^{(e)} = \exp(-\delta_t^{(e)})\)</span>, and under Hypothesis <a href="CreditLiRisks.html#hyp:H1">7.6</a> to <a href="CreditLiRisks.html#hyp:H4">7.8</a>, the price <span class="math inline">\(B^{(e)}_{t,h}\)</span> at date <span class="math inline">\(t &lt; \tau^{(e)}\)</span> is given by:
 <span class="math display" id="eq:ZCBRMV2">\[\begin{equation}
-B_{e} (t, h) = \mathcal{V}^{(e)}_{t, h},\tag{7.31}
+B^{(e)}_{t,h} = \mathcal{V}^{(e)}_{t, h},\tag{7.32}
 \end{equation}\]</span>
 where
 <span class="math display" id="eq:ZCBRMVformula">\[\begin{equation}
 \begin{array}{lll}
-\mathcal{V}^{(e)}_{t, h} = \exp \left[ \left( \mathcal{A}_h - \xi_1 \right) &#39; w_t + \left( \mathcal{B}_h - h   \xi_0 \right) \right].
-\end{array}\tag{7.32}
+\mathcal{V}^{(e)}_{t, h} = \exp \left[ \left( \mathcal{A}_h - \xi_1 \right) ' w_t + \left( \mathcal{B}_h - h   \xi_0 \right) \right].
+\end{array}\tag{7.33}
 \end{equation}\]</span>
-where <span class="math inline">\(\mathcal{A}_h\)</span> and <span class="math inline">\(\mathcal{B}_h\)</span> are obtained recursively by employing Eqs. <a href="#eq:auxLemmareverseMLT">(<strong>??</strong>)</a> of Proposition <a href="#prp:reverseMLT"><strong>??</strong></a>, replacing functions <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> with <span class="math inline">\(a^{\mathbb{Q}}\)</span> and <span class="math inline">\(b^{\mathbb{Q}}\)</span> (see Eq. <a href="CreditLiRisks.html#eq:aQbQ">(7.24)</a>) with <span class="math inline">\(u_{1} = - \widetilde{e}_{\delta}\)</span> and, for <span class="math inline">\(i&gt;1\)</span>, <span class="math inline">\(u_i = - (\widetilde{e}_{\delta} + \xi_1)\)</span> where <span class="math inline">\(\widetilde{e}_{\delta} = (0&#39;,e_{\delta}&#39;)&#39;\)</span> is a <span class="math inline">\(N\)</span>-dimensional vector, and where <span class="math inline">\(e_{\delta}\)</span> is the <span class="math inline">\(e^{th}\)</span> column of the <span class="math inline">\((N_{\delta}, N_{\delta})\)</span>-dimensional identity matrix.</p>
+where <span class="math inline">\(\mathcal{A}_h\)</span> and <span class="math inline">\(\mathcal{B}_h\)</span> are obtained recursively by employing Eqs. <a href="ChapterAffine.html#eq:auxLemmareverseMLT">(1.19)</a> of Proposition <a href="ChapterAffine.html#prp:reverseMLT">1.5</a>, replacing functions <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> with <span class="math inline">\(a^{\mathbb{Q}}\)</span> and <span class="math inline">\(b^{\mathbb{Q}}\)</span> (see Eq. <a href="CreditLiRisks.html#eq:aQbQ">(7.25)</a>) with <span class="math inline">\(u_{1} = - \widetilde{e}_{\delta}\)</span> and, for <span class="math inline">\(i&gt;1\)</span>, <span class="math inline">\(u_i = - (\widetilde{e}_{\delta} + \xi_1)\)</span> where <span class="math inline">\(\widetilde{e}_{\delta} = (0',e_{\delta}')'\)</span> is a <span class="math inline">\(N\)</span>-dimensional vector, and where <span class="math inline">\(e_{\delta}\)</span> is the <span class="math inline">\(e^{th}\)</span> column of the <span class="math inline">\((N_{\delta}, N_{\delta})\)</span>-dimensional identity matrix.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-7" class="proof"><em>Proof</em>. </span>See Appendix A.4 of <span class="citation">Alain Monfort et al. (<a href="#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span>.</p>
+<p><span id="unlabeled-div-33" class="proof"><em>Proof</em>. </span>See Appendix A.4 of <span class="citation">Alain Monfort et al. (<a href="references.html#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span>.</p>
 </div>
-<p>Eq. <a href="CreditLiRisks.html#eq:ZCBRMV2">(7.31)</a> is a key result. It reads:
+<p>Eq. <a href="CreditLiRisks.html#eq:ZCBRMV2">(7.32)</a> is a key result. It reads:
 <span class="math display" id="eq:ZCBRMVformula2">\[\begin{equation}
-\boxed{B_{e} (t, h) = \mathbb{E}^{\mathbb{Q}} \left\{ \exp \left[ -  \left( \sum_{i = 1}^{h}{\color{red}r_{t+i-1} + \delta^{(e)}_{t+i}} \right) \right]  \Big|  \underline{w_{t}} \right\}.}\tag{7.33}
+\boxed{B^{(e)}_{t,h} = \mathbb{E}^{\mathbb{Q}} \left\{ \exp \left[ -  \left( \sum_{i = 1}^{h}\color{red}{i_{t+i-1} + \delta^{(e)}_{t+i}} \right) \right]  \Big|  \underline{w_{t}} \right\}.}\tag{7.34}
 \end{equation}\]</span>
-It is reminiscent of Eq. <a href="CreditLiRisks.html#eq:standardPriceCredit2">(7.3)</a>, with <span class="math inline">\(\lambda\)</span> (default intensity) replaced with <span class="math inline">\(\delta\)</span> (credit-event variable). However, contrary to the classical framework, credit events are priced sources of risk, the no-jump condition is relaxed, contagion is allowed, and the recovery rate is stochastic. This formula can therefore be seen as a generalization of the setting of <span class="citation">Darrell Duffie and Singleton (<a href="#ref-Duffie_Singleton_1999">1999</a>)</span>.</p>
+It is reminiscent of <a href="CreditLiRisks.html#eq:standardPriceCredit2">(7.3)</a>, with <span class="math inline">\(\lambda\)</span> (default intensity) replaced with <span class="math inline">\(\delta\)</span> (credit-event variable). However, contrary to the classical framework, credit events are priced sources of risk, the no-jump condition is relaxed, contagion is allowed, and the recovery rate is stochastic. This formula can therefore be seen as a generalization of the setting of <span class="citation">Darrell Duffie and Singleton (<a href="references.html#ref-Duffie_Singleton_1999">1999</a>)</span>.</p>
 </div>
-<div id="CreditCDS" class="section level3 hasAnchor" number="7.4.2">
-<h3><span class="header-section-number">7.4.2</span> CDS pricing in the general framework<a href="CreditLiRisks.html#CreditCDS" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="CreditCDS" class="section level3" number="7.4.2">
+<h3>
+<span class="header-section-number">7.4.2</span> CDS pricing in the general framework<a class="anchor" aria-label="anchor" href="#CreditCDS"><i class="fas fa-link"></i></a>
+</h3>
 <p>This subsection shows how CDS can be priced in the context of the general credit-risk model. We consider two types of CDS. The first is the standard one; the second is a CDS whose payoffs are expressed in a foreign currency (which is typical to sovereign CDSs). Figures <a href="CreditLiRisks.html#fig:CDS">7.6</a> and <a href="CreditLiRisks.html#fig:CDSFX">7.7</a> show the payoffs associated with these two types of CDSs.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:CDS"></span>
-<img src="figures/FigureCDS.png" alt="CDS payoffs." width="70%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:CDS"></span>
+<img src="figures/FigureCDS.png" alt="CDS payoffs." width="70%"><p class="caption">
 Figure 7.6: CDS payoffs.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:CDSFX"></span>
-<img src="figures/FigureCDSFX.png" alt="CDS payoffs when the payoffs are expressed in a foreign currency." width="70%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:CDSFX"></span>
+<img src="figures/FigureCDSFX.png" alt="CDS payoffs when the payoffs are expressed in a foreign currency." width="70%"><p class="caption">
 Figure 7.7: CDS payoffs when the payoffs are expressed in a foreign currency.
 </p>
 </div>
@@ -960,24 +813,24 @@ Hence, the present values of the fixed-leg payments, expressed in the domestic c
 <span class="math display">\[\begin{equation*}
 \begin{array}{lll}
 \mathcal{S}^{(e) f}_{t, t+h}  \sum_{i=1}^{h}   \mathbb{E}^{\mathbb{Q}}
-\left[\exp \left( s_{t+i} - \sum_{j = 1}^{i} r_{t + j - 1} \right) \textbf{1}_{\{ \delta^{(e) &#39;}_{t : t+i} {\bf 1} = 0 \} }
+\left[\exp \left( s_{t+i} - \sum_{j = 1}^{i} i_{t + j - 1} \right) \textbf{1}_{\{ \delta^{(e) '}_{t : t+i} {\bf 1} = 0 \} }
 \Big|  \underline{w_t} \right],
 \end{array}
 \end{equation*}\]</span></p>
 <p>Let us turn to the <em>floating leg</em>. Under the RFV convention, the protection seller will make a payment of <span class="math inline">\((1 - RR^{(e)}_{t+i}) \exp(s_{t+i})\)</span> (this is the loss-given-default. LGD) at date <span class="math inline">\(t+i\)</span> in case of default over the time interval <span class="math inline">\(] t + i - 1, t+i ]\)</span>. The present values of the floating leg, expressed in the domestic currency, is:
 <span class="math display" id="eq:MCCDSPS">\[\begin{equation*}
 \begin{array}{lll}
-&amp;&amp; \sum_{i=1}^{h}   \mathbb{E}^{\mathbb{Q}} \left[ \exp \left( s_{t+i} - \sum_{j = 1}^{i} r_{t + j - 1}
+&amp;&amp; \sum_{i=1}^{h}   \mathbb{E}^{\mathbb{Q}} \left[ \exp \left( s_{t+i} - \sum_{j = 1}^{i} i_{t + j - 1}
 \right)   (1 - RR^{(e)}_{t+i})\right. \\ \\
-&amp;&amp; \hspace{7em} \left.   \left( \textbf{1}_{\{ \delta^{(e) &#39;}_{t : t+i-1} {\bf 1} = 0 \} } - \textbf{1}_{\{ \delta^{(e) &#39;}_{t : t+i}
-{\bf 1} = 0 \} } \right)  \Big|  \underline{w_t}   \right],\tag{7.34}
+&amp;&amp; \hspace{7em} \left.   \left( \textbf{1}_{\{ \delta^{(e) '}_{t : t+i-1} {\bf 1} = 0 \} } - \textbf{1}_{\{ \delta^{(e) '}_{t : t+i}
+{\bf 1} = 0 \} } \right)  \Big|  \underline{w_t}   \right],\tag{7.35}
 \end{array}
 \end{equation*}\]</span></p>
-<p>We assume that <span class="math inline">\(RR^{(e)}_{t} = \exp \left( - a_{e} - a_{w, e} &#39; w_t \right)\)</span> and that <span class="math inline">\(s_t = \chi + u_s &#39; w_t\)</span>.</p>
+<p>We assume that <span class="math inline">\(RR^{(e)}_{t} = \exp \left( - a_{e} - a_{w, e} ' w_t \right)\)</span> and that <span class="math inline">\(s_t = \chi + u_s ' w_t\)</span>.</p>
 <div class="proposition">
 <p><span id="prp:multicurrencyCDS" class="proposition"><strong>Proposition 7.8  (Price of a multi-currency CDS) </strong></span>In the context described above, we have:
 <span class="math display" id="eq:MCCDSformula1">\[\begin{equation}
-\boxed{\mathcal{S}^{(e) f}_{t, t+h} = \frac{\sum_{i=1}^{h} \Lambda^{\mathbb{Q}}_{(t, i)} }{\sum_{i=1}^{h} \lim_{u \to - \infty} \Psi^{\mathbb{Q}}_{(t, i)} \left( \chi, u \tilde{e}_{\delta} - \xi_1 , u \tilde{e}_{\delta} + u_s \right)},}\tag{7.35}
+\boxed{\mathcal{S}^{(e) f}_{t, t+h} = \frac{\sum_{i=1}^{h} \Lambda^{\mathbb{Q}}_{(t, i)} }{\sum_{i=1}^{h} \lim_{u \to - \infty} \Psi^{\mathbb{Q}}_{(t, i)} \left( \chi, u \tilde{e}_{\delta} - \xi_1 , u \tilde{e}_{\delta} + u_s \right)},}\tag{7.36}
 \end{equation}\]</span>
 where:
 <span class="math display">\[\begin{eqnarray*}
@@ -986,54 +839,56 @@ where:
 &amp;&amp; \hspace{7em} - \Psi^{\mathbb{Q}}_{(t, i)} \left(\chi - a_e, u \widetilde{e}_{\delta} - \xi_1 , u_s - a_w \right) \\
 &amp;&amp; \hspace{7em} + \Psi^{\mathbb{Q}}_{(t, i)} \left(\chi - a_e, u \widetilde{e}_{\delta} - \xi_1 , u \widetilde{e}_{\delta} + u_s - a_w \right) \Big] ,
 \end{eqnarray*}\]</span>
-and where <span class="math inline">\(\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u_2 , u_1 \right)\)</span> is given in Eq. <a href="CreditLiRisks.html#eq:ZCBRFV3">(7.29)</a>.</p>
+and where <span class="math inline">\(\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u_2 , u_1 \right)\)</span> is given in Eq. <a href="CreditLiRisks.html#eq:ZCBRFV3">(7.30)</a>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-8" class="proof"><em>Proof</em>. </span>See Online Appendix A.4 of <span class="citation">Alain Monfort et al. (<a href="#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span>. The proof notably makes use of Lemma <a href="#lemma:petitlemme"><strong>??</strong></a> (Subsection <a href="ChapterAffine.html#AffineLaplace">1.3</a>).</p>
+<p><span id="unlabeled-div-34" class="proof"><em>Proof</em>. </span>See Online Appendix A.4 of <span class="citation">Alain Monfort et al. (<a href="references.html#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span>. The proof notably makes use of Lemma <a href="ChapterAffine.html#lem:lemPetitLemme">1.2</a> (Subsection <a href="ChapterAffine.html#AffineLaplace">1.3</a>).</p>
 </div>
-<p>To price a standard CDS (with payments in domestic currency), one simply has to set <span class="math inline">\(\chi=0\)</span> and <span class="math inline">\(u_s=0\)</span>, which gives <span class="math inline">\(s_t=0\)</span> (since <span class="math inline">\(s_t = \chi + u_s &#39; w_t\)</span>).</p>
-<p><span class="citation">Alain Monfort et al. (<a href="#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span> exploit these formulas to model quanto CDSs in the euro area. Quanto CDSs are spread differentials between the two types of CDS. They exploit this framework to estimate “depreciations upon default”. Indeed, in their model, <span class="math inline">\(s_t\)</span> (the log EURUSD exchange rate) is affected by the credit event variables <span class="math inline">\(\delta_t\)</span>.</p>
+<p>To price a standard CDS (with payments in domestic currency), one simply has to set <span class="math inline">\(\chi=0\)</span> and <span class="math inline">\(u_s=0\)</span>, which gives <span class="math inline">\(s_t=0\)</span> (since <span class="math inline">\(s_t = \chi + u_s ' w_t\)</span>).</p>
+<p><span class="citation">Alain Monfort et al. (<a href="references.html#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span> exploit these formulas to model quanto CDSs in the euro area. Quanto CDSs are spread differentials between the two types of CDS <span class="citation">(<a href="references.html#ref-Augustin_Chernov_Song_2020">Augustin, Chernov, and Song 2020</a>)</span>. They exploit this framework to estimate “depreciations upon default”. Indeed, in their model, <span class="math inline">\(s_t\)</span> (the log EURUSD exchange rate) is affected by the credit event variables <span class="math inline">\(\delta_t\)</span>.</p>
 </div>
 </div>
-<div id="CreditDD" class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> Top-down approach<a href="CreditLiRisks.html#CreditDD" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="CreditDD" class="section level2" number="7.5">
+<h2>
+<span class="header-section-number">7.5</span> Top-down approach<a class="anchor" aria-label="anchor" href="#CreditDD"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
-<li>Relaxing the assumptions underlying the classical framework can also be done in the context of <em>top-down</em> approaches. Top-down models focus on default counting (or loss) processes (see, e.g., <span class="citation">Azizpour, Giesecke, and Kim (<a href="#ref-AZIZPOUR20111340">2011</a>)</span> and <span class="citation">Giesecke, Goldberg, and Ding (<a href="#ref-Giesecke_Goldberg_Ding_2011">2011</a>)</span>), contrary to the (<em>bottom-up</em>) approaches presented above. The latter consider default processes of individual firms as the model primitives (e.g., <span class="citation">Lando (<a href="#ref-Lando_1998">1998</a>)</span>, <span class="citation">Darrell Duffie and Singleton (<a href="#ref-Duffie_Singleton_1999">1999</a>)</span>, <span class="citation">Darrell Duffie and Garleanu (<a href="#ref-Duffie_Garleanu_2001">2001</a>)</span>).</li>
+<li>Relaxing the assumptions underlying the classical framework can also be done in the context of <em>top-down</em> approaches. Top-down models focus on default counting (or loss) processes (see, e.g., <span class="citation">Azizpour, Giesecke, and Kim (<a href="references.html#ref-AZIZPOUR20111340">2011</a>)</span> and <span class="citation">Giesecke, Goldberg, and Ding (<a href="references.html#ref-Giesecke_Goldberg_Ding_2011">2011</a>)</span>), contrary to the (<em>bottom-up</em>) approaches presented above. The latter consider default processes of individual firms as the model primitives (e.g., <span class="citation">Lando (<a href="references.html#ref-Lando_1998">1998</a>)</span>, <span class="citation">Darrell Duffie and Singleton (<a href="references.html#ref-Duffie_Singleton_1999">1999</a>)</span>, <span class="citation">Darrell Duffie and Garleanu (<a href="references.html#ref-Duffie_Garleanu_2001">2001</a>)</span>).</li>
 </ul>
-<p>The top-down approach has been shown to satisfactorily capture the existence of default clustering (e.g., <span class="citation">Brigo, Pallavicini, and Torresetti (<a href="#ref-Brigo_et_al_2007">2007</a>)</span>, <span class="citation">Errais, Giesecke, and Goldberg (<a href="#ref-Errais_Giesecke_Goldberg_2010">2010</a>)</span>).</p>
-<p>Building on <span class="citation">C. Gourieroux, Monfort, and Renne (<a href="#ref-Gourieroux_Monfort_Renne_2014">2014</a>)</span>, <span class="citation">Christian Gourieroux et al. (<a href="#ref-Gourieroux_Monfort_Mouabbi_Renne_2021">2021</a>)</span> propose an affine top-down model consistent with: the presence of systemic entities, contagion, and the pricing of default events (see Example <a href="CreditLiRisks.html#exm:DD">7.5</a>).</p>
+<p>The top-down approach has been shown to satisfactorily capture the existence of default clustering (e.g., <span class="citation">Brigo, Pallavicini, and Torresetti (<a href="references.html#ref-Brigo_et_al_2007">2007</a>)</span>, <span class="citation">Errais, Giesecke, and Goldberg (<a href="references.html#ref-Errais_Giesecke_Goldberg_2010">2010</a>)</span>).</p>
+<p>Building on <span class="citation">C. Gourieroux, Monfort, and Renne (<a href="references.html#ref-Gourieroux_Monfort_Renne_2014">2014</a>)</span>, <span class="citation">Christian Gourieroux et al. (<a href="references.html#ref-Gourieroux_Monfort_Mouabbi_Renne_2021">2021</a>)</span> propose an affine top-down model consistent with: the presence of systemic entities, contagion, and the pricing of default events (see Example <a href="CreditLiRisks.html#exm:DD">7.5</a>).</p>
 <div class="example">
-<p><span id="exm:DD" class="example"><strong>Example 7.5  (Disastrous Defaults) </strong></span><span class="citation">Christian Gourieroux et al. (<a href="#ref-Gourieroux_Monfort_Mouabbi_Renne_2021">2021</a>)</span> porpose an equilibrium model where different credit derivatives, including CDSs and tranch products (iTraxx), can be priced. In their framework, the default of large firms (those included in the iTraxx index) can have systemic consequences in the sense that: (a) they result in decrease in consumption and (b) they increase the probability of default of the other systemic firms.</p>
+<p><span id="exm:DD" class="example"><strong>Example 7.5  (Disastrous Defaults) </strong></span><span class="citation">Christian Gourieroux et al. (<a href="references.html#ref-Gourieroux_Monfort_Mouabbi_Renne_2021">2021</a>)</span> porpose an equilibrium model where different credit derivatives, including CDSs and tranch products (iTraxx), can be priced. In their framework, the default of large firms (those included in the iTraxx index) can have systemic consequences in the sense that: (a) they result in decrease in consumption and (b) they increase the probability of default of the other systemic firms.</p>
 <p>Let <span class="math inline">\(n^s_{t}\)</span> denote the number of systemic defaults on date <span class="math inline">\(t\)</span>, and let <span class="math inline">\(N^s_{t}\)</span> denote number of systemic entities in default at date <span class="math inline">\(t\)</span> (<span class="math inline">\(N^s_{t}=n^s_{t} + N^s_{t-1}\)</span>).</p>
 <p>The conditional distribution of the number of systemic defaults is given by:
 <span class="math display" id="eq:ndistrinew">\[\begin{eqnarray}
-n^s_{t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &amp;\sim&amp; \mathcal{P}oisson(\beta y_{t+1}+c n^s_{t}),\tag{7.36}
+n^s_{t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &amp;\sim&amp; \mathcal{P}oisson(\beta y_{t+1}+c n^s_{t}),\tag{7.37}
 \end{eqnarray}\]</span>
-where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>. Vector <span class="math inline">\((y_t,x_t)&#39;\)</span> follows a VARG dynamics (Eq. <a href="#eq:VARG">(<strong>??</strong>)</a>) that admits the following VAR representation (using Prop. <a href="#prp:affineVAR"><strong>??</strong></a>):
+where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>. Vector <span class="math inline">\((y_t,x_t)'\)</span> follows a VARG dynamics (Eq. <a href="TSModels.html#eq:VARG">(3.15)</a>) that admits the following VAR representation (using Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>):
 <span class="math display" id="eq:systemF12">\[\begin{equation}
 \left\{
 \begin{array}{ccl}
 y_t - x_t &amp;=&amp; \rho_y (y_{t-1} - x_{t-1}) + \sigma_{y,t}\varepsilon_{y,t}\\
 x_t - \mu_x  &amp;=&amp; \rho_x (x_{t-1} - \mu_x) + \sigma_{x,t}\varepsilon_{x,t},
 \end{array}
-\right.\tag{7.37}
+\right.\tag{7.38}
 \end{equation}\]</span>
 with <span class="math inline">\(0&lt;\rho_y&lt;\rho_x&lt;1\)</span>.</p>
-<p>If <span class="math inline">\(c&gt;0\)</span>, defaults on date <span class="math inline">\(t\)</span> increases the conditional probability of having additional defaults on the next date <span class="math inline">\(\Rightarrow\)</span> Systemic defaults are infectious <span class="citation">(<a href="#ref-Davis_Lo_2001">Davis and Lo 2001</a>})</span>, or contagious.</p>
+<p>If <span class="math inline">\(c&gt;0\)</span>, defaults on date <span class="math inline">\(t\)</span> increases the conditional probability of having additional defaults on the next date <span class="math inline">\(\Rightarrow\)</span> Systemic defaults are infectious <span class="citation">(<a href="references.html#ref-Davis_Lo_2001">Davis and Lo 2001</a>})</span>, or contagious.</p>
 <p>The log growth rate of per capita consumption (<span class="math inline">\(\Delta c_t = \log(C_t/C_{t-1})\)</span>) is given by:
 <span class="math display" id="eq:Deltacrewritten">\[\begin{equation}
-\Delta c_t = \mu_{c,0} + \mu_{c,x} x_t + \mu_{c,y} y_t + {\mu_{c,z}} z_{t},\tag{7.38}
+\Delta c_t = \mu_{c,0} + \mu_{c,x} x_t + \mu_{c,y} y_t + {\mu_{c,z}} z_{t},\tag{7.39}
 \end{equation}\]</span>
 where <span class="math inline">\(z_t\)</span> depends on systemic defaults:
 <span class="math display" id="eq:Zdistrinew">\[\begin{equation}
-z_t|  \underline{x_{t}}, \underline{y_{t}}, \underline{N^s_{t}}  \sim \gamma_0(\xi_{z}n^s_{t-1},\mu_z).\tag{7.39}
+z_t|  \underline{x_{t}}, \underline{y_{t}}, \underline{N^s_{t}}  \sim \gamma_0(\xi_{z}n^s_{t-1},\mu_z).\tag{7.40}
 \end{equation}\]</span>
-<span class="math inline">\(\gamma_0\)</span> being a distribution featuring a point mass at zero (see Eq. <a href="#eq:ARG0">(<strong>??</strong>)</a> in Example <a href="#exm:ARG1"><strong>??</strong></a>). In that context, the conditional probability that <span class="math inline">\(z_t=0\)</span> is <span class="math inline">\(\exp(-\xi_{z}n^s_{t-1})\)</span>. <span class="math inline">\(z_{t}=0\)</span> as long as there has been no systemic defaults in the previous period, which is rather frequent.</p>
+<span class="math inline">\(\gamma_0\)</span> being a distribution featuring a point mass at zero (see Eq. <a href="ChapterAffine.html#eq:ARG0">(1.4)</a> in Example <a href="ChapterAffine.html#exm:ARG1">1.8</a>). In that context, the conditional probability that <span class="math inline">\(z_t=0\)</span> is <span class="math inline">\(\exp(-\xi_{z}n^s_{t-1})\)</span>. <span class="math inline">\(z_{t}=0\)</span> as long as there has been no systemic defaults in the previous period, which is rather frequent.</p>
 <p>If <span class="math inline">\(\mu_{c,z}&lt;0\)</span> and <span class="math inline">\(|\mu_{c,z}|\)</span> is large or if <span class="math inline">\(c\)</span> (contamination) is large, then systemic defaults can give rise to disastrous decreases in <span class="math inline">\(C_t\)</span>.</p>
-<p><span class="citation">Christian Gourieroux et al. (<a href="#ref-Gourieroux_Monfort_Mouabbi_Renne_2021">2021</a>)</span> consider agents featuring Epstein-Zin preferences, with a unit elasticity of intertemporal substitution (EIS). In that context, the SDF is exponential affine (as in Eq. <a href="#eq:keySDF">(<strong>??</strong>)</a>), and <span class="math inline">\(w_t = (x_t,y_t,z_t,n^{s}_t)&#39;\)</span> is affine under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:SchemaDD"></span>
-<img src="figures/schemaDD.png" alt="Causality scheme in Gourieroux et al. (2021)." width="90%" />
-<p class="caption">
+<p><span class="citation">Christian Gourieroux et al. (<a href="references.html#ref-Gourieroux_Monfort_Mouabbi_Renne_2021">2021</a>)</span> consider agents featuring Epstein-Zin preferences, with a unit elasticity of intertemporal substitution (EIS). In that context, the SDF is exponential affine (as in Eq. <a href="PandQ.html#eq:keySDF">(2.4)</a>), and <span class="math inline">\(w_t = (x_t,y_t,z_t,n^{s}_t)'\)</span> is affine under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:SchemaDD"></span>
+<img src="figures/schemaDD.png" alt="Causality scheme in Gourieroux et al. (2021)." width="90%"><p class="caption">
 Figure 7.8: Causality scheme in Gourieroux et al. (2021).
 </p>
 </div>
@@ -1041,10 +896,16 @@ Figure 7.8: Causality scheme in Gourieroux et al. (2021).
 <ul>
 <li>CDS: protection payoff <span class="math inline">\(&gt;0\)</span>, when the entity on which the CDS is written defaults.</li>
 <li>CIS: protection payoff <span class="math inline">\(&gt;0\)</span>, when one entity of the underlying portfolio defaults.</li>
-<li>CDO: protection payoff <span class="math inline">\(&gt;0\)</span>, when one entity of the underlying portfolio defaults, given that losses are in a given interval <span class="math inline">\([a,b]\)</span> (e.g. <span class="math inline">\([a,b]=[3\%,6\%]\)</span>). See Figure <a href="#fig:CDO"><strong>??</strong></a>.</li>
+<li>CDO: protection payoff <span class="math inline">\(&gt;0\)</span>, when one entity of the underlying portfolio defaults, given that losses are in a given interval <span class="math inline">\([a,b]\)</span> (e.g. <span class="math inline">\([a,b]=[3\%,6\%]\)</span>). See Figure <a href="CreditLiRisks.html#fig:CDOs">7.9</a>.</li>
 </ul>
 <p>Typical credit indices are the iTraxx (Europe) and CDX (U.S.); these indices track the default status of 125 large firms.</p>
-<p>The pricing CDO formula make an intensive use of the truncated Laplace transform (see Eq. <a href="#eq:DPS">(<strong>??</strong>)</a>, <span class="citation">Darrell Duffie, Pan, and Singleton (<a href="#ref-Duffie_Pan_Singleton_2000">2000</a>)</span>). The model estimation would be infeasible without the tractability provided by affine processes.</p>
+<p>The pricing CDO formula make an intensive use of the truncated Laplace transform (see Eq. <a href="ChapterAffine.html#eq:DPS">(1.18)</a>, <span class="citation">Darrell Duffie, Pan, and Singleton (<a href="references.html#ref-Duffie_Pan_Singleton_2000">2000</a>)</span>). The model estimation would be infeasible without the tractability provided by affine processes.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:CDOs"></span>
+<img src="figures/CDOs.png" alt="Collaterlized Debt Obligations (CDOs)." width="90%"><p class="caption">
+Figure 7.9: Collaterlized Debt Obligations (CDOs).
+</p>
+</div>
 <!-- * Estimation based (in particular) on iTraxx Europe main index; CDOs: maturities of 3, 5 and 7 years and, for each maturity, 5 tranches: 0\%-3\%, 3\%-6\%, 6\%-9\%, 9\%-12\% and 12\%-22\%. -->
 <!-- * Fit of tranche prices shown on Figure \@ref(fig:fittranche). -->
 </div>
@@ -1149,153 +1010,197 @@ Figure 7.8: Causality scheme in Gourieroux et al. (2021).
 <!--    \includegraphics[width=1.17\linewidth]{figures/Figure_fit_tranche.pdf} -->
 <!--    %\includegraphics[width=1.03\linewidth]{figures/Figure_fit_tranche.pdf} -->
 <!-- \end{figure} -->
+</div>
+<div id="the-shadow-intensity-framework" class="section level2" number="7.6">
+<h2>
+<span class="header-section-number">7.6</span> The shadow-intensity framework<a class="anchor" aria-label="anchor" href="#the-shadow-intensity-framework"><i class="fas fa-link"></i></a>
+</h2>
+<div id="overview" class="section level3" number="7.6.1">
+<h3>
+<span class="header-section-number">7.6.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview"><i class="fas fa-link"></i></a>
+</h3>
+<p><span class="citation">Pallara and Renne (<a href="references.html#ref-Pallara_Renne_2023">2023</a>)</span> and <span class="citation">Renne and Pallara (<a href="references.html#ref-Renne_Pallara_2023">2023</a>)</span> investigate the pricing the sovereign credit risk in the context of shadow-intensity frameworks. In that type of framework, the prices of defaultable bonds are given by conditional expectations of the form:
+<span class="math display" id="eq:condExp">\[\begin{equation}
+\mathbb{E}^{\mathbb{Q}}_t(\exp[\color{blue}{-z_{t+1}-\dots-z_{t+h}}-\max(0,\lambda_{t+1})-\dots -\max(0,\lambda_{t+h})]),\tag{7.41}
+\end{equation}\]</span>
+where <span class="math inline">\(z_t\)</span> (risk-free short-term rate) and <span class="math inline">\(\lambda_t\)</span> (<em>shadow default intensity</em>) are affine functions of the state vector <span class="math inline">\(w_t\)</span>. In addition, <span class="math inline">\(y_t\)</span> follows a Gaussian vector auto-regressive (VAR) model. That is, we have:
+<span class="math display">\[\begin{eqnarray*}
+z_t &amp;=&amp; \dot{a}'y_t + \dot{b}\\
+\lambda_t &amp;=&amp; a'y_t + b,
+\end{eqnarray*}\]</span>
+and
+<span class="math display" id="eq:var">\[\begin{equation}
+y_t = \mu + \Phi y_{t-1}+ \Sigma\varepsilon_t,\tag{7.42}
+\end{equation}\]</span>
+with <span class="math inline">\(\varepsilon_t \sim \mathcal{N}(0,Id)\)</span> (where <span class="math inline">\(Id\)</span> denotes the identity matrix).</p>
+<p>Equation <a href="CreditLiRisks.html#eq:condExp">(7.41)</a> gives the risk-neutral price of a bond of maturity <span class="math inline">\(h\)</span>, issued by an entity whose default intensity is <span class="math inline">\(\underline{\lambda}_t = \max(0,\lambda_t)\)</span>. (That is, the conditional default probability of the issuer, on date <span class="math inline">\(t\)</span>, is <span class="math inline">\(1-\exp(-\underline{\lambda}_t)\)</span>.) Because of the (nonlinear) max operator, the default intensity is not affine and the conditional expectation <a href="CreditLiRisks.html#eq:condExp">(7.41)</a> cannot be computed using the standard affine-process machinery.</p>
+<p>Absent the blue terms, the conditional expectations appearing in <a href="CreditLiRisks.html#eq:condExp">(7.41)</a> would be of the same type as the ones considered in the shadow-rate literature (see Subsection <a href="TSModels.html#Shadowrate">3.4.1</a>). In that case, one could for instance use the approaches proposed by <span class="citation">Priebsch (<a href="references.html#ref-Priebsch_2013">2013</a>)</span> or <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> to calculate approximations for these conditional expectations. <span class="citation">Pallara and Renne (<a href="references.html#ref-Pallara_Renne_2023">2023</a>)</span> and <span class="citation">Renne and Pallara (<a href="references.html#ref-Renne_Pallara_2023">2023</a>)</span> extend the approach of <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> to compute approximate values to <a href="CreditLiRisks.html#eq:condExp">(7.41)</a>. Th present page uses the latter approach, employing codes contained in package <code>TSModels</code> to implement this approach.</p>
+</div>
+<div id="a-numerical-example" class="section level3" number="7.6.2">
+<h3>
+<span class="header-section-number">7.6.2</span> A numerical example<a class="anchor" aria-label="anchor" href="#a-numerical-example"><i class="fas fa-link"></i></a>
+</h3>
+<p>Consider a two-factor model, that is <span class="math inline">\(y_t = [y_{1,t},y_{2,t}]'\)</span>. Assume that <span class="math inline">\(z_t\)</span> (that can be interpreted as the risk-free short term rate) depends on <span class="math inline">\(y_{1,t}\)</span> only, and that <span class="math inline">\(\lambda_t\)</span> (the shadow default intensity) depends on <span class="math inline">\(y_{2,t}\)</span>.</p>
+<p>We consider the following VAR dynamics for <span class="math inline">\(y_t\)</span>:
+<span class="math display">\[
+y_t = \left[\begin{array}{cc}0.9 &amp; 0 \\ 0 &amp; 0.9\end{array}\right] y_{t-1} +
+\left[\begin{array}{cc}1 &amp; 0.1 \\ 0 &amp; 1\end{array}\right]\varepsilon_t,
+\]</span>
+which determines <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\Phi\)</span>, and <span class="math inline">\(\Sigma\)</span> of <a href="CreditLiRisks.html#eq:var">(7.42)</a>.</p>
+<p>Further, we want <span class="math inline">\(z_t\)</span> (respectively <span class="math inline">\(\lambda_t\)</span>) to be of mean 2% (respectively 0) and of standard deviation <span class="math inline">\(1\%\)</span> (resp. 2/%).</p>
+<p>Let us code these specifications:</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Phi_x</span> <span class="op">&lt;-</span> <span class="fl">.9</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># set Phi</span></span>
+<span><span class="va">Sigma_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># set Sigma</span></span>
+<span><span class="va">Sigma_x</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">.1</span></span>
+<span><span class="va">Mu_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span> <span class="co"># set mu</span></span>
+<span><span class="va">stdv.z</span>      <span class="op">&lt;-</span> <span class="fl">.01</span> <span class="co"># set the unconditional std dev of z</span></span>
+<span><span class="va">stdv.lambda</span> <span class="op">&lt;-</span> <span class="fl">.02</span> <span class="co"># set the unconditional std dev of lambda</span></span>
+<span><span class="co"># Compute the unconditional variance of y_t:</span></span>
+<span><span class="va">uncond.Variance.X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/solve.html">solve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span><span class="op">)</span> <span class="op">-</span> <span class="va">Phi_x</span> <span class="op"><a href="https://rdrr.io/r/base/kronecker.html">%x%</a></span> <span class="va">Phi_x</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span></span>
+<span>                              <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Sigma_x</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">Sigma_x</span><span class="op">)</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co"># Deduce a and a.dot:</span></span>
+<span><span class="va">a.dot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">stdv.z</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">uncond.Variance.X</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">a</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">stdv.lambda</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">uncond.Variance.X</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Set the unconditional means of and lambda:</span></span>
+<span><span class="va">b.dot</span> <span class="op">&lt;-</span> <span class="fl">.02</span>; <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">.0</span></span></code></pre></div>
+<p>Let us have a look at simulated paths for <span class="math inline">\(z_t\)</span> and <span class="math inline">\(\lambda_t\)</span>:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">TSModels</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">nb.periods</span> <span class="op">&lt;-</span> <span class="fl">200</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">simul.X</span><span class="op">(</span><span class="va">Phi_x</span>,<span class="va">Mu_x</span>,<span class="va">Sigma_x</span>,<span class="va">nb.periods</span><span class="op">)</span></span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">b.dot</span> <span class="op">+</span> <span class="va">a.dot</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">*</span> <span class="va">X</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="op">]</span></span>
+<span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="va">b</span> <span class="op">+</span> <span class="va">a</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">*</span> <span class="va">X</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="op">]</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:simulation2"></span>
+<img src="TSM_files/figure-html/simulation2-1.png" alt="This plots shows simulated paths for $z_t$ (risk-free short-term rate) and $\lambda_t$ (shadow intensity). The blue dotted line, on the right-hand-side plot, is the effective intensity, that is $\max(0,\lambda_t)$. The vertical lines indicate those dates where lambda is minimal and maximal." width="672"><p class="caption">
+Figure 7.10: This plots shows simulated paths for <span class="math inline">\(z_t\)</span> (risk-free short-term rate) and <span class="math inline">\(\lambda_t\)</span> (shadow intensity). The blue dotted line, on the right-hand-side plot, is the effective intensity, that is <span class="math inline">\(\max(0,\lambda_t)\)</span>. The vertical lines indicate those dates where lambda is minimal and maximal.
+</p>
+</div>
+</div>
+<div id="sec:Model" class="section level3" number="7.6.3">
+<h3>
+<span class="header-section-number">7.6.3</span> Bond pricing<a class="anchor" aria-label="anchor" href="#sec:Model"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let us now evaluate the conditional expectations of <a href="CreditLiRisks.html#eq:condExp">(7.41)</a>, for <span class="math inline">\(h=\{1,\dots,10\}\)</span>. For that, we make use of function <code>compute.condit.Exp</code> of package <code>TSModels</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">H</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">compute.condit.Exp</span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,<span class="va">a.dot</span>,<span class="va">b.dot</span>,</span>
+<span>                          <span class="va">Phi_x</span>,<span class="va">Mu_x</span>,<span class="va">Sigma_x</span>,</span>
+<span>                          X<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="op">]</span>,<span class="va">X</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="op">]</span><span class="op">)</span>,</span>
+<span>                          max.h <span class="op">=</span> <span class="va">H</span><span class="op">)</span></span>
+<span><span class="va">t.min.lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">t.max.lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>, <span class="co">#approximate values of the conditional expect. for date t</span></span>
+<span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##            [,1]       [,2]       [,3]      [,4]       [,5]       [,6]
+## [1,] 0.93252217 0.87401212 0.82287755 0.7778447 0.73788324 0.70216431
+## [2,] 0.06986235 0.06733052 0.06498263 0.0628071 0.06079394 0.05893131
+##            [,7]       [,8]       [,9]      [,10]
+## [1,] 0.67001906 0.64090449 0.61437675 0.59007053
+## [2,] 0.05720702 0.05560935 0.05412744 0.05275132</code></pre>
+<p>The last two lines respectively give, for the date featuring the highest <span class="math inline">\(\lambda_t\)</span>, the term structures of the bond prices and of associated yields-to-maturity.</p>
+<p>Let us now compute credit-risk-free bond prices. This is obtained by taking <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=0\)</span> (so that <span class="math inline">\(\lambda_t=0\)</span>):</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">res0</span> <span class="op">&lt;-</span> <span class="fu">compute.condit.Exp</span><span class="op">(</span><span class="va">a</span><span class="op">*</span><span class="fl">0.00001</span>,<span class="va">b</span><span class="op">*</span><span class="fl">0.00001</span>,<span class="va">a.dot</span>,<span class="va">b.dot</span>,</span>
+<span>                          <span class="va">Phi_x</span>,<span class="va">Mu_x</span>,<span class="va">Sigma_x</span>,</span>
+<span>                          X<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="op">]</span>,<span class="va">X</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="op">]</span><span class="op">)</span>,</span>
+<span>                          max.h <span class="op">=</span> <span class="va">H</span><span class="op">)</span></span>
+<span><span class="va">y</span>       <span class="op">&lt;-</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span>,<span class="va">H</span>,<span class="va">nb.periods</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">y_RF</span>    <span class="op">&lt;-</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res0</span><span class="op">$</span><span class="va">E.n</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span>,<span class="va">H</span>,<span class="va">nb.periods</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">spreads</span> <span class="op">&lt;-</span> <span class="va">y</span> <span class="op">-</span> <span class="va">y_RF</span></span></code></pre></div>
+<p>Let us plot the term structures of yields and spreads for the date on which we observe the highest <span class="math inline">\(\lambda_t\)</span>:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>,type<span class="op">=</span><span class="st">"l"</span>,ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,xlab<span class="op">=</span><span class="st">"maturity"</span>,ylab<span class="op">=</span><span class="st">"yields"</span>,</span>
+<span>     main<span class="op">=</span><span class="st">"Term structures of bond yields (risk-free and defaultable bonds)"</span>,lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">y_RF</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>,col<span class="op">=</span><span class="st">"red"</span>,lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">y_RF</span><span class="op">[</span><span class="va">t.min.lambda</span>,<span class="op">]</span>,col<span class="op">=</span><span class="st">"red"</span>,lwd<span class="op">=</span><span class="fl">2</span>,lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="va">t.min.lambda</span>,<span class="op">]</span>,lwd<span class="op">=</span><span class="fl">2</span>,lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:chartspreads"></span>
+<img src="TSM_files/figure-html/chartspreads-1.png" alt="Term structures of risk-free yields (in red), and credit-risky yields (in black). Solid lines (respectively dashed lines) correspond to the date where $\lambda_t$ is the highest (resp. the lowest). These two dates are indicated by vertical lines on the previous figure." width="672"><p class="caption">
+Figure 7.11: Term structures of risk-free yields (in red), and credit-risky yields (in black). Solid lines (respectively dashed lines) correspond to the date where <span class="math inline">\(\lambda_t\)</span> is the highest (resp. the lowest). These two dates are indicated by vertical lines on the previous figure.
+</p>
+</div>
+<p>Let us check the formulas by simulations. More precisely, we calculate the conditional expectation given in <a href="CreditLiRisks.html#eq:condExp">(7.41)</a> using Monte-Carlo simulations, for different maturities <span class="math inline">\(h\)</span>. We will then compare these prices with the ones resulting from function <code>compute.condit.Exp</code>. We consider the date on which <span class="math inline">\(\lambda_t\)</span> is the highest.</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nb.replics</span> <span class="op">&lt;-</span> <span class="fl">10000</span> <span class="co"># Number of simulated trajectories</span></span>
+<span><span class="va">t</span>  <span class="op">&lt;-</span> <span class="va">t.max.lambda</span> <span class="co"># date on which cond. expect. are computed</span></span>
+<span><span class="va">Xt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span>,<span class="fl">1</span>,<span class="va">t</span><span class="op">]</span>,ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="co"># state vector on that date</span></span>
+<span></span>
+<span><span class="co"># Simulate trajectories starting from Xt:</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">simul.X</span><span class="op">(</span><span class="va">Phi_x</span>,<span class="va">Mu_x</span>,<span class="va">Sigma_x</span>,nb.periods<span class="op">=</span><span class="va">H</span>,X0 <span class="op">=</span> <span class="va">Xt</span>,nb.replics <span class="op">=</span> <span class="va">nb.replics</span><span class="op">)</span></span>
+<span><span class="co"># Compute prices for each trajectory:</span></span>
+<span><span class="va">aux1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">X</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,<span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span> <span class="va">b.dot</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span><span class="va">a.dot</span> <span class="op">-</span></span>
+<span>                                        <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">pmax</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">b</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span><span class="va">a</span><span class="op">)</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="va">aux2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">aux1</span>,<span class="fl">1</span>,<span class="va">cumprod</span><span class="op">)</span></span>
+<span><span class="co"># Compute averages of prices across simulated trajectories:</span></span>
+<span><span class="va">simul.prices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">aux2</span>,<span class="fl">1</span>,<span class="va">mean</span><span class="op">)</span></span>
+<span><span class="co"># Compare with output of compute.condit.Exp:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t</span>,<span class="op">]</span>,lwd<span class="op">=</span><span class="fl">2</span>,main<span class="op">=</span><span class="st">"Approximate formula versus Monte-Carlo approach"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">simul.prices</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Approximate formula"</span>,<span class="st">"Monte-Carlo"</span><span class="op">)</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NaN</span>,<span class="fl">1</span><span class="op">)</span>,pch<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="cn">NaN</span><span class="op">)</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:loaddataset"></span>
+<img src="TSM_files/figure-html/loaddataset-1.png" alt="Comparison between formula-based prices and Monte-Carlo-based defaultable bond prices." width="672"><p class="caption">
+Figure 7.12: Comparison between formula-based prices and Monte-Carlo-based defaultable bond prices.
+</p>
+</div>
 
 </div>
 </div>
-<h3> References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-AITSAHALIA2014151" class="csl-entry">
-Ait-Sahalia, Yacine, Roger J. A. Laeven, and Loriana Pelizzon. 2014. <span>“<span class="nocase">Mutual Excitation in Eurozone Sovereign CDS</span>.”</span> <em>Journal of Econometrics</em> 183 (2): 151–67. <a href="https://doi.org/10.1016/j.jeconom.2014.05.006">https://doi.org/10.1016/j.jeconom.2014.05.006</a>.
 </div>
-<div id="ref-Altman_Brady_Resti_Sironi_2005" class="csl-entry">
-Altman, Edward I., Brooks Brady, Andrea Resti, and Andrea Sironi. 2005. <span>“The Link Between Default and Recovery Rates: Theory, Empirical Evidence, and Implications.”</span> <em>The Journal of Business</em> 78 (6): 2203–28. <a href="http://www.jstor.org/stable/10.1086/497044">http://www.jstor.org/stable/10.1086/497044</a>.
-</div>
-<div id="ref-AZIZPOUR20111340" class="csl-entry">
-Azizpour, Shahriar, Kay Giesecke, and Baeho Kim. 2011. <span>“<span class="nocase">Premia for Correlated Default Risk</span>.”</span> <em>Journal of Economic Dynamics and Control</em> 35 (8): 1340–57. <a href="https://doi.org/10.1016/j.jedc.2011.03.010">https://doi.org/10.1016/j.jedc.2011.03.010</a>.
-</div>
-<div id="ref-Brigo_et_al_2007" class="csl-entry">
-Brigo, Damiano, Andrea Pallavicini, and Roberto Torresetti. 2007. <span>“Cluster-Based Extension of the Generalized Poisson Loss Dynamics and Consistency with Single Names.”</span> <em>International Journal of Theoretical and Applied Finance</em> 10 (04): 607–31. <a href="https://doi.org/10.1142/S0219024907004342">https://doi.org/10.1142/S0219024907004342</a>.
-</div>
-<div id="ref-CollinDufresne_Goldstein_Hugonnier_2004" class="csl-entry">
-Collin-Dufresne, P., R. Goldstein, and J. Hugonnier. 2004. <span>“<span class="nocase">A General Formula for Valuing Defaultable Securities</span>.”</span> <em>Econometrica</em> 72 (5): 1377–407. <a href="https://doi.org/10.1111/j.1468-0262.2004.00538.x">https://doi.org/10.1111/j.1468-0262.2004.00538.x</a>.
-</div>
-<div id="ref-Davis_Lo_2001" class="csl-entry">
-Davis, M., and V. Lo. 2001. <span>“Infectious Defaults.”</span> <em>Quantitative Finance</em> 1 (4): 382–87. <a href="https://doi.org/10.1080/713665832">https://doi.org/10.1080/713665832</a>.
-</div>
-<div id="ref-DUBECQ201629" class="csl-entry">
-Dubecq, Simon, Alain Monfort, Jean-Paul Renne, and Guillaume Roussellet. 2016. <span>“<span class="nocase">Credit and Liquidity in Interbank Rates: A Quadratic Approach</span>.”</span> <em>Journal of Banking &amp; Finance</em> 68: 29–46. <a href="https://doi.org/10.1016/j.jbankfin.2016.03.014">https://doi.org/10.1016/j.jbankfin.2016.03.014</a>.
-</div>
-<div id="ref-Duffie_Garleanu_2001" class="csl-entry">
-Duffie, Darrell, and Nicolae Garleanu. 2001. <span>“Risk and Valuation of Collateralized Debt Obligations.”</span> <em>Financial Analysts Journal</em> 57 (1): 41–59. <a href="https://doi.org/10.2469/faj.v57.n1.2418">https://doi.org/10.2469/faj.v57.n1.2418</a>.
-</div>
-<div id="ref-Duffie_Pan_Singleton_2000" class="csl-entry">
-Duffie, Darrell, Jun Pan, and Kenneth Singleton. 2000. <span>“<span class="nocase">Transform Analysis and Asset Pricing for Affine Jump-Diffusions</span>.”</span> <em>Econometrica</em> 68 (6): 1343–76. <a href="https://doi.org/10.1111/1468-0262.00164">https://doi.org/10.1111/1468-0262.00164</a>.
-</div>
-<div id="ref-Duffie_Singleton_1999" class="csl-entry">
-Duffie, Darrell, and Kenneth J Singleton. 1999. <span>“<span class="nocase">Modeling Term Structures of Defaultable Bonds</span>.”</span> <em>Review of Financial Studies</em> 12 (4): 687–720. <a href="https://doi.org/10.1093/rfs/12.4.687">https://doi.org/10.1093/rfs/12.4.687</a>.
-</div>
-<div id="ref-Duffie_Singleton_2003" class="csl-entry">
-Duffie, D., and K. J. Singleton. 2003. <em>Credit Risk: Pricing, Measurement, and Management</em>. Princeton Series in Finance. Princeton University Press. <a href="https://books.google.ch/books?id=AvK-AQAACAAJ">https://books.google.ch/books?id=AvK-AQAACAAJ</a>.
-</div>
-<div id="ref-Ericsson_Renault_2006" class="csl-entry">
-Ericsson, Jan, and Olivier Renault. 2006. <span>“<span class="nocase">Liquidity and Credit Risk</span>.”</span> <em>The Journal of Finance</em> 61 (5): 2219–50. <a href="https://doi.org/10.1111/j.1540-6261.2006.01056.x">https://doi.org/10.1111/j.1540-6261.2006.01056.x</a>.
-</div>
-<div id="ref-Errais_Giesecke_Goldberg_2010" class="csl-entry">
-Errais, Eymen, Kay Giesecke, and Lisa R. Goldberg. 2010. <span>“Affine Point Processes and Portfolio Credit Risk.”</span> <em>SIAM Journal on Financial Mathematics</em> 1 (1): 642–65. <a href="https://doi.org/10.1137/090771272">https://doi.org/10.1137/090771272</a>.
-</div>
-<div id="ref-Giesecke_Goldberg_Ding_2011" class="csl-entry">
-Giesecke, Kay, Lisa R. Goldberg, and Xiaowei Ding. 2011. <span>“<span class="nocase">A Top-Down Approach to Multiname Credit</span>.”</span> <em>Operations Research</em> 59 (2): 283–300. <a href="https://www.jstor.org/stable/23013170">https://www.jstor.org/stable/23013170</a>.
-</div>
-<div id="ref-Gourieroux_Monfort_Mouabbi_Renne_2021" class="csl-entry">
-Gourieroux, Christian, Alain Monfort, Sarah Mouabbi, and Jean-Paul Renne. 2021. <span>“<span>Disastrous Defaults</span>.”</span> <em>Review of Finance</em> 25 (6): 1727–72. <a href="https://doi.org/10.1093/rof/rfaa042">https://doi.org/10.1093/rof/rfaa042</a>.
-</div>
-<div id="ref-Gourieroux_Monfort_Renne_2014" class="csl-entry">
-Gourieroux, C., A. Monfort, and J. P. Renne. 2014. <span>“<span class="nocase">Pricing Default Events: Surprise, Exogeneity and Contagion</span>.”</span> <em>Journal of Econometrics</em> 182 (2): 397–411. <a href="https://doi.org/10.1016/j.jeconom.2014.05.005">https://doi.org/10.1016/j.jeconom.2014.05.005</a>.
-</div>
-<div id="ref-Kim_1994" class="csl-entry">
-Kim, Chang-Jin. 1994. <span>“<span class="nocase">Dynamic Linear Models with Markov-Switching</span>.”</span> <em>Journal of Econometrics</em> 60 (1-2): 1–22. <a href="https://doi.org/10.1016/0304-4076(94)90036-1">https://doi.org/10.1016/0304-4076(94)90036-1</a>.
-</div>
-<div id="ref-Lando_1998" class="csl-entry">
-Lando, David. 1998. <span>“<span class="nocase">On Cox Processes and Credit Risky Securities</span>.”</span> <em>Review of Derivatives Research</em> 2: 99–120. <a href="https://link.springer.com/article/10.1007/BF01531332">https://link.springer.com/article/10.1007/BF01531332</a>.
-</div>
-<div id="ref-Longstaff_Pan_Pedersen_Singleton_2011" class="csl-entry">
-Longstaff, Francis A., Jun Pan, Lasse H. Pedersen, and Kenneth J. Singleton. 2011. <span>“<span>How Sovereign Is Sovereign Credit Risk?</span>”</span> <em>American Economic Journal: Macroeconomics</em> 3 (2): 75–103. <a href="https://doi.org/10.1257/mac.3.2.75">https://doi.org/10.1257/mac.3.2.75</a>.
-</div>
-<div id="ref-Monfort_Pegoraro_Renne_Roussellet_2021" class="csl-entry">
-Monfort, Alain, Fulvio Pegoraro, Jean-Paul Renne, and Guillaume Roussellet. 2021. <span>“<span class="nocase">Affine Modeling of Credit Risk, Pricing of Credit Events, and Contagion</span>.”</span> <em>Management Science</em> 67 (6): 3674–93. <a href="https://doi.org/10.1287/mnsc.2020.3658">https://doi.org/10.1287/mnsc.2020.3658</a>.
-</div>
-<div id="ref-Monfort_Renne_2014" class="csl-entry">
-Monfort, Alain, and Jean-Paul Renne. 2014. <span>“<span class="nocase">Decomposing Euro-Area Sovereign Spreads: Credit and Liquidity Risks</span>.”</span> <em>Review of Finance</em> 18 (6): 2103–51. <a href="https://doi.org/10.1093/rof/rft049">https://doi.org/10.1093/rof/rft049</a>.
-</div>
-<div id="ref-Monfort_Renne_Roussellet_2015" class="csl-entry">
-Monfort, Alain, Jean-Paul Renne, and Guillaume Roussellet. 2015. <span>“<span>A Quadratic Kalman Filter</span>.”</span> <em>Journal of Econometrics</em> 187 (1): 43–56. <a href="https://doi.org/10.1016/j.jeconom.2015.01.003">https://doi.org/10.1016/j.jeconom.2015.01.003</a>.
-</div>
-<div id="ref-Monfort_Renne_NER2011" class="csl-entry">
-Monfort, A., and J-P. Renne. 2011. <span>“<span class="nocase">Credit and Liquidity rRisks in Euro Area Sovereign Yield Curves</span>.”</span> Working papers 352. Banque de France. <a href="https://ideas.repec.org/p/bfr/banfra/352.html">https://ideas.repec.org/p/bfr/banfra/352.html</a>.
-</div>
-<div id="ref-Pan_Singleton_2008" class="csl-entry">
-Pan, Jun, and Kenneth J. Singleton. 2008. <span>“<span class="nocase">Default and Recovery Implicit in the Term Structure of Sovereign CDS Spreads</span>.”</span> <em>The Journal of Finance</em> 63 (5): 2345–84. <a href="https://doi.org/10.1111/j.1540-6261.2008.01399.x">https://doi.org/10.1111/j.1540-6261.2008.01399.x</a>.
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>The OIS is an interest-rate swap where the floating rate is an overnight-rate reference (EONIA in the euro area). At maturity, the payoff received by the fixed-rate payer is the difference between: (a) the notional (<span class="math inline">\(W\)</span>, say) inflated with the date-<span class="math inline">\(t\)</span> OIS (fixed) rate (i.e. <span class="math inline">\(W\exp\{h R_{t,h}^{OIS}\}\)</span>) and (b) the same notional capitalized with the realized short-term rates (i.e. <span class="math inline">\(W\exp\{r_{t} + \ldots + r_{t+h-1}\}\)</span>).<a href="CreditLiRisks.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>It is assumed here that the overnight interbank market preserves the lending bank from (i) liquidity and (ii) credit risk. The rationale behind that is twofold: (a) By rolling its cash on the overnight market (at the EONIA rate), a bank is not exposed to the risk of having to liquidate longer-term investments upon the realization of the liquidity shock; (b) while the EONIA is an unsecured-transaction rate, the extremely-short maturity of these transactions substantially reduces the credit-risk exposure of the lending bank.<a href="CreditLiRisks.html#fnref2" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
-            </section>
 
-          </div>
-        </div>
-      </div>
-<a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+  <div class="chapter-nav">
+<div class="prev"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></div>
+<div class="next"><a href="references.html"><span class="header-section-number">8</span> References</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#CreditLiRisks"><span class="header-section-number">7</span> Credit and liquidity risks</a></li>
+<li><a class="nav-link" href="#CreditNotations"><span class="header-section-number">7.1</span> Notations</a></li>
+<li><a class="nav-link" href="#CreditStandard"><span class="header-section-number">7.2</span> Pricing under standard assumptions</a></li>
+<li><a class="nav-link" href="#CreditIlliq"><span class="header-section-number">7.3</span> Pricing illiquid bonds</a></li>
+<li>
+<a class="nav-link" href="#Creditrelaxing"><span class="header-section-number">7.4</span> Relaxing the classical framework assumptions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#CreditGeneral"><span class="header-section-number">7.4.1</span> General affine credit-risk framework</a></li>
+<li><a class="nav-link" href="#CreditCDS"><span class="header-section-number">7.4.2</span> CDS pricing in the general framework</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#CreditDD"><span class="header-section-number">7.5</span> Top-down approach</a></li>
+<li>
+<a class="nav-link" href="#the-shadow-intensity-framework"><span class="header-section-number">7.6</span> The shadow-intensity framework</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#overview"><span class="header-section-number">7.6.1</span> Overview</a></li>
+<li><a class="nav-link" href="#a-numerical-example"><span class="header-section-number">7.6.2</span> A numerical example</a></li>
+<li><a class="nav-link" href="#sec:Model"><span class="header-section-number">7.6.3</span> Bond pricing</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-02-01.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-CreditLiquidity.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["TSM.pdf", "TSM.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -1307,7 +1212,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

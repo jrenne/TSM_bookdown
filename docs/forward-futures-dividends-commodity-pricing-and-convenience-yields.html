@@ -68,7 +68,7 @@
 <li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
 <li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="PandQ.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
-<li><a class="" href="TSModels.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
+<li><a class="" href="TSModels.html"><span class="header-section-number">3</span> The term structure of risk-free yields</a></li>
 <li><a class="" href="Structural.html"><span class="header-section-number">4</span> A detour through structural approaches</a></li>
 <li><a class="" href="Estimation.html"><span class="header-section-number">5</span> Estimation of affine asset-pricing models</a></li>
 <li><a class="active" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
@@ -207,7 +207,7 @@ S_t &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t [\exp (-r_t - \ldots - r_{T-1} + c_t +
 \end{eqnarray}\]</span>
 Going further necessitates a joint modelling—at least under <span class="math inline">\(\mathbb{Q}\)</span>—of <span class="math inline">\(S_t\)</span> (or <span class="math inline">\(s_t = \log S_t\)</span>), <span class="math inline">\(c_t\)</span> (convenience yield), and <span class="math inline">\(r_t\)</span> (short rate).</p>
 <blockquote>
-<p>In the case of a <strong>nonstorable commodity</strong>, there is no convenience yield. If, moreover <span class="math inline">\(r_t\)</span> deterministic, <span class="math inline">\(\Phi_{t,T} = F_{t,T} = \mathbb{E}^{\mathbb{Q}}_t (S_T)\)</span>, but since Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience3">(6.3)</a> is not valid we do not have <span class="math inline">\(S_t = B(t,T) \mathbb{E}^{\mathbb{Q}}_t (S_T)\)</span> and therefore we do not have <span class="math inline">\(\Phi_{t,T} = S_t / B(t,T)\)</span>.</p>
+<p>In the case of a <strong>nonstorable commodity</strong>, there is no convenience yield. If, moreover <span class="math inline">\(r_t\)</span> deterministic, <span class="math inline">\(\Phi_{t,T} = F_{t,T} = \mathbb{E}^{\mathbb{Q}}_t (S_T)\)</span>, but since <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience3">(6.3)</a> is not valid we do not have <span class="math inline">\(S_t = B(t,T) \mathbb{E}^{\mathbb{Q}}_t (S_T)\)</span> and therefore we do not have <span class="math inline">\(\Phi_{t,T} = S_t / B(t,T)\)</span>.</p>
 </blockquote>
 <blockquote>
 <p>In the case of a <strong>storable commodity</strong>, the price ex-convenience yield at <span class="math inline">\(t\)</span>, i.e. <span class="math inline">\(S_t \exp (-c_t)\)</span>, is the price at <span class="math inline">\(t\)</span> of <span class="math inline">\(S_{t+1}\)</span>:
@@ -220,7 +220,7 @@ Or if <span class="math inline">\(y_{t+1} = \log \frac{S_{t+1}}{S_t}\)</span> de
 <span class="math display">\[
 \mathbb{E}^{\mathbb{Q}}_t \exp (y_{t+1}) = \exp (r_t - c_t).
 \]</span>
-Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience3">(6.3)</a> is automatically satisfied (using Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience4">(6.4)</a> recursively).</p>
+Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience3">(6.3)</a> is automatically satisfied (using <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:convenience4">(6.4)</a> recursively).</p>
 </blockquote>
 </div>
 <div id="FCFPPricingRN" class="section level3" number="6.1.4">

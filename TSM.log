@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  1 FEB 2024 11:44
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  1 FEB 2024 15:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -436,6 +436,9 @@ LaTeX Warning: Label `eq:laplaceZ' multiply defined.
 
 
 LaTeX Warning: Label `prp:fwd' multiply defined.
+
+
+LaTeX Warning: Label `eq:basic' multiply defined.
 
 )
 \openout1 = `TSM.aux'.
@@ -936,15 +939,16 @@ File: figures/AngPiazzesi1.pdf Graphic file (type pdf)
 [63]
 File: figures/JPS_IRF.pdf Graphic file (type pdf)
 <use figures/JPS_IRF.pdf>
+[64]
 File: figures/Ang_Boivin_loadings.png Graphic file (type bmp)
 <figures/Ang_Boivin_loadings.png>
 
-Underfull \hbox (badness 4647) in paragraph at lines 2481--2481
+Underfull \hbox (badness 4647) in paragraph at lines 2490--2490
 []\TU/lmr/bx/n/17.28 Non-Negative Affine Term Structure
  []
 
-[64] [65] [66] [67]
-Overfull \hbox (6.9997pt too wide) detected at line 2535
+[65] [66] [67]
+Overfull \hbox (6.9997pt too wide) detected at line 2544
 [] [] [] [] [] [] [][] [] [][][][]
  []
 
@@ -953,14 +957,14 @@ File: TSM_files/figure-latex/WuXia-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/WuXia-1.pdf>
 [69] [70]
 
-LaTeX Warning: Reference `lemma:mass' on page 71 undefined on input line 2616.
+LaTeX Warning: Reference `lemma:mass' on page 71 undefined on input line 2625.
 
+[71]
 
-LaTeX Warning: Reference `EstimationKF' on page 71 undefined on input line 2632.
+LaTeX Warning: Reference `EstimationKF' on page 72 undefined on input line 2641.
 
 File: figures/Figure_fit_ZARG.pdf Graphic file (type pdf)
 <use figures/Figure_fit_ZARG.pdf>
-[71]
 File: figures/Figure_LiftOff.pdf Graphic file (type pdf)
 <use figures/Figure_LiftOff.pdf>
 [72] [73] [74
@@ -987,16 +991,16 @@ Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 
 [81]
 
-LaTeX Warning: Reference `tab:Campbell1' on page 82 undefined on input line 2891.
+LaTeX Warning: Reference `tab:Campbell1' on page 82 undefined on input line 2900.
 
 
-LaTeX Warning: Reference `tab:Campbell1' on page 82 undefined on input line 2892.
+LaTeX Warning: Reference `tab:Campbell1' on page 82 undefined on input line 2901.
 
 File: figures/table_campbell1999_eqpuzzle.png Graphic file (type bmp)
 <figures/table_campbell1999_eqpuzzle.png>
 [82]
 
-LaTeX Warning: Reference `exm:IESsmooth' on page 83 undefined on input line 2912.
+LaTeX Warning: Reference `exm:IESsmooth' on page 83 undefined on input line 2921.
 
 File: TSM_files/figure-latex/IESsmooth-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/IESsmooth-1.pdf>
@@ -1007,7 +1011,7 @@ Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 
 [83] [84]
 
-LaTeX Warning: Reference `eq:pricingcapm' on page 85 undefined on input line 2948.
+LaTeX Warning: Reference `eq:pricingcapm' on page 85 undefined on input line 2957.
 
 
 Overfull \hbox (300.24039pt too wide) has occurred while \output is active
@@ -1026,7 +1030,7 @@ Overfull \hbox (300.24039pt too wide) has occurred while \output is active
  []
 
 [87] [88]
-Overfull \hbox (26.89531pt too wide) in alignment at lines 3034--3039
+Overfull \hbox (26.89531pt too wide) in alignment at lines 3043--3048
  [][][] []
  []
 
@@ -1044,7 +1048,7 @@ Overfull \hbox (300.24039pt too wide) has occurred while \output is active
  []
 
 [91]
-Underfull \hbox (badness 1142) in paragraph at lines 3141--3142
+Underfull \hbox (badness 1142) in paragraph at lines 3150--3151
 []\TU/lmr/m/n/12 In the following lines of code, we use Proposition []1.5[] (i.e. function
  []
 
@@ -1060,7 +1064,7 @@ Overfull \hbox (300.24039pt too wide) has occurred while \output is active
  []
 
 [93]
-Overfull \hbox (27.40201pt too wide) detected at line 3203
+Overfull \hbox (27.40201pt too wide) detected at line 3212
 [] [] [] [] [] [] [] [] [] []
  []
 
@@ -1069,10 +1073,10 @@ Underfull \vbox (badness 1259) has occurred while \output is active []
 
 [94] [95]
 
-LaTeX Warning: Reference `def:power' on page 96 undefined on input line 3240.
+LaTeX Warning: Reference `def:power' on page 96 undefined on input line 3249.
 
 
-Overfull \hbox (61.75157pt too wide) in alignment at lines 3246--3246
+Overfull \hbox (61.75157pt too wide) in alignment at lines 3255--3255
  [][][] []
  []
 
@@ -1093,7 +1097,7 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [102] [103]
-Overfull \hbox (19.25484pt too wide) in alignment at lines 3503--3506
+Overfull \hbox (19.25484pt too wide) in alignment at lines 3512--3515
  [][][] []
  []
 
@@ -1103,7 +1107,7 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [104]
-Overfull \hbox (6.85098pt too wide) in alignment at lines 3518--3521
+Overfull \hbox (6.85098pt too wide) in alignment at lines 3527--3530
  [][][] []
  []
 
@@ -1140,7 +1144,7 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 File: figures/table_BY4.png Graphic file (type bmp)
 <figures/table_BY4.png>
 
-LaTeX Warning: Reference `TSM' on page 113 undefined on input line 3748.
+LaTeX Warning: Reference `TSM' on page 113 undefined on input line 3757.
 
 [113]
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
@@ -1158,7 +1162,7 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [116] [117]
-Underfull \hbox (badness 1558) in paragraph at lines 3822--3822
+Underfull \hbox (badness 1558) in paragraph at lines 3831--3831
 []\TU/lmr/bx/n/17.28 Preferred-habitat model of the term-
  []
 
@@ -1178,7 +1182,7 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [120]
-Overfull \hbox (40.55812pt too wide) in alignment at lines 3954--3956
+Overfull \hbox (40.55812pt too wide) in alignment at lines 3963--3965
  [][][] []
  []
 
@@ -1224,12 +1228,12 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [126]
-Overfull \hbox (53.7646pt too wide) detected at line 4103
+Overfull \hbox (53.7646pt too wide) detected at line 4112
 [][][][][] [][][][][][][][] [][][][][][][][][] [] [][][][][][][] [][][][][][][] [] [][][] [][][][][][][][][][]
  []
 
 
-Overfull \hbox (83.59726pt too wide) detected at line 4115
+Overfull \hbox (83.59726pt too wide) detected at line 4124
 [][] [][] [] [][][][][][] [] [][][][][][][][][][] [] []
  []
 
@@ -1270,7 +1274,7 @@ Chapter 6.
 [151
 
 ]
-Overfull \hbox (17.21101pt too wide) in paragraph at lines 4773--4775
+Overfull \hbox (17.21101pt too wide) in paragraph at lines 4782--4784
 []\TU/lmr/m/n/12 The price at $[]$ of $[][] [] [][]$ is zero. Therefore: $[][][][][][] [] [] [][][][][] []
  []
 
@@ -1284,7 +1288,27 @@ Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 154 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[154] [155]
+[154]
+Underfull \hbox (badness 1655) in paragraph at lines 4898--4899
+[]\TU/lmr/m/n/12 In the case of a \TU/lmr/bx/n/12 nonstorable commodity\TU/lmr/m/n/12 , there is no
+ []
+
+
+Underfull \hbox (badness 1117) in paragraph at lines 4898--4899
+\TU/lmr/m/n/12 convenience yield. If, moreover $[][]$ deterministic, $[][] []
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 4898--4899
+[][] [] [][][][][][]$\TU/lmr/m/n/12 , but since [] is not valid we do not
+ []
+
+
+Underfull \hbox (badness 1226) in paragraph at lines 4898--4899
+\TU/lmr/m/n/12 have $[][] [] [][][][] [][][][][][][][]$ and therefore we do not have
+ []
+
+[155]
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 156 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
@@ -1303,7 +1327,7 @@ Overfull \hbox (213.27747pt too wide) has occurred while \output is active
  []
 
 [160] [161]
-Underfull \hbox (badness 1331) in paragraph at lines 5146--5147
+Underfull \hbox (badness 1331) in paragraph at lines 5155--5156
 []\TU/lmr/m/n/12 Eq. [] also shows that we have $[][][][] [] [][][][] [][] []
  []
 
@@ -1322,38 +1346,25 @@ Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 ]
 Chapter 7.
 [165]
-Underfull \hbox (badness 4899) in paragraph at lines 5249--5250
-[]\TU/lmr/m/n/12 Hypothesis []7.3[] also implies that the short-term risk-free rate $[][]$
+Underfull \hbox (badness 1622) in paragraph at lines 5258--5259
+[]\TU/lmr/m/n/12 Hypothesis []7.3[] also implies that the short-term risk-free rate $[][] []
  []
 
 File: figures/Schema0.pdf Graphic file (type pdf)
 <use figures/Schema0.pdf>
-[166] [167] [168] [169]
-Overfull \hbox (42.76819pt too wide) in alignment at lines 5379--5382
- [][][] []
- []
-
-[170]
-Overfull \hbox (38.3721pt too wide) detected at line 5396
-[]
- []
-
-[171] [172]
-Overfull \hbox (43.24458pt too wide) in paragraph at lines 5487--5488
+[166] [167] [168] [169] [170] [171] [172]
+Overfull \hbox (43.24458pt too wide) in paragraph at lines 5496--5497
 []\TU/lmr/m/n/12 The $[]$ conditional density of $[][]$ given $[][]$, namely $[][][][][][][][][][][][][][][][][][] [][][]$,
  []
 
 
-Overfull \hbox (17.59521pt too wide) in paragraph at lines 5487--5488
+Overfull \hbox (17.59521pt too wide) in paragraph at lines 5496--5497
 \TU/lmr/m/n/12 tional to $[][][][][][] [][][][][][][][][][][][][][][][][][][][] [][][] [][][][][][][][][][][][] [][][] [][][]$.
  []
 
 [173] [174] [175]
 File: TSM_files/figure-latex/MRintensity-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/MRintensity-1.pdf>
-
-LaTeX Warning: Reference `Swap' on page 176 undefined on input line 5608.
-
 [176] [177] [178]
 File: figures/IBOROIS.pdf Graphic file (type pdf)
 <use figures/IBOROIS.pdf>
@@ -1368,28 +1379,48 @@ File: figures/FigureCDS.pdf Graphic file (type pdf)
 <use figures/FigureCDS.pdf>
 File: figures/FigureCDSFX.pdf Graphic file (type pdf)
 <use figures/FigureCDSFX.pdf>
-[185] [186]
-
-LaTeX Warning: Reference `lemma:petitlemme' on page 187 undefined on input line 5950.
-
-[187] [188]
+[185] [186] [187] [188]
 File: figures/schemaDD.pdf Graphic file (type pdf)
 <use figures/schemaDD.pdf>
+[189]
+File: figures/CDOs.png Graphic file (type bmp)
+<figures/CDOs.png>
+[190] [191] [192]
+File: TSM_files/figure-latex/simulation2-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/simulation2-1.pdf>
+[193]
+Overfull \hbox (61.12766pt too wide) in paragraph at lines 6160--6160
+[]\TU/lmtt/m/n/12 ##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6][] 
+ []
 
-LaTeX Warning: Reference `fig:CDO' on page 189 undefined on input line 6026.
 
-[189] [190]
+Overfull \hbox (61.04395pt too wide) in paragraph at lines 6160--6160
+[]\TU/lmtt/m/n/12 ## [1,] 0.92803726 0.86605589 0.81229085 0.76534715 0.72407727 0.68753745[] 
+ []
+
+
+Overfull \hbox (60.97195pt too wide) in paragraph at lines 6160--6160
+[]\TU/lmtt/m/n/12 ## [2,] 0.07468339 0.07190292 0.06929894 0.06685644 0.06457143 0.06243983[] 
+ []
+
+[194]
+File: TSM_files/figure-latex/chartspreads-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/chartspreads-1.pdf>
+[195]
+File: TSM_files/figure-latex/loaddataset-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/loaddataset-1.pdf>
+[196]
 Chapter 8.
-(./TSM.bbl [191
+(./TSM.bbl [197
 
-] [192
+] [198
 
-] [193] [194]
-Underfull \hbox (badness 2027) in paragraph at lines 130--133
+] [199] [200]
+Underfull \hbox (badness 2027) in paragraph at lines 135--138
 []\TU/lmr/m/n/12 Duan, J.-C. and Simonato, J.-G. (1999).  Estimating and Testing
  []
 
-[195] [196] [197] [198] [199]) [200] (./TSM.aux)
+[201] [202] [203] [204] [205]) [206] (./TSM.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -1401,15 +1432,15 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `TSM.out' has not changed.
-(rerunfilecheck)             Checksum: D32961C460FFCFF5E2C4238EF7E17DD2;9512.
+(rerunfilecheck)             Checksum: C72B7DEB606516D4A136559348F79D85;9723.
  ) 
 Here is how much of TeX's memory you used:
- 18723 strings out of 476884
- 352332 string characters out of 5804569
+ 18785 strings out of 476884
+ 354299 string characters out of 5804569
  2009627 words of memory out of 5000000
- 40324 multiletter control sequences out of 15000+600000
+ 40382 multiletter control sequences out of 15000+600000
  565625 words of font info for 113 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  90i,19n,120p,1046b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TSM.pdf (200 pages).
+Output written on TSM.pdf (206 pages).

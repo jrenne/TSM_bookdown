@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 3 The term structure or risk-free yields | Introduction to Term Structure Models</title>
+<title>Chapter 3 The term structure of risk-free yields | Introduction to Term Structure Models</title>
 <meta name="author" content="Jean-Paul Renne and Alain Monfort">
 <meta name="description" content="3.1 Introduction Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 3 The term structure or risk-free yields | Introduction to Term Structure Models">
+<meta property="og:title" content="Chapter 3 The term structure of risk-free yields | Introduction to Term Structure Models">
 <meta property="og:type" content="book">
 <meta property="og:description" content="3.1 Introduction Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 3 The term structure or risk-free yields | Introduction to Term Structure Models">
+<meta name="twitter:title" content="Chapter 3 The term structure of risk-free yields | Introduction to Term Structure Models">
 <meta name="twitter:description" content="3.1 Introduction Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -68,7 +68,7 @@
 <li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
 <li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="PandQ.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
-<li><a class="active" href="TSModels.html"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
+<li><a class="active" href="TSModels.html"><span class="header-section-number">3</span> The term structure of risk-free yields</a></li>
 <li><a class="" href="Structural.html"><span class="header-section-number">4</span> A detour through structural approaches</a></li>
 <li><a class="" href="Estimation.html"><span class="header-section-number">5</span> Estimation of affine asset-pricing models</a></li>
 <li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
@@ -83,7 +83,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="TSModels" class="section level1" number="3">
 <h1>
-<span class="header-section-number">3</span> The term structure or risk-free yields<a class="anchor" aria-label="anchor" href="#TSModels"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3</span> The term structure of risk-free yields<a class="anchor" aria-label="anchor" href="#TSModels"><i class="fas fa-link"></i></a>
 </h1>
 <!-- ```{r extractECB, echo=TRUE, fig.cap="Simulation of a quadratic processes $x_t$.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE} -->
 <!-- library(ecb) -->
@@ -328,8 +328,12 @@ i_t &amp;=&amp; \omega_{0} + \omega_{\mathcal{P}}'\mathcal{P}_t \\
 \left[\begin{array}{c}\mathcal{P}_{t-1} \\ M_{t-1} \end{array}\right] + \Sigma \varepsilon^{\mathbb{Q}}_t,
 \end{eqnarray*}\]</span>
 where <span class="math inline">\(\varepsilon_t\)</span> and <span class="math inline">\(\varepsilon^{\mathbb{Q}}_t\)</span> are <span class="math inline">\(\mathcal{N}(0,Id)\)</span> under <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span>, respectively.</p>
-<p><span class="math inline">\(M_t\)</span> does Granger-cause <span class="math inline">\(\mathcal{P}_t\)</span> under <span class="math inline">\(\mathbb{Q}\)</span> and <span class="math inline">\(i_t\)</span> is affine in <span class="math inline">\(\mathcal{P}_t\)</span> (only).</p>
-<p>In this context, yields <span class="math inline">\(i_{t,h}\)</span> are affine in <span class="math inline">\(\mathcal{P}_t\)</span> (only). However <span class="math inline">\(M_t\)</span> does Granger-cause <span class="math inline">\(\mathcal{P}_t\)</span> under <span class="math inline">\(\mathbb{P}\)</span>, that is, macro-shocks affect the yield curve.</p>
+<p><span class="math inline">\(M_t\)</span> does not Granger-cause <span class="math inline">\(\mathcal{P}_t\)</span> under <span class="math inline">\(\mathbb{Q}\)</span>. In other words, <span class="math inline">\(\mathcal{P}_t\)</span> is exogenous under <span class="math inline">\(\mathbb{Q}\)</span>. And since <span class="math inline">\(i_t\)</span> is affine in <span class="math inline">\(\mathcal{P}_t\)</span> only (the loadings on <span class="math inline">\(M_t\)</span> are null), it comes that the yield of any maturity <span class="math inline">\(i_{t,h}\)</span> is affine in <span class="math inline">\(\mathcal{P}_t\)</span> only (null loadings on <span class="math inline">\(M_t\)</span>). However, since <span class="math inline">\(M_t\)</span> does Granger-cause <span class="math inline">\(\mathcal{P}_t\)</span> under <span class="math inline">\(\mathbb{P}\)</span>, the macro-shocks have dynamic effects on the yield curve. In other words, this model reconciles the facts that:</p>
+<ol style="list-style-type: lower-alpha">
+<li>the level, slope and curvature explains the bulk of the variations of the yield curve,</li>
+<li>macro factors affect yields,</li>
+<li>the vectorial spaces spanned by yields on the one hand, and macroeconomic factors on the other hand do not coincide.</li>
+</ol>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:JPSIRF"></span>
 <img src="figures/JPS_IRF.png" alt="Source: Joslin, Priebsch, and Singleton (2014). Impulse response functions." width="95%"><p class="caption">
@@ -377,9 +381,9 @@ Figure 3.5: Source: Ang, Boivin, Dong, Loo-Kung (2011). Estimated factor loading
 <span class="header-section-number">3.4</span> Non-Negative Affine Term Structure Model<a class="anchor" aria-label="anchor" href="#RiskFreeNonNegative"><i class="fas fa-link"></i></a>
 </h2>
 <p>In the presence of physical currency, absence of arbitrage opportunity and of storing cost of cash, nominal interest rates should be nonnegative. Many standard models (e.g. Gaussian ATSM) are non consistent with non-negative nominal yields. The period of extremely low interest rates challenged these models. Against this backdrop, approaches have been developed to accommodate zero (or effective) lower bounds. We provide two examples; only the second is an affine model.</p>
-<div id="the-shadow-rate-approach" class="section level3" number="3.4.1">
+<div id="Shadowrate" class="section level3" number="3.4.1">
 <h3>
-<span class="header-section-number">3.4.1</span> The shadow-rate approach<a class="anchor" aria-label="anchor" href="#the-shadow-rate-approach"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.1</span> The shadow-rate approach<a class="anchor" aria-label="anchor" href="#Shadowrate"><i class="fas fa-link"></i></a>
 </h3>
 <p>The shadow-rate model is originally due to <span class="citation">Black (<a href="references.html#ref-Black_1995">1995</a>)</span>. In this model, the short term rate is given by:
 <span class="math display" id="eq:SRSTR">\[\begin{equation}
@@ -533,7 +537,7 @@ Figure 3.8: Source: Monfort et al. (2017). Lift-off probabilities.
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#TSModels"><span class="header-section-number">3</span> The term structure or risk-free yields</a></li>
+<li><a class="nav-link" href="#TSModels"><span class="header-section-number">3</span> The term structure of risk-free yields</a></li>
 <li><a class="nav-link" href="#RFIntroduction"><span class="header-section-number">3.1</span> Introduction</a></li>
 <li>
 <a class="nav-link" href="#RiskFreeAffine"><span class="header-section-number">3.2</span> The Affine Case</a><ul class="nav navbar-nav">
@@ -544,7 +548,7 @@ Figure 3.8: Source: Monfort et al. (2017). Lift-off probabilities.
 <li><a class="nav-link" href="#RiskFreeGaussian"><span class="header-section-number">3.3</span> Gaussian Affine Term Structure Model</a></li>
 <li>
 <a class="nav-link" href="#RiskFreeNonNegative"><span class="header-section-number">3.4</span> Non-Negative Affine Term Structure Model</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#the-shadow-rate-approach"><span class="header-section-number">3.4.1</span> The shadow-rate approach</a></li>
+<li><a class="nav-link" href="#Shadowrate"><span class="header-section-number">3.4.1</span> The shadow-rate approach</a></li>
 <li><a class="nav-link" href="#the-auto-regressive-gamma-approach"><span class="header-section-number">3.4.2</span> The auto-regressive gamma approach</a></li>
 </ul>
 </li>

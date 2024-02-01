@@ -1,4 +1,4 @@
-# The term structure or risk-free yields {#TSModels}
+# The term structure of risk-free yields {#TSModels}
 
 
 <!-- ```{r extractECB, echo=TRUE, fig.cap="Simulation of a quadratic processes $x_t$.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE} -->
@@ -362,9 +362,11 @@ i_t &=& \omega_{0} + \omega_{\mathcal{P}}'\mathcal{P}_t \\
 \end{eqnarray*}
 where $\varepsilon_t$ and $\varepsilon^{\mathbb{Q}}_t$ are $\mathcal{N}(0,Id)$ under $\mathbb{P}$ and $\mathbb{Q}$, respectively.
 
-$M_t$ does  Granger-cause $\mathcal{P}_t$ under $\mathbb{Q}$ and $i_t$ is affine in $\mathcal{P}_t$ (only).
+$M_t$ does not Granger-cause $\mathcal{P}_t$ under $\mathbb{Q}$. In other words, $\mathcal{P}_t$ is exogenous under $\mathbb{Q}$. And since $i_t$ is affine in $\mathcal{P}_t$ only (the loadings on $M_t$ are null), it comes that the yield of any maturity $i_{t,h}$ is affine in $\mathcal{P}_t$ only (null loadings on $M_t$). However, since $M_t$ does Granger-cause $\mathcal{P}_t$ under $\mathbb{P}$, the macro-shocks have dynamic effects on the yield curve. In other words, this model reconciles the facts that: 
 
-In this context, yields $i_{t,h}$ are affine in $\mathcal{P}_t$ (only). However $M_t$ does Granger-cause $\mathcal{P}_t$ under $\mathbb{P}$, that is, macro-shocks affect the yield curve.
+a. the level, slope and curvature explains the bulk of the variations of the yield curve,
+b. macro factors affect yields,
+c. the vectorial spaces spanned by yields on the one hand, and macroeconomic factors on the other hand do not coincide.
 
 ```{r JPSIRF, fig.align = 'center', out.width = "95%", fig.cap = "Source: Joslin, Priebsch, and Singleton (2014). Impulse response functions.", echo=FALSE}
 knitr::include_graphics("figures/JPS_IRF.png")
@@ -413,7 +415,7 @@ knitr::include_graphics("figures/Ang_Boivin_loadings.png")
 
 In the presence of physical currency, absence of arbitrage opportunity and of storing cost of cash, nominal interest rates should be nonnegative. Many standard models (e.g. Gaussian ATSM) are non consistent with non-negative nominal yields. The period of extremely low interest rates challenged these models. Against this backdrop, approaches have been developed to accommodate zero (or effective) lower bounds. We provide two examples; only the second is an affine model.
 
-### The shadow-rate approach
+### The shadow-rate approach {#Shadowrate}
 
 The shadow-rate model is originally due to @Black_1995. In this model, the short term rate is given by:
 \begin{equation}

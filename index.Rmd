@@ -1,6 +1,6 @@
 --- 
 title: "Introduction to Term Structure Models"
-author: "Jean-Paul Renne and Alain Monfort"
+author: "Alain Monfort and Jean-Paul Renne"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -23,7 +23,7 @@ css: "my-style.css"
 
 Modeling dynamic term structures serves as a practical and indispensable tool in the realm of finance. It enables investors, institutions, and policymakers to make informed decisions, manage risk effectively, and allocate resources wisely. By understanding how interest rates and yields evolve over time, these models offer a clear lens through which to assess market trends and price financial instruments accurately.
 
-This course has been developed by [Jean-Paul Renne](https://sites.google.com/site/jeanpaulrenne/home) and [Alain Monfort](https://faculty.crest.fr/amonfort/). It is illustrated by R codes using various packages that can be obtained from [CRAN](https://cran.r-project.org). This `TSModels` package is available on GitHub. To install it, one need to employ the `devtools` library:
+This course has been developed by [Alain Monfort](https://faculty.crest.fr/amonfort/) and [Jean-Paul Renne](https://sites.google.com/site/jeanpaulrenne/home). It is illustrated by R codes using various packages that can be obtained from [CRAN](https://cran.r-project.org). This `TSModels` package is available on GitHub. To install it, one need to employ the `devtools` library:
 
 ```{r installAEC, eval=FALSE}
 install.packages("devtools") # in case this library has not been loaded yet
@@ -36,14 +36,13 @@ library(AEC)
 
 * Download R:
 
-    *	R software: https://cran.r-project.org (the basic R software)
-    *	RStudio: https://www.rstudio.com (a convenient R editor)
+    a.	R software: https://cran.r-project.org (the basic R software)
+    b.	RStudio: https://www.rstudio.com (a convenient R editor)
 
 * Tutorials:
 
-    *	Rstudio: https://dss.princeton.edu/training/RStudio101.pdf (by Oscar Torres-Reyna)
-    *	R: https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf (by Emmanuel Paradis)
-    * My own tutorial: https://jrenne.shinyapps.io/Rtuto_publiShiny/
+    a.	Rstudio: https://dss.princeton.edu/training/RStudio101.pdf (by Oscar Torres-Reyna)
+    b.	R: https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf (by Emmanuel Paradis)
 
 
 <!-- <!-- To specify the corresponding covariance matrix vcov. to be used, there are three possibilities: 1. It is pre-computed and supplied in argument vcov.. 2. A function for extracting the covariance matrix from x is supplied, e.g., sandwich, vcovHC, vcovCL, or vcovHAC from package sandwich.  -->

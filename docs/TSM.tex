@@ -115,13 +115,13 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={Introduction to Term Structure Models},
-  pdfauthor={Jean-Paul Renne and Alain Monfort},
+  pdfauthor={Alain Monfort and Jean-Paul Renne},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 \title{Introduction to Term Structure Models}
-\author{Jean-Paul Renne and Alain Monfort}
-\date{2024-02-01}
+\author{Alain Monfort and Jean-Paul Renne}
+\date{2024-02-02}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -154,7 +154,7 @@
 
 Modeling dynamic term structures serves as a practical and indispensable tool in the realm of finance. It enables investors, institutions, and policymakers to make informed decisions, manage risk effectively, and allocate resources wisely. By understanding how interest rates and yields evolve over time, these models offer a clear lens through which to assess market trends and price financial instruments accurately.
 
-This course has been developed by \href{https://sites.google.com/site/jeanpaulrenne/home}{Jean-Paul Renne} and \href{https://faculty.crest.fr/amonfort/}{Alain Monfort}. It is illustrated by R codes using various packages that can be obtained from \href{https://cran.r-project.org}{CRAN}. This \texttt{TSModels} package is available on GitHub. To install it, one need to employ the \texttt{devtools} library:
+This course has been developed by \href{https://faculty.crest.fr/amonfort/}{Alain Monfort} and \href{https://sites.google.com/site/jeanpaulrenne/home}{Jean-Paul Renne}. It is illustrated by R codes using various packages that can be obtained from \href{https://cran.r-project.org}{CRAN}. This \texttt{TSModels} package is available on GitHub. To install it, one need to employ the \texttt{devtools} library:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -187,8 +187,6 @@ This course has been developed by \href{https://sites.google.com/site/jeanpaulre
     Rstudio: \url{https://dss.princeton.edu/training/RStudio101.pdf} (by Oscar Torres-Reyna)
   \item
     R: \url{https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf} (by Emmanuel Paradis)
-  \item
-    My own tutorial: \url{https://jrenne.shinyapps.io/Rtuto_publiShiny/}
   \end{itemize}
 \end{itemize}
 
@@ -6151,12 +6149,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.95103802 0.90726149 0.86782690 0.83205235 0.79937995 0.76935661
-## [2,] 0.05020123 0.04866228 0.04725434 0.04596498 0.04478378 0.04370012
-##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.74161244 0.71584304 0.69179586 0.66925986
-## [2,] 0.04270407 0.04178679 0.04094049 0.04015829
+##            [,1]      [,2]       [,3]       [,4]      [,5]       [,6]       [,7]
+## [1,] 0.92310682 0.8573348 0.80065355 0.75148107 0.7085349 0.67076637 0.63731581
+## [2,] 0.08001032 0.0769634 0.07410898 0.07142731 0.0689112 0.06655573 0.06435571
+##            [,8]       [,9]      [,10]
+## [1,] 0.60747834 0.58067613 0.55643529
+## [2,] 0.06230485 0.06039579 0.05862044
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 7 Credit and liquidity risks | Introduction to Term Structure Models</title>
-<meta name="author" content="Jean-Paul Renne and Alain Monfort">
+<meta name="author" content="Alain Monfort and Jean-Paul Renne">
 <meta name="description" content="7.1 Notations The information of the investor at date \(t\) is still denoted by \(\underline{w_t} = (w_t',w_{t-1}',\dots, w_1 ') '\), but \(w_t\) now comprises a new subsector, namely \(d_t\),...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 7 Credit and liquidity risks | Introduction to Term Structure Models">
@@ -1094,12 +1094,12 @@ Figure 7.10: This plots shows simulated paths for <span class="math inline">\(z_
 <span><span class="va">t.max.lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>, <span class="co">#approximate values of the conditional expect. for date t</span></span>
 <span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##            [,1]       [,2]      [,3]       [,4]       [,5]       [,6]
-## [1,] 0.92731220 0.86477019 0.8105638 0.76325651 0.72167046 0.68484441
-## [2,] 0.07546499 0.07264574 0.0700084 0.06754028 0.06523733 0.06309393
+<pre><code>##           [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] 0.9397293 0.88689582 0.84025256 0.79878352 0.76164911 0.72816430
+## [2,] 0.0621634 0.06001388 0.05801759 0.05616633 0.05445386 0.05287143
 ##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.65199629 0.62248996 0.59580689 0.57152288
-## [2,] 0.06110234 0.05925347 0.05753763 0.05594508</code></pre>
+## [1,] 0.69777099 0.67001295 0.64451535 0.62096849
+## [2,] 0.05140919 0.05005728 0.04880629 0.04764749</code></pre>
 <p>The last two lines respectively give, for the date featuring the highest <span class="math inline">\(\lambda_t\)</span>, the term structures of the bond prices and of associated yields-to-maturity.</p>
 <p>Let us now compute credit-risk-free bond prices. This is obtained by taking <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=0\)</span> (so that <span class="math inline">\(\lambda_t=0\)</span>):</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -1192,7 +1192,7 @@ Figure 7.12: Comparison between formula-based prices and Monte-Carlo-based defau
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Jean-Paul Renne and Alain Monfort. It was last built on 2024-02-01.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

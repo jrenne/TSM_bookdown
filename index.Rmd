@@ -26,7 +26,7 @@ Modeling dynamic term structures serves as a practical and indispensable tool in
 This course has been developed by [Alain Monfort](https://faculty.crest.fr/amonfort/) and [Jean-Paul Renne](https://sites.google.com/site/jeanpaulrenne/home). It is illustrated by R codes using various packages that can be obtained from [CRAN](https://cran.r-project.org). This `TSModels` package is available on GitHub. To install it, one need to employ the `devtools` library:
 
 ```{r installAEC, eval=FALSE}
-install.packages("devtools") # in case this library has not been loaded yet
+install.packages("devtools") # needed to use "install_github"
 library(devtools)
 install_github("jrenne/TSModels")
 library(AEC)

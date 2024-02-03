@@ -192,7 +192,7 @@ where <span class="math inline">\(\alpha_t\)</span> defines the <em>prices of ri
 \boxed{\mathcal{M}_{t,t+1} = \exp[-i_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)].}\tag{2.4}
 \end{equation}\]</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-18" class="example"><strong>Example 2.1  (CCAPM/Power utility case) </strong></span>In the CCAPM-power-utility case (see Example <a href="#exm:CCAPM"><strong>??</strong></a>), we have (Eq. <a href="Structural.html#eq:powerutilSDF">(4.8)</a>):
+<p><span id="exm:unlabeled-div-18" class="example"><strong>Example 2.1  (CCAPM/Power utility case) </strong></span>In the CCAPM-power-utility case (see Def. <a href="Structural.html#def:CCAPM">4.4</a>), we have (Eq. <a href="Structural.html#eq:powerutilSDF">(4.8)</a>):
 <span class="math display">\[
 \mathcal{M}_{t,t+1} = \exp(\log \delta + \log q_t + \gamma \log   C_t - \log   q_{t+1} - \gamma  \log   C_{t+1}),
 \]</span>
@@ -210,10 +210,10 @@ sequence of conditional p.d.f. <span class="math inline">\(f_{t+1}(w_{t+1}|\unde
 <span class="math inline">\(f_{t+1}(w_{t+1})\)</span>, with respect to (w.r.t.) some measure <span class="math inline">\(\mu\)</span>.</p>
 <p>We define the conditional risk-neutral p.d.f. w.r.t. the conditional historical probability. For that, we employ the Radon-Nikodym derivative <span class="math inline">\(d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t})\)</span>:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Of course, the conditional historical p.d.f. with respect to the conditional risk-neutral (R.N.) p.d.f. is:
 &lt;span class="math inline"&gt;\(d_{t+1}(w_{t+1}) = \frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})}\)&lt;/span&gt; or &lt;span class="math inline"&gt;\(d_{t+1}(w_{t+1}) = \frac{\exp(-i_{t})}{\mathcal{M}_{t,t+1}}\)&lt;/span&gt;.&lt;/p&gt;'><sup>6</sup></a>
-<span class="math display">\[
+<span class="math display" id="eq:RadonNikodym">\[\begin{equation}
 d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t}) =
-\frac{\mathcal{M}_{t,t+1}(\underline{w_{t+1}})}{\mathbb{E}[\mathcal{M}_{t,t+1}(\underline{w_{t+1}})|\underline{w_t}]},
-\]</span>
+\frac{\mathcal{M}_{t,t+1}(\underline{w_{t+1}})}{\mathbb{E}[\mathcal{M}_{t,t+1}(\underline{w_{t+1}})|\underline{w_t}]},\tag{2.5}
+\end{equation}\]</span>
 or
 <span class="math display">\[
 d^{\mathbb{Q}}_{t+1}(w_{t+1})=
@@ -222,7 +222,7 @@ d^{\mathbb{Q}}_{t+1}(w_{t+1})=
 In this context, the risk neutral conditional p.d.f. is:
 <span class="math display" id="eq:fQfP">\[\begin{eqnarray}
 f^{\mathbb{Q}}_{t+1}(w_{t+1}) &amp;=&amp; f_{t+1}(w_{t+1})d^{\mathbb{Q}}_{t+1}(w_{t+1}) \nonumber \\
-&amp;=&amp;f_{t+1} (w_{t+1}) \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) \exp [i_{t} (\underline{w_t})].\tag{2.5}
+&amp;=&amp;f_{t+1} (w_{t+1}) \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) \exp [i_{t} (\underline{w_t})].\tag{2.6}
 \end{eqnarray}\]</span></p>
 <p>The p.d.f. of <span class="math inline">\(\mathbb{Q}\)</span> w.r.t. the historical dynamics <span class="math inline">\(\mathbb{P}\)</span> is:
 <span class="math display">\[
@@ -255,7 +255,7 @@ B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t[\exp(-i_{t}-...-i_{s-1})],
 \]</span>
 which gives:
 <span class="math display" id="eq:ihandMQ">\[\begin{equation}
-\boxed{i_{t,h}=-\frac{1}{h}\log \mathbb{E}^{\mathbb{Q}}_t[\exp(-i_{t}-...-i_{s-1})].}\tag{2.6}
+\boxed{i_{t,h}=-\frac{1}{h}\log \mathbb{E}^{\mathbb{Q}}_t[\exp(-i_{t}-...-i_{s-1})].}\tag{2.7}
 \end{equation}\]</span>
 (This is equivalent to <a href="PandQ.html#eq:ihandM">(2.3)</a>.)</p>
 <p>We also have <span class="math inline">\(p_t/R_t = \mathbb{E}^{\mathbb{Q}}_t\left( p_s/R_s\right)\)</span>, that is, <span class="math inline">\(p_t/R_t\)</span> is a <span class="math inline">\(\mathbb{Q}\)</span>-martingale. In particular <span class="math inline">\(p_t = \exp(-i_{t})\mathbb{E}^{\mathbb{Q}}_t(p_{t+1})\)</span>, or, using the arithmetic return of any payoff <span class="math inline">\((p_{t+1}-p_t)/p_t\)</span>, and the arithmetic return of the riskless asset <span class="math inline">\(r_{A,t+1}=\exp(i_{t})-1\)</span>, we get:
@@ -282,7 +282,7 @@ The previous equation shows that <span class="math inline">\(f^{\mathbb{Q}}_{t+1
 \end{eqnarray*}\]</span>
 Hence:
 <span class="math display" id="eq:transfoPQ">\[\begin{equation}
-\boxed{\psi^{\mathbb{Q}}_t(u) = \psi_t(u+\alpha_t)-\psi_t(\alpha_t).}\tag{2.7}
+\boxed{\psi^{\mathbb{Q}}_t(u) = \psi_t(u+\alpha_t)-\psi_t(\alpha_t).}\tag{2.8}
 \end{equation}\]</span>
 We check that, if <span class="math inline">\(\alpha_t=0\)</span>, <span class="math inline">\(\psi^{\mathbb{Q}}_t=\psi_t\)</span> (since <span class="math inline">\(\psi_t(0)=0)\)</span>.</p>
 <p>Moreover, putting <span class="math inline">\(u=-\alpha_t\)</span> in the expression of
@@ -334,11 +334,11 @@ f^{\mathbb{Q}}(w_{t+1}|\underline{w_t}) = f(w_{t+1}|\underline{w_t}) \mathcal{M}
 <li>the R.N.-constrained direct modelling (or mixed modelling),</li>
 <li>the back modelling.</li>
 </ol>
-<p>We focus on the case where <span class="math inline">\(\mathcal{M}_{t,t+1}\)</span> is exponential affine, as in Eq. <a href="PandQ.html#eq:keySDF">(2.4)</a>:
+<p>We focus on the case where <span class="math inline">\(\mathcal{M}_{t,t+1}\)</span> is exponential affine, as in <a href="PandQ.html#eq:keySDF">(2.4)</a>:
 <span class="math display">\[
 \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -i_{t} (\underline{w_t}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)]\right\}.
 \]</span>
-Once the short-term rate function <span class="math inline">\(i_{t}(\underline{w_t})\)</span> is specified, we have to specify <span class="math inline">\(\psi_t\)</span>, <span class="math inline">\(\alpha_t\)</span>, and <span class="math inline">\(\psi^{\mathbb{Q}}_t\)</span>, that are linked by Eq. <a href="PandQ.html#eq:transfoPQ">(2.7)</a>.</p>
+Once the short-term rate function <span class="math inline">\(i_{t}(\underline{w_t})\)</span> is specified, we have to specify <span class="math inline">\(\psi_t\)</span>, <span class="math inline">\(\alpha_t\)</span>, and <span class="math inline">\(\psi^{\mathbb{Q}}_t\)</span>, that are linked by <a href="PandQ.html#eq:transfoPQ">(2.8)</a>.</p>
 <p>In all approaches, we have to specify the status of the short rate. The short rate <span class="math inline">\(i_{t}\)</span> is a function of <span class="math inline">\(\underline{w_t}\)</span>, this function may be known or unknown by the econometrician. It is known in two cases: (a) <span class="math inline">\(i_{t}\)</span> is exogenous (<span class="math inline">\(i_{t}(\underline{w_t})\)</span> does not depend on <span class="math inline">\(\underline{w_t}\)</span>) or (b) <span class="math inline">\(i_{t}\)</span> is a component of <span class="math inline">\(w_t\)</span>. By contrast, if the function <span class="math inline">\(i_{t} (\underline{w_t})\)</span> is unknown, it has to be specified parametrically:
 <span class="math display">\[
 \left\{ i_{t} (\underline{w_t}, \tilde{\theta}), \tilde{\theta}\in \tilde{\Theta} \right\},
@@ -353,14 +353,15 @@ where <span class="math inline">\(i_{t}(\bullet,\bullet)\)</span> is a known fun
 <li>
 <strong>Step 1 – Specification of the historical dynamics</strong>. We choose a parametric family for the conditional historical Log-Laplace transform <span class="math inline">\(\psi_t(u|\underline{w_t})\)</span>: <span class="math inline">\(\left\{ \psi_t (u|\underline{w_t} ; \theta_1), \theta_1 \in \Theta_1 \right\}\)</span>.</li>
 <li>
-<strong>Step 2 – Specification of the SDF</strong>. Considering the affine specification of as Eq. <a href="PandQ.html#eq:keySDF">(2.4)</a>, that is:
+<strong>Step 2 – Specification of the SDF</strong>. Considering the affine specification of as <a href="PandQ.html#eq:keySDF">(2.4)</a>, that is:
 <span class="math display">\[
 \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -i_{t}(\underline{w_t}, \tilde{\theta}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)|\underline{w_t} ; \theta_1]\right\},
 \]</span>
 we need to specifiy functions <span class="math inline">\(i_{t}(\underline{w_t}, \tilde{\theta})\)</span> and <span class="math inline">\(\alpha_t(\underline{w_t})\)</span>. Assume that <span class="math inline">\(\alpha_t(\underline{w_t})\)</span> belongs to a parametric family: <span class="math inline">\(\left\{ \alpha_t (\underline{w_t} ; \theta_2),\theta_2 \in \Theta_2 \right\}\)</span>.
 We then have:
 <span class="math display">\[\begin{eqnarray*}
-\mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) &amp;=&amp; \exp \left\{ - i_{t}
+&amp;&amp;\mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) \\
+&amp;=&amp; \exp \left\{ - i_{t}
 (\underline{w_t}, \tilde{\theta}) + \alpha'_t (\underline{w_t},\theta_2) w_{t+1} - \psi_{t} \left[ \alpha_t (\underline{w_t},
 \theta_2) | \underline{w_t} ; \theta_1 \right] \right\},
 \end{eqnarray*}\]</span>
@@ -370,11 +371,11 @@ where <span class="math inline">\(\theta = (\tilde{\theta}', \theta'_1,\theta'_2
 <span class="math inline">\(\underline{w_t}\)</span>, we must have:
 <span class="math display" id="eq:ICCgen">\[\begin{equation*}
 p(\underline{w_t}) = \mathbb{E} \left\{\mathcal{M}_{t,t+1} (\theta) \dots \mathcal{M}_{s-1,s} (\theta) g(\underline{w_s})  |  \underline{w_t},
-\theta_1 \right\}    \forall \; \underline{w_t}, \theta.\tag{2.8}
+\theta_1 \right\}    \forall \; \underline{w_t}, \theta.\tag{2.9}
 \end{equation*}\]</span>
 These ICC pricing conditions may imply strong constraints on <span class="math inline">\(\theta\)</span>. For instance, when components of <span class="math inline">\(w_t\)</span> are returns of some assets: if <span class="math inline">\(w_{1,t} = \log(p_{1,t}/p_{1,t-1})\)</span>, then we must have <span class="math inline">\(\mathbb{E}_t [\mathcal{M}_{t,t+1} \exp (e'_1 w_{t+1})]= 1\)</span> (Euler equation). Or, in the case of interest rates with various maturities: if <span class="math inline">\(w_{1,t} = -1/h\log B(t,h)\)</span>, then we must have <span class="math inline">\(e'_1 w_{t} = - 1/h \log \mathbb{E}_t (\mathcal{M}_{t,t+1}\times \dots \times \mathcal{M}_{t+h-1,t+h})\)</span>.</li>
 </ul>
-<p>The previous three steps imply the specification of the R.N. dynamics (according to Eq. <a href="PandQ.html#eq:transfoPQ">(2.7)</a>):
+<p>The previous three steps imply the specification of the R.N. dynamics (according to Eq. <a href="PandQ.html#eq:transfoPQ">(2.8)</a>):
 <span class="math display">\[\begin{equation*}
 \psi^{\mathbb{Q}} (u | \underline{w_t}, \theta_1, \theta_2) =
 \psi_t \left[ u + \alpha_t (\underline{w_t}, \theta_2) |
@@ -467,7 +468,7 @@ These ICC pricing conditions may imply strong constraints on <span class="math i
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-02.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

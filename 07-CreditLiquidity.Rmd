@@ -113,7 +113,7 @@ B_{t,h}^d = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-\tilde{i}_t-\dots-\tilde{i
 \end{equation}
 :::
 :::{.proof}
-According to Eq. \@ref(eq:fQfP):
+According to \@ref(eq:fQfP):
 \begin{equation}
 f^{\mathbb{Q}}(d_t,y_t|d_{t-1},y_{t-1}) = \exp(i_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(d_t,y_t|d_{t-1},y_{t-1}).(\#eq:aaq1)
 \end{equation}
@@ -153,7 +153,7 @@ Using \@ref(eq:lambdaPQ) in \@ref(eq:standardPriceCredit), we obtain \@ref(eq:st
 
 > Although $\mathbb{P}$ and $\mathbb{Q}$ intensities are the same functions of $y_t$ and $y_{t-1}$, their historical and risk-neutral dynamics are in general different since $y_t$'s $\mathbb{P}$ and $\mathbb{Q}$ dynamics are different.
 
-> Eq. \@ref(eq:standardPriceCredit3) is reminiscent of Eq. \@ref(eq:stdbond), where the risk-free short-term rate $i_t$ is replaced by the *credit-adjusted short-term rate* $\tilde{i}_t$.
+> Eq. \@ref(eq:standardPriceCredit3) is reminiscent of \@ref(eq:stdbond), where the risk-free short-term rate $i_t$ is replaced by the *credit-adjusted short-term rate* $\tilde{i}_t$.
 
 Importantly, if both $i_t$ and $\lambda_t$ are affine in $y_t$, where the latter is an affine process, then bond prices are easily computed by means of recursive formulas (as was the case in the context of \@ref(eq:stdbond), see Example \@ref(exm:nominalBth).
 
@@ -761,7 +761,7 @@ Under Hypotheses \@ref(hyp:H2) and \@ref(hyp:H4), it comes that:
 \varphi^{\mathbb{Q}}_{w, t-1} (u_w) &=& \mathbb{E}^{\mathbb{Q}} \left[\exp( u_w ' w_t )   |   \underline{w_{t-1}} \right] \nonumber \\
 &=& \exp \left[ a^{\mathbb{Q}}_{w} (u_{w}) ' w_{t-1} + b^{\mathbb{Q}}_{w} (u_{w}) \right],(\#eq:affineQcLT)
 \end{eqnarray}
-where, using Eq. \@ref(eq:transfoPQ):
+where, using \@ref(eq:transfoPQ):
 \begin{equation}
 \left\{
 \begin{array}{ccl}
@@ -916,7 +916,7 @@ where:
 && \hspace{7em} - \Psi^{\mathbb{Q}}_{(t, i)} \left(\chi - a_e, u \widetilde{e}_{\delta} - \xi_1 , u_s - a_w \right) \\
 && \hspace{7em} + \Psi^{\mathbb{Q}}_{(t, i)} \left(\chi - a_e, u \widetilde{e}_{\delta} - \xi_1 , u \widetilde{e}_{\delta} + u_s - a_w \right) \Big] ,
 \end{eqnarray*}
-and where $\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u_2 , u_1 \right)$ is given in Eq. \@ref(eq:ZCBRFV3).
+and where $\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u_2 , u_1 \right)$ is given in \@ref(eq:ZCBRFV3).
 :::
 :::{.proof}
 See Online Appendix A.4 of @Monfort_Pegoraro_Renne_Roussellet_2021. The proof notably makes use of Lemma \@ref(lem:lemPetitLemme) (Subsection \@ref(AffineLaplace)).
@@ -1262,7 +1262,8 @@ t  <- t.max.lambda # date on which cond. expect. are computed
 Xt <- matrix(X[,1,t],ncol=1) # state vector on that date
 
 # Simulate trajectories starting from Xt:
-X <- simul.X(Phi_x,Mu_x,Sigma_x,nb.periods=H,X0 = Xt,nb.replics = nb.replics)
+X <- simul.X(Phi_x,Mu_x,Sigma_x,nb.periods=H,X0 = Xt,
+             nb.replics = nb.replics)
 # Compute prices for each trajectory:
 aux1 <- apply(X,c(2,3),function(x){exp(- b.dot - t(x)%*%a.dot -
                                         pmax(0,b + t(x)%*%a))})
@@ -1270,9 +1271,11 @@ aux2 <- apply(aux1,1,cumprod)
 # Compute averages of prices across simulated trajectories:
 simul.prices <- apply(aux2,1,mean)
 # Compare with output of compute.condit.Exp:
-plot(res$E.n[t,],lwd=2,main="Approximate formula versus Monte-Carlo approach")
+plot(res$E.n[t,],lwd=2,
+     main="Approximate formula versus Monte-Carlo approach")
 lines(simul.prices)
-legend("topright",c("Approximate formula","Monte-Carlo"),lty=c(NaN,1),pch=c(1,NaN),lwd=c(2,1))
+legend("topright",c("Approximate formula","Monte-Carlo"),
+       lty=c(NaN,1),pch=c(1,NaN),lwd=c(2,1))
 ```
 
 

@@ -298,8 +298,8 @@ mu_t <- Alpha.Y_1
 N <- 1;M <- D
 Sigma_0 <- 1/(1-phi^2) # unconditional variance of w
 rho_0 <- 0 # unconditional mean of w
-filter.res   <- Kalman_filter(Y,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
-smoother.res <- Kalman_smoother(Y,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
+filter.res   <- Kalman_filter(Y,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0)
+smoother.res <- Kalman_smoother(Y,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0)
 ```
 
 ```{r Kalmansimul, echo=FALSE, fig.cap="Simulated trajectories of $y_{1,t}$, $y_{2,t}$, and $w_t$.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
@@ -366,8 +366,10 @@ Y.modif <- Y
 Y.modif[30:50,1] <- NaN
 Y.modif[40:70,2] <- NaN
 # Call of Kalman filter and smoother:
-filter.res   <- Kalman_filter(Y.modif,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
-smoother.res <- Kalman_smoother(Y.modif,nu_t,H,N,mu_t,G,M,Sigma_0,rho_0,indic_pos=0)
+filter.res   <- Kalman_filter(Y.modif,nu_t,H,N,mu_t,
+                              G,M,Sigma_0,rho_0)
+smoother.res <- Kalman_smoother(Y.modif,nu_t,H,N,mu_t,
+                                G,M,Sigma_0,rho_0)
 ```
 
 ```{r Kalman5, echo=FALSE, fig.cap="Situation of missing observations.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
@@ -451,13 +453,13 @@ legend("topleft",
 
 
 
-### About non-constant conditional matrix $\Sigma$
+### About non-constant conditional matrix $\Sigma$ {#KalmanQML}
 
 Proposition \@ref(prp:KF) is valid when $\varepsilon_t$ is Gaussian and when $\Sigma^{\frac{1}{2}}$ does not depend on $w_t$. However, in the general case (but when $w_t$ is an affine process), we have that $\Sigma(w_{t-1}) \equiv \mathbb{V}ar(w_{t+1}|\underline{w_t})$ is affine in $w_t$ (see Prop. \@ref(prp:affineVAR)). In order to deal with this, the Kalman filter algorithm can be modified. Specifically, in the prediction step (see Prop. \@ref(prp:KF)), $P_{t|t-1}$ can be approximated by:
 $$
 P_{t|t-1} = \Sigma\color{red}{(w_{t-1|t-1})} + \Phi P_{t-1|t-1} \Phi',
 $$
-i.e. we replace $\Sigma(w_{t-1})$ by $\Sigma(w_{t-1|t-1})$.
+i.e., we replace $\Sigma(w_{t-1})$ by $\Sigma(w_{t-1|t-1})$.
 
 Although this approach is not optimal---in the sense that it does not deliver the conditional expectation of Def. \@ref(def:FiltvsSmooth)---it shows good empirical properties (@deJong_2000 or @Duan_Simonato_1999). In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations [@zarg_2017].
 

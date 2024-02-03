@@ -31,7 +31,7 @@ $U$ is the utility function and $\delta$ is the pure preference for present, or 
 
 > Importantly, the pure preference for present ($\delta$) is different from the stochastic discount factor (SDF).
 
-The representative agent maximizes her expected utility time-separable preferences (see Definition \@ref(def:EUTSpref)) subject to the budget constraints at $t+j$, $j \ge 0$, see Eq. \@ref(eq:BConstr).
+The representative agent maximizes her expected utility time-separable preferences (see Definition \@ref(def:EUTSpref)) subject to the budget constraints at $t+j$, $j \ge 0$, see  \@ref(eq:BConstr).
 
 Replacing $C_{t+j}$ with $[Y_{t+j}-(\alpha'_{t+j}-\alpha'_{t+j-1})p_{t+j}]/q_{t+j}$, the objective function becomes:
 $$
@@ -60,7 +60,7 @@ where $\mathcal{M}_{t,t+1}$ is a strictly positive scalar called *stochastic dis
 \frac{dU(C_t)}{dC}}.}(\#eq:SDFCCAPM)
 \end{equation}
 
-According to Eq. \@ref(eq:SDF100), for any asset $j$:
+According to \@ref(eq:SDF100), for any asset $j$:
 \begin{equation}
 p_{j,t} = \mathbb{E}_t(\mathcal{M}_{t,t+1} p_{j,t+1}).(\#eq:Mbasicpricing)
 \end{equation}
@@ -150,14 +150,14 @@ p_t = \delta q_t C^\gamma_t \mathbb{E}_t \left(
 \right),
 $$
 or (Euler equation):
-$$
+\begin{equation}
 \mathbb{E}_t\left[
 \delta\left(
 \frac{C_{t+1}}{C_t}
 \right)^{-\gamma}  \frac{q_t}{q_{t+1}}
 \frac{p_{t+1}}{p_t} - 1
-\right] = 0.
-$$
+\right] = 0.(\#eq:EulerCCAPM)
+\end{equation}
 
 Here, $\gamma$ has two interpretations:
 
@@ -275,8 +275,8 @@ Using \@ref(eq:MRCov) in the power-utility situation, we get the following avera
 &\approx& (1 + R_{f,t}) \delta \gamma  \mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right),
 \end{eqnarray*}
 where $\Delta c_{t+1} = \log(C_{t+1}/C_t)$.
-Because consumption is smooth, the covariance $\mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right)$ is relatively small (see column ``$Cov(er_e,\Delta c)$'' of Table \@ref(tab:Campbell1), taken from @Campbell_1999).
-Hence, in order to replicate large average excess return, $\gamma$ has to be big (see last two columns of Table \@ref(tab:Campbell1)).
+Because consumption is smooth, the covariance $\mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right)$ is relatively small (see column ``$Cov(er_e,\Delta c)$'' of Table \@ref(fig:Campbell1), taken from @Campbell_1999).
+Hence, in order to replicate large average excess return, $\gamma$ has to be big (see last two columns of Table \@ref(fig:Campbell1)).
 
 
 ```{r Campbell1, fig.align = 'center', out.width = "100%", fig.cap = "Source: Campbell (1999).", echo=FALSE}
@@ -293,7 +293,7 @@ In the case of the power utility function, the risk aversion is the inverse of t
 $$
 \mbox{High risk aversion} \Leftrightarrow \mbox{Low IES}.
 $$
-For given values of the risk-free rates $R_{f,t}$, a decrease in the IES (increase in $\gamma$) leads people to make consumption smoother (see Example \@ref(exm:IESsmooth)).
+For given values of the risk-free rates $R_{f,t}$, a decrease in the IES (increase in $\gamma$) leads people to make consumption smoother (see Example \@ref(exm:IESsmoothing)).
 $$
 \frac{1}{1+R_{f,t}} \approx \mathbb{E}_t(\delta (1 - \gamma \Delta c_{t+1})).
 $$
@@ -365,7 +365,7 @@ Given the small volatility of $\Delta c_{t+1}$ (see column $\sigma(\Delta c)$ in
 
 :::{.example #GMM name="Econometric Test of the C-CAPM: the GMM approach"}
 
-@Hansen_Singleton_1982 have developed and used the General Method of Moments to test the C-CAPM. This approach is based on Eq. \@ref(eq:pricingcapm):
+@Hansen_Singleton_1982 have developed and used the General Method of Moments to test the C-CAPM. This approach is based on \@ref(eq:EulerCCAPM):
 \begin{equation}
 1 = \color{red}{\mathbb{E}_t}\left( \delta \left(\frac{C_t}{C_{t+1}}\right)^\gamma (1+R_{i,t+1})\right).(\#eq:momentcondi)
 \end{equation}
@@ -373,7 +373,7 @@ For this to be verified, we must have, for any variable $z_t$:
 \begin{equation}
 \color{red}{\mathbb{E}}\left( \underbrace{\left[\delta \left(\frac{C_t}{C_{t+1}}\right)^\gamma (1+R_{i,t+1}) - 1\right] z_t}_{h_{t+1}}\right) = 0,(\#eq:GMM)
 \end{equation}
-If this is not the case, one can use $z_t$ to predict $\delta \left(\frac{C_t}{C_{t+1}}\right)^\gamma (1+R_{i,t+1})$ and Eq. \@ref(eq:momentcondi) is not valid. Moment condition: $\mathbb{E}(h_{t+1})=0$.
+If this is not the case, one can use $z_t$ to predict $\delta \left(\frac{C_t}{C_{t+1}}\right)^\gamma (1+R_{i,t+1})$ and \@ref(eq:momentcondi) is not valid. Moment condition: $\mathbb{E}(h_{t+1})=0$.
 
 Empirical counterpart of the moment condition \@ref(eq:GMM):
 \begin{equation}
@@ -517,7 +517,8 @@ sigma.c <- sqrt(sigma2)
 gamma   <- 10
 delta   <- 0.99
 # Determine specification of real short-term rate:
-eta.0 <- -log(delta) + mu * gamma * (1 - phi) - gamma^2 * sigma.c^2 / 2
+eta.0 <- -log(delta) + mu * gamma * (1 - phi) - 
+  gamma^2 * sigma.c^2 / 2
 eta.1 <- gamma * phi
 # Specify the model:
 psi.parameterization <- list(
@@ -538,11 +539,13 @@ AB <- reverse.MHLT(psi.GaussianVAR,u1,u2,H=h,psi.parameterization)
 a.h.EH <- -c(AB$A - eta.1)/(1:h)
 b.h.EH <- eta.0 - c(AB$B)/(1:h)
 # Simulate growth:
-x.sim <- sim.arma(mu*(1-phi),phi,theta=c(1),sigma.c,T=100,mu,nb.sim=1)
+x.sim <- sim.arma(mu*(1-phi),phi,theta=c(1),sigma.c,
+                  T=100,mu,nb.sim=1)
 r.t   <- (eta.0 + eta.1 * x.sim)
 # Prepare plots:
 par(mfrow=c(1,1));par(plt=c(.1,.95,.2,.95))
-plot(r.t,type="l",xlab="time",ylab="",ylim=c(min(r.t),max(r.t)+.02),las=1)
+plot(r.t,type="l",xlab="time",ylab="",ylim=c(min(r.t),
+                                             max(r.t)+.05),las=1)
 for(t in seq(1,T,by=10)){
   lines(t+(1:h)-1,b.h    + a.h    * x.sim[t],col="red",lwd=2)
   lines(t+(1:h)-1,b.h.EH + a.h.EH * x.sim[t],col="blue",lwd=2)}
@@ -602,15 +605,15 @@ Figure \@ref(fig:TSMCCAPM2) shows the resulting average nominal yield curves, to
 ```{r TSMCCAPM2, echo=TRUE, fig.cap="Average yield curves (solid lines: real rates; dotted lines: nominal rates), using $\\mu_\\pi = 0.02$, $\\phi_\\pi=0.8$, $\\sigma_{\\pi,c}=-0.6$, and $\\sigma_\\pi=0.01$.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 mu_pi <- .02;phi_pi <- .8;sigma.pi.c <- -.06;sigma.pi   <- .01
 # Determine specification of nominal short-term rate:
-eta.0.i <- -log(delta) + mu * gamma * (1 - phi) + mu_pi * (1 - phi_pi) -
-  (gamma*sigma.c + sigma.pi.c)^2/2 - sigma.pi^2/2
+eta.0.i <- -log(delta) + mu * gamma * (1 - phi) + mu_pi * 
+  (1 - phi_pi) - (gamma*sigma.c + sigma.pi.c)^2/2 - sigma.pi^2/2
 eta.1.i <- matrix(c(gamma * phi,phi_pi),2,1)
 # Specify the model:
 psi.parameterization <- list(
   mu = matrix(c(mu*(1-phi),mu_pi*(1-phi_pi)),2,1),
   Phi = diag(c(phi,phi_pi)),
-  Sigma = matrix(c(sigma.c^2,sigma.c*sigma.pi.c,
-                   sigma.c*sigma.pi.c,sigma.pi^2+sigma.pi.c^2),2,2))
+  Sigma = matrix(c(sigma.c^2,sigma.c*sigma.pi.c,sigma.c*
+                     sigma.pi.c,sigma.pi^2+sigma.pi.c^2),2,2))
 # Use reverse-order multi-horizon LT to price ZC bonds:
 u2 <- matrix(c(-gamma,-1),2,1);u1 <- matrix(c(-gamma,-1),2,1)
 AB <- reverse.MHLT(psi.GaussianVAR,u1,u2,H=h,psi.parameterization)
@@ -619,12 +622,14 @@ b.h.i <- -log(delta) + -c(AB$B)/(1:h)
 # Under EH:
 u2 <- matrix(- eta.1.i);u1 <- matrix(0,2,1)
 AB <- reverse.MHLT(psi.GaussianVAR,u1,u2,H=h,psi.parameterization)
-a.h.i.EH <- -(matrix(AB$A,2,h)-matrix(eta.1.i,2,h))/t(matrix((1:h),h,2))
+a.h.i.EH <- -(matrix(AB$A,2,h)-
+                matrix(eta.1.i,2,h))/t(matrix((1:h),h,2))
 b.h.i.EH <- eta.0.i - c(AB$B)/(1:h)
 # Average yield curves:
 avg.i.h    <- b.h.i    + matrix(c(mu,mu_pi),1,2) %*% a.h.i
 avg.i.h.EH <- b.h.i.EH + matrix(c(mu,mu_pi),1,2) %*% a.h.i.EH
-plot(c(avg.i.h),type="l",lwd=2,col="red",lty=3,ylim=c(0.08,max(avg.i.h)),
+plot(c(avg.i.h),type="l",lwd=2,col="red",lty=3,
+     ylim=c(0.08,max(avg.i.h)),
      xlab="maturity",ylab="yield",las=1);grid()
 lines(c(avg.i.h.EH),type="l",lwd=2,col="blue",lty=3)
 lines(b.h+a.h*mu,lwd=2,col="red")
@@ -695,7 +700,7 @@ which is obtained by considering a marginal decrease in $C_t$ by $\varepsilon$ a
 \begin{equation}
 \mathcal{M}_{t,t+1} = \delta \left( \frac{C_{t+1}}{C_t} \right)^{-\gamma}\left( \frac{S_{t+1}}{S_t} \right)^{-\gamma},(\#eq:Mhabit)
 \end{equation}
-where $S_t = (C_t - X_t)/C_t$. This extends the standard power utility case by adding an additional state variable ($X_t$). In this model, recessions are periods where consumption is closer to habits (otherwise it is higher). SDF specifications of the type of Eq. \@ref(eq:Mhabit) can arise in more general contexts (not necessarily habits); $S_t$ may for instance reflect a business-cycle-related variable.
+where $S_t = (C_t - X_t)/C_t$. This extends the standard power utility case by adding an additional state variable ($X_t$). In this model, recessions are periods where consumption is closer to habits (otherwise it is higher). SDF specifications of the type of \@ref(eq:Mhabit) can arise in more general contexts (not necessarily habits); $S_t$ may for instance reflect a business-cycle-related variable.
 
 :::{.example #habit name="Comparisons of situations according to habit preferences"}
 
@@ -1098,7 +1103,7 @@ which gives, when $\rho = 1$ (using Eq. \@ref(eq:vrho1)):
 The previous equation can be rewritten as:
 \begin{eqnarray}
 && (\mathbb{E}_{t+1} - \mathbb{E}_t) m_{t,t+1} \nonumber \\
-&=& - \gamma(\mathbb{E}_{t+1} - \mathbb{E}_t)\Delta c_{t+1} +    (1 - \gamma) \times \underbrace{ (\mathbb{E}_{t+1} - \mathbb{E}_t) \left(  \sum_{j=1}^{\infty}  \delta^j \Delta c_{t+1+j}  \right).}_{\mbox{innovat. in long-run consump. growth}}(\#eq:sdfAbc)
+&=& - \gamma(\mathbb{E}_{t+1} - \mathbb{E}_t)\Delta c_{t+1} +    (1 - \gamma) \times \underbrace{ (\mathbb{E}_{t+1} - \mathbb{E}_t) \left(  \sum_{j=1}^{\infty}  \delta^j \Delta c_{t+1+j}  \right).}_{\mbox{innov. in long-run cons. growth}}(\#eq:sdfAbc)
 \end{eqnarray}
 Hence, news about future consumption growth affect the current SDF (marginal rate of substitution). As a consequence, shocks that correlate with updates of future consumption growth are "priced". The date-$t$ prices---and more precisely their risk premium components---depend on the  covariances between their payoffs and consumption on date $t+1$, as well as future consumption growth (regarding $t+h$, $h>1$).
 
@@ -1166,7 +1171,7 @@ Taking the current consumption as numeraire, the wealth $W_t$ is defined by:
 \begin{equation}
 W_t = 	U_t \big/ \frac{\partial U_t}{\partial C_t}.(\#eq:WWWWW)
 \end{equation}
-It can be understood as a conversion of the intertemporal utility in terms of today's consumption. It can also be seen as a consumption-priced virtual asset that delivers aggregate consumption as its dividends on each time period; this asset is called *wealth portfolio*.^[Since $F$ homogeneous of order 1, if all future consumption streams are multiplied by $1+\epsilon$, then the utility becomes $(1+\epsilon)U_t$. Consider the asset that provides $\epsilon C_{t+h}$ at all future periods (if one purchases $\epsilon$ units of it). Expressed in consumption units, the equilibrium unit price of this asset ($\mathcal{W}_t$, say) must satisfy $-\epsilon U_t + \epsilon \mathcal{W}_t (\partial U_t / \partial C_t)=0$. According to Eq. \@ref(eq:WWWWW), we have $\mathcal{W}_t = W_t$.]
+It can be understood as a conversion of the intertemporal utility in terms of today's consumption. It can also be seen as a consumption-priced virtual asset that delivers aggregate consumption as its dividends on each time period; this asset is called *wealth portfolio*.^[Since $F$ homogeneous of order 1, if all future consumption streams are multiplied by $1+\epsilon$, then the utility becomes $(1+\epsilon)U_t$. Consider the asset that provides $\epsilon C_{t+h}$ at all future periods (if one purchases $\epsilon$ units of it). Expressed in consumption units, the equilibrium unit price of this asset ($\mathcal{W}_t$, say) must satisfy $-\epsilon U_t + \epsilon \mathcal{W}_t (\partial U_t / \partial C_t)=0$. According to \@ref(eq:WWWWW), we have $\mathcal{W}_t = W_t$.]
 
 Using that $\frac{\partial U_t}{\partial C_t}=(1 - \delta)(V_t^\rho)/(C_t^{\rho})$, we get (using \@ref(eq:WWWWW)):
 \begin{equation}
@@ -1218,7 +1223,7 @@ Therefore:
 \end{equation}
 where $\kappa_1= \dfrac{\exp(\bar{z})}{1 + \exp(\bar{z})}$ and $\kappa_0 = \log(1 + \exp(\bar{z})) + \kappa_1 \bar{z}$.
 
-> The approximation underlying Eq. \@ref(eq:approxRa) is the same as that used by @Campbell_Shiller_1988 used to linearize stock returns.
+> The approximation underlying \@ref(eq:approxRa) is the same as that used by @Campbell_Shiller_1988 used to linearize stock returns.
 
 <!-- Specifically: -->
 <!-- \begin{eqnarray*} -->
@@ -1270,11 +1275,11 @@ to solve for $A_{i,0}$ and $A_{i,1}$.
 <!-- &\approx& \underbrace{\frac{\theta}{\psi} \mathbb{C}ov_t( \Delta c_{t+1},r_{i,t+1})}_{\mbox{CCAPM-like}} + \underbrace{(1-\theta) \mathbb{C}ov_t( r_{a,t+1},r_{i,t+1})}_{\mbox{CAPM-like}}. -->
 <!-- \end{eqnarray*} -->
 
-<!-- As mentioned before, in the case where consumption is i.i.d., E-Z preferences and expected time-separable utility are observationally equivalent [@Kocherlakota_1990]. -->
+<!-- As mentioned before, in the case where consumption is i.i.d., Epstein-Zin preferences and expected time-separable utility are observationally equivalent [@Kocherlakota_1990]. -->
 
 <!-- But expectations of consumption growth do substantially fluctuate over time [see next slides]. -->
 
-<!-- $\Rightarrow$ Necessary condition for E-Z preferences to be relevant. -->
+<!-- $\Rightarrow$ Necessary condition for Epstein-Zin preferences to be relevant. -->
 
 
 <!-- > Several studies provide evidence of the superiority of survey over other---statistical or market-data-based---methods [e.g.@Ang_Bekaert_Wei_2007 or @Croushore_2010]. @Clements_2010: Survey forecasts are superior over purely model-based forecasts because consensus forecasts incorporate the effects of perceived changes in the long-run outlook. -->
@@ -1282,9 +1287,9 @@ to solve for $A_{i,0}$ and $A_{i,1}$.
 ### Long-run risk model
 
 We have shown that the CCAPM had difficulties in generating large average excess returns without implying unreasonable risk aversion parameters.
-As will be shown later (notably in the @Bansal_Yaron_2004's framework), E-Z preferences can address this problem.
+As will be shown later (notably in the @Bansal_Yaron_2004's framework), Epstein-Zin preferences can address this problem.
 With time-separable utilities, average excess returns (i.e. risk premiums) had to be accounted by the sole correlation between stock returns and current consumption.
-With E-Z preferences, another key correlation is that between stock returns and updates about future consumption growth---the second term in Eq. \@ref(eq:sdfAbc).
+With Epstein-Zin preferences, another key correlation is that between stock returns and updates about future consumption growth---the second term in \@ref(eq:sdfAbc).
 For this second channel to be relevant, observed excess returns should positively correlate to the updates of expectations of long-term consumption. See Figure \@ref(fig:SPF10yrStock).
 
 
@@ -1568,7 +1573,7 @@ knitr::include_graphics("figures/table_BY4.png")
 <!-- ``` -->
 
 
-As explained above, together, \@ref(eq:sdfEZ) and \@ref(eq:approxRa) imply an exponential affine SDF. This open the door to tractable term-structure modeling (see, e.g., Subsection \@ref(MHLT) and  Section \@ref(TSM)). This is exploited, e.g., by @Bansal_Shaliastovich_2013 (see Example \@ref(exm:BS2013)).
+As explained above, together, \@ref(eq:sdfEZ) and \@ref(eq:approxRa) imply an exponential affine SDF. This opens the door to tractable term-structure modeling (see, e.g., Subsection \@ref(MHLT) and  Section \@ref(TSModels)). This is exploited, e.g., by @Bansal_Shaliastovich_2013 (see Example \@ref(exm:BS2013)).
 
 :::{.example #BS2013 name="Bansal and Shaliastovich (2013)"}
 @Bansal_Shaliastovich_2013 develop a term structure model where agents feature Epstein-Zin preferences and where the dynamics of macroeconomic takes the form of an heteroskedastic VAR model. Specifically:
@@ -1622,8 +1627,8 @@ eta.0.nom <- res.price$all.a.return[1,]
 # For real bonds:
 eta.0.real <- res.price$all.a.return[2,] - Model$mu[3]
 par(mfrow=c(1,1));par(plt=c(.15,.95,.2,.95))
-plot(freq*eta.0.nom,type="l",lwd=2,ylim=c(0,freq*max(eta.0.nom)),las=1,
-     xlab="maturity",ylab = "rates",las=1);grid()
+plot(freq*eta.0.nom,type="l",lwd=2,ylim=c(0,freq*max(eta.0.nom)),
+     las=1,xlab="maturity",ylab = "rates",las=1);grid()
 lines(freq*eta.0.real,lwd=2,lty=3)
 ```
 :::

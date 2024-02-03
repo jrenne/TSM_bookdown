@@ -121,7 +121,7 @@
 
 \title{Introduction to Term Structure Models}
 \author{Alain Monfort and Jean-Paul Renne}
-\date{2024-02-02}
+\date{2024-02-03}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -158,7 +158,7 @@ This course has been developed by \href{https://faculty.crest.fr/amonfort/}{Alai
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{) }\CommentTok{\# in case this library has not been loaded yet}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{) }\CommentTok{\# needed to use "install\_github"}
 \FunctionTok{library}\NormalTok{(devtools)}
 \FunctionTok{install\_github}\NormalTok{(}\StringTok{"jrenne/TSModels"}\NormalTok{)}
 \FunctionTok{library}\NormalTok{(AEC)}
@@ -171,23 +171,25 @@ This course has been developed by \href{https://faculty.crest.fr/amonfort/}{Alai
 \item
   Download R:
 
-  \begin{itemize}
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi}.}
   \tightlist
   \item
     R software: \url{https://cran.r-project.org} (the basic R software)
   \item
     RStudio: \url{https://www.rstudio.com} (a convenient R editor)
-  \end{itemize}
+  \end{enumerate}
 \item
   Tutorials:
 
-  \begin{itemize}
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi}.}
   \tightlist
   \item
     Rstudio: \url{https://dss.princeton.edu/training/RStudio101.pdf} (by Oscar Torres-Reyna)
   \item
     R: \url{https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf} (by Emmanuel Paradis)
-  \end{itemize}
+  \end{enumerate}
 \end{itemize}
 
 \hypertarget{ChapterAffine}{%
@@ -432,7 +434,7 @@ We have that
 &=& \mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1})   \textbf{1}_{\{w_{2,t+1} = 0 \}} \right] +\\
 && \underset{u_2 \rightarrow -\infty}{\lim}   \mathbb{E}_t \left[ \exp( u_1 ' w_{1,t+1} + u_2   w_{2,t+1} )  \textbf{1}_{\{w_{2,t+1} > 0 \}}  \right] ,
 \end{eqnarray*}
-and since in the second term on the right-hand side \(\exp(u_2 w_{2,t+1}) \textbf{1}_{\{w_{2,t+1} > 0 \}} \rightarrow 0\) when \(u_2 \rightarrow -\infty\), Eq. \eqref{eq:petitlemme} is a consequence of the Lebesgue theorem.
+and since in the second term on the right-hand side \(\exp(u_2 w_{2,t+1}) \textbf{1}_{\{w_{2,t+1} > 0 \}} \rightarrow 0\) when \(u_2 \rightarrow -\infty\), \eqref{eq:petitlemme} is a consequence of the Lebesgue theorem.
 \end{proof}
 
 \hypertarget{AffineCar}{%
@@ -1131,7 +1133,7 @@ The nominal short-term rate is given by \(i_t = X_{1,t}+X_{2,t}\). In that case,
 \NormalTok{H }\OtherTok{\textless{}{-}} \DecValTok{20}
 \NormalTok{AB }\OtherTok{\textless{}{-}} \FunctionTok{reverse.MHLT}\NormalTok{(psi.GaussianVAR,}\AttributeTok{u1 =}\NormalTok{ u1,}\AttributeTok{u2 =}\NormalTok{ u2,}\AttributeTok{H =}\NormalTok{ H,}
                    \AttributeTok{psi.parameterization =}\NormalTok{ psi.parameterization)}
-\NormalTok{AB}\SpecialCharTok{$}\NormalTok{A[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{,,] }\OtherTok{\textless{}{-}}\NormalTok{ AB}\SpecialCharTok{$}\NormalTok{A[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{,,] }\SpecialCharTok{{-}} \DecValTok{1} \CommentTok{\# add terms corresponding to exp({-}i\_t)}
+\NormalTok{AB}\SpecialCharTok{$}\NormalTok{A[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{,,] }\OtherTok{\textless{}{-}}\NormalTok{ AB}\SpecialCharTok{$}\NormalTok{A[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{,,] }\SpecialCharTok{{-}} \DecValTok{1} \CommentTok{\# add terms for exp({-}i\_t)}
 \NormalTok{a.yield }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\NormalTok{ AB}\SpecialCharTok{$}\NormalTok{A }\SpecialCharTok{/} \FunctionTok{array}\NormalTok{((}\DecValTok{1}\SpecialCharTok{:}\NormalTok{H) }\SpecialCharTok{\%x\%} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{),}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,H))}
 \NormalTok{b.yield }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\NormalTok{ AB}\SpecialCharTok{$}\NormalTok{B }\SpecialCharTok{/} \FunctionTok{array}\NormalTok{((}\DecValTok{1}\SpecialCharTok{:}\NormalTok{H) }\SpecialCharTok{\%x\%} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{),}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,H))}
 \FunctionTok{plot}\NormalTok{(a.yield[}\DecValTok{1}\NormalTok{,,],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{),}
@@ -1163,7 +1165,7 @@ If \(r_t = \omega'w_t\) and \(\pi_t = \bar\omega'w_t\), then \(\mathcal{B}_{t,h}
 \exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp[(\bar\omega-\omega)'w_{t+1}+\dots+(\bar\omega-\omega)'w_{t+h-1}+\bar\omega'
 w_{t+h}]
 \end{eqnarray*}
-One can then price this bond by directly employing Eq. \eqref{eq:LTreverse}, with \(u_1 = \bar\omega\) and \(u_i = \bar\omega-\omega\), \(i = 2,\dots, H\).
+One can then price this bond by directly employing \eqref{eq:LTreverse}, with \(u_1 = \bar\omega\) and \(u_i = \bar\omega-\omega\), \(i = 2,\dots, H\).
 \end{example}
 
 \begin{example}[Futures]
@@ -1324,7 +1326,8 @@ Let us use the model used in Example \ref{exm:CDR2009}. Suppose we want to compu
 \NormalTok{s1 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{exp}\NormalTok{(}\FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ AB}\SpecialCharTok{$}\NormalTok{A[,,H] }\SpecialCharTok{+}\NormalTok{ AB}\SpecialCharTok{$}\NormalTok{B[,,H]),}\AttributeTok{ncol=}\DecValTok{1}\NormalTok{)}
 \NormalTok{dx }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(x}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,x[}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(x)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]),}\FunctionTok{length}\NormalTok{(x),}\DecValTok{1}\NormalTok{)}
 \NormalTok{gamma }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{.}\DecValTok{2}\NormalTok{,.}\DecValTok{3}\NormalTok{,}\AttributeTok{length.out=}\DecValTok{1000}\NormalTok{)}
-\NormalTok{fx }\OtherTok{\textless{}{-}} \FunctionTok{outer}\NormalTok{(x,gamma,}\ControlFlowTok{function}\NormalTok{(r,c)\{}\FunctionTok{Im}\NormalTok{(s1[,}\DecValTok{1}\NormalTok{]}\SpecialCharTok{*}\FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{1i}\SpecialCharTok{*}\NormalTok{r}\SpecialCharTok{*}\NormalTok{c))}\SpecialCharTok{/}\NormalTok{r\})}\SpecialCharTok{*}\NormalTok{dx[,}\DecValTok{1}\NormalTok{]}
+\NormalTok{fx }\OtherTok{\textless{}{-}} \FunctionTok{outer}\NormalTok{(x,gamma,}\ControlFlowTok{function}\NormalTok{(r,c)\{}\FunctionTok{Im}\NormalTok{(s1[,}\DecValTok{1}\NormalTok{]}\SpecialCharTok{*}
+                                       \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{1i}\SpecialCharTok{*}\NormalTok{r}\SpecialCharTok{*}\NormalTok{c))}\SpecialCharTok{/}\NormalTok{r\})}\SpecialCharTok{*}\NormalTok{dx[,}\DecValTok{1}\NormalTok{]}
 \NormalTok{f  }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{{-}} \DecValTok{1}\SpecialCharTok{/}\NormalTok{pi }\SpecialCharTok{*} \FunctionTok{apply}\NormalTok{(fx,}\DecValTok{2}\NormalTok{,sum)}
 \FunctionTok{plot}\NormalTok{(gamma,f,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{""}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
@@ -1617,7 +1620,7 @@ The previous sequences do not dependent on \(h\) and are given by \eqref{eq:auxL
 \mathbb{V}ar_t(w_{t+h}) &=& \Sigma(\mathbb{E}_t(w_{t+h-1}))+\Phi \Sigma(\mathbb{E}_t(w_{t+h-2}))\Phi' + \nonumber \\
 && \dots + \Phi^{h-1} \Sigma(w_{t}){\Phi^{h-1}}'. \label{eq:condvarAppendix}
 \end{eqnarray}
-Eq. \eqref{eq:condvarAppendix} notably shows that \(\mathbb{V}ar_t(w_{t+h})\) is an affine function of \(w_t\). Indeed \(\Sigma(.)\) is an affine function, and the conditional expectations \(\mathbb{E}_t(w_{t+h})\) are affine in \(w_t\), as shown by Eq. \eqref{eq:condmeanAppendix}.
+Eq. \eqref{eq:condvarAppendix} notably shows that \(\mathbb{V}ar_t(w_{t+h})\) is an affine function of \(w_t\). Indeed \(\Sigma(.)\) is an affine function, and the conditional expectations \(\mathbb{E}_t(w_{t+h})\) are affine in \(w_t\), as shown by \eqref{eq:condmeanAppendix}.
 
 The unconditional mean and variance of \(w_t\) are given by:
 \begin{equation}
@@ -1631,9 +1634,9 @@ vec[\mathbb{V}ar(w_t)] &=& (I_{n^2} - \Phi \otimes \Phi)^{-1} vec\left(\Sigma[(I
 \end{proposition}
 
 \begin{proof}
-Eq. \eqref{eq:condmeanAppendix} is easily deduced from Eq. \eqref{eq:VARw}, using that \(\mathbb{E}_t(\varepsilon_{t+k})=0\) for \(k>0\).
+Eq. \eqref{eq:condmeanAppendix} is easily deduced from \eqref{eq:VARw}, using that \(\mathbb{E}_t(\varepsilon_{t+k})=0\) for \(k>0\).
 
-As regards Eq. \eqref{eq:condvarAppendix}:
+As regards \eqref{eq:condvarAppendix}:
 \begin{eqnarray*}
 \mathbb{V}ar_t(w_{t+h}) &=& \mathbb{V}ar_t\left(\Sigma(w_{t+h-1})^{\frac{1}{2}}\varepsilon_{t+h}+\dots + \Phi^{h-1} \Sigma(w_{t})^{\frac{1}{2}}\varepsilon_{t+1} \right).
 \end{eqnarray*}
@@ -1903,7 +1906,7 @@ where \(\alpha_t\) defines the \emph{prices of risk} or \emph{sensitivity} vecto
 \end{equation}
 
 \begin{example}[CCAPM/Power utility case]
-In the CCAPM-power-utility case (see Example \ref{exm:CCAPM}), we have (Eq. \eqref{eq:powerutilSDF}):
+In the CCAPM-power-utility case (see Def. \ref{def:CCAPM}), we have (Eq. \eqref{eq:powerutilSDF}):
 \[
 \mathcal{M}_{t,t+1} = \exp(\log \delta + \log q_t + \gamma \log   C_t - \log   q_{t+1} - \gamma  \log   C_{t+1}),
 \]
@@ -1921,10 +1924,10 @@ sequence of conditional p.d.f. \(f_{t+1}(w_{t+1}|\underline{w_t})\), or
 
 We define the conditional risk-neutral p.d.f. w.r.t. the conditional historical probability. For that, we employ the Radon-Nikodym derivative \(d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t})\):\footnote{Of course, the conditional historical p.d.f. with respect to the conditional risk-neutral (R.N.) p.d.f. is:
   \(d_{t+1}(w_{t+1}) = \frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})}\) or \(d_{t+1}(w_{t+1}) = \frac{\exp(-i_{t})}{\mathcal{M}_{t,t+1}}\).}
-\[
+\begin{equation}
 d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t}) =
-\frac{\mathcal{M}_{t,t+1}(\underline{w_{t+1}})}{\mathbb{E}[\mathcal{M}_{t,t+1}(\underline{w_{t+1}})|\underline{w_t}]},
-\]
+\frac{\mathcal{M}_{t,t+1}(\underline{w_{t+1}})}{\mathbb{E}[\mathcal{M}_{t,t+1}(\underline{w_{t+1}})|\underline{w_t}]},\label{eq:RadonNikodym}
+\end{equation}
 or
 \[
 d^{\mathbb{Q}}_{t+1}(w_{t+1})=
@@ -2059,11 +2062,11 @@ In the following, we present three ways of specifying an EAPM:
   the back modelling.
 \end{enumerate}
 
-We focus on the case where \(\mathcal{M}_{t,t+1}\) is exponential affine, as in Eq. \eqref{eq:keySDF}:
+We focus on the case where \(\mathcal{M}_{t,t+1}\) is exponential affine, as in \eqref{eq:keySDF}:
 \[
 \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -i_{t} (\underline{w_t}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)]\right\}.
 \]
-Once the short-term rate function \(i_{t}(\underline{w_t})\) is specified, we have to specify \(\psi_t\), \(\alpha_t\), and \(\psi^{\mathbb{Q}}_t\), that are linked by Eq. \eqref{eq:transfoPQ}.
+Once the short-term rate function \(i_{t}(\underline{w_t})\) is specified, we have to specify \(\psi_t\), \(\alpha_t\), and \(\psi^{\mathbb{Q}}_t\), that are linked by \eqref{eq:transfoPQ}.
 
 In all approaches, we have to specify the status of the short rate. The short rate \(i_{t}\) is a function of \(\underline{w_t}\), this function may be known or unknown by the econometrician. It is known in two cases: (a) \(i_{t}\) is exogenous (\(i_{t}(\underline{w_t})\) does not depend on \(\underline{w_t}\)) or (b) \(i_{t}\) is a component of \(w_t\). By contrast, if the function \(i_{t} (\underline{w_t})\) is unknown, it has to be specified parametrically:
 \[
@@ -2081,14 +2084,15 @@ Let us now detail the three steps on which each of the three ways of defining an
 \item
   \textbf{Step 1 -- Specification of the historical dynamics}. We choose a parametric family for the conditional historical Log-Laplace transform \(\psi_t(u|\underline{w_t})\): \(\left\{ \psi_t (u|\underline{w_t} ; \theta_1), \theta_1 \in \Theta_1 \right\}\).
 \item
-  \textbf{Step 2 -- Specification of the SDF}. Considering the affine specification of as Eq. \eqref{eq:keySDF}, that is:
+  \textbf{Step 2 -- Specification of the SDF}. Considering the affine specification of as \eqref{eq:keySDF}, that is:
   \[
   \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -i_{t}(\underline{w_t}, \tilde{\theta}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)|\underline{w_t} ; \theta_1]\right\},
   \]
   we need to specifiy functions \(i_{t}(\underline{w_t}, \tilde{\theta})\) and \(\alpha_t(\underline{w_t})\). Assume that \(\alpha_t(\underline{w_t})\) belongs to a parametric family: \(\left\{ \alpha_t (\underline{w_t} ; \theta_2),\theta_2 \in \Theta_2 \right\}\).
   We then have:
   \begin{eqnarray*}
-  \mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) &=& \exp \left\{ - i_{t}
+  &&\mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) \\
+  &=& \exp \left\{ - i_{t}
   (\underline{w_t}, \tilde{\theta}) + \alpha'_t (\underline{w_t},\theta_2) w_{t+1} - \psi_{t} \left[ \alpha_t (\underline{w_t},
   \theta_2) | \underline{w_t} ; \theta_1 \right] \right\},
   \end{eqnarray*}
@@ -2162,7 +2166,7 @@ The historical dynamics is obtained as a by-product. Indeed:
 \hypertarget{RFIntroduction}{%
 \section{Introduction}\label{RFIntroduction}}
 
-Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are usually considered to be risk-free. (Credit and liquidity risks are covered in Section \ref{CreditLiRisks}.)
+Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are usually considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks \citep{Duffie_Stein_2015} (see Subsection \ref{Swaps}). (Credit and liquidity risks are covered in Section \ref{CreditLiRisks}.)
 
 An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models involve macro factors in \(w_t\) \citep{Ang_Piazzesi_2003}; some do not \citep{Duffie_Singleton_1997}. The latter are sometimes called \emph{yield-only} models.
 
@@ -2174,9 +2178,9 @@ i_{t,h} &=& - \frac{1}{h} \log B_{t,h}. \label{eq:stdbondRFchapter}
 
 Term structure models are often used to extract \emph{term premiums} from observed yields-to-maturity. Term premiums are those components of yields that would not exist if investors were not risk-averse.
 
-If agents were not risk averse, i.e., under the \emph{Expectation Hypothesis (EH)}, we would have \(\mathcal{M}_{t,t+1} = \exp(- i_t)\). We would then have \(\mathbb{P} \equiv \mathbb{Q}\) and \(B_{t,h}\) would become:
+If agents were not risk averse, i.e., under the \emph{Expectation Hypothesis (EH)}, we would have \(\mathcal{M}_{t,t+1} = \exp(- i_t)\). We would then have \(\mathbb{P} \equiv \mathbb{Q}\) and \(B_{t,h}\) would be equal to:
 \begin{equation}
-\exp(-i_{t}) \mathbb{E}_t \exp(-i_{t+1}-\dots-i_{t+h-1}).\label{eq:stdbondRFchapterP}
+B^{EH}_{t,h} := \exp(-i_{t}) \mathbb{E}_t \exp(-i_{t+1}-\dots-i_{t+h-1}).\label{eq:stdbondRFchapterP}
 \end{equation}
 And the maturity-\(h\) yield-to-maturity would then be:
 \begin{eqnarray}
@@ -2193,7 +2197,7 @@ TP_{t,h} &=& \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{
 What is the economic meaning of the term premium? Under EH, investors are willing to buy a maturity-\(h\) bond as long as its expected return is---up to Jensen's inequality---equal to the average of future short-term rates. (Hence the definition of \(i^{EH}_{t,h}\), see Eq. \eqref{eq:REH}.) When \(TP_{t,h}>0\), investors are willing to buy the maturity-\(h\) bond only if its return is, on average, higher than expected future short-term rates; this corresponds to a situation where investors consider that long-term bonds tend to lose value in \emph{bad states of the world} (i.e., states of high marginal utility).
 
 \begin{quote}
-\textbf{\emph{Risk premium:}} According to Eq. \eqref{eq:basic}, the price of any asset \(j\) satisfies:
+\textbf{\emph{Risk premium:}} According to \eqref{eq:basic}, the price of any asset \(j\) satisfies:
 \[
 p_{jt} = \mathbb{E}_t(\mathcal{M}_{t,t+1} p_{j,t+1}).
 \]
@@ -2203,12 +2207,10 @@ p_{jt} =  \mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1}) + \mathbb{E}_t(\mathcal
 \]
 or
 \begin{equation}
-p_{jt} = \underbrace{\exp(-r_t)\mathbb{E}_t( p_{j,t+1})}_{=p^{EH}_{jt}} + \underbrace{\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})}_{\mbox{Risk premium}}.\label{eq:CovRP}
+p_{jt} = \underbrace{\exp(-i_t)\mathbb{E}_t( p_{j,t+1})}_{=p^{EH}_{jt}} + \underbrace{\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})}_{\mbox{Risk premium}}.\label{eq:CovRP}
 \end{equation}
 If investors were not risk-averse, then we would have \(p_{jt} = p^{EH}_{jt}\). The SDF is high (resp. low) in bad (resp. good) states of the world (states of high marginal utility in the equilibrium approach). Hence, we have \(p_{jt}< p^{EH}_{jt}\) if asset \(j\) tends to pay less in bad states of the world (i.e., if \(\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})<0\)).
 \end{quote}
-
-Bonds issued by top-rated (Aaa/AAA) countries are often considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks \citep{Duffie_Stein_2015} (see Subsection \ref{Swaps}).
 
 If agents were risk-neutral, we would have:
 \[
@@ -2232,7 +2234,7 @@ After having reorganized:
 i_{t+m,n-m}-i_{t,n}) = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}
 \]
 
-According to \eqref{eq:CStheo}, under the Expectation Hypothesis, we should have \(\phi_{n,m} \approx 1\). But they do find that the \(\phi_{n,m}\) are statistically lower than one. Besides, they find that, for a given holding period \(m\), the term structure of the \(\phi_{n,m}\) decreases with the maturity \(n\). Figure \ref{fig:CSregressions} shows
+According to \eqref{eq:CStheo}, under the Expectation Hypothesis, we should have \(\phi_{n,m} \approx 1\). But they do find that the \(\phi_{n,m}\) are statistically lower than one. Besides, they find that, for a given holding period \(m\), the term structure of the \(\phi_{n,m}\) decreases with the maturity \(n\). Figure \ref{fig:CSregressions} shows the results of such regressions on a more recent period. It appears that the original results of \citet{Campbell_Shiller_1991} are still valid.
 
 \textbackslash begin\{figure\}
 \includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/CSregressions-1} \textbackslash caption\{Regressions as in Campbell and Shiller (1991). Data are at the monthly frequency; they are collected from the FRED database. The estimation period starts in 1990. The figure reports 90\% confidence intervals of the \(\phi_{n,m}\) parameter estimates (Newey-West robust standard deviations).\}\label{fig:CSregressions}
@@ -2244,7 +2246,7 @@ According to \eqref{eq:CStheo}, under the Expectation Hypothesis, we should have
 \hypertarget{AffineYields}{%
 \subsection{Affine yields}\label{AffineYields}}
 
-In this subsection, we consider the case where the state vector \(w_t\) is affine under both \(\mathbb{P}\) and \(\mathbb{Q}\). If the nominal short-term rate is affine in \(w_t\), i.e., if \(i_t = \omega_0 + \omega'_1 w_t\), then (see Eq. \eqref{eq:ihandM}):
+In this subsection, we consider the case where the state vector \(w_t\) is affine under both \(\mathbb{P}\) and \(\mathbb{Q}\). If the nominal short-term rate is affine in \(w_t\), i.e., if \(i_t = \omega_0 + \omega'_1 w_t\), then (see \eqref{eq:ihandM}):
 \begin{eqnarray*}
 B_{t,h} &=& \mathbb{E}^{\mathbb{Q}}_t \exp (-i_{t}-\dots-i_{t+h-1})\\
 &=& \exp(-h\omega_0 - \omega'_1 w_t) \color{blue}{\mathbb{E}^{\mathbb{Q}}_t \exp (- \omega'_1 w_{t+1}-\dots- \omega'_1 w_{t+h-1})}.
@@ -2280,7 +2282,7 @@ Expected excess returns resulting from holding zero-coupon bonds are also affine
 \]
 which is clearly exponential affine in \(w_t\) if \(w_t\) is an affine process. Therefore, the log expected excess return, that is:
 \[
-\log \mathbb{E}_t\left(\frac{B_{t+1,h-1}}{B_{t,h}}\right) - r_t
+\log \mathbb{E}_t\left(\frac{B_{t+1,h-1}}{B_{t,h}}\right) - i_t
 \]
 is also affine in \(w_t\). This is exploited in the estimation approach proposed by \citet{Adrian_Crump_Moench_2013}.
 
@@ -2326,32 +2328,34 @@ w_{t+1} = \mu + \Phi w_{t} + \Sigma^{1/2} \varepsilon_{t+1}, \mbox{ where } \var
 \end{equation}
 (The fact that we consider a VAR(1) process is without loss of generality since a VAR(p) admits a VAR(1) companion representation.)
 
-This implies the following Laplace transform for \(w_t\) (see Example \ref{exm:Gaussian}):
+This implies the following Laplace transform for \(w_t\) (see Example \ref{exm:GVAR1}):
 \[
 \psi_t(u) = \log \mathbb{E}_t(\exp(u'w_{t+1})|\underline{w_t}) = \color{blue}{u'\mu + u'\Phi w_t + \frac{1}{2}u'\Sigma'u}.
 \]
-Using the notations of Eq. \eqref{eq:keySDF}, the SDF is defined as:
+Using the notations of \eqref{eq:keySDF}, the SDF is defined as:
 \[
 \mathcal{M}_{t,t+1} = \exp(- i_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t.
 \]
 
-In that case, using Eq. \eqref{eq:transfoPQ}, we get:
+In that case, using \eqref{eq:transfoPQ}, we get:
 \begin{eqnarray*}
 \psi_t^{\mathbb{Q}}(u) &=& \psi_t(u + \alpha_t) - \psi_t(\alpha_t)\\
 &=& (u + \alpha_t)'\mu + (u + \alpha_t)'\Phi w_t + \frac{1}{2}(u + \alpha_t)'\Sigma(u + \alpha_t) \\
 && - \left(\alpha_t'\mu + \alpha_t'\Phi w_t + \frac{1}{2}\alpha_t'\Sigma\alpha_t\right) \\
 &=& \color{blue}{u' \left(\mu + \Sigma \alpha_0 \right) + u'(\Phi + \Sigma \alpha_1')w_t  + \frac{1}{2}u'\Sigma'u}.
 \end{eqnarray*}
-The \(\mathbb{Q}\)-dynamics of \(w_t\) is (from Example \ref{exm:Gaussian}):
+This is the Laplace tranform of a Gazussiam VAR process (see Example \ref{exm:GVAR1}); accordingly, the \(\mathbb{Q}\)-dynamics of \(w_t\) is:
 \[
 w_{t+1} = \mu + \Sigma  \alpha_0 + (\Phi + \Sigma \alpha_1')  w_{t} + \Sigma^{1/2} \varepsilon^*_{t+1}, \mbox{ where } \varepsilon^*_{t} \sim  i.i.d. \mathcal{N}^{\mathbb{Q}}(0,Id).
 \]
-Hence, \(w_t\) also follows a VAR process under \(\mathbb{Q}\) since the previous equation rewrites:
+or
+\begin{equation}
+w_{t+1} = \mu^{\mathbb{Q}} + \Phi^{\mathbb{Q}} w_{t} + \Sigma^{1/2} \varepsilon^*_{t+1},\label{eq:GaussianQdyn}
+\end{equation}
+where
 \[
-w_{t+1} = \mu^{\mathbb{Q}} + \Phi^{\mathbb{Q}} w_{t} + \Sigma^{1/2} \varepsilon^*_{t+1},
+\boxed{\mu^{\mathbb{Q}} = \mu + \Sigma  \alpha_0,\quad \mbox{and} \quad\Phi^{\mathbb{Q}}=\Phi + \Sigma \alpha_1'.}
 \]
-where \(\mu^{\mathbb{Q}} = \mu + \Sigma \alpha_0\) and \(\Phi^{\mathbb{Q}}=\Phi + \Sigma \alpha_1'\).
-
 With affine specifications of the nominal short term rate (\(i_{t} = \omega_0 + \omega'_1 w_t\)) and of the inflation rate (\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)), we obtain affine formulas for nominal and real yields of any maturity (Eqs. \eqref{eq:RthAB} and \eqref{eq:RbarthAB}).
 
 \begin{example}[Kim and Wright (2005)]
@@ -2374,7 +2378,7 @@ Monthly data on the 6-month and 12-month-ahead forecasts of the three-month T-Bi
 \begin{example}[Ang and Piazzesi (2003)]
 \protect\hypertarget{exm:AngPiazzesi}{}\label{exm:AngPiazzesi}
 
-\citet{Ang_Piazzesi_2003} propose one of the first paper mixing latent and macrovariables. The set up is also of the form Eq. \eqref{eq:GaussianVAR1}, except that the VAR features several lags.\footnote{Note that a VAR with \(p\) lags (i.e., a VAR(\(p\))) admits a VAR(1) companion form.} In their model, \(w_t = [f^{o}_{1,t},f^{o}_{2,t},f^{u}_{1,t},f^{u}_{2,t},f^{u}_{3,t}]'\) where:
+\citet{Ang_Piazzesi_2003} propose one of the first paper mixing latent and macrovariables. The set up is also of the form of \eqref{eq:GaussianVAR1}, except that the VAR features several lags.\footnote{Note that a VAR with \(p\) lags (i.e., a VAR(\(p\))) admits a VAR(1) companion form.} In their model, \(w_t = [f^{o}_{1,t},f^{o}_{2,t},f^{u}_{1,t},f^{u}_{2,t},f^{u}_{3,t}]'\) where:
 
 \begin{itemize}
 \tightlist
@@ -2494,7 +2498,7 @@ In the presence of physical currency, absence of arbitrage opportunity and of st
 
 The shadow-rate model is originally due to \citet{Black_1995}. In this model, the short term rate is given by:
 \begin{equation}
-i_t = \max(s_t,\underline{i}),\label{eq:SRSTR}
+i_t = \max(s_t,\underline{i}) = \underline{i} + \max(s_t-\underline{i},0),\label{eq:SRSTR}
 \end{equation}
 where \(s_t\) is the shadow short-term interest rate and \(\underline{i}\) is the effective lower bound (\(\le 0\)). While \(s_t\) can be real-valued, the short term rate is nonnegative under \eqref{eq:SRSTR}. In shadow-rate models, the shadow rate \(s_t\) is usually a linear combination of a vector \(w_t\) that follows a Gaussian auto-regressive model. While \(s_t\) is a linear combination of components of an affine process, this is not the case for \(i_t\). As a result, pricing formula are not available in closed-form. Approximation formula have been proposed by, e.g., \citet{Krippner_2013}, \citet{Priebsch_2013}, \citet{Wu_Xia_2016}.
 
@@ -2506,19 +2510,26 @@ Let us describe the latter approach \citep{Wu_Xia_2016}. As in Subsection \ref{R
 \[
 s_t = \delta_0 + \delta_1' w_t.
 \]
+The shadow rate \(s_t\) is part of a state vector \(w_t\) that follows a Gaussian VAR, as in \eqref{eq:GaussianVAR1} (or \(s_t\) can be a linear combination of components of \(w_t\)). As before, the \(\mathbb{Q}\)-dynamics of \(w_t\) is also a Gaussian VAR, as in \eqref{eq:GaussianQdyn}. (Indeed, using the previous specification of the SDF, the non-linear \(i_t\) term vanishes in the Radon-Nikodym derivatives; see Eq. \eqref{eq:RadonNikodym}.)
+
+The price of a nominal zero-coupon bond is still given by \eqref{eq:ihandM}), that is:
+\[
+B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t--i_{t+1}-\dots-i_{t+h-1});
+\]
+but this price is not exponential affine in \(s_t\) because of the max operator relating \(i_t\) to \(s_t\) (see Eq. \eqref{eq:SRSTR}). As a result, we can no longer exploit the tractable calculation of the multi-horizon Laplace transform of \(w_t\) to price this bond.
 
 The approximation approach proposed by \citet{Wu_Xia_2016} is based on an approximation to the conditional expectations of forward rates. Using the results of Subsection \ref{FWD}, we have (Eq. \eqref{eq:forward}):
 \[
 f_{n-1,n,t} = n i_{t,n} - (n-1) i_{t,n-1}.,
 \]
-for \(n>0\) (and using \(R_{t,0}=0\)). This implies that:
+for \(n>0\) (and using \(i_{t,0}=0\), i.e., \(f_{0,1,t}=i_t\)). Equivalently, for \(h>0\):
 \[
 i_{t,h} =  \frac{1}{h}(f_{t,0,1}+f_{t,1,2}+\dots+f_{t,h-1,h}).
 \]
 
 The approximation of \citet{Wu_Xia_2016} consists in finding approximations of the forward rates \(f_{t,n-1,n}\) (denoted by \(\tilde{f}_{t,n-1,n}\), say) and to use them in the previous equation to get:
 \begin{equation}
-\boxed{i_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).}\label{eq:RapproxSR}
+i_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).\label{eq:RapproxSR}
 \end{equation}
 
 Using that, for any random variable \(Z\), we have \(\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]\) (based on a second order Taylor expansion), \citet{Wu_Xia_2016} further show that:
@@ -2527,28 +2538,30 @@ f_{t,n,n+1} &=& -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n i_{t+
 &\approx& \mathbb{E}_t^{\mathbb{Q}}[i_{t+n}] - \frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n i_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} i_{t+j}\right)\right).
 \end{eqnarray}
 
-The expectation can be computed analytically:
+The expectation can be computed analytically. Using \eqref{eq:SRSTR}, it is indeed of the form \(\underline{i} + \mathbb{E}_t^{\mathbb{Q}}[ \max(s_{t+n}-\underline{i},0)]\), where
 \[
-\mathbb{E}_t^{\mathbb{Q}}[r_{t+n}] = \underline{i} + \sigma_n^{\mathbb{Q}}g\left(\frac{\bar{a}_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right),
-\]
-where \(g(x)= x\Phi(x)-\phi(x)\), \(\Phi\) and \(\phi\) being the c.d.f. and p.d.f. of the standard normal distribution, respectively, and where
-\begin{eqnarray*}
-\bar{a}_n &=& \delta_0 + \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\mu^{\mathbb{Q}}\\
-b_n' &=& \delta_1'\left(\Phi^{\mathbb{Q}}\right)^n.
-\end{eqnarray*}
-They also show that
-\[
-\frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n r_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} r_{t+j}\right)\right) \approx \Phi\left(\frac{\bar{a}_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right)\times(\bar{a}_n - a_n),
-\]
-where
-\[
-a_n = \bar{a}_n - \frac{1}{2}\sigma_n^{\mathbb{Q}},
+s_{t+n}-\underline{i}|\underline{w_t} \sim \mathcal{N}\left(\bar{a}_n+b_n'w_t,\sigma_n^{\mathbb{Q}}\right),
 \]
 with
 \[
+\bar{a}_n = \delta_0 + \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\mu^{\mathbb{Q}}, \quad \mbox{and} \quad b_n' = \delta_1'\left(\Phi^{\mathbb{Q}}\right)^n,
+\]
+and
+\[
 \sigma_n^{\mathbb{Q}} := \mathbb{V}ar^{\mathbb{Q}}_t\left(s_{t+n}\right)= \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\Sigma \Sigma' \left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)'\delta_1.
 \]
-They finally obtain:
+
+Hence, using standard results on the truncated normal distribution (see Figure \ref{fig:Mills}),\footnote{If \(X\sim \mathcal{N}(\mu,\sigma^2)\), then \(\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)\).} they obtain:
+\[
+\mathbb{E}_t^{\mathbb{Q}}[i_{t+n}] = \underline{i} + \sigma_n^{\mathbb{Q}}g\left(\frac{\bar{a}_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right),
+\]
+where \(g(x)= x\Phi(x)+\phi(x)\), \(\Phi\) and \(\phi\) being the c.d.f. and p.d.f. of the standard normal distribution, respectively.
+
+They also show that
+\[
+\frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n i_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} i_{t+j}\right)\right) \approx \Phi\left(\frac{\bar{a}_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right)\times(\bar{a}_n - a_n),
+\]
+where \(a_n = \bar{a}_n - \frac{1}{2}\sigma_n^{\mathbb{Q}}\). They finally obtain:
 \[
 \boxed{f_{t,n,n+1} \approx \tilde{f}_{t,n,n+1} = \underline{i} + \sigma_n^{\mathbb{Q}}g\left(\frac{a_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right),}
 \]
@@ -2593,7 +2606,16 @@ which is used in \eqref{eq:RapproxSR} to obtain an approximation to \(i_{t,h}\).
 
 }
 
-\caption{bla bla bla.}\label{fig:WuXia}
+\caption{The upper plot shows a simulated path of the shadow rate $s_t$. The bottom plot shows the approximated forward rate $f_{t,n,n+1}$ and the resulting nominal rates $i_{t,h}$.}\label{fig:WuXia}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/Mills-1} 
+
+}
+
+\caption{This figure shows $\mathbb{E}(\max(0,X))$ for $X \sim \mathcal{N}(\mu,1)$, as a function of $\mu$. More generally, if $X\sim \mathcal{N}(\mu,\sigma^2)$, then $\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)$, where $\Phi$ and $\phi$ are the c.d.f. and p.d.f. of the standard normal distirbution, respectively.}\label{fig:Mills}
 \end{figure}
 
 \hypertarget{the-auto-regressive-gamma-approach}{%
@@ -2620,23 +2642,23 @@ hence, it can stay at zero.
 
 Factors \(w_{3,t}\) and \(w_{4,t}\) Granger-cause \(w_{1,t}\) and \(w_{2,t}\), thereby causing \(i_t\). As a result, for \(h \ge 2\), \(i_{t,h}\) is a non-zero combination of the four components of \(w_t\).
 
-For the same reason, when \(i_t=0\), the lift-off probability depends on \(w_{3,t}\) and \(w_{4,t}\). The framework offers closed-form solutions for lift-off probabilities. Indeed, using Lemma \ref{lemma:mass}:
+For the same reason, when \(i_t=0\), the lift-off probability depends on \(w_{3,t}\) and \(w_{4,t}\). The framework offers closed-form solutions for lift-off probabilities. Indeed, using Lemma \ref{lem:lemPetitLemme}:
 \[
 \mathbb{P}_t(\alpha'w_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\alpha),
 \]
-where \(\varphi_{t,h}\) is the multi-horizon Laplace transform defined in Eq. \eqref{eq:multiLT}, which can be computed using Proposition \ref{prp:reverseMLT}. We have:
+where \(\varphi_{t,h}\) is the multi-horizon Laplace transform defined in \eqref{eq:multiLT}, which can be computed using Proposition \ref{prp:reverseMLT}. We have:
 \begin{equation}
 \left\{
 \begin{array}{l}
 \mathbb{P}_t(i_{t+h}>0) = 1 - \lim_{u \rightarrow -\infty} \varphi_{t,h}(0,\dots,0,u\omega) \\ \\
-\mathbb{P}_t(i_{t+1}=0,\dots,r_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(u\omega,\dots,u\omega,u\omega) \equiv p_{h}\\ \\
+\mathbb{P}_t(i_{t+1}=0,\dots,i_{t+h}=0) = \lim_{u \rightarrow -\infty} \varphi_{t,h}(u\omega,\dots,u\omega,u\omega) \equiv p_{h}\\ \\
 \mathbb{P}_t(i_{t+1}=0,\dots,i_{t+h-1}=0,i_{t+h}>0) = p_{h-1} - p_h.
 \end{array}
 \right.
 \end{equation}
-Other lift-off probabilities, of the type \(\mathbb{P}_t[i_{t+h,k}>threshold]\), can be derived from Eq. \eqref{eq:DPS}.
+Other lift-off probabilities, of the type \(\mathbb{P}_t[i_{t+h,k}>threshold]\), can be derived from \eqref{eq:DPS}.
 
-\citet{zarg_2017} esitmate this model by means of Kalman filtering techniques (see Subsection \ref{EstimationKF}). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection \ref{EstimationPersistency} and (e-GARCH-based) proxies of conditional variances (see Eq. \eqref{eq:condvar}).
+\citet{zarg_2017} esitmate this model by means of Kalman filtering techniques (see Subsection \ref{KalmanQML}). Observed variables include (levels of) yields, as well as survey-based forecasts of yields (see Subsection \ref{EstimationPersistency} and (e-GARCH-based) proxies of conditional variances (see Eq. \eqref{eq:condvar}).
 
 \begin{figure}
 
@@ -2694,7 +2716,7 @@ U_t = u(C_t) + \delta \mathbb{E}_t\left(U_{t+1}\right).
 Importantly, the pure preference for present (\(\delta\)) is different from the stochastic discount factor (SDF).
 \end{quote}
 
-The representative agent maximizes her expected utility time-separable preferences (see Definition \ref{def:EUTSpref}) subject to the budget constraints at \(t+j\), \(j \ge 0\), see Eq. \eqref{eq:BConstr}.
+The representative agent maximizes her expected utility time-separable preferences (see Definition \ref{def:EUTSpref}) subject to the budget constraints at \(t+j\), \(j \ge 0\), see \eqref{eq:BConstr}.
 
 Replacing \(C_{t+j}\) with \([Y_{t+j}-(\alpha'_{t+j}-\alpha'_{t+j-1})p_{t+j}]/q_{t+j}\), the objective function becomes:
 \[
@@ -2723,7 +2745,7 @@ where \(\mathcal{M}_{t,t+1}\) is a strictly positive scalar called \emph{stochas
 \frac{dU(C_t)}{dC}}.}\label{eq:SDFCCAPM}
 \end{equation}
 
-According to Eq. \eqref{eq:SDF100}, for any asset \(j\):
+According to \eqref{eq:SDF100}, for any asset \(j\):
 \begin{equation}
 p_{j,t} = \mathbb{E}_t(\mathcal{M}_{t,t+1} p_{j,t+1}).\label{eq:Mbasicpricing}
 \end{equation}
@@ -2821,14 +2843,14 @@ p_t = \delta q_t C^\gamma_t \mathbb{E}_t \left(
 \right),
 \]
 or (Euler equation):
-\[
+\begin{equation}
 \mathbb{E}_t\left[
 \delta\left(
 \frac{C_{t+1}}{C_t}
 \right)^{-\gamma}  \frac{q_t}{q_{t+1}}
 \frac{p_{t+1}}{p_t} - 1
-\right] = 0.
-\]
+\right] = 0.\label{eq:EulerCCAPM}
+\end{equation}
 
 Here, \(\gamma\) has two interpretations:
 
@@ -2895,8 +2917,8 @@ Using \eqref{eq:MRCov} in the power-utility situation, we get the following aver
 &\approx& (1 + R_{f,t}) \delta \gamma  \mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right),
 \end{eqnarray*}
 where \(\Delta c_{t+1} = \log(C_{t+1}/C_t)\).
-Because consumption is smooth, the covariance \(\mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right)\) is relatively small (see column ``\(Cov(er_e,\Delta c)\)'\,' of Table \ref{tab:Campbell1}, taken from \citet{Campbell_1999}).
-Hence, in order to replicate large average excess return, \(\gamma\) has to be big (see last two columns of Table \ref{tab:Campbell1}).
+Because consumption is smooth, the covariance \(\mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right)\) is relatively small (see column ``\(Cov(er_e,\Delta c)\)'\,' of Table \ref{fig:Campbell1}, taken from \citet{Campbell_1999}).
+Hence, in order to replicate large average excess return, \(\gamma\) has to be big (see last two columns of Table \ref{fig:Campbell1}).
 
 \begin{figure}
 
@@ -2916,7 +2938,7 @@ In the case of the power utility function, the risk aversion is the inverse of t
 \[
 \mbox{High risk aversion} \Leftrightarrow \mbox{Low IES}.
 \]
-For given values of the risk-free rates \(R_{f,t}\), a decrease in the IES (increase in \(\gamma\)) leads people to make consumption smoother (see Example \ref{exm:IESsmooth}).
+For given values of the risk-free rates \(R_{f,t}\), a decrease in the IES (increase in \(\gamma\)) leads people to make consumption smoother (see Example \ref{exm:IESsmoothing}).
 \[
 \frac{1}{1+R_{f,t}} \approx \mathbb{E}_t(\delta (1 - \gamma \Delta c_{t+1})).
 \]
@@ -2952,7 +2974,7 @@ Given the small volatility of \(\Delta c_{t+1}\) (see column \(\sigma(\Delta c)\
 \begin{example}[Econometric Test of the C-CAPM: the GMM approach]
 \protect\hypertarget{exm:GMM}{}\label{exm:GMM}
 
-\citet{Hansen_Singleton_1982} have developed and used the General Method of Moments to test the C-CAPM. This approach is based on Eq. \eqref{eq:pricingcapm}:
+\citet{Hansen_Singleton_1982} have developed and used the General Method of Moments to test the C-CAPM. This approach is based on \eqref{eq:EulerCCAPM}:
 \begin{equation}
 1 = \color{red}{\mathbb{E}_t}\left( \delta \left(\frac{C_t}{C_{t+1}}\right)^\gamma (1+R_{i,t+1})\right).\label{eq:momentcondi}
 \end{equation}
@@ -2960,7 +2982,7 @@ For this to be verified, we must have, for any variable \(z_t\):
 \begin{equation}
 \color{red}{\mathbb{E}}\left( \underbrace{\left[\delta \left(\frac{C_t}{C_{t+1}}\right)^\gamma (1+R_{i,t+1}) - 1\right] z_t}_{h_{t+1}}\right) = 0,\label{eq:GMM}
 \end{equation}
-If this is not the case, one can use \(z_t\) to predict \(\delta \left(\frac{C_t}{C_{t+1}}\right)^\gamma (1+R_{i,t+1})\) and Eq. \eqref{eq:momentcondi} is not valid. Moment condition: \(\mathbb{E}(h_{t+1})=0\).
+If this is not the case, one can use \(z_t\) to predict \(\delta \left(\frac{C_t}{C_{t+1}}\right)^\gamma (1+R_{i,t+1})\) and \eqref{eq:momentcondi} is not valid. Moment condition: \(\mathbb{E}(h_{t+1})=0\).
 
 Empirical counterpart of the moment condition \eqref{eq:GMM}:
 \begin{equation}
@@ -3063,7 +3085,8 @@ Note that the (real) term premiums are negative, which is typical in the context
 \NormalTok{gamma   }\OtherTok{\textless{}{-}} \DecValTok{10}
 \NormalTok{delta   }\OtherTok{\textless{}{-}} \FloatTok{0.99}
 \CommentTok{\# Determine specification of real short{-}term rate:}
-\NormalTok{eta}\FloatTok{.0} \OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FunctionTok{log}\NormalTok{(delta) }\SpecialCharTok{+}\NormalTok{ mu }\SpecialCharTok{*}\NormalTok{ gamma }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ phi) }\SpecialCharTok{{-}}\NormalTok{ gamma}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ sigma.c}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{/} \DecValTok{2}
+\NormalTok{eta}\FloatTok{.0} \OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FunctionTok{log}\NormalTok{(delta) }\SpecialCharTok{+}\NormalTok{ mu }\SpecialCharTok{*}\NormalTok{ gamma }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ phi) }\SpecialCharTok{{-}} 
+\NormalTok{  gamma}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ sigma.c}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{/} \DecValTok{2}
 \NormalTok{eta}\FloatTok{.1} \OtherTok{\textless{}{-}}\NormalTok{ gamma }\SpecialCharTok{*}\NormalTok{ phi}
 \CommentTok{\# Specify the model:}
 \NormalTok{psi.parameterization }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
@@ -3084,11 +3107,13 @@ Note that the (real) term premiums are negative, which is typical in the context
 \NormalTok{a.h.EH }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(AB}\SpecialCharTok{$}\NormalTok{A }\SpecialCharTok{{-}}\NormalTok{ eta}\FloatTok{.1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{h)}
 \NormalTok{b.h.EH }\OtherTok{\textless{}{-}}\NormalTok{ eta}\FloatTok{.0} \SpecialCharTok{{-}} \FunctionTok{c}\NormalTok{(AB}\SpecialCharTok{$}\NormalTok{B)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{h)}
 \CommentTok{\# Simulate growth:}
-\NormalTok{x.sim }\OtherTok{\textless{}{-}} \FunctionTok{sim.arma}\NormalTok{(mu}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{phi),phi,}\AttributeTok{theta=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{),sigma.c,}\AttributeTok{T=}\DecValTok{100}\NormalTok{,mu,}\AttributeTok{nb.sim=}\DecValTok{1}\NormalTok{)}
+\NormalTok{x.sim }\OtherTok{\textless{}{-}} \FunctionTok{sim.arma}\NormalTok{(mu}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{phi),phi,}\AttributeTok{theta=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{),sigma.c,}
+                  \AttributeTok{T=}\DecValTok{100}\NormalTok{,mu,}\AttributeTok{nb.sim=}\DecValTok{1}\NormalTok{)}
 \NormalTok{r.t   }\OtherTok{\textless{}{-}}\NormalTok{ (eta}\FloatTok{.0} \SpecialCharTok{+}\NormalTok{ eta}\FloatTok{.1} \SpecialCharTok{*}\NormalTok{ x.sim)}
 \CommentTok{\# Prepare plots:}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{));}\FunctionTok{par}\NormalTok{(}\AttributeTok{plt=}\FunctionTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{95}\NormalTok{,.}\DecValTok{2}\NormalTok{,.}\DecValTok{95}\NormalTok{))}
-\FunctionTok{plot}\NormalTok{(r.t,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"time"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\FunctionTok{min}\NormalTok{(r.t),}\FunctionTok{max}\NormalTok{(r.t)}\SpecialCharTok{+}\NormalTok{.}\DecValTok{02}\NormalTok{),}\AttributeTok{las=}\DecValTok{1}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(r.t,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"time"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{""}\NormalTok{,}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\FunctionTok{min}\NormalTok{(r.t),}
+                                             \FunctionTok{max}\NormalTok{(r.t)}\SpecialCharTok{+}\NormalTok{.}\DecValTok{05}\NormalTok{),}\AttributeTok{las=}\DecValTok{1}\NormalTok{)}
 \ControlFlowTok{for}\NormalTok{(t }\ControlFlowTok{in} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,T,}\AttributeTok{by=}\DecValTok{10}\NormalTok{))\{}
   \FunctionTok{lines}\NormalTok{(t}\SpecialCharTok{+}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{h)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,b.h    }\SpecialCharTok{+}\NormalTok{ a.h    }\SpecialCharTok{*}\NormalTok{ x.sim[t],}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
   \FunctionTok{lines}\NormalTok{(t}\SpecialCharTok{+}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{h)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,b.h.EH }\SpecialCharTok{+}\NormalTok{ a.h.EH }\SpecialCharTok{*}\NormalTok{ x.sim[t],}\AttributeTok{col=}\StringTok{"blue"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)\}}
@@ -3153,15 +3178,15 @@ Figure \ref{fig:TSMCCAPM2} shows the resulting average nominal yield curves, tog
 \begin{Highlighting}[]
 \NormalTok{mu\_pi }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{02}\NormalTok{;phi\_pi }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{8}\NormalTok{;sigma.pi.c }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\NormalTok{.}\DecValTok{06}\NormalTok{;sigma.pi   }\OtherTok{\textless{}{-}}\NormalTok{ .}\DecValTok{01}
 \CommentTok{\# Determine specification of nominal short{-}term rate:}
-\NormalTok{eta.}\FloatTok{0.}\NormalTok{i }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FunctionTok{log}\NormalTok{(delta) }\SpecialCharTok{+}\NormalTok{ mu }\SpecialCharTok{*}\NormalTok{ gamma }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ phi) }\SpecialCharTok{+}\NormalTok{ mu\_pi }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ phi\_pi) }\SpecialCharTok{{-}}
-\NormalTok{  (gamma}\SpecialCharTok{*}\NormalTok{sigma.c }\SpecialCharTok{+}\NormalTok{ sigma.pi.c)}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{{-}}\NormalTok{ sigma.pi}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{/}\DecValTok{2}
+\NormalTok{eta.}\FloatTok{0.}\NormalTok{i }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FunctionTok{log}\NormalTok{(delta) }\SpecialCharTok{+}\NormalTok{ mu }\SpecialCharTok{*}\NormalTok{ gamma }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ phi) }\SpecialCharTok{+}\NormalTok{ mu\_pi }\SpecialCharTok{*} 
+\NormalTok{  (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ phi\_pi) }\SpecialCharTok{{-}}\NormalTok{ (gamma}\SpecialCharTok{*}\NormalTok{sigma.c }\SpecialCharTok{+}\NormalTok{ sigma.pi.c)}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{{-}}\NormalTok{ sigma.pi}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{/}\DecValTok{2}
 \NormalTok{eta.}\FloatTok{1.}\NormalTok{i }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(gamma }\SpecialCharTok{*}\NormalTok{ phi,phi\_pi),}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{)}
 \CommentTok{\# Specify the model:}
 \NormalTok{psi.parameterization }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
   \AttributeTok{mu =} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(mu}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{phi),mu\_pi}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{phi\_pi)),}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{),}
   \AttributeTok{Phi =} \FunctionTok{diag}\NormalTok{(}\FunctionTok{c}\NormalTok{(phi,phi\_pi)),}
-  \AttributeTok{Sigma =} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(sigma.c}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{,sigma.c}\SpecialCharTok{*}\NormalTok{sigma.pi.c,}
-\NormalTok{                   sigma.c}\SpecialCharTok{*}\NormalTok{sigma.pi.c,sigma.pi}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{+}\NormalTok{sigma.pi.c}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{),}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+  \AttributeTok{Sigma =} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(sigma.c}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{,sigma.c}\SpecialCharTok{*}\NormalTok{sigma.pi.c,sigma.c}\SpecialCharTok{*}
+\NormalTok{                     sigma.pi.c,sigma.pi}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{+}\NormalTok{sigma.pi.c}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{),}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \CommentTok{\# Use reverse{-}order multi{-}horizon LT to price ZC bonds:}
 \NormalTok{u2 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{gamma,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{),}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{);u1 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{gamma,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{),}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{)}
 \NormalTok{AB }\OtherTok{\textless{}{-}} \FunctionTok{reverse.MHLT}\NormalTok{(psi.GaussianVAR,u1,u2,}\AttributeTok{H=}\NormalTok{h,psi.parameterization)}
@@ -3170,12 +3195,14 @@ Figure \ref{fig:TSMCCAPM2} shows the resulting average nominal yield curves, tog
 \CommentTok{\# Under EH:}
 \NormalTok{u2 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{ eta.}\FloatTok{1.}\NormalTok{i);u1 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{)}
 \NormalTok{AB }\OtherTok{\textless{}{-}} \FunctionTok{reverse.MHLT}\NormalTok{(psi.GaussianVAR,u1,u2,}\AttributeTok{H=}\NormalTok{h,psi.parameterization)}
-\NormalTok{a.h.i.EH }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(AB}\SpecialCharTok{$}\NormalTok{A,}\DecValTok{2}\NormalTok{,h)}\SpecialCharTok{{-}}\FunctionTok{matrix}\NormalTok{(eta.}\FloatTok{1.}\NormalTok{i,}\DecValTok{2}\NormalTok{,h))}\SpecialCharTok{/}\FunctionTok{t}\NormalTok{(}\FunctionTok{matrix}\NormalTok{((}\DecValTok{1}\SpecialCharTok{:}\NormalTok{h),h,}\DecValTok{2}\NormalTok{))}
+\NormalTok{a.h.i.EH }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(AB}\SpecialCharTok{$}\NormalTok{A,}\DecValTok{2}\NormalTok{,h)}\SpecialCharTok{{-}}
+                \FunctionTok{matrix}\NormalTok{(eta.}\FloatTok{1.}\NormalTok{i,}\DecValTok{2}\NormalTok{,h))}\SpecialCharTok{/}\FunctionTok{t}\NormalTok{(}\FunctionTok{matrix}\NormalTok{((}\DecValTok{1}\SpecialCharTok{:}\NormalTok{h),h,}\DecValTok{2}\NormalTok{))}
 \NormalTok{b.h.i.EH }\OtherTok{\textless{}{-}}\NormalTok{ eta.}\FloatTok{0.}\NormalTok{i }\SpecialCharTok{{-}} \FunctionTok{c}\NormalTok{(AB}\SpecialCharTok{$}\NormalTok{B)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{h)}
 \CommentTok{\# Average yield curves:}
 \NormalTok{avg.i.h    }\OtherTok{\textless{}{-}}\NormalTok{ b.h.i    }\SpecialCharTok{+} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(mu,mu\_pi),}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{) }\SpecialCharTok{\%*\%}\NormalTok{ a.h.i}
 \NormalTok{avg.i.h.EH }\OtherTok{\textless{}{-}}\NormalTok{ b.h.i.EH }\SpecialCharTok{+} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(mu,mu\_pi),}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{) }\SpecialCharTok{\%*\%}\NormalTok{ a.h.i.EH}
-\FunctionTok{plot}\NormalTok{(}\FunctionTok{c}\NormalTok{(avg.i.h),}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{lty=}\DecValTok{3}\NormalTok{,}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.08}\NormalTok{,}\FunctionTok{max}\NormalTok{(avg.i.h)),}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{c}\NormalTok{(avg.i.h),}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{lty=}\DecValTok{3}\NormalTok{,}
+     \AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.08}\NormalTok{,}\FunctionTok{max}\NormalTok{(avg.i.h)),}
      \AttributeTok{xlab=}\StringTok{"maturity"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{"yield"}\NormalTok{,}\AttributeTok{las=}\DecValTok{1}\NormalTok{);}\FunctionTok{grid}\NormalTok{()}
 \FunctionTok{lines}\NormalTok{(}\FunctionTok{c}\NormalTok{(avg.i.h.EH),}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{col=}\StringTok{"blue"}\NormalTok{,}\AttributeTok{lty=}\DecValTok{3}\NormalTok{)}
 \FunctionTok{lines}\NormalTok{(b.h}\SpecialCharTok{+}\NormalTok{a.h}\SpecialCharTok{*}\NormalTok{mu,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{)}
@@ -3254,7 +3281,7 @@ If one assumes that \(X_t\) is exogenous---a case referred to as \emph{external 
 \begin{equation}
 \mathcal{M}_{t,t+1} = \delta \left( \frac{C_{t+1}}{C_t} \right)^{-\gamma}\left( \frac{S_{t+1}}{S_t} \right)^{-\gamma},\label{eq:Mhabit}
 \end{equation}
-where \(S_t = (C_t - X_t)/C_t\). This extends the standard power utility case by adding an additional state variable (\(X_t\)). In this model, recessions are periods where consumption is closer to habits (otherwise it is higher). SDF specifications of the type of Eq. \eqref{eq:Mhabit} can arise in more general contexts (not necessarily habits); \(S_t\) may for instance reflect a business-cycle-related variable.
+where \(S_t = (C_t - X_t)/C_t\). This extends the standard power utility case by adding an additional state variable (\(X_t\)). In this model, recessions are periods where consumption is closer to habits (otherwise it is higher). SDF specifications of the type of \eqref{eq:Mhabit} can arise in more general contexts (not necessarily habits); \(S_t\) may for instance reflect a business-cycle-related variable.
 
 \begin{example}[Comparisons of situations according to habit preferences]
 \protect\hypertarget{exm:habit}{}\label{exm:habit}To illustrate, consider the following context (with no uncertainty):
@@ -3524,7 +3551,7 @@ which gives, when \(\rho = 1\) (using Eq. \eqref{eq:vrho1}):
 The previous equation can be rewritten as:
 \begin{eqnarray}
 && (\mathbb{E}_{t+1} - \mathbb{E}_t) m_{t,t+1} \nonumber \\
-&=& - \gamma(\mathbb{E}_{t+1} - \mathbb{E}_t)\Delta c_{t+1} +    (1 - \gamma) \times \underbrace{ (\mathbb{E}_{t+1} - \mathbb{E}_t) \left(  \sum_{j=1}^{\infty}  \delta^j \Delta c_{t+1+j}  \right).}_{\mbox{innovat. in long-run consump. growth}}\label{eq:sdfAbc}
+&=& - \gamma(\mathbb{E}_{t+1} - \mathbb{E}_t)\Delta c_{t+1} +    (1 - \gamma) \times \underbrace{ (\mathbb{E}_{t+1} - \mathbb{E}_t) \left(  \sum_{j=1}^{\infty}  \delta^j \Delta c_{t+1+j}  \right).}_{\mbox{innov. in long-run cons. growth}}\label{eq:sdfAbc}
 \end{eqnarray}
 Hence, news about future consumption growth affect the current SDF (marginal rate of substitution). As a consequence, shocks that correlate with updates of future consumption growth are ``priced''. The date-\(t\) prices---and more precisely their risk premium components---depend on the covariances between their payoffs and consumption on date \(t+1\), as well as future consumption growth (regarding \(t+h\), \(h>1\)).
 
@@ -3572,7 +3599,7 @@ Taking the current consumption as numeraire, the wealth \(W_t\) is defined by:
 \begin{equation}
 W_t =   U_t \big/ \frac{\partial U_t}{\partial C_t}.\label{eq:WWWWW}
 \end{equation}
-It can be understood as a conversion of the intertemporal utility in terms of today's consumption. It can also be seen as a consumption-priced virtual asset that delivers aggregate consumption as its dividends on each time period; this asset is called \emph{wealth portfolio}.\footnote{Since \(F\) homogeneous of order 1, if all future consumption streams are multiplied by \(1+\epsilon\), then the utility becomes \((1+\epsilon)U_t\). Consider the asset that provides \(\epsilon C_{t+h}\) at all future periods (if one purchases \(\epsilon\) units of it). Expressed in consumption units, the equilibrium unit price of this asset (\(\mathcal{W}_t\), say) must satisfy \(-\epsilon U_t + \epsilon \mathcal{W}_t (\partial U_t / \partial C_t)=0\). According to Eq. \eqref{eq:WWWWW}, we have \(\mathcal{W}_t = W_t\).}
+It can be understood as a conversion of the intertemporal utility in terms of today's consumption. It can also be seen as a consumption-priced virtual asset that delivers aggregate consumption as its dividends on each time period; this asset is called \emph{wealth portfolio}.\footnote{Since \(F\) homogeneous of order 1, if all future consumption streams are multiplied by \(1+\epsilon\), then the utility becomes \((1+\epsilon)U_t\). Consider the asset that provides \(\epsilon C_{t+h}\) at all future periods (if one purchases \(\epsilon\) units of it). Expressed in consumption units, the equilibrium unit price of this asset (\(\mathcal{W}_t\), say) must satisfy \(-\epsilon U_t + \epsilon \mathcal{W}_t (\partial U_t / \partial C_t)=0\). According to \eqref{eq:WWWWW}, we have \(\mathcal{W}_t = W_t\).}
 
 Using that \(\frac{\partial U_t}{\partial C_t}=(1 - \delta)(V_t^\rho)/(C_t^{\rho})\), we get (using \eqref{eq:WWWWW}):
 \begin{equation}
@@ -3625,7 +3652,7 @@ Therefore:
 where \(\kappa_1= \dfrac{\exp(\bar{z})}{1 + \exp(\bar{z})}\) and \(\kappa_0 = \log(1 + \exp(\bar{z})) + \kappa_1 \bar{z}\).
 
 \begin{quote}
-The approximation underlying Eq. \eqref{eq:approxRa} is the same as that used by \citet{Campbell_Shiller_1988} used to linearize stock returns.
+The approximation underlying \eqref{eq:approxRa} is the same as that used by \citet{Campbell_Shiller_1988} used to linearize stock returns.
 \end{quote}
 
 For any asset \(i\), whose return is \(1+R_{i,t+1}\), we have:
@@ -3653,9 +3680,9 @@ to solve for \(A_{i,0}\) and \(A_{i,1}\).
 \subsection{Long-run risk model}\label{long-run-risk-model}}
 
 We have shown that the CCAPM had difficulties in generating large average excess returns without implying unreasonable risk aversion parameters.
-As will be shown later (notably in the \citet{Bansal_Yaron_2004}'s framework), E-Z preferences can address this problem.
+As will be shown later (notably in the \citet{Bansal_Yaron_2004}'s framework), Epstein-Zin preferences can address this problem.
 With time-separable utilities, average excess returns (i.e.~risk premiums) had to be accounted by the sole correlation between stock returns and current consumption.
-With E-Z preferences, another key correlation is that between stock returns and updates about future consumption growth---the second term in Eq. \eqref{eq:sdfAbc}.
+With Epstein-Zin preferences, another key correlation is that between stock returns and updates about future consumption growth---the second term in \eqref{eq:sdfAbc}.
 For this second channel to be relevant, observed excess returns should positively correlate to the updates of expectations of long-term consumption. See Figure \ref{fig:SPF10yrStock}.
 
 \begin{figure}
@@ -3752,7 +3779,7 @@ A_2 = \frac{0.5 \left[ \left(\theta - \dfrac{\theta}{\psi}\right)^2 + (\theta A_
 
 \end{example}
 
-As explained above, together, \eqref{eq:sdfEZ} and \eqref{eq:approxRa} imply an exponential affine SDF. This open the door to tractable term-structure modeling (see, e.g., Subsection \ref{MHLT} and Section \ref{TSM}). This is exploited, e.g., by \citet{Bansal_Shaliastovich_2013} (see Example \ref{exm:BS2013}).
+As explained above, together, \eqref{eq:sdfEZ} and \eqref{eq:approxRa} imply an exponential affine SDF. This opens the door to tractable term-structure modeling (see, e.g., Subsection \ref{MHLT} and Section \ref{TSModels}). This is exploited, e.g., by \citet{Bansal_Shaliastovich_2013} (see Example \ref{exm:BS2013}).
 
 \begin{example}[Bansal and Shaliastovich (2013)]
 \protect\hypertarget{exm:BS2013}{}\label{exm:BS2013}
@@ -3809,8 +3836,8 @@ Functions that allow to handle that type of model are available in package \text
 \CommentTok{\# For real bonds:}
 \NormalTok{eta.}\FloatTok{0.}\NormalTok{real }\OtherTok{\textless{}{-}}\NormalTok{ res.price}\SpecialCharTok{$}\NormalTok{all.a.return[}\DecValTok{2}\NormalTok{,] }\SpecialCharTok{{-}}\NormalTok{ Model}\SpecialCharTok{$}\NormalTok{mu[}\DecValTok{3}\NormalTok{]}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{));}\FunctionTok{par}\NormalTok{(}\AttributeTok{plt=}\FunctionTok{c}\NormalTok{(.}\DecValTok{15}\NormalTok{,.}\DecValTok{95}\NormalTok{,.}\DecValTok{2}\NormalTok{,.}\DecValTok{95}\NormalTok{))}
-\FunctionTok{plot}\NormalTok{(freq}\SpecialCharTok{*}\NormalTok{eta.}\FloatTok{0.}\NormalTok{nom,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,freq}\SpecialCharTok{*}\FunctionTok{max}\NormalTok{(eta.}\FloatTok{0.}\NormalTok{nom)),}\AttributeTok{las=}\DecValTok{1}\NormalTok{,}
-     \AttributeTok{xlab=}\StringTok{"maturity"}\NormalTok{,}\AttributeTok{ylab =} \StringTok{"rates"}\NormalTok{,}\AttributeTok{las=}\DecValTok{1}\NormalTok{);}\FunctionTok{grid}\NormalTok{()}
+\FunctionTok{plot}\NormalTok{(freq}\SpecialCharTok{*}\NormalTok{eta.}\FloatTok{0.}\NormalTok{nom,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,freq}\SpecialCharTok{*}\FunctionTok{max}\NormalTok{(eta.}\FloatTok{0.}\NormalTok{nom)),}
+     \AttributeTok{las=}\DecValTok{1}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"maturity"}\NormalTok{,}\AttributeTok{ylab =} \StringTok{"rates"}\NormalTok{,}\AttributeTok{las=}\DecValTok{1}\NormalTok{);}\FunctionTok{grid}\NormalTok{()}
 \FunctionTok{lines}\NormalTok{(freq}\SpecialCharTok{*}\NormalTok{eta.}\FloatTok{0.}\NormalTok{real,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{lty=}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -4323,8 +4350,8 @@ In the following lines, we specify one version of the previous model. We simulat
 \NormalTok{N }\OtherTok{\textless{}{-}} \DecValTok{1}\NormalTok{;M }\OtherTok{\textless{}{-}}\NormalTok{ D}
 \NormalTok{Sigma\_0 }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{phi}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\CommentTok{\# unconditional variance of w}
 \NormalTok{rho\_0 }\OtherTok{\textless{}{-}} \DecValTok{0} \CommentTok{\# unconditional mean of w}
-\NormalTok{filter.res   }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_filter}\NormalTok{(Y,nu\_t,H,N,mu\_t,G,M,Sigma\_0,rho\_0,}\AttributeTok{indic\_pos=}\DecValTok{0}\NormalTok{)}
-\NormalTok{smoother.res }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_smoother}\NormalTok{(Y,nu\_t,H,N,mu\_t,G,M,Sigma\_0,rho\_0,}\AttributeTok{indic\_pos=}\DecValTok{0}\NormalTok{)}
+\NormalTok{filter.res   }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_filter}\NormalTok{(Y,nu\_t,H,N,mu\_t,G,M,Sigma\_0,rho\_0)}
+\NormalTok{smoother.res }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_smoother}\NormalTok{(Y,nu\_t,H,N,mu\_t,G,M,Sigma\_0,rho\_0)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4356,8 +4383,10 @@ This example extends Example \ref{exm:RKalmanMissing}. We take the simulated pat
 \NormalTok{Y.modif[}\DecValTok{30}\SpecialCharTok{:}\DecValTok{50}\NormalTok{,}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NaN}
 \NormalTok{Y.modif[}\DecValTok{40}\SpecialCharTok{:}\DecValTok{70}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NaN}
 \CommentTok{\# Call of Kalman filter and smoother:}
-\NormalTok{filter.res   }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_filter}\NormalTok{(Y.modif,nu\_t,H,N,mu\_t,G,M,Sigma\_0,rho\_0,}\AttributeTok{indic\_pos=}\DecValTok{0}\NormalTok{)}
-\NormalTok{smoother.res }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_smoother}\NormalTok{(Y.modif,nu\_t,H,N,mu\_t,G,M,Sigma\_0,rho\_0,}\AttributeTok{indic\_pos=}\DecValTok{0}\NormalTok{)}
+\NormalTok{filter.res   }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_filter}\NormalTok{(Y.modif,nu\_t,H,N,mu\_t,}
+\NormalTok{                              G,M,Sigma\_0,rho\_0)}
+\NormalTok{smoother.res }\OtherTok{\textless{}{-}} \FunctionTok{Kalman\_smoother}\NormalTok{(Y.modif,nu\_t,H,N,mu\_t,}
+\NormalTok{                                G,M,Sigma\_0,rho\_0)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4371,14 +4400,14 @@ This example extends Example \ref{exm:RKalmanMissing}. We take the simulated pat
 
 \end{example}
 
-\hypertarget{about-non-constant-conditional-matrix-sigma}{%
-\subsection{\texorpdfstring{About non-constant conditional matrix \(\Sigma\)}{About non-constant conditional matrix \textbackslash Sigma}}\label{about-non-constant-conditional-matrix-sigma}}
+\hypertarget{KalmanQML}{%
+\subsection{\texorpdfstring{About non-constant conditional matrix \(\Sigma\)}{About non-constant conditional matrix \textbackslash Sigma}}\label{KalmanQML}}
 
 Proposition \ref{prp:KF} is valid when \(\varepsilon_t\) is Gaussian and when \(\Sigma^{\frac{1}{2}}\) does not depend on \(w_t\). However, in the general case (but when \(w_t\) is an affine process), we have that \(\Sigma(w_{t-1}) \equiv \mathbb{V}ar(w_{t+1}|\underline{w_t})\) is affine in \(w_t\) (see Prop. \ref{prp:affineVAR}). In order to deal with this, the Kalman filter algorithm can be modified. Specifically, in the prediction step (see Prop. \ref{prp:KF}), \(P_{t|t-1}\) can be approximated by:
 \[
 P_{t|t-1} = \Sigma\color{red}{(w_{t-1|t-1})} + \Phi P_{t-1|t-1} \Phi',
 \]
-i.e.~we replace \(\Sigma(w_{t-1})\) by \(\Sigma(w_{t-1|t-1})\).
+i.e., we replace \(\Sigma(w_{t-1})\) by \(\Sigma(w_{t-1|t-1})\).
 
 Although this approach is not optimal---in the sense that it does not deliver the conditional expectation of Def. \ref{def:FiltvsSmooth}---it shows good empirical properties (\citet{deJong_2000} or \citet{Duan_Simonato_1999}). In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations \citep{zarg_2017}.
 
@@ -5310,7 +5339,7 @@ B_{t,h}^d = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-\tilde{i}_t-\dots-\tilde{i
 \end{proposition}
 
 \begin{proof}
-According to Eq. \eqref{eq:fQfP}:
+According to \eqref{eq:fQfP}:
 \begin{equation}
 f^{\mathbb{Q}}(d_t,y_t|d_{t-1},y_{t-1}) = \exp(i_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(d_t,y_t|d_{t-1},y_{t-1}).\label{eq:aaq1}
 \end{equation}
@@ -5352,7 +5381,7 @@ Although \(\mathbb{P}\) and \(\mathbb{Q}\) intensities are the same functions of
 \end{quote}
 
 \begin{quote}
-Eq. \eqref{eq:standardPriceCredit3} is reminiscent of Eq. \eqref{eq:stdbond}, where the risk-free short-term rate \(i_t\) is replaced by the \emph{credit-adjusted short-term rate} \(\tilde{i}_t\).
+Eq. \eqref{eq:standardPriceCredit3} is reminiscent of \eqref{eq:stdbond}, where the risk-free short-term rate \(i_t\) is replaced by the \emph{credit-adjusted short-term rate} \(\tilde{i}_t\).
 \end{quote}
 
 Importantly, if both \(i_t\) and \(\lambda_t\) are affine in \(y_t\), where the latter is an affine process, then bond prices are easily computed by means of recursive formulas (as was the case in the context of \eqref{eq:stdbond}, see Example \ref{exm:nominalBth}.
@@ -5791,7 +5820,7 @@ Under Hypotheses \ref{hyp:H2} and \ref{hyp:H4}, it comes that:
 \varphi^{\mathbb{Q}}_{w, t-1} (u_w) &=& \mathbb{E}^{\mathbb{Q}} \left[\exp( u_w ' w_t )   |   \underline{w_{t-1}} \right] \nonumber \\
 &=& \exp \left[ a^{\mathbb{Q}}_{w} (u_{w}) ' w_{t-1} + b^{\mathbb{Q}}_{w} (u_{w}) \right],\label{eq:affineQcLT}
 \end{eqnarray}
-where, using Eq. \eqref{eq:transfoPQ}:
+where, using \eqref{eq:transfoPQ}:
 \begin{equation}
 \left\{
 \begin{array}{ccl}
@@ -5952,7 +5981,7 @@ where:
 && \hspace{7em} - \Psi^{\mathbb{Q}}_{(t, i)} \left(\chi - a_e, u \widetilde{e}_{\delta} - \xi_1 , u_s - a_w \right) \\
 && \hspace{7em} + \Psi^{\mathbb{Q}}_{(t, i)} \left(\chi - a_e, u \widetilde{e}_{\delta} - \xi_1 , u \widetilde{e}_{\delta} + u_s - a_w \right) \Big] ,
 \end{eqnarray*}
-and where \(\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u_2 , u_1 \right)\) is given in Eq. \eqref{eq:ZCBRFV3}.
+and where \(\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u_2 , u_1 \right)\) is given in \eqref{eq:ZCBRFV3}.
 \end{proposition}
 
 \begin{proof}
@@ -6149,12 +6178,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]      [,2]       [,3]       [,4]      [,5]       [,6]       [,7]
-## [1,] 0.92310682 0.8573348 0.80065355 0.75148107 0.7085349 0.67076637 0.63731581
-## [2,] 0.08001032 0.0769634 0.07410898 0.07142731 0.0689112 0.06655573 0.06435571
+##            [,1]       [,2]       [,3]      [,4]       [,5]       [,6]      [,7]
+## [1,] 0.92632159 0.86301651 0.80823189 0.7605158 0.71868158 0.68175278 0.6489253
+## [2,] 0.07653382 0.07366073 0.07096876 0.0684396 0.06606738 0.06384803 0.0617768
 ##            [,8]       [,9]      [,10]
-## [1,] 0.60747834 0.58067613 0.55643529
-## [2,] 0.06230485 0.06039579 0.05862044
+## [1,] 0.61953798 0.59304743 0.56900724
+## [2,] 0.05984766 0.05805343 0.05638621
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.
@@ -6200,7 +6229,8 @@ Let us check the formulas by simulations. More precisely, we calculate the condi
 \NormalTok{Xt }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(X[,}\DecValTok{1}\NormalTok{,t],}\AttributeTok{ncol=}\DecValTok{1}\NormalTok{) }\CommentTok{\# state vector on that date}
 
 \CommentTok{\# Simulate trajectories starting from Xt:}
-\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{simul.X}\NormalTok{(Phi\_x,Mu\_x,Sigma\_x,}\AttributeTok{nb.periods=}\NormalTok{H,}\AttributeTok{X0 =}\NormalTok{ Xt,}\AttributeTok{nb.replics =}\NormalTok{ nb.replics)}
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{simul.X}\NormalTok{(Phi\_x,Mu\_x,Sigma\_x,}\AttributeTok{nb.periods=}\NormalTok{H,}\AttributeTok{X0 =}\NormalTok{ Xt,}
+             \AttributeTok{nb.replics =}\NormalTok{ nb.replics)}
 \CommentTok{\# Compute prices for each trajectory:}
 \NormalTok{aux1 }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(X,}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{),}\ControlFlowTok{function}\NormalTok{(x)\{}\FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{ b.dot }\SpecialCharTok{{-}} \FunctionTok{t}\NormalTok{(x)}\SpecialCharTok{\%*\%}\NormalTok{a.dot }\SpecialCharTok{{-}}
                                         \FunctionTok{pmax}\NormalTok{(}\DecValTok{0}\NormalTok{,b }\SpecialCharTok{+} \FunctionTok{t}\NormalTok{(x)}\SpecialCharTok{\%*\%}\NormalTok{a))\})}
@@ -6208,9 +6238,11 @@ Let us check the formulas by simulations. More precisely, we calculate the condi
 \CommentTok{\# Compute averages of prices across simulated trajectories:}
 \NormalTok{simul.prices }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(aux2,}\DecValTok{1}\NormalTok{,mean)}
 \CommentTok{\# Compare with output of compute.condit.Exp:}
-\FunctionTok{plot}\NormalTok{(res}\SpecialCharTok{$}\NormalTok{E.n[t,],}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{main=}\StringTok{"Approximate formula versus Monte{-}Carlo approach"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(res}\SpecialCharTok{$}\NormalTok{E.n[t,],}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}
+     \AttributeTok{main=}\StringTok{"Approximate formula versus Monte{-}Carlo approach"}\NormalTok{)}
 \FunctionTok{lines}\NormalTok{(simul.prices)}
-\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\FunctionTok{c}\NormalTok{(}\StringTok{"Approximate formula"}\NormalTok{,}\StringTok{"Monte{-}Carlo"}\NormalTok{),}\AttributeTok{lty=}\FunctionTok{c}\NormalTok{(}\ConstantTok{NaN}\NormalTok{,}\DecValTok{1}\NormalTok{),}\AttributeTok{pch=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\ConstantTok{NaN}\NormalTok{),}\AttributeTok{lwd=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\FunctionTok{c}\NormalTok{(}\StringTok{"Approximate formula"}\NormalTok{,}\StringTok{"Monte{-}Carlo"}\NormalTok{),}
+       \AttributeTok{lty=}\FunctionTok{c}\NormalTok{(}\ConstantTok{NaN}\NormalTok{,}\DecValTok{1}\NormalTok{),}\AttributeTok{pch=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\ConstantTok{NaN}\NormalTok{),}\AttributeTok{lwd=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 

@@ -252,8 +252,8 @@ where <span class="math inline">\(\eta_t \sim \mathcal{N}(0,Id)\)</span>.</p>
 <span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">1</span>;<span class="va">M</span> <span class="op">&lt;-</span> <span class="va">D</span></span>
 <span><span class="va">Sigma_0</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">phi</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="co"># unconditional variance of w</span></span>
 <span><span class="va">rho_0</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># unconditional mean of w</span></span>
-<span><span class="va">filter.res</span>   <span class="op">&lt;-</span> <span class="fu">Kalman_filter</span><span class="op">(</span><span class="va">Y</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,<span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span>,indic_pos<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
-<span><span class="va">smoother.res</span> <span class="op">&lt;-</span> <span class="fu">Kalman_smoother</span><span class="op">(</span><span class="va">Y</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,<span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span>,indic_pos<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">filter.res</span>   <span class="op">&lt;-</span> <span class="fu">Kalman_filter</span><span class="op">(</span><span class="va">Y</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,<span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span><span class="op">)</span></span>
+<span><span class="va">smoother.res</span> <span class="op">&lt;-</span> <span class="fu">Kalman_smoother</span><span class="op">(</span><span class="va">Y</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,<span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: left-aligned">
 <span style="display:block;" id="fig:Kalmansimul"></span>
 <img src="TSM_files/figure-html/Kalmansimul-1.png" alt="Simulated trajectories of $y_{1,t}$, $y_{2,t}$, and $w_t$." width="95%"><p class="caption">
@@ -281,8 +281,10 @@ Figure 5.3: Filtered and smoothed estimates of <span class="math inline">\(w_t\)
 <span><span class="va">Y.modif</span><span class="op">[</span><span class="fl">30</span><span class="op">:</span><span class="fl">50</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NaN</span></span>
 <span><span class="va">Y.modif</span><span class="op">[</span><span class="fl">40</span><span class="op">:</span><span class="fl">70</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NaN</span></span>
 <span><span class="co"># Call of Kalman filter and smoother:</span></span>
-<span><span class="va">filter.res</span>   <span class="op">&lt;-</span> <span class="fu">Kalman_filter</span><span class="op">(</span><span class="va">Y.modif</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,<span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span>,indic_pos<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
-<span><span class="va">smoother.res</span> <span class="op">&lt;-</span> <span class="fu">Kalman_smoother</span><span class="op">(</span><span class="va">Y.modif</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,<span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span>,indic_pos<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">filter.res</span>   <span class="op">&lt;-</span> <span class="fu">Kalman_filter</span><span class="op">(</span><span class="va">Y.modif</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,</span>
+<span>                              <span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span><span class="op">)</span></span>
+<span><span class="va">smoother.res</span> <span class="op">&lt;-</span> <span class="fu">Kalman_smoother</span><span class="op">(</span><span class="va">Y.modif</span>,<span class="va">nu_t</span>,<span class="va">H</span>,<span class="va">N</span>,<span class="va">mu_t</span>,</span>
+<span>                                <span class="va">G</span>,<span class="va">M</span>,<span class="va">Sigma_0</span>,<span class="va">rho_0</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: left-aligned">
 <span style="display:block;" id="fig:Kalman5"></span>
 <img src="TSM_files/figure-html/Kalman5-1.png" alt="Situation of missing observations." width="95%"><p class="caption">
@@ -303,15 +305,15 @@ Figure 5.5: Filtered and smoothed estimates of <span class="math inline">\(w_t\)
 <!-- \includegraphics[width=1\linewidth]{figures/Figure_Kalman4_new.pdf} -->
 <!-- \end{center} -->
 </div>
-<div id="about-non-constant-conditional-matrix-sigma" class="section level3" number="5.2.3">
+<div id="KalmanQML" class="section level3" number="5.2.3">
 <h3>
-<span class="header-section-number">5.2.3</span> About non-constant conditional matrix <span class="math inline">\(\Sigma\)</span><a class="anchor" aria-label="anchor" href="#about-non-constant-conditional-matrix-sigma"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2.3</span> About non-constant conditional matrix <span class="math inline">\(\Sigma\)</span><a class="anchor" aria-label="anchor" href="#KalmanQML"><i class="fas fa-link"></i></a>
 </h3>
 <p>Proposition <a href="Estimation.html#prp:KF">5.1</a> is valid when <span class="math inline">\(\varepsilon_t\)</span> is Gaussian and when <span class="math inline">\(\Sigma^{\frac{1}{2}}\)</span> does not depend on <span class="math inline">\(w_t\)</span>. However, in the general case (but when <span class="math inline">\(w_t\)</span> is an affine process), we have that <span class="math inline">\(\Sigma(w_{t-1}) \equiv \mathbb{V}ar(w_{t+1}|\underline{w_t})\)</span> is affine in <span class="math inline">\(w_t\)</span> (see Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>). In order to deal with this, the Kalman filter algorithm can be modified. Specifically, in the prediction step (see Prop. <a href="Estimation.html#prp:KF">5.1</a>), <span class="math inline">\(P_{t|t-1}\)</span> can be approximated by:
 <span class="math display">\[
 P_{t|t-1} = \Sigma\color{red}{(w_{t-1|t-1})} + \Phi P_{t-1|t-1} \Phi',
 \]</span>
-i.e. we replace <span class="math inline">\(\Sigma(w_{t-1})\)</span> by <span class="math inline">\(\Sigma(w_{t-1|t-1})\)</span>.</p>
+i.e., we replace <span class="math inline">\(\Sigma(w_{t-1})\)</span> by <span class="math inline">\(\Sigma(w_{t-1|t-1})\)</span>.</p>
 <p>Although this approach is not optimal—in the sense that it does not deliver the conditional expectation of Def. <a href="Estimation.html#def:FiltvsSmooth">5.2</a>—it shows good empirical properties (<span class="citation">Jong (<a href="references.html#ref-deJong_2000">2000</a>)</span> or <span class="citation">Duan and Simonato (<a href="references.html#ref-Duan_Simonato_1999">1999</a>)</span>). In order to test for the validity of the approach in a specific context, one can resort to Monte-Carlo simulations <span class="citation">(<a href="references.html#ref-zarg_2017">Alain Monfort et al. 2017</a>)</span>.</p>
 </div>
 <div id="nonlinear" class="section level3" number="5.2.4">
@@ -644,7 +646,7 @@ Figure 5.9: Source: Kim and Orphanides (2005).
 <a class="nav-link" href="#Estimation:KF"><span class="header-section-number">5.2</span> Kalman-filter-based approach</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#the-gaussian-linear-state-space-case"><span class="header-section-number">5.2.1</span> The Gaussian linear state-space case</a></li>
 <li><a class="nav-link" href="#missing-observations"><span class="header-section-number">5.2.2</span> Missing observations</a></li>
-<li><a class="nav-link" href="#about-non-constant-conditional-matrix-sigma"><span class="header-section-number">5.2.3</span> About non-constant conditional matrix \(\Sigma\)</a></li>
+<li><a class="nav-link" href="#KalmanQML"><span class="header-section-number">5.2.3</span> About non-constant conditional matrix \(\Sigma\)</a></li>
 <li><a class="nav-link" href="#nonlinear"><span class="header-section-number">5.2.4</span> Non-linear models</a></li>
 </ul>
 </li>
@@ -671,7 +673,7 @@ Figure 5.9: Source: Kim and Orphanides (2005).
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-02.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

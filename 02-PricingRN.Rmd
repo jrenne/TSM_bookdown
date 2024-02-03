@@ -115,7 +115,7 @@ where $\alpha_t$ defines the *prices of risk* or *sensitivity* vector. Using $\m
 
 :::{.example name="CCAPM/Power utility case"}
 
-In the CCAPM-power-utility case (see Example \@ref(exm:CCAPM)), we have (Eq. \@ref(eq:powerutilSDF)):
+In the CCAPM-power-utility case (see Def. \@ref(def:CCAPM)), we have (Eq. \@ref(eq:powerutilSDF)):
 $$
 \mathcal{M}_{t,t+1} = \exp(\log \delta + \log q_t + \gamma \log   C_t - \log   q_{t+1} - \gamma  \log   C_{t+1}),
 $$
@@ -134,10 +134,10 @@ $f_{t+1}(w_{t+1})$, with respect to (w.r.t.) some measure $\mu$.
 We define the conditional risk-neutral p.d.f. w.r.t. the conditional historical probability. For that, we employ the Radon-Nikodym derivative $d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t})$:^[Of course, the conditional historical p.d.f. with respect to the conditional risk-neutral (R.N.) p.d.f. is:
 $d_{t+1}(w_{t+1}) = \frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})}$ or $d_{t+1}(w_{t+1}) =
 \frac{\exp(-i_{t})}{\mathcal{M}_{t,t+1}}$.]
-$$
+\begin{equation}
 d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t}) =
-\frac{\mathcal{M}_{t,t+1}(\underline{w_{t+1}})}{\mathbb{E}[\mathcal{M}_{t,t+1}(\underline{w_{t+1}})|\underline{w_t}]},
-$$
+\frac{\mathcal{M}_{t,t+1}(\underline{w_{t+1}})}{\mathbb{E}[\mathcal{M}_{t,t+1}(\underline{w_{t+1}})|\underline{w_t}]},(\#eq:RadonNikodym)
+\end{equation}
 or
 $$
 d^{\mathbb{Q}}_{t+1}(w_{t+1})=
@@ -266,11 +266,11 @@ In the following, we present three ways of specifying an EAPM:
 2. the R.N.-constrained direct modelling (or mixed modelling),
 3. the back modelling.
 
-We focus on the case where $\mathcal{M}_{t,t+1}$ is exponential affine, as in Eq. \@ref(eq:keySDF):
+We focus on the case where $\mathcal{M}_{t,t+1}$ is exponential affine, as in \@ref(eq:keySDF):
 $$
 \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -i_{t} (\underline{w_t}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)]\right\}.
 $$
-Once the short-term rate function $i_{t}(\underline{w_t})$ is specified, we have to specify $\psi_t$, $\alpha_t$, and $\psi^{\mathbb{Q}}_t$, that are linked by Eq. \@ref(eq:transfoPQ).
+Once the short-term rate function $i_{t}(\underline{w_t})$ is specified, we have to specify $\psi_t$, $\alpha_t$, and $\psi^{\mathbb{Q}}_t$, that are linked by \@ref(eq:transfoPQ).
 
 In all approaches, we have to specify the status of the short rate. The short rate $i_{t}$ is a function of $\underline{w_t}$, this function may be known or unknown by the econometrician. It is known in two cases: (a) $i_{t}$ is exogenous ($i_{t}(\underline{w_t})$ does not depend on $\underline{w_t}$) or (b) $i_{t}$ is a component of $w_t$. By contrast, if the function $i_{t} (\underline{w_t})$ is unknown, it has to be specified parametrically:
 $$
@@ -283,14 +283,15 @@ Let us now detail the three steps on which each of the three ways of defining an
 ### The direct modelling {#DirectModeling}
 
 * **Step 1 -- Specification of the historical dynamics**. We choose a parametric family for the conditional historical Log-Laplace transform $\psi_t(u|\underline{w_t})$: $\left\{ \psi_t (u|\underline{w_t} ; \theta_1), \theta_1 \in \Theta_1 \right\}$.
-* **Step 2 -- Specification of the SDF**. Considering the affine specification of as Eq. \@ref(eq:keySDF), that is:
+* **Step 2 -- Specification of the SDF**. Considering the affine specification of as \@ref(eq:keySDF), that is:
 $$
 \mathcal{M}_{t,t+1} (\underline{w_{t+1}}) = \exp\left\{ -i_{t}(\underline{w_t}, \tilde{\theta}) + \alpha'_t(\underline{w_t})w_{t+1} - \psi_t [\alpha_t (w_t)|\underline{w_t} ; \theta_1]\right\},
 $$
 we need to specifiy functions $i_{t}(\underline{w_t}, \tilde{\theta})$ and $\alpha_t(\underline{w_t})$. Assume that $\alpha_t(\underline{w_t})$ belongs to a parametric family: $\left\{ \alpha_t (\underline{w_t} ; \theta_2),\theta_2 \in \Theta_2 \right\}$.
 We then have:
 \begin{eqnarray*}
-\mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) &=& \exp \left\{ - i_{t}
+&&\mathcal{M}_{t,t+1}(\underline{w_{t+1}}, \theta) \\
+&=& \exp \left\{ - i_{t}
 (\underline{w_t}, \tilde{\theta}) + \alpha'_t (\underline{w_t},\theta_2) w_{t+1} - \psi_{t} \left[ \alpha_t (\underline{w_t},
 \theta_2) | \underline{w_t} ; \theta_1 \right] \right\},
 \end{eqnarray*}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  2 FEB 2024 08:22
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  3 FEB 2024 14:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -761,7 +761,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 161.
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
 []\TU/lmr/m/n/12 R: []$[][][][][] [] [] [] [][][][] [] [] [][] [][][][][][][] [] [][][] [] [][][] [] [][][][][][][] [] [][][][][][][] [][] [][][][][][][] [] [][] []
  []
 
@@ -770,22 +770,22 @@ Chapter 1.
 [9
 
 ]
-Overfull \hbox (20.57278pt too wide) in paragraph at lines 275--275
+Overfull \hbox (20.57278pt too wide) in paragraph at lines 277--277
 []\TU/lmr/bx/n/17.28 Laplace Transform and moments/cumulants 
  []
 
 [10] [11]
-Underfull \hbox (badness 2735) in paragraph at lines 359--359
+Underfull \hbox (badness 2735) in paragraph at lines 361--361
 []\TU/lmr/bx/n/17.28 Additional properties of the Laplace
  []
 
 [12]
-Overfull \hbox (6.20522pt too wide) in paragraph at lines 434--436
+Overfull \hbox (6.20522pt too wide) in paragraph at lines 436--438
 \TU/lmr/m/n/12 and since in the second term on the right-hand side $[][][][][][][][][] []
  []
 
 [13]
-Underfull \hbox (badness 1596) in paragraph at lines 499--500
+Underfull \hbox (badness 1596) in paragraph at lines 501--502
 [][]\TU/lmr/bx/n/12 Example 1.8 \TU/lmr/m/n/12 (Quadratic Gaussian process)\TU/lmr/bx/n/12 . []\TU/lmr/m/n/12 Consider vector $[][] []
  []
 
@@ -794,33 +794,33 @@ File: TSM_files/figure-latex/simQVAR-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/simQVAR-1.pdf>
 [15]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 577.
+(Font)              scaled to size 5.0pt on input line 579.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 577.
+(Font)              scaled to size 5.00046pt on input line 579.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 577.
+(Font)              scaled to size 4.99947pt on input line 579.
 [16]
 File: TSM_files/figure-latex/simARG0-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/simARG0-1.pdf>
 [17]
-Underfull \hbox (badness 1721) in paragraph at lines 640--641
+Underfull \hbox (badness 1721) in paragraph at lines 642--643
 []\TU/lmr/m/n/12 One can simulate such processes by using []this web-interface[] (select
  []
 
 
-Underfull \hbox (badness 1132) in paragraph at lines 640--641
+Underfull \hbox (badness 1132) in paragraph at lines 642--643
 \TU/lmr/m/n/12 the “Compound Poisson” panel). Figure []1.3[] makes use of function
  []
 
 File: TSM_files/figure-latex/simCPoisson-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/simCPoisson-1.pdf>
 
-Overfull \hbox (29.73584pt too wide) in alignment at lines 676--676
+Overfull \hbox (29.73584pt too wide) in alignment at lines 678--678
  [][][] []
  []
 
 [18] [19] [20] [21]
-Underfull \hbox (badness 1496) in paragraph at lines 819--821
+Underfull \hbox (badness 1496) in paragraph at lines 821--823
 []$[]$$[]$\TU/lmr/m/n/12 , where $[][]$ and $[][]$ are independent
  []
 
@@ -828,7 +828,7 @@ Underfull \hbox (badness 1496) in paragraph at lines 819--821
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [23] [24] [25] [26] [27] [28]
-Overfull \hbox (27.55162pt too wide) detected at line 1117
+Overfull \hbox (27.55162pt too wide) detected at line 1119
 [][] [] [] [] [] [] [] [] [] []
  []
 
@@ -836,12 +836,12 @@ Overfull \hbox (27.55162pt too wide) detected at line 1117
 File: TSM_files/figure-latex/CDR-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/CDR-1.pdf>
 [30] [31]
-Overfull \hbox (22.67738pt too wide) in paragraph at lines 1210--1212
+Overfull \hbox (22.67738pt too wide) in paragraph at lines 1212--1214
 \TU/lmr/m/n/12 This method is easily extended to price payoffs of the form $[][][][][][][] [][][][][][][]$,
  []
 
 
-Underfull \hbox (badness 3058) in paragraph at lines 1214--1214
+Underfull \hbox (badness 3058) in paragraph at lines 1216--1216
 []\TU/lmr/bx/n/17.28 VAR representation and conditional
  []
 
@@ -854,32 +854,32 @@ Overfull \hbox (14.20688pt too wide) has occurred while \output is active
  []
 
 [35] [36]
-Underfull \hbox (badness 10000) in paragraph at lines 1429--1430
+Underfull \hbox (badness 10000) in paragraph at lines 1432--1433
 [][]\TU/lmr/bx/n/12 Proposition 1.2 \TU/lmr/m/n/12 (Quadratic Gaussian process)\TU/lmr/bx/n/12 . []\TU/lmr/m/it/12 Consider vector
  []
 
 [37] [38] [39]
-Overfull \hbox (24.215pt too wide) detected at line 1568
+Overfull \hbox (24.215pt too wide) detected at line 1571
 []
  []
 
 
-Underfull \hbox (badness 1688) in paragraph at lines 1581--1583
+Underfull \hbox (badness 1688) in paragraph at lines 1584--1586
 [][]\TU/lmr/bx/n/12 Proposition 1.5 \TU/lmr/m/n/12 (Reverse-order multi-horizon Laplace transform)\TU/lmr/bx/n/12 . []\TU/lmr/m/it/12 If
  []
 
 [40]
-Overfull \hbox (18.00252pt too wide) detected at line 1647
+Overfull \hbox (18.00252pt too wide) detected at line 1650
 [][][][] [] [] [][] [] []
  []
 
 [41]
-Overfull \hbox (5.84735pt too wide) in alignment at lines 1677--1680
+Overfull \hbox (5.84735pt too wide) in alignment at lines 1680--1683
  [][][] []
  []
 
 
-Overfull \hbox (36.39703pt too wide) in alignment at lines 1682--1688
+Overfull \hbox (36.39703pt too wide) in alignment at lines 1685--1691
  [][][] []
  []
 
@@ -887,22 +887,13 @@ Overfull \hbox (36.39703pt too wide) in alignment at lines 1682--1688
 Chapter 2.
 [45
 
-] [46] [47]
-
-LaTeX Warning: Reference `exm:CCAPM' on page 48 undefined on input line 1906.
-
-[48] [49] [50]
-Underfull \hbox (badness 1590) in paragraph at lines 2023--2023
+] [46] [47] [48] [49] [50]
+Underfull \hbox (badness 1590) in paragraph at lines 2026--2026
 []\TU/lmr/bx/n/17.28 Typology of econometric asset-pricing
  []
 
 [51]
-Overfull \hbox (51.09708pt too wide) in alignment at lines 2090--2094
- [][][] []
- []
-
-
-Underfull \hbox (badness 1067) in paragraph at lines 2102--2104
+Underfull \hbox (badness 1067) in paragraph at lines 2106--2108
 \TU/lmr/m/n/12 (Euler equation). Or, in the case of interest rates with vari-
  []
 
@@ -914,270 +905,223 @@ Chapter 3.
 File: TSM_files/figure-latex/CSregressions-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/CSregressions-1.pdf>
 
-Overfull \hbox (57.5932pt too wide) in paragraph at lines 2237--2240
+Overfull \hbox (57.5932pt too wide) in paragraph at lines 2239--2242
 []\TU/lmr/m/n/12 \begin{figure} []
  []
 
-[57] [58] [59] [60]
-
-LaTeX Warning: Reference `exm:Gaussian' on page 61 undefined on input line 2329.
-
-
-LaTeX Warning: Reference `exm:Gaussian' on page 61 undefined on input line 2345.
-
-[61]
+[57] [58] [59] [60] [61]
 File: TSM_files/figure-latex/fredKW-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/fredKW-1.pdf>
-[62]
 File: figures/AngPiazzesi1.pdf Graphic file (type pdf)
 <use figures/AngPiazzesi1.pdf>
-[63]
+[62] [63] [64]
 File: figures/JPS_IRF.pdf Graphic file (type pdf)
 <use figures/JPS_IRF.pdf>
-[64]
+[65]
 File: figures/Ang_Boivin_loadings.png Graphic file (type bmp)
 <figures/Ang_Boivin_loadings.png>
 
-Underfull \hbox (badness 4647) in paragraph at lines 2488--2488
+Underfull \hbox (badness 4647) in paragraph at lines 2492--2492
 []\TU/lmr/bx/n/17.28 Non-Negative Affine Term Structure
  []
 
-[65] [66] [67]
-Overfull \hbox (6.9997pt too wide) detected at line 2542
+[66] [67] [68]
+Overfull \hbox (4.45569pt too wide) detected at line 2563
 [] [] [] [] [] [] [][] [] [][][][]
  []
 
-[68]
+[69]
 File: TSM_files/figure-latex/WuXia-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/WuXia-1.pdf>
-[69] [70]
-
-LaTeX Warning: Reference `lemma:mass' on page 71 undefined on input line 2623.
-
-[71]
-
-LaTeX Warning: Reference `EstimationKF' on page 72 undefined on input line 2639.
-
+File: TSM_files/figure-latex/Mills-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/Mills-1.pdf>
+[70] [71] [72] [73]
 File: figures/Figure_fit_ZARG.pdf Graphic file (type pdf)
 <use figures/Figure_fit_ZARG.pdf>
 File: figures/Figure_LiftOff.pdf Graphic file (type pdf)
 <use figures/Figure_LiftOff.pdf>
-[72] [73] [74
+[74] [75] [76
 
 ]
 Chapter 4.
-[75] [76]
-Overfull \hbox (300.24039pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 4.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 77
- []
-
 [77] [78]
 Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 79
  []
 
-[79]
-File: TSM_files/figure-latex/RRAIESCCAPM-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/RRAIESCCAPM-1.pdf>
-[80]
+[79] [80]
 Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 81
  []
 
 [81]
-
-LaTeX Warning: Reference `tab:Campbell1' on page 82 undefined on input line 2898.
-
-
-LaTeX Warning: Reference `tab:Campbell1' on page 82 undefined on input line 2899.
-
-File: figures/table_campbell1999_eqpuzzle.png Graphic file (type bmp)
-<figures/table_campbell1999_eqpuzzle.png>
+File: TSM_files/figure-latex/RRAIESCCAPM-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/RRAIESCCAPM-1.pdf>
 [82]
-
-LaTeX Warning: Reference `exm:IESsmooth' on page 83 undefined on input line 2919.
-
-File: TSM_files/figure-latex/IESsmooth-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/IESsmooth-1.pdf>
-
 Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 83
  []
 
-[83] [84]
-
-LaTeX Warning: Reference `eq:pricingcapm' on page 85 undefined on input line 2955.
-
+[83]
+File: figures/table_campbell1999_eqpuzzle.png Graphic file (type bmp)
+<figures/table_campbell1999_eqpuzzle.png>
+[84]
+File: TSM_files/figure-latex/IESsmooth-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/IESsmooth-1.pdf>
 
 Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 85
  []
 
-[85]
-File: figures/tableHansenSingleton82A.png Graphic file (type bmp)
-<figures/tableHansenSingleton82A.png>
-[86]
-File: TSM_files/figure-latex/fredCorrel-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/fredCorrel-1.pdf>
-
+[85] [86]
 Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 87
  []
 
-[87] [88]
-Overfull \hbox (26.89531pt too wide) in alignment at lines 3041--3046
- [][][] []
- []
-
+[87]
+File: figures/tableHansenSingleton82A.png Graphic file (type bmp)
+<figures/tableHansenSingleton82A.png>
+[88]
+File: TSM_files/figure-latex/fredCorrel-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/fredCorrel-1.pdf>
 
 Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 89
  []
 
 [89] [90]
-File: TSM_files/figure-latex/TSMCCAPM-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/TSMCCAPM-1.pdf>
+Overfull \hbox (26.89531pt too wide) in alignment at lines 3063--3068
+ [][][] []
+ []
+
 
 Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 91
  []
 
-[91]
-Underfull \hbox (badness 1142) in paragraph at lines 3148--3149
-[]\TU/lmr/m/n/12 In the following lines of code, we use Proposition []1.5[] (i.e. function
- []
+[91] [92]
+File: TSM_files/figure-latex/TSMCCAPM-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/TSMCCAPM-1.pdf>
 
-[92]
-File: TSM_files/figure-latex/TSMCCAPM2-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/TSMCCAPM2-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5847) has occurred while \output is active []
 
 
 Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 93
  []
 
-[93]
-Overfull \hbox (27.40201pt too wide) detected at line 3210
+[93] [94]
+Underfull \hbox (badness 1142) in paragraph at lines 3173--3174
+[]\TU/lmr/m/n/12 In the following lines of code, we use Proposition []1.5[] (i.e. function
+ []
+
+
+Overfull \hbox (300.24039pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/12 4.1.  CONSUMPTION-BASED CAPITAL ASSET PRICING MODEL (CCAPM) AND STOCHASTIC DISCOUNT FACTOR (SDF) \TU/lmr/m/n/12 95
+ []
+
+[95]
+File: TSM_files/figure-latex/TSMCCAPM2-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/TSMCCAPM2-1.pdf>
+
+Overfull \hbox (27.40201pt too wide) detected at line 3237
 [] [] [] [] [] [] [] [] [] []
  []
 
-
-Underfull \vbox (badness 1259) has occurred while \output is active []
-
-[94] [95]
-Overfull \hbox (61.75157pt too wide) in alignment at lines 3253--3253
+[96] [97]
+Overfull \hbox (61.75157pt too wide) in alignment at lines 3280--3280
  [][][] []
  []
 
-[96]
+[98]
 File: TSM_files/figure-latex/Habits1-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Habits1-1.pdf>
-[97] [98] [99]
+[99]
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 100 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [100] [101]
-File: TSM_files/figure-latex/EZresolution-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/EZresolution-1.pdf>
-
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 102 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [102] [103]
-Overfull \hbox (19.25484pt too wide) in alignment at lines 3510--3513
- [][][] []
- []
-
-
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 104 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [104]
-Overfull \hbox (6.85098pt too wide) in alignment at lines 3525--3528
+File: TSM_files/figure-latex/EZresolution-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/EZresolution-1.pdf>
+[105]
+Overfull \hbox (19.25484pt too wide) in alignment at lines 3537--3540
  [][][] []
  []
 
-[105]
-File: TSM_files/figure-latex/EZresolution2-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/EZresolution2-1.pdf>
 
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 106 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [106] [107]
+File: TSM_files/figure-latex/EZresolution2-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/EZresolution2-1.pdf>
+
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 108 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
-[108]
-File: TSM_files/figure-latex/SPF10yrStock-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/SPF10yrStock-1.pdf>
-[109]
+[108] [109]
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 110 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [110]
-File: figures/table_BY2.png Graphic file (type bmp)
-<figures/table_BY2.png>
+File: TSM_files/figure-latex/SPF10yrStock-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/SPF10yrStock-1.pdf>
 [111]
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 112 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [112]
-File: figures/table_BY4.png Graphic file (type bmp)
-<figures/table_BY4.png>
-
-LaTeX Warning: Reference `TSM' on page 113 undefined on input line 3755.
-
+File: figures/table_BY2.png Graphic file (type bmp)
+<figures/table_BY2.png>
 [113]
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 114 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
-[114] [115]
+[114]
+File: figures/table_BY4.png Graphic file (type bmp)
+<figures/table_BY4.png>
+[115]
+Overfull \hbox (3.85217pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 116 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
+ []
+
+[116] [117]
 File: TSM_files/figure-latex/BS2013-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/BS2013-1.pdf>
 Missing character: There is no 𝜌 (U+1D70C) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no 𝜋 (U+1D70B) in font [lmroman12-regular]:mapping=tex-text;!
 
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 116 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
+\TU/lmr/m/n/12 118 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
-[116] [117]
-Underfull \hbox (badness 1558) in paragraph at lines 3829--3829
+[118] [119]
+Underfull \hbox (badness 1558) in paragraph at lines 3856--3856
 []\TU/lmr/bx/n/17.28 Preferred-habitat model of the term-
  []
 
 
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 118 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
- []
-
-[118]
-Overfull \hbox (115.64825pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 4.3.  PREFERRED-HABITAT MODEL OF THE TERM-STRUCTURE OF INTEREST RATE \TU/lmr/m/n/12 119
- []
-
-[119]
-Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 120 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [120]
-Overfull \hbox (38.81812pt too wide) in alignment at lines 3961--3963
- [][][] []
- []
-
-
 Overfull \hbox (115.64825pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.3.  PREFERRED-HABITAT MODEL OF THE TERM-STRUCTURE OF INTEREST RATE \TU/lmr/m/n/12 121
  []
@@ -1188,29 +1132,44 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [122]
+Overfull \hbox (38.81812pt too wide) in alignment at lines 3988--3990
+ [][][] []
+ []
+
+
 Overfull \hbox (115.64825pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/12 4.3.  PREFERRED-HABITAT MODEL OF THE TERM-STRUCTURE OF INTEREST RATE \TU/lmr/m/n/12 123
  []
 
 [123]
-File: TSM_files/figure-latex/VV1-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/VV1-1.pdf>
-
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 124 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
 [124]
+Overfull \hbox (115.64825pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/12 4.3.  PREFERRED-HABITAT MODEL OF THE TERM-STRUCTURE OF INTEREST RATE \TU/lmr/m/n/12 125
+ []
+
+[125]
+File: TSM_files/figure-latex/VV1-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/VV1-1.pdf>
+
+Overfull \hbox (3.85217pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 126 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
+ []
+
+[126]
 File: TSM_files/figure-latex/VV2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/VV2-1.pdf>
 File: TSM_files/figure-latex/VV3-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/VV3-1.pdf>
 
 Overfull \hbox (115.64825pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/12 4.3.  PREFERRED-HABITAT MODEL OF THE TERM-STRUCTURE OF INTEREST RATE \TU/lmr/m/n/12 125
+\TU/lmr/m/sl/12 4.3.  PREFERRED-HABITAT MODEL OF THE TERM-STRUCTURE OF INTEREST RATE \TU/lmr/m/n/12 127
  []
 
-[125]
+[127]
 File: TSM_files/figure-latex/VV4-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/VV4-1.pdf>
 
@@ -1218,210 +1177,207 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 126 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
+\TU/lmr/m/n/12 128 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
-[126]
-Overfull \hbox (53.7646pt too wide) detected at line 4110
+[128]
+Overfull \hbox (53.7646pt too wide) detected at line 4137
 [][][][][] [][][][][][][][] [][][][][][][][][] [] [][][][][][][] [][][][][][][] [] [][][] [][][][][][][][][][]
  []
 
-[127]
-Overfull \hbox (83.59726pt too wide) detected at line 4122
+[129]
+Overfull \hbox (83.59726pt too wide) detected at line 4149
 [][] [][] [] [][][][][][] [] [][][][][][][][][][] [] []
  []
 
 
 Overfull \hbox (3.85217pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 128 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
+\TU/lmr/m/n/12 130 \TU/lmr/m/sl/12 CHAPTER 4.  A DETOUR THROUGH STRUCTURAL APPROACHES
  []
 
-[128]
+[130]
 Chapter 5.
-[129
+[131
 
-] [130] [131] [132]
+] [132] [133] [134]
 File: TSM_files/figure-latex/illusKF-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/illusKF-1.pdf>
-[133] [134]
+[135] [136]
 File: TSM_files/figure-latex/Kalmansimul-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalmansimul-1.pdf>
 File: TSM_files/figure-latex/Kalman2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman2-1.pdf>
-[135] [136]
+[137] [138]
 File: TSM_files/figure-latex/Kalman5-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman5-1.pdf>
 File: TSM_files/figure-latex/Kalman6-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman6-1.pdf>
-[137] [138] [139] [140] [141] [142] [143] [144] [145]
+[139] [140] [141] [142] [143] [144] [145] [146] [147]
 File: figures/Fig-SNDE.pdf Graphic file (type pdf)
 <use figures/Fig-SNDE.pdf>
 File: TSM_files/figure-latex/persist1-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/persist1-1.pdf>
 File: TSM_files/figure-latex/persist2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/persist2-1.pdf>
-[146] [147] [148] [149]
+[148] [149] [150] [151]
 File: figures/Fig-SNDE.pdf Graphic file (type pdf)
 <use figures/Fig-SNDE.pdf>
-[150]
+[152]
 Chapter 6.
-[151
+[153
 
 ]
-Overfull \hbox (17.21101pt too wide) in paragraph at lines 4780--4782
+Overfull \hbox (17.21101pt too wide) in paragraph at lines 4809--4811
 []\TU/lmr/m/n/12 The price at $[]$ of $[][] [] [][]$ is zero. Therefore: $[][][][][][] [] [] [][][][][] []
  []
 
 
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 152 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
- []
-
-[152] [153]
-Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 154 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[154]
-Underfull \hbox (badness 1655) in paragraph at lines 4896--4897
-[]\TU/lmr/m/n/12 In the case of a \TU/lmr/bx/n/12 nonstorable commodity\TU/lmr/m/n/12 , there is no
- []
-
-
-Underfull \hbox (badness 1117) in paragraph at lines 4896--4897
-\TU/lmr/m/n/12 convenience yield. If, moreover $[][]$ deterministic, $[][] []
- []
-
-
-Underfull \hbox (badness 1259) in paragraph at lines 4896--4897
-[][] [] [][][][][][]$\TU/lmr/m/n/12 , but since [] is not valid we do not
- []
-
-
-Underfull \hbox (badness 1226) in paragraph at lines 4896--4897
-\TU/lmr/m/n/12 have $[][] [] [][][][] [][][][][][][][]$ and therefore we do not have
- []
-
-[155]
+[154] [155]
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 156 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[156] [157]
+[156]
+Underfull \hbox (badness 1655) in paragraph at lines 4925--4926
+[]\TU/lmr/m/n/12 In the case of a \TU/lmr/bx/n/12 nonstorable commodity\TU/lmr/m/n/12 , there is no
+ []
+
+
+Underfull \hbox (badness 1117) in paragraph at lines 4925--4926
+\TU/lmr/m/n/12 convenience yield. If, moreover $[][]$ deterministic, $[][] []
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 4925--4926
+[][] [] [][][][][][]$\TU/lmr/m/n/12 , but since [] is not valid we do not
+ []
+
+
+Underfull \hbox (badness 1226) in paragraph at lines 4925--4926
+\TU/lmr/m/n/12 have $[][] [] [][][][] [][][][][][][][]$ and therefore we do not have
+ []
+
+[157]
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 158 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[158]
-File: figures/Tab2_Schwartz.pdf Graphic file (type pdf)
-<use figures/Tab2_Schwartz.pdf>
-[159]
+[158] [159]
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 160 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[160] [161]
-Underfull \hbox (badness 1331) in paragraph at lines 5153--5154
-[]\TU/lmr/m/n/12 Eq. [] also shows that we have $[][][][] [] [][][][] [][] []
- []
-
-
+[160]
+File: figures/Tab2_Schwartz.pdf Graphic file (type pdf)
+<use figures/Tab2_Schwartz.pdf>
+[161]
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 162 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
 [162] [163]
+Underfull \hbox (badness 1331) in paragraph at lines 5182--5183
+[]\TU/lmr/m/n/12 Eq. [] also shows that we have $[][][][] [] [][][][] [][] []
+ []
+
+
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 164 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[164
+[164] [165]
+Overfull \hbox (213.27747pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 166 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
+ []
+
+[166
 
 ]
 Chapter 7.
-[165]
-Underfull \hbox (badness 1622) in paragraph at lines 5256--5257
+[167]
+Underfull \hbox (badness 1622) in paragraph at lines 5285--5286
 []\TU/lmr/m/n/12 Hypothesis []7.3[] also implies that the short-term risk-free rate $[][] []
  []
 
 File: figures/Schema0.pdf Graphic file (type pdf)
 <use figures/Schema0.pdf>
-[166] [167] [168] [169] [170] [171] [172]
-Overfull \hbox (43.24458pt too wide) in paragraph at lines 5494--5495
+[168] [169] [170] [171] [172] [173] [174]
+Overfull \hbox (43.24458pt too wide) in paragraph at lines 5523--5524
 []\TU/lmr/m/n/12 The $[]$ conditional density of $[][]$ given $[][]$, namely $[][][][][][][][][][][][][][][][][][] [][][]$,
  []
 
 
-Overfull \hbox (17.59521pt too wide) in paragraph at lines 5494--5495
+Overfull \hbox (17.59521pt too wide) in paragraph at lines 5523--5524
 \TU/lmr/m/n/12 tional to $[][][][][][] [][][][][][][][][][][][][][][][][][][][] [][][] [][][][][][][][][][][][] [][][] [][][]$.
  []
 
-[173] [174] [175]
+[175] [176] [177]
 File: TSM_files/figure-latex/MRintensity-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/MRintensity-1.pdf>
-[176] [177] [178]
+[178] [179] [180]
 File: figures/IBOROIS.pdf Graphic file (type pdf)
 <use figures/IBOROIS.pdf>
-[179] [180]
+[181] [182]
 File: figures/Schema2.pdf Graphic file (type pdf)
 <use figures/Schema2.pdf>
-[181]
+[183]
 File: figures/schema_VARG.pdf Graphic file (type pdf)
 <use figures/schema_VARG.pdf>
-[182] [183] [184]
+[184] [185] [186]
 File: figures/FigureCDS.pdf Graphic file (type pdf)
 <use figures/FigureCDS.pdf>
 File: figures/FigureCDSFX.pdf Graphic file (type pdf)
 <use figures/FigureCDSFX.pdf>
-[185] [186] [187] [188]
+[187] [188] [189] [190]
 File: figures/schemaDD.pdf Graphic file (type pdf)
 <use figures/schemaDD.pdf>
-[189]
+[191]
 File: figures/CDOs.png Graphic file (type bmp)
 <figures/CDOs.png>
-[190] [191] [192]
+[192] [193] [194]
 File: TSM_files/figure-latex/simulation2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/simulation2-1.pdf>
-[193]
-Overfull \hbox (116.74762pt too wide) in paragraph at lines 6158--6158
-[]\TU/lmtt/m/n/12 ##            [,1]      [,2]       [,3]       [,4]      [,5]       [,6]       [,7][] 
+[195]
+Overfull \hbox (116.74762pt too wide) in paragraph at lines 6187--6187
+[]\TU/lmtt/m/n/12 ##            [,1]       [,2]       [,3]      [,4]       [,5]       [,6]      [,7][] 
  []
 
 
-Overfull \hbox (116.66394pt too wide) in paragraph at lines 6158--6158
-[]\TU/lmtt/m/n/12 ## [1,] 0.92310682 0.8573348 0.80065355 0.75148107 0.7085349 0.67076637 0.63731581[] 
+Overfull \hbox (116.62794pt too wide) in paragraph at lines 6187--6187
+[]\TU/lmtt/m/n/12 ## [1,] 0.92632159 0.86301651 0.80823189 0.7605158 0.71868158 0.68175278 0.6489253[] 
  []
 
 
-Overfull \hbox (116.65195pt too wide) in paragraph at lines 6158--6158
-[]\TU/lmtt/m/n/12 ## [2,] 0.08001032 0.0769634 0.07410898 0.07142731 0.0689112 0.06655573 0.06435571[] 
+Overfull \hbox (116.57996pt too wide) in paragraph at lines 6187--6187
+[]\TU/lmtt/m/n/12 ## [2,] 0.07653382 0.07366073 0.07096876 0.0684396 0.06606738 0.06384803 0.0617768[] 
  []
 
-[194]
+[196]
 File: TSM_files/figure-latex/chartspreads-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/chartspreads-1.pdf>
-[195]
+[197]
 File: TSM_files/figure-latex/loaddataset-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/loaddataset-1.pdf>
-[196]
+[198]
 Chapter 8.
-(./TSM.bbl [197
+(./TSM.bbl [199
 
-] [198
+] [200
 
-] [199] [200]
+] [201] [202]
 Underfull \hbox (badness 2027) in paragraph at lines 135--138
 []\TU/lmr/m/n/12 Duan, J.-C. and Simonato, J.-G. (1999).  Estimating and Testing
  []
 
-[201] [202] [203] [204] [205]) [206] (./TSM.aux)
+[203] [204] [205] [206] [207]) [208] (./TSM.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-
-LaTeX Warning: There were undefined references.
-
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1429,12 +1385,12 @@ Package rerunfilecheck Info: File `TSM.out' has not changed.
 (rerunfilecheck)             Checksum: C72B7DEB606516D4A136559348F79D85;9723.
  ) 
 Here is how much of TeX's memory you used:
- 18784 strings out of 476884
- 354288 string characters out of 5804569
- 2009627 words of memory out of 5000000
- 40381 multiletter control sequences out of 15000+600000
+ 18791 strings out of 476884
+ 354631 string characters out of 5804569
+ 2010627 words of memory out of 5000000
+ 40387 multiletter control sequences out of 15000+600000
  565625 words of font info for 113 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  90i,19n,120p,1046b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TSM.pdf (206 pages).
+Output written on TSM.pdf (208 pages).

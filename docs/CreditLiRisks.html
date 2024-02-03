@@ -185,7 +185,7 @@ B_{t,h}^d = \mathbb{E}_t^{\mathbb{Q}}\left[\exp\left(-\tilde{i}_t-\dots-\tilde{i
 \end{equation}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-28" class="proof"><em>Proof</em>. </span>According to Eq. <a href="PandQ.html#eq:fQfP">(2.5)</a>:
+<p><span id="unlabeled-div-28" class="proof"><em>Proof</em>. </span>According to <a href="PandQ.html#eq:fQfP">(2.6)</a>:
 <span class="math display" id="eq:aaq1">\[\begin{equation}
 f^{\mathbb{Q}}(d_t,y_t|d_{t-1},y_{t-1}) = \exp(i_{t-1})\mathcal{M}_{t-1,t} f^{\mathbb{P}}(d_t,y_t|d_{t-1},y_{t-1}).\tag{7.5}
 \end{equation}\]</span>
@@ -224,7 +224,7 @@ Using <a href="CreditLiRisks.html#eq:lambdaPQ">(7.2)</a> in <a href="CreditLiRis
 <p>Although <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span> intensities are the same functions of <span class="math inline">\(y_t\)</span> and <span class="math inline">\(y_{t-1}\)</span>, their historical and risk-neutral dynamics are in general different since <span class="math inline">\(y_t\)</span>’s <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span> dynamics are different.</p>
 </blockquote>
 <blockquote>
-<p>Eq. <a href="CreditLiRisks.html#eq:standardPriceCredit3">(7.4)</a> is reminiscent of Eq. <a href="ChapterAffine.html#eq:stdbond">(1.10)</a>, where the risk-free short-term rate <span class="math inline">\(i_t\)</span> is replaced by the <em>credit-adjusted short-term rate</em> <span class="math inline">\(\tilde{i}_t\)</span>.</p>
+<p>Eq. <a href="CreditLiRisks.html#eq:standardPriceCredit3">(7.4)</a> is reminiscent of <a href="ChapterAffine.html#eq:stdbond">(1.10)</a>, where the risk-free short-term rate <span class="math inline">\(i_t\)</span> is replaced by the <em>credit-adjusted short-term rate</em> <span class="math inline">\(\tilde{i}_t\)</span>.</p>
 </blockquote>
 <p>Importantly, if both <span class="math inline">\(i_t\)</span> and <span class="math inline">\(\lambda_t\)</span> are affine in <span class="math inline">\(y_t\)</span>, where the latter is an affine process, then bond prices are easily computed by means of recursive formulas (as was the case in the context of <a href="ChapterAffine.html#eq:stdbond">(1.10)</a>, see Example <a href="ChapterAffine.html#exm:nominalBth">1.18</a>.</p>
 <p>In this case, <span class="math inline">\(B_{t,h}^d\)</span> is exponential affine in <span class="math inline">\(y_t\)</span>, that is, it is of the form:
@@ -570,11 +570,11 @@ Figure 7.2: Simulation of an process following <span class="math inline">\(x_{t}
 R^{IBOR}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( i_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{j,\ell, t+i} \right) \right] \right\}.\tag{7.18}
 \end{equation}\]</span>
 Note that the liquidity intensity refers to the lending bank (<span class="math inline">\(j\)</span>) and the default intensity relates to the borrowing bank (<span class="math inline">\(e\)</span>).</p>
-<p>By constrast, the Overnight-Index Swap (OIS) rate satisfies:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The OIS is an interest-rate swap where the floating rate is an overnight-rate reference (EONIA in the euro area). At maturity, the payoff received by the fixed-rate payer is the difference between: (a) the notional (&lt;span class="math inline"&gt;\(W\)&lt;/span&gt;, say) inflated with the date-&lt;span class="math inline"&gt;\(t\)&lt;/span&gt; OIS (fixed) rate (i.e. &lt;span class="math inline"&gt;\(W\exp\{h i_{t,h}^{OIS}\}\)&lt;/span&gt;) and (b) the same notional capitalized with the realized short-term rates (i.e. &lt;span class="math inline"&gt;\(W\exp\{i_{t} + \ldots + i_{t+h-1}\}\)&lt;/span&gt;).&lt;/p&gt;'><sup>17</sup></a>
+<p>By constrast, the Overnight-Index Swap (OIS) rate satisfies:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The OIS is an interest-rate swap where the floating rate is an overnight-rate reference (EONIA in the euro area). At maturity, the payoff received by the fixed-rate payer is the difference between: (a) the notional (&lt;span class="math inline"&gt;\(W\)&lt;/span&gt;, say) inflated with the date-&lt;span class="math inline"&gt;\(t\)&lt;/span&gt; OIS (fixed) rate (i.e. &lt;span class="math inline"&gt;\(W\exp\{h i_{t,h}^{OIS}\}\)&lt;/span&gt;) and (b) the same notional capitalized with the realized short-term rates (i.e. &lt;span class="math inline"&gt;\(W\exp\{i_{t} + \ldots + i_{t+h-1}\}\)&lt;/span&gt;).&lt;/p&gt;'><sup>18</sup></a>
 <span class="math display" id="eq:OIS">\[\begin{equation}
 R^{OIS}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left( - \sum_{i=1}^{h}  i_{t+i-1} \right) \right\}.\tag{7.19}
 \end{equation}\]</span></p>
-<p>Assuming that <span class="math inline">\(i_t\)</span>, the short-term risk-free rate (i.e., the reference rate of the OIS, EONIA here) is independent from the intensities and under the homogeneity assumption, we obtain:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is assumed here that the overnight interbank market preserves the lending bank from (i) liquidity and (ii) credit risk. The rationale behind that is twofold: (a) By rolling its cash on the overnight market (at the EONIA rate), a bank is not exposed to the risk of having to liquidate longer-term investments upon the realization of the liquidity shock; (b) while the EONIA is an unsecured-transaction rate, the extremely-short maturity of these transactions substantially reduces the credit-risk exposure of the lending bank.&lt;/p&gt;"><sup>18</sup></a>
+<p>Assuming that <span class="math inline">\(i_t\)</span>, the short-term risk-free rate (i.e., the reference rate of the OIS, EONIA here) is independent from the intensities and under the homogeneity assumption, we obtain:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is assumed here that the overnight interbank market preserves the lending bank from (i) liquidity and (ii) credit risk. The rationale behind that is twofold: (a) By rolling its cash on the overnight market (at the EONIA rate), a bank is not exposed to the risk of having to liquidate longer-term investments upon the realization of the liquidity shock; (b) while the EONIA is an unsecured-transaction rate, the extremely-short maturity of these transactions substantially reduces the credit-risk exposure of the lending bank.&lt;/p&gt;"><sup>19</sup></a>
 <span class="math display">\[
 R^{IBOR}_{t,h} - R^{OIS}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( \widetilde{\lambda}_{c, t+i} + \widetilde{\lambda}_{\ell, t+i} \right) \right] \right\}.
 \]</span></p>
@@ -702,7 +702,7 @@ i_{t}(\underline{w_{t}}) = \xi_0 + \xi_1 ' w_{t}.
 \varphi^{\mathbb{Q}}_{w, t-1} (u_w) &amp;=&amp; \mathbb{E}^{\mathbb{Q}} \left[\exp( u_w ' w_t )   |   \underline{w_{t-1}} \right] \nonumber \\
 &amp;=&amp; \exp \left[ a^{\mathbb{Q}}_{w} (u_{w}) ' w_{t-1} + b^{\mathbb{Q}}_{w} (u_{w}) \right],\tag{7.24}
 \end{eqnarray}\]</span>
-where, using Eq. <a href="PandQ.html#eq:transfoPQ">(2.7)</a>:
+where, using <a href="PandQ.html#eq:transfoPQ">(2.8)</a>:
 <span class="math display" id="eq:aQbQ">\[\begin{equation}
 \left\{
 \begin{array}{ccl}
@@ -839,7 +839,7 @@ where:
 &amp;&amp; \hspace{7em} - \Psi^{\mathbb{Q}}_{(t, i)} \left(\chi - a_e, u \widetilde{e}_{\delta} - \xi_1 , u_s - a_w \right) \\
 &amp;&amp; \hspace{7em} + \Psi^{\mathbb{Q}}_{(t, i)} \left(\chi - a_e, u \widetilde{e}_{\delta} - \xi_1 , u \widetilde{e}_{\delta} + u_s - a_w \right) \Big] ,
 \end{eqnarray*}\]</span>
-and where <span class="math inline">\(\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u_2 , u_1 \right)\)</span> is given in Eq. <a href="CreditLiRisks.html#eq:ZCBRFV3">(7.30)</a>.</p>
+and where <span class="math inline">\(\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u_2 , u_1 \right)\)</span> is given in <a href="CreditLiRisks.html#eq:ZCBRFV3">(7.30)</a>.</p>
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-34" class="proof"><em>Proof</em>. </span>See Online Appendix A.4 of <span class="citation">Alain Monfort et al. (<a href="references.html#ref-Monfort_Pegoraro_Renne_Roussellet_2021">2021</a>)</span>. The proof notably makes use of Lemma <a href="ChapterAffine.html#lem:lemPetitLemme">1.2</a> (Subsection <a href="ChapterAffine.html#AffineLaplace">1.3</a>).</p>
@@ -864,7 +864,7 @@ and where <span class="math inline">\(\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u
 <span class="math display" id="eq:ndistrinew">\[\begin{eqnarray}
 n^s_{t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &amp;\sim&amp; \mathcal{P}oisson(\beta y_{t+1}+c n^s_{t}),\tag{7.37}
 \end{eqnarray}\]</span>
-where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>. Vector <span class="math inline">\((y_t,x_t)'\)</span> follows a VARG dynamics (Eq. <a href="TSModels.html#eq:VARG">(3.15)</a>) that admits the following VAR representation (using Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>):
+where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>. Vector <span class="math inline">\((y_t,x_t)'\)</span> follows a VARG dynamics (Eq. <a href="TSModels.html#eq:VARG">(3.16)</a>) that admits the following VAR representation (using Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>):
 <span class="math display" id="eq:systemF12">\[\begin{equation}
 \left\{
 \begin{array}{ccl}
@@ -1094,12 +1094,12 @@ Figure 7.10: This plots shows simulated paths for <span class="math inline">\(z_
 <span><span class="va">t.max.lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>, <span class="co">#approximate values of the conditional expect. for date t</span></span>
 <span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##           [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.9397293 0.88689582 0.84025256 0.79878352 0.76164911 0.72816430
-## [2,] 0.0621634 0.06001388 0.05801759 0.05616633 0.05445386 0.05287143
+<pre><code>##            [,1]       [,2]      [,3]       [,4]       [,5]       [,6]
+## [1,] 0.96287834 0.92883650 0.8973928 0.86815987 0.84082043 0.81511841
+## [2,] 0.03782821 0.03691128 0.0360872 0.03534485 0.03467543 0.03407031
 ##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.69777099 0.67001295 0.64451535 0.62096849
-## [2,] 0.05140919 0.05005728 0.04880629 0.04764749</code></pre>
+## [1,] 0.79084595 0.76783255 0.74593696 0.72504115
+## [2,] 0.03352173 0.03302295 0.03256824 0.03215269</code></pre>
 <p>The last two lines respectively give, for the date featuring the highest <span class="math inline">\(\lambda_t\)</span>, the term structures of the bond prices and of associated yields-to-maturity.</p>
 <p>Let us now compute credit-risk-free bond prices. This is obtained by taking <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=0\)</span> (so that <span class="math inline">\(\lambda_t=0\)</span>):</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -1130,7 +1130,8 @@ Figure 7.11: Term structures of risk-free yields (in red), and credit-risky yiel
 <span><span class="va">Xt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span>,<span class="fl">1</span>,<span class="va">t</span><span class="op">]</span>,ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="co"># state vector on that date</span></span>
 <span></span>
 <span><span class="co"># Simulate trajectories starting from Xt:</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">simul.X</span><span class="op">(</span><span class="va">Phi_x</span>,<span class="va">Mu_x</span>,<span class="va">Sigma_x</span>,nb.periods<span class="op">=</span><span class="va">H</span>,X0 <span class="op">=</span> <span class="va">Xt</span>,nb.replics <span class="op">=</span> <span class="va">nb.replics</span><span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">simul.X</span><span class="op">(</span><span class="va">Phi_x</span>,<span class="va">Mu_x</span>,<span class="va">Sigma_x</span>,nb.periods<span class="op">=</span><span class="va">H</span>,X0 <span class="op">=</span> <span class="va">Xt</span>,</span>
+<span>             nb.replics <span class="op">=</span> <span class="va">nb.replics</span><span class="op">)</span></span>
 <span><span class="co"># Compute prices for each trajectory:</span></span>
 <span><span class="va">aux1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">X</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,<span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span> <span class="va">b.dot</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span><span class="va">a.dot</span> <span class="op">-</span></span>
 <span>                                        <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">pmax</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">b</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span><span class="va">a</span><span class="op">)</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
@@ -1138,9 +1139,11 @@ Figure 7.11: Term structures of risk-free yields (in red), and credit-risky yiel
 <span><span class="co"># Compute averages of prices across simulated trajectories:</span></span>
 <span><span class="va">simul.prices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">aux2</span>,<span class="fl">1</span>,<span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co"># Compare with output of compute.condit.Exp:</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t</span>,<span class="op">]</span>,lwd<span class="op">=</span><span class="fl">2</span>,main<span class="op">=</span><span class="st">"Approximate formula versus Monte-Carlo approach"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t</span>,<span class="op">]</span>,lwd<span class="op">=</span><span class="fl">2</span>,</span>
+<span>     main<span class="op">=</span><span class="st">"Approximate formula versus Monte-Carlo approach"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">simul.prices</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Approximate formula"</span>,<span class="st">"Monte-Carlo"</span><span class="op">)</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NaN</span>,<span class="fl">1</span><span class="op">)</span>,pch<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="cn">NaN</span><span class="op">)</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Approximate formula"</span>,<span class="st">"Monte-Carlo"</span><span class="op">)</span>,</span>
+<span>       lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NaN</span>,<span class="fl">1</span><span class="op">)</span>,pch<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="cn">NaN</span><span class="op">)</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:loaddataset"></span>
 <img src="TSM_files/figure-html/loaddataset-1.png" alt="Comparison between formula-based prices and Monte-Carlo-based defaultable bond prices." width="672"><p class="caption">
@@ -1192,7 +1195,7 @@ Figure 7.12: Comparison between formula-based prices and Monte-Carlo-based defau
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-02.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

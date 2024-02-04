@@ -688,7 +688,7 @@ Figure 7.5: A potential causality scheme in Monfort et al. (2021).
 <div class="hypothesis">
 <p><span id="hyp:H4" class="hypothesis"><strong>Hypothesis 7.8  (Stochastic discount factor) </strong></span>The one-period positive SDF <span class="math inline">\(\mathcal{M}_{t-1, t}\)</span> is given by (this is <a href="PandQ.html#eq:keySDF">(2.4)</a>, with <span class="math inline">\(\alpha_t \equiv \alpha_w\)</span>):
 <span class="math display">\[\begin{equation}
-\mathcal{M}_{t,t+1} = exp[-i_{t}+\alpha'_w w_{t+1}-\psi_t(\alpha_w)],
+\mathcal{M}_{t,t+1} = \exp[-i_{t}+\alpha'_w w_{t+1}-\psi_t(\alpha_w)],
 \end{equation}\]</span>
 where <span class="math inline">\(\alpha_w = (\alpha_y ' , \alpha_x ' , \alpha_{\delta} ') '\)</span> is the vector of <em>prices of risk</em>, and the risk-free short rate (between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+1\)</span>) is given by the following affine function of the factors:
 <span class="math display" id="eq:shortrate">\[\begin{equation}
@@ -1094,12 +1094,12 @@ Figure 7.10: This plots shows simulated paths for <span class="math inline">\(z_
 <span><span class="va">t.max.lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>, <span class="co">#approximate values of the conditional expect. for date t</span></span>
 <span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##            [,1]       [,2]      [,3]       [,4]       [,5]       [,6]
-## [1,] 0.96287834 0.92883650 0.8973928 0.86815987 0.84082043 0.81511841
-## [2,] 0.03782821 0.03691128 0.0360872 0.03534485 0.03467543 0.03407031
+<pre><code>##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] 0.95482359 0.91415540 0.87731671 0.84373615 0.81292624 0.78448244
+## [2,] 0.04622868 0.04487735 0.04362908 0.04247886 0.04142298 0.04045518
 ##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.79084595 0.76783255 0.74593696 0.72504115
-## [2,] 0.03352173 0.03302295 0.03256824 0.03215269</code></pre>
+## [1,] 0.75807156 0.73341891 0.71029717 0.68851730
+## [2,] 0.03956821 0.03875478 0.03800798 0.03732148</code></pre>
 <p>The last two lines respectively give, for the date featuring the highest <span class="math inline">\(\lambda_t\)</span>, the term structures of the bond prices and of associated yields-to-maturity.</p>
 <p>Let us now compute credit-risk-free bond prices. This is obtained by taking <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=0\)</span> (so that <span class="math inline">\(\lambda_t=0\)</span>):</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -1195,7 +1195,7 @@ Figure 7.12: Comparison between formula-based prices and Monte-Carlo-based defau
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-03.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

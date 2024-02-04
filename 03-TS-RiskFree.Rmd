@@ -433,7 +433,7 @@ s_t = \delta_0 + \delta_1' w_t.
 $$
 The shadow rate $s_t$ is part of a state vector $w_t$ that follows a Gaussian VAR, as in \@ref(eq:GaussianVAR1) (or $s_t$ can be a linear combination of components of $w_t$). As before, the $\mathbb{Q}$-dynamics of $w_t$ is also a Gaussian VAR, as in \@ref(eq:GaussianQdyn). (Indeed, using the previous specification of the SDF, the non-linear $i_t$ term vanishes in the Radon-Nikodym derivatives; see Eq. \@ref(eq:RadonNikodym).)
 
-The price of a nominal zero-coupon bond is still given by \@ref(eq:ihandM)), that is:
+The price of a nominal zero-coupon bond is still given by \@ref(eq:ihandM), that is:
 $$
 B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t--i_{t+1}-\dots-i_{t+h-1});
 $$
@@ -453,7 +453,7 @@ The approximation of @Wu_Xia_2016 consists in finding approximations of the forw
 i_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).(\#eq:RapproxSR)
 \end{equation}
 
-Using that, for any random variable $Z$, we have $\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]$ (based on a second order Taylor expansion), @Wu_Xia_2016 further show that:
+Using that, for any random variable $Z$, we have $\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]$ (based on a second-order Taylor expansion of the log-Laplace transform), @Wu_Xia_2016 further show that:
 \begin{eqnarray}
 f_{t,n,n+1} &=& -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n i_{t+j}}\right)\right) + \log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^{n-1} i_{t+j}}\right)\right)\\
 &\approx& \mathbb{E}_t^{\mathbb{Q}}[i_{t+n}] - \frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n i_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} i_{t+j}\right)\right).
@@ -461,7 +461,7 @@ f_{t,n,n+1} &=& -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n i_{t+
 
 The expectation can be computed analytically. Using \@ref(eq:SRSTR), it is indeed of the form $\underline{i} + \mathbb{E}_t^{\mathbb{Q}}[ \max(s_{t+n}-\underline{i},0)]$, where
 $$
-s_{t+n}-\underline{i}|\underline{w_t} \sim \mathcal{N}\left(\bar{a}_n+b_n'w_t,\sigma_n^{\mathbb{Q}}\right),
+s_{t+n}-\underline{i}|\underline{w_t} \sim \mathcal{N}\left(\bar{a}_n+b_n'w_t- \underline{i},\sigma_n^{\mathbb{Q}}\right),
 $$
 with
 $$
@@ -489,7 +489,9 @@ $$
 which is used in \@ref(eq:RapproxSR) to obtain an approximation to $i_{t,h}$.
 
 
-```{r WuXia, fig.align = 'center', out.width = "95%", fig.cap = "The upper plot shows a simulated path of the shadow rate $s_t$. The bottom plot shows the approximated forward rate $f_{t,n,n+1}$ and the resulting nominal rates $i_{t,h}$.",echo=TRUE}
+In the following code, we simulate a shadow-rate path and compute the term structure of the approximated forward rates $f_{t,n,n+1}$ and the resulting nominal rates $i_{t,h}$ for the date indicated by the vertical grey line in the upper plot.
+
+```{r WuXia, fig.align = 'center', out.width = "95%", fig.cap = "The upper plot shows a simulated path of the shadow rate $s_t$. The bottom plot shows the approximated forward rate $f_{t,n,n+1}$ and the resulting nominal rates $i_{t,h}$ for the date indicated by the vertical grey line in the upper plot.",echo=TRUE}
 library(TSModels)
 # Specify model:
 n <- 2 # number of factors

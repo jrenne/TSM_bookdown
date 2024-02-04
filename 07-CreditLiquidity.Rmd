@@ -741,11 +741,10 @@ knitr::include_graphics("figures/schema_VARG.png")
 
 
 
-
 :::{.hypothesis #H4 name="Stochastic discount factor"}
 The one-period positive SDF $\mathcal{M}_{t-1, t}$ is given by (this is \@ref(eq:keySDF), with $\alpha_t \equiv \alpha_w$):
 \begin{equation}
-\mathcal{M}_{t,t+1} = exp[-i_{t}+\alpha'_w w_{t+1}-\psi_t(\alpha_w)],
+\mathcal{M}_{t,t+1} = \exp[-i_{t}+\alpha'_w w_{t+1}-\psi_t(\alpha_w)],
 \end{equation}
 where $\alpha_w = (\alpha_y ' , \alpha_x ' , \alpha_{\delta} ') '$ is the vector of *prices of risk*, and the risk-free short rate (between $t$ and $t+1$) is given by the following affine function of the factors:
 \begin{equation}

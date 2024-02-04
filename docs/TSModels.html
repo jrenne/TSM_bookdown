@@ -401,7 +401,7 @@ where <span class="math inline">\(s_t\)</span> is the shadow short-term interest
 s_t = \delta_0 + \delta_1' w_t.
 \]</span>
 The shadow rate <span class="math inline">\(s_t\)</span> is part of a state vector <span class="math inline">\(w_t\)</span> that follows a Gaussian VAR, as in <a href="TSModels.html#eq:GaussianVAR1">(3.12)</a> (or <span class="math inline">\(s_t\)</span> can be a linear combination of components of <span class="math inline">\(w_t\)</span>). As before, the <span class="math inline">\(\mathbb{Q}\)</span>-dynamics of <span class="math inline">\(w_t\)</span> is also a Gaussian VAR, as in <a href="TSModels.html#eq:GaussianQdyn">(3.13)</a>. (Indeed, using the previous specification of the SDF, the non-linear <span class="math inline">\(i_t\)</span> term vanishes in the Radon-Nikodym derivatives; see Eq. <a href="PandQ.html#eq:RadonNikodym">(2.5)</a>.)</p>
-<p>The price of a nominal zero-coupon bond is still given by <a href="PandQ.html#eq:ihandM">(2.3)</a>), that is:
+<p>The price of a nominal zero-coupon bond is still given by <a href="PandQ.html#eq:ihandM">(2.3)</a>, that is:
 <span class="math display">\[
 B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t--i_{t+1}-\dots-i_{t+h-1});
 \]</span>
@@ -418,14 +418,14 @@ i_{t,h} =  \frac{1}{h}(f_{t,0,1}+f_{t,1,2}+\dots+f_{t,h-1,h}).
 <span class="math display" id="eq:RapproxSR">\[\begin{equation}
 i_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).\tag{3.15}
 \end{equation}\]</span></p>
-<p>Using that, for any random variable <span class="math inline">\(Z\)</span>, we have <span class="math inline">\(\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]\)</span> (based on a second order Taylor expansion), <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> further show that:
+<p>Using that, for any random variable <span class="math inline">\(Z\)</span>, we have <span class="math inline">\(\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]\)</span> (based on a second-order Taylor expansion of the log-Laplace transform), <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> further show that:
 <span class="math display">\[\begin{eqnarray}
 f_{t,n,n+1} &amp;=&amp; -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n i_{t+j}}\right)\right) + \log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^{n-1} i_{t+j}}\right)\right)\\
 &amp;\approx&amp; \mathbb{E}_t^{\mathbb{Q}}[i_{t+n}] - \frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n i_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} i_{t+j}\right)\right).
 \end{eqnarray}\]</span></p>
 <p>The expectation can be computed analytically. Using <a href="TSModels.html#eq:SRSTR">(3.14)</a>, it is indeed of the form <span class="math inline">\(\underline{i} + \mathbb{E}_t^{\mathbb{Q}}[ \max(s_{t+n}-\underline{i},0)]\)</span>, where
 <span class="math display">\[
-s_{t+n}-\underline{i}|\underline{w_t} \sim \mathcal{N}\left(\bar{a}_n+b_n'w_t,\sigma_n^{\mathbb{Q}}\right),
+s_{t+n}-\underline{i}|\underline{w_t} \sim \mathcal{N}\left(\bar{a}_n+b_n'w_t- \underline{i},\sigma_n^{\mathbb{Q}}\right),
 \]</span>
 with
 <span class="math display">\[
@@ -449,6 +449,7 @@ where <span class="math inline">\(a_n = \bar{a}_n - \frac{1}{2}\sigma_n^{\mathbb
 \boxed{f_{t,n,n+1} \approx \tilde{f}_{t,n,n+1} = \underline{i} + \sigma_n^{\mathbb{Q}}g\left(\frac{a_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right),}
 \]</span>
 which is used in <a href="TSModels.html#eq:RapproxSR">(3.15)</a> to obtain an approximation to <span class="math inline">\(i_{t,h}\)</span>.</p>
+<p>In the following code, we simulate a shadow-rate path and compute the term structure of the approximated forward rates <span class="math inline">\(f_{t,n,n+1}\)</span> and the resulting nominal rates <span class="math inline">\(i_{t,h}\)</span> for the date indicated by the vertical grey line in the upper plot.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">TSModels</span><span class="op">)</span></span>
 <span><span class="co"># Specify model:</span></span>
@@ -480,8 +481,8 @@ which is used in <a href="TSModels.html#eq:RapproxSR">(3.15)</a> to obtain an ap
 <span>       col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"black"</span>,<span class="st">"red"</span><span class="op">)</span>,bg <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:WuXia"></span>
-<img src="TSM_files/figure-html/WuXia-1.png" alt="The upper plot shows a simulated path of the shadow rate $s_t$. The bottom plot shows the approximated forward rate $f_{t,n,n+1}$ and the resulting nominal rates $i_{t,h}$." width="95%"><p class="caption">
-Figure 3.6: The upper plot shows a simulated path of the shadow rate <span class="math inline">\(s_t\)</span>. The bottom plot shows the approximated forward rate <span class="math inline">\(f_{t,n,n+1}\)</span> and the resulting nominal rates <span class="math inline">\(i_{t,h}\)</span>.
+<img src="TSM_files/figure-html/WuXia-1.png" alt="The upper plot shows a simulated path of the shadow rate $s_t$. The bottom plot shows the approximated forward rate $f_{t,n,n+1}$ and the resulting nominal rates $i_{t,h}$ for the date indicated by the vertical grey line in the upper plot." width="95%"><p class="caption">
+Figure 3.6: The upper plot shows a simulated path of the shadow rate <span class="math inline">\(s_t\)</span>. The bottom plot shows the approximated forward rate <span class="math inline">\(f_{t,n,n+1}\)</span> and the resulting nominal rates <span class="math inline">\(i_{t,h}\)</span> for the date indicated by the vertical grey line in the upper plot.
 </p>
 </div>
 <div class="figure" style="text-align: center">
@@ -582,7 +583,7 @@ Figure 3.9: Source: Monfort et al. (2017). Lift-off probabilities.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-03.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

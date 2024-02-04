@@ -121,7 +121,7 @@
 
 \title{Introduction to Term Structure Models}
 \author{Alain Monfort and Jean-Paul Renne}
-\date{2024-02-03}
+\date{2024-02-04}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2512,7 +2512,7 @@ s_t = \delta_0 + \delta_1' w_t.
 \]
 The shadow rate \(s_t\) is part of a state vector \(w_t\) that follows a Gaussian VAR, as in \eqref{eq:GaussianVAR1} (or \(s_t\) can be a linear combination of components of \(w_t\)). As before, the \(\mathbb{Q}\)-dynamics of \(w_t\) is also a Gaussian VAR, as in \eqref{eq:GaussianQdyn}. (Indeed, using the previous specification of the SDF, the non-linear \(i_t\) term vanishes in the Radon-Nikodym derivatives; see Eq. \eqref{eq:RadonNikodym}.)
 
-The price of a nominal zero-coupon bond is still given by \eqref{eq:ihandM}), that is:
+The price of a nominal zero-coupon bond is still given by \eqref{eq:ihandM}, that is:
 \[
 B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t--i_{t+1}-\dots-i_{t+h-1});
 \]
@@ -2532,7 +2532,7 @@ The approximation of \citet{Wu_Xia_2016} consists in finding approximations of t
 i_{t,h} \approx  \frac{1}{h}\left(\tilde{f}_{t,0,1}+\tilde{f}_{t,1,2}+\dots+\tilde{f}_{t,h-1,h}\right).\label{eq:RapproxSR}
 \end{equation}
 
-Using that, for any random variable \(Z\), we have \(\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]\) (based on a second order Taylor expansion), \citet{Wu_Xia_2016} further show that:
+Using that, for any random variable \(Z\), we have \(\log(\mathbb{E}[e^Z]) \approx \mathbb{E}[Z] + \frac{1}{2} \mathbb{V}ar[Z]\) (based on a second-order Taylor expansion of the log-Laplace transform), \citet{Wu_Xia_2016} further show that:
 \begin{eqnarray}
 f_{t,n,n+1} &=& -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n i_{t+j}}\right)\right) + \log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^{n-1} i_{t+j}}\right)\right)\\
 &\approx& \mathbb{E}_t^{\mathbb{Q}}[i_{t+n}] - \frac{1}{2}\left(\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^n i_{t+j}\right)-\mathbb{V}ar_t^{\mathbb{Q}}\left(\sum_{j=0}^{n-1} i_{t+j}\right)\right).
@@ -2540,7 +2540,7 @@ f_{t,n,n+1} &=& -\log\left(\mathbb{E}_t^{\mathbb{Q}}\left(e^{-\sum_{j=0}^n i_{t+
 
 The expectation can be computed analytically. Using \eqref{eq:SRSTR}, it is indeed of the form \(\underline{i} + \mathbb{E}_t^{\mathbb{Q}}[ \max(s_{t+n}-\underline{i},0)]\), where
 \[
-s_{t+n}-\underline{i}|\underline{w_t} \sim \mathcal{N}\left(\bar{a}_n+b_n'w_t,\sigma_n^{\mathbb{Q}}\right),
+s_{t+n}-\underline{i}|\underline{w_t} \sim \mathcal{N}\left(\bar{a}_n+b_n'w_t- \underline{i},\sigma_n^{\mathbb{Q}}\right),
 \]
 with
 \[
@@ -2566,6 +2566,8 @@ where \(a_n = \bar{a}_n - \frac{1}{2}\sigma_n^{\mathbb{Q}}\). They finally obtai
 \boxed{f_{t,n,n+1} \approx \tilde{f}_{t,n,n+1} = \underline{i} + \sigma_n^{\mathbb{Q}}g\left(\frac{a_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right),}
 \]
 which is used in \eqref{eq:RapproxSR} to obtain an approximation to \(i_{t,h}\).
+
+In the following code, we simulate a shadow-rate path and compute the term structure of the approximated forward rates \(f_{t,n,n+1}\) and the resulting nominal rates \(i_{t,h}\) for the date indicated by the vertical grey line in the upper plot.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2606,7 +2608,7 @@ which is used in \eqref{eq:RapproxSR} to obtain an approximation to \(i_{t,h}\).
 
 }
 
-\caption{The upper plot shows a simulated path of the shadow rate $s_t$. The bottom plot shows the approximated forward rate $f_{t,n,n+1}$ and the resulting nominal rates $i_{t,h}$.}\label{fig:WuXia}
+\caption{The upper plot shows a simulated path of the shadow rate $s_t$. The bottom plot shows the approximated forward rate $f_{t,n,n+1}$ and the resulting nominal rates $i_{t,h}$ for the date indicated by the vertical grey line in the upper plot.}\label{fig:WuXia}
 \end{figure}
 
 \begin{figure}
@@ -5805,7 +5807,7 @@ where \(\delta_t = (\delta^{(1)}_t, \ldots, \delta^{(E)}_t)'\) and \(\gamma_{\nu
 \begin{hypothesis}[Stochastic discount factor]
 \protect\hypertarget{hyp:H4}{}\label{hyp:H4}The one-period positive SDF \(\mathcal{M}_{t-1, t}\) is given by (this is \eqref{eq:keySDF}, with \(\alpha_t \equiv \alpha_w\)):
 \begin{equation}
-\mathcal{M}_{t,t+1} = exp[-i_{t}+\alpha'_w w_{t+1}-\psi_t(\alpha_w)],
+\mathcal{M}_{t,t+1} = \exp[-i_{t}+\alpha'_w w_{t+1}-\psi_t(\alpha_w)],
 \end{equation}
 where \(\alpha_w = (\alpha_y ' , \alpha_x ' , \alpha_{\delta} ') '\) is the vector of \emph{prices of risk}, and the risk-free short rate (between \(t\) and \(t+1\)) is given by the following affine function of the factors:
 \begin{equation}
@@ -6178,12 +6180,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]       [,3]      [,4]       [,5]       [,6]      [,7]
-## [1,] 0.92632159 0.86301651 0.80823189 0.7605158 0.71868158 0.68175278 0.6489253
-## [2,] 0.07653382 0.07366073 0.07096876 0.0684396 0.06606738 0.06384803 0.0617768
-##            [,8]       [,9]      [,10]
-## [1,] 0.61953798 0.59304743 0.56900724
-## [2,] 0.05984766 0.05805343 0.05638621
+##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] 0.95564190 0.91564958 0.87938613 0.84630969 0.81594839 0.78790544
+## [2,] 0.04537202 0.04406077 0.04284373 0.04171748 0.04068083 0.03972953
+##            [,7]       [,8]       [,9]      [,10]
+## [1,] 0.76185164 0.73751481 0.71466971 0.69312931
+## [2,] 0.03885763 0.03805864 0.03732609 0.03665387
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

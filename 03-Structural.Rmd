@@ -459,7 +459,7 @@ text(vec_dates[120],+.25,labels="Demand shocks prevail",cex=.9)
 ```
 
 
-### The term structure of real interest rates in the CCAPM
+### The term structure of real interest rates in the CCAPM {#TSCCAPM}
 
 This subsection shows how one can develop a term-structure model in the CCAPM context. For that, we need to specify the process followed by consumption. We assume that consumption growth ($\Delta c_{t}=\log (C_{t}/C_{t-1})$) follows a Gaussian AR(1) process. Formally:
 $$

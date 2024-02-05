@@ -68,8 +68,8 @@
 <li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
 <li><a class="active" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="PandQ.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
-<li><a class="" href="TSModels.html"><span class="header-section-number">3</span> The term structure of risk-free yields</a></li>
-<li><a class="" href="Structural.html"><span class="header-section-number">4</span> A detour through structural approaches</a></li>
+<li><a class="" href="Structural.html"><span class="header-section-number">3</span> A detour through structural approaches</a></li>
+<li><a class="" href="TSModels.html"><span class="header-section-number">4</span> The term structure of risk-free yields</a></li>
 <li><a class="" href="Estimation.html"><span class="header-section-number">5</span> Estimation of affine asset-pricing models</a></li>
 <li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
 <li><a class="" href="CreditLiRisks.html"><span class="header-section-number">7</span> Credit and liquidity risks</a></li>
@@ -380,6 +380,7 @@ b(u) &amp; = &amp; u'(I_n - 2 \Sigma V)^{-1}\left(\mu + \frac{1}{2} \Sigma v\rig
 Figure 1.1: Simulation of a quadratic processes <span class="math inline">\(x_t\)</span>.
 </p>
 </div>
+<p>A term structure illustration is provided in Example <a href="TSModels.html#exm:Angetal2011">4.5</a>.</p>
 </div>
 <p>Another example of nonnegative process is that of the auto-regressive Gamma process <span class="citation">(<a href="references.html#ref-Gourieroux_Jasiak_2006">Christian Gourieroux and Jasiak 2006</a>)</span> and its extension <span class="citation">(<a href="references.html#ref-zarg_2017">Alain Monfort et al. 2017</a>)</span>.</p>
 <div class="example">
@@ -864,7 +865,7 @@ A_{0} &amp;=&amp; 0,\quad  B_{0} = 0.
 \end{equation*}\]</span></p>
 <p>As mentioned above, what precedes has useful implications to price long-dated financial instruments such as nominal and real bonds (Examples <a href="ChapterAffine.html#exm:nominalBth">1.18</a> and <a href="ChapterAffine.html#exm:realBth">1.20</a>, respectively), or futures (Example <a href="ChapterAffine.html#exm:Futures">1.21</a>).</p>
 <div class="example">
-<p><span id="exm:nominalBth" class="example"><strong>Example 1.18  (Nominal interest rates) </strong></span>Let <span class="math inline">\(B_{t,h}\)</span> denote the date-<span class="math inline">\(t\)</span> price of a nominal zero-coupon bond of maturity <span class="math inline">\(h\)</span>. We have (see <a href="PandQ.html#eq:ihandM">(2.3)</a> and Subsection <a href="TSModels.html#AffineYields">3.2.1</a>):
+<p><span id="exm:nominalBth" class="example"><strong>Example 1.18  (Nominal interest rates) </strong></span>Let <span class="math inline">\(B_{t,h}\)</span> denote the date-<span class="math inline">\(t\)</span> price of a nominal zero-coupon bond of maturity <span class="math inline">\(h\)</span>. We have (see <a href="PandQ.html#eq:ihandM">(2.3)</a> and Subsection <a href="TSModels.html#AffineYields">4.2.1</a>):
 <span class="math display" id="eq:stdbond">\[\begin{equation}
 B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp (-i_{t}-\dots-i_{t+h-1}),\tag{1.10}
 \end{equation}\]</span>
@@ -923,7 +924,7 @@ Figure 1.4: Factor loadings in the context of a no-arbitrage nelson-Siegel model
 </div>
 <p>In the previous example, note the use of function <code>reverse.MHLT</code> (in package <code>TSModels</code>), that notably takes a L.T. as an argument (<code>psi</code>). In the previous example, we consider a Gaussian VAR, and we therefore assign <code>psi.GaussianVAR</code> to <code>psi</code>. We then need to provide function <code>reverse.MHLT</code> with the arguments of the <code>psi</code> function. These arguments are provided in the form of a list (input <code>psi.parameterization</code>).</p>
 <div class="example">
-<p><span id="exm:realBth" class="example"><strong>Example 1.20  (Real interest rates) </strong></span>Denote by <span class="math inline">\(q_t\)</span> the price index on date <span class="math inline">\(t\)</span> and by <span class="math inline">\(\pi_{t+1} = \log \dfrac{q_{t+1}}{q_t}\)</span> the inflation rate on date <span class="math inline">\(t+1\)</span>. The real rate of maturity <span class="math inline">\(h\)</span> is given by (see Subsection <a href="TSModels.html#AffineYields">3.2.1</a>):
+<p><span id="exm:realBth" class="example"><strong>Example 1.20  (Real interest rates) </strong></span>Denote by <span class="math inline">\(q_t\)</span> the price index on date <span class="math inline">\(t\)</span> and by <span class="math inline">\(\pi_{t+1} = \log \dfrac{q_{t+1}}{q_t}\)</span> the inflation rate on date <span class="math inline">\(t+1\)</span>. The real rate of maturity <span class="math inline">\(h\)</span> is given by (see Subsection <a href="TSModels.html#AffineYields">4.2.1</a>):
 <span class="math display">\[\begin{eqnarray*}
 r_{t,h} &amp; =&amp; -   \frac{1}{h}   \log   \mathcal{B}_{t,h}, \quad h=1,\dots,H \\    \\
 \mathcal{B}_{t,h} &amp; =&amp;  \mathbb{E}^{\mathbb{Q}}_t   \exp(-r_{t}-\dots-r_{t+h-1} + \pi_{t+1}+\dots+\pi_{t+h}),  \\      \\
@@ -1544,7 +1545,7 @@ which leads to <a href="ChapterAffine.html#eq:Truncated">(1.23)</a>.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-04.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

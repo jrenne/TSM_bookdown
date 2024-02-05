@@ -68,8 +68,8 @@
 <li><a class="" href="index.html">Introduction to Term Structure Models</a></li>
 <li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="PandQ.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
-<li><a class="" href="TSModels.html"><span class="header-section-number">3</span> The term structure of risk-free yields</a></li>
-<li><a class="" href="Structural.html"><span class="header-section-number">4</span> A detour through structural approaches</a></li>
+<li><a class="" href="Structural.html"><span class="header-section-number">3</span> A detour through structural approaches</a></li>
+<li><a class="" href="TSModels.html"><span class="header-section-number">4</span> The term structure of risk-free yields</a></li>
 <li><a class="" href="Estimation.html"><span class="header-section-number">5</span> Estimation of affine asset-pricing models</a></li>
 <li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
 <li><a class="active" href="CreditLiRisks.html"><span class="header-section-number">7</span> Credit and liquidity risks</a></li>
@@ -864,7 +864,7 @@ and where <span class="math inline">\(\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u
 <span class="math display" id="eq:ndistrinew">\[\begin{eqnarray}
 n^s_{t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &amp;\sim&amp; \mathcal{P}oisson(\beta y_{t+1}+c n^s_{t}),\tag{7.37}
 \end{eqnarray}\]</span>
-where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>. Vector <span class="math inline">\((y_t,x_t)'\)</span> follows a VARG dynamics (Eq. <a href="TSModels.html#eq:VARG">(3.16)</a>) that admits the following VAR representation (using Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>):
+where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>. Vector <span class="math inline">\((y_t,x_t)'\)</span> follows a VARG dynamics (Eq. <a href="TSModels.html#eq:VARG">(4.16)</a>) that admits the following VAR representation (using Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>):
 <span class="math display" id="eq:systemF12">\[\begin{equation}
 \left\{
 \begin{array}{ccl}
@@ -1034,7 +1034,7 @@ y_t = \mu + \Phi y_{t-1}+ \Sigma\varepsilon_t,\tag{7.42}
 \end{equation}\]</span>
 with <span class="math inline">\(\varepsilon_t \sim \mathcal{N}(0,Id)\)</span> (where <span class="math inline">\(Id\)</span> denotes the identity matrix).</p>
 <p>Equation <a href="CreditLiRisks.html#eq:condExp">(7.41)</a> gives the risk-neutral price of a bond of maturity <span class="math inline">\(h\)</span>, issued by an entity whose default intensity is <span class="math inline">\(\underline{\lambda}_t = \max(0,\lambda_t)\)</span>. (That is, the conditional default probability of the issuer, on date <span class="math inline">\(t\)</span>, is <span class="math inline">\(1-\exp(-\underline{\lambda}_t)\)</span>.) Because of the (nonlinear) max operator, the default intensity is not affine and the conditional expectation <a href="CreditLiRisks.html#eq:condExp">(7.41)</a> cannot be computed using the standard affine-process machinery.</p>
-<p>Absent the blue terms, the conditional expectations appearing in <a href="CreditLiRisks.html#eq:condExp">(7.41)</a> would be of the same type as the ones considered in the shadow-rate literature (see Subsection <a href="TSModels.html#Shadowrate">3.4.1</a>). In that case, one could for instance use the approaches proposed by <span class="citation">Priebsch (<a href="references.html#ref-Priebsch_2013">2013</a>)</span> or <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> to calculate approximations for these conditional expectations. <span class="citation">Pallara and Renne (<a href="references.html#ref-Pallara_Renne_2023">2023</a>)</span> and <span class="citation">Renne and Pallara (<a href="references.html#ref-Renne_Pallara_2023">2023</a>)</span> extend the approach of <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> to compute approximate values to <a href="CreditLiRisks.html#eq:condExp">(7.41)</a>. Th present page uses the latter approach, employing codes contained in package <code>TSModels</code> to implement this approach.</p>
+<p>Absent the blue terms, the conditional expectations appearing in <a href="CreditLiRisks.html#eq:condExp">(7.41)</a> would be of the same type as the ones considered in the shadow-rate literature (see Subsection <a href="TSModels.html#Shadowrate">4.4.1</a>). In that case, one could for instance use the approaches proposed by <span class="citation">Priebsch (<a href="references.html#ref-Priebsch_2013">2013</a>)</span> or <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> to calculate approximations for these conditional expectations. <span class="citation">Pallara and Renne (<a href="references.html#ref-Pallara_Renne_2023">2023</a>)</span> and <span class="citation">Renne and Pallara (<a href="references.html#ref-Renne_Pallara_2023">2023</a>)</span> extend the approach of <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> to compute approximate values to <a href="CreditLiRisks.html#eq:condExp">(7.41)</a>. Th present page uses the latter approach, employing codes contained in package <code>TSModels</code> to implement this approach.</p>
 </div>
 <div id="a-numerical-example" class="section level3" number="7.6.2">
 <h3>
@@ -1094,12 +1094,12 @@ Figure 7.10: This plots shows simulated paths for <span class="math inline">\(z_
 <span><span class="va">t.max.lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>, <span class="co">#approximate values of the conditional expect. for date t</span></span>
 <span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.95482359 0.91415540 0.87731671 0.84373615 0.81292624 0.78448244
-## [2,] 0.04622868 0.04487735 0.04362908 0.04247886 0.04142298 0.04045518
+<pre><code>##            [,1]       [,2]       [,3]      [,4]       [,5]       [,6]
+## [1,] 0.93379838 0.87629934 0.82602640 0.7817987 0.74263050 0.70770284
+## [2,] 0.06849473 0.06602376 0.06370952 0.0615395 0.05951133 0.05762183
 ##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.75807156 0.73341891 0.71029717 0.68851730
-## [2,] 0.03956821 0.03875478 0.03800798 0.03732148</code></pre>
+## [1,] 0.67633944 0.64798382 0.62217845 0.59854676
+## [2,] 0.05586574 0.05423619 0.05272537 0.05132506</code></pre>
 <p>The last two lines respectively give, for the date featuring the highest <span class="math inline">\(\lambda_t\)</span>, the term structures of the bond prices and of associated yields-to-maturity.</p>
 <p>Let us now compute credit-risk-free bond prices. This is obtained by taking <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=0\)</span> (so that <span class="math inline">\(\lambda_t=0\)</span>):</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -1195,7 +1195,7 @@ Figure 7.12: Comparison between formula-based prices and Monte-Carlo-based defau
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-04.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

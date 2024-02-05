@@ -315,6 +315,8 @@ par(mfrow=c(1,2),plt=c(.1,.95,.15,.85))
 plot(x,type="l",xlab="",ylab="",main="x_t")
 plot(x^2,type="l",xlab="",ylab="",main="x_t^2")
 ```
+
+A term structure illustration is provided in Example \@ref(exm:Angetal2011).
 :::
 
 Another example of nonnegative process is that of the auto-regressive Gamma process [@Gourieroux_Jasiak_2006] and its extension [@zarg_2017].

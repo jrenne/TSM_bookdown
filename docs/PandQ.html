@@ -209,7 +209,7 @@ where <span class="math inline">\(q_t\)</span> is the price of the consumption g
 sequence of conditional p.d.f. <span class="math inline">\(f_{t+1}(w_{t+1}|\underline{w_t})\)</span>, or
 <span class="math inline">\(f_{t+1}(w_{t+1})\)</span>, with respect to (w.r.t.) some measure <span class="math inline">\(\mu\)</span>.</p>
 <p>We define the conditional risk-neutral p.d.f. w.r.t. the conditional historical probability. For that, we employ the Radon-Nikodym derivative <span class="math inline">\(d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t})\)</span>:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Of course, the conditional historical p.d.f. with respect to the conditional risk-neutral (R.N.) p.d.f. is:
-&lt;span class="math inline"&gt;\(d_{t+1}(w_{t+1}) = \frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})}\)&lt;/span&gt; or &lt;span class="math inline"&gt;\(d_{t+1}(w_{t+1}) = \frac{\exp(-i_{t})}{\mathcal{M}_{t,t+1}}\)&lt;/span&gt;.&lt;/p&gt;'><sup>6</sup></a>
+&lt;span class="math inline"&gt;\(d_{t+1}(w_{t+1}) = \frac{1}{d^{\mathbb{Q}}_{t+1}(w_{t+1})}\)&lt;/span&gt; or &lt;span class="math inline"&gt;\(d_{t+1}(w_{t+1}) = \frac{\exp(-i_{t})}{\mathcal{M}_{t,t+1}}\)&lt;/span&gt;.&lt;/p&gt;'><sup>7</sup></a>
 <span class="math display" id="eq:RadonNikodym">\[\begin{equation}
 d^{\mathbb{Q}}_{t+1}(w_{t+1}|\underline{w_t}) =
 \frac{\mathcal{M}_{t,t+1}(\underline{w_{t+1}})}{\mathbb{E}[\mathcal{M}_{t,t+1}(\underline{w_{t+1}})|\underline{w_t}]},\tag{2.5}
@@ -238,7 +238,7 @@ d^{\mathbb{Q}}_{\tau+1}(w_{\tau+1})=\mathbb{E}_t\left(\frac{d\mathbb{Q}}{d\mathb
 Therefore, <span class="math inline">\(\xi_t\)</span> is a <span class="math inline">\(\mathbb{P}\)</span>-martingale.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Indeed:
 &lt;span class="math display"&gt;\[
 \mathbb{E}_t \left( \frac{d\mathbb{Q}}{d\mathbb{P}}\right) = \Pi^{t-1}_{\tau = 1} d^{\mathbb{Q}}_{\tau + 1} (w_{\tau+1}) \mathbb{E}_t \left( d^{\mathbb{Q}}_{t+1} (w_{t+1}) \ldots d^{\mathbb{Q}}_{T^*} (w_{T^*})\right).
-\]&lt;/span&gt;&lt;/p&gt;'><sup>7</sup></a></p>
+\]&lt;/span&gt;&lt;/p&gt;'><sup>8</sup></a></p>
 <p>Consider the date-<span class="math inline">\(t\)</span> price of a payoff <span class="math inline">\(g(\underline{w_s})\)</span> at time <span class="math inline">\(s&gt;t\)</span>. An equivalent form of the pricing formula <a href="PandQ.html#eq:basic">(2.1)</a> is:
 <span class="math display">\[\begin{eqnarray*}
 p_t[g(\underline{w_s})] &amp;=&amp; \mathbb{E}_t[\mathcal{M}_{t,t+1}...\mathcal{M}_{s-1,s}g(\underline{w_s})] \\

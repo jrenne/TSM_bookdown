@@ -901,6 +901,10 @@ plot(a.yield[1,,],type="l",lwd=2,ylim=c(0,1),
 lines(a.yield[2,,],col="red",lwd=2,lty=2)
 lines(a.yield[3,,],col="blue",lwd=2,lty=3)
 ```
+
+
+@Christensen_Diebold_Rudebusch_2009 show that such specifications allow to approximate the widely-used @Nelson_Siegel_1987 yield curve specification.^[In the context of the Nelson-Siegel model, the zero-coupon yield of maturity $h$ is given by $\beta_0 + \beta_1\left(\frac{1 - \exp(-\lambda h)}{\lambda h}\right)+\beta_2\left(\frac{1 - \exp(-\lambda h)}{\lambda h}-\exp(-\lambda h)\right)$, where $\beta_0$, $\beta_1$, $\beta_2$, and $\lambda$ are parameters.]
+
 :::
 
 In the previous example, note the use of function `reverse.MHLT` (in package `TSModels`), that notably takes a L.T. as an argument (`psi`). In the previous example, we consider a Gaussian VAR, and we therefore assign `psi.GaussianVAR` to `psi`. We then need to provide function `reverse.MHLT` with the arguments of the `psi` function. These arguments are provided in the form of a list (input `psi.parameterization`).

@@ -1100,9 +1100,7 @@ The price \(B_{t,h}\) is exponential affine in \(w_t\), the associated yield-to-
 \end{example}
 
 \begin{example}[No-arbitrage Nelson-Siegel model]
-\protect\hypertarget{exm:CDR2009}{}\label{exm:CDR2009}
-
-In this example, we employ the results of Example \ref{exm:nominalBth} in the context described by \citet{Christensen_Diebold_Rudebusch_2009}. Specifically, we consider a three factor model following a Gaussian VAR (see Example \ref{exm:GVAR1}):
+\protect\hypertarget{exm:CDR2009}{}\label{exm:CDR2009}In this example, we employ the results of Example \ref{exm:nominalBth} in the context described by \citet{Christensen_Diebold_Rudebusch_2009}. Specifically, we consider a three factor model following a Gaussian VAR (see Example \ref{exm:GVAR1}):
 \[
 w_t = \left[\begin{array}{c}X_{1,t}\\X_{2,t}\\X_{3,t}\end{array}\right] = 
 \left[\begin{array}{ccc}
@@ -1146,6 +1144,7 @@ The nominal short-term rate is given by \(i_t = X_{1,t}+X_{2,t}\). In that case,
 \includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/CDR-1} \caption{Factor loadings in the context of a no-arbitrage nelson-Siegel model (Christensen, Diebold and Rudebusch, 2009). The first factor (black solid line) is a level factor. The second and third factors (red dashed line and blue dotted line, respectively) are slope factors.}\label{fig:CDR}
 \end{figure}
 
+\citet{Christensen_Diebold_Rudebusch_2009} show that such specifications allow to approximate the widely-used \citet{Nelson_Siegel_1987} yield curve specification.\footnote{In the context of the Nelson-Siegel model, the zero-coupon yield of maturity \(h\) is given by \(\beta_0 + \beta_1\left(\frac{1 - \exp(-\lambda h)}{\lambda h}\right)+\beta_2\left(\frac{1 - \exp(-\lambda h)}{\lambda h}-\exp(-\lambda h)\right)\), where \(\beta_0\), \(\beta_1\), \(\beta_2\), and \(\lambda\) are parameters.}
 \end{example}
 
 In the previous example, note the use of function \texttt{reverse.MHLT} (in package \texttt{TSModels}), that notably takes a L.T. as an argument (\texttt{psi}). In the previous example, we consider a Gaussian VAR, and we therefore assign \texttt{psi.GaussianVAR} to \texttt{psi}. We then need to provide function \texttt{reverse.MHLT} with the arguments of the \texttt{psi} function. These arguments are provided in the form of a list (input \texttt{psi.parameterization}).
@@ -4238,7 +4237,7 @@ Since most debtors issue coupon bonds, zero-coupon yields are not directly obser
 \item
   Collect the prices of bonds traded on the market on this date: \(B_{t,h_1}(c_1),\dots,B_{t,h_N}(c_N)\). According to \eqref{eq:couponBd}, each of this price is a function of zero-coupon yields.
 \item
-  Determine a parametric form of the zero coupon yield curve: \(h \rightarrow f(\theta_t,h)\) (say), where \(\theta_t\) is the vector of parameters that will characterize the zero-coupon yield curve on date \(t\). This function can be, for instance, of the \citet{Nelson_Siegel_1987}'s or \citet{Svensson_1994}'s type.\footnote{For instance, in \citet{Svensson_1994}'s case: \(f_t(\theta,h) = \beta_0 + \beta_1 \exp\left(-\frac{h}{\tau_1}\right) + \beta_2 \left(\frac{h}{\tau_1}\right) \exp\left(-\frac{h}{\tau_1}\right) + \beta_3 \left(\frac{h}{\tau_2}\right) \exp\left(-\frac{h}{\tau_2}\right)\) and \(\theta = [\beta_0,\beta_1,\beta_2,\beta_3,\tau_1,\tau_2]'\).}
+  Determine a parametric form of the zero coupon yield curve: \(h \rightarrow f(\theta_t,h)\) (say), where \(\theta_t\) is the vector of parameters that will characterize the zero-coupon yield curve on date \(t\). This function can be, for instance, of the \citet{Nelson_Siegel_1987}'s or \citet{Svensson_1994}'s type.\footnote{For instance, in \citet{Nelson_Siegel_1987}: \(f(\theta,h) = \beta_0 + \beta_1\left(\frac{1 - \exp(-\lambda h)}{\lambda h}\right)+\beta_2\left(\frac{1 - \exp(-\lambda h)}{\lambda h}-\exp(-\lambda h)\right)\) and \(\theta = [\beta_0,\beta_1,\beta_2,\tau]'\).}
 \item
   Look for the vector \(\theta_t\) that minimizes a distance between observed and fitted prices. For instance, using squared pricing errors in the distance function:
   \[
@@ -6335,12 +6334,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]       [,3]       [,4]       [,5]      [,6]
-## [1,] 0.92423027 0.85931832 0.80329701 0.75463133 0.71207410 0.6746032
-## [2,] 0.07879403 0.07580793 0.07301025 0.07038149 0.06791466 0.0656051
-##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.64137876 0.61171088 0.58503310 0.56088022
-## [2,] 0.06344787 0.06143694 0.05956521 0.05782479
+##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] 0.93870411 0.88506664 0.83783461 0.79599324 0.75868451 0.72519066
+## [2,] 0.06325496 0.06104617 0.05897819 0.05704115 0.05523385 0.05355345
+##            [,7]      [,8]       [,9]      [,10]
+## [1,] 0.69491662 0.6673712 0.64214966 0.61891774
+## [2,] 0.05199477 0.0505511 0.04921488 0.04797829
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

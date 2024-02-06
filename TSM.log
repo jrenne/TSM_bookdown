@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  6 FEB 2024 23:15
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  6 FEB 2024 23:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -828,7 +828,7 @@ Underfull \hbox (badness 1496) in paragraph at lines 820--822
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [23] [24] [25] [26] [27] [28]
-Overfull \hbox (27.55162pt too wide) detected at line 1118
+Overfull \hbox (27.55162pt too wide) detected at line 1116
 [][] [] [] [] [] [] [] [] [] []
  []
 
@@ -836,12 +836,12 @@ Overfull \hbox (27.55162pt too wide) detected at line 1118
 File: TSM_files/figure-latex/CDR-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/CDR-1.pdf>
 [30] [31]
-Overfull \hbox (22.67738pt too wide) in paragraph at lines 1211--1213
+Overfull \hbox (22.67738pt too wide) in paragraph at lines 1210--1212
 \TU/lmr/m/n/12 This method is easily extended to price payoffs of the form $[][][][][][][] [][][][][][][]$,
  []
 
 
-Underfull \hbox (badness 3058) in paragraph at lines 1215--1215
+Underfull \hbox (badness 3058) in paragraph at lines 1214--1214
 []\TU/lmr/bx/n/17.28 VAR representation and conditional
  []
 
@@ -854,32 +854,32 @@ Overfull \hbox (14.20688pt too wide) has occurred while \output is active
  []
 
 [35] [36]
-Underfull \hbox (badness 10000) in paragraph at lines 1431--1432
+Underfull \hbox (badness 10000) in paragraph at lines 1430--1431
 [][]\TU/lmr/bx/n/12 Proposition 1.2 \TU/lmr/m/n/12 (Quadratic Gaussian process)\TU/lmr/bx/n/12 . []\TU/lmr/m/it/12 Consider vector
  []
 
 [37] [38] [39]
-Overfull \hbox (24.215pt too wide) detected at line 1570
+Overfull \hbox (24.215pt too wide) detected at line 1569
 []
  []
 
 
-Underfull \hbox (badness 1688) in paragraph at lines 1583--1585
+Underfull \hbox (badness 1688) in paragraph at lines 1582--1584
 [][]\TU/lmr/bx/n/12 Proposition 1.5 \TU/lmr/m/n/12 (Reverse-order multi-horizon Laplace transform)\TU/lmr/bx/n/12 . []\TU/lmr/m/it/12 If
  []
 
 [40]
-Overfull \hbox (18.00252pt too wide) detected at line 1649
+Overfull \hbox (18.00252pt too wide) detected at line 1648
 [][][][] [] [] [][] [] []
  []
 
 [41]
-Overfull \hbox (5.84735pt too wide) in alignment at lines 1679--1682
+Overfull \hbox (5.84735pt too wide) in alignment at lines 1678--1681
  [][][] []
  []
 
 
-Overfull \hbox (36.39703pt too wide) in alignment at lines 1684--1690
+Overfull \hbox (36.39703pt too wide) in alignment at lines 1683--1689
  [][][] []
  []
 
@@ -888,12 +888,12 @@ Chapter 2.
 [45
 
 ] [46] [47] [48] [49] [50]
-Underfull \hbox (badness 1590) in paragraph at lines 2025--2025
+Underfull \hbox (badness 1590) in paragraph at lines 2024--2024
 []\TU/lmr/bx/n/17.28 Typology of econometric asset-pricing
  []
 
 [51]
-Underfull \hbox (badness 1067) in paragraph at lines 2105--2107
+Underfull \hbox (badness 1067) in paragraph at lines 2104--2106
 \TU/lmr/m/n/12 (Euler equation). Or, in the case of interest rates with vari-
  []
 
@@ -947,7 +947,7 @@ Overfull \hbox (300.24039pt too wide) has occurred while \output is active
  []
 
 [67] [68]
-Overfull \hbox (26.89531pt too wide) in alignment at lines 2544--2549
+Overfull \hbox (26.89531pt too wide) in alignment at lines 2543--2548
  [][][] []
  []
 
@@ -968,7 +968,7 @@ Overfull \hbox (300.24039pt too wide) has occurred while \output is active
  []
 
 [71] [72]
-Underfull \hbox (badness 1142) in paragraph at lines 2654--2655
+Underfull \hbox (badness 1142) in paragraph at lines 2653--2654
 []\TU/lmr/m/n/12 In the following lines of code, we use Proposition []1.5[] (i.e. function
  []
 
@@ -981,12 +981,12 @@ Overfull \hbox (300.24039pt too wide) has occurred while \output is active
 File: TSM_files/figure-latex/TSMCCAPM2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/TSMCCAPM2-1.pdf>
 
-Overfull \hbox (27.40201pt too wide) detected at line 2718
+Overfull \hbox (27.40201pt too wide) detected at line 2717
 [] [] [] [] [] [] [] [] [] []
  []
 
 [74] [75]
-Overfull \hbox (61.75157pt too wide) in alignment at lines 2761--2761
+Overfull \hbox (61.75157pt too wide) in alignment at lines 2760--2760
  [][][] []
  []
 
@@ -997,7 +997,7 @@ File: TSM_files/figure-latex/Habits1-1.pdf Graphic file (type pdf)
 File: TSM_files/figure-latex/EZresolution-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/EZresolution-1.pdf>
 [83]
-Overfull \hbox (19.25484pt too wide) in alignment at lines 3018--3021
+Overfull \hbox (19.25484pt too wide) in alignment at lines 3017--3020
  [][][] []
  []
 
@@ -1019,7 +1019,7 @@ File: TSM_files/figure-latex/BS2013-1.pdf Graphic file (type pdf)
 Missing character: There is no 𝜌 (U+1D70C) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no 𝜋 (U+1D70B) in font [lmroman12-regular]:mapping=tex-text;!
 [96] [97]
-Underfull \hbox (badness 1558) in paragraph at lines 3337--3337
+Underfull \hbox (badness 1558) in paragraph at lines 3336--3336
 []\TU/lmr/bx/n/17.28 Preferred-habitat model of the term-
  []
 
@@ -1034,7 +1034,7 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [100]
-Overfull \hbox (38.81812pt too wide) in alignment at lines 3469--3471
+Overfull \hbox (38.81812pt too wide) in alignment at lines 3468--3470
  [][][] []
  []
 
@@ -1083,12 +1083,12 @@ Overfull \hbox (3.85217pt too wide) has occurred while \output is active
  []
 
 [106]
-Overfull \hbox (53.7646pt too wide) detected at line 3618
+Overfull \hbox (53.7646pt too wide) detected at line 3617
 [][][][][] [][][][][][][][] [][][][][][][][][] [] [][][][][][][] [][][][][][][] [] [][][] [][][][][][][][][][]
  []
 
 [107]
-Overfull \hbox (83.59726pt too wide) detected at line 3630
+Overfull \hbox (83.59726pt too wide) detected at line 3629
 [][] [][] [] [][][][][][] [] [][][][][][][][][][] [] []
  []
 
@@ -1115,7 +1115,7 @@ Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 File: TSM_files/figure-latex/CSregressions-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/CSregressions-1.pdf>
 
-Overfull \hbox (57.5932pt too wide) in paragraph at lines 3739--3742
+Overfull \hbox (57.5932pt too wide) in paragraph at lines 3738--3741
 []\TU/lmr/m/n/12 \begin{figure} []
  []
 
@@ -1165,7 +1165,7 @@ Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 File: figures/Ang_Boivin_loadings.png Graphic file (type bmp)
 <figures/Ang_Boivin_loadings.png>
 
-Underfull \hbox (badness 4647) in paragraph at lines 4011--4011
+Underfull \hbox (badness 4647) in paragraph at lines 4010--4010
 []\TU/lmr/bx/n/17.28 Non-Negative Affine Term Structure
  []
 
@@ -1180,7 +1180,7 @@ Overfull \hbox (141.83899pt too wide) has occurred while \output is active
  []
 
 [126]
-Overfull \hbox (4.45569pt too wide) detected at line 4082
+Overfull \hbox (4.45569pt too wide) detected at line 4081
 [] [] [] [] [] [] [][] [] [][][][]
  []
 
@@ -1215,12 +1215,7 @@ Overfull \hbox (141.83899pt too wide) has occurred while \output is active
  []
 
 [134]
-Underfull \hbox (badness 1655) in paragraph at lines 4241--4241
-[][][]\TU/lmr/m/n/10 For instance, in []Svensson[] ([]1994[])’s case: $[][][][][] [][] [] [][] [] [][] [] [] []
- []
-
-
-Overfull \hbox (77.89714pt too wide) detected at line 4246
+Overfull \hbox (77.89714pt too wide) detected at line 4245
 [][] [] []  [] [][][][][][] [][] []
  []
 
@@ -1281,7 +1276,7 @@ Chapter 6.
 [163
 
 ]
-Overfull \hbox (17.21101pt too wide) in paragraph at lines 4966--4968
+Overfull \hbox (17.21101pt too wide) in paragraph at lines 4965--4967
 []\TU/lmr/m/n/12 The price at $[]$ of $[][] [] [][]$ is zero. Therefore: $[][][][][][] [] [] [][][][][] []
  []
 
@@ -1296,22 +1291,22 @@ Overfull \hbox (213.27747pt too wide) has occurred while \output is active
  []
 
 [166]
-Underfull \hbox (badness 1655) in paragraph at lines 5082--5083
+Underfull \hbox (badness 1655) in paragraph at lines 5081--5082
 []\TU/lmr/m/n/12 In the case of a \TU/lmr/bx/n/12 nonstorable commodity\TU/lmr/m/n/12 , there is no
  []
 
 
-Underfull \hbox (badness 1117) in paragraph at lines 5082--5083
+Underfull \hbox (badness 1117) in paragraph at lines 5081--5082
 \TU/lmr/m/n/12 convenience yield. If, moreover $[][]$ deterministic, $[][] []
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 5082--5083
+Underfull \hbox (badness 1259) in paragraph at lines 5081--5082
 [][] [] [][][][][][]$\TU/lmr/m/n/12 , but since [] is not valid we do not
  []
 
 
-Underfull \hbox (badness 1226) in paragraph at lines 5082--5083
+Underfull \hbox (badness 1226) in paragraph at lines 5081--5082
 \TU/lmr/m/n/12 have $[][] [] [][][][] [][][][][][][][]$ and therefore we do not have
  []
 
@@ -1334,7 +1329,7 @@ Overfull \hbox (213.27747pt too wide) has occurred while \output is active
  []
 
 [172] [173]
-Underfull \hbox (badness 1331) in paragraph at lines 5339--5340
+Underfull \hbox (badness 1331) in paragraph at lines 5338--5339
 []\TU/lmr/m/n/12 Eq. [] also shows that we have $[][][][] [] [][][][] [][] []
  []
 
@@ -1353,19 +1348,19 @@ Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 ]
 Chapter 7.
 [177]
-Underfull \hbox (badness 1622) in paragraph at lines 5442--5443
+Underfull \hbox (badness 1622) in paragraph at lines 5441--5442
 []\TU/lmr/m/n/12 Hypothesis []7.3[] also implies that the short-term risk-free rate $[][] []
  []
 
 File: figures/Schema0.pdf Graphic file (type pdf)
 <use figures/Schema0.pdf>
 [178] [179] [180] [181] [182] [183] [184]
-Overfull \hbox (43.24458pt too wide) in paragraph at lines 5680--5681
+Overfull \hbox (43.24458pt too wide) in paragraph at lines 5679--5680
 []\TU/lmr/m/n/12 The $[]$ conditional density of $[][]$ given $[][]$, namely $[][][][][][][][][][][][][][][][][][] [][][]$,
  []
 
 
-Overfull \hbox (17.59521pt too wide) in paragraph at lines 5680--5681
+Overfull \hbox (17.59521pt too wide) in paragraph at lines 5679--5680
 \TU/lmr/m/n/12 tional to $[][][][][][] [][][][][][][][][][][][][][][][][][][][] [][][] [][][][][][][][][][][][] [][][] [][][]$.
  []
 
@@ -1396,18 +1391,18 @@ File: figures/CDOs.png Graphic file (type bmp)
 File: TSM_files/figure-latex/simulation2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/simulation2-1.pdf>
 [205]
-Overfull \hbox (54.94766pt too wide) in paragraph at lines 6344--6344
-[]\TU/lmtt/m/n/12 ##            [,1]       [,2]       [,3]       [,4]       [,5]      [,6][] 
+Overfull \hbox (61.12766pt too wide) in paragraph at lines 6343--6343
+[]\TU/lmtt/m/n/12 ##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6][] 
  []
 
 
-Overfull \hbox (54.88794pt too wide) in paragraph at lines 6344--6344
-[]\TU/lmtt/m/n/12 ## [1,] 0.92423027 0.85931832 0.80329701 0.75463133 0.71207410 0.6746032[] 
+Overfull \hbox (60.99596pt too wide) in paragraph at lines 6343--6343
+[]\TU/lmtt/m/n/12 ## [1,] 0.93870411 0.88506664 0.83783461 0.79599324 0.75868451 0.72519066[] 
  []
 
 
-Overfull \hbox (54.85194pt too wide) in paragraph at lines 6344--6344
-[]\TU/lmtt/m/n/12 ## [2,] 0.07879403 0.07580793 0.07301025 0.07038149 0.06791466 0.0656051[] 
+Overfull \hbox (61.05597pt too wide) in paragraph at lines 6343--6343
+[]\TU/lmtt/m/n/12 ## [2,] 0.06325496 0.06104617 0.05897819 0.05704115 0.05523385 0.05355345[] 
  []
 
 [206]

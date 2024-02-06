@@ -199,6 +199,18 @@ Figure 4.1: Regressions as in Campbell and Shiller (1991). Data are at the month
 Figure 4.2: Sources: SPF Philadelphia for <span class="math inline">\(i_{t,h}^{EH}\)</span> (ticker BILL10) and FRED database for <span class="math inline">\(i_{t,h}\)</span> (ticker THREEFY10).
 </p>
 </div>
+<p>In the same spirit, Figure <a href="TSModels.html#fig:modeFreeIRP">4.3</a> compares the 10-year breakeven rate of inflation (<span class="math inline">\(i_{t,h}- r_{t,h}\)</span>), also called inflation compensation, with the expected annualized inflation over the next 10 years. The difference between the line and the dots is the <em>inflation risk premium</em>, defined as:
+<span class="math display">\[
+IRP_{t,h} = i_{t,h} - r_{t,h} - \mathbb{E}_t(\pi_{t,t+h}),
+\]</span>
+where <span class="math inline">\(\pi_{t,t+h}\)</span> denotes the annualized inflation rate between dates <span class="math inline">\(t\)</span> and <span class="math inline">\(t+h\)</span>.</p>
+<p>Figure <a href="TSModels.html#fig:modeFreeIRP">4.3</a> shows that the inflation risk premium has often been negative in recent years, suggesting a perceived importance of demand shocks in the economy.</p>
+<div class="figure" style="text-align: left-aligned">
+<span style="display:block;" id="fig:modeFreeIRP"></span>
+<img src="TSM_files/figure-html/modeFreeIRP-1.png" alt="Sources: SPF Philadelphia for the 10-year inflation expectation (ticker CPI19) and FRED database for $i_{t,h}$ (ticker DGS10) and for $r_{t,h}$ (ticker DFII10)." width="95%"><p class="caption">
+Figure 4.3: Sources: SPF Philadelphia for the 10-year inflation expectation (ticker CPI19) and FRED database for <span class="math inline">\(i_{t,h}\)</span> (ticker DGS10) and for <span class="math inline">\(r_{t,h}\)</span> (ticker DFII10).
+</p>
+</div>
 </div>
 <div id="RiskFreeAffine" class="section level2" number="4.2">
 <h2>
@@ -321,7 +333,7 @@ With affine specifications of the nominal short term rate (<span class="math inl
 <div class="figure" style="text-align: left-aligned">
 <span style="display:block;" id="fig:fredKW"></span>
 <img src="TSM_files/figure-html/fredKW-1.png" alt="Kim and Wright (2005) outputs." width="95%"><p class="caption">
-Figure 4.3: Kim and Wright (2005) outputs.
+Figure 4.4: Kim and Wright (2005) outputs.
 </p>
 </div>
 </div>
@@ -339,7 +351,7 @@ Figure 4.3: Kim and Wright (2005) outputs.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:figAngPiazzesi"></span>
 <img src="figures/AngPiazzesi1.png" alt="Source: Ang and Piazzesi (1998). Impulse response functions." width="95%"><p class="caption">
-Figure 4.4: Source: Ang and Piazzesi (1998). Impulse response functions.
+Figure 4.5: Source: Ang and Piazzesi (1998). Impulse response functions.
 </p>
 </div>
 </div>
@@ -368,7 +380,7 @@ where <span class="math inline">\(\varepsilon_t\)</span> and <span class="math i
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:JPSIRF"></span>
 <img src="figures/JPS_IRF.png" alt="Source: Joslin, Priebsch, and Singleton (2014). Impulse response functions." width="95%"><p class="caption">
-Figure 4.5: Source: Joslin, Priebsch, and Singleton (2014). Impulse response functions.
+Figure 4.6: Source: Joslin, Priebsch, and Singleton (2014). Impulse response functions.
 </p>
 </div>
 </div>
@@ -402,7 +414,7 @@ v = \left[
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:AngBoivin"></span>
 <img src="figures/Ang_Boivin_loadings.png" alt="Source: Ang, Boivin, Dong, Loo-Kung (2011). Estimated factor loadings ($a_t$ and $b_t$)." width="70%"><p class="caption">
-Figure 4.6: Source: Ang, Boivin, Dong, Loo-Kung (2011). Estimated factor loadings (<span class="math inline">\(a_t\)</span> and <span class="math inline">\(b_t\)</span>).
+Figure 4.7: Source: Ang, Boivin, Dong, Loo-Kung (2011). Estimated factor loadings (<span class="math inline">\(a_t\)</span> and <span class="math inline">\(b_t\)</span>).
 </p>
 </div>
 </div>
@@ -464,7 +476,7 @@ and
 <span class="math display">\[
 \sigma_n^{\mathbb{Q}} := \mathbb{V}ar^{\mathbb{Q}}_t\left(s_{t+n}\right)= \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\Sigma \Sigma' \left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)'\delta_1.
 \]</span></p>
-<p>Hence, using standard results on the truncated normal distribution (see Figure <a href="TSModels.html#fig:Mills">4.8</a>),<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;If &lt;span class="math inline"&gt;\(X\sim \mathcal{N}(\mu,\sigma^2)\)&lt;/span&gt;, then &lt;span class="math inline"&gt;\(\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)\)&lt;/span&gt;.&lt;/p&gt;'><sup>19</sup></a> they obtain:
+<p>Hence, using standard results on the truncated normal distribution (see Figure <a href="TSModels.html#fig:Mills">4.9</a>),<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;If &lt;span class="math inline"&gt;\(X\sim \mathcal{N}(\mu,\sigma^2)\)&lt;/span&gt;, then &lt;span class="math inline"&gt;\(\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)\)&lt;/span&gt;.&lt;/p&gt;'><sup>19</sup></a> they obtain:
 <span class="math display">\[
 \mathbb{E}_t^{\mathbb{Q}}[i_{t+n}] = \underline{i} + \sigma_n^{\mathbb{Q}}g\left(\frac{\bar{a}_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right),
 \]</span>
@@ -511,13 +523,13 @@ which is used in <a href="TSModels.html#eq:RapproxSR">(4.17)</a> to obtain an ap
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:WuXia"></span>
 <img src="TSM_files/figure-html/WuXia-1.png" alt="The upper plot shows a simulated path of the shadow rate $s_t$. The bottom plot shows the approximated forward rate $f_{t,n,n+1}$ and the resulting nominal rates $i_{t,h}$ for the date indicated by the vertical grey line in the upper plot." width="95%"><p class="caption">
-Figure 4.7: The upper plot shows a simulated path of the shadow rate <span class="math inline">\(s_t\)</span>. The bottom plot shows the approximated forward rate <span class="math inline">\(f_{t,n,n+1}\)</span> and the resulting nominal rates <span class="math inline">\(i_{t,h}\)</span> for the date indicated by the vertical grey line in the upper plot.
+Figure 4.8: The upper plot shows a simulated path of the shadow rate <span class="math inline">\(s_t\)</span>. The bottom plot shows the approximated forward rate <span class="math inline">\(f_{t,n,n+1}\)</span> and the resulting nominal rates <span class="math inline">\(i_{t,h}\)</span> for the date indicated by the vertical grey line in the upper plot.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Mills"></span>
 <img src="TSM_files/figure-html/Mills-1.png" alt="This figure shows $\mathbb{E}(\max(0,X))$ for $X \sim \mathcal{N}(\mu,1)$, as a function of $\mu$. More generally, if $X\sim \mathcal{N}(\mu,\sigma^2)$, then $\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)$, where $\Phi$ and $\phi$ are the c.d.f. and p.d.f. of the standard normal distirbution, respectively." width="95%"><p class="caption">
-Figure 4.8: This figure shows <span class="math inline">\(\mathbb{E}(\max(0,X))\)</span> for <span class="math inline">\(X \sim \mathcal{N}(\mu,1)\)</span>, as a function of <span class="math inline">\(\mu\)</span>. More generally, if <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span>, then <span class="math inline">\(\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)\)</span>, where <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\phi\)</span> are the c.d.f. and p.d.f. of the standard normal distirbution, respectively.
+Figure 4.9: This figure shows <span class="math inline">\(\mathbb{E}(\max(0,X))\)</span> for <span class="math inline">\(X \sim \mathcal{N}(\mu,1)\)</span>, as a function of <span class="math inline">\(\mu\)</span>. More generally, if <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span>, then <span class="math inline">\(\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)\)</span>, where <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\phi\)</span> are the c.d.f. and p.d.f. of the standard normal distirbution, respectively.
 </p>
 </div>
 </div>
@@ -561,13 +573,13 @@ Other lift-off probabilities, of the type <span class="math inline">\(\mathbb{P}
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:fitZarg"></span>
 <img src="figures/Figure_fit_ZARG.png" alt="Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters." width="95%"><p class="caption">
-Figure 4.9: Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters.
+Figure 4.10: Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:liftOff"></span>
 <img src="figures/Figure_LiftOff.png" alt="Source: Monfort et al. (2017). Lift-off probabilities." width="95%"><p class="caption">
-Figure 4.10: Source: Monfort et al. (2017). Lift-off probabilities.
+Figure 4.11: Source: Monfort et al. (2017). Lift-off probabilities.
 </p>
 </div>
 </div>
@@ -615,26 +627,26 @@ Since most debtors issue coupon bonds, zero-coupon yields are not directly obser
 where the <span class="math inline">\(w_j\)</span> are weights (that may, e.g., depend on the maturities <span class="math inline">\(h_j\)</span>).</li>
 </ul>
 <div class="example">
-<p><span id="exm:GSW1961" class="example"><strong>Example 4.6  (Gurkaynak, Sack, and Wright (2007)) </strong></span><span class="citation">Gürkaynak, Sack, and Wright (<a href="references.html#ref-GURKAYNAK20072291">2007</a>)</span> develop a methodology to compute zero-coupon yield curves. Their estimation period starts in 1961. Their data base is updated and available on the <a href="https://www.federalreserve.gov/pubs/feds/2006/200628/200628abs.html">Federal Reserve Board website</a>. Figure <a href="TSModels.html#fig:BdPortfolio">4.11</a> represents the residual maturities of the bonds used for the estimation at the different dates of the sample. Figure <a href="TSModels.html#fig:FigNSS">4.12</a> shows the decomposition of the zero-coupon yield curve for a specific date, using the <span class="citation">Svensson (<a href="references.html#ref-Svensson_1994">1994</a>)</span> parametric function. Figure <a href="TSModels.html#fig:Paryds">4.13</a> compares, for one date, fitted and observed yields. This figure also shows the par yield curve; par yields are defined as the coupon of a bond of maturity <span class="math inline">\(h\)</span> that would trade at par (i.e., with a price equal to 100%). That is, the par yield of maturity <span class="math inline">\(h\)</span> (<span class="math inline">\(i^p_{t,h}\)</span>, say) satisfies:
+<p><span id="exm:GSW1961" class="example"><strong>Example 4.6  (Gurkaynak, Sack, and Wright (2007)) </strong></span><span class="citation">Gürkaynak, Sack, and Wright (<a href="references.html#ref-GURKAYNAK20072291">2007</a>)</span> develop a methodology to compute zero-coupon yield curves. Their estimation period starts in 1961. Their data base is updated and available on the <a href="https://www.federalreserve.gov/pubs/feds/2006/200628/200628abs.html">Federal Reserve Board website</a>. Figure <a href="TSModels.html#fig:BdPortfolio">4.12</a> represents the residual maturities of the bonds used for the estimation at the different dates of the sample. Figure <a href="TSModels.html#fig:FigNSS">4.13</a> shows the decomposition of the zero-coupon yield curve for a specific date, using the <span class="citation">Svensson (<a href="references.html#ref-Svensson_1994">1994</a>)</span> parametric function. Figure <a href="TSModels.html#fig:Paryds">4.14</a> compares, for one date, fitted and observed yields. This figure also shows the par yield curve; par yields are defined as the coupon of a bond of maturity <span class="math inline">\(h\)</span> that would trade at par (i.e., with a price equal to 100%). That is, the par yield of maturity <span class="math inline">\(h\)</span> (<span class="math inline">\(i^p_{t,h}\)</span>, say) satisfies:
 <span class="math display" id="eq:paryields">\[\begin{equation}
 1 = \exp(-h i_{t,h}) + \sum_{j=1}^h \exp\left[-j i_{t,j}\right]i^p_{t,h}.\tag{4.20}
 \end{equation}\]</span></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:BdPortfolio"></span>
 <img src="figures/Fig_BdPortfolio.png" alt="This figures displays the residual maturities of the bonds used for the estimation at the different dates of the sample. Source: Gurkaynak, Sack, and Wright (2007)." width="90%"><p class="caption">
-Figure 4.11: This figures displays the residual maturities of the bonds used for the estimation at the different dates of the sample. Source: Gurkaynak, Sack, and Wright (2007).
+Figure 4.12: This figures displays the residual maturities of the bonds used for the estimation at the different dates of the sample. Source: Gurkaynak, Sack, and Wright (2007).
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:FigNSS"></span>
 <img src="figures/Fig_NSS.png" alt="Example of yield curve decomposition using the Nelson-Siegel-Svensson parametric form. Source: Gurkaynak, Sack, and Wright (2007)." width="90%"><p class="caption">
-Figure 4.12: Example of yield curve decomposition using the Nelson-Siegel-Svensson parametric form. Source: Gurkaynak, Sack, and Wright (2007).
+Figure 4.13: Example of yield curve decomposition using the Nelson-Siegel-Svensson parametric form. Source: Gurkaynak, Sack, and Wright (2007).
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Paryds"></span>
 <img src="figures/Fig_TSpar.png" alt="This figure compares observed and fitted yields for a given date of the sample. Source: Gurkaynak, Sack, and Wright (2007)." width="90%"><p class="caption">
-Figure 4.13: This figure compares observed and fitted yields for a given date of the sample. Source: Gurkaynak, Sack, and Wright (2007).
+Figure 4.14: This figure compares observed and fitted yields for a given date of the sample. Source: Gurkaynak, Sack, and Wright (2007).
 </p>
 </div>
 </div>

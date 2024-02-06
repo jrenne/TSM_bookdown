@@ -3747,6 +3747,18 @@ Before turning to the no-arbitrage term structure models, note that \eqref{eq:TP
 \includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/modeFreeTP-1} \caption{Sources: SPF Philadelphia for $i_{t,h}^{EH}$ (ticker BILL10) and FRED database for $i_{t,h}$ (ticker THREEFY10).}\label{fig:modeFreeTP}
 \end{figure}
 
+In the same spirit, Figure \ref{fig:modeFreeIRP} compares the 10-year breakeven rate of inflation (\(i_{t,h}- r_{t,h}\)), also called inflation compensation, with the expected annualized inflation over the next 10 years. The difference between the line and the dots is the \emph{inflation risk premium}, defined as:
+\[
+IRP_{t,h} = i_{t,h} - r_{t,h} - \mathbb{E}_t(\pi_{t,t+h}),
+\]
+where \(\pi_{t,t+h}\) denotes the annualized inflation rate between dates \(t\) and \(t+h\).
+
+Figure \ref{fig:modeFreeIRP} shows that the inflation risk premium has often been negative in recent years, suggesting a perceived importance of demand shocks in the economy.
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/modeFreeIRP-1} \caption{Sources: SPF Philadelphia for the 10-year inflation expectation (ticker CPI19) and FRED database for $i_{t,h}$ (ticker DGS10) and for $r_{t,h}$ (ticker DFII10).}\label{fig:modeFreeIRP}
+\end{figure}
+
 \hypertarget{RiskFreeAffine}{%
 \section{The Affine Case}\label{RiskFreeAffine}}
 
@@ -6323,12 +6335,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.93098671 0.87129301 0.81930533 0.77374146 0.73353885 0.69781862
-## [2,] 0.07151028 0.06888848 0.06643282 0.06412937 0.06197494 0.05996601
+##            [,1]       [,2]       [,3]       [,4]       [,5]      [,6]
+## [1,] 0.92423027 0.85931832 0.80329701 0.75463133 0.71207410 0.6746032
+## [2,] 0.07879403 0.07580793 0.07301025 0.07038149 0.06791466 0.0656051
 ##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.66585707 0.63705994 0.61093953 0.58709511
-## [2,] 0.05809718 0.05636144 0.05475081 0.05325684
+## [1,] 0.64137876 0.61171088 0.58503310 0.56088022
+## [2,] 0.06344787 0.06143694 0.05956521 0.05782479
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

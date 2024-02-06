@@ -187,6 +187,7 @@ exm:TestingEH
 eq:CStheo
 fig:CSregressions
 fig:modeFreeTP
+fig:modeFreeIRP
 eq:RthAB
 eq:RthABEH
 eq:RbarthAB

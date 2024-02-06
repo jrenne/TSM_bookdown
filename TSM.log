@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  6 FEB 2024 22:34
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  6 FEB 2024 23:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1122,6 +1122,11 @@ Overfull \hbox (57.5932pt too wide) in paragraph at lines 3739--3742
 [113]
 File: TSM_files/figure-latex/modeFreeTP-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/modeFreeTP-1.pdf>
+File: TSM_files/figure-latex/modeFreeIRP-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/modeFreeIRP-1.pdf>
+
+Underfull \vbox (badness 5231) has occurred while \output is active []
+
 
 Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 114 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
@@ -1133,87 +1138,93 @@ Overfull \hbox (141.83899pt too wide) has occurred while \output is active
  []
 
 [116] [117]
-File: TSM_files/figure-latex/fredKW-1.pdf Graphic file (type pdf)
-<use TSM_files/figure-latex/fredKW-1.pdf>
-File: figures/AngPiazzesi1.pdf Graphic file (type pdf)
-<use figures/AngPiazzesi1.pdf>
-
 Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 118 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
  []
 
-[118] [119]
+[118]
+File: TSM_files/figure-latex/fredKW-1.pdf Graphic file (type pdf)
+<use TSM_files/figure-latex/fredKW-1.pdf>
+[119]
+File: figures/AngPiazzesi1.pdf Graphic file (type pdf)
+<use figures/AngPiazzesi1.pdf>
+
 Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 120 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
  []
 
-[120]
+[120] [121]
 File: figures/JPS_IRF.pdf Graphic file (type pdf)
 <use figures/JPS_IRF.pdf>
-[121]
-File: figures/Ang_Boivin_loadings.png Graphic file (type bmp)
-<figures/Ang_Boivin_loadings.png>
-
-Underfull \hbox (badness 4647) in paragraph at lines 3999--3999
-[]\TU/lmr/bx/n/17.28 Non-Negative Affine Term Structure
- []
-
 
 Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 122 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
  []
 
-[122] [123]
+[122]
+File: figures/Ang_Boivin_loadings.png Graphic file (type bmp)
+<figures/Ang_Boivin_loadings.png>
+
+Underfull \hbox (badness 4647) in paragraph at lines 4011--4011
+[]\TU/lmr/bx/n/17.28 Non-Negative Affine Term Structure
+ []
+
+[123]
 Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 124 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
  []
 
-[124]
-Overfull \hbox (4.45569pt too wide) detected at line 4070
+[124] [125]
+Overfull \hbox (141.83899pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 126 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
+ []
+
+[126]
+Overfull \hbox (4.45569pt too wide) detected at line 4082
 [] [] [] [] [] [] [][] [] [][][][]
  []
 
-[125]
+[127]
 File: TSM_files/figure-latex/WuXia-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/WuXia-1.pdf>
 File: TSM_files/figure-latex/Mills-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Mills-1.pdf>
 
 Overfull \hbox (141.83899pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 126 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
- []
-
-[126] [127]
-Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 128 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
  []
 
 [128] [129]
-File: figures/Figure_fit_ZARG.pdf Graphic file (type pdf)
-<use figures/Figure_fit_ZARG.pdf>
-File: figures/Figure_LiftOff.pdf Graphic file (type pdf)
-<use figures/Figure_LiftOff.pdf>
-
 Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 130 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
  []
 
-[130] [131]
+[130]
+File: figures/Figure_fit_ZARG.pdf Graphic file (type pdf)
+<use figures/Figure_fit_ZARG.pdf>
+File: figures/Figure_LiftOff.pdf Graphic file (type pdf)
+<use figures/Figure_LiftOff.pdf>
+[131]
 Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 132 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
  []
 
-[132]
-Underfull \hbox (badness 1655) in paragraph at lines 4229--4229
+[132] [133]
+Overfull \hbox (141.83899pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 134 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
+ []
+
+[134]
+Underfull \hbox (badness 1655) in paragraph at lines 4241--4241
 [][][]\TU/lmr/m/n/10 For instance, in []Svensson[] ([]1994[])’s case: $[][][][][] [][] [] [][] [] [][] [] [] []
  []
 
 
-Overfull \hbox (77.89714pt too wide) detected at line 4234
+Overfull \hbox (77.89714pt too wide) detected at line 4246
 [][] [] []  [] [][][][][][] [][] []
  []
 
-[133]
+[135]
 File: figures/Fig_BdPortfolio.png Graphic file (type bmp)
 <figures/Fig_BdPortfolio.png>
 File: figures/Fig_NSS.png Graphic file (type bmp)
@@ -1221,11 +1232,9 @@ File: figures/Fig_NSS.png Graphic file (type bmp)
 File: figures/Fig_TSpar.png Graphic file (type bmp)
 <figures/Fig_TSpar.png>
 
-Overfull \hbox (141.83899pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 134 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
- []
+Underfull \vbox (badness 2042) has occurred while \output is active []
 
-[134] [135]
+
 Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 136 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
  []
@@ -1235,185 +1244,190 @@ Overfull \hbox (141.83899pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 138 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
  []
 
-[138
+[138] [139]
+Overfull \hbox (141.83899pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 140 \TU/lmr/m/sl/12 CHAPTER 4.  NO-ARBITRAGE MODELS OF THE TERM STRUTURE OF RISK-FREE YIELDS
+ []
+
+[140
 
 ]
 Chapter 5.
-[139] [140] [141] [142]
+[141] [142] [143] [144]
 File: TSM_files/figure-latex/illusKF-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/illusKF-1.pdf>
-[143] [144]
+[145] [146]
 File: TSM_files/figure-latex/Kalmansimul-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalmansimul-1.pdf>
 File: TSM_files/figure-latex/Kalman2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman2-1.pdf>
-[145] [146]
+[147] [148]
 File: TSM_files/figure-latex/Kalman5-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman5-1.pdf>
 File: TSM_files/figure-latex/Kalman6-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/Kalman6-1.pdf>
-[147] [148] [149] [150] [151] [152] [153] [154] [155]
+[149] [150] [151] [152] [153] [154] [155] [156] [157]
 File: figures/Fig-SNDE.pdf Graphic file (type pdf)
 <use figures/Fig-SNDE.pdf>
 File: TSM_files/figure-latex/persist1-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/persist1-1.pdf>
 File: TSM_files/figure-latex/persist2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/persist2-1.pdf>
-[156] [157] [158] [159]
+[158] [159] [160] [161]
 File: figures/Fig-SNDE.pdf Graphic file (type pdf)
 <use figures/Fig-SNDE.pdf>
-[160]
+[162]
 Chapter 6.
-[161
+[163
 
 ]
-Overfull \hbox (17.21101pt too wide) in paragraph at lines 4954--4956
+Overfull \hbox (17.21101pt too wide) in paragraph at lines 4966--4968
 []\TU/lmr/m/n/12 The price at $[]$ of $[][] [] [][]$ is zero. Therefore: $[][][][][][] [] [] [][][][][] []
  []
 
 
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
-\TU/lmr/m/n/12 162 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
- []
-
-[162] [163]
-Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 164 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[164]
-Underfull \hbox (badness 1655) in paragraph at lines 5070--5071
-[]\TU/lmr/m/n/12 In the case of a \TU/lmr/bx/n/12 nonstorable commodity\TU/lmr/m/n/12 , there is no
- []
-
-
-Underfull \hbox (badness 1117) in paragraph at lines 5070--5071
-\TU/lmr/m/n/12 convenience yield. If, moreover $[][]$ deterministic, $[][] []
- []
-
-
-Underfull \hbox (badness 1259) in paragraph at lines 5070--5071
-[][] [] [][][][][][]$\TU/lmr/m/n/12 , but since [] is not valid we do not
- []
-
-
-Underfull \hbox (badness 1226) in paragraph at lines 5070--5071
-\TU/lmr/m/n/12 have $[][] [] [][][][] [][][][][][][][]$ and therefore we do not have
- []
-
-[165]
+[164] [165]
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 166 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[166] [167]
+[166]
+Underfull \hbox (badness 1655) in paragraph at lines 5082--5083
+[]\TU/lmr/m/n/12 In the case of a \TU/lmr/bx/n/12 nonstorable commodity\TU/lmr/m/n/12 , there is no
+ []
+
+
+Underfull \hbox (badness 1117) in paragraph at lines 5082--5083
+\TU/lmr/m/n/12 convenience yield. If, moreover $[][]$ deterministic, $[][] []
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 5082--5083
+[][] [] [][][][][][]$\TU/lmr/m/n/12 , but since [] is not valid we do not
+ []
+
+
+Underfull \hbox (badness 1226) in paragraph at lines 5082--5083
+\TU/lmr/m/n/12 have $[][] [] [][][][] [][][][][][][][]$ and therefore we do not have
+ []
+
+[167]
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 168 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[168]
-File: figures/Tab2_Schwartz.pdf Graphic file (type pdf)
-<use figures/Tab2_Schwartz.pdf>
-[169]
+[168] [169]
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 170 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[170] [171]
-Underfull \hbox (badness 1331) in paragraph at lines 5327--5328
-[]\TU/lmr/m/n/12 Eq. [] also shows that we have $[][][][] [] [][][][] [][] []
- []
-
-
+[170]
+File: figures/Tab2_Schwartz.pdf Graphic file (type pdf)
+<use figures/Tab2_Schwartz.pdf>
+[171]
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 172 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
 [172] [173]
+Underfull \hbox (badness 1331) in paragraph at lines 5339--5340
+[]\TU/lmr/m/n/12 Eq. [] also shows that we have $[][][][] [] [][][][] [][] []
+ []
+
+
 Overfull \hbox (213.27747pt too wide) has occurred while \output is active
 \TU/lmr/m/n/12 174 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
  []
 
-[174
+[174] [175]
+Overfull \hbox (213.27747pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 176 \TU/lmr/m/sl/12 CHAPTER 6.  FORWARD, FUTURES, DIVIDENDS, COMMODITY PRICING, AND CONVENIENCE YIELDS
+ []
+
+[176
 
 ]
 Chapter 7.
-[175]
-Underfull \hbox (badness 1622) in paragraph at lines 5430--5431
+[177]
+Underfull \hbox (badness 1622) in paragraph at lines 5442--5443
 []\TU/lmr/m/n/12 Hypothesis []7.3[] also implies that the short-term risk-free rate $[][] []
  []
 
 File: figures/Schema0.pdf Graphic file (type pdf)
 <use figures/Schema0.pdf>
-[176] [177] [178] [179] [180] [181] [182]
-Overfull \hbox (43.24458pt too wide) in paragraph at lines 5668--5669
+[178] [179] [180] [181] [182] [183] [184]
+Overfull \hbox (43.24458pt too wide) in paragraph at lines 5680--5681
 []\TU/lmr/m/n/12 The $[]$ conditional density of $[][]$ given $[][]$, namely $[][][][][][][][][][][][][][][][][][] [][][]$,
  []
 
 
-Overfull \hbox (17.59521pt too wide) in paragraph at lines 5668--5669
+Overfull \hbox (17.59521pt too wide) in paragraph at lines 5680--5681
 \TU/lmr/m/n/12 tional to $[][][][][][] [][][][][][][][][][][][][][][][][][][][] [][][] [][][][][][][][][][][][] [][][] [][][]$.
  []
 
-[183] [184] [185]
+[185] [186] [187]
 File: TSM_files/figure-latex/MRintensity-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/MRintensity-1.pdf>
-[186] [187] [188]
+[188] [189] [190]
 File: figures/IBOROIS.pdf Graphic file (type pdf)
 <use figures/IBOROIS.pdf>
-[189] [190]
+[191] [192]
 File: figures/Schema2.pdf Graphic file (type pdf)
 <use figures/Schema2.pdf>
-[191]
+[193]
 File: figures/schema_VARG.pdf Graphic file (type pdf)
 <use figures/schema_VARG.pdf>
-[192] [193] [194]
+[194] [195] [196]
 File: figures/FigureCDS.pdf Graphic file (type pdf)
 <use figures/FigureCDS.pdf>
 File: figures/FigureCDSFX.pdf Graphic file (type pdf)
 <use figures/FigureCDSFX.pdf>
-[195] [196] [197] [198]
+[197] [198] [199] [200]
 File: figures/schemaDD.pdf Graphic file (type pdf)
 <use figures/schemaDD.pdf>
-[199]
+[201]
 File: figures/CDOs.png Graphic file (type bmp)
 <figures/CDOs.png>
-[200] [201] [202]
+[202] [203] [204]
 File: TSM_files/figure-latex/simulation2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/simulation2-1.pdf>
-[203]
-Overfull \hbox (61.12766pt too wide) in paragraph at lines 6332--6332
-[]\TU/lmtt/m/n/12 ##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6][] 
+[205]
+Overfull \hbox (54.94766pt too wide) in paragraph at lines 6344--6344
+[]\TU/lmtt/m/n/12 ##            [,1]       [,2]       [,3]       [,4]       [,5]      [,6][] 
  []
 
 
-Overfull \hbox (61.03195pt too wide) in paragraph at lines 6332--6332
-[]\TU/lmtt/m/n/12 ## [1,] 0.93098671 0.87129301 0.81930533 0.77374146 0.73353885 0.69781862[] 
+Overfull \hbox (54.88794pt too wide) in paragraph at lines 6344--6344
+[]\TU/lmtt/m/n/12 ## [1,] 0.92423027 0.85931832 0.80329701 0.75463133 0.71207410 0.6746032[] 
  []
 
 
-Overfull \hbox (60.99596pt too wide) in paragraph at lines 6332--6332
-[]\TU/lmtt/m/n/12 ## [2,] 0.07151028 0.06888848 0.06643282 0.06412937 0.06197494 0.05996601[] 
+Overfull \hbox (54.85194pt too wide) in paragraph at lines 6344--6344
+[]\TU/lmtt/m/n/12 ## [2,] 0.07879403 0.07580793 0.07301025 0.07038149 0.06791466 0.0656051[] 
  []
 
-[204]
+[206]
 File: TSM_files/figure-latex/chartspreads-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/chartspreads-1.pdf>
-[205]
+[207]
 File: TSM_files/figure-latex/loaddataset-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/loaddataset-1.pdf>
-[206]
+[208]
 Chapter 8.
-(./TSM.bbl [207
+(./TSM.bbl [209
 
-] [208
+] [210
 
-] [209] [210]
+] [211] [212]
 Underfull \hbox (badness 2027) in paragraph at lines 145--148
 []\TU/lmr/m/n/12 Duan, J.-C. and Simonato, J.-G. (1999).  Estimating and Testing
  []
 
-[211] [212] [213] [214] [215] [216]) [217] (./TSM.aux)
+[213] [214] [215] [216] [217] [218]) [219] (./TSM.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -1425,12 +1439,12 @@ Package rerunfilecheck Info: File `TSM.out' has not changed.
 (rerunfilecheck)             Checksum: AB37CA67CDB30564E9D3E4190373F9A2;10110.
  ) 
 Here is how much of TeX's memory you used:
- 18894 strings out of 476884
- 357385 string characters out of 5804569
- 2011627 words of memory out of 5000000
- 40486 multiletter control sequences out of 15000+600000
+ 18906 strings out of 476884
+ 357887 string characters out of 5804569
+ 2012627 words of memory out of 5000000
+ 40497 multiletter control sequences out of 15000+600000
  565625 words of font info for 113 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  90i,19n,120p,1046b,610s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TSM.pdf (217 pages).
+Output written on TSM.pdf (219 pages).

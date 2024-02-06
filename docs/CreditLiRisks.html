@@ -69,7 +69,7 @@
 <li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="PandQ.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
 <li><a class="" href="Structural.html"><span class="header-section-number">3</span> A detour through structural approaches</a></li>
-<li><a class="" href="TSModels.html"><span class="header-section-number">4</span> The term structure of risk-free yields</a></li>
+<li><a class="" href="TSModels.html"><span class="header-section-number">4</span> No-arbitrage models of the term struture of risk-free yields</a></li>
 <li><a class="" href="Estimation.html"><span class="header-section-number">5</span> Estimation of affine asset-pricing models</a></li>
 <li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
 <li><a class="active" href="CreditLiRisks.html"><span class="header-section-number">7</span> Credit and liquidity risks</a></li>
@@ -570,11 +570,11 @@ Figure 7.2: Simulation of an process following <span class="math inline">\(x_{t}
 R^{IBOR}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( i_{t+i-1} + \widetilde{\lambda}_{e,c, t+i} + \widetilde{\lambda}_{j,\ell, t+i} \right) \right] \right\}.\tag{7.18}
 \end{equation}\]</span>
 Note that the liquidity intensity refers to the lending bank (<span class="math inline">\(j\)</span>) and the default intensity relates to the borrowing bank (<span class="math inline">\(e\)</span>).</p>
-<p>By constrast, the Overnight-Index Swap (OIS) rate satisfies:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The OIS is an interest-rate swap where the floating rate is an overnight-rate reference (EONIA in the euro area). At maturity, the payoff received by the fixed-rate payer is the difference between: (a) the notional (&lt;span class="math inline"&gt;\(W\)&lt;/span&gt;, say) inflated with the date-&lt;span class="math inline"&gt;\(t\)&lt;/span&gt; OIS (fixed) rate (i.e. &lt;span class="math inline"&gt;\(W\exp\{h i_{t,h}^{OIS}\}\)&lt;/span&gt;) and (b) the same notional capitalized with the realized short-term rates (i.e. &lt;span class="math inline"&gt;\(W\exp\{i_{t} + \ldots + i_{t+h-1}\}\)&lt;/span&gt;).&lt;/p&gt;'><sup>18</sup></a>
+<p>By constrast, the Overnight-Index Swap (OIS) rate satisfies:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The OIS is an interest-rate swap where the floating rate is an overnight-rate reference (EONIA in the euro area). At maturity, the payoff received by the fixed-rate payer is the difference between: (a) the notional (&lt;span class="math inline"&gt;\(W\)&lt;/span&gt;, say) inflated with the date-&lt;span class="math inline"&gt;\(t\)&lt;/span&gt; OIS (fixed) rate (i.e. &lt;span class="math inline"&gt;\(W\exp\{h i_{t,h}^{OIS}\}\)&lt;/span&gt;) and (b) the same notional capitalized with the realized short-term rates (i.e. &lt;span class="math inline"&gt;\(W\exp\{i_{t} + \ldots + i_{t+h-1}\}\)&lt;/span&gt;).&lt;/p&gt;'><sup>20</sup></a>
 <span class="math display" id="eq:OIS">\[\begin{equation}
 R^{OIS}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left( - \sum_{i=1}^{h}  i_{t+i-1} \right) \right\}.\tag{7.19}
 \end{equation}\]</span></p>
-<p>Assuming that <span class="math inline">\(i_t\)</span>, the short-term risk-free rate (i.e., the reference rate of the OIS, EONIA here) is independent from the intensities and under the homogeneity assumption, we obtain:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is assumed here that the overnight interbank market preserves the lending bank from (i) liquidity and (ii) credit risk. The rationale behind that is twofold: (a) By rolling its cash on the overnight market (at the EONIA rate), a bank is not exposed to the risk of having to liquidate longer-term investments upon the realization of the liquidity shock; (b) while the EONIA is an unsecured-transaction rate, the extremely-short maturity of these transactions substantially reduces the credit-risk exposure of the lending bank.&lt;/p&gt;"><sup>19</sup></a>
+<p>Assuming that <span class="math inline">\(i_t\)</span>, the short-term risk-free rate (i.e., the reference rate of the OIS, EONIA here) is independent from the intensities and under the homogeneity assumption, we obtain:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is assumed here that the overnight interbank market preserves the lending bank from (i) liquidity and (ii) credit risk. The rationale behind that is twofold: (a) By rolling its cash on the overnight market (at the EONIA rate), a bank is not exposed to the risk of having to liquidate longer-term investments upon the realization of the liquidity shock; (b) while the EONIA is an unsecured-transaction rate, the extremely-short maturity of these transactions substantially reduces the credit-risk exposure of the lending bank.&lt;/p&gt;"><sup>21</sup></a>
 <span class="math display">\[
 R^{IBOR}_{t,h} - R^{OIS}_{t,h} = - \frac{1}{h} \log \mathbb{E}^{\mathbb{Q}}_t \left\{ \exp \left[ - \sum_{i=1}^{h} \left( \widetilde{\lambda}_{c, t+i} + \widetilde{\lambda}_{\ell, t+i} \right) \right] \right\}.
 \]</span></p>
@@ -864,7 +864,7 @@ and where <span class="math inline">\(\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u
 <span class="math display" id="eq:ndistrinew">\[\begin{eqnarray}
 n^s_{t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &amp;\sim&amp; \mathcal{P}oisson(\beta y_{t+1}+c n^s_{t}),\tag{7.37}
 \end{eqnarray}\]</span>
-where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>. Vector <span class="math inline">\((y_t,x_t)'\)</span> follows a VARG dynamics (Eq. <a href="TSModels.html#eq:VARG">(4.16)</a>) that admits the following VAR representation (using Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>):
+where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>. Vector <span class="math inline">\((y_t,x_t)'\)</span> follows a VARG dynamics (Eq. <a href="TSModels.html#eq:VARG">(4.18)</a>) that admits the following VAR representation (using Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>):
 <span class="math display" id="eq:systemF12">\[\begin{equation}
 \left\{
 \begin{array}{ccl}
@@ -1094,12 +1094,12 @@ Figure 7.10: This plots shows simulated paths for <span class="math inline">\(z_
 <span><span class="va">t.max.lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>, <span class="co">#approximate values of the conditional expect. for date t</span></span>
 <span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##            [,1]       [,2]       [,3]      [,4]       [,5]       [,6]
-## [1,] 0.93379838 0.87629934 0.82602640 0.7817987 0.74263050 0.70770284
-## [2,] 0.06849473 0.06602376 0.06370952 0.0615395 0.05951133 0.05762183
-##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.67633944 0.64798382 0.62217845 0.59854676
-## [2,] 0.05586574 0.05423619 0.05272537 0.05132506</code></pre>
+<pre><code>##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] 0.95712868 0.91834653 0.88303385 0.85067262 0.82082550 0.79313237
+## [2,] 0.04381744 0.04259024 0.04146392 0.04043198 0.03948895 0.03862752
+##            [,7]       [,8]       [,9]     [,10]
+## [1,] 0.76729772 0.74307823 0.72027242 0.6987124
+## [2,] 0.03784006 0.03711924 0.03645842 0.0358516</code></pre>
 <p>The last two lines respectively give, for the date featuring the highest <span class="math inline">\(\lambda_t\)</span>, the term structures of the bond prices and of associated yields-to-maturity.</p>
 <p>Let us now compute credit-risk-free bond prices. This is obtained by taking <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=0\)</span> (so that <span class="math inline">\(\lambda_t=0\)</span>):</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -1195,7 +1195,7 @@ Figure 7.12: Comparison between formula-based prices and Monte-Carlo-based defau
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-05.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

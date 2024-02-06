@@ -179,10 +179,14 @@ eq:stdbondRFchapter
 eq:stdbondRFchapterP
 eq:REH
 eq:TP
+eq:Bt2
+def:RPremium
+eq:basicAAA
 eq:CovRP
 exm:TestingEH
 eq:CStheo
 fig:CSregressions
+fig:modeFreeTP
 eq:RthAB
 eq:RthABEH
 eq:RbarthAB

@@ -69,7 +69,7 @@
 <li><a class="" href="ChapterAffine.html"><span class="header-section-number">1</span> Affine processes</a></li>
 <li><a class="" href="PandQ.html"><span class="header-section-number">2</span> Pricing and risk-neutral dynamics</a></li>
 <li><a class="" href="Structural.html"><span class="header-section-number">3</span> A detour through structural approaches</a></li>
-<li><a class="" href="TSModels.html"><span class="header-section-number">4</span> The term structure of risk-free yields</a></li>
+<li><a class="" href="TSModels.html"><span class="header-section-number">4</span> No-arbitrage models of the term struture of risk-free yields</a></li>
 <li><a class="active" href="Estimation.html"><span class="header-section-number">5</span> Estimation of affine asset-pricing models</a></li>
 <li><a class="" href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></li>
 <li><a class="" href="CreditLiRisks.html"><span class="header-section-number">7</span> Credit and liquidity risks</a></li>
@@ -441,7 +441,7 @@ where <span class="math inline">\(\varepsilon_t|\underline{x_t},z_t \sim \mathca
 <span class="math display">\[
 m(z_t,x_{t-1}) = \mu z_t + \Phi x_{t-1}.
 \]</span>
-If <span class="math inline">\(r_t\)</span> and the SDF are respectively affine and exponential in <span class="math inline">\(w_t\)</span>, then, in particular, yields are also affine in <span class="math inline">\(w_t\)</span>, i.e. of the form <span class="math inline">\(i_{t,h}= A_h'z_t + B_{h}'x_t\)</span>, as in, e.g., <a href="TSModels.html#eq:RthAB">(4.7)</a>. Therefore, if the components of <span class="math inline">\(y_t\)</span> are yields of different maturities, the measurement equations are consistent with Assumption <a href="Estimation.html#hyp:RSmeasurement">5.2</a>.</p>
+If <span class="math inline">\(r_t\)</span> and the SDF are respectively affine and exponential in <span class="math inline">\(w_t\)</span>, then, in particular, yields are also affine in <span class="math inline">\(w_t\)</span>, i.e. of the form <span class="math inline">\(i_{t,h}= A_h'z_t + B_{h}'x_t\)</span>, as in, e.g., <a href="TSModels.html#eq:RthAB">(4.9)</a>. Therefore, if the components of <span class="math inline">\(y_t\)</span> are yields of different maturities, the measurement equations are consistent with Assumption <a href="Estimation.html#hyp:RSmeasurement">5.2</a>.</p>
 </div>
 <p>How to estimate such a model when the regimes <span class="math inline">\(z_t\)</span> are unobservable? We distinguish two distinct situations:</p>
 <p><strong>Case 1. The <span class="math inline">\(x_t\)</span> factors are observable.</strong> The probabilities of being in the different regimes on each date can be estimated by employing the Kitagawa-Hamilton filter, with (using the notations of Proposition <a href="Estimation.html#prp:KitagHamilton">5.3</a>): <span class="math inline">\(F_t = (y_t',x_t')'\)</span> and
@@ -600,7 +600,7 @@ Figure 5.6: Source: Renne (2017).
 <h2>
 <span class="header-section-number">5.4</span> A typical small-sample issue<a class="anchor" aria-label="anchor" href="#EstimationPersistency"><i class="fas fa-link"></i></a>
 </h2>
-<p>Interest rates are particularly persistent variables. Since affine models eventually lead to linear relationships between state variables and interest rates (see Eq. <a href="TSModels.html#eq:RthAB">(4.7)</a>), some state variables are also necessarily highly persistent. Accordingly, in small sample, maximum-likelihood estimates of the model parameters are likely to suffer from a downward bias (see, e.g., <span class="citation">Michael D. Bauer and Wu (<a href="references.html#ref-Bauer_Rudebusch_Wu_2012">2012</a>)</span> or <span class="citation">Jardet, Monfort, and Pegoraro (<a href="references.html#ref-Jardet_Monfort_Pegoraro_2013">2013</a>)</span>). This relates to a well-known econometric problem illustrated by Figure <a href="Estimation.html#fig:persist1">5.7</a>.</p>
+<p>Interest rates are particularly persistent variables. Since affine models eventually lead to linear relationships between state variables and interest rates (see Eq. <a href="TSModels.html#eq:RthAB">(4.9)</a>), some state variables are also necessarily highly persistent. Accordingly, in small sample, maximum-likelihood estimates of the model parameters are likely to suffer from a downward bias (see, e.g., <span class="citation">Michael D. Bauer and Wu (<a href="references.html#ref-Bauer_Rudebusch_Wu_2012">2012</a>)</span> or <span class="citation">Jardet, Monfort, and Pegoraro (<a href="references.html#ref-Jardet_Monfort_Pegoraro_2013">2013</a>)</span>). This relates to a well-known econometric problem illustrated by Figure <a href="Estimation.html#fig:persist1">5.7</a>.</p>
 <div class="figure" style="text-align: left-aligned">
 <span style="display:block;" id="fig:persist1"></span>
 <img src="TSM_files/figure-html/persist1-1.png" alt="1000 random walk samples of size $T$ ($T=50$ for the left plot and $T=400$ for the right plot) have been simulated. For each sample, we run the OLS regression $y_t = \phi y_{t-1} + \varepsilon_t$ to estimate $\phi$ (whose true value is 1). The plots show the distributions (kernel-based estimation) of the estimated $\phi$. The vertical red bar indicate the means of the distributions; the vertical blue line shows the usual bias approximation ($1-5.3/T$)." width="95%"><p class="caption">
@@ -624,7 +624,7 @@ Figure 5.8: This figure illustrates the influence of the downward bias on on est
 </p>
 </div>
 <p><span class="citation">D. H. Kim and Orphanides (<a href="references.html#ref-Kim_Orphanides_2005">2005</a>)</span> have proposed a simple approach to deal with this problem. Their approach consists in adding measurement equations to impose that the model-implied forecasts are—up to some measurement errors—equal to survey-based ones. In their empirical exercise, they use the <a href="https://lrus.wolterskluwer.com/store/products/blue-chip-financial-forecasts-prod-ss07418345/paperback-item-1-ss07418345">Blue Chip Financial Forecasts</a>. Alternative (publicly available) surveys are: <a href="https://www.philadelphiafed.org/research-and-data/real-time-center/survey-of-professional-forecasters">the Philly Fed Survey of Professional Forecasters</a> and <a href="https://www.ecb.europa.eu/stats/ecb_surveys/survey_of_professional_forecasters/html/index.en.html">the ECB SPF</a>.</p>
-<p><span class="citation">D. H. Kim and Orphanides (<a href="references.html#ref-Kim_Orphanides_2005">2005</a>)</span> exploit the fact that, in the context of affine models, model-implied forecasts of yields are affine in the state vector (see see Eq. <a href="TSModels.html#eq:condmeanRth">(4.10)</a>); this implies that their mesurement equations are affine in the state vector, which facilitates the estimation of the latent factors. As shown by Figure <a href="Estimation.html#fig:figKimOrph">5.9</a>, their model is able to satisfyingly fit both survey-based forecasts and market yields.</p>
+<p><span class="citation">D. H. Kim and Orphanides (<a href="references.html#ref-Kim_Orphanides_2005">2005</a>)</span> exploit the fact that, in the context of affine models, model-implied forecasts of yields are affine in the state vector (see see Eq. <a href="TSModels.html#eq:condmeanRth">(4.12)</a>); this implies that their mesurement equations are affine in the state vector, which facilitates the estimation of the latent factors. As shown by Figure <a href="Estimation.html#fig:figKimOrph">5.9</a>, their model is able to satisfyingly fit both survey-based forecasts and market yields.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:figKimOrph"></span>
 <img src="figures/Fig-SNDE.png" alt="Source: Kim and Orphanides (2005)." width="95%"><p class="caption">
@@ -635,7 +635,7 @@ Figure 5.9: Source: Kim and Orphanides (2005).
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="TSModels.html"><span class="header-section-number">4</span> The term structure of risk-free yields</a></div>
+<div class="prev"><a href="TSModels.html"><span class="header-section-number">4</span> No-arbitrage models of the term struture of risk-free yields</a></div>
 <div class="next"><a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html"><span class="header-section-number">6</span> Forward, futures, dividends, commodity pricing, and convenience yields</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
@@ -673,7 +673,7 @@ Figure 5.9: Source: Kim and Orphanides (2005).
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-05.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

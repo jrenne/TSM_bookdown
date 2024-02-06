@@ -1,4 +1,4 @@
-# The term structure of risk-free yields {#TSModels}
+# No-arbitrage models of the term struture of risk-free yields {#TSModels}
 
 
 <!-- ```{r extractECB, echo=TRUE, fig.cap="Simulation of a quadratic processes $x_t$.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE} -->
@@ -23,40 +23,66 @@
 
 Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are usually considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks [@Duffie_Stein_2015] (see Subsection \@ref(Swaps)). (Credit and liquidity risks are covered in Section \@ref(CreditLiRisks).)
 
-An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models explicitly involve macroeconomic factors; this can be done in a reduced-form way (e.g., @Ang_Piazzesi_2003) or in a more structural way, in the context of the equilibrium term-structure approaches (e.g., @Bansal_Shaliastochiv, see Example \@ref(exm:BS2013)) or even in the context of dynamic stochastic general equilibrium models (e.g., @Hordahl_Tristani_veston_2008, @DewBecker_2014). Many studies feature purely latent factors, with no explicit macroeconomic interpretation (e.g., @Duffie_Singleton_1997, @Joslin_Singleton_Zhu_2011). The latter are sometimes called *yield-only* models.
+An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models explicitly involve macroeconomic factors; this can be done in a reduced-form way (e.g., @Ang_Piazzesi_2003) or in a more structural way, in the context of the equilibrium term-structure approaches (e.g., @Bansal_Shaliastovich_2013, see Example \@ref(exm:BS2013)) or even in the context of dynamic stochastic general equilibrium models (e.g., @Hordahl_Tristani_veston_2008, @DewBecker_2014). Many studies feature purely latent factors, with no explicit macroeconomic interpretation (e.g., @Duffie_Singleton_1997, @Joslin_Singleton_Zhu_2011). The latter are sometimes called *yield-only* models.
 
-The basic pricing formula of a risk-free zero coupon bond is (see Eq. \@ref(eq:ihandM)):
+Under regularity and no-arbitrage assumptions, the price of a risk-free zero coupon bond, and the associated yield-to-maturity, satisfy (see Eq. \@ref(eq:ihandM)):
 \begin{eqnarray}
-B_{t,h} &=& \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t -i_{t+1}-\dots-i_{t+h-1})\\
-i_{t,h} &=& - \frac{1}{h} \log B_{t,h}. (\#eq:stdbondRFchapter)
+B_{t,h} &=& \mathbb{E}_t (\mathcal{M}_{t,t+h})\nonumber\\
+&=& \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t -i_{t+1}-\dots-i_{t+h-1})\nonumber\\
+i_{t,h} &=& - \frac{1}{h} \log B_{t,h}, (\#eq:stdbondRFchapter)
 \end{eqnarray}
+where $\mathcal{M}_{t,t+h}$ is the (stricly positive) stochastic discount factor between dates $t$ and $t+h$, and where the risk neutral measure $\mathbb{Q}$ is defined with respect to the physical measure $\mathbb{P}$ by means of the Radon-Nikodym derivative $\mathcal{M}_{t,t+1}\big/\mathbb{E}_t(\mathcal{M}_{t,t+1})$.^[That is, for any random variable $X_{t+1}$:
+$$
+\mathbb{E}^{\mathbb{Q}}_t(X_{t+1})=\mathbb{E}_t\left(X_{t+1}\frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}\right).
+$$]
 
 Term structure models are often used to extract *term premiums* from observed yields-to-maturity. Term premiums are those components of yields that would not exist if investors were not risk-averse (see, e.g., Subsection \@ref(TSCCAPM)).
 
-If agents were not risk averse, i.e., under the *Expectation Hypothesis (EH)*, we would have $\mathcal{M}_{t,t+1} = \exp(- i_t)$. We would then have $\mathbb{P} \equiv \mathbb{Q}$  and $B_{t,h}$ would be equal to:
+If agents were not risk averse, i.e., under the *Expectation Hypothesis (EH)*, we would have $\mathcal{M}_{t,t+1} = \exp(- i_t)$ and $\mathbb{P} \equiv \mathbb{Q}$; $B_{t,h}$ would then be equal to:
 \begin{equation}
-b^{EH}_{t,h} := \mathbb{E}_t \exp(-i_{t}-i_{t+1}-\dots-i_{t+h-1}).(\#eq:stdbondRFchapterP)
+B^{EH}_{t,h} := \mathbb{E}_t \exp(-i_{t}-i_{t+1}-\dots-i_{t+h-1}).(\#eq:stdbondRFchapterP)
 \end{equation}
-And the maturity-$h$ yield-to-maturity would then be:
+The (counterfactual) maturity-$h$ yield-to-maturity would then be:
 \begin{eqnarray}
 i^{EH}_{t,h} &=& -\frac{1}{h}\log \left( \mathbb{E}_t \exp(-i_t-\dots-i_{t+h-1})\right)\nonumber\\
 &\approx& \frac{1}{h}\mathbb{E}_t(i_t + \dots + i_{t+h-1}).(\#eq:REH)
 \end{eqnarray}
 
-The term premium is usually defined as:
+Using the previous notations, the term premium is usually defined as:
 \begin{eqnarray}
 TP_{t,h} &=& \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{t+1}-\dots-i_{t+h-1})}_{=i_{t,h}} - \nonumber \\
 && \underbrace{- \frac{1}{h}  \log  \mathbb{E}_t \exp(-i_{t+1}-\dots-i_{t+h-1}).}_{=i^{EH}_{t,h}}(\#eq:TP)
 \end{eqnarray}
 
-What is the economic meaning of the term premium? Under EH, investors are willing to buy a maturity-$h$ bond as long as its expected return is---up to Jensen's inequality---equal to the average of future short-term rates. (Hence the definition of $i^{EH}_{t,h}$, see Eq. \@ref(eq:REH).) The fact that $TP_{t,h}>0$ (say) means that investors are willing to buy the maturity-$h$ bond only if its return is, on average, higher than expected future short-term rates; it corresponds to a situation where investors consider that long-term bonds tend to lose value in *bad states of the world* (i.e., states of high marginal utility) and want to be compensated for that.
+A term premium is a specific type of risk premium (see Def. \@ref(def:RPremium)), in the sense that it reflects changes between the price of an asset (a bond here, $B_{t,h}$) and the counterfactual we would observe if agents were not risk averse ($B_{t,h}^{EH}$, here). 
+
+Economically, what accounts for term premiums? To address this in a comprehensive way, one needs to resort to structural approaches (see Section \@ref(Structural)). A short reply is that a long-term bond is never "risk-free" as it is exposed to the interest-rate risk; and that investors are averse to this risk, hence the term premiums. Take a two-period bond; using \@ref(eq:basicAAA), we have:
+\begin{equation}
+B_{t,2} = \underbrace{\mathbb{E}_t(\exp(-i_t-i_{t+1}))}_{= B^{EH}_{t,2}} + \mathbb{C}ov_t(\mathcal{M}_{t,t+1},\underbrace{\exp(-i_{t+1})}_{=B_{t+1,1}}).(\#eq:Bt2)
+\end{equation}
+Therefore $B_{t,2} \ne B_{t,2}^{EH}$ as soon as $\mathcal{M}_{t,t+1}$ and $i_{t+1}$ are conditionally correlated, which is likely to be the case (see, e.g., the CCAPM case in Subsection \@ref(TSCCAPM)).
+
+In the following subsections, we describe statistical approaches that have been used to estimate term premiums. These approaches are usually silent about the drivers of the term premiums. Eq \@ref(eq:Bt2) provides some insights regarding the sources of fluctuations of term premiums: interest rate volatility, SDF volatility (that may depend on risk aversion, see, e.g., the Epstein-Zin case in \@ref(eq:sdfAbc)), the correlation between interest rates and the SDF.
+
+Under EH, investors are willing to buy a maturity-$h$ bond as long as its expected return is---up to Jensen's inequality---equal to the average of future short-term rates. (Hence the definition of $i^{EH}_{t,h}$, see Eq. \@ref(eq:REH).) The fact that $TP_{t,h}>0$ (say) means that investors are willing to buy the maturity-$h$ bond only if its return is, on average, higher than expected future short-term rates; it corresponds to a situation where investors consider that long-term bonds tend to lose value in *bad states of the world* (i.e., states of high marginal utility) and want to be compensated for that.
 
 
-> **_Risk premium:_** According to \@ref(eq:basic), the price of any asset $j$ satisfies:
+:::{.definition #RPremium name="Risk premium, in the general case"}
+
+According to \@ref(eq:basic), under the absence of arbitrage opportunities, the price of any asset $j$ satisfies:
+\begin{equation}
+p_{jt} = \mathbb{E}_t(\mathcal{M}_{t,t+1} p_{j,t+1}),(\#eq:basicAAA)
+\end{equation}
+or, equivalently,
 $$
-p_{jt} = \mathbb{E}_t(\mathcal{M}_{t,t+1} p_{j,t+1}).
+p_{jt} = \exp(-i_t)\mathbb{E}^{\mathbb{Q}}_t(p_{j,t+1}),
 $$
-The previous equation rewrites:
+where the risk neutral measure $\mathbb{Q}$ is defined with respect to the physical measure $\mathbb{P}$ by means of the Radon-Nikodym derivative $\mathcal{M}_{t,t+1}\big/\mathbb{E}_t(\mathcal{M}_{t,t+1})$.^[That is, for any random variable $X_{t+1}$:
+$$
+\mathbb{E}^{\mathbb{Q}}_t(X_{t+1})=\mathbb{E}_t\left(X_{t+1}\frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}\right).
+$$]
+
+Eq. \@ref(eq:basicAAA) rewrites:
 $$
 p_{jt} =  \mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1}) + \mathbb{E}_t(\mathcal{M}_{t,t+1})\mathbb{E}_t( p_{j,t+1})
 $$
@@ -65,7 +91,7 @@ or
 p_{jt} = \underbrace{\exp(-i_t)\mathbb{E}_t( p_{j,t+1})}_{=p^{EH}_{jt}} + \underbrace{\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})}_{\mbox{Risk premium}}.(\#eq:CovRP)
 \end{equation}
 If investors were not risk-averse, then we would have $p_{jt} = p^{EH}_{jt}$. The SDF is high (resp. low) in bad (resp. good) states of the world (states of high marginal utility in the equilibrium approach). Hence, we have $p_{jt}< p^{EH}_{jt}$ if asset $j$ tends to pay less in bad states of the world (i.e., if $\mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})<0$).
-
+:::
 
 :::{.example #TestingEH name="Testing the Expectation Hypothesis"}
 
@@ -165,6 +191,45 @@ for(i in 1:2){
 }
 ```
 :::
+
+
+Before turning to the no-arbitrage term structure models, note that \@ref(eq:TP) implies that term premium estimates are directly available if we have good approximations for the expected future short term rates (i.e., $i_{t,h}^{EH}$). Some surveys offer such proxies. It is for instance the case of the [Philadelphia Fed SPF](https://www.philadelphiafed.org/surveys-and-data/bill10), that provides expectations of the short-term rate over the next 10 years (see Figure \@ref(fig:modeFreeTP)). However, there is only one release per year for this survey.
+
+```{r modeFreeTP, echo=FALSE, fig.cap="Sources: SPF Philadelphia for $i_{t,h}^{EH}$ (ticker BILL10) and FRED database for $i_{t,h}$ (ticker THREEFY10).", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE,warning = FALSE}
+library(fredr)
+fredr_set_key("df65e14c054697a52b4511e77fcfa1f3")
+start_date <- as.Date("1959-01-01"); end_date <- as.Date("2023-10-01")
+f <- function(ticker){
+  fredr(series_id = ticker,
+        observation_start = start_date,observation_end = end_date,
+        frequency = "m",aggregation_method = "eop")
+}
+y10 <- f("THREEFY10");y10$date <- as.Date(y10$date)
+
+# Get SPFs:
+download.file("https://www.philadelphiafed.org/-/media/frbp/assets/surveys-and-data/survey-of-professional-forecasters/data-files/files/mean_bill10_level.xlsx",
+              "data/mean_bill10_level.xlsx")
+SPF <- readxl::read_xlsx(path="data/mean_bill10_level.xlsx")
+SPF$date <- as.Date(paste(SPF$YEAR,"-",1+3*(SPF$QUARTER-1),"-01",sep=""))
+DATA <- merge(as.data.frame(y10),as.data.frame(SPF),by="date")
+DATA$BILL10 <- as.double(DATA$BILL10)
+par(plt=c(.15,.95,.1,.95))
+plot(DATA$date,DATA$value,type="l",ylab="yields, in percent",xlab="",lwd=2)
+points(DATA$date,DATA$BILL10,pch=19)
+legend("topright", 
+       c(expression(i[t*','*h]),expression({i[t*','*h]}^{EH})),
+       #pt.bg = c("black","red","blue"),
+       #lty=c(1,1), # gives the legend appropriate symbols (lines)       
+       lwd=c(2), # line width
+       lty=c(1,NaN),
+       pch=c(NaN,19),
+       col=c("black","black"), # gives the legend lines the correct color and width
+       seg.len = 3,
+       bg = "white"
+)
+
+```
+
 
 ## The Affine Case {#RiskFreeAffine}
 

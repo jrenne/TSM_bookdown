@@ -209,6 +209,12 @@ fig:Mills
 eq:VARG
 fig:fitZarg
 fig:liftOff
+eq:couponBd
+exm:GSW1961
+eq:paryields
+fig:BdPortfolio
+fig:FigNSS
+fig:Paryds
 def:LSSM
 eq:measeq
 eq:transeq
@@ -395,6 +401,9 @@ RiskFreeGaussian
 RiskFreeNonNegative
 Shadowrate
 the-auto-regressive-gamma-approach
+constructing
+bond-based-yield-curves
+swap-based-yield-curves
 Estimation
 EstimationSSModel
 Estimation:KF

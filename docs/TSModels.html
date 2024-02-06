@@ -113,7 +113,7 @@ B_{t,h} &amp;=&amp; \mathbb{E}_t (\mathcal{M}_{t,t+h})\nonumber\\
 &amp;=&amp; \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t -i_{t+1}-\dots-i_{t+h-1})\nonumber\\
 i_{t,h} &amp;=&amp; - \frac{1}{h} \log B_{t,h}, \tag{4.1}
 \end{eqnarray}\]</span>
-where <span class="math inline">\(\mathcal{M}_{t,t+h}\)</span> is the (stricly positive) stochastic discount factor between dates <span class="math inline">\(t\)</span> and <span class="math inline">\(t+h\)</span>, and where the risk neutral measure <span class="math inline">\(\mathbb{Q}\)</span> is defined with respect to the physical measure <span class="math inline">\(\mathbb{P}\)</span> by means of the Radon-Nikodym derivative <span class="math inline">\(\mathcal{M}_{t,t+1}\big/\mathbb{E}_t(\mathcal{M}_{t,t+1})\)</span>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;That is, for any random variable &lt;span class="math inline"&gt;\(X_{t+1}\)&lt;/span&gt;:
+where <span class="math inline">\(\mathcal{M}_{t,t+h}\)</span> is the (strictly positive) stochastic discount factor between dates <span class="math inline">\(t\)</span> and <span class="math inline">\(t+h\)</span>, and where the risk neutral measure <span class="math inline">\(\mathbb{Q}\)</span> is defined with respect to the physical measure <span class="math inline">\(\mathbb{P}\)</span> by means of the Radon-Nikodym derivative <span class="math inline">\(\mathcal{M}_{t,t+1}\big/\mathbb{E}_t(\mathcal{M}_{t,t+1})\)</span>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;That is, for any random variable &lt;span class="math inline"&gt;\(X_{t+1}\)&lt;/span&gt;:
 &lt;span class="math display"&gt;\[
 \mathbb{E}^{\mathbb{Q}}_t(X_{t+1})=\mathbb{E}_t\left(X_{t+1}\frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}\right).
 \]&lt;/span&gt;&lt;/p&gt;'><sup>16</sup></a></p>
@@ -570,7 +570,95 @@ Figure 4.9: Source: Monfort et al. (2017). Model fit of conditional variances a
 Figure 4.10: Source: Monfort et al. (2017). Lift-off probabilities.
 </p>
 </div>
-
+</div>
+</div>
+<div id="constructing" class="section level2" number="4.5">
+<h2>
+<span class="header-section-number">4.5</span> Appendix – Constructing the yield curve<a class="anchor" aria-label="anchor" href="#constructing"><i class="fas fa-link"></i></a>
+</h2>
+<p>Interest rates are observed on financial markets. There are two broad categories of interest rate: those associate with bonds and those associated with derivatives (swaps, see Subsection <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#Swaps">6.2.1</a>). For each category, there are, in turn, different types of yield curves:</p>
+<ul>
+<li>
+<strong>Bonds</strong>: yields-to-maturity, par yields, zero-coupon yields. Besides, even for a given issuer, there may be different yield curves if this issuer has issued different types of bonds in the past (e.g., nominal, inflation-indexed, green).</li>
+<li>
+<strong>Swaps</strong>: there is one swap curve per reference rate. The spread between to swap rates with same maturity (tenor), but different reference rate (EONIA and EURIBOR3M, say) is called basis.</li>
+</ul>
+<!-- It is straightforward to derive term structures of swap rates --><!-- Financial data providers usually computes themselves  --><div id="bond-based-yield-curves" class="section level3" number="4.5.1">
+<h3>
+<span class="header-section-number">4.5.1</span> Bond-based yield curves<a class="anchor" aria-label="anchor" href="#bond-based-yield-curves"><i class="fas fa-link"></i></a>
+</h3>
+<p>The basic yield curve is the <em>zero-coupon yield curve</em>. It is the one used in most formulas in this course (under the notations <span class="math inline">\(i_{t,h}\)</span> and <span class="math inline">\(r_{t,h}\)</span>). It is also the most convenient because, with it at hand, we can easily price any stream of (fixed) payoff promised by the issuer. Consider, for instance, the following stream of payoffs: <span class="math inline">\(\{W_{t+h_1},W_{t+h_2},\dots,W_{t+h_n}\}\)</span> that will be paid on dates <span class="math inline">\(h_1,\dots,h_n\)</span> by a given issuer. If the (continuously-compounded) zero-coupon yields of this issuer are the <span class="math inline">\(i_{t,h}\)</span>’s, then the price of this stream of payoffs is:
+<span class="math display">\[
+P_t = \sum_{j=1}^n \exp(-h_j i_{t,h_j})W_{t+h_j}.
+\]</span>
+By definition, the yield-to-maturity associated with this asset is the interest rate <span class="math inline">\(\tilde{i}_{t}(W_{t+h_1},W_{t+h_2},\dots,W_{t+h_n})\)</span> that satisfies:
+<span class="math display">\[
+P_t = \sum_{j=1}^n \exp\left[-h_j \tilde{i}_{t}(W_{t+h_1},W_{t+h_2},\dots,W_{t+h_n})\right]W_{t+h_j}.
+\]</span>
+Note that this yield to maturity is specific to the stream of payoffs (hence the notation <span class="math inline">\(\tilde{i}_{t}(W_{t+h_1},W_{t+h_2},\dots,W_{t+h_n})\)</span>). A particular case is that of coupon bonds, which is the most common type of bonds issued by debtors. Let us denote by <span class="math inline">\(B_{t,h}(c)\)</span> the date-<span class="math inline">\(t\)</span> price of a bond of maturity <span class="math inline">\(h\)</span> and that pays the coupon <span class="math inline">\(c\)</span> on each period (for simplicity). Considering a bond that would pay a coupon <span class="math inline">\(c\)</span> on each date for expositional simplicity, <span class="math inline">\(B_{t,h}(c)\)</span> should satisfy:
+<span class="math display" id="eq:couponBd">\[\begin{equation}
+B_{t,h}(c) = \exp(-hi_{t,h}) + \sum_{j=1}^h \exp\left[-j i_{t,j}\right]c.\tag{4.19}
+\end{equation}\]</span>
+Denote by <span class="math inline">\(\tilde{i}_{t,h}(c)\)</span> its yield-to-maturity. We have:
+<span class="math display">\[
+B_{t,h}(c) = \exp(-h\tilde{i}_{t,h}(c)) + \sum_{j=1}^h \exp\left[-j \tilde{i}_{t,h}(c)\right]c.
+\]</span>
+Since most debtors issue coupon bonds, zero-coupon yields are not directly observed. Hence, before using the models presented above, one first need to compute zero-coupon yields based on the observed prices of coupon bonds. This is a non trivial task. Most researchers and analysts rely on zero-coupon yields computed by data providers or by other researchers (e.g., <span class="citation">Gürkaynak, Sack, and Wright (<a href="references.html#ref-GURKAYNAK20072291">2007</a>)</span>, see Example <a href="TSModels.html#exm:GSW1961">4.6</a>). To obtain these yields curves, one proceeds as follows, for each considered date <span class="math inline">\(t\)</span>:</p>
+<ul>
+<li>Collect the prices of bonds traded on the market on this date: <span class="math inline">\(B_{t,h_1}(c_1),\dots,B_{t,h_N}(c_N)\)</span>. According to <a href="TSModels.html#eq:couponBd">(4.19)</a>, each of this price is a function of zero-coupon yields.</li>
+<li>Determine a parametric form of the zero coupon yield curve: <span class="math inline">\(h \rightarrow f(\theta_t,h)\)</span> (say), where <span class="math inline">\(\theta_t\)</span> is the vector of parameters that will characterize the zero-coupon yield curve on date <span class="math inline">\(t\)</span>. This function can be, for instance, of the <span class="citation">C. R. Nelson and Siegel (<a href="references.html#ref-Nelson_Siegel_1987">1987</a>)</span>’s or <span class="citation">Svensson (<a href="references.html#ref-Svensson_1994">1994</a>)</span>’s type.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;For instance, in &lt;span class=&quot;citation&quot;&gt;Svensson (&lt;a href=&quot;references.html#ref-Svensson_1994&quot;&gt;1994&lt;/a&gt;)&lt;/span&gt;’s case: &lt;span class=&quot;math inline&quot;&gt;\(f_t(\theta,h) = \beta_0 + \beta_1 \exp\left(-\frac{h}{\tau_1}\right) + \beta_2 \left(\frac{h}{\tau_1}\right) \exp\left(-\frac{h}{\tau_1}\right) + \beta_3 \left(\frac{h}{\tau_2}\right) \exp\left(-\frac{h}{\tau_2}\right)\)&lt;/span&gt; and &lt;span class=&quot;math inline&quot;&gt;\(\theta = [\beta_0,\beta_1,\beta_2,\beta_3,\tau_1,\tau_2]'\)&lt;/span&gt;.&lt;/p&gt;"><sup>20</sup></a>
+</li>
+<li>Look for the vector <span class="math inline">\(\theta_t\)</span> that minimizes a distance between observed and fitted prices. For instance, using squared pricing errors in the distance function:
+<span class="math display">\[
+\theta_t = \underset{\theta}{\mbox{argmin}}\;  \sum_{j=1}^N w_j(h_j)\left(B_{t,h_j}(c_j) - \left[\exp(-h_j f(\theta,h_j)) + \sum_{k=1}^{h_j} \exp\left[-k f(\theta,k)\right]c_j\right]\right)^2,
+\]</span>
+where the <span class="math inline">\(w_j\)</span> are weights (that may, e.g., depend on the maturities <span class="math inline">\(h_j\)</span>).</li>
+</ul>
+<div class="example">
+<p><span id="exm:GSW1961" class="example"><strong>Example 4.6  (Gurkaynak, Sack, and Wright (2007)) </strong></span><span class="citation">Gürkaynak, Sack, and Wright (<a href="references.html#ref-GURKAYNAK20072291">2007</a>)</span> develop a methodology to compute zero-coupon yield curves. Their estimation period starts in 1961. Their data base is updated and available on the <a href="https://www.federalreserve.gov/pubs/feds/2006/200628/200628abs.html">Federal Reserve Board website</a>. Figure <a href="TSModels.html#fig:BdPortfolio">4.11</a> represents the residual maturities of the bonds used for the estimation at the different dates of the sample. Figure <a href="TSModels.html#fig:FigNSS">4.12</a> shows the decomposition of the zero-coupon yield curve for a specific date, using the <span class="citation">Svensson (<a href="references.html#ref-Svensson_1994">1994</a>)</span> parametric function. Figure <a href="TSModels.html#fig:Paryds">4.13</a> compares, for one date, fitted and observed yields. This figure also shows the par yield curve; par yields are defined as the coupon of a bond of maturity <span class="math inline">\(h\)</span> that would trade at par (i.e., with a price equal to 100%). That is, the par yield of maturity <span class="math inline">\(h\)</span> (<span class="math inline">\(i^p_{t,h}\)</span>, say) satisfies:
+<span class="math display" id="eq:paryields">\[\begin{equation}
+1 = \exp(-h i_{t,h}) + \sum_{j=1}^h \exp\left[-j i_{t,j}\right]i^p_{t,h}.\tag{4.20}
+\end{equation}\]</span></p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:BdPortfolio"></span>
+<img src="figures/Fig_BdPortfolio.png" alt="This figures displays the residual maturities of the bonds used for the estimation at the different dates of the sample. Source: Gurkaynak, Sack, and Wright (2007)." width="90%"><p class="caption">
+Figure 4.11: This figures displays the residual maturities of the bonds used for the estimation at the different dates of the sample. Source: Gurkaynak, Sack, and Wright (2007).
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:FigNSS"></span>
+<img src="figures/Fig_NSS.png" alt="Example of yield curve decomposition using the Nelson-Siegel-Svensson parametric form. Source: Gurkaynak, Sack, and Wright (2007)." width="90%"><p class="caption">
+Figure 4.12: Example of yield curve decomposition using the Nelson-Siegel-Svensson parametric form. Source: Gurkaynak, Sack, and Wright (2007).
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:Paryds"></span>
+<img src="figures/Fig_TSpar.png" alt="This figure compares observed and fitted yields for a given date of the sample. Source: Gurkaynak, Sack, and Wright (2007)." width="90%"><p class="caption">
+Figure 4.13: This figure compares observed and fitted yields for a given date of the sample. Source: Gurkaynak, Sack, and Wright (2007).
+</p>
+</div>
+</div>
+</div>
+<div id="swap-based-yield-curves" class="section level3" number="4.5.2">
+<h3>
+<span class="header-section-number">4.5.2</span> Swap-based yield curves<a class="anchor" aria-label="anchor" href="#swap-based-yield-curves"><i class="fas fa-link"></i></a>
+</h3>
+<p>It is easy to obtain the maturity structure of swaps, since these instruments are “constant maturity” objects. In other words, every day, you can find a swap with a maturity of 1, 2,…, 10 years (exactly). This contrasts with bonds, whose residual maturity is rarely a whole number of years.</p>
+<p>Note however that swap yields are usually not zero-coupon yields. They are usually homogeneous to par yields, as defined in <a href="TSModels.html#eq:paryields">(4.20)</a> (see also the remark at the end of Subsection <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#Swaps">6.2.1</a>). To obtain zero-coupon from the par yield curve, one can employ an approach called <em>bootstrapping</em>. To simplify the exposition, we consider the yearly frequency. It proceeds recursively across maturities, using <a href="TSModels.html#eq:paryields">(4.20)</a>:</p>
+<ul>
+<li>Consider the one period maturity. We have:
+<span class="math display">\[
+1 = \exp(-i_{t,1})(1 + i_{t,1}^p),
+\]</span>
+which gives <span class="math inline">\(i_{t,1} = \log(1+i_{t,1}^p)\)</span>.</li>
+<li>Next, for maturity 2, we have:
+<span class="math display">\[
+1 = \exp(-2i_{t,2}) + \exp(-i_{t,1})i_{t,2}^p + \exp(-2i_{t,2})i_{t,2}^p,
+\]</span>
+which gives <span class="math inline">\(i_{t,2} = \frac{1}{2}\log\left(1 + i_{t,2}^p \big/ 1 - \exp(-i_{t,1})i_{t,2}^p\right)\)</span>.</li>
+<li>Using <a href="TSModels.html#eq:paryields">(4.20)</a> for <span class="math inline">\(h=3\)</span> leads to a simple equation that can be solved to get <span class="math inline">\(i_{t,2}\)</span> as a function of <span class="math inline">\(i_{t,3}^p\)</span>, <span class="math inline">\(i_{t,1}\)</span>, and <span class="math inline">\(i_{t,2}\)</span>.</li>
+<li>idem for <span class="math inline">\(h=4\)</span>…</li>
+</ul>
 </div>
 </div>
 </div>
@@ -594,6 +682,12 @@ Figure 4.10: Source: Monfort et al. (2017). Lift-off probabilities.
 <a class="nav-link" href="#RiskFreeNonNegative"><span class="header-section-number">4.4</span> Non-Negative Affine Term Structure Model</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#Shadowrate"><span class="header-section-number">4.4.1</span> The shadow-rate approach</a></li>
 <li><a class="nav-link" href="#the-auto-regressive-gamma-approach"><span class="header-section-number">4.4.2</span> The auto-regressive gamma approach</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#constructing"><span class="header-section-number">4.5</span> Appendix – Constructing the yield curve</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#bond-based-yield-curves"><span class="header-section-number">4.5.1</span> Bond-based yield curves</a></li>
+<li><a class="nav-link" href="#swap-based-yield-curves"><span class="header-section-number">4.5.2</span> Swap-based yield curves</a></li>
 </ul>
 </li>
 </ul>

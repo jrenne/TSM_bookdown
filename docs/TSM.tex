@@ -3651,7 +3651,7 @@ B_{t,h} &=& \mathbb{E}_t (\mathcal{M}_{t,t+h})\nonumber\\
 &=& \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t -i_{t+1}-\dots-i_{t+h-1})\nonumber\\
 i_{t,h} &=& - \frac{1}{h} \log B_{t,h}, \label{eq:stdbondRFchapter}
 \end{eqnarray}
-where \(\mathcal{M}_{t,t+h}\) is the (stricly positive) stochastic discount factor between dates \(t\) and \(t+h\), and where the risk neutral measure \(\mathbb{Q}\) is defined with respect to the physical measure \(\mathbb{P}\) by means of the Radon-Nikodym derivative \(\mathcal{M}_{t,t+1}\big/\mathbb{E}_t(\mathcal{M}_{t,t+1})\).\footnote{That is, for any random variable \(X_{t+1}\):
+where \(\mathcal{M}_{t,t+h}\) is the (strictly positive) stochastic discount factor between dates \(t\) and \(t+h\), and where the risk neutral measure \(\mathbb{Q}\) is defined with respect to the physical measure \(\mathbb{P}\) by means of the Radon-Nikodym derivative \(\mathcal{M}_{t,t+1}\big/\mathbb{E}_t(\mathcal{M}_{t,t+1})\).\footnote{That is, for any random variable \(X_{t+1}\):
   \[
   \mathbb{E}^{\mathbb{Q}}_t(X_{t+1})=\mathbb{E}_t\left(X_{t+1}\frac{\mathcal{M}_{t,t+1}}{\mathbb{E}_t(\mathcal{M}_{t,t+1})}\right).
   \]}
@@ -4186,6 +4186,118 @@ Other lift-off probabilities, of the type \(\mathbb{P}_t[i_{t+h,k}>threshold]\),
 
 \caption{Source: Monfort et al. (2017). Lift-off probabilities.}\label{fig:liftOff}
 \end{figure}
+
+\hypertarget{constructing}{%
+\section{Appendix -- Constructing the yield curve}\label{constructing}}
+
+Interest rates are observed on financial markets. There are two broad categories of interest rate: those associate with bonds and those associated with derivatives (swaps, see Subsection \ref{Swaps}). For each category, there are, in turn, different types of yield curves:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Bonds}: yields-to-maturity, par yields, zero-coupon yields. Besides, even for a given issuer, there may be different yield curves if this issuer has issued different types of bonds in the past (e.g., nominal, inflation-indexed, green).
+\item
+  \textbf{Swaps}: there is one swap curve per reference rate. The spread between to swap rates with same maturity (tenor), but different reference rate (EONIA and EURIBOR3M, say) is called basis.
+\end{itemize}
+
+\hypertarget{bond-based-yield-curves}{%
+\subsection{Bond-based yield curves}\label{bond-based-yield-curves}}
+
+The basic yield curve is the \emph{zero-coupon yield curve}. It is the one used in most formulas in this course (under the notations \(i_{t,h}\) and \(r_{t,h}\)). It is also the most convenient because, with it at hand, we can easily price any stream of (fixed) payoff promised by the issuer. Consider, for instance, the following stream of payoffs: \(\{W_{t+h_1},W_{t+h_2},\dots,W_{t+h_n}\}\) that will be paid on dates \(h_1,\dots,h_n\) by a given issuer. If the (continuously-compounded) zero-coupon yields of this issuer are the \(i_{t,h}\)'s, then the price of this stream of payoffs is:
+\[
+P_t = \sum_{j=1}^n \exp(-h_j i_{t,h_j})W_{t+h_j}.
+\]
+By definition, the yield-to-maturity associated with this asset is the interest rate \(\tilde{i}_{t}(W_{t+h_1},W_{t+h_2},\dots,W_{t+h_n})\) that satisfies:
+\[
+P_t = \sum_{j=1}^n \exp\left[-h_j \tilde{i}_{t}(W_{t+h_1},W_{t+h_2},\dots,W_{t+h_n})\right]W_{t+h_j}.
+\]
+Note that this yield to maturity is specific to the stream of payoffs (hence the notation \(\tilde{i}_{t}(W_{t+h_1},W_{t+h_2},\dots,W_{t+h_n})\)). A particular case is that of coupon bonds, which is the most common type of bonds issued by debtors. Let us denote by \(B_{t,h}(c)\) the date-\(t\) price of a bond of maturity \(h\) and that pays the coupon \(c\) on each period (for simplicity). Considering a bond that would pay a coupon \(c\) on each date for expositional simplicity, \(B_{t,h}(c)\) should satisfy:
+\begin{equation}
+B_{t,h}(c) = \exp(-hi_{t,h}) + \sum_{j=1}^h \exp\left[-j i_{t,j}\right]c.\label{eq:couponBd}
+\end{equation}
+Denote by \(\tilde{i}_{t,h}(c)\) its yield-to-maturity. We have:
+\[
+B_{t,h}(c) = \exp(-h\tilde{i}_{t,h}(c)) + \sum_{j=1}^h \exp\left[-j \tilde{i}_{t,h}(c)\right]c.
+\]
+Since most debtors issue coupon bonds, zero-coupon yields are not directly observed. Hence, before using the models presented above, one first need to compute zero-coupon yields based on the observed prices of coupon bonds. This is a non trivial task. Most researchers and analysts rely on zero-coupon yields computed by data providers or by other researchers (e.g., \citet{GURKAYNAK20072291}, see Example \ref{exm:GSW1961}). To obtain these yields curves, one proceeds as follows, for each considered date \(t\):
+
+\begin{itemize}
+\tightlist
+\item
+  Collect the prices of bonds traded on the market on this date: \(B_{t,h_1}(c_1),\dots,B_{t,h_N}(c_N)\). According to \eqref{eq:couponBd}, each of this price is a function of zero-coupon yields.
+\item
+  Determine a parametric form of the zero coupon yield curve: \(h \rightarrow f(\theta_t,h)\) (say), where \(\theta_t\) is the vector of parameters that will characterize the zero-coupon yield curve on date \(t\). This function can be, for instance, of the \citet{Nelson_Siegel_1987}'s or \citet{Svensson_1994}'s type.\footnote{For instance, in \citet{Svensson_1994}'s case: \(f_t(\theta,h) = \beta_0 + \beta_1 \exp\left(-\frac{h}{\tau_1}\right) + \beta_2 \left(\frac{h}{\tau_1}\right) \exp\left(-\frac{h}{\tau_1}\right) + \beta_3 \left(\frac{h}{\tau_2}\right) \exp\left(-\frac{h}{\tau_2}\right)\) and \(\theta = [\beta_0,\beta_1,\beta_2,\beta_3,\tau_1,\tau_2]'\).}
+\item
+  Look for the vector \(\theta_t\) that minimizes a distance between observed and fitted prices. For instance, using squared pricing errors in the distance function:
+  \[
+  \theta_t = \underset{\theta}{\mbox{argmin}}\;  \sum_{j=1}^N w_j(h_j)\left(B_{t,h_j}(c_j) - \left[\exp(-h_j f(\theta,h_j)) + \sum_{k=1}^{h_j} \exp\left[-k f(\theta,k)\right]c_j\right]\right)^2,
+  \]
+  where the \(w_j\) are weights (that may, e.g., depend on the maturities \(h_j\)).
+\end{itemize}
+
+\begin{example}[Gurkaynak, Sack, and Wright (2007)]
+\protect\hypertarget{exm:GSW1961}{}\label{exm:GSW1961}
+
+\citet{GURKAYNAK20072291} develop a methodology to compute zero-coupon yield curves. Their estimation period starts in 1961. Their data base is updated and available on the \href{https://www.federalreserve.gov/pubs/feds/2006/200628/200628abs.html}{Federal Reserve Board website}. Figure \ref{fig:BdPortfolio} represents the residual maturities of the bonds used for the estimation at the different dates of the sample. Figure \ref{fig:FigNSS} shows the decomposition of the zero-coupon yield curve for a specific date, using the \citet{Svensson_1994} parametric function. Figure \ref{fig:Paryds} compares, for one date, fitted and observed yields. This figure also shows the par yield curve; par yields are defined as the coupon of a bond of maturity \(h\) that would trade at par (i.e., with a price equal to 100\%). That is, the par yield of maturity \(h\) (\(i^p_{t,h}\), say) satisfies:
+\begin{equation}
+1 = \exp(-h i_{t,h}) + \sum_{j=1}^h \exp\left[-j i_{t,j}\right]i^p_{t,h}.\label{eq:paryields}
+\end{equation}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{figures/Fig_BdPortfolio} 
+
+}
+
+\caption{This figures displays the residual maturities of the bonds used for the estimation at the different dates of the sample. Source: Gurkaynak, Sack, and Wright (2007).}\label{fig:BdPortfolio}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{figures/Fig_NSS} 
+
+}
+
+\caption{Example of yield curve decomposition using the Nelson-Siegel-Svensson parametric form. Source: Gurkaynak, Sack, and Wright (2007).}\label{fig:FigNSS}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{figures/Fig_TSpar} 
+
+}
+
+\caption{This figure compares observed and fitted yields for a given date of the sample. Source: Gurkaynak, Sack, and Wright (2007).}\label{fig:Paryds}
+\end{figure}
+
+\end{example}
+
+\hypertarget{swap-based-yield-curves}{%
+\subsection{Swap-based yield curves}\label{swap-based-yield-curves}}
+
+It is easy to obtain the maturity structure of swaps, since these instruments are ``constant maturity'' objects. In other words, every day, you can find a swap with a maturity of 1, 2,\ldots, 10 years (exactly). This contrasts with bonds, whose residual maturity is rarely a whole number of years.
+
+Note however that swap yields are usually not zero-coupon yields. They are usually homogeneous to par yields, as defined in \eqref{eq:paryields} (see also the remark at the end of Subsection \ref{Swaps}). To obtain zero-coupon from the par yield curve, one can employ an approach called \emph{bootstrapping}. To simplify the exposition, we consider the yearly frequency. It proceeds recursively across maturities, using \eqref{eq:paryields}:
+
+\begin{itemize}
+\tightlist
+\item
+  Consider the one period maturity. We have:
+  \[
+  1 = \exp(-i_{t,1})(1 + i_{t,1}^p),
+  \]
+  which gives \(i_{t,1} = \log(1+i_{t,1}^p)\).
+\item
+  Next, for maturity 2, we have:
+  \[
+  1 = \exp(-2i_{t,2}) + \exp(-i_{t,1})i_{t,2}^p + \exp(-2i_{t,2})i_{t,2}^p,
+  \]
+  which gives \(i_{t,2} = \frac{1}{2}\log\left(1 + i_{t,2}^p \big/ 1 - \exp(-i_{t,1})i_{t,2}^p\right)\).
+\item
+  Using \eqref{eq:paryields} for \(h=3\) leads to a simple equation that can be solved to get \(i_{t,2}\) as a function of \(i_{t,3}^p\), \(i_{t,1}\), and \(i_{t,2}\).
+\item
+  idem for \(h=4\)\ldots{}
+\end{itemize}
 
 \hypertarget{Estimation}{%
 \chapter{Estimation of affine asset-pricing models}\label{Estimation}}
@@ -5212,7 +5324,7 @@ Note that all the terms appearing in the previous formula are available in close
 \end{quote}
 
 \begin{quote}
-Eq. \eqref{eq:swap} also shows that we have \(100\% = B(t,h) + S(t,h) \tau \sum_{j=1}^{h/\tau} B(t,j\tau)\). This equation means that the swap rate \(S(t,h)\) is homogenous to the yield-to-maturity of a bond valued at par (\(100\%\)), whose coupons are equal to \(S(t,h) \tau\). (The coupons are paid on \(\{t+\tau,\dots,t+n\tau\}\).)
+Eq. \eqref{eq:swap} also shows that we have \(100\% = B(t,h) + S(t,h) \tau \sum_{j=1}^{h/\tau} B(t,j\tau)\). This equation means that the swap rate \(S(t,h)\) is homogenous to the yield-to-maturity of a bond valued at par (\(100\%\)), whose coupons are equal to \(S(t,h) \tau\). (The coupons are paid on \(\{t+\tau,\dots,t+n\tau\}\).) In other words, a swap yield is homogenous to a \emph{par yield}.
 \end{quote}
 
 \hypertarget{FWD}{%
@@ -6212,11 +6324,11 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 
 \begin{verbatim}
 ##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.93069566 0.87077549 0.81861048 0.77290565 0.73258870 0.69677405
-## [2,] 0.07182295 0.06918555 0.06671564 0.06439958 0.06223417 0.06021568
+## [1,] 0.93098671 0.87129301 0.81930533 0.77374146 0.73353885 0.69781862
+## [2,] 0.07151028 0.06888848 0.06643282 0.06412937 0.06197494 0.05996601
 ##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.66473356 0.63587005 0.60969388 0.58580294
-## [2,] 0.05833843 0.05659513 0.05497759 0.05347718
+## [1,] 0.66585707 0.63705994 0.61093953 0.58709511
+## [2,] 0.05809718 0.05636144 0.05475081 0.05325684
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

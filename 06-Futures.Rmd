@@ -384,7 +384,7 @@ which gives \@ref(eq:swap).
 
 > Note that all the terms appearing in the previous formula are available in closed-form in the context of an affine model (see Example \@ref(exm:nominalBth)).
 
-> Eq. \@ref(eq:swap) also shows that we have $100\% = B(t,h) + S(t,h) \tau \sum_{j=1}^{h/\tau}  B(t,j\tau)$. This equation means that the swap rate $S(t,h)$ is homogenous to the yield-to-maturity of a bond valued at par ($100\%$), whose coupons are equal to $S(t,h) \tau$. (The coupons are paid on $\{t+\tau,\dots,t+n\tau\}$.)
+> Eq. \@ref(eq:swap) also shows that we have $100\% = B(t,h) + S(t,h) \tau \sum_{j=1}^{h/\tau}  B(t,j\tau)$. This equation means that the swap rate $S(t,h)$ is homogenous to the yield-to-maturity of a bond valued at par ($100\%$), whose coupons are equal to $S(t,h) \tau$. (The coupons are paid on $\{t+\tau,\dots,t+n\tau\}$.) In other words, a swap yield is homogenous to a *par yield*.
 
 ### Forward rates {#FWD}
 

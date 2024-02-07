@@ -121,7 +121,7 @@
 
 \title{Introduction to Term Structure Models}
 \author{Alain Monfort and Jean-Paul Renne}
-\date{2024-02-06}
+\date{2024-02-07}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -3644,6 +3644,8 @@ Risk-free yields are the yields-to-maturity associated with bonds that carry no 
 
 An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models explicitly involve macroeconomic factors; this can be done in a reduced-form way (e.g., \citet{Ang_Piazzesi_2003}) or in a more structural way, in the context of the equilibrium term-structure approaches (e.g., \citet{Bansal_Shaliastovich_2013}, see Example \ref{exm:BS2013}) or even in the context of dynamic stochastic general equilibrium models (e.g., \citet{Hordahl_Tristani_veston_2008}, \citet{DewBecker_2014}). Many studies feature purely latent factors, with no explicit macroeconomic interpretation (e.g., \citet{Duffie_Singleton_1997}, \citet{Joslin_Singleton_Zhu_2011}). The latter are sometimes called \emph{yield-only} models.
 
+In this section, we consider term structure of zero-coupon yields, which are basic objects from which one can price any stream of fixed payoffs that will be settled at fixed future dates. These yields are usually not directly observed in the market. As a result, they have to be constructed in the first place; Appendix \ref{constructing} briefly presents approaches used for that purpose.
+
 Under regularity and no-arbitrage assumptions, the price of a risk-free zero coupon bond, and the associated yield-to-maturity, satisfy (see Eq. \eqref{eq:ihandM}):
 \begin{eqnarray}
 B_{t,h} &=& \mathbb{E}_t (\mathcal{M}_{t,t+h})\nonumber\\
@@ -3730,7 +3732,7 @@ After having reorganized:
 
 \citet{Campbell_Shiller_1991} have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of \(n\) and \(m\):
 \[
-i_{t+m,n-m}-i_{t,n}) = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}.
+i_{t+m,n-m}-i_{t,n} = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}.
 \]
 
 According to \eqref{eq:CStheo}, under the Expectation Hypothesis, we should have \(\phi_{n,m} \approx 1\). But they do find that the \(\phi_{n,m}\) are statistically lower than one. Besides, they find that, for a given holding period \(m\), the term structure of the \(\phi_{n,m}\) decreases with the maturity \(n\). Figure \ref{fig:CSregressions} shows the results of such regressions on a more recent period. It appears that the original results of \citet{Campbell_Shiller_1991} are still valid.
@@ -4288,7 +4290,7 @@ Since most debtors issue coupon bonds, zero-coupon yields are not directly obser
 
 It is easy to obtain the maturity structure of swaps, since these instruments are ``constant maturity'' objects. In other words, every day, you can find a swap with a maturity of 1, 2,\ldots, 10 years (exactly). This contrasts with bonds, whose residual maturity is rarely a whole number of years.
 
-Note however that swap yields are usually not zero-coupon yields. They are usually homogeneous to par yields, as defined in \eqref{eq:paryields} (see also the remark at the end of Subsection \ref{Swaps}). To obtain zero-coupon from the par yield curve, one can employ an approach called \emph{bootstrapping}. To simplify the exposition, we consider the yearly frequency. It proceeds recursively across maturities, using \eqref{eq:paryields}:
+Note however that swap yields are usually not zero-coupon yields. They are, instead, homogeneous to par yields, as defined in \eqref{eq:paryields} (see also the remark at the end of Subsection \ref{Swaps}). To obtain zero-coupon from the par yield curve, one can employ an approach called \emph{bootstrapping}. To simplify the exposition, we consider the yearly frequency. The bootstrapping approach operates recursively across maturities, using \eqref{eq:paryields}:
 
 \begin{itemize}
 \tightlist
@@ -6335,11 +6337,11 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 
 \begin{verbatim}
 ##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.93870411 0.88506664 0.83783461 0.79599324 0.75868451 0.72519066
-## [2,] 0.06325496 0.06104617 0.05897819 0.05704115 0.05523385 0.05355345
-##            [,7]      [,8]       [,9]      [,10]
-## [1,] 0.69491662 0.6673712 0.64214966 0.61891774
-## [2,] 0.05199477 0.0505511 0.04921488 0.04797829
+## [1,] 0.93510874 0.87863749 0.82917823 0.78561432 0.74701306 0.71259112
+## [2,] 0.06709246 0.06469144 0.06244005 0.06032232 0.05833452 0.05647458
+##           [,7]       [,8]       [,9]      [,10]
+## [1,] 0.6816921 0.65376847 0.62836528 0.60510543
+## [2,] 0.0547396 0.05312525 0.05162596 0.05023526
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

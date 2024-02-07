@@ -107,6 +107,7 @@
 </h2>
 <p>Risk-free yields are the yields-to-maturity associated with bonds that carry no default and/or liquidity risks. Bonds issued by sovereign entities with top credit quality are usually considered to be risk-free. Because of call-margins mechanisms, swap rates are also used as risk-free benchmarks <span class="citation">(<a href="references.html#ref-Duffie_Stein_2015">Darrell Duffie and Stein 2015</a>)</span> (see Subsection <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#Swaps">6.2.1</a>). (Credit and liquidity risks are covered in Section <a href="CreditLiRisks.html#CreditLiRisks">7</a>.)</p>
 <p>An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models explicitly involve macroeconomic factors; this can be done in a reduced-form way (e.g., <span class="citation">Ang and Piazzesi (<a href="references.html#ref-Ang_Piazzesi_2003">2003</a>)</span>) or in a more structural way, in the context of the equilibrium term-structure approaches (e.g., <span class="citation">Bansal and Shaliastovich (<a href="references.html#ref-Bansal_Shaliastovich_2013">2013</a>)</span>, see Example <a href="Structural.html#exm:BS2013">3.8</a>) or even in the context of dynamic stochastic general equilibrium models (e.g., <span class="citation">Hördahl, Tristani, and Vestin (<a href="references.html#ref-Hordahl_Tristani_veston_2008">2008</a>)</span>, <span class="citation">Dew-Becker (<a href="references.html#ref-DewBecker_2014">2014</a>)</span>). Many studies feature purely latent factors, with no explicit macroeconomic interpretation (e.g., <span class="citation">Darrel Duffie and Singleton (<a href="references.html#ref-Duffie_Singleton_1997">1997</a>)</span>, <span class="citation">Joslin, Singleton, and Zhu (<a href="references.html#ref-Joslin_Singleton_Zhu_2011">2011</a>)</span>). The latter are sometimes called <em>yield-only</em> models.</p>
+<p>In this section, we consider term structure of zero-coupon yields, which are basic objects from which one can price any stream of fixed payoffs that will be settled at fixed future dates. These yields are usually not directly observed in the market. As a result, they have to be constructed in the first place; Appendix <a href="TSModels.html#constructing">4.5</a> briefly presents approaches used for that purpose.</p>
 <p>Under regularity and no-arbitrage assumptions, the price of a risk-free zero coupon bond, and the associated yield-to-maturity, satisfy (see Eq. <a href="PandQ.html#eq:ihandM">(2.3)</a>):
 <span class="math display" id="eq:stdbondRFchapter">\[\begin{eqnarray}
 B_{t,h} &amp;=&amp; \mathbb{E}_t (\mathcal{M}_{t,t+h})\nonumber\\
@@ -182,7 +183,7 @@ After having reorganized:
 \end{equation}\]</span></p>
 <p><span class="citation">Campbell and Shiller (<a href="references.html#ref-Campbell_Shiller_1991">1991</a>)</span> have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span>:
 <span class="math display">\[
-i_{t+m,n-m}-i_{t,n}) = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}.
+i_{t+m,n-m}-i_{t,n} = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}.
 \]</span></p>
 <p>According to <a href="TSModels.html#eq:CStheo">(4.8)</a>, under the Expectation Hypothesis, we should have <span class="math inline">\(\phi_{n,m} \approx 1\)</span>. But they do find that the <span class="math inline">\(\phi_{n,m}\)</span> are statistically lower than one. Besides, they find that, for a given holding period <span class="math inline">\(m\)</span>, the term structure of the <span class="math inline">\(\phi_{n,m}\)</span> decreases with the maturity <span class="math inline">\(n\)</span>. Figure <a href="TSModels.html#fig:CSregressions">4.1</a> shows the results of such regressions on a more recent period. It appears that the original results of <span class="citation">Campbell and Shiller (<a href="references.html#ref-Campbell_Shiller_1991">1991</a>)</span> are still valid.</p>
 <div class="figure" style="text-align: left-aligned">
@@ -656,7 +657,7 @@ Figure 4.14: This figure compares observed and fitted yields for a given date of
 <span class="header-section-number">4.5.2</span> Swap-based yield curves<a class="anchor" aria-label="anchor" href="#swap-based-yield-curves"><i class="fas fa-link"></i></a>
 </h3>
 <p>It is easy to obtain the maturity structure of swaps, since these instruments are “constant maturity” objects. In other words, every day, you can find a swap with a maturity of 1, 2,…, 10 years (exactly). This contrasts with bonds, whose residual maturity is rarely a whole number of years.</p>
-<p>Note however that swap yields are usually not zero-coupon yields. They are usually homogeneous to par yields, as defined in <a href="TSModels.html#eq:paryields">(4.20)</a> (see also the remark at the end of Subsection <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#Swaps">6.2.1</a>). To obtain zero-coupon from the par yield curve, one can employ an approach called <em>bootstrapping</em>. To simplify the exposition, we consider the yearly frequency. It proceeds recursively across maturities, using <a href="TSModels.html#eq:paryields">(4.20)</a>:</p>
+<p>Note however that swap yields are usually not zero-coupon yields. They are, instead, homogeneous to par yields, as defined in <a href="TSModels.html#eq:paryields">(4.20)</a> (see also the remark at the end of Subsection <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#Swaps">6.2.1</a>). To obtain zero-coupon from the par yield curve, one can employ an approach called <em>bootstrapping</em>. To simplify the exposition, we consider the yearly frequency. The bootstrapping approach operates recursively across maturities, using <a href="TSModels.html#eq:paryields">(4.20)</a>:</p>
 <ul>
 <li>Consider the one period maturity. We have:
 <span class="math display">\[
@@ -718,7 +719,7 @@ which gives <span class="math inline">\(i_{t,2} = \frac{1}{2}\log\left(1 + i_{t,
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-06.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -25,6 +25,8 @@ Risk-free yields are the yields-to-maturity associated with bonds that carry no 
 
 An important share of the term-structure literature pertains to the modelling of risk-free yields. Some models explicitly involve macroeconomic factors; this can be done in a reduced-form way (e.g., @Ang_Piazzesi_2003) or in a more structural way, in the context of the equilibrium term-structure approaches (e.g., @Bansal_Shaliastovich_2013, see Example \@ref(exm:BS2013)) or even in the context of dynamic stochastic general equilibrium models (e.g., @Hordahl_Tristani_veston_2008, @DewBecker_2014). Many studies feature purely latent factors, with no explicit macroeconomic interpretation (e.g., @Duffie_Singleton_1997, @Joslin_Singleton_Zhu_2011). The latter are sometimes called *yield-only* models.
 
+In this section, we consider term structure of zero-coupon yields, which are basic objects from which one can price any stream of fixed payoffs that will be settled at fixed future dates. These yields are usually not directly observed in the market. As a result, they have to be constructed in the first place; Appendix \@ref(constructing) briefly presents approaches used for that purpose.
+
 Under regularity and no-arbitrage assumptions, the price of a risk-free zero coupon bond, and the associated yield-to-maturity, satisfy (see Eq. \@ref(eq:ihandM)):
 \begin{eqnarray}
 B_{t,h} &=& \mathbb{E}_t (\mathcal{M}_{t,t+h})\nonumber\\
@@ -114,7 +116,7 @@ After having reorganized:
 
 @Campbell_Shiller_1991 have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of $n$ and $m$:
 $$
-i_{t+m,n-m}-i_{t,n}) = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}.
+i_{t+m,n-m}-i_{t,n} = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}.
 $$
 
 According to \@ref(eq:CStheo), under the Expectation Hypothesis, we should have $\phi_{n,m} \approx 1$. But they do find that the $\phi_{n,m}$ are statistically lower than one. Besides, they find that, for a given holding period $m$, the term structure of the $\phi_{n,m}$ decreases with the maturity $n$. Figure \@ref(fig:CSregressions) shows the results of such regressions on a more recent period. It appears that the original results of @Campbell_Shiller_1991 are still valid.
@@ -786,7 +788,7 @@ knitr::include_graphics("figures/Fig_TSpar.png")
 
 It is easy to obtain the maturity structure of swaps, since these instruments are "constant maturity" objects. In other words, every day, you can find a swap with a maturity of 1, 2,..., 10 years (exactly). This contrasts with bonds, whose residual maturity is rarely a whole number of years.
 
-Note however that swap yields are usually not zero-coupon yields. They are usually homogeneous to par yields, as defined in \@ref(eq:paryields) (see also the remark at the end of Subsection \@ref(Swaps)). To obtain zero-coupon from the par yield curve, one can employ an approach called *bootstrapping*. To simplify the exposition, we consider the yearly frequency. It proceeds recursively across maturities, using \@ref(eq:paryields):
+Note however that swap yields are usually not zero-coupon yields. They are, instead, homogeneous to par yields, as defined in \@ref(eq:paryields) (see also the remark at the end of Subsection \@ref(Swaps)). To obtain zero-coupon from the par yield curve, one can employ an approach called *bootstrapping*. To simplify the exposition, we consider the yearly frequency. The bootstrapping approach operates recursively across maturities, using \@ref(eq:paryields):
 
 * Consider the one period maturity. We have:
 $$

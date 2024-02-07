@@ -51,47 +51,47 @@
 \contentsline {subsection}{\numberline {3.4.1}SDF in the CES Epstein-Zin Context}{107}{subsection.3.4.1}%
 \contentsline {chapter}{\numberline {4}No-arbitrage models of the term struture of risk-free yields}{109}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introduction}{109}{section.4.1}%
-\contentsline {section}{\numberline {4.2}The Affine Case}{116}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Affine yields}{116}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.2}The Affine Case}{115}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Affine yields}{115}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Maximum Sharpe ratio}{117}{subsection.4.2.2}%
 \contentsline {section}{\numberline {4.3}Gaussian Affine Term Structure Model}{118}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Non-Negative Affine Term Structure Model}{123}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}The shadow-rate approach}{125}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}The auto-regressive gamma approach}{128}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Appendix -- Constructing the yield curve}{134}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Bond-based yield curves}{134}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Swap-based yield curves}{139}{subsection.4.5.2}%
-\contentsline {chapter}{\numberline {5}Estimation of affine asset-pricing models}{141}{chapter.5}%
-\contentsline {section}{\numberline {5.1}State-space model}{141}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Kalman-filter-based approach}{143}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}The Gaussian linear state-space case}{143}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Missing observations}{147}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}About non-constant conditional matrix \(\mitSigma \)}{149}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Non-linear models}{151}{subsection.5.2.4}%
-\contentsline {section}{\numberline {5.3}The inversion technique}{151}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Dealing with unobserved regimes}{153}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Mixed use of Kitagawa-Hamilton and inversion techniques}{156}{subsection.5.3.2}%
-\contentsline {section}{\numberline {5.4}A typical small-sample issue}{158}{section.5.4}%
-\contentsline {chapter}{\numberline {6}Forward, futures, dividends, commodity pricing, and convenience yields}{163}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Derivatives written on stocks or commodities}{163}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Forward contracts}{163}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Futures contracts, futures prices}{165}{subsection.6.1.2}%
-\contentsline {subsection}{\numberline {6.1.3}Convenience yields}{166}{subsection.6.1.3}%
-\contentsline {subsection}{\numberline {6.1.4}Pricing with affine models}{168}{subsection.6.1.4}%
-\contentsline {subsection}{\numberline {6.1.5}Historical dynamics}{168}{subsection.6.1.5}%
-\contentsline {section}{\numberline {6.2}Interest-rate swaps and forward contracts}{173}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Swap rates}{173}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Forward rates}{174}{subsection.6.2.2}%
-\contentsline {chapter}{\numberline {7}Credit and liquidity risks}{177}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Notations}{177}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Pricing under standard assumptions}{178}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Pricing illiquid bonds}{185}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Relaxing the classical framework assumptions}{191}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}General affine credit-risk framework}{192}{subsection.7.4.1}%
-\contentsline {subsection}{\numberline {7.4.2}CDS pricing in the general framework}{197}{subsection.7.4.2}%
-\contentsline {section}{\numberline {7.5}Top-down approach}{200}{section.7.5}%
-\contentsline {section}{\numberline {7.6}The shadow-intensity framework}{202}{section.7.6}%
-\contentsline {subsection}{\numberline {7.6.1}Overview}{202}{subsection.7.6.1}%
-\contentsline {subsection}{\numberline {7.6.2}A numerical example}{204}{subsection.7.6.2}%
-\contentsline {subsection}{\numberline {7.6.3}Bond pricing}{205}{subsection.7.6.3}%
-\contentsline {chapter}{\numberline {8}References}{209}{chapter.8}%
+\contentsline {section}{\numberline {4.4}Non-Negative Affine Term Structure Model}{124}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}The shadow-rate approach}{124}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}The auto-regressive gamma approach}{127}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Appendix -- Constructing the yield curve}{131}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Bond-based yield curves}{133}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Swap-based yield curves}{135}{subsection.4.5.2}%
+\contentsline {chapter}{\numberline {5}Estimation of affine asset-pricing models}{139}{chapter.5}%
+\contentsline {section}{\numberline {5.1}State-space model}{139}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Kalman-filter-based approach}{141}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}The Gaussian linear state-space case}{141}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Missing observations}{145}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}About non-constant conditional matrix \(\mitSigma \)}{147}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Non-linear models}{149}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}The inversion technique}{149}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Dealing with unobserved regimes}{151}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Mixed use of Kitagawa-Hamilton and inversion techniques}{154}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}A typical small-sample issue}{156}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Forward, futures, dividends, commodity pricing, and convenience yields}{161}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Derivatives written on stocks or commodities}{161}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Forward contracts}{161}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Futures contracts, futures prices}{163}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Convenience yields}{164}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Pricing with affine models}{166}{subsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.1.5}Historical dynamics}{166}{subsection.6.1.5}%
+\contentsline {section}{\numberline {6.2}Interest-rate swaps and forward contracts}{171}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Swap rates}{171}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Forward rates}{172}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Credit and liquidity risks}{175}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Notations}{175}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Pricing under standard assumptions}{176}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Pricing illiquid bonds}{183}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Relaxing the classical framework assumptions}{189}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}General affine credit-risk framework}{190}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}CDS pricing in the general framework}{195}{subsection.7.4.2}%
+\contentsline {section}{\numberline {7.5}Top-down approach}{198}{section.7.5}%
+\contentsline {section}{\numberline {7.6}The shadow-intensity framework}{200}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Overview}{200}{subsection.7.6.1}%
+\contentsline {subsection}{\numberline {7.6.2}A numerical example}{202}{subsection.7.6.2}%
+\contentsline {subsection}{\numberline {7.6.3}Bond pricing}{203}{subsection.7.6.3}%
+\contentsline {chapter}{\numberline {8}References}{207}{chapter.8}%

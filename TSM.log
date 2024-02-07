@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  7 FEB 2024 11:45
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.26)  7 FEB 2024 12:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1380,18 +1380,18 @@ File: figures/CDOs.png Graphic file (type bmp)
 File: TSM_files/figure-latex/simulation2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/simulation2-1.pdf>
 [203]
-Overfull \hbox (54.94766pt too wide) in paragraph at lines 6345--6345
-[]\TU/lmtt/m/n/12 ##            [,1]       [,2]       [,3]       [,4]      [,5]       [,6][] 
+Overfull \hbox (61.12766pt too wide) in paragraph at lines 6345--6345
+[]\TU/lmtt/m/n/12 ##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6][] 
  []
 
 
-Overfull \hbox (54.86395pt too wide) in paragraph at lines 6345--6345
-[]\TU/lmtt/m/n/12 ## [1,] 0.92415799 0.85919039 0.80312033 0.75439281 0.7117404 0.67413037[] 
+Overfull \hbox (60.99596pt too wide) in paragraph at lines 6345--6345
+[]\TU/lmtt/m/n/12 ## [1,] 0.92146916 0.85444722 0.79680957 0.74690272 0.70338970 0.66518124[] 
  []
 
 
-Overfull \hbox (54.89996pt too wide) in paragraph at lines 6345--6345
-[]\TU/lmtt/m/n/12 ## [2,] 0.07887223 0.07588237 0.07308357 0.07046052 0.0680084 0.06572196[] 
+Overfull \hbox (61.03192pt too wide) in paragraph at lines 6345--6345
+[]\TU/lmtt/m/n/12 ## [2,] 0.08178597 0.07865027 0.07571319 0.07295508 0.07036884 0.06794929[] 
  []
 
 [204]

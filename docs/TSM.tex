@@ -3766,7 +3766,7 @@ Figure \ref{fig:modeFreeIRP} shows that the inflation risk premium has often bee
 \hypertarget{AffineYields}{%
 \subsection{Affine yields}\label{AffineYields}}
 
-In this subsection, we consider the case where the state vector \(w_t\) is affine under both \(\mathbb{P}\) and \(\mathbb{Q}\). If the nominal short-term rate is affine in \(w_t\), i.e., if \(i_t = \omega_0 + \omega'_1 w_t\), then (see \eqref{eq:ihandM}):
+In this subsection, we consider the case where the state vector \(w_t\) is affine under both \(\mathbb{P}\) and \(\mathbb{Q}\) (see Def. \ref{def:Car1}). If the nominal short-term rate is affine in \(w_t\), i.e., if \(i_t = \omega_0 + \omega'_1 w_t\), then (see \eqref{eq:ihandM}):
 \begin{eqnarray*}
 B_{t,h} &=& \mathbb{E}^{\mathbb{Q}}_t \exp (-i_{t}-\dots-i_{t+h-1})\\
 &=& \exp(-h\omega_0 - \omega'_1 w_t) \color{blue}{\mathbb{E}^{\mathbb{Q}}_t \exp (- \omega'_1 w_{t+1}-\dots- \omega'_1 w_{t+h-1})}.
@@ -6336,12 +6336,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]       [,3]       [,4]      [,5]       [,6]
-## [1,] 0.92415799 0.85919039 0.80312033 0.75439281 0.7117404 0.67413037
-## [2,] 0.07887223 0.07588237 0.07308357 0.07046052 0.0680084 0.06572196
-##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.64072268 0.61083439 0.58390938 0.55949347
-## [2,] 0.06359408 0.06161617 0.05977883 0.05807234
+##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] 0.92146916 0.85444722 0.79680957 0.74690272 0.70338970 0.66518124
+## [2,] 0.08178597 0.07865027 0.07571319 0.07295508 0.07036884 0.06794929
+##            [,7]     [,8]       [,9]     [,10]
+## [1,] 0.63138804 0.601284 0.57427582 0.5498785
+## [2,] 0.06569066 0.063586 0.06162728 0.0598058
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

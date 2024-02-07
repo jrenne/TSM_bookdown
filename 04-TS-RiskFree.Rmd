@@ -310,7 +310,7 @@ In this subsection, we consider the case where the state vector $w_t$ is affine 
 B_{t,h} &=& \mathbb{E}^{\mathbb{Q}}_t \exp (-i_{t}-\dots-i_{t+h-1})\\
 &=& \exp(-h\omega_0 - \omega'_1 w_t) \color{blue}{\mathbb{E}^{\mathbb{Q}}_t \exp (- \omega'_1 w_{t+1}-\dots- \omega'_1 w_{t+h-1})}.
 \end{eqnarray*}
-The (blue) expectation is easily computed using the recursive equations of Proposition \@ref(prp:reverseMLT)  (see Example \@ref(exm:nominalBth)), leading to:
+The (blue) expectation is easily computed using the recursive equations of Proposition \@ref(prp:reverseMLT) (see Example \@ref(exm:nominalBth)), leading to:
 \begin{equation}
 i_{t,h}= -  \frac{1}{h}   \log   B_{t,h} = a_h'w_t + b_h.(\#eq:RthAB)
 \end{equation}

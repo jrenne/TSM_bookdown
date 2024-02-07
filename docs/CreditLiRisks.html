@@ -1095,11 +1095,11 @@ Figure 7.10: This plots shows simulated paths for <span class="math inline">\(z_
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>, <span class="co">#approximate values of the conditional expect. for date t</span></span>
 <span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.92424428 0.85930777 0.80313297 0.75412144 0.71101489 0.67281762
-## [2,] 0.07877887 0.07581406 0.07307833 0.07055046 0.06821238 0.06604683
-##            [,7]      [,8]       [,9]      [,10]
-## [1,] 0.63873437 0.6081238 0.58046427 0.55532789
-## [2,] 0.06403809 0.0621721 0.06043634 0.05881965</code></pre>
+## [1,] 0.94276971 0.89235989 0.84766714 0.80778346 0.77194516 0.73952121
+## [2,] 0.05893323 0.05694288 0.05508908 0.05336531 0.05176835 0.05029205
+##            [,7]       [,8]       [,9]      [,10]
+## [1,] 0.70999350 0.68293666 0.65800043 0.63489517
+## [2,] 0.04892849 0.04766914 0.04650552 0.04542954</code></pre>
 <p>The last two lines respectively give, for the date featuring the highest <span class="math inline">\(\lambda_t\)</span>, the term structures of the bond prices and of associated yields-to-maturity.</p>
 <p>Let us now compute credit-risk-free bond prices. This is obtained by taking <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=0\)</span> (so that <span class="math inline">\(\lambda_t=0\)</span>):</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">

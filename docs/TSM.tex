@@ -3771,7 +3771,7 @@ In this subsection, we consider the case where the state vector \(w_t\) is affin
 B_{t,h} &=& \mathbb{E}^{\mathbb{Q}}_t \exp (-i_{t}-\dots-i_{t+h-1})\\
 &=& \exp(-h\omega_0 - \omega'_1 w_t) \color{blue}{\mathbb{E}^{\mathbb{Q}}_t \exp (- \omega'_1 w_{t+1}-\dots- \omega'_1 w_{t+h-1})}.
 \end{eqnarray*}
-The (blue) expectation is easily computed using the recursive equations of Lemma \ref{lem:MHLT} (see Example \ref{exm:nominalBth}), leading to:
+The (blue) expectation is easily computed using the recursive equations of Proposition \ref{prp:reverseMLT} (see Example \ref{exm:nominalBth}), leading to:
 \begin{equation}
 i_{t,h}= -  \frac{1}{h}   \log   B_{t,h} = a_h'w_t + b_h.\label{eq:RthAB}
 \end{equation}
@@ -6336,12 +6336,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.93510874 0.87863749 0.82917823 0.78561432 0.74701306 0.71259112
-## [2,] 0.06709246 0.06469144 0.06244005 0.06032232 0.05833452 0.05647458
-##           [,7]       [,8]       [,9]      [,10]
-## [1,] 0.6816921 0.65376847 0.62836528 0.60510543
-## [2,] 0.0547396 0.05312525 0.05162596 0.05023526
+##            [,1]       [,2]       [,3]       [,4]      [,5]       [,6]
+## [1,] 0.92415799 0.85919039 0.80312033 0.75439281 0.7117404 0.67413037
+## [2,] 0.07887223 0.07588237 0.07308357 0.07046052 0.0680084 0.06572196
+##            [,7]       [,8]       [,9]      [,10]
+## [1,] 0.64072268 0.61083439 0.58390938 0.55949347
+## [2,] 0.06359408 0.06161617 0.05977883 0.05807234
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

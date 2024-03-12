@@ -130,7 +130,7 @@ i^{EH}_{t,h} &amp;=&amp; -\frac{1}{h}\log \left( \mathbb{E}_t \exp(-i_t-\dots-i_
 \end{eqnarray}\]</span></p>
 <p>Using the previous notations, the term premium is usually defined as:
 <span class="math display" id="eq:TP">\[\begin{eqnarray}
-TP_{t,h} &amp;=&amp; \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{t+1}-\dots-i_{t+h-1})}_{=i_{t,h}} - \nonumber \\
+TP_{t,h} &amp;=&amp; \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{t+1}-\dots-i_{t+h-1})}_{=i_{t,h}} \nonumber \\
 &amp;&amp; \underbrace{- \frac{1}{h}  \log  \mathbb{E}_t \exp(-i_{t+1}-\dots-i_{t+h-1}).}_{=i^{EH}_{t,h}}\tag{4.4}
 \end{eqnarray}\]</span></p>
 <p>A term premium is a specific type of risk premium (see Def. <a href="TSModels.html#def:RPremium">4.1</a>), in the sense that it reflects changes between the price of an asset (a bond here, <span class="math inline">\(B_{t,h}\)</span>) and the counterfactual we would observe if agents were not risk averse (<span class="math inline">\(B_{t,h}^{EH}\)</span>, here).</p>
@@ -181,35 +181,90 @@ After having reorganized:
 <span class="math display" id="eq:CStheo">\[\begin{equation}
 \mathbb{E}_t(i_{t+m,n-m}-i_{t,n}) \approx \frac{i_{t,n}-i_{t,m}}{n-m}.\tag{4.8}
 \end{equation}\]</span></p>
-<p><span class="citation">Campbell and Shiller (<a href="references.html#ref-Campbell_Shiller_1991">1991</a>)</span> have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span>:
-<span class="math display">\[
-i_{t+m,n-m}-i_{t,n} = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}.
-\]</span></p>
-<p>According to <a href="TSModels.html#eq:CStheo">(4.8)</a>, under the Expectation Hypothesis, we should have <span class="math inline">\(\phi_{n,m} \approx 1\)</span>. But they do find that the <span class="math inline">\(\phi_{n,m}\)</span> are statistically lower than one. Besides, they find that, for a given holding period <span class="math inline">\(m\)</span>, the term structure of the <span class="math inline">\(\phi_{n,m}\)</span> decreases with the maturity <span class="math inline">\(n\)</span>. Figure <a href="TSModels.html#fig:CSregressions">4.1</a> shows the results of such regressions on a more recent period. It appears that the original results of <span class="citation">Campbell and Shiller (<a href="references.html#ref-Campbell_Shiller_1991">1991</a>)</span> are still valid.</p>
-<div class="figure" style="text-align: left-aligned">
-<span style="display:block;" id="fig:CSregressions"></span>
-<img src="TSM_files/figure-html/CSregressions-1.png" alt="Regressions as in Campbell and Shiller (1991). Data are at the monthly frequency; they are collected from the FRED database. The estimation period starts in 1990. The figure reports 90% confidence intervals of the $\phi_{n,m}$ parameter estimates (Newey-West robust standard deviations)." width="95%"><p class="caption">
-Figure 4.1: Regressions as in Campbell and Shiller (1991). Data are at the monthly frequency; they are collected from the FRED database. The estimation period starts in 1990. The figure reports 90% confidence intervals of the <span class="math inline">\(\phi_{n,m}\)</span> parameter estimates (Newey-West robust standard deviations).
-</p>
+<!-- @Campbell_Shiller_1991 have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of $n$ and $m$: -->
+<!-- $$ -->
+<!-- i_{t+m,n-m}-i_{t,n} = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}. -->
+<!-- $$ -->
+<!-- According to \@ref(eq:CStheo), under the Expectation Hypothesis, we should have $\phi_{n,m} \approx 1$. But they do find that the $\phi_{n,m}$ are statistically lower than one. Besides, they find that, for a given holding period $m$, the term structure of the $\phi_{n,m}$ decreases with the maturity $n$. Figure \@ref(fig:CSregressions) shows the results of such regressions on a more recent period. It appears that the original results of @Campbell_Shiller_1991 are still valid. -->
+<!-- ```{r CSregressions, echo=FALSE, fig.cap="Regressions as in Campbell and Shiller (1991). Data are at the monthly frequency; they are collected from the FRED database. The estimation period starts in 1990. The figure reports 90% confidence intervals of the $\\phi_{n,m}$ parameter estimates (Newey-West robust standard deviations).", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE} -->
+<!-- library(sandwich) -->
+<!-- lag <- function(X,n){ -->
+<!--   X_lag <- 0*X -->
+<!--   N <- max(dim(t(X))) -->
+<!--   X_lag[1:n] <- X[1] -->
+<!--   X_lag[(n+1):N] <- X[1:(N-n)] -->
+<!--   return(X_lag) -->
+<!-- } -->
+<!-- # Load data in Fred: -->
+<!-- library(fredr) -->
+<!-- fredr_set_key("df65e14c054697a52b4511e77fcfa1f3") -->
+<!-- start_date <- as.Date("1990-01-01"); end_date <- Sys.Date() -->
+<!-- f <- function(ticker){ -->
+<!--   fredr(series_id = ticker, -->
+<!--         observation_start = start_date,observation_end = end_date, -->
+<!--         frequency = "m",aggregation_method = "avg") -->
+<!-- } -->
+<!-- par(mfrow=c(1,2)) -->
+<!-- par(plt=c(.25,.95,.2,.85)) -->
+<!-- list.of.rates <- c("THREEFY2","THREEFY3","THREEFY5", -->
+<!--                    "THREEFY7","THREEFY10") -->
+<!-- for(i in 1:2){ -->
+<!--   if(i==1){ -->
+<!--     lags    <- 3 -->
+<!--     regress <- f("DTB3") -->
+<!--     main_title = "3-month holding period" -->
+<!--   } -->
+<!--   if(i==2){ -->
+<!--     lags    <- 6 -->
+<!--     regress <- f("DTB6") -->
+<!--     main_title = "6-month holding period" -->
+<!--   } -->
+<!--   if(i==3){ -->
+<!--     lags    <- 12 -->
+<!--     regress <- f("THREEFY1") -->
+<!--     main_title = "12-month holding period" -->
+<!--   } -->
+<!--   res <- matrix(0,5,3) -->
+<!--   res[,1] <- c(2,3,5,7,10) -->
+<!--   count <- 0 -->
+<!--   for(j in 1:length(list.of.rates)){ -->
+<!--     count <- count + 1 -->
+<!--     yy <- f(list.of.rates[j]) -->
+<!--     DATA <- merge(yy,regress,by="date") -->
+<!--     yn <- DATA$value.x -->
+<!--     y1 <- DATA$value.y -->
+<!--     eq <- lm((yn-lag(yn,lags))~(lag((yn-y1)/2/(12/lags),lags))) -->
+<!--     res[count,2] <- eq$coefficients[2] -->
+<!--     res[count,3] <- sqrt(diag(NeweyWest(eq,lag = lags, prewhite = FALSE)))[2] -->
+<!--   } -->
+<!--   plot(res[,1],res[,2],ylim=c(-1,1),pch=16, -->
+<!--        ylab=expression(paste("Parameter ",phi[n*','*m])), -->
+<!--        xlab=expression(paste("Maturity (in years)")),col="black", -->
+<!--        main=main_title,cex=1.5,cex.main=1) -->
+<!--   lines(res[,1],res[,2],lwd=3) -->
+<!--   lines(res[,1],res[,2]-1.64*res[,3],lty=1,col="red",lwd=3) -->
+<!--   lines(res[,1],res[,2]+1.64*res[,3],lty=1,col="red",lwd=3) -->
+<!--   lines(res[,1],0*res[,1],lty=3,lwd=2) -->
+<!-- } -->
+<!-- ``` -->
 </div>
-</div>
-<p>Before turning to the no-arbitrage term structure models, note that <a href="TSModels.html#eq:TP">(4.4)</a> implies that term premium estimates are directly available if we have good approximations for the expected future short term rates (i.e., <span class="math inline">\(i_{t,h}^{EH}\)</span>). Some surveys offer such proxies. It is for instance the case of the <a href="https://www.philadelphiafed.org/surveys-and-data/bill10">Philadelphia Fed SPF</a>, that provides expectations of the short-term rate over the next 10 years (see Figure <a href="TSModels.html#fig:modeFreeTP">4.2</a>). However, there is only one release per year for this survey.</p>
+<p>Before turning to the no-arbitrage term structure models, note that <a href="TSModels.html#eq:TP">(4.4)</a> implies that term premium estimates are directly available if we have good approximations for the expected future short term rates (i.e., <span class="math inline">\(i_{t,h}^{EH}\)</span>). Some surveys offer such proxies. It is for instance the case of the <a href="https://www.philadelphiafed.org/surveys-and-data/bill10">Philadelphia Fed SPF</a>, that provides expectations of the short-term rate over the next 10 years (see Figure <a href="TSModels.html#fig:modeFreeTP">4.1</a>). However, there is only one release per year for this survey.</p>
 <div class="figure" style="text-align: left-aligned">
 <span style="display:block;" id="fig:modeFreeTP"></span>
 <img src="TSM_files/figure-html/modeFreeTP-1.png" alt="Sources: SPF Philadelphia for $i_{t,h}^{EH}$ (ticker BILL10) and FRED database for $i_{t,h}$ (ticker THREEFY10)." width="95%"><p class="caption">
-Figure 4.2: Sources: SPF Philadelphia for <span class="math inline">\(i_{t,h}^{EH}\)</span> (ticker BILL10) and FRED database for <span class="math inline">\(i_{t,h}\)</span> (ticker THREEFY10).
+Figure 4.1: Sources: SPF Philadelphia for <span class="math inline">\(i_{t,h}^{EH}\)</span> (ticker BILL10) and FRED database for <span class="math inline">\(i_{t,h}\)</span> (ticker THREEFY10).
 </p>
 </div>
-<p>In the same spirit, Figure <a href="TSModels.html#fig:modeFreeIRP">4.3</a> compares the 10-year breakeven rate of inflation (<span class="math inline">\(i_{t,h}- r_{t,h}\)</span>), also called inflation compensation, with the expected annualized inflation over the next 10 years. The difference between the line and the dots is the <em>inflation risk premium</em>, defined as:
+<p>In the same spirit, Figure <a href="TSModels.html#fig:modeFreeIRP">4.2</a> compares the 10-year breakeven rate of inflation (<span class="math inline">\(i_{t,h}- r_{t,h}\)</span>), also called inflation compensation, with the expected annualized inflation over the next 10 years. The difference between the line and the dots is the <em>inflation risk premium</em>, defined as:
 <span class="math display">\[
 IRP_{t,h} = i_{t,h} - r_{t,h} - \mathbb{E}_t(\pi_{t,t+h}),
 \]</span>
 where <span class="math inline">\(\pi_{t,t+h}\)</span> denotes the annualized inflation rate between dates <span class="math inline">\(t\)</span> and <span class="math inline">\(t+h\)</span>.</p>
-<p>Figure <a href="TSModels.html#fig:modeFreeIRP">4.3</a> shows that the inflation risk premium has often been negative in recent years, suggesting a perceived importance of demand shocks in the economy.</p>
+<p>Figure <a href="TSModels.html#fig:modeFreeIRP">4.2</a> shows that the inflation risk premium has often been negative in recent years, suggesting a perceived importance of demand shocks in the economy.</p>
 <div class="figure" style="text-align: left-aligned">
 <span style="display:block;" id="fig:modeFreeIRP"></span>
 <img src="TSM_files/figure-html/modeFreeIRP-1.png" alt="Sources: SPF Philadelphia for the 10-year inflation expectation (ticker CPI19) and FRED database for $i_{t,h}$ (ticker DGS10) and for $r_{t,h}$ (ticker DFII10)." width="95%"><p class="caption">
-Figure 4.3: Sources: SPF Philadelphia for the 10-year inflation expectation (ticker CPI19) and FRED database for <span class="math inline">\(i_{t,h}\)</span> (ticker DGS10) and for <span class="math inline">\(r_{t,h}\)</span> (ticker DFII10).
+Figure 4.2: Sources: SPF Philadelphia for the 10-year inflation expectation (ticker CPI19) and FRED database for <span class="math inline">\(i_{t,h}\)</span> (ticker DGS10) and for <span class="math inline">\(r_{t,h}\)</span> (ticker DFII10).
 </p>
 </div>
 </div>
@@ -334,7 +389,7 @@ With affine specifications of the nominal short term rate (<span class="math inl
 <div class="figure" style="text-align: left-aligned">
 <span style="display:block;" id="fig:fredKW"></span>
 <img src="TSM_files/figure-html/fredKW-1.png" alt="Kim and Wright (2005) outputs." width="95%"><p class="caption">
-Figure 4.4: Kim and Wright (2005) outputs.
+Figure 4.3: Kim and Wright (2005) outputs.
 </p>
 </div>
 </div>
@@ -352,7 +407,7 @@ Figure 4.4: Kim and Wright (2005) outputs.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:figAngPiazzesi"></span>
 <img src="figures/AngPiazzesi1.png" alt="Source: Ang and Piazzesi (1998). Impulse response functions." width="95%"><p class="caption">
-Figure 4.5: Source: Ang and Piazzesi (1998). Impulse response functions.
+Figure 4.4: Source: Ang and Piazzesi (1998). Impulse response functions.
 </p>
 </div>
 </div>
@@ -381,7 +436,7 @@ where <span class="math inline">\(\varepsilon_t\)</span> and <span class="math i
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:JPSIRF"></span>
 <img src="figures/JPS_IRF.png" alt="Source: Joslin, Priebsch, and Singleton (2014). Impulse response functions." width="95%"><p class="caption">
-Figure 4.6: Source: Joslin, Priebsch, and Singleton (2014). Impulse response functions.
+Figure 4.5: Source: Joslin, Priebsch, and Singleton (2014). Impulse response functions.
 </p>
 </div>
 </div>
@@ -415,7 +470,7 @@ v = \left[
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:AngBoivin"></span>
 <img src="figures/Ang_Boivin_loadings.png" alt="Source: Ang, Boivin, Dong, Loo-Kung (2011). Estimated factor loadings ($a_t$ and $b_t$)." width="70%"><p class="caption">
-Figure 4.7: Source: Ang, Boivin, Dong, Loo-Kung (2011). Estimated factor loadings (<span class="math inline">\(a_t\)</span> and <span class="math inline">\(b_t\)</span>).
+Figure 4.6: Source: Ang, Boivin, Dong, Loo-Kung (2011). Estimated factor loadings (<span class="math inline">\(a_t\)</span> and <span class="math inline">\(b_t\)</span>).
 </p>
 </div>
 </div>
@@ -477,7 +532,7 @@ and
 <span class="math display">\[
 \sigma_n^{\mathbb{Q}} := \mathbb{V}ar^{\mathbb{Q}}_t\left(s_{t+n}\right)= \delta_1'\left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)\Sigma \Sigma' \left(\sum_{j=0}^{n-1} \left[\Phi^{\mathbb{Q}}\right]^j\right)'\delta_1.
 \]</span></p>
-<p>Hence, using standard results on the truncated normal distribution (see Figure <a href="TSModels.html#fig:Mills">4.9</a>),<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;If &lt;span class="math inline"&gt;\(X\sim \mathcal{N}(\mu,\sigma^2)\)&lt;/span&gt;, then &lt;span class="math inline"&gt;\(\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)\)&lt;/span&gt;.&lt;/p&gt;'><sup>20</sup></a> they obtain:
+<p>Hence, using standard results on the truncated normal distribution (see Figure <a href="TSModels.html#fig:Mills">4.8</a>),<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;If &lt;span class="math inline"&gt;\(X\sim \mathcal{N}(\mu,\sigma^2)\)&lt;/span&gt;, then &lt;span class="math inline"&gt;\(\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)\)&lt;/span&gt;.&lt;/p&gt;'><sup>20</sup></a> they obtain:
 <span class="math display">\[
 \mathbb{E}_t^{\mathbb{Q}}[i_{t+n}] = \underline{i} + \sigma_n^{\mathbb{Q}}g\left(\frac{\bar{a}_n + b_n'X_t - \underline{i}}{\sigma_n^{\mathbb{Q}}}\right),
 \]</span>
@@ -524,13 +579,13 @@ which is used in <a href="TSModels.html#eq:RapproxSR">(4.17)</a> to obtain an ap
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:WuXia"></span>
 <img src="TSM_files/figure-html/WuXia-1.png" alt="The upper plot shows a simulated path of the shadow rate $s_t$. The bottom plot shows the approximated forward rate $f_{t,n,n+1}$ and the resulting nominal rates $i_{t,h}$ for the date indicated by the vertical grey line in the upper plot." width="95%"><p class="caption">
-Figure 4.8: The upper plot shows a simulated path of the shadow rate <span class="math inline">\(s_t\)</span>. The bottom plot shows the approximated forward rate <span class="math inline">\(f_{t,n,n+1}\)</span> and the resulting nominal rates <span class="math inline">\(i_{t,h}\)</span> for the date indicated by the vertical grey line in the upper plot.
+Figure 4.7: The upper plot shows a simulated path of the shadow rate <span class="math inline">\(s_t\)</span>. The bottom plot shows the approximated forward rate <span class="math inline">\(f_{t,n,n+1}\)</span> and the resulting nominal rates <span class="math inline">\(i_{t,h}\)</span> for the date indicated by the vertical grey line in the upper plot.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Mills"></span>
 <img src="TSM_files/figure-html/Mills-1.png" alt="This figure shows $\mathbb{E}(\max(0,X))$ for $X \sim \mathcal{N}(\mu,1)$, as a function of $\mu$. More generally, if $X\sim \mathcal{N}(\mu,\sigma^2)$, then $\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)$, where $\Phi$ and $\phi$ are the c.d.f. and p.d.f. of the standard normal distirbution, respectively." width="95%"><p class="caption">
-Figure 4.9: This figure shows <span class="math inline">\(\mathbb{E}(\max(0,X))\)</span> for <span class="math inline">\(X \sim \mathcal{N}(\mu,1)\)</span>, as a function of <span class="math inline">\(\mu\)</span>. More generally, if <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span>, then <span class="math inline">\(\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)\)</span>, where <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\phi\)</span> are the c.d.f. and p.d.f. of the standard normal distirbution, respectively.
+Figure 4.8: This figure shows <span class="math inline">\(\mathbb{E}(\max(0,X))\)</span> for <span class="math inline">\(X \sim \mathcal{N}(\mu,1)\)</span>, as a function of <span class="math inline">\(\mu\)</span>. More generally, if <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span>, then <span class="math inline">\(\mathbb{E}(\max(X,0))=\sigma g\left(\frac{\mu}{\sigma}\right)= \mu\Phi\left(\frac{\mu}{\sigma}\right)+\sigma\phi\left(\frac{\mu}{\sigma}\right)\)</span>, where <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\phi\)</span> are the c.d.f. and p.d.f. of the standard normal distirbution, respectively.
 </p>
 </div>
 </div>
@@ -574,13 +629,13 @@ Other lift-off probabilities, of the type <span class="math inline">\(\mathbb{P}
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:fitZarg"></span>
 <img src="figures/Figure_fit_ZARG.png" alt="Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters." width="95%"><p class="caption">
-Figure 4.10: Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters.
+Figure 4.9: Source: Monfort et al. (2017). Model fit of conditional variances and surveys of professional forecasters.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:liftOff"></span>
 <img src="figures/Figure_LiftOff.png" alt="Source: Monfort et al. (2017). Lift-off probabilities." width="95%"><p class="caption">
-Figure 4.11: Source: Monfort et al. (2017). Lift-off probabilities.
+Figure 4.10: Source: Monfort et al. (2017). Lift-off probabilities.
 </p>
 </div>
 </div>
@@ -628,26 +683,26 @@ Since most debtors issue coupon bonds, zero-coupon yields are not directly obser
 where the <span class="math inline">\(w_j\)</span> are weights (that may, e.g., depend on the maturities <span class="math inline">\(h_j\)</span>).</li>
 </ul>
 <div class="example">
-<p><span id="exm:GSW1961" class="example"><strong>Example 4.6  (Gurkaynak, Sack, and Wright (2007)) </strong></span><span class="citation">Gürkaynak, Sack, and Wright (<a href="references.html#ref-GURKAYNAK20072291">2007</a>)</span> develop a methodology to compute zero-coupon yield curves. Their estimation period starts in 1961. Their data base is updated and available on the <a href="https://www.federalreserve.gov/pubs/feds/2006/200628/200628abs.html">Federal Reserve Board website</a>. Figure <a href="TSModels.html#fig:BdPortfolio">4.12</a> represents the residual maturities of the bonds used for the estimation at the different dates of the sample. Figure <a href="TSModels.html#fig:FigNSS">4.13</a> shows the decomposition of the zero-coupon yield curve for a specific date, using the <span class="citation">Svensson (<a href="references.html#ref-Svensson_1994">1994</a>)</span> parametric function. Figure <a href="TSModels.html#fig:Paryds">4.14</a> compares, for one date, fitted and observed yields. This figure also shows the par yield curve; par yields are defined as the coupon of a bond of maturity <span class="math inline">\(h\)</span> that would trade at par (i.e., with a price equal to 100%). That is, the par yield of maturity <span class="math inline">\(h\)</span> (<span class="math inline">\(i^p_{t,h}\)</span>, say) satisfies:
+<p><span id="exm:GSW1961" class="example"><strong>Example 4.6  (Gurkaynak, Sack, and Wright (2007)) </strong></span><span class="citation">Gürkaynak, Sack, and Wright (<a href="references.html#ref-GURKAYNAK20072291">2007</a>)</span> develop a methodology to compute zero-coupon yield curves. Their estimation period starts in 1961. Their data base is updated and available on the <a href="https://www.federalreserve.gov/pubs/feds/2006/200628/200628abs.html">Federal Reserve Board website</a>. Figure <a href="TSModels.html#fig:BdPortfolio">4.11</a> represents the residual maturities of the bonds used for the estimation at the different dates of the sample. Figure <a href="TSModels.html#fig:FigNSS">4.12</a> shows the decomposition of the zero-coupon yield curve for a specific date, using the <span class="citation">Svensson (<a href="references.html#ref-Svensson_1994">1994</a>)</span> parametric function. Figure <a href="TSModels.html#fig:Paryds">4.13</a> compares, for one date, fitted and observed yields. This figure also shows the par yield curve; par yields are defined as the coupon of a bond of maturity <span class="math inline">\(h\)</span> that would trade at par (i.e., with a price equal to 100%). That is, the par yield of maturity <span class="math inline">\(h\)</span> (<span class="math inline">\(i^p_{t,h}\)</span>, say) satisfies:
 <span class="math display" id="eq:paryields">\[\begin{equation}
 1 = \exp(-h i_{t,h}) + \sum_{j=1}^h \exp\left[-j i_{t,j}\right]i^p_{t,h}.\tag{4.20}
 \end{equation}\]</span></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:BdPortfolio"></span>
 <img src="figures/Fig_BdPortfolio.png" alt="This figures displays the residual maturities of the bonds used for the estimation at the different dates of the sample. Source: Gurkaynak, Sack, and Wright (2007)." width="90%"><p class="caption">
-Figure 4.12: This figures displays the residual maturities of the bonds used for the estimation at the different dates of the sample. Source: Gurkaynak, Sack, and Wright (2007).
+Figure 4.11: This figures displays the residual maturities of the bonds used for the estimation at the different dates of the sample. Source: Gurkaynak, Sack, and Wright (2007).
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:FigNSS"></span>
 <img src="figures/Fig_NSS.png" alt="Example of yield curve decomposition using the Nelson-Siegel-Svensson parametric form. Source: Gurkaynak, Sack, and Wright (2007)." width="90%"><p class="caption">
-Figure 4.13: Example of yield curve decomposition using the Nelson-Siegel-Svensson parametric form. Source: Gurkaynak, Sack, and Wright (2007).
+Figure 4.12: Example of yield curve decomposition using the Nelson-Siegel-Svensson parametric form. Source: Gurkaynak, Sack, and Wright (2007).
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Paryds"></span>
 <img src="figures/Fig_TSpar.png" alt="This figure compares observed and fitted yields for a given date of the sample. Source: Gurkaynak, Sack, and Wright (2007)." width="90%"><p class="caption">
-Figure 4.14: This figure compares observed and fitted yields for a given date of the sample. Source: Gurkaynak, Sack, and Wright (2007).
+Figure 4.13: This figure compares observed and fitted yields for a given date of the sample. Source: Gurkaynak, Sack, and Wright (2007).
 </p>
 </div>
 </div>
@@ -719,7 +774,7 @@ which gives <span class="math inline">\(i_{t,2} = \frac{1}{2}\log\left(1 + i_{t,
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-02-07.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-03-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

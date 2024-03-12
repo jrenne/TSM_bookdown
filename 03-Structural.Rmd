@@ -1800,10 +1800,11 @@ Assume that \@ref(eq:supply1) holds for $n \ge 2$. Proposition \@ref(prp:PropII)
 The following lines of codes build a discrete-time version of the model proposed by @Vayanos_Vila_2021. This model features two factors. The first ($f_{1,t}$) is the short-term interest rate, the seconf ($f_{2,t}$) is a supply factor. Parameters $\zeta_n$, $\alpha_n$, and $\beta_{n,2}$, defining the specification of bond supplies (see Assumption \@ref(hyp:supply), are given by:^[We have $\beta_{n,1}=0$ for all $n \ge 1$. That is, the short-term rate has no direct influence on the $s_{n,t}$'s.]
 \begin{eqnarray}
 \zeta_n &=& \zeta_0 n \exp(-\delta_\zeta n) \\
-\beta_{n,2} &=& \kappa_{\beta} \big( \exp(-\delta_\zeta n) - \exp(-\delta_{\beta} n) \big) \\
-\alpha_n &=& \kappa_\alpha \big( \exp(-\delta_\zeta n) - \exp(-\delta_{\beta,1} n) \big) \end{eqnarray}
+\beta_{n,2} &=& \kappa_{\beta} ( \exp(-\delta_\zeta n) - \exp(-\delta_{\beta} n) ) \\
+\alpha_n &=& \kappa_\alpha ( \exp(-\delta_\zeta n) - \exp(-\delta_\beta n) ).
+\end{eqnarray}
 
-Figure \@ref(fig:VV1) shows the influence of the latter on bond supply (the $s_{n,t}$'s). Note that the figure shows only the $\beta_{n,2}$'s for $n \ge 2$, since $\beta_{1,2}$ is residual of the model solution.
+Figure \@ref(fig:VV1) shows the influence of the latter on bond supply (the $s_{n,t}$'s). Note that the figure shows only the $\beta_{n,2}$'s for $n \ge 2$, since $\beta_{1,2}$ is a residual of the model solution.
 
 ```{r VV1, echo=TRUE, fig.cap="Specification of the $\\beta_{n,2}$, $n\\ge 2$, that specify the influence of the supply factor ($f_{2,t}$) on bond supplies (the $s_{n,t}$'s).", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 library(TSModels)

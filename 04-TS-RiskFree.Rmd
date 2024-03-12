@@ -56,7 +56,7 @@ TP_{t,h} &=& \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{
 && \underbrace{- \frac{1}{h}  \log  \mathbb{E}_t \exp(-i_{t+1}-\dots-i_{t+h-1}).}_{=i^{EH}_{t,h}}(\#eq:TP)
 \end{eqnarray}
 
-A term premium is a specific type of risk premium (see Def. \@ref(def:RPremium)), in the sense that it reflects changes between the price of an asset (a bond here, $B_{t,h}$) and the counterfactual we would observe if agents were not risk averse ($B_{t,h}^{EH}$, here). 
+A term premium is a specific type of risk premium (see Def. \@ref(def:RPremium)), in the sense that it reflects changes between the price of an asset (a bond here, $B_{t,h}$) and the counterfactual we would observe if agents were not risk averse ($B_{t,h}^{EH}$, here).
 
 Economically, what accounts for term premiums? To address this in a comprehensive way, one needs to resort to structural approaches (see Section \@ref(Structural)). A short reply is that a long-term bond is never "risk-free" as it is exposed to the interest-rate risk; and that investors are averse to this risk, hence the term premiums. Take a two-period bond; using \@ref(eq:basicAAA), we have:
 \begin{equation}
@@ -114,84 +114,84 @@ After having reorganized:
 \mathbb{E}_t(i_{t+m,n-m}-i_{t,n}) \approx \frac{i_{t,n}-i_{t,m}}{n-m}.(\#eq:CStheo)
 \end{equation}
 
-@Campbell_Shiller_1991 have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of $n$ and $m$:
-$$
-i_{t+m,n-m}-i_{t,n} = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}.
-$$
+<!-- @Campbell_Shiller_1991 have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of $n$ and $m$: -->
+<!-- $$ -->
+<!-- i_{t+m,n-m}-i_{t,n} = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}. -->
+<!-- $$ -->
 
-According to \@ref(eq:CStheo), under the Expectation Hypothesis, we should have $\phi_{n,m} \approx 1$. But they do find that the $\phi_{n,m}$ are statistically lower than one. Besides, they find that, for a given holding period $m$, the term structure of the $\phi_{n,m}$ decreases with the maturity $n$. Figure \@ref(fig:CSregressions) shows the results of such regressions on a more recent period. It appears that the original results of @Campbell_Shiller_1991 are still valid.
+<!-- According to \@ref(eq:CStheo), under the Expectation Hypothesis, we should have $\phi_{n,m} \approx 1$. But they do find that the $\phi_{n,m}$ are statistically lower than one. Besides, they find that, for a given holding period $m$, the term structure of the $\phi_{n,m}$ decreases with the maturity $n$. Figure \@ref(fig:CSregressions) shows the results of such regressions on a more recent period. It appears that the original results of @Campbell_Shiller_1991 are still valid. -->
 
 
-```{r CSregressions, echo=FALSE, fig.cap="Regressions as in Campbell and Shiller (1991). Data are at the monthly frequency; they are collected from the FRED database. The estimation period starts in 1990. The figure reports 90% confidence intervals of the $\\phi_{n,m}$ parameter estimates (Newey-West robust standard deviations).", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
-library(sandwich)
-lag <- function(X,n){
-  X_lag <- 0*X
-  N <- max(dim(t(X)))
-  X_lag[1:n] <- X[1]
-  X_lag[(n+1):N] <- X[1:(N-n)]
-  return(X_lag)
-}
+<!-- ```{r CSregressions, echo=FALSE, fig.cap="Regressions as in Campbell and Shiller (1991). Data are at the monthly frequency; they are collected from the FRED database. The estimation period starts in 1990. The figure reports 90% confidence intervals of the $\\phi_{n,m}$ parameter estimates (Newey-West robust standard deviations).", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE} -->
+<!-- library(sandwich) -->
+<!-- lag <- function(X,n){ -->
+<!--   X_lag <- 0*X -->
+<!--   N <- max(dim(t(X))) -->
+<!--   X_lag[1:n] <- X[1] -->
+<!--   X_lag[(n+1):N] <- X[1:(N-n)] -->
+<!--   return(X_lag) -->
+<!-- } -->
 
-# Load data in Fred:
-library(fredr)
-fredr_set_key("df65e14c054697a52b4511e77fcfa1f3")
-start_date <- as.Date("1990-01-01"); end_date <- Sys.Date()
-f <- function(ticker){
-  fredr(series_id = ticker,
-        observation_start = start_date,observation_end = end_date,
-        frequency = "m",aggregation_method = "avg")
-}
+<!-- # Load data in Fred: -->
+<!-- library(fredr) -->
+<!-- fredr_set_key("df65e14c054697a52b4511e77fcfa1f3") -->
+<!-- start_date <- as.Date("1990-01-01"); end_date <- Sys.Date() -->
+<!-- f <- function(ticker){ -->
+<!--   fredr(series_id = ticker, -->
+<!--         observation_start = start_date,observation_end = end_date, -->
+<!--         frequency = "m",aggregation_method = "avg") -->
+<!-- } -->
 
-par(mfrow=c(1,2))
-par(plt=c(.25,.95,.2,.85))
+<!-- par(mfrow=c(1,2)) -->
+<!-- par(plt=c(.25,.95,.2,.85)) -->
 
-list.of.rates <- c("THREEFY2","THREEFY3","THREEFY5",
-                   "THREEFY7","THREEFY10")
+<!-- list.of.rates <- c("THREEFY2","THREEFY3","THREEFY5", -->
+<!--                    "THREEFY7","THREEFY10") -->
 
-for(i in 1:2){
-  
-  if(i==1){
-    lags    <- 3
-    regress <- f("DTB3")
-    main_title = "3-month holding period"      
-  }
-  if(i==2){
-    lags    <- 6
-    regress <- f("DTB6")  
-    main_title = "6-month holding period"      
-  }
-  if(i==3){
-    lags    <- 12
-    regress <- f("THREEFY1")
-    main_title = "12-month holding period"      
-  }
-  
-  res <- matrix(0,5,3)
-  res[,1] <- c(2,3,5,7,10)
-  
-  count <- 0
-  for(j in 1:length(list.of.rates)){
-    count <- count + 1
-    yy <- f(list.of.rates[j])
-    DATA <- merge(yy,regress,by="date")
-    yn <- DATA$value.x
-    y1 <- DATA$value.y
-    eq <- lm((yn-lag(yn,lags))~(lag((yn-y1)/2/(12/lags),lags)))
-    
-    res[count,2] <- eq$coefficients[2]
-    res[count,3] <- sqrt(diag(NeweyWest(eq,lag = lags, prewhite = FALSE)))[2]
-  }
-  
-  plot(res[,1],res[,2],ylim=c(-1,1),pch=16,
-       ylab=expression(paste("Parameter ",phi[n*','*m])),
-       xlab=expression(paste("Maturity (in years)")),col="black",
-       main=main_title,cex=1.5,cex.main=1)
-  lines(res[,1],res[,2],lwd=3)
-  lines(res[,1],res[,2]-1.64*res[,3],lty=1,col="red",lwd=3)
-  lines(res[,1],res[,2]+1.64*res[,3],lty=1,col="red",lwd=3)
-  lines(res[,1],0*res[,1],lty=3,lwd=2)
-}
-```
+<!-- for(i in 1:2){ -->
+
+<!--   if(i==1){ -->
+<!--     lags    <- 3 -->
+<!--     regress <- f("DTB3") -->
+<!--     main_title = "3-month holding period" -->
+<!--   } -->
+<!--   if(i==2){ -->
+<!--     lags    <- 6 -->
+<!--     regress <- f("DTB6") -->
+<!--     main_title = "6-month holding period" -->
+<!--   } -->
+<!--   if(i==3){ -->
+<!--     lags    <- 12 -->
+<!--     regress <- f("THREEFY1") -->
+<!--     main_title = "12-month holding period" -->
+<!--   } -->
+
+<!--   res <- matrix(0,5,3) -->
+<!--   res[,1] <- c(2,3,5,7,10) -->
+
+<!--   count <- 0 -->
+<!--   for(j in 1:length(list.of.rates)){ -->
+<!--     count <- count + 1 -->
+<!--     yy <- f(list.of.rates[j]) -->
+<!--     DATA <- merge(yy,regress,by="date") -->
+<!--     yn <- DATA$value.x -->
+<!--     y1 <- DATA$value.y -->
+<!--     eq <- lm((yn-lag(yn,lags))~(lag((yn-y1)/2/(12/lags),lags))) -->
+
+<!--     res[count,2] <- eq$coefficients[2] -->
+<!--     res[count,3] <- sqrt(diag(NeweyWest(eq,lag = lags, prewhite = FALSE)))[2] -->
+<!--   } -->
+
+<!--   plot(res[,1],res[,2],ylim=c(-1,1),pch=16, -->
+<!--        ylab=expression(paste("Parameter ",phi[n*','*m])), -->
+<!--        xlab=expression(paste("Maturity (in years)")),col="black", -->
+<!--        main=main_title,cex=1.5,cex.main=1) -->
+<!--   lines(res[,1],res[,2],lwd=3) -->
+<!--   lines(res[,1],res[,2]-1.64*res[,3],lty=1,col="red",lwd=3) -->
+<!--   lines(res[,1],res[,2]+1.64*res[,3],lty=1,col="red",lwd=3) -->
+<!--   lines(res[,1],0*res[,1],lty=3,lwd=2) -->
+<!-- } -->
+<!-- ``` -->
 :::
 
 

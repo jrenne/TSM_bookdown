@@ -121,7 +121,7 @@
 
 \title{Introduction to Term Structure Models}
 \author{Alain Monfort and Jean-Paul Renne}
-\date{2024-02-07}
+\date{2024-03-12}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -3497,10 +3497,11 @@ Assume that \eqref{eq:supply1} holds for \(n \ge 2\). Proposition \ref{prp:PropI
 The following lines of codes build a discrete-time version of the model proposed by \citet{Vayanos_Vila_2021}. This model features two factors. The first (\(f_{1,t}\)) is the short-term interest rate, the seconf (\(f_{2,t}\)) is a supply factor. Parameters \(\zeta_n\), \(\alpha_n\), and \(\beta_{n,2}\), defining the specification of bond supplies (see Assumption \ref{hyp:supply}, are given by:\footnote{We have \(\beta_{n,1}=0\) for all \(n \ge 1\). That is, the short-term rate has no direct influence on the \(s_{n,t}\)'s.}
 \begin{eqnarray}
 \zeta_n &=& \zeta_0 n \exp(-\delta_\zeta n) \\
-\beta_{n,2} &=& \kappa_{\beta} \big( \exp(-\delta_\zeta n) - \exp(-\delta_{\beta} n) \big) \\
-\alpha_n &=& \kappa_\alpha \big( \exp(-\delta_\zeta n) - \exp(-\delta_{\beta,1} n) \big) \end{eqnarray}
+\beta_{n,2} &=& \kappa_{\beta} ( \exp(-\delta_\zeta n) - \exp(-\delta_{\beta} n) ) \\
+\alpha_n &=& \kappa_\alpha ( \exp(-\delta_\zeta n) - \exp(-\delta_\beta n) ).
+\end{eqnarray}
 
-Figure \ref{fig:VV1} shows the influence of the latter on bond supply (the \(s_{n,t}\)'s). Note that the figure shows only the \(\beta_{n,2}\)'s for \(n \ge 2\), since \(\beta_{1,2}\) is residual of the model solution.
+Figure \ref{fig:VV1} shows the influence of the latter on bond supply (the \(s_{n,t}\)'s). Note that the figure shows only the \(\beta_{n,2}\)'s for \(n \ge 2\), since \(\beta_{1,2}\) is a residual of the model solution.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3671,7 +3672,7 @@ i^{EH}_{t,h} &=& -\frac{1}{h}\log \left( \mathbb{E}_t \exp(-i_t-\dots-i_{t+h-1})
 
 Using the previous notations, the term premium is usually defined as:
 \begin{eqnarray}
-TP_{t,h} &=& \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{t+1}-\dots-i_{t+h-1})}_{=i_{t,h}} - \nonumber \\
+TP_{t,h} &=& \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{t+1}-\dots-i_{t+h-1})}_{=i_{t,h}} \nonumber \\
 && \underbrace{- \frac{1}{h}  \log  \mathbb{E}_t \exp(-i_{t+1}-\dots-i_{t+h-1}).}_{=i^{EH}_{t,h}}\label{eq:TP}
 \end{eqnarray}
 
@@ -3713,7 +3714,9 @@ If investors were not risk-averse, then we would have \(p_{jt} = p^{EH}_{jt}\). 
 \end{definition}
 
 \begin{example}[Testing the Expectation Hypothesis]
-\protect\hypertarget{exm:TestingEH}{}\label{exm:TestingEH}Several studies have employed regression analysis to test the Expectation Hypothesis, e.g., \citet{Campbell_Shiller_1991} and \citet{Cochrane_Piazzesi_2005}. Let us focus on the former study. \citet{Campbell_Shiller_1991} note that, if agents were risk-neutral, we would have:
+\protect\hypertarget{exm:TestingEH}{}\label{exm:TestingEH}
+
+Several studies have employed regression analysis to test the Expectation Hypothesis, e.g., \citet{Campbell_Shiller_1991} and \citet{Cochrane_Piazzesi_2005}. Let us focus on the former study. \citet{Campbell_Shiller_1991} note that, if agents were risk-neutral, we would have:
 \[
 B_{t,n} = \exp(-i_{t,m})\mathbb{E}_t(B_{t+m,n-m}).
 \]
@@ -3730,16 +3733,6 @@ After having reorganized:
 \mathbb{E}_t(i_{t+m,n-m}-i_{t,n}) \approx \frac{i_{t,n}-i_{t,m}}{n-m}.\label{eq:CStheo}
 \end{equation}
 
-\citet{Campbell_Shiller_1991} have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of \(n\) and \(m\):
-\[
-i_{t+m,n-m}-i_{t,n} = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}.
-\]
-
-According to \eqref{eq:CStheo}, under the Expectation Hypothesis, we should have \(\phi_{n,m} \approx 1\). But they do find that the \(\phi_{n,m}\) are statistically lower than one. Besides, they find that, for a given holding period \(m\), the term structure of the \(\phi_{n,m}\) decreases with the maturity \(n\). Figure \ref{fig:CSregressions} shows the results of such regressions on a more recent period. It appears that the original results of \citet{Campbell_Shiller_1991} are still valid.
-
-\textbackslash begin\{figure\}
-\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/CSregressions-1} \textbackslash caption\{Regressions as in Campbell and Shiller (1991). Data are at the monthly frequency; they are collected from the FRED database. The estimation period starts in 1990. The figure reports 90\% confidence intervals of the \(\phi_{n,m}\) parameter estimates (Newey-West robust standard deviations).\}\label{fig:CSregressions}
-\textbackslash end\{figure\}
 \end{example}
 
 Before turning to the no-arbitrage term structure models, note that \eqref{eq:TP} implies that term premium estimates are directly available if we have good approximations for the expected future short term rates (i.e., \(i_{t,h}^{EH}\)). Some surveys offer such proxies. It is for instance the case of the \href{https://www.philadelphiafed.org/surveys-and-data/bill10}{Philadelphia Fed SPF}, that provides expectations of the short-term rate over the next 10 years (see Figure \ref{fig:modeFreeTP}). However, there is only one release per year for this survey.
@@ -6336,12 +6329,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.92146916 0.85444722 0.79680957 0.74690272 0.70338970 0.66518124
-## [2,] 0.08178597 0.07865027 0.07571319 0.07295508 0.07036884 0.06794929
-##            [,7]     [,8]       [,9]     [,10]
-## [1,] 0.63138804 0.601284 0.57427582 0.5498785
-## [2,] 0.06569066 0.063586 0.06162728 0.0598058
+##            [,1]       [,2]      [,3]       [,4]       [,5]       [,6]
+## [1,] 0.94906170 0.90371372 0.8631251 0.82660914 0.79356266 0.76346674
+## [2,] 0.05228147 0.05062132 0.0490652 0.04760583 0.04624456 0.04498095
+##            [,7]       [,8]       [,9]      [,10]
+## [1,] 0.73588252 0.71044274 0.68684174 0.66482563
+## [2,] 0.04381211 0.04273337 0.04173904 0.04082305
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

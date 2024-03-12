@@ -51,16 +51,16 @@
 \contentsline {subsection}{\numberline {3.4.1}SDF in the CES Epstein-Zin Context}{107}{subsection.3.4.1}%
 \contentsline {chapter}{\numberline {4}No-arbitrage models of the term struture of risk-free yields}{109}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introduction}{109}{section.4.1}%
-\contentsline {section}{\numberline {4.2}The Affine Case}{115}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Affine yields}{115}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.2}The Affine Case}{113}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Affine yields}{113}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Maximum Sharpe ratio}{117}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Gaussian Affine Term Structure Model}{118}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Non-Negative Affine Term Structure Model}{124}{section.4.4}%
+\contentsline {section}{\numberline {4.3}Gaussian Affine Term Structure Model}{117}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Non-Negative Affine Term Structure Model}{122}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}The shadow-rate approach}{124}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}The auto-regressive gamma approach}{127}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Appendix -- Constructing the yield curve}{131}{section.4.5}%
+\contentsline {section}{\numberline {4.5}Appendix -- Constructing the yield curve}{133}{section.4.5}%
 \contentsline {subsection}{\numberline {4.5.1}Bond-based yield curves}{133}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Swap-based yield curves}{135}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.2}Swap-based yield curves}{138}{subsection.4.5.2}%
 \contentsline {chapter}{\numberline {5}Estimation of affine asset-pricing models}{139}{chapter.5}%
 \contentsline {section}{\numberline {5.1}State-space model}{139}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Kalman-filter-based approach}{141}{section.5.2}%

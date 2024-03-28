@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.7)  12 MAR 2024 05:47
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.13)  28 MAR 2024 04:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1375,18 +1375,18 @@ File: figures/CDOs.png Graphic file (type bmp)
 File: TSM_files/figure-latex/simulation2-1.pdf Graphic file (type pdf)
 <use TSM_files/figure-latex/simulation2-1.pdf>
 [203]
-Overfull \hbox (54.94766pt too wide) in paragraph at lines 6338--6338
-[]\TU/lmtt/m/n/12 ##            [,1]       [,2]      [,3]       [,4]       [,5]       [,6][] 
+Overfull \hbox (116.74762pt too wide) in paragraph at lines 6338--6338
+[]\TU/lmtt/m/n/12 ##            [,1]      [,2]       [,3]       [,4]       [,5]      [,6]       [,7][] 
  []
 
 
-Overfull \hbox (54.77997pt too wide) in paragraph at lines 6338--6338
-[]\TU/lmtt/m/n/12 ## [1,] 0.94906170 0.90371372 0.8631251 0.82660914 0.79356266 0.76346674[] 
+Overfull \hbox (116.56795pt too wide) in paragraph at lines 6338--6338
+[]\TU/lmtt/m/n/12 ## [1,] 0.92923969 0.8681835 0.81509498 0.76858629 0.72752982 0.6910160 0.65831111[] 
  []
 
 
-Overfull \hbox (54.86395pt too wide) in paragraph at lines 6338--6338
-[]\TU/lmtt/m/n/12 ## [2,] 0.05228147 0.05062132 0.0490652 0.04760583 0.04624456 0.04498095[] 
+Overfull \hbox (116.62796pt too wide) in paragraph at lines 6338--6338
+[]\TU/lmtt/m/n/12 ## [2,] 0.07338857 0.0706761 0.06815021 0.06580061 0.06362006 0.0615987 0.05972538[] 
  []
 
 [204]
@@ -1415,11 +1415,11 @@ L3 programming layer <2024-02-20>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `TSM.out' has not changed.
-(rerunfilecheck)             Checksum: AB37CA67CDB30564E9D3E4190373F9A2;10110.
+(rerunfilecheck)             Checksum: 26F5C63834C66E861D255A2B85F15520;10053.
  ) 
 Here is how much of TeX's memory you used:
  18940 strings out of 476778
- 358943 string characters out of 5802078
+ 358946 string characters out of 5802077
  2013839 words of memory out of 5000000
  40638 multiletter control sequences out of 15000+600000
  565625 words of font info for 113 fonts, out of 8000000 for 9000

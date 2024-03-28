@@ -121,7 +121,7 @@
 
 \title{Introduction to Term Structure Models}
 \author{Alain Monfort and Jean-Paul Renne}
-\date{2024-03-12}
+\date{2024-03-28}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -438,12 +438,12 @@ and since in the second term on the right-hand side \(\exp(u_2 w_{2,t+1}) \textb
 \end{proof}
 
 \hypertarget{AffineCar}{%
-\section{Affine (or Car) processes}\label{AffineCar}}
+\section{Affine processes}\label{AffineCar}}
 
 In term structure applications, we will often consider \emph{affine} processes (Definitions \ref{def:Car1} and \ref{def:Carp}). These processes are indeed such that their multi-horizon Laplace transform are simple to compute (Lemma \ref{lem:MHLT} and Proposition \ref{prp:reverseMLT}), which is key to compute bond prices.
 
-\hypertarget{car-processes-of-order-one}{%
-\subsection{Car processes of order one}\label{car-processes-of-order-one}}
+\hypertarget{affine-processes-of-order-one}{%
+\subsection{Affine processes of order one}\label{affine-processes-of-order-one}}
 
 Here is the definition of a \emph{compound auto-regressive (Car)} process of order one:
 
@@ -655,9 +655,9 @@ One can simulate such processes by using \href{https://jrenne.shinyapps.io/Affin
 \end{example}
 
 \hypertarget{SubCarp}{%
-\subsection{\texorpdfstring{Car processes of order \(p\)}{Car processes of order p}}\label{SubCarp}}
+\subsection{\texorpdfstring{Affine processes of order \(p\)}{Affine processes of order p}}\label{SubCarp}}
 
-Let us now define Car processes of order \(p\):
+Let us now define affine processes of order \(p\):
 
 \begin{definition}[Affine process of order p]
 \protect\hypertarget{def:Carp}{}\label{def:Carp}A multivariate process \(w_{t+1}\) is affine of order \(p\) {[}or \(Car(p)\){]} if there exist functions \(a_1(.),\dots,a_p(.)\), and \(b(.)\) such that:
@@ -6329,12 +6329,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]      [,3]       [,4]       [,5]       [,6]
-## [1,] 0.94906170 0.90371372 0.8631251 0.82660914 0.79356266 0.76346674
-## [2,] 0.05228147 0.05062132 0.0490652 0.04760583 0.04624456 0.04498095
-##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.73588252 0.71044274 0.68684174 0.66482563
-## [2,] 0.04381211 0.04273337 0.04173904 0.04082305
+##            [,1]      [,2]       [,3]       [,4]       [,5]      [,6]       [,7]
+## [1,] 0.92923969 0.8681835 0.81509498 0.76858629 0.72752982 0.6910160 0.65831111
+## [2,] 0.07338857 0.0706761 0.06815021 0.06580061 0.06362006 0.0615987 0.05972538
+##            [,8]      [,9]      [,10]
+## [1,] 0.62882049 0.6020599 0.57763229
+## [2,] 0.05798868 0.0563776 0.05488178
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

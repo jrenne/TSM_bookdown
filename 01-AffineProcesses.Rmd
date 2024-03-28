@@ -225,11 +225,11 @@ and since in the second term on the right-hand side $\exp(u_2   w_{2,t+1})   \te
 
 
 
-## Affine (or Car) processes {#AffineCar}
+## Affine processes {#AffineCar}
 
 In term structure applications, we will often consider *affine* processes (Definitions \@ref(def:Car1) and \@ref(def:Carp)). These processes are indeed such that their multi-horizon Laplace transform are simple to compute (Lemma \@ref(lem:MHLT) and Proposition \@ref(prp:reverseMLT)), which is key to compute bond prices.
 
-### Car processes of order one
+### Affine processes of order one
 
 Here is the definition of a *compound auto-regressive (Car)* process of order one:
 
@@ -422,9 +422,9 @@ plot(W,type="l")
 :::
 
 
-### Car processes of order $p$ {#SubCarp}
+### Affine processes of order $p$ {#SubCarp}
 
-Let us now define Car processes of order $p$:
+Let us now define affine processes of order $p$:
 
 :::{.definition #Carp name="Affine process of order p"}
 

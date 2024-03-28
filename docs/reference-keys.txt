@@ -347,7 +347,7 @@ Dynamic
 AffineLaplace
 additional-properties-of-the-laplace-transform
 AffineCar
-car-processes-of-order-one
+affine-processes-of-order-one
 SubCarp
 Markov
 WAR

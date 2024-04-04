@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.13)  4 APR 2024 12:26
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.13)  4 APR 2024 20:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1386,13 +1386,13 @@ Overfull \hbox (61.12766pt too wide) in paragraph at lines 6368--6368
  []
 
 
-Overfull \hbox (61.06795pt too wide) in paragraph at lines 6368--6368
-[]\TU/lmtt/m/n/12 ## [1,] 0.95329702 0.91136243 0.87343331 0.83888934 0.80722028 0.77801093[] 
+Overfull \hbox (60.94797pt too wide) in paragraph at lines 6368--6368
+[]\TU/lmtt/m/n/12 ## [1,] 0.94802060 0.90179537 0.86036556 0.82296349 0.78896609 0.75786917[] 
  []
 
 
-Overfull \hbox (61.09195pt too wide) in paragraph at lines 6368--6368
-[]\TU/lmtt/m/n/12 ## [2,] 0.04782876 0.04640731 0.04510783 0.04391912 0.04283174 0.04183578[] 
+Overfull \hbox (61.05592pt too wide) in paragraph at lines 6368--6368
+[]\TU/lmtt/m/n/12 ## [2,] 0.05337905 0.05168382 0.05013264 0.04871086 0.04740639 0.04620742[] 
  []
 
 [204]

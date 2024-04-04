@@ -1094,12 +1094,12 @@ Figure 7.10: This plots shows simulated paths for <span class="math inline">\(z_
 <span><span class="va">t.max.lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>, <span class="co">#approximate values of the conditional expect. for date t</span></span>
 <span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##            [,1]      [,2]      [,3]       [,4]       [,5]       [,6]       [,7]
-## [1,] 0.94196560 0.8909165 0.8457259 0.80546891 0.76936301 0.73675812 0.70711844
-## [2,] 0.05978652 0.0577523 0.0558533 0.05408267 0.05243847 0.05091594 0.04950816
-##           [,8]      [,9]      [,10]
-## [1,] 0.6800033 0.6550498 0.63195798
-## [2,] 0.0482072 0.0470049 0.04589324</code></pre>
+<pre><code>##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] 0.93245313 0.87390105 0.82279011 0.77787193 0.73811344 0.70266758
+## [2,] 0.06993639 0.06739406 0.06501805 0.06279834 0.06073155 0.05881189
+##            [,7]       [,8]       [,9]      [,10]
+## [1,] 0.67084301 0.64207563 0.61590409 0.59194961
+## [2,] 0.05703145 0.05538115 0.05385156 0.05243338</code></pre>
 <p>The last two lines respectively give, for the date featuring the highest <span class="math inline">\(\lambda_t\)</span>, the term structures of the bond prices and of associated yields-to-maturity.</p>
 <p>Let us now compute credit-risk-free bond prices. This is obtained by taking <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=0\)</span> (so that <span class="math inline">\(\lambda_t=0\)</span>):</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">

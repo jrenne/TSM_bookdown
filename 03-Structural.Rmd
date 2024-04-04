@@ -494,7 +494,7 @@ Let's denote by $r_{t}$ the one-period risk-free real interest rate. We consider
 \mathcal{B}_{t,1} = \exp(-r_{t}) &=& \mathbb{E}_t [ \delta \exp(-\gamma \Delta c_{t+1}) \underbrace{\times 1}_{= x_{i,t+1}} ]\\
 &=& \delta \exp\left(-\gamma(\mu + \phi (\Delta c_t - \mu))+\frac{\gamma^2\sigma_c^2}{2}\right).
 \end{eqnarray*}
-As a result, the short-term real rate is given by
+As a result, the real short-term real is given by
 \begin{equation}
 r_{t} = \underbrace{- \log(\delta) + \gamma \mu (1-\phi)  - \frac{\gamma^2\sigma_c^2}{2}}_{=\eta_0} + \underbrace{\gamma \phi}_{=\eta_1} \Delta c_t.(\#eq:rCCAPM)
 \end{equation}

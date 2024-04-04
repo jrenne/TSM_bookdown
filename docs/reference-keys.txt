@@ -187,12 +187,14 @@ exm:TestingEH
 eq:CStheo
 fig:modeFreeTP
 fig:modeFreeIRP
+eq:bondpricesCondExp
 eq:RthAB
 eq:RthABEH
 eq:RbarthAB
 eq:condmeanRth
 eq:condvarRth
 eq:GaussianVAR1
+eq:logLTGaussian
 eq:GaussianQdyn
 exm:KimWright
 fig:fredKW

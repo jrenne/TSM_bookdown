@@ -141,8 +141,12 @@ The power utility function is such that $u'(C) = C^{-\gamma} > 0$ and $u''(C) = 
 \frac{C_{t+1}}{C_t} \right)^{-\gamma} \nonumber\\
 &=& \exp(\log
 \delta + \log q_t + \gamma \log  C_t - \log  q_{t+1} - \gamma
-\log  C_{t+1}).(\#eq:powerutilSDF)
+\log  C_{t+1}) (\#eq:powerutilSDF)\\
+&=& \exp(\log
+\delta - \gamma \Delta  c_t - \pi_{t+1}).,\nonumber
 \end{eqnarray}
+where $\Delta c_t$ and $\pi_{t}$ denote the (log) consumption growth and inflation rate, respectively.
+
 The vector of prices $p_t$ satisfies:
 $$
 p_t = \delta q_t C^\gamma_t \mathbb{E}_t \left(

@@ -220,9 +220,12 @@ IES = \frac{d \log\left( \dfrac{C_{t+1}}{C_{t}}\right)}{d r} = - \frac{d \log\le
 \frac{C_{t+1}}{C_t} \right)^{-\gamma} \nonumber\\
 &amp;=&amp; \exp(\log
 \delta + \log q_t + \gamma \log  C_t - \log  q_{t+1} - \gamma
-\log  C_{t+1}).\tag{3.8}
+\log  C_{t+1}) \tag{3.8}\\
+&amp;=&amp; \exp(\log
+\delta - \gamma \Delta  c_t - \pi_{t+1}).,\nonumber
 \end{eqnarray}\]</span>
-The vector of prices <span class="math inline">\(p_t\)</span> satisfies:
+where <span class="math inline">\(\Delta c_t\)</span> and <span class="math inline">\(\pi_{t}\)</span> denote the (log) consumption growth and inflation rate, respectively.</p>
+<p>The vector of prices <span class="math inline">\(p_t\)</span> satisfies:
 <span class="math display">\[
 p_t = \delta q_t C^\gamma_t \mathbb{E}_t \left(
 \frac{C^{-\gamma}_{t+1}}{q_{t+1}} p_{t+1}
@@ -1640,7 +1643,7 @@ which gives <a href="Structural.html#eq:SSS">(3.23)</a>.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-03-28.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-04-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

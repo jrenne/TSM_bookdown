@@ -864,7 +864,7 @@ and where <span class="math inline">\(\Psi^{\mathbb{Q}}_{(t, i)} \left(\kappa, u
 <span class="math display" id="eq:ndistrinew">\[\begin{eqnarray}
 n^s_{t+1}| \underline{x_{t+1}}, \underline{y_{t+1}}, \underline{N^s_{t}}  &amp;\sim&amp; \mathcal{P}oisson(\beta y_{t+1}+c n^s_{t}),\tag{7.37}
 \end{eqnarray}\]</span>
-where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>. Vector <span class="math inline">\((y_t,x_t)'\)</span> follows a VARG dynamics (Eq. <a href="TSModels.html#eq:VARG">(4.18)</a>) that admits the following VAR representation (using Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>):
+where <span class="math inline">\(y_t\)</span> is a nonnegative factor fluctuating around a low-frequency component <span class="math inline">\(x_t\)</span>. Vector <span class="math inline">\((y_t,x_t)'\)</span> follows a VARG dynamics (Eq. <a href="TSModels.html#eq:VARG">(4.20)</a>) that admits the following VAR representation (using Prop. <a href="ChapterAffine.html#prp:affineVAR">1.1</a>):
 <span class="math display" id="eq:systemF12">\[\begin{equation}
 \left\{
 \begin{array}{ccl}
@@ -1094,12 +1094,12 @@ Figure 7.10: This plots shows simulated paths for <span class="math inline">\(z_
 <span><span class="va">t.max.lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>, <span class="co">#approximate values of the conditional expect. for date t</span></span>
 <span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##            [,1]      [,2]       [,3]       [,4]       [,5]      [,6]       [,7]
-## [1,] 0.93519609 0.8787931 0.82938039 0.78582617 0.74718213 0.7126586 0.68160249
-## [2,] 0.06699905 0.0646029 0.06235879 0.06025492 0.05828926 0.0564588 0.05475838
+<pre><code>##            [,1]       [,2]       [,3]      [,4]       [,5]      [,6]       [,7]
+## [1,] 0.95163929 0.90837401 0.86942411 0.8341360 0.80195340 0.7724145 0.74513886
+## [2,] 0.04956922 0.04804954 0.04664141 0.0453397 0.04414096 0.0430390 0.04202638
 ##            [,8]       [,9]      [,10]
-## [1,] 0.65347588 0.62783608 0.60431839
-## [2,] 0.05318121 0.05171957 0.05036541</code></pre>
+## [1,] 0.71981298 0.69617757 0.67401722
+## [2,] 0.04109548 0.04023895 0.03944996</code></pre>
 <p>The last two lines respectively give, for the date featuring the highest <span class="math inline">\(\lambda_t\)</span>, the term structures of the bond prices and of associated yields-to-maturity.</p>
 <p>Let us now compute credit-risk-free bond prices. This is obtained by taking <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=0\)</span> (so that <span class="math inline">\(\lambda_t=0\)</span>):</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -1195,7 +1195,7 @@ Figure 7.12: Comparison between formula-based prices and Monte-Carlo-based defau
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-03-28.</p>
+    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-04-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

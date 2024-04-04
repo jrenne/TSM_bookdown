@@ -121,7 +121,7 @@
 
 \title{Introduction to Term Structure Models}
 \author{Alain Monfort and Jean-Paul Renne}
-\date{2024-03-28}
+\date{2024-04-04}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2314,8 +2314,12 @@ The power utility function is such that \(u'(C) = C^{-\gamma} > 0\) and \(u''(C)
 \frac{C_{t+1}}{C_t} \right)^{-\gamma} \nonumber\\
 &=& \exp(\log
 \delta + \log q_t + \gamma \log  C_t - \log  q_{t+1} - \gamma
-\log  C_{t+1}).\label{eq:powerutilSDF}
+\log  C_{t+1}) \label{eq:powerutilSDF}\\
+&=& \exp(\log
+\delta - \gamma \Delta  c_t - \pi_{t+1}).,\nonumber
 \end{eqnarray}
+where \(\Delta c_t\) and \(\pi_{t}\) denote the (log) consumption growth and inflation rate, respectively.
+
 The vector of prices \(p_t\) satisfies:
 \[
 p_t = \delta q_t C^\gamma_t \mathbb{E}_t \left(
@@ -3650,6 +3654,7 @@ In this section, we consider term structure of zero-coupon yields, which are bas
 Under regularity and no-arbitrage assumptions, the price of a risk-free zero coupon bond, and the associated yield-to-maturity, satisfy (see Eq. \eqref{eq:ihandM}):
 \begin{eqnarray}
 B_{t,h} &=& \mathbb{E}_t (\mathcal{M}_{t,t+h})\nonumber\\
+ &=& \mathbb{E}_t (\mathcal{M}_{t,t+1} \times \dots \times \mathcal{M}_{t+h-1,t+h})\nonumber\\
 &=& \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t -i_{t+1}-\dots-i_{t+h-1})\nonumber\\
 i_{t,h} &=& - \frac{1}{h} \log B_{t,h}, \label{eq:stdbondRFchapter}
 \end{eqnarray}
@@ -3678,7 +3683,7 @@ TP_{t,h} &=& \underbrace{- \frac{1}{h} \log  \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{
 
 A term premium is a specific type of risk premium (see Def. \ref{def:RPremium}), in the sense that it reflects changes between the price of an asset (a bond here, \(B_{t,h}\)) and the counterfactual we would observe if agents were not risk averse (\(B_{t,h}^{EH}\), here).
 
-Economically, what accounts for term premiums? To address this in a comprehensive way, one needs to resort to structural approaches (see Section \ref{Structural}). A short reply is that a long-term bond is never ``risk-free'' as it is exposed to the interest-rate risk; and that investors are averse to this risk, hence the term premiums. Take a two-period bond; using \eqref{eq:basicAAA}, we have:
+Economically, what accounts for term premiums? To address this in a comprehensive way, one needs to resort to structural approaches (see Section \ref{Structural}). A short reply is that a long-term bond is not ``risk-free'' as it is exposed to the interest-rate risk; and that investors are averse to this risk, hence the term premiums. Take a two-period bond; using \eqref{eq:basicAAA}, we have:
 \begin{equation}
 B_{t,2} = \underbrace{\mathbb{E}_t(\exp(-i_t-i_{t+1}))}_{= B^{EH}_{t,2}} + \mathbb{C}ov_t(\mathcal{M}_{t,t+1},\underbrace{\exp(-i_{t+1})}_{=B_{t+1,1}}).\label{eq:Bt2}
 \end{equation}
@@ -3704,7 +3709,7 @@ where the risk neutral measure \(\mathbb{Q}\) is defined with respect to the phy
 
 Eq. \eqref{eq:basicAAA} rewrites:
 \[
-p_{jt} =  \mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1}) + \mathbb{E}_t(\mathcal{M}_{t,t+1})\mathbb{E}_t( p_{j,t+1})
+p_{jt} =  \mathbb{E}_t(\mathcal{M}_{t,t+1})\mathbb{E}_t( p_{j,t+1}) + \mathbb{C}ov_t(\mathcal{M}_{t,t+1}, p_{j,t+1})
 \]
 or
 \begin{equation}
@@ -3760,15 +3765,15 @@ Figure \ref{fig:modeFreeIRP} shows that the inflation risk premium has often bee
 \subsection{Affine yields}\label{AffineYields}}
 
 In this subsection, we consider the case where the state vector \(w_t\) is affine under both \(\mathbb{P}\) and \(\mathbb{Q}\) (see Def. \ref{def:Car1}). If the nominal short-term rate is affine in \(w_t\), i.e., if \(i_t = \omega_0 + \omega'_1 w_t\), then (see \eqref{eq:ihandM}):
-\begin{eqnarray*}
-B_{t,h} &=& \mathbb{E}^{\mathbb{Q}}_t \exp (-i_{t}-\dots-i_{t+h-1})\\
-&=& \exp(-h\omega_0 - \omega'_1 w_t) \color{blue}{\mathbb{E}^{\mathbb{Q}}_t \exp (- \omega'_1 w_{t+1}-\dots- \omega'_1 w_{t+h-1})}.
-\end{eqnarray*}
-The (blue) expectation is easily computed using the recursive equations of Proposition \ref{prp:reverseMLT} (see Example \ref{exm:nominalBth}), leading to:
+\begin{eqnarray}
+B_{t,h} &=& \mathbb{E}^{\mathbb{Q}}_t \exp (-i_{t}-\dots-i_{t+h-1}) \nonumber\\
+&=& \exp(-h\omega_0 - \omega'_1 w_t) \color{blue}{\mathbb{E}^{\mathbb{Q}}_t \exp (- \omega'_1 w_{t+1}-\dots- \omega'_1 w_{t+h-1})}.\label{eq:bondpricesCondExp}
+\end{eqnarray}
+The (blue) expectation can be computed using the recursive equations of Proposition \ref{prp:reverseMLT} (see Example \ref{exm:nominalBth}), leading to:
 \begin{equation}
 i_{t,h}= -  \frac{1}{h}   \log   B_{t,h} = a_h'w_t + b_h.\label{eq:RthAB}
 \end{equation}
-It is easily seen that we can also get:
+Similarly, \eqref{eq:stdbondRFchapterP} leads to:
 \begin{equation}
 i^{EH}_{t,h} = {a^{EH}_h}'w_t + b^{EH}_h.\label{eq:RthABEH}
 \end{equation}
@@ -3827,8 +3832,9 @@ and, using \(|\mathbb{C}ov(X,Y)| \le \sqrt{\mathbb{V}ar(X)\mathbb{V}ar(Y)}\), we
 
 If the SDF is given by \(\mathcal{M}_{t,t+1} = \exp[-i_{t}+\alpha'_tw_{t+1}-\psi_t(\alpha_t)]\) (Eq. \eqref{eq:keySDF}), and using that \(\mathbb{E}_t(\mathcal{M}_{t,t+1}^2)=\exp(-2i_t+\psi_t(2\alpha_t)-2\psi_t(\alpha_t))\) we get:
 \[
-\mbox{Maximum Sharpe ratio} = \sqrt{\exp(\psi_t(2\alpha_t)-2\psi_t(\alpha_t)) - 1}.
+\mbox{Maximum Sharpe ratio} = \sqrt{\exp(\psi_t(2\alpha_t)-2\psi_t(\alpha_t)) - 1},
 \]
+where \(\psi_t\) denotes the conditional log-Laplace transform of the state vector \(w_t\).
 
 \hypertarget{RiskFreeGaussian}{%
 \section{Gaussian Affine Term Structure Model}\label{RiskFreeGaussian}}
@@ -3842,22 +3848,25 @@ w_{t+1} = \mu + \Phi w_{t} + \Sigma^{1/2} \varepsilon_{t+1}, \mbox{ where } \var
 (The fact that we consider a VAR(1) process is without loss of generality since a VAR(p) admits a VAR(1) companion representation.)
 
 This implies the following log-Laplace transform for \(w_t\) (see Example \ref{exm:GVAR1}):
+\begin{equation}
+\psi_t(u) = \log \mathbb{E}_t(\exp(u'w_{t+1})|\underline{w_t}) = \color{blue}{u'\mu + u'\Phi w_t + \frac{1}{2}u'\Sigma u}.\label{eq:logLTGaussian}
+\end{equation}
+Using the notations of \eqref{eq:keySDF}, in standard Gaussian ATSM, the SDF is defined as:
 \[
-\psi_t(u) = \log \mathbb{E}_t(\exp(u'w_{t+1})|\underline{w_t}) = \color{blue}{u'\mu + u'\Phi w_t + \frac{1}{2}u'\Sigma'u}.
+\mathcal{M}_{t,t+1} = \exp(- i_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ with } \alpha_t = \alpha_0 + \alpha_1'w_t,
 \]
-Using the notations of \eqref{eq:keySDF}, the SDF is defined as:
-\[
-\mathcal{M}_{t,t+1} = \exp(- i_t + \alpha_t'w_{t+1} - \psi_t(\alpha_t)), \mbox{ where } \alpha_t = \alpha_0 + \alpha_1'w_t.
-\]
+where \(\alpha_t\) is the vector of prices of risk, that may be state-dependent. (Typically, the present framework could be the reduced-form representation of a structural asset pricing model where risk aversion is time-varying; for instance \(\gamma\) in \eqref{eq:powerutilSDF} in the CCAPM context.)
 
-In that case, using \eqref{eq:transfoPQ}, we get:
+Note that, by definition of the log-Laplace transform \(\psi_t\), this SDF satisfies \(\mathbb{E}_t(\mathcal{M}_{t,t+1})=\exp(-i_t)\).
+
+If one wants to derive the risk-neutral dynamics of \(w_t\), one can use \eqref{eq:transfoPQ} of Subsection \ref(PricingRN), which gives:
 \begin{eqnarray*}
 \psi_t^{\mathbb{Q}}(u) &=& \psi_t(u + \alpha_t) - \psi_t(\alpha_t)\\
 &=& (u + \alpha_t)'\mu + (u + \alpha_t)'\Phi w_t + \frac{1}{2}(u + \alpha_t)'\Sigma(u + \alpha_t) \\
 && - \left(\alpha_t'\mu + \alpha_t'\Phi w_t + \frac{1}{2}\alpha_t'\Sigma\alpha_t\right) \\
 &=& \color{blue}{u' \left(\mu + \Sigma \alpha_0 \right) + u'(\Phi + \Sigma \alpha_1')w_t  + \frac{1}{2}u'\Sigma'u}.
 \end{eqnarray*}
-This is the Laplace tranform of a Gaussian VAR process (see Example \ref{exm:GVAR1}); accordingly, the \(\mathbb{Q}\)-dynamics of \(w_t\) is:
+This is the Laplace tranform of a Gaussian VAR process (see \eqref{eq:logLTGaussian} and Example \ref{exm:GVAR1}). By identification, it comes that the \(\mathbb{Q}\)-dynamics of \(w_t\) is:
 \[
 w_{t+1} = \mu + \Sigma  \alpha_0 + (\Phi + \Sigma \alpha_1')  w_{t} + \Sigma^{1/2} \varepsilon^*_{t+1}, \mbox{ where } \varepsilon^*_{t} \sim  i.i.d. \mathcal{N}^{\mathbb{Q}}(0,Id).
 \]
@@ -3871,12 +3880,14 @@ where
 \]
 With affine specifications of the nominal short term rate (\(i_{t} = \omega_0 + \omega'_1 w_t\)) and of the inflation rate (\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)), we obtain affine formulas for nominal and real yields of any maturity (Eqs. \eqref{eq:RthAB} and \eqref{eq:RbarthAB}).
 
+Again, knowing the \(\mathbb{Q}\) dynamics allows to compute bond prices in a fast manner, by using Proposition \ref{prp:reverseMLT} to compute the conditional expectation appearing in \eqref{eq:bondpricesCondExp} (see Example \ref{exm:nominalBth}).
+
 \begin{example}[Kim and Wright (2005)]
 \protect\hypertarget{exm:KimWright}{}\label{exm:KimWright}
 
-This model is a three-factor \emph{yield-only model} (no macro variables, except inflation in one variant of the model), where the short-term rate reads \(i_t = \omega_0 + \omega_{1,1} w_{1,t} +\omega_{1,2} w_{2,t} +\omega_{1,3} w_{3,t}\).
+The model proposed by \citet{Kim_Wright_2005} is a three-factor \emph{yield-only model} (no macro variables, except inflation in one variant of the model), where the short-term rate reads \(i_t = \omega_0 + \omega_{1,1} w_{1,t} +\omega_{1,2} w_{2,t} +\omega_{1,3} w_{3,t}\).
 
-The model estimated by Kalman filter (see Subsection \ref{Estimation:KF}; the state-space model (Def. \ref{def:LSSM}) includes survey-based variables (see Subsection \ref{EstimationPersistency}).
+The model estimated by Kalman filter (see Subsection \ref{Estimation:KF}). The state-space model (Def. \ref{def:LSSM}) includes survey-based variables; that is, some of the measurement equations exploit \eqref{eq:condmeanRth} (see also Subsection \ref{EstimationPersistency}).
 
 Outputs are \href{https://www.federalreserve.gov/pubs/feds/2005/200533/200533abs.html}{regularly updated by the Federal Reserve Board}.
 
@@ -3891,7 +3902,7 @@ Monthly data on the 6-month and 12-month-ahead forecasts of the three-month T-Bi
 \begin{example}[Ang and Piazzesi (2003)]
 \protect\hypertarget{exm:AngPiazzesi}{}\label{exm:AngPiazzesi}
 
-\citet{Ang_Piazzesi_2003} propose one of the first paper mixing latent and macrovariables. The set up is also of the form of \eqref{eq:GaussianVAR1}, except that the VAR features several lags.\footnote{Note that a VAR with \(p\) lags (i.e., a VAR(\(p\))) admits a VAR(1) companion form.} In their model, \(w_t = [f^{o}_{1,t},f^{o}_{2,t},f^{u}_{1,t},f^{u}_{2,t},f^{u}_{3,t}]'\) where:
+\citet{Ang_Piazzesi_2003} exploit the GATSM framework to develop a model mixing latent and macrovariables. The set up is also of the form of \eqref{eq:GaussianVAR1}, except that the VAR features several lags.\footnote{Note that a VAR with \(p\) lags (i.e., a VAR(\(p\))) admits a VAR(1) companion form.} In their model, \(w_t = [f^{o}_{1,t},f^{o}_{2,t},f^{u}_{1,t},f^{u}_{2,t},f^{u}_{3,t}]'\) where:
 
 \begin{itemize}
 \tightlist
@@ -3911,7 +3922,7 @@ The nominal short-term rate follows a Taylor rule. And latent factors are estima
 
 }
 
-\caption{Source: Ang and Piazzesi (1998). Impulse response functions.}\label{fig:figAngPiazzesi}
+\caption{Source: Ang and Piazzesi (1998). Impulse responses of yields to macro shocks (inflation and real activity).}\label{fig:figAngPiazzesi}
 \end{figure}
 
 \end{example}
@@ -3919,7 +3930,7 @@ The nominal short-term rate follows a Taylor rule. And latent factors are estima
 \begin{example}[Joslin, Priebsch and Singleton (2014)]
 \protect\hypertarget{exm:JPS}{}\label{exm:JPS}
 
-\citet{Joslin_Priebsch_Singleton_2014} first note that affine models stating that the short term rate is affine in macro factors imply that macro-factors are \emph{spanned} by the yield curve: macro-factors should be perfectly explained by yields of different maturities. Further, they show that this is not the case in the data. (That is, regressing macro factors on yields provides \(R^2\) that are far from one.)
+\citet{Joslin_Priebsch_Singleton_2014} first note that affine models stating that the short term rate is affine in macro factors imply that macro-factors are \emph{spanned} by the yield curve (consider eq. \eqref{eq:RthAB}, where \(w_t\) is a set of macroeconomic factors): macro-factors should be perfectly explained by yields of different maturities. Further, they show that this is not the case in the data. That is, regressing macro factors on yields provides \(R^2\) that are far from one.
 
 They propose a model where macro factors are unspanned by the yield curve, but can still help predict yields. In their model, \(w_t = [\mathcal{P}_t',M_t']'\), where \(\mathcal{P}_t\) are yield factors (\(\approx\) principal components) and \(M_t\) are macro factors. The model is as follows:
 \begin{eqnarray*}
@@ -3971,7 +3982,7 @@ where \(x_t=(g_t,\pi_t,a_t,b_t)'\) follows a Gaussian VAR. This is the context d
 \[
 i_t = \omega_0 + \omega_1'w_t,
 \]
-with \(\omega_1 = [v,vec(V)]'\), where
+with \(\omega_1 = (v,vec(V))'\), where
 \[
 v = \left[
 \begin{array}{c}
@@ -6329,12 +6340,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]      [,2]       [,3]       [,4]       [,5]      [,6]       [,7]
-## [1,] 0.92923969 0.8681835 0.81509498 0.76858629 0.72752982 0.6910160 0.65831111
-## [2,] 0.07338857 0.0706761 0.06815021 0.06580061 0.06362006 0.0615987 0.05972538
-##            [,8]      [,9]      [,10]
-## [1,] 0.62882049 0.6020599 0.57763229
-## [2,] 0.05798868 0.0563776 0.05488178
+##           [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] 0.9354226 0.87919757 0.82992612 0.78648672 0.74793886 0.71349794
+## [2,] 0.0667569 0.06437282 0.06213953 0.06004486 0.05808681 0.05626262
+##            [,7]       [,8]       [,9]      [,10]
+## [1,] 0.68251396 0.65445073 0.62886654 0.60539734
+## [2,] 0.05456747 0.05299487 0.05153736 0.05018703
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

@@ -498,7 +498,7 @@ As a result, the real short-term real is given by
 \begin{equation}
 r_{t} = \underbrace{- \log(\delta) + \gamma \mu (1-\phi)  - \frac{\gamma^2\sigma_c^2}{2}}_{=\eta_0} + \underbrace{\gamma \phi}_{=\eta_1} \Delta c_t.(\#eq:rCCAPM)
 \end{equation}
-To price longer-term real bonds, one can use \@ref(eq:SDF100) iteratively (which is equivalent to $\mathcal{B}_{t,h} = \mathbb{E}_t(\mathcal{M}^*_{t,t+1}\times\dots\times\mathcal{M}^*_{t+h-1,t+h})$). For instance, for $h=2$:
+To price longer-term real bonds, one can use \@ref(eq:SDF100) iteratively (which is equivalent to using $\mathcal{B}_{t,h} = \mathbb{E}_t(\mathcal{M}^*_{t,t+1}\times\dots\times\mathcal{M}^*_{t+h-1,t+h})$). For instance, for $h=2$:
 \begin{eqnarray*}
 \mathcal{B}_{t,2} &=&  \mathbb{E}_t \left[ \delta \exp(-\gamma \Delta c_{t+1}) \color{blue}{\mathcal{B}_{t+1,1}} \right]\\
 &=& \mathbb{E}_t \big[ \delta \exp(-\gamma \Delta c_{t+1}) \color{blue}{\mathbb{E}_{t+1} \big[ \delta \exp(-\gamma \Delta c_{t+2}) \underbrace{\times 1}_{=\mathcal{B}_{t+2,0}} \big]} \big]\\
@@ -601,6 +601,7 @@ which leads to the following one-period nominal interest rate:
 i_t &=& - \log(\delta) +\gamma \mu (1-\phi) + \mu_\pi(1-\phi_\pi) - \frac{1}{2}(\gamma \sigma_c+\sigma_{\pi,c})^2 - \frac{1}{2}\sigma_\pi^2 \nonumber\\ 
 && + \gamma \phi \Delta c_t + \phi_\pi \pi_{t}. (\#eq:nominalCCAPM)
 \end{eqnarray}
+
 
 The price of a nominal bond of maturity $h$ is:
 \begin{eqnarray*}

@@ -398,7 +398,7 @@ where $\alpha_t$ is the vector of prices of risk, that may be state-dependent. (
 
 Note that, by definition of the log-Laplace transform $\psi_t$, this SDF satisfies $\mathbb{E}_t(\mathcal{M}_{t,t+1})=\exp(-i_t)$.
 
-If one wants to derive the risk-neutral dynamics of $w_t$, one can use \@ref(eq:transfoPQ) of Subsection \ref(PricingRN), which gives:
+If one wants to derive the risk-neutral dynamics of $w_t$, one can use \@ref(eq:transfoPQ) of Subsection \@ref(PricingRN), which gives:
 \begin{eqnarray*}
 \psi_t^{\mathbb{Q}}(u) &=& \psi_t(u + \alpha_t) - \psi_t(\alpha_t)\\
 &=& (u + \alpha_t)'\mu + (u + \alpha_t)'\Phi w_t + \frac{1}{2}(u + \alpha_t)'\Sigma(u + \alpha_t) \\
@@ -419,7 +419,7 @@ $$
 $$
 With affine specifications of the nominal short term rate ($i_{t} = \omega_0 + \omega'_1 w_t$) and of the inflation rate ($\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t$), we obtain affine formulas for nominal and real yields of any maturity (Eqs. \@ref(eq:RthAB) and \@ref(eq:RbarthAB)).
 
-Again, knowing the $\mathbb{Q}$ dynamics allows to compute bond prices in a fast manner, by using Proposition \@ref(prp:reverseMLT) to compute the conditional expectation appearing in \@ref(eq:bondpricesCondExp) (see Example \@ref(exm:nominalBth)).
+Again, knowing the $\mathbb{Q}$ dynamics allows to compute bond prices in a fast manner, by using Proposition \@ref(prp:reverseMLT) to compute the conditional expectation appearing in \@ref(eq:bondpricesCondExp) (see Example \@ref(exm:nominalBth)). This is what is used in the prominent examples below.
 
 :::{.example #KimWright name="Kim and Wright (2005)"}
 The model proposed by @Kim_Wright_2005 is a three-factor *yield-only model* (no macro variables, except inflation in one variant of the model), where the short-term rate reads $i_t = \omega_0 + \omega_{1,1} w_{1,t} +\omega_{1,2} w_{2,t} +\omega_{1,3} w_{3,t}$.

@@ -96,6 +96,8 @@ eq:Mbasicpricing
 eq:covpM1
 eq:covpM2
 eq:MRCov
+eq:NomiRealSDF
+eq:realSDFCCAPM
 def:RAmeasures
 def:IES
 def:CCAPM

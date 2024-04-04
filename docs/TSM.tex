@@ -2265,6 +2265,21 @@ Another way to look at formula \eqref{eq:MRCov} is:
 p_{j,t} = \underbrace{\exp(-i_t) \mathbb{E}_t(p_{j,t+1})}_{\mbox{Discount.  expect. payoff}} + \mathbb{V}ar_t(\mathcal{M}_{t,t+1}) \underbrace{\frac{\mathbb{C}ov_t(\mathcal{M}_{t,t+1},p_{j,t+1})}{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}_{\mbox{Risk exposure}}.
 \end{eqnarray*}
 
+Note that the SDF \(\mathcal{M}_{t,t+1}\) that is introduced above is the nominal SDF. This is the SDF that one has to use to evaluate the present value of nominal payoffs (\(p_{t+1}\) is a vector of prices expressed in nominal terms, here). One can also define a real SDF. The latter is linked to the former by the following relationship:\footnote{Indeed, if \(p_t^*\) is the real price of a given asset, we need to have \(p_t^* = \mathbb{E}_t(\mathcal{M}^*_{t,t+1} p^*_{t+1})\), as well as \(p_t^* = \mathbb{E}_t\left(\mathcal{M}_{t,t+1} p^*_{t+1}\frac{q_{t+1}}{q_t}\right)\) since the nominal payoff of the considered asset is \(p^*_{t+1}\frac{q_{t+1}}{q_t}\).}
+\begin{equation}
+\mathcal{M}^*_{t,t+1} = \mathcal{M}_{t,t+1}\frac{q_{t+1}}{q_{t}} = \mathcal{M}_{t,t+1}\exp(\pi_{t+1}), \label{eq:NomiRealSDF}
+\end{equation}
+where \(\pi_{t+1}\) denotes the (log) inflation rate between dates \(t\) and \(t+1\), i.e., \(q_{t+1}/q_t=\exp(\pi_{t+1})\).
+
+One can check that, if inflation was deterministic, we would have the Fisher relationship since the real short term rate \(r_t\) would satisfy \(r_t := -\log \mathbb{E}_t(\mathcal{M}^*_{t,t+1}) = i_t - \pi_{t+1}\) (using that \(i_t = -\log \mathbb{E}_t(\mathcal{M}_{t,t+1})\)). When inflation is stochastic and if inflation is correlated to the real SDF, then an inflation risk premium arises (even for the one-period maturity).
+
+In the context of the CCAPM, \eqref{eq:SDFCCAPM} and \eqref{eq:NomiRealSDF} give the following real SDF:
+\begin{equation}
+\boxed{\mathcal{M}_{t,t+1}^* \equiv \delta
+\frac{  \frac{dU(C_{t+1})}{dC}} {
+\frac{dU(C_t)}{dC}}.}\label{eq:realSDFCCAPM}
+\end{equation}
+
 \hypertarget{risk-aversion-and-intertemporal-elasticity-of-substitution}{%
 \subsection{Risk aversion and intertemporal elasticity of substitution}\label{risk-aversion-and-intertemporal-elasticity-of-substitution}}
 
@@ -2316,25 +2331,29 @@ The power utility function is such that \(u'(C) = C^{-\gamma} > 0\) and \(u''(C)
 \delta + \log q_t + \gamma \log  C_t - \log  q_{t+1} - \gamma
 \log  C_{t+1}) \label{eq:powerutilSDF}\\
 &=& \exp(\log
-\delta - \gamma \Delta  c_t - \pi_{t+1}).,\nonumber
+\delta - \gamma \Delta  c_{t+1} - \pi_{t+1}),\nonumber
 \end{eqnarray}
 where \(\Delta c_t\) and \(\pi_{t}\) denote the (log) consumption growth and inflation rate, respectively.
 
-The vector of prices \(p_t\) satisfies:
+The vector of asset prices \(p_t\) satisfies:
 \[
 p_t = \delta q_t C^\gamma_t \mathbb{E}_t \left(
 \frac{C^{-\gamma}_{t+1}}{q_{t+1}} p_{t+1}
 \right),
 \]
 or (Euler equation):
-\begin{equation}
-\mathbb{E}_t\left[
+\begin{eqnarray}
+&&\mathbb{E}_t\left[
 \delta\left(
 \frac{C_{t+1}}{C_t}
 \right)^{-\gamma}  \frac{q_t}{q_{t+1}}
 \frac{p_{t+1}}{p_t} - 1
-\right] = 0.\label{eq:EulerCCAPM}
-\end{equation}
+\right] = 0 \label{eq:EulerCCAPM}\\
+&\Leftrightarrow& \mathbb{E}_t\left[
+\delta \exp(-\gamma \Delta c_{t+1} - \pi_{t+1})
+\frac{p_{t+1}}{p_t} - 1
+\right] = 0. \nonumber
+\end{eqnarray}
 
 Here, \(\gamma\) has two interpretations:
 
@@ -2346,7 +2365,7 @@ Here, \(\gamma\) has two interpretations:
   It is the inverse of the \emph{Intertemporal Elasticity of Substitution} (see Definition \ref{def:IES}), which measures the aversion to variability \emph{across time}.
 \end{itemize}
 
-This is illustrated by Figure \ref{fig:RRAIESCCAPM}; this figure can, indeed, correspond to two distinct situations:
+This is illustrated by Figure \ref{fig:RRAIESCCAPM}; this figure does indeed correspond to two distinct situations:
 
 \begin{itemize}
 \tightlist
@@ -2357,7 +2376,7 @@ This is illustrated by Figure \ref{fig:RRAIESCCAPM}; this figure can, indeed, co
 \end{itemize}
 
 \begin{figure}
-\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/RRAIESCCAPM-1} \caption{Power utility situation. Illustration of the RRA or the IES.}\label{fig:RRAIESCCAPM}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/RRAIESCCAPM-1} \caption{Power utility situation. Illustration of the RRA (left-hand plot) or the IES (right-hand plot).}\label{fig:RRAIESCCAPM}
 \end{figure}
 
 \begin{example}[A practical interpretation of the RRA]
@@ -2392,10 +2411,10 @@ Three important limitations of the CCAPM approach have been largely documented i
 \item
   The resulting risk-free short-term rate is too large unless risk aversion is small (\emph{interest-rate puzzle}).
 \item
-  It implies maximum Sharpe ratios that are far too low \citep{Hansen_Jagannathan_1991}.
+  For reasonable risk aversion values, it implies maximum Sharpe ratios that are far too low because the SDF is not volatile enough \citep{Hansen_Jagannathan_1991}.
 \end{enumerate}
 
-Using \eqref{eq:MRCov} in the power-utility situation, we get the following average excess return:
+Let us illustrate these three issues. Using \eqref{eq:MRCov} in the power-utility situation, we get the following average excess return:
 \begin{eqnarray*}
 \mathbb{E}_t(R_{i,t+1} - R_{f,t}) &=& - (1 + R_{f,t}) \mathbb{C}ov_t\left(\delta \dfrac{u'(C_{t+1})}{u'(C_{t})},R_{i,t+1}\right)\\
 &\approx& (1 + R_{f,t}) \delta \gamma  \mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right),
@@ -2437,16 +2456,16 @@ The agents have a wealth of 1 unit that they consume over two periods. If they c
 The optimization of the intertemporal utility of the agents imply that \(1/(1+R)=(C_2/C_1)^{-\gamma}\). Hence, the lower the IES, the smoother the consumption path.
 
 \begin{figure}
-\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/IESsmooth-1} \caption{Power utility situation. IES and consumption smoothing.}\label{fig:IESsmooth}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/IESsmooth-1} \caption{Power utility situation. The smaller the IES (i.e., the larger $\gamma$), the more consumer want to smooth consumption}\label{fig:IESsmooth}
 \end{figure}
 
 \end{example}
 
-A third problem pertains to the volatility of the SDF. \citet{Grossman_Shiller_1981} and \citet{Hansen_Jagannathan_1991} show that observed Sharpe ratios give lower bounds to the volatility of SDF:
+The third problem pertains to the volatility of the SDF. \citet{Grossman_Shiller_1981} and \citet{Hansen_Jagannathan_1991} show that observed Sharpe ratios give lower bounds to the volatility of SDF:
 \[
 \frac{\sigma_t(\mathcal{M}_{t,t+1})}{\mathbb{E}_t(\mathcal{M}_{t,t+1})} \ge \underbrace{\frac{\mathbb{E}_t(R_{i,t+1}-R_{f,t})}{\sigma_t(R_{i,t+1})}}_{\mbox{Sharpe ratio of asset $i$.}}
 \]
-The previous inequality results from \eqref{eq:MRCov}, using the fact that \(\mathbb{C}ov(X,Y) \le \sigma(X)\sigma(Y)\).
+The previous inequality results from \eqref{eq:MRCov}, using the fact that \(|\mathbb{C}ov(X,Y)| \le \sigma(X)\sigma(Y)\) (Cauchy-Schwarz inequality).
 
 For postwar U.S. stock market, the Sharpe ratio is about 50\% (see Table \ref{fig:Campbell1}). Given that \(\mathbb{E}_t(\mathcal{M}_{t,t+1}) \approx 1\), this implies that the volatility of the SDF should be at least 50\%.
 However, for a power utility function:
@@ -2501,7 +2520,7 @@ According to \citet{Cochrane_2005}, the failure of the C-CAPM models is quantita
 \item
   The signs are consistent: since stock market returns are positively correlated with consumption growth, the premiums must be positive (which they are).
 \item
-  The decrease in bond term premiums over the last decades is consistent with decrease in the correlation between long-term bond excess returns and consumption (see Figure \ref{fig:fredCorrel}, and this \href{https://jrenne.shinyapps.io/APModels}{web interface}).
+  The decrease in bond term premiums over the last decades is consistent with the increase in the correlation between long-term bond excess returns and consumption (see Figure \ref{fig:fredCorrel}, and this \href{https://jrenne.shinyapps.io/APModels}{web interface}).
 \item
   In terms of signs, the CAPM is also consistent with currency risk premiums.\footnote{\citet{Lustig_Verdelhan_2007} show that high interest rate currencies depreciate on average when domestic consumption growth is low \(\Rightarrow\) the CAPM predicts higher average return for investments in foreign high-interest rate currencies.}
 \end{itemize}
@@ -2518,7 +2537,7 @@ This subsection shows how one can develop a term-structure model in the CCAPM co
 \Delta c_{t} = \mu + \phi (\Delta c_t - \mu) + \sigma_c \varepsilon_{c,t+1},\quad \varepsilon_{c,t} \sim i.i.d.\mathcal{N}(0,1).
 \]
 
-Let's denote by \(r_{t}\) the one-period risk-free real interest rate. We consider the power-utility time-separable preferences context, implying that the real SDF, between dates \(t\) and \(t+1\), is given by \(\delta\exp(-\gamma \Delta c_{t,t+1})\). Applying \eqref{eq:SDF100} to the one-period risk-free real bond, we get:
+Let's denote by \(r_{t}\) the one-period risk-free real interest rate. We consider the power-utility time-separable preferences context. According to \eqref{eq:realSDFCCAPM}, the real SDF, between dates \(t\) and \(t+1\), is given by \(\mathcal{M}^*_{t,t+1}:=\delta\exp(-\gamma \Delta c_{t+1})\). Applying \eqref{eq:SDF100} to the one-period risk-free real bond, we get:
 \begin{eqnarray*}
 \mathcal{B}_{t,1} = \exp(-r_{t}) &=& \mathbb{E}_t [ \delta \exp(-\gamma \Delta c_{t+1}) \underbrace{\times 1}_{= x_{i,t+1}} ]\\
 &=& \delta \exp\left(-\gamma(\mu + \phi (\Delta c_t - \mu))+\frac{\gamma^2\sigma_c^2}{2}\right).
@@ -2527,7 +2546,7 @@ As a result, the short-term real rate is given by
 \begin{equation}
 r_{t} = \underbrace{- \log(\delta) + \gamma \mu (1-\phi)  - \frac{\gamma^2\sigma_c^2}{2}}_{=\eta_0} + \underbrace{\gamma \phi}_{=\eta_1} \Delta c_t.\label{eq:rCCAPM}
 \end{equation}
-To price longer-term real bonds, one can use \eqref{eq:SDF100} iteratively. For instance, for \(h=2\):
+To price longer-term real bonds, one can use \eqref{eq:SDF100} iteratively (which is equivalent to \(\mathcal{B}_{t,h} = \mathbb{E}_t(\mathcal{M}^*_{t,t+1}\times\dots\times\mathcal{M}^*_{t+h-1,t+h})\)). For instance, for \(h=2\):
 \begin{eqnarray*}
 \mathcal{B}_{t,2} &=&  \mathbb{E}_t \left[ \delta \exp(-\gamma \Delta c_{t+1}) \color{blue}{\mathcal{B}_{t+1,1}} \right]\\
 &=& \mathbb{E}_t \big[ \delta \exp(-\gamma \Delta c_{t+1}) \color{blue}{\mathbb{E}_{t+1} \big[ \delta \exp(-\gamma \Delta c_{t+2}) \underbrace{\times 1}_{=\mathcal{B}_{t+2,0}} \big]} \big]\\
@@ -3859,7 +3878,7 @@ where \(\alpha_t\) is the vector of prices of risk, that may be state-dependent.
 
 Note that, by definition of the log-Laplace transform \(\psi_t\), this SDF satisfies \(\mathbb{E}_t(\mathcal{M}_{t,t+1})=\exp(-i_t)\).
 
-If one wants to derive the risk-neutral dynamics of \(w_t\), one can use \eqref{eq:transfoPQ} of Subsection \ref(PricingRN), which gives:
+If one wants to derive the risk-neutral dynamics of \(w_t\), one can use \eqref{eq:transfoPQ} of Subsection \ref{PricingRN}, which gives:
 \begin{eqnarray*}
 \psi_t^{\mathbb{Q}}(u) &=& \psi_t(u + \alpha_t) - \psi_t(\alpha_t)\\
 &=& (u + \alpha_t)'\mu + (u + \alpha_t)'\Phi w_t + \frac{1}{2}(u + \alpha_t)'\Sigma(u + \alpha_t) \\
@@ -3880,7 +3899,7 @@ where
 \]
 With affine specifications of the nominal short term rate (\(i_{t} = \omega_0 + \omega'_1 w_t\)) and of the inflation rate (\(\pi_{t} = \bar\omega_0 + \bar\omega'_1 w_t\)), we obtain affine formulas for nominal and real yields of any maturity (Eqs. \eqref{eq:RthAB} and \eqref{eq:RbarthAB}).
 
-Again, knowing the \(\mathbb{Q}\) dynamics allows to compute bond prices in a fast manner, by using Proposition \ref{prp:reverseMLT} to compute the conditional expectation appearing in \eqref{eq:bondpricesCondExp} (see Example \ref{exm:nominalBth}).
+Again, knowing the \(\mathbb{Q}\) dynamics allows to compute bond prices in a fast manner, by using Proposition \ref{prp:reverseMLT} to compute the conditional expectation appearing in \eqref{eq:bondpricesCondExp} (see Example \ref{exm:nominalBth}). This is what is used in the prominent examples below.
 
 \begin{example}[Kim and Wright (2005)]
 \protect\hypertarget{exm:KimWright}{}\label{exm:KimWright}
@@ -6340,12 +6359,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##           [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.9354226 0.87919757 0.82992612 0.78648672 0.74793886 0.71349794
-## [2,] 0.0667569 0.06437282 0.06213953 0.06004486 0.05808681 0.05626262
+##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] 0.95329702 0.91136243 0.87343331 0.83888934 0.80722028 0.77801093
+## [2,] 0.04782876 0.04640731 0.04510783 0.04391912 0.04283174 0.04183578
 ##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.68251396 0.65445073 0.62886654 0.60539734
-## [2,] 0.05456747 0.05299487 0.05153736 0.05018703
+## [1,] 0.75092200 0.72567410 0.70203542 0.67981218
+## [2,] 0.04092193 0.04008178 0.03930794 0.03859387
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

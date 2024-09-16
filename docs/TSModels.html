@@ -174,7 +174,7 @@ This would imply:
 <span class="math display">\[
 -n i_{t,n} = -i_{t,m} + \log \mathbb{E}_t[\exp(-(n-m) i_{t+m,n-m})].
 \]</span>
-Up to the Jensen inequality, and taking expectations on both sides, we get:
+Up to Jensen’s inequality, and taking expectations on both sides, we get:
 <span class="math display">\[
 -n i_{t,n} \approx \mathbb{E}_t(-i_{t,m} -(n-m) i_{t+m,n-m}).
 \]</span>
@@ -182,6 +182,7 @@ After having reorganized:
 <span class="math display" id="eq:CStheo">\[\begin{equation}
 \mathbb{E}_t(i_{t+m,n-m}-i_{t,n}) \approx \frac{i_{t,n}-i_{t,m}}{n-m}.\tag{4.8}
 \end{equation}\]</span></p>
+<p>Hence, if the Expectation Hypothesis holds, we should obtain unit coefficients when regressing <span class="math inline">\(i_{t+m,n-m}-i_{t,n}\)</span> on <span class="math inline">\(\frac{i_{t,n}-i_{t,m}}{n-m}\)</span>. This is usually rejected by the data.</p>
 <!-- @Campbell_Shiller_1991 have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of $n$ and $m$: -->
 <!-- $$ -->
 <!-- i_{t+m,n-m}-i_{t,n} = \phi_n\frac{i_{t,n}-i_{t,m}}{n-m} + \varepsilon_{t+m}. -->
@@ -505,7 +506,7 @@ s_t = \delta_0 + \delta_1' w_t.
 The shadow rate <span class="math inline">\(s_t\)</span> is part of a state vector <span class="math inline">\(w_t\)</span> that follows a Gaussian VAR, as in <a href="TSModels.html#eq:GaussianVAR1">(4.15)</a> (or <span class="math inline">\(s_t\)</span> can be a linear combination of components of <span class="math inline">\(w_t\)</span>). As before, the <span class="math inline">\(\mathbb{Q}\)</span>-dynamics of <span class="math inline">\(w_t\)</span> is also a Gaussian VAR, as in <a href="TSModels.html#eq:GaussianQdyn">(4.17)</a>. (Indeed, using the previous specification of the SDF, the non-linear <span class="math inline">\(i_t\)</span> term vanishes in the Radon-Nikodym derivatives; see Eq. <a href="PandQ.html#eq:RadonNikodym">(2.5)</a>.)</p>
 <p>The price of a nominal zero-coupon bond is still given by <a href="PandQ.html#eq:ihandM">(2.3)</a>, that is:
 <span class="math display">\[
-B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t--i_{t+1}-\dots-i_{t+h-1});
+B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t-i_{t+1}-\dots-i_{t+h-1});
 \]</span>
 but this price is not exponential affine in <span class="math inline">\(s_t\)</span> because of the max operator relating <span class="math inline">\(i_t\)</span> to <span class="math inline">\(s_t\)</span> (see Eq. <a href="TSModels.html#eq:SRSTR">(4.18)</a>). As a result, we can no longer exploit the tractable calculation of the multi-horizon Laplace transform of <span class="math inline">\(w_t\)</span> to price this bond.</p>
 <p>The approximation approach proposed by <span class="citation">Wu and Xia (<a href="references.html#ref-Wu_Xia_2016">2016</a>)</span> is based on an approximation to the conditional expectations of forward rates. Using the results of Subsection <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#FWD">6.2.2</a>, we have (Eq. <a href="forward-futures-dividends-commodity-pricing-and-convenience-yields.html#eq:forward">(6.6)</a>):

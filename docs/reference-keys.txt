@@ -390,7 +390,7 @@ EZsection
 epstein-zin-preferences-and-risk-aversion
 epstein-zin-preferences-and-ies
 epstein-zin-preferences-and-the-time-composition-of-risk
-epstein-zin-preferences-and-early-resolution-uncertainty
+epstein-zin-preferences-and-early-resolution-of-uncertainty
 the-sdf-with-epstein-zin-preferences
 long-run-risk-model
 PHabitat

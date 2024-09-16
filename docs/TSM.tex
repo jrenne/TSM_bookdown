@@ -2272,7 +2272,7 @@ In the context of the CCAPM, \eqref{eq:SDFCCAPM} and \eqref{eq:NomiRealSDF} give
 \hypertarget{risk-aversion-and-intertemporal-elasticity-of-substitution}{%
 \subsection{Risk aversion and intertemporal elasticity of substitution}\label{risk-aversion-and-intertemporal-elasticity-of-substitution}}
 
-At that stage, let us introduce the defintion of two metrics that characterize agents' preferences regarding risky income (Def. \ref{def:RAmeasures}) and intertemporal substitution (Def. \ref{def:IES}).
+At that stage, let us introduce the definition of two metrics that characterize agents' preferences regarding risky income (Def. \ref{def:RAmeasures}) and intertemporal substitution (Def. \ref{def:IES}).
 
 \begin{definition}[Risk aversion measures]
 \protect\hypertarget{def:RAmeasures}{}\label{def:RAmeasures}
@@ -2365,7 +2365,7 @@ This is illustrated by Figure \ref{fig:RRAIESCCAPM}; this figure does indeed cor
 \end{itemize}
 
 \begin{figure}
-\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/RRAIESCCAPM-1} \caption{Power utility situation. Illustration of the RRA (left-hand plot) or the IES (right-hand plot).}\label{fig:RRAIESCCAPM}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/RRAIESCCAPM-1} \caption{Power utility situation. Illustration of the effect of the RRA $\gamma$ or the IES ($1/\gamma$) on utility. The Risk Premium refers to the RRA interpretation; it can be interpreted as certainty equivalent consumption.}\label{fig:RRAIESCCAPM}
 \end{figure}
 
 \begin{example}[A practical interpretation of the RRA]
@@ -2385,7 +2385,7 @@ Hence, the utility is maximized for:
 \]
 \end{example}
 
-The CCAPM is a simple model; it is easy to test once a form for \(u\) has been posited. It is, however, difficult to reconcile with the data (see Subsection \ref{limitationsCCAPM}).
+The CCAPM is a simple model; it is easy to test once a form for \(u\) has been posited. The next subsection shows, however, that it is difficult to reconcile with the data.
 
 \hypertarget{limitationsCCAPM}{%
 \subsection{The limitations of the CCAPM}\label{limitationsCCAPM}}
@@ -2409,7 +2409,7 @@ Let us illustrate these three issues. Using \eqref{eq:MRCov} in the power-utilit
 &\approx& (1 + R_{f,t}) \delta \gamma  \mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right),
 \end{eqnarray*}
 where \(\Delta c_{t+1} = \log(C_{t+1}/C_t)\).
-Because consumption is smooth, the covariance \(\mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right)\) is relatively small (see column ``\(Cov(er_e,\Delta c)\)'\,' of Table \ref{fig:Campbell1}, taken from \citet{Campbell_1999}).
+Because consumption is smooth, the covariance \(\mathbb{C}ov_t\left(\Delta c_{t+1},R_{i,t+1}\right)\) is relatively small (see column ``\(Cov(er_e,\Delta c)\)'' of Table \ref{fig:Campbell1}, taken from \citet{Campbell_1999}).
 Hence, in order to replicate large average excess return, \(\gamma\) has to be big (see last two columns of Table \ref{fig:Campbell1}).
 
 \begin{figure}
@@ -2421,7 +2421,7 @@ Hence, in order to replicate large average excess return, \(\gamma\) has to be b
 \caption{Source: Campbell (1999).}\label{fig:Campbell1}
 \end{figure}
 
-For sake of comparison: microeconomic study points to estimates of \(\gamma\) in \([1,3]\) (e.g., \citet{Hartley_Lanot_Walker_2014}). This constitutes the \emph{equity premium puzzle} \citep{Mehra_Prescott_1985}.
+For sake of comparison: microeconomic studies point to estimates of \(\gamma\) in \([1,3]\) (e.g., \citet{Hartley_Lanot_Walker_2014}). This constitutes the \emph{equity premium puzzle} \citep{Mehra_Prescott_1985}.
 
 What if one uses a high risk aversion to get high enough risk premiums? In that case, a novel problem arise \citep{Kandel_Stambaugh_1991}: If people are very risk averse, they want to transfer consumption from high levels to low levels.
 In order to allow for a 2\% average increase in \(C_t\), the model predicts that average short-term rate should be high (to prevent people from borrowing too much). Such high interest rates are at odds with the data. This is the \emph{risk-free rate puzzle}.
@@ -2454,7 +2454,7 @@ The third problem pertains to the volatility of the SDF. \citet{Grossman_Shiller
 \[
 \frac{\sigma_t(\mathcal{M}_{t,t+1})}{\mathbb{E}_t(\mathcal{M}_{t,t+1})} \ge \underbrace{\frac{\mathbb{E}_t(R_{i,t+1}-R_{f,t})}{\sigma_t(R_{i,t+1})}}_{\mbox{Sharpe ratio of asset $i$.}}
 \]
-The previous inequality results from \eqref{eq:MRCov}, using the fact that \(|\mathbb{C}ov(X,Y)| \le \sigma(X)\sigma(Y)\) (Cauchy-Schwarz inequality).
+The previous inequality directly results from \eqref{eq:MRCov}, using the fact that \(|\mathbb{C}ov(X,Y)| \le \sigma(X)\sigma(Y)\) (Cauchy-Schwarz inequality).
 
 For postwar U.S. stock market, the Sharpe ratio is about 50\% (see Table \ref{fig:Campbell1}). Given that \(\mathbb{E}_t(\mathcal{M}_{t,t+1}) \approx 1\), this implies that the volatility of the SDF should be at least 50\%.
 However, for a power utility function:
@@ -2549,9 +2549,7 @@ It is then tempting to say that this price is also equal to
 \begin{equation}
 \mathcal{B}^{EH}_{t,h} = \mathbb{E}_t \left[ \exp(- r_{t} - r_{t+1} - \dots - r_{t+h-1}) \right],\label{eq:CCAPMEH}
 \end{equation}
-but this is not true. This would be the case under the expectation hypothesis (see Eq. \eqref{eq:stdbondRFchapterP}).
-
-Take \(\mathcal{B}_{t,2}\) again; we have:
+but this is not true. (This would be the case under the expectation hypothesis; see Eq. \eqref{eq:stdbondRFchapterP}.) To better see that, take \(\mathcal{B}_{t,2}\) again; we have:
 \begin{eqnarray*}
 \mathcal{B}_{t,2} &=&  \mathbb{E}_t \left[ \delta \exp(-\gamma \Delta c_{t+1}) \color{blue}{\mathcal{B}_{t+1,1}} \right]\\
 &=& \mathbb{E}_t \left[ \delta \exp(-\gamma \Delta c_{t+1}) \color{blue}{\exp(- r_{t+1})}\right]\\
@@ -2730,7 +2728,7 @@ where \(\psi_t\) denotes the conditional log-Laplace transform of \(w_t\) and wh
 where \(\Sigma = \left[\begin{array}{cc}\sigma_c^2&\sigma_c\sigma_{\pi,c}\\ \sigma_c\sigma_{\pi,c}&\sigma_{\pi}^2 \end{array}\right]\) and \([\varepsilon_{c,t}^*,\varepsilon_{\pi,t}^*]'\sim \mathcal{N}'^{\mathbb{Q}}(0,Id)\).
 
 \begin{quote}
-Use the risk-neutral dynamics of \(w_t\) to compute the nominal yield curve, using that \(i_{t,h} = - \log \mathbb{E}^{\mathbb{Q}}_t [\exp(-i_t - \dots - i_{t+h-1})]\). (This should give the same results as before.)
+One can use the risk-neutral dynamics of \(w_t\) to compute the nominal yield curve, using that \(i_{t,h} = - \log \mathbb{E}^{\mathbb{Q}}_t [\exp(-i_t - \dots - i_{t+h-1})]\). (This should give the same results as before.)
 \end{quote}
 
 \hypertarget{recursive-utilities}{%
@@ -2753,7 +2751,7 @@ Given the limitations of consumption-based models, one has questioned the utilit
 
 A first example of recursive utilities is that of \emph{habit formation} \citep{Campbell_Shiller_1999}, where
 \begin{equation}
-U_t = \sum_{s=t}^{\infty} \delta^{s-t} u(C_s - X_s) \quad where \quad X_t = \rho X_{t-1} + \lambda C_t.\label{eq:Uhabitnonstoch}
+U_t = \sum_{s=t}^{\infty} \delta^{s-t} u(C_s - X_s) \quad \mbox{with} \quad X_t = \rho X_{t-1} + \lambda C_t.\label{eq:Uhabitnonstoch}
 \end{equation}
 
 The date-\(t\) utility associated with a level of consumption \(C_t\), that is \(u(C_t - X_t)\), is lower is you already had a high level of consumption at date \(t-1\) (high \(X_t\)).
@@ -2789,7 +2787,7 @@ and
 \[
 R^{(B)}_1 =R^{(B)}_2 =\dots=R^{(B)}_{10} =  2.5\%.
 \]
-For each sequence, we compute the resulting sequence of consumption, with \(C_1=1\).
+For each of these two rate sequences, we compute the resulting sequence of consumption, with \(C_1=1\).
 Results on next slide.
 
 \begin{figure}
@@ -2814,7 +2812,7 @@ By contrast, if \(S_t^{-\gamma}\) is stationary, then the conditional volatility
 \hypertarget{EZsection}{%
 \subsection{Epstein-Zin preferences}\label{EZsection}}
 
-\citet{Epstein_Zin_1989} have proposed a framework where there is a premium for early resolution and where the time composition of risk matters.
+\citet{Epstein_Zin_1989} have proposed a framework where there is a premium for early resolution and where the time composition of risk matters. This framework has been used successfully in various asset-pricing studies.
 
 \begin{definition}[Epstein and Zin (1989) Preferences]
 \protect\hypertarget{def:EZ}{}\label{def:EZ}Epstein-Zin preferences are defined recursively over current (known) consumption and a certainty equivalent
@@ -2843,7 +2841,7 @@ F(c,v) = \left((1-\delta)c^{1-\rho} + \delta v^{1-\rho}\right)^{\frac{1}{1-\rho}
 \]
 In this case:
 \begin{equation}
-\boxed{ U_t = \left((1-\delta)C_t^{1-\rho}+\delta \left[\underbrace{ \mathbb{E}_t\left(U_{t+1}^{1-\gamma}\right)^{\frac{1}{1-\gamma}} }_{\mbox{certainty equivalent}}\right] ^{1-\rho}\right)^{\frac{1}{1-\rho}}.}\label{eq:EZpreferences}
+\boxed{ U_t = \left((1-\delta)C_t^{1-\rho}+\delta \left[\underbrace{ \mathbb{E}_t\left(U_{t+1}^{1-\gamma}\right)^{\frac{1}{1-\gamma}} }_{\mbox{certainty equivalent}}\right] ^{1-\rho}\right)^{\frac{1}{1-\rho}},}\label{eq:EZpreferences}
 \end{equation}
 or
 \begin{equation}
@@ -2876,15 +2874,15 @@ We have \(U_2 = 0\) and \(U_1 = U_h = (1-\delta)^{\frac{1}{1-\rho}}C_h\) with pr
 U_0 =  \left((1-\delta)C_0^{1-\rho} + \delta \left(\frac{1}{2}U_h^{1-\gamma}+\frac{1}{2}U_l^{1-\gamma}\right)^{\frac{1-\rho}{1-\gamma}}\right)^{\frac{1}{1-\rho}}.
 \]
 
-What is the certainty equivalent \(C_1\) to the period-1 gamble? \(C_1\) solves:
+What is the certainty equivalent \(\widetilde{C}_1\) to the period-1 gamble? \(\widetilde{C}_1\) solves:
 \[
-U_0 = \left((1-\delta)C_0^{1-\rho} + \delta (1-\delta) C_1^{1-\rho}\right)^{\frac{1}{1-\rho}},
+U_0 = \left((1-\delta)C_0^{1-\rho} + \delta (1-\delta) \widetilde{C}_1^{1-\rho}\right)^{\frac{1}{1-\rho}},
 \]
 that is:
 \[
-C_1 = \left(\frac{1}{2}C_h^{1-\gamma}+\frac{1}{2}C_l^{1-\gamma}\right)^{\frac{1}{1-\gamma}}.
+\widetilde{C}_1 = \left(\frac{1}{2}C_h^{1-\gamma}+\frac{1}{2}C_l^{1-\gamma}\right)^{\frac{1}{1-\gamma}}.
 \]
-This certainty equivalent is the same as the one that one would get if the utility function was the standard (time-separable) power utility function (with RRA \(= \gamma\)).
+This certainty equivalent is approximately the same as the one that one would get if the utility function was the standard (time-separable) power utility function (with RRA \(= \gamma\)).
 Hence, \(\gamma\) measures agents' relative risk aversion.\footnote{Another approach is the following: Consider the case with two periods (\(0\) and \(1\)) and where \(C_0=0\). We have (up to a multiplicative factor):
   \[
   U_0 = \left\{\mathbb{E}_0(C_{1}^{1-\gamma})\right\}^{\frac{1}{1-\gamma}}.
@@ -2925,15 +2923,15 @@ Let's compare two lotteries:
 \begin{itemize}
 \tightlist
 \item
-  \emph{Lottery A}: There is single draw at \(t=1\). Starting at t = 1, it pays either \(C_h\) at all future dates (probability of 1/2), or \(C_l\) at all future dates (probability of 1/2).
+  \emph{Lottery A}: There is single draw at \(t=1\). Starting at t = 1, the lottery pays either \(C_h\) at all future dates (probability of 1/2), or \(C_l\) at all future dates (probability of 1/2).
 \item
-  \emph{Lottery B}: In each period \(t = 1, 2, \dots\), this lottery pays \(C_h\) with probability 1/2 or \(C_l\) with probability 1/2, the outcomes (\(t = 1, 2, \dots\)) are i.i.d.
+  \emph{Lottery B}: In each period \(t = 1, 2, \dots\), this lottery pays \(C_h\) with probability 1/2 or \(C_l\) with probability 1/2; the outcomes (\(t = 1, 2, \dots\)) are serially independent.
 \end{itemize}
 
 We also assume that \(C_0=0\). Intuitively, plan A looks more ``risky'' than plan B. Indeeed, in Plan A, all eggs are in one basket. By contrast, Plan B seems more diversified.
-However, with time-separable utility functions, agents would be indifferent between playing the two lotteries. The reason is that the time-separable model evaluates risks at different dates in isolation \citep{Piazzesi_Schneider_2007}. From the perspective of time zero, random consumption at any given date---viewed in isolation---does have the same risk (measured, for example, by the variance.) For Epstein-Zin preferences (and other recursive preference schemes), the \emph{time-composition of risk} matters.
+However, with time-separable utility functions, agents would be indifferent between playing the two lotteries. The reason is that the time-separable model evaluates risks at different dates in isolation \citep{Piazzesi_Schneider_2007}. From the perspective of time zero, random consumption at any given date---viewed in isolation---does have the same risk (measured, for example, by the variance.) That is in this sense that for Epstein-Zin preferences (and other recursive preference schemes), we say that the \emph{time-composition of risk} matters.
 
-Let's first consider Lottery A. At date \(t=1\), there is no uncertainty any more. It is easily seen that, if one draws \(C_i\) (\(i \in \{l,h\}\)) at date 1, then \(U_1^A = C_i\). Hence
+Let's first consider Lottery A. At date \(t=1\), there is no uncertainty any more. It is easily seen that, if one draws \(C_i\) (\(i \in \{l,h\}\)) at date 1, then \(U_1^A = C_i\). Hence, as of date \(t=0\), we have:
 \begin{equation}
 U_0^A =  \left(\delta \left(\frac{1}{2}C_h^{1-\gamma}+\frac{1}{2}C_l^{1-\gamma}\right)^{\frac{1-\rho}{1-\gamma}}\right)^{\frac{1}{1-\rho}}= \delta^{\frac{1}{1-\rho}} \left(\frac{1}{2}C_h^{1-\gamma}+\frac{1}{2}C_l^{1-\gamma}\right)^{\frac{1}{1-\gamma}}.\label{eq:U0A}
 \end{equation}
@@ -2959,10 +2957,10 @@ U_0^A \le U_0^B &\Leftrightarrow& \left(\frac{1}{2}C_h^{1-\gamma}+\frac{1}{2}C_l
 \end{eqnarray*}
 which is verified because \(C_l \le V_l \le V_h \le C_h\) and because, when \(\gamma > 1\), then \(x\rightarrow x^{1-\gamma}\) is convex.
 
-\hypertarget{epstein-zin-preferences-and-early-resolution-uncertainty}{%
-\subsection{Epstein-Zin preferences and early resolution uncertainty}\label{epstein-zin-preferences-and-early-resolution-uncertainty}}
+\hypertarget{epstein-zin-preferences-and-early-resolution-of-uncertainty}{%
+\subsection{Epstein-Zin preferences and early resolution of uncertainty}\label{epstein-zin-preferences-and-early-resolution-of-uncertainty}}
 
-Consider two new lotteries: \emph{Lottery C} and \emph{Lottery D}; three periods are involved: 0, 1 and 2. The consumption of dates 1 and 2 are determined by independent tosses of a fair coin: either \(C_l\) or \(C_h\). The difference between Lotteries C and D pertains to the date on which the information about the tosses is revealed: in Lottery C, the outcomes of the two tosses are revealed at date 1. in Lottery D, the \(2\)nd toss is not revealed before date \(2\).
+Consider two new lotteries: \emph{Lottery C} and \emph{Lottery D}; three periods are involved: 0, 1 and 2. The consumption of dates 1 and 2 are determined by independent tosses of a fair coin: either \(C_l\) or \(C_h\). The difference between Lotteries C and D pertains to the date on which the information about the tosses is revealed: in Lottery C, the outcomes of the two tosses are revealed at date 1. in Lottery D, the second toss is not revealed before date \(2\).
 In both cases, we have \(U_2 = (1-\delta)^{\frac{1}{1-\rho}}C_{2}\).
 At date 1, we have:
 \begin{eqnarray*}
@@ -2982,7 +2980,7 @@ One can show that agents prefer early resolution of uncertainty iff \(RRA = \gam
 This is illustrated by Figure \ref{fig:EZresolution}, with \(C_l = 0.8\), \(C_h = 1.2\), and \(\delta = 0.5\).
 
 \begin{figure}
-\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/EZresolution-1} \caption{Comparison of utilities associated with Scenarios C and D. In Scenario C, uncertainty is resolved earlier. Hence, we have a preference for early resolution of uncertainty when the meaasure is positive.}\label{fig:EZresolution}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/EZresolution-1} \caption{Comparison of utilities associated with Scenarios C and D. In Scenario C, uncertainty is resolved earlier. Hence, we have a preference for early resolution of uncertainty when the measure is positive.}\label{fig:EZresolution}
 \end{figure}
 
 \hypertarget{the-sdf-with-epstein-zin-preferences}{%
@@ -3025,7 +3023,7 @@ If \(C_t\) is log-normal, one can show that \(v_t\) is normal. Hence:
 v_t &=& (1 - \delta) c_t + \delta \mathbb{E}_t(v_{t+1}) + \frac{1}{2}\delta (1-\gamma) \sigma^2(v_{t+1})\nonumber \\
 &=& (1 - \delta) \left( \sum_{j=0}^{\infty}  \delta^j \mathbb{E}_t (c_{t+j}) \right) + \frac{1}{2}\delta \frac{1-\gamma}{1-\delta} \sigma^2(v_{t+1}) \label{eq:vrho1}.
 \end{eqnarray}
-Besides, \eqref{eq:SSS} gives:
+Besides, \eqref{eq:SSS} gives the following expression for the log-SDF:
 \begin{eqnarray*}
 m_{t,t+1} &=& \log(\delta) - \rho \Delta c_{t+1} + (\rho - \gamma) \left(v_{t+1} - \frac{1}{1 - \gamma} \log \mathbb{E}_t \left(\exp((1-\gamma)v_{t+1})\right)\right)\\
 &=& \log(\delta) - \rho \Delta c_{t+1} + (\rho - \gamma) \left(v_{t+1} - \mathbb{E}_t(v_{t+1}) - \frac{1}{2} \frac{1-\gamma}{1-\delta} \sigma^2(v_{t+1})\right).
@@ -3052,7 +3050,7 @@ If consumption is a random walk, then Epstein-Zin preferences are observationall
 \end{quote}
 
 Consider the case where \(C_0 = C_1 = 1\).
-At date \(t=1\), one get information about future consumption levels:
+At date \(t=1\), one gets information about future consumption levels:
 
 \begin{itemize}
 \tightlist
@@ -3093,7 +3091,7 @@ W_t =   U_t \big/ \frac{\partial U_t}{\partial C_t}.\label{eq:WWWWW}
 \end{equation}
 It can be understood as a conversion of the intertemporal utility in terms of today's consumption. It can also be seen as a consumption-priced virtual asset that delivers aggregate consumption as its dividends on each time period; this asset is called \emph{wealth portfolio}.\footnote{Since \(F\) homogeneous of order 1, if all future consumption streams are multiplied by \(1+\epsilon\), then the utility becomes \((1+\epsilon)U_t\). Consider the asset that provides \(\epsilon C_{t+h}\) at all future periods (if one purchases \(\epsilon\) units of it). Expressed in consumption units, the equilibrium unit price of this asset (\(\mathcal{W}_t\), say) must satisfy \(-\epsilon U_t + \epsilon \mathcal{W}_t (\partial U_t / \partial C_t)=0\). According to \eqref{eq:WWWWW}, we have \(\mathcal{W}_t = W_t\).}
 
-Using that \(\frac{\partial U_t}{\partial C_t}=(1 - \delta)(V_t^\rho)/(C_t^{\rho})\), we get (using \eqref{eq:WWWWW}):
+Using that \(\frac{\partial U_t}{\partial C_t}=(1 - \delta)U_t^\rho/C_t^{\rho}\) (which results from \eqref{eq:EZpreferences}), we get, using \eqref{eq:WWWWW}:
 \begin{equation}
 W_t = \frac{U_t^{1-\rho}C_t^\rho}{1 - \delta}.\label{eq:WWW}
 \end{equation}
@@ -3103,7 +3101,7 @@ Let's denote by \(R_{a,t+1}\) the return on the wealth portfolio. We have:
 \end{equation}
 where \(P_{a,t} := W_t - C_t\).
 
-Using \eqref{eq:EZpreferences2} and \eqref{eq:WWW}, it can be shown that:
+Combining \eqref{eq:EZpreferences2}, \eqref{eq:WWW} and \eqref{eq:Ra}, it can be shown that:
 \[
 1+R_{a,t+1} = \left[ \delta \left( \frac{C_{t+1}}{C_t} \right)^{-\rho} \left( \frac{R_t(U_{t+1})}{U_{t+1}} \right)^{1-\rho} \right]^{-1},
 \]
@@ -3147,11 +3145,11 @@ where \(\kappa_1= \dfrac{\exp(\bar{z})}{1 + \exp(\bar{z})}\) and \(\kappa_0 = \l
 The approximation underlying \eqref{eq:approxRa} is the same as that used by \citet{Campbell_Shiller_1988} used to linearize stock returns.
 \end{quote}
 
-For any asset \(i\), whose return is \(1+R_{i,t+1}\), we have:
+Recall that, for any asset \(i\), whose return is \(1+R_{i,t+1}\), we must have:
 \begin{equation}
 1 = \mathbb{E}_t(\mathcal{M}_{t,t+1}(1+R_{i,t+1})). \quad \mbox{(Euler equation)}\label{eq:Euler}
 \end{equation}
-The wealth portfolio should also satisfy the Euler equation. That is, for \(1+R_{i,t+1} = 1+R_{a,t+1} = \exp(r_{a,t+1})\), we get:
+This should apply, in particular, to the wealth portfolio. That is, for \(1+R_{i,t+1} = 1+R_{a,t+1} = \exp(r_{a,t+1})\), we get:
 \begin{equation}
 1 = \mathbb{E}_t \left[ \exp\left(\theta \log \delta - \frac{\theta}{\psi} \Delta \log(C_{t+1}) + \theta r_{a,t+1} \right) \right].\label{eq:sdfRa}
 \end{equation}
@@ -3161,9 +3159,9 @@ The previous equation can be used to calculate an approximately exponential affi
 \end{quote}
 
 \begin{quote}
-The same methodology can apply to any asset \(i\). For instance, consider a stock paying dividends \(D_{i,t}\) on each period. The \citet{Campbell_Shiller_1988} approximation implies that \(r_{i,t+1} \approx \kappa_0 + \kappa_1 z_{i,t+1} - z_{i,t} + d_{i,t+1}\) where \(d_{i,t+1}\) is the log-growth rate of dividends and where \(z_{i,t} = \log(P_{i,t}/D_t)\) is the log price-dividend ratio. If \(d_{i,t+1}\) is affine in the state vector, one can then posit that it is also the case of \(z_t= A_{i,0}+A_{i,1}'w_t\), and use the Euler equation
+The same methodology can apply to any asset \(i\). For instance, consider a stock paying dividends \(D_{i,t}\) on each period. The \citet{Campbell_Shiller_1988} approximation implies that \(r_{i,t+1} \approx \kappa_0 + \kappa_1 z_{i,t+1} - z_{i,t} + d_{i,t+1}\) where \(d_{i,t+1}\) is the log-growth rate of dividends and where \(z_{i,t} = \log(P_{i,t}/D_t)\) is the log price-dividend ratio. If \(d_{i,t+1}\) is affine in the state vector, one can then posit that it is also the case of \(z_t= A_{i,0}+A_{i,1}'w_t\); one can then use the Euler equation
 \begin{equation}
-1 = \mathbb{E}_t \left[ \exp\left(\theta \log \delta - \frac{\theta}{\psi} \Delta \log(C_{t+1}) - (1 - \theta) r_{a,t+1} + r_{i,t+1} \right) \right].\label{eq:sdfRi}
+1 = \mathbb{E}_t \left[ \exp\left(\theta \log \delta - \frac{\theta}{\psi} \Delta \log(C_{t+1}) - (1 - \theta) r_{a,t+1} + r_{i,t+1} \right) \right]\label{eq:sdfRi}
 \end{equation}
 to solve for \(A_{i,0}\) and \(A_{i,1}\).
 \end{quote}
@@ -3171,19 +3169,18 @@ to solve for \(A_{i,0}\) and \(A_{i,1}\).
 \hypertarget{long-run-risk-model}{%
 \subsection{Long-run risk model}\label{long-run-risk-model}}
 
-We have shown that the CCAPM had difficulties in generating large average excess returns without implying unreasonable risk aversion parameters.
-As will be shown later (notably in the \citet{Bansal_Yaron_2004}'s framework), Epstein-Zin preferences can address this problem.
+We have shown that the CCAPM had difficulties in generating large average excess returns without implying unreasonable risk aversion parameters. Epstein-Zin preferences can address this problem.
 With time-separable utilities, average excess returns (i.e.~risk premiums) had to be accounted by the sole correlation between stock returns and current consumption.
 With Epstein-Zin preferences, another key correlation is that between stock returns and updates about future consumption growth---the second term in \eqref{eq:sdfAbc}.
-For this second channel to be relevant, observed excess returns should positively correlate to the updates of expectations of long-term consumption. See Figure \ref{fig:SPF10yrStock}.
+For this second channel to be relevant, observed excess returns should positively correlate to the updates of expectations of long-term consumption. Figure \ref{fig:SPF10yrStock} offers simple empirical evidence for this.
 
 \begin{figure}
-\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/SPF10yrStock-1} \caption{Sources: SPF Philadelphia and Wilshire 5000 Price Index (FRED database).}\label{fig:SPF10yrStock}
+\includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/SPF10yrStock-1} \caption{Sources: SPF Philadelphia and OECD for share price index (ticker: SPASTT01USM661N in FRED).}\label{fig:SPF10yrStock}
 \end{figure}
 
-\citet{Bansal_Yaron_2004} show that the combination of long-run risks and Epstein-Zin preferences allow to address several asset-pricing puzzles. A \href{https://jrenne.shinyapps.io/LRRModels}{web interface} present outputs of the approach. It also allows to simulate the model dynamics and to assess the influence of the parameterization.
+\citet{Bansal_Yaron_2004} show that the combination of long-run risks and Epstein-Zin preferences allow to address several asset-pricing puzzles. This \href{https://jrenne.shinyapps.io/LRRModels}{web interface} presents outputs of the approach. It also allows to simulate the model dynamics and to assess the influence of the parameterization.
 
-In \citet{Bansal_Yaron_2004}'s model, consumption is affected by short-run (high-frequency) and long-run (low frequency) risks. They consider two versions of their model: an homoskedastic one and an heteroskedastic one. In the latter, the conditional variance of consumption moves over time.
+In \citet{Bansal_Yaron_2004}'s model, consumption is affected by short-run (high-frequency) and long-run (low-frequency) risks. They consider two versions of their model: an homoskedastic one and an heteroskedastic one. In the latter, the conditional variance of consumption moves over time.
 
 \begin{example}[Bansal and Yaron (2004), homoskedastic]
 \protect\hypertarget{exm:BYHomsk}{}\label{exm:BYHomsk}
@@ -3226,7 +3223,7 @@ If the IES \(\psi > 1\), then \(A_1 > 0\); the price-consumption ratio increases
 
 }
 
-\caption{Source: Bansal and Yaron (2004).}\label{fig:BY2}
+\caption{Source: Bansal and Yaron (2004). Panel C corresponds to the case with no long-run risk.}\label{fig:BY2}
 \end{figure}
 
 \end{example}
@@ -3237,7 +3234,7 @@ Hence, in particular, \(A_0 = f(\bar{z})\). But, in turn, since \(z_t = A_0 + A_
 \end{quote}
 
 \begin{quote}
-\textbf{The unit EIS case}. Solving for the Epstein-Zin SDF is simpler when the intertemporal elasticity of substitution (EIS) is equal to one \citep{Piazzesi_Schneider_2007}. In that case, and if consumption is an affine combination of affine processes, we can indeed solve for the utility function using \eqref{eq:EZunitIES}. For that: (a) Posit \(v_t = \mu_{v,0}+\mu_{v,1}'w_t\), (b) use the Laplace transform of \(w_t\) in \eqref{eq:EZunitIES} to obtain \(K+1\) restrictions on the scalar \(\mu_{v,0}\) and the vector \(\mu_{v,1}\) (\(K\) is the dimension of \(w_t\)). These restrictions will take the form of non-linear equations (involving the log-Laplace transform of \(w_t\)) that one can solve numerically. (c) Once \(v_t = \mu_{v,0}+\mu_{v,1}'w_t\) is determines, the SDF is obtained from \eqref{eq:SSS}. This strategy is employed, in particular, in \citet{Gourieroux_Monfort_Mouabbi_Renne_2021}, \citet{Monfort_Pegoraro_Renne_Roussellet_2021}, and \citet{Bletzinger_Lemke_Renne_2024}.
+\textbf{The unit EIS case}. Solving for the Epstein-Zin SDF is simpler when the intertemporal elasticity of substitution (EIS) is equal to one \citep{Piazzesi_Schneider_2007}. In that case, and if consumption is an affine combination of affine processes, we can indeed solve for the utility function using \eqref{eq:EZunitIES}. For that: (a) Posit \(v_t = \mu_{v,0}+\mu_{v,1}'w_t\), (b) use the Laplace transform of \(w_t\) in \eqref{eq:EZunitIES} to obtain \(K+1\) restrictions on the scalar \(\mu_{v,0}\) and the vector \(\mu_{v,1}\) (\(K\) is the dimension of \(w_t\)). These restrictions will take the form of non-linear equations (involving the log-Laplace transform of \(w_t\)) that one can solve numerically. (c) Once \(v_t = \mu_{v,0}+\mu_{v,1}'w_t\) is determined, the SDF is obtained from \eqref{eq:SSS}. This strategy is employed, in particular, in \citet{Gourieroux_Monfort_Mouabbi_Renne_2021}, \citet{Monfort_Pegoraro_Renne_Roussellet_2021}, and \citet{Bletzinger_Lemke_Renne_2024}.
 \end{quote}
 
 \begin{example}[Bansal and Yaron (2004), heteroskedastic]
@@ -3340,9 +3337,9 @@ Functions that allow to handle that type of model are available in package \text
 
 \end{example}
 
-Figure \ref{fig:BS2013} shows that the unconditional real yield curve is downward-sloping in \citet{Bansal_Shaliastovich_2013}, which is a standard result of the equilibrium term-structure model literature \citep{Piazzesi_Schneider_2007}. As explained in \citet{Bletzinger_Lemke_Renne_2024}, this results from the fact that equilibrium term-structure models usually mode the consumption process by focusing on its growth rate, which they take to be persistent (AR processes, or sums of AR processes). Since, in equilibrium models, real rates depend on expected consumption growth, this mechanically implies that real rates are low in bad states of the world. \citet{Bletzinger_Lemke_Renne_2024} show that this effect is alleviated when one introduces a trend-cycle modeling of consumption.
+Figure \ref{fig:BS2013} shows that the unconditional real yield curve is downward-sloping in \citet{Bansal_Shaliastovich_2013}, which is a standard result of the equilibrium term-structure model literature \citep{Piazzesi_Schneider_2007}. As explained in \citet{Bletzinger_Lemke_Renne_2024}, this results from the fact that equilibrium term-structure models usually model the consumption process by focusing on its growth rate, which they take to be persistent (AR processes, or sums of AR processes). Since, in equilibrium models, real rates depend on expected consumption growth, this mechanically implies that real rates are low in bad states of the world. \citet{Bletzinger_Lemke_Renne_2024} show that this effect is alleviated when one introduces a trend-cycle modeling of consumption.
 
-The term structure of nominal rates is upward-sloping because \(\rho_{c\pi}<0\) generates a negative correlation between inflation and consumption growth. In such an environment, nominal bonds experience a decline in value during recessions, making them ineffective as hedging instruments. Consequently, investors choose to hold these bonds only if their returns, on average, exceed those obtained from rolling over a portfolio invested in short-term bonds. (Hence, the positive nominal term premiums.) Conversely, when \$\rho\_\{c\pi\}\textgreater0,'' the argument reverses, and the average nominal yield curve would exhibit a downward-sloping pattern.
+In Example \ref{exm:BS2013}, the term structure of nominal rates is upward-sloping because \(\rho_{c\pi}<0\) generates a negative correlation between inflation and consumption growth. (Hence, in this economy, supply shocks prevail.) In such an environment, nominal bonds experience a decline in value during recessions, making them ineffective as hedging instruments. Consequently, investors choose to hold these bonds only if their returns, on average, exceed those obtained from rolling over a portfolio invested in short-term bonds. (Hence, the positive nominal term premiums.) Conversely, when \(\rho_{c\pi}>0\), the argument reverses, and the average nominal yield curve would exhibit a downward-sloping pattern.
 
 \hypertarget{PHabitat}{%
 \section{Preferred-habitat model of the term-structure of interest rate}\label{PHabitat}}
@@ -3737,7 +3734,7 @@ This would imply:
 \[
 -n i_{t,n} = -i_{t,m} + \log \mathbb{E}_t[\exp(-(n-m) i_{t+m,n-m})].
 \]
-Up to the Jensen inequality, and taking expectations on both sides, we get:
+Up to Jensen's inequality, and taking expectations on both sides, we get:
 \[
 -n i_{t,n} \approx \mathbb{E}_t(-i_{t,m} -(n-m) i_{t+m,n-m}).
 \]
@@ -3745,6 +3742,8 @@ After having reorganized:
 \begin{equation}
 \mathbb{E}_t(i_{t+m,n-m}-i_{t,n}) \approx \frac{i_{t,n}-i_{t,m}}{n-m}.\label{eq:CStheo}
 \end{equation}
+
+Hence, if the Expectation Hypothesis holds, we should obtain unit coefficients when regressing \(i_{t+m,n-m}-i_{t,n}\) on \(\frac{i_{t,n}-i_{t,m}}{n-m}\). This is usually rejected by the data.
 
 \end{example}
 
@@ -4046,7 +4045,7 @@ The shadow rate \(s_t\) is part of a state vector \(w_t\) that follows a Gaussia
 
 The price of a nominal zero-coupon bond is still given by \eqref{eq:ihandM}, that is:
 \[
-B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t--i_{t+1}-\dots-i_{t+h-1});
+B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t-i_{t+1}-\dots-i_{t+h-1});
 \]
 but this price is not exponential affine in \(s_t\) because of the max operator relating \(i_t\) to \(s_t\) (see Eq. \eqref{eq:SRSTR}). As a result, we can no longer exploit the tractable calculation of the multi-horizon Laplace transform of \(w_t\) to price this bond.
 
@@ -5704,7 +5703,7 @@ The \emph{liquidity-shock intensity} \(\lambda_\ell(y_t)\)---that defines the pr
 \[
 \underbrace{1- \exp[-\lambda_\ell(y_t)]}_{\approx \lambda_\ell(y_t)\mbox{ if small}} = \mathbb{P}(\ell_t = 1|\underline{w_{t-1}},y_t).
 \]
-The binary variable \(\ell_t\) is assumed not to Granger-cause \(y_t\) (as in Hypothesis \ref{hyp:A1}) and not to be priced (as in Hypothesis \ref{hyp:A3}). As in Proposition \ref{prp:defaultBondclassical}---and more precisely \eqref{eq:lambdaPQ}---this implies that
+The binary variable \(\ell_t\) is assumed not to Granger-cause \(y_t\) (as in Hypothesis \ref{hyp:A1}) and not to be priced (as in Hypothesis \ref{hyp:A3}). As in Proposition \ref{prp:defaultBondclassical}---and more precisely equation \eqref{eq:lambdaPQ}---this implies that
 \[
 \lambda_\ell^{\mathbb{Q}}(y_t) = \lambda_\ell(y_t),
 \]
@@ -5713,7 +5712,7 @@ where
 1- \exp[-\lambda^{\mathbb{Q}}_\ell(y_t)] = \mathbb{Q}(\ell_t = 1|\underline{w_{t-1}},y_t).
 \]
 
-Upon the arrival of the liquidity shock (\(\ell_{t}=1\)), the investor has to exit by selling her bond holdings. She is then limited in the number of traders she can call and, as a result, get only a fraction (\(\theta_\ell^{(e)}\), say) of the price she would get in normal-liquidity times, i.e., when \(\ell_{t}=0\) (see the structural interpretation in Example \ref{exm:illiqLGD}).
+Upon the arrival of the liquidity shock (\(\ell_{t}=1\)), the investor has to exit by selling her bond holdings. She is then limited in the number of traders she can call and, as a result, get only a fraction, \(\theta_\ell^{(e)}\) (say), of the price she would get in normal-liquidity times, i.e., when \(\ell_{t}=0\). Example \ref{exm:illiqLGD} proposes a structural interpretation for \(\theta_\ell^{(e)}\).
 
 In that context, following the approach used in Proposition \ref{prp:RMVclassical}, one can define a \emph{pseudo-illiquidity intensity} as follows---mimicking \eqref{eq:pseudodefintens}:
 \begin{eqnarray}
@@ -5731,11 +5730,11 @@ Still consiering credit risk (on top of liquidity risk), we then have the follow
 \begin{example}[Structural interpretation of the illiquidity intensity]
 \protect\hypertarget{exm:illiqLGD}{}\label{exm:illiqLGD}This structural interpretation of the illiquidity intensity is due to \citet{Ericsson_Renault_2006}.
 
-When hit by a liquidity shock, a bondholder has to liquidate her bond in a small amount of time (between \(t\) and \(t+\varepsilon\), with \(\varepsilon \ll 1\)). She collects offers on the market; each offer is a random fraction \(\omega_{i}\) (\(i\in\{1,\ldots,\kappa\}\)) of \(\widetilde{B}^{(w)}_{t,h}\) (see Eq. \eqref{eq:pseudopriceilliq}), where the \(\omega_{i}\)'s are uniformly distributed in \([0,1]\).
+When hit by a liquidity shock, a bondholder has to liquidate her bond in a small amount of time (between \(t\) and \(t+\varepsilon\), with \(\varepsilon \ll 1\)). She collects a random number (\(\kappa\)) of offers on the market. This number follows a Poisson distribution of parameter \(\varepsilon\gamma^{(e)}\); the more liquid the bond, the higher \(\gamma^{(e)}\). Each offer is a random fraction \(\omega_{i}\) (\(i\in\{1,\ldots,\kappa\}\)) of \(\widetilde{B}^{(e)}_{t,h}\) (see Eq. \eqref{eq:pseudopriceilliq}), where the \(\omega_{i}\)'s are independently and uniformly distributed in \([0,1]\).
 
 At \(t+\varepsilon\), the bond is sold to the trader that has offered the highest price. Formally, when \(\ell_{t}=1\), the selling price is:
 \[
-\left(\max_{i\in\{1,\ldots,\kappa\}}\omega_{i}\right)\tilde{P}_{t,h}^{(e)}.
+\left(\max_{i\in\{1,\ldots,\kappa\}}\omega_{i}\right)\tilde{P}_{t,h}^{(e)}, \quad \mbox{with}\quad \kappa \sim \mathcal{P}(\varepsilon\gamma^{(e)}).
 \]
 Conditional on \(\kappa\), the expectation of \(\max_{i}(\omega_{i})\) is \(\kappa/(\kappa+1)\). (Because the \(\omega_{i}\) are i.i.d., the c.d.f. of \(\max(\omega_{1},\ldots,\omega_{\kappa})\) is \(x\mapsto F(x)^{\kappa}\), where \(F\) is the c.d.f. of \(\omega_{i}\).)
 Hence, \(\theta_\ell^{(e)}\)---the unconditional expectation of \(\max_{i}(\omega_{i})\)---is given by:
@@ -5744,6 +5743,8 @@ Hence, \(\theta_\ell^{(e)}\)---the unconditional expectation of \(\max_{i}(\omeg
 & = & g(\varepsilon\gamma^{(e)})\qquad\mbox{(say).}
 \end{eqnarray*}
 Function \(g\) is increasing and valued in \([0,1]\). In addition \(\lim_{x\rightarrow\infty}g(x)\rightarrow1\).
+
+The scalar \(g(\varepsilon\gamma^{(e)})\) can be seen as the structural interpretation of the parameter \(\theta_\ell^{(e)}\), which is discussed in the present section.
 \end{example}
 
 \begin{example}[Euro area sovereign credit spreads]
@@ -5783,7 +5784,7 @@ There are 9 Markovian regimes: \(z_t = z_{c,t} \otimes z_{\ell,t}\), where \(z_{
   \(z_{c,t}\) and \(z_{\ell,t}\) are not independent: for instance, the probability to transit from the low-credit-stress regime to the medium/high-credit-stress regimes depends on the liquidity-stress regime.
 \end{itemize}
 
-For each intensity \(x_{i,t}\) (simulation below XXX):
+The dynamics of each intensity \(x_{i,t}\) is as follows:
 \[
 x_{i,t} = \mu_i'z_t + \phi x_{i,t-1} + \sigma_i \varepsilon_{i,t},
 \]
@@ -6348,12 +6349,12 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.91696961 0.84653730 0.78630909 0.73443283 0.68942411 0.65008425
-## [2,] 0.08668095 0.08330051 0.08013511 0.07716419 0.07437973 0.07177555
-##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.61544257 0.58471208 0.55725370 0.53254723
-## [2,] 0.06934481 0.06707947 0.06497052 0.06300837
+##           [,1]       [,2]       [,3]       [,4]       [,5]      [,6]       [,7]
+## [1,] 0.9459864 0.89814451 0.85547299 0.81714944 0.78249098 0.7509389 0.72203656
+## [2,] 0.0555271 0.05371215 0.05203358 0.05048332 0.04905458 0.0477385 0.04652564
+##            [,8]       [,9]     [,10]
+## [1,] 0.69540915 0.67074736 0.6477943
+## [2,] 0.04540686 0.04437364 0.0434182
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

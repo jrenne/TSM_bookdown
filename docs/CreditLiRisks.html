@@ -435,7 +435,7 @@ p_t^{\mathbb{Q}} ( d_{t}  |  y_t, w_{t-1} ) = p_1 ( d_{1, t}  |  y_t, y_{t-1}, d
 <span class="math display">\[
 \underbrace{1- \exp[-\lambda_\ell(y_t)]}_{\approx \lambda_\ell(y_t)\mbox{ if small}} = \mathbb{P}(\ell_t = 1|\underline{w_{t-1}},y_t).
 \]</span>
-The binary variable <span class="math inline">\(\ell_t\)</span> is assumed not to Granger-cause <span class="math inline">\(y_t\)</span> (as in Hypothesis <a href="CreditLiRisks.html#hyp:A1">7.2</a>) and not to be priced (as in Hypothesis <a href="CreditLiRisks.html#hyp:A3">7.3</a>). As in Proposition <a href="CreditLiRisks.html#prp:defaultBondclassical">7.2</a>—and more precisely <a href="CreditLiRisks.html#eq:lambdaPQ">(7.2)</a>—this implies that
+The binary variable <span class="math inline">\(\ell_t\)</span> is assumed not to Granger-cause <span class="math inline">\(y_t\)</span> (as in Hypothesis <a href="CreditLiRisks.html#hyp:A1">7.2</a>) and not to be priced (as in Hypothesis <a href="CreditLiRisks.html#hyp:A3">7.3</a>). As in Proposition <a href="CreditLiRisks.html#prp:defaultBondclassical">7.2</a>—and more precisely equation <a href="CreditLiRisks.html#eq:lambdaPQ">(7.2)</a>—this implies that
 <span class="math display">\[
 \lambda_\ell^{\mathbb{Q}}(y_t) = \lambda_\ell(y_t),
 \]</span>
@@ -443,7 +443,7 @@ where
 <span class="math display">\[
 1- \exp[-\lambda^{\mathbb{Q}}_\ell(y_t)] = \mathbb{Q}(\ell_t = 1|\underline{w_{t-1}},y_t).
 \]</span></p>
-<p>Upon the arrival of the liquidity shock (<span class="math inline">\(\ell_{t}=1\)</span>), the investor has to exit by selling her bond holdings. She is then limited in the number of traders she can call and, as a result, get only a fraction (<span class="math inline">\(\theta_\ell^{(e)}\)</span>, say) of the price she would get in normal-liquidity times, i.e., when <span class="math inline">\(\ell_{t}=0\)</span> (see the structural interpretation in Example <a href="CreditLiRisks.html#exm:illiqLGD">7.1</a>).</p>
+<p>Upon the arrival of the liquidity shock (<span class="math inline">\(\ell_{t}=1\)</span>), the investor has to exit by selling her bond holdings. She is then limited in the number of traders she can call and, as a result, get only a fraction, <span class="math inline">\(\theta_\ell^{(e)}\)</span> (say), of the price she would get in normal-liquidity times, i.e., when <span class="math inline">\(\ell_{t}=0\)</span>. Example <a href="CreditLiRisks.html#exm:illiqLGD">7.1</a> proposes a structural interpretation for <span class="math inline">\(\theta_\ell^{(e)}\)</span>.</p>
 <p>In that context, following the approach used in Proposition <a href="CreditLiRisks.html#prp:RMVclassical">7.3</a>, one can define a <em>pseudo-illiquidity intensity</em> as follows—mimicking <a href="CreditLiRisks.html#eq:pseudodefintens">(7.11)</a>:
 <span class="math display" id="eq:pseudoilliqintensity">\[\begin{eqnarray}
 \widetilde{\lambda}_{e,\ell, t} \left( y_t, y_{t-1} \right) &amp;=&amp; - \log \left\{ \exp \Big[ -
@@ -457,10 +457,10 @@ where
 \end{equation}\]</span></p>
 <div class="example">
 <p><span id="exm:illiqLGD" class="example"><strong>Example 7.1  (Structural interpretation of the illiquidity intensity) </strong></span>This structural interpretation of the illiquidity intensity is due to <span class="citation">Ericsson and Renault (<a href="references.html#ref-Ericsson_Renault_2006">2006</a>)</span>.</p>
-<p>When hit by a liquidity shock, a bondholder has to liquidate her bond in a small amount of time (between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+\varepsilon\)</span>, with <span class="math inline">\(\varepsilon \ll 1\)</span>). She collects offers on the market; each offer is a random fraction <span class="math inline">\(\omega_{i}\)</span> (<span class="math inline">\(i\in\{1,\ldots,\kappa\}\)</span>) of <span class="math inline">\(\widetilde{B}^{(w)}_{t,h}\)</span> (see Eq. <a href="CreditLiRisks.html#eq:pseudopriceilliq">(7.17)</a>), where the <span class="math inline">\(\omega_{i}\)</span>’s are uniformly distributed in <span class="math inline">\([0,1]\)</span>.</p>
+<p>When hit by a liquidity shock, a bondholder has to liquidate her bond in a small amount of time (between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+\varepsilon\)</span>, with <span class="math inline">\(\varepsilon \ll 1\)</span>). She collects a random number (<span class="math inline">\(\kappa\)</span>) of offers on the market. This number follows a Poisson distribution of parameter <span class="math inline">\(\varepsilon\gamma^{(e)}\)</span>; the more liquid the bond, the higher <span class="math inline">\(\gamma^{(e)}\)</span>. Each offer is a random fraction <span class="math inline">\(\omega_{i}\)</span> (<span class="math inline">\(i\in\{1,\ldots,\kappa\}\)</span>) of <span class="math inline">\(\widetilde{B}^{(e)}_{t,h}\)</span> (see Eq. <a href="CreditLiRisks.html#eq:pseudopriceilliq">(7.17)</a>), where the <span class="math inline">\(\omega_{i}\)</span>’s are independently and uniformly distributed in <span class="math inline">\([0,1]\)</span>.</p>
 <p>At <span class="math inline">\(t+\varepsilon\)</span>, the bond is sold to the trader that has offered the highest price. Formally, when <span class="math inline">\(\ell_{t}=1\)</span>, the selling price is:
 <span class="math display">\[
-\left(\max_{i\in\{1,\ldots,\kappa\}}\omega_{i}\right)\tilde{P}_{t,h}^{(e)}.
+\left(\max_{i\in\{1,\ldots,\kappa\}}\omega_{i}\right)\tilde{P}_{t,h}^{(e)}, \quad \mbox{with}\quad \kappa \sim \mathcal{P}(\varepsilon\gamma^{(e)}).
 \]</span>
 Conditional on <span class="math inline">\(\kappa\)</span>, the expectation of <span class="math inline">\(\max_{i}(\omega_{i})\)</span> is <span class="math inline">\(\kappa/(\kappa+1)\)</span>. (Because the <span class="math inline">\(\omega_{i}\)</span> are i.i.d., the c.d.f. of <span class="math inline">\(\max(\omega_{1},\ldots,\omega_{\kappa})\)</span> is <span class="math inline">\(x\mapsto F(x)^{\kappa}\)</span>, where <span class="math inline">\(F\)</span> is the c.d.f. of <span class="math inline">\(\omega_{i}\)</span>.)
 Hence, <span class="math inline">\(\theta_\ell^{(e)}\)</span>—the unconditional expectation of <span class="math inline">\(\max_{i}(\omega_{i})\)</span>—is given by:
@@ -469,6 +469,7 @@ Hence, <span class="math inline">\(\theta_\ell^{(e)}\)</span>—the unconditiona
 &amp; = &amp; g(\varepsilon\gamma^{(e)})\qquad\mbox{(say).}
 \end{eqnarray*}\]</span>
 Function <span class="math inline">\(g\)</span> is increasing and valued in <span class="math inline">\([0,1]\)</span>. In addition <span class="math inline">\(\lim_{x\rightarrow\infty}g(x)\rightarrow1\)</span>.</p>
+<p>The scalar <span class="math inline">\(g(\varepsilon\gamma^{(e)})\)</span> can be seen as the structural interpretation of the parameter <span class="math inline">\(\theta_\ell^{(e)}\)</span>, which is discussed in the present section.</p>
 </div>
 <!-- \begin{block}{Payoffs of an illiquid bond (occurence of liquidity shock)} -->
 <!-- \begin{figure}[h] \label{Option2} -->
@@ -526,7 +527,7 @@ hence <span class="math inline">\(x_t\)</span> of dimension <span class="math in
 <li>
 <span class="math inline">\(z_{c,t}\)</span> and <span class="math inline">\(z_{\ell,t}\)</span> are not independent: for instance, the probability to transit from the low-credit-stress regime to the medium/high-credit-stress regimes depends on the liquidity-stress regime.</li>
 </ul>
-<p>For each intensity <span class="math inline">\(x_{i,t}\)</span> (simulation below XXX):
+<p>The dynamics of each intensity <span class="math inline">\(x_{i,t}\)</span> is as follows:
 <span class="math display">\[
 x_{i,t} = \mu_i'z_t + \phi x_{i,t-1} + \sigma_i \varepsilon_{i,t},
 \]</span>
@@ -1095,11 +1096,11 @@ Figure 7.10: This plots shows simulated paths for <span class="math inline">\(z_
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span>, <span class="co">#approximate values of the conditional expect. for date t</span></span>
 <span>      <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">E.n</span><span class="op">[</span><span class="va">t.max.lambda</span>,<span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">H</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.93010009 0.86971165 0.81714309 0.77103994 0.73029945 0.69403070
-## [2,] 0.07246308 0.06979678 0.06731369 0.06500378 0.06286013 0.06087318
-##            [,7]       [,8]      [,9]      [,10]
-## [1,] 0.66151402 0.63216586 0.6055105 0.58115768
-## [2,] 0.05903201 0.05732544 0.0557426 0.05427332</code></pre>
+## [1,] 0.93656698 0.88124243 0.83268158 0.78980533 0.75170565 0.71762216
+## [2,] 0.06553424 0.06321126 0.06103466 0.05899219 0.05708209 0.05530201
+##            [,7]       [,8]       [,9]      [,10]
+## [1,] 0.68692286 0.65908502 0.63367728 0.61034360
+## [2,] 0.05364761 0.05211284 0.05069061 0.04937332</code></pre>
 <p>The last two lines respectively give, for the date featuring the highest <span class="math inline">\(\lambda_t\)</span>, the term structures of the bond prices and of associated yields-to-maturity.</p>
 <p>Let us now compute credit-risk-free bond prices. This is obtained by taking <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=0\)</span> (so that <span class="math inline">\(\lambda_t=0\)</span>):</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">

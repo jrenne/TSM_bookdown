@@ -424,7 +424,7 @@ The *liquidity-shock intensity* $\lambda_\ell(y_t)$---that defines the probabili
 $$
 \underbrace{1- \exp[-\lambda_\ell(y_t)]}_{\approx \lambda_\ell(y_t)\mbox{ if small}} = \mathbb{P}(\ell_t = 1|\underline{w_{t-1}},y_t).
 $$
-The binary variable $\ell_t$ is assumed not to Granger-cause $y_t$ (as in Hypothesis \@ref(hyp:A1)) and not to be priced (as in Hypothesis \@ref(hyp:A3)). As in Proposition \@ref(prp:defaultBondclassical)---and more precisely \@ref(eq:lambdaPQ)---this implies that
+The binary variable $\ell_t$ is assumed not to Granger-cause $y_t$ (as in Hypothesis \@ref(hyp:A1)) and not to be priced (as in Hypothesis \@ref(hyp:A3)). As in Proposition \@ref(prp:defaultBondclassical)---and more precisely equation  \@ref(eq:lambdaPQ)---this implies that
 $$
 \lambda_\ell^{\mathbb{Q}}(y_t) = \lambda_\ell(y_t),
 $$
@@ -433,7 +433,7 @@ $$
 1- \exp[-\lambda^{\mathbb{Q}}_\ell(y_t)] = \mathbb{Q}(\ell_t = 1|\underline{w_{t-1}},y_t).
 $$
 
-Upon the arrival of the liquidity shock ($\ell_{t}=1$), the investor has to exit by selling her bond holdings. She is then limited in the number of traders she can call and, as a result, get only a fraction ($\theta_\ell^{(e)}$, say) of the price she would get in normal-liquidity times, i.e., when $\ell_{t}=0$ (see the structural interpretation in Example \@ref(exm:illiqLGD)).
+Upon the arrival of the liquidity shock ($\ell_{t}=1$), the investor has to exit by selling her bond holdings. She is then limited in the number of traders she can call and, as a result, get only a fraction, $\theta_\ell^{(e)}$ (say), of the price she would get in normal-liquidity times, i.e., when $\ell_{t}=0$. Example \@ref(exm:illiqLGD) proposes a structural interpretation for $\theta_\ell^{(e)}$.
 
 In that context, following the approach used in Proposition \@ref(prp:RMVclassical), one can define a *pseudo-illiquidity intensity* as follows---mimicking \@ref(eq:pseudodefintens):
 \begin{eqnarray}
@@ -453,11 +453,11 @@ Still consiering credit risk (on top of liquidity risk), we then have the follow
 
 This structural interpretation of the illiquidity intensity is due to @Ericsson_Renault_2006.
 
-When hit by a liquidity shock, a bondholder has to liquidate her bond in a small amount of time (between $t$ and $t+\varepsilon$, with $\varepsilon \ll 1$). She collects offers on the market; each offer is a random fraction $\omega_{i}$ ($i\in\{1,\ldots,\kappa\}$) of $\widetilde{B}^{(w)}_{t,h}$ (see Eq. \@ref(eq:pseudopriceilliq)), where the $\omega_{i}$'s are uniformly distributed in $[0,1]$.
+When hit by a liquidity shock, a bondholder has to liquidate her bond in a small amount of time (between $t$ and $t+\varepsilon$, with $\varepsilon \ll 1$). She collects a random number ($\kappa$) of offers on the market. This number follows a Poisson distribution of parameter $\varepsilon\gamma^{(e)}$; the more liquid the bond, the higher $\gamma^{(e)}$. Each offer is a random fraction $\omega_{i}$ ($i\in\{1,\ldots,\kappa\}$) of $\widetilde{B}^{(e)}_{t,h}$ (see Eq. \@ref(eq:pseudopriceilliq)), where the $\omega_{i}$'s are independently and uniformly distributed in $[0,1]$.
 
 At $t+\varepsilon$, the bond is sold to the trader that has offered the highest price. Formally, when $\ell_{t}=1$, the selling price is:
 $$
-\left(\max_{i\in\{1,\ldots,\kappa\}}\omega_{i}\right)\tilde{P}_{t,h}^{(e)}.
+\left(\max_{i\in\{1,\ldots,\kappa\}}\omega_{i}\right)\tilde{P}_{t,h}^{(e)}, \quad \mbox{with}\quad \kappa \sim \mathcal{P}(\varepsilon\gamma^{(e)}).
 $$
 Conditional on $\kappa$, the expectation of $\max_{i}(\omega_{i})$ is $\kappa/(\kappa+1)$. (Because the $\omega_{i}$ are i.i.d., the c.d.f. of $\max(\omega_{1},\ldots,\omega_{\kappa})$ is $x\mapsto F(x)^{\kappa}$, where $F$ is the c.d.f. of $\omega_{i}$.)
 Hence, $\theta_\ell^{(e)}$---the unconditional expectation of $\max_{i}(\omega_{i})$---is given by:
@@ -466,6 +466,8 @@ Hence, $\theta_\ell^{(e)}$---the unconditional expectation of $\max_{i}(\omega_{
 & = & g(\varepsilon\gamma^{(e)})\qquad\mbox{(say).}
 \end{eqnarray*}
 Function $g$ is increasing and valued in $[0,1]$. In addition $\lim_{x\rightarrow\infty}g(x)\rightarrow1$.
+
+The scalar $g(\varepsilon\gamma^{(e)})$ can be seen as the structural interpretation of the parameter $\theta_\ell^{(e)}$, which is discussed in the present section.
 :::
 
 
@@ -538,7 +540,7 @@ There are 9 Markovian regimes: $z_t = z_{c,t} \otimes z_{\ell,t}$, where $z_{i,t
 * $z_{i,t}=[0,0,1]'$: high stress.
 * $z_{c,t}$ and $z_{\ell,t}$ are not independent: for instance, the probability to transit from the low-credit-stress regime to the medium/high-credit-stress regimes depends on the liquidity-stress regime.
 
-For each intensity $x_{i,t}$ (simulation below XXX):
+The dynamics of each intensity $x_{i,t}$ is as follows:
 $$
 x_{i,t} = \mu_i'z_t + \phi x_{i,t-1} + \sigma_i \varepsilon_{i,t},
 $$

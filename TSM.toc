@@ -40,15 +40,15 @@
 \contentsline {subsection}{\numberline {3.2.1}Habit formation}{76}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Limitations of the habit model for long-horizons}{77}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Epstein-Zin preferences}{78}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Epstein-Zin preferences and risk aversion}{79}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Epstein-Zin preferences and IES}{80}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.4}Epstein-Zin preferences and risk aversion}{80}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Epstein-Zin preferences and IES}{81}{subsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.2.6}Epstein-Zin Preferences and the time composition of risk}{81}{subsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.2.7}Epstein-Zin preferences and early resolution uncertainty}{82}{subsection.3.2.7}%
+\contentsline {subsection}{\numberline {3.2.7}Epstein-Zin preferences and early resolution of uncertainty}{83}{subsection.3.2.7}%
 \contentsline {subsection}{\numberline {3.2.8}The SDF with Epstein-Zin preferences}{83}{subsection.3.2.8}%
 \contentsline {subsection}{\numberline {3.2.9}Long-run risk model}{90}{subsection.3.2.9}%
 \contentsline {section}{\numberline {3.3}Preferred-habitat model of the term-structure of interest rate}{98}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Appendix}{106}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}SDF in the CES Epstein-Zin Context}{106}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.4}Appendix}{107}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}SDF in the CES Epstein-Zin Context}{107}{subsection.3.4.1}%
 \contentsline {chapter}{\numberline {4}No-arbitrage models of the term struture of risk-free yields}{109}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introduction}{109}{section.4.1}%
 \contentsline {section}{\numberline {4.2}The Affine Case}{113}{section.4.2}%

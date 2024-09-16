@@ -106,7 +106,7 @@ This would imply:
 $$
 -n i_{t,n} = -i_{t,m} + \log \mathbb{E}_t[\exp(-(n-m) i_{t+m,n-m})].
 $$
-Up to the Jensen inequality, and taking expectations on both sides, we get:
+Up to Jensen's inequality, and taking expectations on both sides, we get:
 $$
 -n i_{t,n} \approx \mathbb{E}_t(-i_{t,m} -(n-m) i_{t+m,n-m}).
 $$
@@ -114,6 +114,8 @@ After having reorganized:
 \begin{equation}
 \mathbb{E}_t(i_{t+m,n-m}-i_{t,n}) \approx \frac{i_{t,n}-i_{t,m}}{n-m}.(\#eq:CStheo)
 \end{equation}
+
+Hence, if the Expectation Hypothesis holds, we should obtain unit coefficients when regressing $i_{t+m,n-m}-i_{t,n}$ on $\frac{i_{t,n}-i_{t,m}}{n-m}$. This is usually rejected by the data.
 
 <!-- @Campbell_Shiller_1991 have used the previous expression to test for the Expectation hypothesis. Formally, they run the following regressions for different values of $n$ and $m$: -->
 <!-- $$ -->
@@ -219,6 +221,7 @@ DATA$BILL10 <- as.double(DATA$BILL10)
 par(plt=c(.15,.95,.1,.95))
 plot(DATA$date,DATA$value,type="l",ylab="yields, in percent",xlab="",lwd=2)
 points(DATA$date,DATA$BILL10,pch=19)
+grid()
 legend("topright", 
        c(expression(i[t*','*h]),expression({i[t*','*h]}^{EH})),
        #pt.bg = c("black","red","blue"),
@@ -576,7 +579,7 @@ The shadow rate $s_t$ is part of a state vector $w_t$ that follows a Gaussian VA
 
 The price of a nominal zero-coupon bond is still given by \@ref(eq:ihandM), that is:
 $$
-B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t--i_{t+1}-\dots-i_{t+h-1});
+B_{t,h} = \mathbb{E}^{\mathbb{Q}}_t \exp(-i_t-i_{t+1}-\dots-i_{t+h-1});
 $$
 but this price is not exponential affine in $s_t$ because of the max operator relating $i_t$ to $s_t$ (see Eq. \@ref(eq:SRSTR)). As a result, we can no longer exploit the tractable calculation of the multi-horizon Laplace transform of $w_t$ to price this bond.
 

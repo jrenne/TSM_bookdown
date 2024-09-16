@@ -1,5 +1,5 @@
 --- 
-title: "Introduction to Term Structure Models"
+title: "Asset Pricing with Discrete-Time Affine Processes"
 author: "Alain Monfort and Jean-Paul Renne"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -29,7 +29,7 @@ This course has been developed by [Alain Monfort](https://faculty.crest.fr/amonf
 install.packages("devtools") # needed to use "install_github"
 library(devtools)
 install_github("jrenne/TSModels")
-library(AEC)
+library(TSModels)
 ```
 
 **Useful (R) links:**

@@ -204,7 +204,7 @@ f^{\mathbb{Q}}_{t+1} (w_{t+1}) = \frac{f_{t+1} (w_{t+1}) \exp (\alpha'_t w_{t+1}
 $$
 The previous equation shows that $f^{\mathbb{Q}}_{t+1}$ is the Esscher transform of $f_{t+1}$ evaluated at $\alpha_t$.
 
-Let us know consider the Laplace transform of the conditional R.N. probability, $\varphi^{\mathbb{Q}}_t(u|\underline{w_t})$, also denoted by $\varphi^{\mathbb{Q}}_t(u)$. We have:
+Let us now consider the Laplace transform of the conditional R.N. probability, $\varphi^{\mathbb{Q}}_t(u|\underline{w_t})$, also denoted by $\varphi^{\mathbb{Q}}_t(u)$. We have:
 \begin{eqnarray*}
 \varphi^{\mathbb{Q}}_t(u) &=& \mathbb{E}^{\mathbb{Q}}_t \exp(u' w_{t+1}) \\
 &=& \mathbb{E}_t \exp[(u+\alpha_t)'w_{t+1}-\psi_t(\alpha_t)] \\

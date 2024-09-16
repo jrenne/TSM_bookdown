@@ -231,10 +231,10 @@ In term structure applications, we will often consider *affine* processes (Defin
 
 ### Affine processes of order one
 
-Here is the definition of a *compound auto-regressive (Car)* process of order one:
+Here is the definition of an affine process of order one:
 
 :::{.definition #Car1 name="Affine process of order 1"}
-A multivariate process $w_{t+1}$ is Affine of order 1 [or $Car(1)$] if
+A multivariate process $w_{t+1}$ is affine of order 1 if
 $$
 \varphi_t(u)=\mathbb{E}_t[\exp(u'w_{t+1})]=\exp[a(u)'w_t+b(u)]
 $$
@@ -362,7 +362,7 @@ where $\varepsilon_{t+1}$ is a martingale difference $\Rightarrow$ $w_{t+1}$ is 
 \end{equation}
 It is easily seen that we then have:
 $$
-\varphi_t(u) = exp \left[\frac{\beta \mu u}{1-u \mu} w_t + \frac{\alpha \mu u}{1-u \mu}
+\varphi_t(u) = \exp \left[\frac{\beta \mu u}{1-u \mu} w_t + \frac{\alpha \mu u}{1-u \mu}
 \right].
 $$
 The ARG$_0$ process features a point mass at zero, with conditional probability $\exp(-\alpha - \beta w_t)$. Note that 0 is absorbing if $\alpha = 0$.
@@ -428,13 +428,13 @@ Let us now define affine processes of order $p$:
 
 :::{.definition #Carp name="Affine process of order p"}
 
-A multivariate process $w_{t+1}$ is affine of order $p$ [or $Car(p)$] if there exist functions $a_1(.),\dots,a_p(.)$, and $b(.)$ such that:
+A multivariate process $w_{t+1}$ is affine of order $p$ if there exist functions $a_1(.),\dots,a_p(.)$, and $b(.)$ such that:
 $$
 \varphi_t(u)=\mathbb{E}_t[\exp(u' w_{t+1})]=\exp[a_1(u)'w_t+\dots+a_p(u)'w_{t+1-p}+b(u)].
 $$
 :::
 
-It can be seen that if $w_t$ is $Car(p)$, then $W_t = [w_t', w_{t-1}',\dots,w_{t-p+1}']'$ is $Car(1)$.^[We have:
+It can be seen that if $w_t$ is affine of order $p$, then $W_t = [w_t', w_{t-1}',\dots,w_{t-p+1}']'$ is affine of order $1$.^[We have:
 \begin{eqnarray*}
 \mathbb{E}_t[\exp(u'W_{t+1})] &=& \mathbb{E}_t[\exp(u'_1 w_{t+1}+u'_2 w_t+\dots+u'_p w_{t-p+2})] \\
 &=& \exp(u'_2 w_t+\dots+u'_p w_{t-p+2})\mathbb{E}_t[\exp(u'_1 w_{t+1})] \\
@@ -444,7 +444,7 @@ w_t  +\dots+a'_p(u_1)w_{t+1-p}+b(u_1)) \\
 \end{eqnarray*}
 with $A(u)' = [u'_2+a'_1(u_1),\dots,u'_p+a'_{p-1}(u_1), a'_p(u_1)]$ and $B(u) = b(u_1)$.] Therefore, without loss of generality we can assume $p = 1$.
 
-The standard Car($p$) processes are auto-regressive processes of order $p$. These processes satisfy the definition of index affine processes:
+The standard affine processes of order $p$ are auto-regressive processes of order $p$. These processes satisfy the definition of index affine processes:
 
 :::{.definition name="Univariate index affine process of order p"}
 Let $\exp[a(u)w_t+b(u)]$ be the conditional Laplace transform of a univariate affine process of order 1, the process $w_{t+1}$  is an *index-affine* process of order $p$ if:
@@ -541,7 +541,7 @@ $$
 i.e. $W_t$ follows a matrix weak AR(1) process.
 
 
-In particular case, where $L=1$ (univariate case), we have that:
+In particular, when $L=1$ (univariate case), we have that:
 \begin{eqnarray*}
 \mathbb{E}[\exp(u W_{t+1})|\underline{W_t}] = \exp\left[
 \frac{u m^2}{1-2\omega u}W_t -
@@ -557,7 +557,7 @@ Hence, when $L=1$, the Wishart process boils down to an $ARG(1)$ process (Exampl
 
 Some univariate affine processes can be extended if they satisfy certain conditions. Specifically, consider a univariate affine process whose conditional L.T. is of the form:
 \begin{equation}
-\mathbb{E}_t   \exp(u y_{t+1}) = \exp[a_0(u)y_t+b_0(u)\delta],(\#eq:extaffine)
+\mathbb{E}_t   \exp(u y_{t+1}) = \exp[a_0(u)y_t+b_0(u)'\delta],(\#eq:extaffine)
 \end{equation}
 where $\delta = (\delta_1,\dots,\delta_m)' \in \mathcal{D}$. This process can be generalized by making $\delta$ stochastic (while staying in the affine family). More precisely assume that:
 $$
@@ -599,8 +599,8 @@ Using the notation of Example \@ref(exm:ARp), it comes that an AR(p) processes s
 
 
 :::{.example #ARGp name="ARG(p) model"}
-* $b_0(u)= - \nu \log(1-u\mu)$, $\delta=\nu$.
-* $\nu$ ($\ge 0$) can be specified for instance as a Markov chain or an ARG.
+
+Consider Example \@ref(exm:ARGp), it comes that an ARG(p) processes satisfies \@ref(eq:extaffine), with $b_0(u) = - \nu \log(1-u\mu)$ and $\delta=\nu$. In that case, $\nu$ ($\ge 0$) can be specified for instance as a Markov chain or an ARG.
 :::
 
 
@@ -611,7 +611,7 @@ One can construct multivariate affine processes by employing the so-called recur
 w_{1,t}\\
 w_{2,t}
 \end{array}
-\right)$,and assume that we have:
+\right)$, and assume that we have:
 \begin{eqnarray*}
 &&\mathbb{E}[\exp(u_1 w_{1,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}})]\\
 &=& \exp[a_{11}(u_1)w_{1,{\color{red}{t}}}+a_{12}(u_1)w_{2,{\color{red}{t}}}+b_{1}(u_1)],
@@ -666,8 +666,7 @@ where $\mathcal{S}$ is the set of symmetric positive semi-definite matrices. Vec
 * $z_{1,t+1}$ is, for instance, a Gaussian VAR process.
 * $z_{2,t+1}$ is
     * obtained by applying the $vec$ operator to a Wishart process,
-    * replaced by $\Lambda_2 z_{2,t+1}$, where $\Lambda_2$ is a $(n^2 \times J)$ matrix whose columns are $vec(\Sigma_j)$, $j \in \{1,\dots,J\}$, the $\Sigma_j$ being $(n \times n)$ positive semi-definite, and $z_{2,t+1}$ is a selection vector of dimension $J \times 1$,
-    * a standardized $J$-dimensional VARG process (multivariate extension of Example \@ref(exm:ARG1)).
+    * replaced by $\Lambda_2 z_{2,t+1}$, where $\Lambda_2$ is a $(n^2 \times J)$ matrix whose columns are $vec(\Sigma_j)$, $j \in \{1,\dots,J\}$, the $\Sigma_j$ being $(n \times n)$ positive semi-definite, and $z_{2,t+1}$ is a selection vector of dimension $J \times 1$ or a standardized $J$-dimensional VARG process (multivariate extension of Example \@ref(exm:ARG1)).
 :::
 
 :::{.example #RSVAR2 name="Regime-switching VAR(1)"}
@@ -911,18 +910,18 @@ In the previous example, note the use of function `reverse.MHLT` (in package `TS
 
 :::{.example #realBth name="Real interest rates"}
 Denote by $q_t$ the price index on date $t$ and by $\pi_{t+1} = \log
-\dfrac{q_{t+1}}{q_t}$ the inflation rate on date $t+1$. The real rate of maturity $h$ is given by (see Subsection \@ref(AffineYields)):
+\dfrac{q_{t+1}}{q_t}$ the log-inflation rate between dates $t$ and $t+1$. The real rate of maturity $h$ is given by (see Subsection \@ref(AffineYields)):
 \begin{eqnarray*}
 r_{t,h} & =& -   \frac{1}{h}   \log   \mathcal{B}_{t,h}, \quad h=1,\dots,H \\    \\
-\mathcal{B}_{t,h} & =&  \mathbb{E}^{\mathbb{Q}}_t   \exp(-r_{t}-\dots-r_{t+h-1} + \pi_{t+1}+\dots+\pi_{t+h}),  \\      \\
-& =& \exp(-r_{t}) \times \\
-&& \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h}),
+\mathcal{B}_{t,h} & =&  \mathbb{E}^{\mathbb{Q}}_t   \exp(-i_{t}-\dots-i_{t+h-1} + \pi_{t+1}+\dots+\pi_{t+h}),  \\      \\
+& =& \exp(-i_{t}) \times \\
+&& \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{t+1}-\dots-i_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h}),
 \end{eqnarray*}
-where $r_t$ is the short-term real rate and $\mathcal{B}_{t,h}$ is the price of a real zero-coupon bond of maturity $h$ (which is also a inflation-indexed zero-coupon bond).
-If $r_t = \omega'w_t$ and $\pi_t = \bar\omega'w_t$, then $\mathcal{B}_{t,h}$ is given by:
+where $i_t$ is the nominal short-term rate and $\mathcal{B}_{t,h}$ is the price of a real zero-coupon bond of maturity $h$ (which is also a inflation-indexed zero-coupon bond).
+If $i_t = \omega'w_t$ and $\pi_t = \bar\omega'w_t$, then $\mathcal{B}_{t,h}$ is given by:
 \begin{eqnarray*}
-\exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp[(\bar\omega-\omega)'w_{t+1}+\dots+(\bar\omega-\omega)'w_{t+h-1}+\bar\omega'
-w_{t+h}]
+\exp(-i_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp[(\bar\omega-\omega)'w_{t+1}+\dots+(\bar\omega-\omega)'w_{t+h-1}+\bar\omega'
+w_{t+h}].
 \end{eqnarray*}
 One can then price this bond by directly employing \@ref(eq:LTreverse), with $u_1 = \bar\omega$ and $u_i = \bar\omega-\omega$, $i = 2,\dots, H$.
 :::
@@ -966,7 +965,7 @@ This method is easily extended to price payoffs of the form $(\nu_1'w_{t+h})^k \
 
 ## VAR representation and conditional moments
 
-An important property of affine processes is that their dynamics can be written as a vector-autoregressive process. This is useful to compute conditional moments of the process.
+An important property of affine processes is that their dynamics can be written as a vector-autoregressive process. This is useful, in particular, to compute conditional moments of the process.
 
 :::{.proposition #affineVAR name="VAR representation of an affine process' dynamics"}
 If $w_t$ is the affine process whose Laplace transform is defined in Def. \@ref(def:Car1), then its dynamics admits the following vectorial autoregressive representation:
@@ -985,7 +984,7 @@ where $\varepsilon_{t+1}$ is a difference of martingale sequence whose condition
 When $w_t$ is affine, its (conditional) cumulant generating function is of the form $\psi(u)=a(u)'w_t+b(u)$. The result directly follows from the formulas given in Section \@ref(AffineLaplace).
 :::
 
-Proposition \@ref(prp:condvarAffine) (in the appendix) further shows that the conditional means and variances of $w_t$ are given by:
+Proposition \@ref(prp:condvarAffine) (in the appendix) further shows that the conditional multi-horizon means and variances of $w_t$ are given by:
 \begin{eqnarray}
 \mathbb{E}_t(w_{t+h}) &=& (I - \Phi)^{-1}(I - \Phi^h)\mu + \Phi^h w_t (\#eq:condmean)\\
 \mathbb{V}ar_t(w_{t+h}) &=& \Sigma(\mathbb{E}_t(w_{t+h-1}))+\Phi \Sigma(\mathbb{E}_t(w_{t+h-2}))\Phi' + \nonumber \\
@@ -993,7 +992,7 @@ Proposition \@ref(prp:condvarAffine) (in the appendix) further shows that the co
 \end{eqnarray}
 Eq. \@ref(eq:condvar) notably implies that  $\mathbb{V}ar_t(w_{t+h})$ is an affine function of $w_t$. Indeed $\Sigma(.)$ is an affine function, and the conditional expectations $\mathbb{E}_t(w_{t+h})$ are affine in $w_t$, as shown by \@ref(eq:condmean).
 
-The unconditional means and variances are given by:
+The unconditional means and variances of $w_t$ are given by:
 \begin{equation}
 \left\{
 \begin{array}{ccl}

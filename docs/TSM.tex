@@ -114,14 +114,14 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Introduction to Term Structure Models},
+  pdftitle={Asset Pricing with Discrete-Time Affine Processes},
   pdfauthor={Alain Monfort and Jean-Paul Renne},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{Introduction to Term Structure Models}
+\title{Asset Pricing with Discrete-Time Affine Processes}
 \author{Alain Monfort and Jean-Paul Renne}
-\date{2024-04-04}
+\date{2024-09-16}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -161,7 +161,7 @@ This course has been developed by \href{https://faculty.crest.fr/amonfort/}{Alai
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{) }\CommentTok{\# needed to use "install\_github"}
 \FunctionTok{library}\NormalTok{(devtools)}
 \FunctionTok{install\_github}\NormalTok{(}\StringTok{"jrenne/TSModels"}\NormalTok{)}
-\FunctionTok{library}\NormalTok{(AEC)}
+\FunctionTok{library}\NormalTok{(TSModels)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -445,10 +445,10 @@ In term structure applications, we will often consider \emph{affine} processes (
 \hypertarget{affine-processes-of-order-one}{%
 \subsection{Affine processes of order one}\label{affine-processes-of-order-one}}
 
-Here is the definition of a \emph{compound auto-regressive (Car)} process of order one:
+Here is the definition of an affine process of order one:
 
 \begin{definition}[Affine process of order 1]
-\protect\hypertarget{def:Car1}{}\label{def:Car1}A multivariate process \(w_{t+1}\) is Affine of order 1 {[}or \(Car(1)\){]} if
+\protect\hypertarget{def:Car1}{}\label{def:Car1}A multivariate process \(w_{t+1}\) is affine of order 1 if
 \[
 \varphi_t(u)=\mathbb{E}_t[\exp(u'w_{t+1})]=\exp[a(u)'w_t+b(u)]
 \]
@@ -581,7 +581,7 @@ where \(\varepsilon_{t+1}\) is a martingale difference \(\Rightarrow\) \(w_{t+1}
 \end{equation}
 It is easily seen that we then have:
 \[
-\varphi_t(u) = exp \left[\frac{\beta \mu u}{1-u \mu} w_t + \frac{\alpha \mu u}{1-u \mu}
+\varphi_t(u) = \exp \left[\frac{\beta \mu u}{1-u \mu} w_t + \frac{\alpha \mu u}{1-u \mu}
 \right].
 \]
 The ARG\(_0\) process features a point mass at zero, with conditional probability \(\exp(-\alpha - \beta w_t)\). Note that 0 is absorbing if \(\alpha = 0\).
@@ -660,13 +660,13 @@ One can simulate such processes by using \href{https://jrenne.shinyapps.io/Affin
 Let us now define affine processes of order \(p\):
 
 \begin{definition}[Affine process of order p]
-\protect\hypertarget{def:Carp}{}\label{def:Carp}A multivariate process \(w_{t+1}\) is affine of order \(p\) {[}or \(Car(p)\){]} if there exist functions \(a_1(.),\dots,a_p(.)\), and \(b(.)\) such that:
+\protect\hypertarget{def:Carp}{}\label{def:Carp}A multivariate process \(w_{t+1}\) is affine of order \(p\) if there exist functions \(a_1(.),\dots,a_p(.)\), and \(b(.)\) such that:
 \[
 \varphi_t(u)=\mathbb{E}_t[\exp(u' w_{t+1})]=\exp[a_1(u)'w_t+\dots+a_p(u)'w_{t+1-p}+b(u)].
 \]
 \end{definition}
 
-It can be seen that if \(w_t\) is \(Car(p)\), then \(W_t = [w_t', w_{t-1}',\dots,w_{t-p+1}']'\) is \(Car(1)\).\footnote{We have:
+It can be seen that if \(w_t\) is affine of order \(p\), then \(W_t = [w_t', w_{t-1}',\dots,w_{t-p+1}']'\) is affine of order \(1\).\footnote{We have:
   \begin{eqnarray*}
   \mathbb{E}_t[\exp(u'W_{t+1})] &=& \mathbb{E}_t[\exp(u'_1 w_{t+1}+u'_2 w_t+\dots+u'_p w_{t-p+2})] \\
   &=& \exp(u'_2 w_t+\dots+u'_p w_{t-p+2})\mathbb{E}_t[\exp(u'_1 w_{t+1})] \\
@@ -676,7 +676,7 @@ It can be seen that if \(w_t\) is \(Car(p)\), then \(W_t = [w_t', w_{t-1}',\dots
   \end{eqnarray*}
   with \(A(u)' = [u'_2+a'_1(u_1),\dots,u'_p+a'_{p-1}(u_1), a'_p(u_1)]\) and \(B(u) = b(u_1)\).} Therefore, without loss of generality we can assume \(p = 1\).
 
-The standard Car(\(p\)) processes are auto-regressive processes of order \(p\). These processes satisfy the definition of index affine processes:
+The standard affine processes of order \(p\) are auto-regressive processes of order \(p\). These processes satisfy the definition of index affine processes:
 
 \begin{definition}[Univariate index affine process of order p]
 Let \(\exp[a(u)w_t+b(u)]\) be the conditional Laplace transform of a univariate affine process of order 1, the process \(w_{t+1}\) is an \emph{index-affine} process of order \(p\) if:
@@ -771,7 +771,7 @@ The proposition also shows that we have:
 \]
 i.e.~\(W_t\) follows a matrix weak AR(1) process.
 
-In particular case, where \(L=1\) (univariate case), we have that:
+In particular, when \(L=1\) (univariate case), we have that:
 \begin{eqnarray*}
 \mathbb{E}[\exp(u W_{t+1})|\underline{W_t}] = \exp\left[
 \frac{u m^2}{1-2\omega u}W_t -
@@ -787,7 +787,7 @@ Hence, when \(L=1\), the Wishart process boils down to an \(ARG(1)\) process (Ex
 
 Some univariate affine processes can be extended if they satisfy certain conditions. Specifically, consider a univariate affine process whose conditional L.T. is of the form:
 \begin{equation}
-\mathbb{E}_t   \exp(u y_{t+1}) = \exp[a_0(u)y_t+b_0(u)\delta],\label{eq:extaffine}
+\mathbb{E}_t   \exp(u y_{t+1}) = \exp[a_0(u)y_t+b_0(u)'\delta],\label{eq:extaffine}
 \end{equation}
 where \(\delta = (\delta_1,\dots,\delta_m)' \in \mathcal{D}\). This process can be generalized by making \(\delta\) stochastic (while staying in the affine family). More precisely assume that:
 \[
@@ -825,22 +825,13 @@ Using the notation of Example \ref{exm:ARp}, it comes that an AR(p) processes sa
 \end{example}
 
 \begin{example}[ARG(p) model]
-\protect\hypertarget{exm:ARGp}{}\label{exm:ARGp}\leavevmode
-
-\begin{itemize}
-\tightlist
-\item
-  \(b_0(u)= - \nu \log(1-u\mu)\), \(\delta=\nu\).
-\item
-  \(\nu\) (\(\ge 0\)) can be specified for instance as a Markov chain or an ARG.
-\end{itemize}
-
+\protect\hypertarget{exm:ARGp}{}\label{exm:ARGp}Consider Example \ref{exm:ARGp}, it comes that an ARG(p) processes satisfies \eqref{eq:extaffine}, with \(b_0(u) = - \nu \log(1-u\mu)\) and \(\delta=\nu\). In that case, \(\nu\) (\(\ge 0\)) can be specified for instance as a Markov chain or an ARG.
 \end{example}
 
 \hypertarget{buildingmulti}{%
 \subsection{Multivariate affine processes}\label{buildingmulti}}
 
-One can construct multivariate affine processes by employing the so-called recursive approach. Let us illustrate this by considering the bivariate case. (The multivariate generalization is straightforward.) Consider \(w_t = \left(\begin{array}{c} w_{1,t}\\ w_{2,t} \end{array} \right)\),and assume that we have:
+One can construct multivariate affine processes by employing the so-called recursive approach. Let us illustrate this by considering the bivariate case. (The multivariate generalization is straightforward.) Consider \(w_t = \left(\begin{array}{c} w_{1,t}\\ w_{2,t} \end{array} \right)\), and assume that we have:
 \begin{eqnarray*}
 &&\mathbb{E}[\exp(u_1 w_{1,t+1}|\underline{w_{1,t}}, \underline{w_{2,t}})]\\
 &=& \exp[a_{11}(u_1)w_{1,{\color{red}{t}}}+a_{12}(u_1)w_{2,{\color{red}{t}}}+b_{1}(u_1)],
@@ -903,9 +894,7 @@ where \(\mathcal{S}\) is the set of symmetric positive semi-definite matrices. V
   \item
     obtained by applying the \(vec\) operator to a Wishart process,
   \item
-    replaced by \(\Lambda_2 z_{2,t+1}\), where \(\Lambda_2\) is a \((n^2 \times J)\) matrix whose columns are \(vec(\Sigma_j)\), \(j \in \{1,\dots,J\}\), the \(\Sigma_j\) being \((n \times n)\) positive semi-definite, and \(z_{2,t+1}\) is a selection vector of dimension \(J \times 1\),
-  \item
-    a standardized \(J\)-dimensional VARG process (multivariate extension of Example \ref{exm:ARG1}).
+    replaced by \(\Lambda_2 z_{2,t+1}\), where \(\Lambda_2\) is a \((n^2 \times J)\) matrix whose columns are \(vec(\Sigma_j)\), \(j \in \{1,\dots,J\}\), the \(\Sigma_j\) being \((n \times n)\) positive semi-definite, and \(z_{2,t+1}\) is a selection vector of dimension \(J \times 1\) or a standardized \(J\)-dimensional VARG process (multivariate extension of Example \ref{exm:ARG1}).
   \end{itemize}
 \end{itemize}
 
@@ -1150,18 +1139,18 @@ The nominal short-term rate is given by \(i_t = X_{1,t}+X_{2,t}\). In that case,
 In the previous example, note the use of function \texttt{reverse.MHLT} (in package \texttt{TSModels}), that notably takes a L.T. as an argument (\texttt{psi}). In the previous example, we consider a Gaussian VAR, and we therefore assign \texttt{psi.GaussianVAR} to \texttt{psi}. We then need to provide function \texttt{reverse.MHLT} with the arguments of the \texttt{psi} function. These arguments are provided in the form of a list (input \texttt{psi.parameterization}).
 
 \begin{example}[Real interest rates]
-\protect\hypertarget{exm:realBth}{}\label{exm:realBth}Denote by \(q_t\) the price index on date \(t\) and by \(\pi_{t+1} = \log \dfrac{q_{t+1}}{q_t}\) the inflation rate on date \(t+1\). The real rate of maturity \(h\) is given by (see Subsection \ref{AffineYields}):
+\protect\hypertarget{exm:realBth}{}\label{exm:realBth}Denote by \(q_t\) the price index on date \(t\) and by \(\pi_{t+1} = \log \dfrac{q_{t+1}}{q_t}\) the log-inflation rate between dates \(t\) and \(t+1\). The real rate of maturity \(h\) is given by (see Subsection \ref{AffineYields}):
 \begin{eqnarray*}
 r_{t,h} & =& -   \frac{1}{h}   \log   \mathcal{B}_{t,h}, \quad h=1,\dots,H \\    \\
-\mathcal{B}_{t,h} & =&  \mathbb{E}^{\mathbb{Q}}_t   \exp(-r_{t}-\dots-r_{t+h-1} + \pi_{t+1}+\dots+\pi_{t+h}),  \\      \\
-& =& \exp(-r_{t}) \times \\
-&& \mathbb{E}^{\mathbb{Q}}_t \exp(-r_{t+1}-\dots-r_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h}),
+\mathcal{B}_{t,h} & =&  \mathbb{E}^{\mathbb{Q}}_t   \exp(-i_{t}-\dots-i_{t+h-1} + \pi_{t+1}+\dots+\pi_{t+h}),  \\      \\
+& =& \exp(-i_{t}) \times \\
+&& \mathbb{E}^{\mathbb{Q}}_t \exp(-i_{t+1}-\dots-i_{t+h-1}+\pi_{t+1}+\dots+\pi_{t+h}),
 \end{eqnarray*}
-where \(r_t\) is the short-term real rate and \(\mathcal{B}_{t,h}\) is the price of a real zero-coupon bond of maturity \(h\) (which is also a inflation-indexed zero-coupon bond).
-If \(r_t = \omega'w_t\) and \(\pi_t = \bar\omega'w_t\), then \(\mathcal{B}_{t,h}\) is given by:
+where \(i_t\) is the nominal short-term rate and \(\mathcal{B}_{t,h}\) is the price of a real zero-coupon bond of maturity \(h\) (which is also a inflation-indexed zero-coupon bond).
+If \(i_t = \omega'w_t\) and \(\pi_t = \bar\omega'w_t\), then \(\mathcal{B}_{t,h}\) is given by:
 \begin{eqnarray*}
-\exp(-r_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp[(\bar\omega-\omega)'w_{t+1}+\dots+(\bar\omega-\omega)'w_{t+h-1}+\bar\omega'
-w_{t+h}]
+\exp(-i_{t}) \mathbb{E}^{\mathbb{Q}}_t \exp[(\bar\omega-\omega)'w_{t+1}+\dots+(\bar\omega-\omega)'w_{t+h-1}+\bar\omega'
+w_{t+h}].
 \end{eqnarray*}
 One can then price this bond by directly employing \eqref{eq:LTreverse}, with \(u_1 = \bar\omega\) and \(u_i = \bar\omega-\omega\), \(i = 2,\dots, H\).
 \end{example}
@@ -1213,7 +1202,7 @@ This method is easily extended to price payoffs of the form \((\nu_1'w_{t+h})^k 
 \hypertarget{var-representation-and-conditional-moments}{%
 \section{VAR representation and conditional moments}\label{var-representation-and-conditional-moments}}
 
-An important property of affine processes is that their dynamics can be written as a vector-autoregressive process. This is useful to compute conditional moments of the process.
+An important property of affine processes is that their dynamics can be written as a vector-autoregressive process. This is useful, in particular, to compute conditional moments of the process.
 
 \begin{proposition}[VAR representation of an affine process' dynamics]
 \protect\hypertarget{prp:affineVAR}{}\label{prp:affineVAR}If \(w_t\) is the affine process whose Laplace transform is defined in Def. \ref{def:Car1}, then its dynamics admits the following vectorial autoregressive representation:
@@ -1233,7 +1222,7 @@ where \(\varepsilon_{t+1}\) is a difference of martingale sequence whose conditi
 When \(w_t\) is affine, its (conditional) cumulant generating function is of the form \(\psi(u)=a(u)'w_t+b(u)\). The result directly follows from the formulas given in Section \ref{AffineLaplace}.
 \end{proof}
 
-Proposition \ref{prp:condvarAffine} (in the appendix) further shows that the conditional means and variances of \(w_t\) are given by:
+Proposition \ref{prp:condvarAffine} (in the appendix) further shows that the conditional multi-horizon means and variances of \(w_t\) are given by:
 \begin{eqnarray}
 \mathbb{E}_t(w_{t+h}) &=& (I - \Phi)^{-1}(I - \Phi^h)\mu + \Phi^h w_t \label{eq:condmean}\\
 \mathbb{V}ar_t(w_{t+h}) &=& \Sigma(\mathbb{E}_t(w_{t+h-1}))+\Phi \Sigma(\mathbb{E}_t(w_{t+h-2}))\Phi' + \nonumber \\
@@ -1241,7 +1230,7 @@ Proposition \ref{prp:condvarAffine} (in the appendix) further shows that the con
 \end{eqnarray}
 Eq. \eqref{eq:condvar} notably implies that \(\mathbb{V}ar_t(w_{t+h})\) is an affine function of \(w_t\). Indeed \(\Sigma(.)\) is an affine function, and the conditional expectations \(\mathbb{E}_t(w_{t+h})\) are affine in \(w_t\), as shown by \eqref{eq:condmean}.
 
-The unconditional means and variances are given by:
+The unconditional means and variances of \(w_t\) are given by:
 \begin{equation}
 \left\{
 \begin{array}{ccl}
@@ -1991,7 +1980,7 @@ f^{\mathbb{Q}}_{t+1} (w_{t+1}) = \frac{f_{t+1} (w_{t+1}) \exp (\alpha'_t w_{t+1}
 \]
 The previous equation shows that \(f^{\mathbb{Q}}_{t+1}\) is the Esscher transform of \(f_{t+1}\) evaluated at \(\alpha_t\).
 
-Let us know consider the Laplace transform of the conditional R.N. probability, \(\varphi^{\mathbb{Q}}_t(u|\underline{w_t})\), also denoted by \(\varphi^{\mathbb{Q}}_t(u)\). We have:
+Let us now consider the Laplace transform of the conditional R.N. probability, \(\varphi^{\mathbb{Q}}_t(u|\underline{w_t})\), also denoted by \(\varphi^{\mathbb{Q}}_t(u)\). We have:
 \begin{eqnarray*}
 \varphi^{\mathbb{Q}}_t(u) &=& \mathbb{E}^{\mathbb{Q}}_t \exp(u' w_{t+1}) \\
 &=& \mathbb{E}_t \exp[(u+\alpha_t)'w_{t+1}-\psi_t(\alpha_t)] \\
@@ -2260,9 +2249,9 @@ that also rewrites:
 \end{equation}
 where \(R_{j,t+1}\) is asset \(j\)'s return, i.e., \(R_{j,t+1} = (p_{j,t+1} - p_{j,t})/p_{j,t}\). The previous formula says that the expected excess return, \(\mathbb{E}_t(R_{j,t+1} - R_{f,t})\), is higher for those assets whose returns are low when the SDF is high (and vice versa). In other words, for investors to hold them, assets that are exposed to bad states of the world (i.e., that lose value in bad states of the world) should provide an average excess return.
 
-Another way to look at formula \eqref{eq:MRCov} is:
+Another way to look at formula \eqref{eq:covpM2} is:
 \begin{eqnarray*}
-p_{j,t} = \underbrace{\exp(-i_t) \mathbb{E}_t(p_{j,t+1})}_{\mbox{Discount.  expect. payoff}} + \mathbb{V}ar_t(\mathcal{M}_{t,t+1}) \underbrace{\frac{\mathbb{C}ov_t(\mathcal{M}_{t,t+1},p_{j,t+1})}{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}_{\mbox{Risk exposure}}.
+p_{j,t} = \underbrace{\exp(-i_t) \mathbb{E}_t(p_{j,t+1})}_{\mbox{Discount.  expect. payoff}} + \underbrace{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}_{\mbox{Price of risk}} \underbrace{\frac{\mathbb{C}ov_t(\mathcal{M}_{t,t+1},p_{j,t+1})}{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}_{\mbox{Risk exposure}}.
 \end{eqnarray*}
 
 Note that the SDF \(\mathcal{M}_{t,t+1}\) that is introduced above is the nominal SDF. This is the SDF that one has to use to evaluate the present value of nominal payoffs (\(p_{t+1}\) is a vector of prices expressed in nominal terms, here). One can also define a real SDF. The latter is linked to the former by the following relationship:\footnote{Indeed, if \(p_t^*\) is the real price of a given asset, we need to have \(p_t^* = \mathbb{E}_t(\mathcal{M}^*_{t,t+1} p^*_{t+1})\), as well as \(p_t^* = \mathbb{E}_t\left(\mathcal{M}_{t,t+1} p^*_{t+1}\frac{q_{t+1}}{q_t}\right)\) since the nominal payoff of the considered asset is \(p^*_{t+1}\frac{q_{t+1}}{q_t}\).}
@@ -3595,7 +3584,7 @@ Figure \ref{fig:VV3} shows the two term structures of factor loadings resulting 
 \includegraphics[width=0.95\linewidth]{TSM_files/figure-latex/VV3-1} \caption{Term structure of factor loadings.}\label{fig:VV3}
 \end{figure}
 
-Let us know determine the effect of an increase in the supply factor.
+Let us now determine the effect of an increase in the supply factor.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6360,11 +6349,11 @@ Let us now evaluate the conditional expectations of \eqref{eq:condExp}, for \(h=
 
 \begin{verbatim}
 ##            [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-## [1,] 0.94802060 0.90179537 0.86036556 0.82296349 0.78896609 0.75786917
-## [2,] 0.05337905 0.05168382 0.05013264 0.04871086 0.04740639 0.04620742
+## [1,] 0.91696961 0.84653730 0.78630909 0.73443283 0.68942411 0.65008425
+## [2,] 0.08668095 0.08330051 0.08013511 0.07716419 0.07437973 0.07177555
 ##            [,7]       [,8]       [,9]      [,10]
-## [1,] 0.72926183 0.70280619 0.67822213 0.65527569
-## [2,] 0.04510321 0.04408426 0.04314227 0.04226992
+## [1,] 0.61544257 0.58471208 0.55725370 0.53254723
+## [2,] 0.06934481 0.06707947 0.06497052 0.06300837
 \end{verbatim}
 
 The last two lines respectively give, for the date featuring the highest \(\lambda_t\), the term structures of the bond prices and of associated yields-to-maturity.

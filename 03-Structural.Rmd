@@ -95,9 +95,9 @@ that also rewrites:
 \end{equation}
 where $R_{j,t+1}$ is asset $j$'s return, i.e., $R_{j,t+1} = (p_{j,t+1} - p_{j,t})/p_{j,t}$. The previous formula says that the expected excess return, $\mathbb{E}_t(R_{j,t+1} - R_{f,t})$, is higher for those assets whose returns are low when the SDF is high (and vice versa). In other words, for investors to hold them, assets that are exposed to bad states of the world (i.e., that lose value in bad states of the world) should provide an average excess return.
 
-Another way to look at formula \@ref(eq:MRCov) is:
+Another way to look at formula \@ref(eq:covpM2) is:
 \begin{eqnarray*}
-p_{j,t} = \underbrace{\exp(-i_t) \mathbb{E}_t(p_{j,t+1})}_{\mbox{Discount.  expect. payoff}} + \mathbb{V}ar_t(\mathcal{M}_{t,t+1}) \underbrace{\frac{\mathbb{C}ov_t(\mathcal{M}_{t,t+1},p_{j,t+1})}{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}_{\mbox{Risk exposure}}.
+p_{j,t} = \underbrace{\exp(-i_t) \mathbb{E}_t(p_{j,t+1})}_{\mbox{Discount.  expect. payoff}} + \underbrace{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}_{\mbox{Price of risk}} \underbrace{\frac{\mathbb{C}ov_t(\mathcal{M}_{t,t+1},p_{j,t+1})}{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}_{\mbox{Risk exposure}}.
 \end{eqnarray*}
 
 Note that the SDF $\mathcal{M}_{t,t+1}$ that is introduced above is the nominal SDF. This is the SDF that one has to use to evaluate the present value of nominal payoffs ($p_{t+1}$ is a vector of prices expressed in nominal terms, here). One can also define a real SDF. The latter is linked to the former by the following relationship:^[Indeed, if $p_t^*$ is the real price of a given asset, we need to have $p_t^* = \mathbb{E}_t(\mathcal{M}^*_{t,t+1} p^*_{t+1})$, as well as $p_t^* = \mathbb{E}_t\left(\mathcal{M}_{t,t+1} p^*_{t+1}\frac{q_{t+1}}{q_t}\right)$ since the nominal payoff of the considered asset is $p^*_{t+1}\frac{q_{t+1}}{q_t}$.]
@@ -1317,7 +1317,7 @@ With Epstein-Zin preferences, another key correlation is that between stock retu
 For this second channel to be relevant, observed excess returns should positively correlate to the updates of expectations of long-term consumption. See Figure \@ref(fig:SPF10yrStock).
 
 
-```{r SPF10yrStock, echo=FALSE, fig.cap="Sources: SPF Philadelphia and Wilshire 5000 Price Index (FRED database).", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE,warning = FALSE}
+```{r SPF10yrStock, echo=FALSE, fig.cap="Sources: SPF Philadelphia and OECD for share price index (ticker: SPASTT01USM661N in FRED).", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE,warning = FALSE}
 library(fredr)
 fredr_set_key("df65e14c054697a52b4511e77fcfa1f3")
 start_date <- as.Date("1959-01-01"); end_date <- as.Date("2023-10-01")
@@ -1326,7 +1326,7 @@ f <- function(ticker){
         observation_start = start_date,observation_end = end_date,
         frequency = "q",aggregation_method = "eop")
 }
-stocks <- f("WILL5000PR")
+stocks <- f("SPASTT01USM661N")
 stocks$date <- as.Date(stocks$date)
 
 # Get SPFs:
@@ -1881,7 +1881,7 @@ for(i in 1:m){
        main = paste("Factor ",i,sep=""))}
 ```
 
-Let us know determine the effect of an increase in the supply factor.
+Let us now determine the effect of an increase in the supply factor.
 
 ```{r VV4, echo=TRUE, fig.cap="Effect of a shock on the second factor. The left hand side plot shows the yield curve effect; the right hand side plot shows the effect on the composition of arbitrageurs' bond portfolio. For the two plots, the black lines indicate the unconditional average and the red line shows the curves conditional on the shock.", fig.asp = .6, out.width = "95%", fig.align = 'left-aligned', message=FALSE}
 # Shock:

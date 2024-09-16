@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 3 A detour through structural approaches | Introduction to Term Structure Models</title>
+<title>Chapter 3 A detour through structural approaches | Asset Pricing with Discrete-Time Affine Processes</title>
 <meta name="author" content="Alain Monfort and Jean-Paul Renne">
 <meta name="description" content="This section introduces structural asset-pricing approaches, wherein agents or investors strategically make portfolio decisions to achieve a specific time and risk profile for consumption. We...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 3 A detour through structural approaches | Introduction to Term Structure Models">
+<meta property="og:title" content="Chapter 3 A detour through structural approaches | Asset Pricing with Discrete-Time Affine Processes">
 <meta property="og:type" content="book">
 <meta property="og:description" content="This section introduces structural asset-pricing approaches, wherein agents or investors strategically make portfolio decisions to achieve a specific time and risk profile for consumption. We...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 3 A detour through structural approaches | Introduction to Term Structure Models">
+<meta name="twitter:title" content="Chapter 3 A detour through structural approaches | Asset Pricing with Discrete-Time Affine Processes">
 <meta name="twitter:description" content="This section introduces structural asset-pricing approaches, wherein agents or investors strategically make portfolio decisions to achieve a specific time and risk profile for consumption. We...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +53,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">Introduction to Term Structure Models</a>
+        <a href="index.html" title="">Asset Pricing with Discrete-Time Affine Processes</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -174,9 +174,9 @@ that also rewrites:
 \boxed{\mathbb{E}_t(R_{j,t+1} - R_{f,t}) = - (1 + R_{f,t}) \mathbb{C}ov_t(\mathcal{M}_{t,t+1},R_{j,t+1}),}\tag{3.7}
 \end{equation}\]</span>
 where <span class="math inline">\(R_{j,t+1}\)</span> is asset <span class="math inline">\(j\)</span>’s return, i.e., <span class="math inline">\(R_{j,t+1} = (p_{j,t+1} - p_{j,t})/p_{j,t}\)</span>. The previous formula says that the expected excess return, <span class="math inline">\(\mathbb{E}_t(R_{j,t+1} - R_{f,t})\)</span>, is higher for those assets whose returns are low when the SDF is high (and vice versa). In other words, for investors to hold them, assets that are exposed to bad states of the world (i.e., that lose value in bad states of the world) should provide an average excess return.</p>
-<p>Another way to look at formula <a href="Structural.html#eq:MRCov">(3.7)</a> is:
+<p>Another way to look at formula <a href="Structural.html#eq:covpM2">(3.6)</a> is:
 <span class="math display">\[\begin{eqnarray*}
-p_{j,t} = \underbrace{\exp(-i_t) \mathbb{E}_t(p_{j,t+1})}_{\mbox{Discount.  expect. payoff}} + \mathbb{V}ar_t(\mathcal{M}_{t,t+1}) \underbrace{\frac{\mathbb{C}ov_t(\mathcal{M}_{t,t+1},p_{j,t+1})}{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}_{\mbox{Risk exposure}}.
+p_{j,t} = \underbrace{\exp(-i_t) \mathbb{E}_t(p_{j,t+1})}_{\mbox{Discount.  expect. payoff}} + \underbrace{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}_{\mbox{Price of risk}} \underbrace{\frac{\mathbb{C}ov_t(\mathcal{M}_{t,t+1},p_{j,t+1})}{\mathbb{V}ar_t(\mathcal{M}_{t,t+1})}}_{\mbox{Risk exposure}}.
 \end{eqnarray*}\]</span></p>
 <p>Note that the SDF <span class="math inline">\(\mathcal{M}_{t,t+1}\)</span> that is introduced above is the nominal SDF. This is the SDF that one has to use to evaluate the present value of nominal payoffs (<span class="math inline">\(p_{t+1}\)</span> is a vector of prices expressed in nominal terms, here). One can also define a real SDF. The latter is linked to the former by the following relationship:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Indeed, if &lt;span class="math inline"&gt;\(p_t^*\)&lt;/span&gt; is the real price of a given asset, we need to have &lt;span class="math inline"&gt;\(p_t^* = \mathbb{E}_t(\mathcal{M}^*_{t,t+1} p^*_{t+1})\)&lt;/span&gt;, as well as &lt;span class="math inline"&gt;\(p_t^* = \mathbb{E}_t\left(\mathcal{M}_{t,t+1} p^*_{t+1}\frac{q_{t+1}}{q_t}\right)\)&lt;/span&gt; since the nominal payoff of the considered asset is &lt;span class="math inline"&gt;\(p^*_{t+1}\frac{q_{t+1}}{q_t}\)&lt;/span&gt;.&lt;/p&gt;'><sup>9</sup></a>
 <span class="math display" id="eq:NomiRealSDF">\[\begin{equation}
@@ -1065,8 +1065,8 @@ With Epstein-Zin preferences, another key correlation is that between stock retu
 For this second channel to be relevant, observed excess returns should positively correlate to the updates of expectations of long-term consumption. See Figure <a href="Structural.html#fig:SPF10yrStock">3.11</a>.</p>
 <div class="figure" style="text-align: left-aligned">
 <span style="display:block;" id="fig:SPF10yrStock"></span>
-<img src="TSM_files/figure-html/SPF10yrStock-1.png" alt="Sources: SPF Philadelphia and Wilshire 5000 Price Index (FRED database)." width="95%"><p class="caption">
-Figure 3.11: Sources: SPF Philadelphia and Wilshire 5000 Price Index (FRED database).
+<img src="TSM_files/figure-html/SPF10yrStock-1.png" alt="Sources: SPF Philadelphia and OECD for share price index (ticker: SPASTT01USM661N in FRED)." width="95%"><p class="caption">
+Figure 3.11: Sources: SPF Philadelphia and OECD for share price index (ticker: SPASTT01USM661N in FRED).
 </p>
 </div>
 <p><span class="citation">Bansal and Yaron (<a href="references.html#ref-Bansal_Yaron_2004">2004</a>)</span> show that the combination of long-run risks and Epstein-Zin preferences allow to address several asset-pricing puzzles. A <a href="https://jrenne.shinyapps.io/LRRModels">web interface</a> present outputs of the approach. It also allows to simulate the model dynamics and to assess the influence of the parameterization.</p>
@@ -1543,7 +1543,7 @@ Figure 3.16: Specification of the <span class="math inline">\(\beta_{n,2}\)</spa
 Figure 3.17: Term structure of factor loadings.
 </p>
 </div>
-<p>Let us know determine the effect of an increase in the supply factor.</p>
+<p>Let us now determine the effect of an increase in the supply factor.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Shock:</span></span>
 <span><span class="va">shock</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">m</span>,<span class="fl">1</span><span class="op">)</span></span>
@@ -1659,7 +1659,7 @@ which gives <a href="Structural.html#eq:SSS">(3.25)</a>.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Term Structure Models</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-04-04.</p>
+    <p>"<strong>Asset Pricing with Discrete-Time Affine Processes</strong>" was written by Alain Monfort and Jean-Paul Renne. It was last built on 2024-09-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
